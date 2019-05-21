@@ -1,0 +1,118 @@
+<!doctype html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href='__PUBLIC__/css/common.css'>
+<script type="text/javascript" src="__PUBLIC__/js/jquery-1.7.1.min.js"></script>
+<script type="text/javascript" src="__PUBLIC__/js/base.js"></script>
+<script src="__PUBLIC__/js/jquery.textSearch-1.0.js" type="text/javascript"></script>
+<script type="text/javascript" src="__PUBLIC__/js/Calendar.js"></script>
+<title>无标题文档</title>
+</head>
+<body>
+<div id="append_parent"></div>
+<div class="container" id="cpcontainer" style="overflow-y: auto;">
+  <div id="contentHeader">
+    <h3>2018年生态城公用事业满意度调查问卷</h3>
+  </div>
+  <form method="post" action="" name="form1">
+	  <table border="0" cellpadding="0" cellspacing="0" class="content_list">
+		  <thead>
+			<tr class="tb_header">
+			  <th width="" colspan="2">查询条件</th>
+			</tr>
+		  </thead>
+		  <tr style="display:none;">
+			<td colspan="2"><input type="checkbox" value="1" name="bangding" id="bangding" checked="checked"><b>按平台信息查询</b></td>
+		  </tr>
+		 
+		  <tr>
+			<!--<td style="text-align:center;">联系电话：<input type="text" name="phone" value="{$phone}" style="width:205px;"/></td>-->
+			<td style="text-align:center;" colspan = '2'>投票时间：<input name="qishishijian" type="text" id="qishishijian" size="10" maxlength="10" onclick="new Calendar().show(this);" value="{$qishishijian}" readonly="readonly" />一<input type="text" name="jieshushijian" onclick="new Calendar().show(this);" value="{$jieshushijian}" size="10" maxlength="10"/></td>
+		  </tr>
+		  <tr>
+			<td style="text-align:right;"><input type="submit" value="查询" class="button confirmSubmit" /></td>
+			<td style=""><input type="reset" value="重置" class="button reset" /></td>
+		  </tr>
+	  </table>
+  </form>
+  <table class="content_list" style="width: 2100px">
+		<thead>
+		  <tr class="tb_header">
+			<td colspan="12"><b>查询结果</b></td>
+			<td align="left" ><input  type="button" value="导出" name="download" onclick="exportdata()"/></td>
+	      </tr>
+		</thead>
+		  <tr>
+			<td class="tb_title" width="50">序号</td>
+			<td class="tb_title" width="120">自来水供应及服务</td>
+			<td class="tb_title" width="120" style="text-align:center">天然气供应及服务</td>
+			<td class="tb_title" width="120" style="text-align:center">供热供应及服务</td>
+			<td class="tb_title" width="180" style="text-align:center">再生水（即中水）<br>供应及服务</td>
+			<td class="tb_title" width="100" style="text-align:center">水体、水质</td>
+			<td class="tb_title" width="230" style="text-align:center">道路、桥梁、排水、路灯等<br>市政设施整体运营</td>
+			<td class="tb_title" width="100" style="text-align:center">景观绿化的管理</td>
+		    <td class="tb_title" width="120" style="text-align:center">道路保洁与环境卫生</td>
+			<td class="tb_title" width="200" style="text-align:center">智能物回<br>（积分兑换、大件回收等）</td>
+			<td class="tb_title" width="200" style="text-align:center">公交（1、2、3、4号线路）<br>车辆的安全保障</td>
+			<td class="tb_title" width="200" style="text-align:center">公交（1、2、3、4号线路）<br>驾驶员的仪容仪表和服务态度</td>
+			<td class="tb_title" width="200" style="text-align:center">公交（1、2、3、4号线路）<br>车身及车内部的清洁卫生</td>
+			<td class="tb_title" width="150" style="text-align:center">公用事业相关工作有意见</td>
+			<td class="tb_title" width="100" style="text-align:center">操作</td>
+			 
+		  </tr>
+		  <empty name="result_list">
+			  <tr>
+				<td colspan="12" style="text-align:center;">请核实查询条件后，点击"查询"按钮进行查询！</td>
+			  </tr>
+		  </empty>
+		  <notempty name="result_list">
+			  <volist name="result_list" id="result">
+				<notempty name="result.twChoose">
+					<tr style="text-align:center">
+						<td width="50">{$i}</td>
+						<td width="120">{$result.twChoose}</td>
+						<td width="120" style="text-align:center">{$result.ngChoose}</td>
+						<td width="100" style="text-align:center">{$result.hsChoose}</td>
+						<td width="100" style="text-align:center">{$result.rwChoose}</td>
+						<td width="180" style="text-align:center">{$result.wqChoose}</td>
+						<td width="100" style="text-align:center">{$result.mfChoose}</td>
+						<td width="230" style="text-align:center">{$result.lgChoose}</td>
+						<td width="100" style="text-align:center">{$result.rcChoose}</td>
+						<td width="120" style="text-align:center">{$result.agentChoose}</td>
+						<td width="200" style="text-align:center">{$result.busgChoose}</td>
+						<td width="200" style="text-align:center">{$result.bdrChoose}</td>
+						<td width="200" style="text-align:center">{$result.cleanupChoose}</td>
+						<td width="200" style="text-align:center">{$result.opinionChoose}</td>
+						<td width="100" style="text-align:center"><a href="__URL__/causeView/id/{$result.id}" title="详细投票信息"><img src="__PUBLIC__/images/xx.png" align="absmiddle"></a></td>
+					</tr>
+				 </notempty>
+			  </volist>
+			  <tr>
+				<td colspan="7"><div class="cuspages right">{$page}</div>
+			 </tr>
+		  </notempty>
+		</table>
+<script type="text/javascript">
+	$(function(){ 
+		$(".confirmSubmit").click(function() {
+			var a=$("input[type='checkbox']:checked");
+			var len=a.length;
+			if(len<1){
+				alert("您未选择查询方式，请选择查询方式后，再进行操作！");
+				return false;
+			}
+			return;	
+		});
+	}); 
+</script>
+
+<script language="javascript" type="text/javascript">  
+   function exportdata(){  
+     window.location.href="__APP__/Admin/Vote/exportCause";   
+   }         
+ </script>  
+</div>
+</body>
+</html>
+

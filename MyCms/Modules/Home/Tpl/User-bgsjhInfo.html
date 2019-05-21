@@ -1,0 +1,87 @@
+<!doctype html>
+<html>
+<head>
+    <include file="Public:common-head"/>
+</head>
+
+<body>
+<assign name="hoverIndex" value="1"/>
+<include file="Public:common-toppart"/>
+
+
+<div class="nengyuan_banner">
+    <div class="content">
+        <p class="jiaofei_banner_01 font_yinying">能源公司</p>
+        <p class="jiaofei_banner_03 "></p>
+        <p class="jiaofei_banner_02 font_yinying">能源业务，一键办理</p>
+    </div>
+</div>
+
+<div class="content_bg01 ">
+    <div class="content history_content">
+        <p class="dqwz history_dqwz">
+            当前位置：<a href="http://www.66885890.com">首页</a> &nbsp;&nbsp;&gt;&nbsp;&nbsp;
+                <a href="{:U('User/index',array('id'=>20))}">我的5890</a>&nbsp;&nbsp;&gt;&nbsp;&nbsp;
+                <a href="{:U('User/ywbl')}">业务办理</a>&nbsp;&nbsp;&gt;&nbsp;&nbsp;
+                <a href="{:U('User/ny')}">能源公司</a>&nbsp;&nbsp;&gt;&nbsp;&nbsp;
+                <span class="green">绑定手机号提示</span>
+        </p>
+        <div class="wodeyewu_content clearfix">
+            <div class="wodeyewu_content_box01">
+                <div class="yewu_box clearfix">
+                    <p class="yewu_title">绑定手机号提示</p>
+                    <p>1、您绑定的手机号码，可接收能源类通知短信，同时将作为我公司与您联系的重要方式，如遇变更请及时绑定新的手机号码，并联系能源服务卡发卡行同步变更联系方式。</p>
+                    <p><span class="orange">2、绑定手机号信息后（如有）再生水业务，请进入水务公司页面更新绑定手机号。</span></p>
+                </div>
+            </div>
+            <div class="fuxuankuang">
+                <div class="box box01">
+                    <ul>
+                        <li id="chk_accept">已认真阅读绑定手机号提示</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="wodeyewu_btn01 wodeyewu_btn02"><a id="fireOkBtn">确定</a></div>
+            <form method="post" action="{:U('User/bgsjh')}" id="accept_form">
+                <input type="hidden" id="accept" name="accept" value="0">
+            </form>
+        </div>
+    </div>
+</div>
+
+<include file="Public:common-footer"/>
+<include file="Public:common-script"/>
+<script type="text/javascript" src="__PUBLIC__/last/js/artDialog4.1.7/artDialog.source.js?skin=green"></script>
+<script type="text/javascript">
+    $(function () {
+        var $ali = $('#chk_accept');
+        $ali.on('click', function () {
+            var $self = $(this);
+            var chked = $self.attr('checked');
+            if (chked) {
+                $self.attr('checked', false).removeClass('on');
+            } else {
+                $self.attr('checked', true).addClass('on');
+            }
+        });
+
+        var $okBtn = $('#fireOkBtn');
+        $okBtn.on('click', function (event) {
+            event.preventDefault();
+            var accepted = $ali.attr('checked');
+            if (!accepted) {
+                art.dialog({
+                    lock: true,
+                    content: '请确认您已认真阅读并同意绑定手机号提示',
+                    time: 3
+                });
+                return false;
+            }
+
+            $('#accept').val('1');
+            $('#accept_form').submit();
+        });
+    });
+</script>
+</body>
+</html>

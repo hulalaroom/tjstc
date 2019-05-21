@@ -1,0 +1,113 @@
+<!doctype html>
+<html>
+<head>
+    <include file="Public:common-head" />
+	<link rel="stylesheet" type="text/css" href="__PUBLIC__/last/css/selectFilter.css">
+</head>
+
+<body>
+    <assign name="hoverIndex" value="1" />
+    <include file="Public:common-toppart" />
+
+<div class="nengyuan_banner">
+	<div class="content">
+		<p class="jiaofei_banner_01 font_yinying ">能源公司</p>
+		<p class="jiaofei_banner_03"></p>
+		<p class="jiaofei_banner_02 font_yinying">能源业务，一键办理</p>
+	</div>
+</div>
+
+<div class="content">
+    <p class="dqwz history_dqwz">
+当前位置：<a href="http://www.66885890.com">首页</a> &nbsp;&nbsp;&gt;&nbsp;&nbsp;
+                <a href="{:U('User/index',array('id'=>20))}">我的5890</a>&nbsp;&nbsp;&gt;&nbsp;&nbsp;
+                <a href="{:U('User/ywbl')}">业务办理</a>&nbsp;&nbsp;&gt;&nbsp;&nbsp;
+                <span class="green">能源公司</span>
+    </p>
+
+	<div class="jiaofei_box clearfix">
+		<div class="jiaofei_boxfirst">
+			<if condition="$tingong eq 1">
+				<a href="{:U('User/reheatInfo')}" class="nygs01">
+					<dl class="nygsdl01">
+					<dt><img src="__PUBLIC__/last/img/nygs_01.png" alt="" /></dt>
+					<dd class="jiaofei_title nengyuan_title">恢复供热申请</dd>
+					<dd class="jiaofei_nr">恢复供热申请详细信息</dd>
+				</dl>
+				<dl class="nygsdl02">
+					<dt class="nygsdt_01"><img src="__PUBLIC__/last/img/nygs_011.png" alt="" /></dt>
+					<dd class="jiaofei_title jiaofei_title01 ">恢复供热申请</dd>
+					<dd class="jiaofei_nr jiaofei_nr01">恢复供热申请详细信息</dd>
+					<dd> <span class="jrbtn01 jrbtn02">点击进入</span> </dd>
+				</dl>
+			</a>
+			<else />
+				<a href="javascript:void(0)" class="nygs01">
+					<dl class="nygsdl01">
+					<dt><img src="__PUBLIC__/last/img/nygs_01_new.png" alt="" /></dt>
+					<dd class="jiaofei_title nengyuan_title">恢复供热申请</dd>
+					<dd class="jiaofei_nr">恢复供热申请详细信息</dd>
+				</dl>
+				<dl class="nygsdl02">
+					<dt><img src="__PUBLIC__/last/img/nygs_01_new.png" alt="" /></dt>
+					<dd class="jiaofei_title nengyuan_title">恢复供热申请</dd>
+					<dd class="jiaofei_nr">恢复供热申请详细信息</dd>
+				</dl>
+			</a>
+			</if>
+		</div>
+
+		<div class="jiaofei_boxtwo">
+			<a href="{:U('User/nykInfo')}" class="nygs01">
+				<dl class="nygsdl01">
+					<dt><img src="__PUBLIC__/last/img/nygs_02.png" alt="" /></dt>
+					<dd class="jiaofei_title nengyuan_title">绑定/变更能源卡</dd>
+					<dd class="jiaofei_nr">绑定/变更能源卡详细信息</dd>
+				</dl>
+
+				<dl class="nygsdl02">
+					<dt class="nygsdt_01"><img src="__PUBLIC__/last/img/nygs_022.png" alt="" /></dt>
+					<dd class="jiaofei_title jiaofei_title01 ">绑定/变更能源卡</dd>
+					<dd class="jiaofei_nr jiaofei_nr01">绑定/变更能源卡详细信息</dd>
+					<dd> <span class="jrbtn01 jrbtn02">点击进入</span> </dd>
+				</dl>
+			</a>
+		</div>
+
+		<div class="jiaofei_boxthree">
+			<a href="{:U('User/jtjhzInfo')}" class="nygs01">
+				<dl class="nygsdl01">
+					<dt><img src="__PUBLIC__/last/img/nygs_03.png" alt="" /></dt>
+					<dd class="jiaofei_title nengyuan_title">阶梯基数申请</dd>
+					<dd class="jiaofei_nr">阶梯基数申请详细信息</dd>
+				</dl>
+                <dl class="nygsdl02">
+					<dt class="nygsdt_01"><img src="__PUBLIC__/last/img/nygs_033.png" alt="" /></dt>
+					<dd class="jiaofei_title jiaofei_title01 ">阶梯基数申请</dd>
+					<dd class="jiaofei_nr jiaofei_nr01">阶梯基数申请详细信息</dd>
+					<dd> <span class="jrbtn01 jrbtn02">点击进入</span> </dd>
+				</dl>
+			</a>
+		</div>
+
+		<div class="jiaofei_boxfour">
+			<a href="{:U('User/bgsjhInfo')}" class="nygs01">
+				<dl class="nygsdl01">
+					<dt><img src="__PUBLIC__/last/img/nygs_04.png" alt="" /></dt>
+					<dd class="jiaofei_title nengyuan_title">变更联系方式</dd>
+					<dd class="jiaofei_nr">变更联系方式详细信息</dd>
+				</dl>
+                <dl class="nygsdl02">
+					<dt class="nygsdt_01"><img src="__PUBLIC__/last/img/nygs_044.png" alt="" /></dt>
+					<dd class="jiaofei_title jiaofei_title01 ">变更联系方式</dd>
+					<dd class="jiaofei_nr jiaofei_nr01">变更联系方式详细信息</dd>
+					<dd> <span class="jrbtn01 jrbtn02">点击进入</span> </dd>
+				</dl>
+			</a>
+		</div>
+	</div>
+</div>
+
+<include file="Public:common-footer" />
+</body>
+</html>

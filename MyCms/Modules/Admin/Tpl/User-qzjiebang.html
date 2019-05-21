@@ -1,0 +1,172 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link rel="stylesheet" type="text/css" href='__PUBLIC__/css/common.css'>
+<script type="text/javascript" src="__PUBLIC__/js/jquery-1.7.1.min.js"></script>
+<script type="text/javascript" src="__PUBLIC__/js/base.js"></script>
+<script src="__PUBLIC__/js/jquery.textSearch-1.0.js" type="text/javascript"></script>
+<title>房间解绑</title>
+<script>
+     var thisurl = window.location.href;
+	function numlimit(num,limit){
+		thisurl = delQueStr(thisurl,'p');;
+		thisurl = setUrlParam(limit,num,thisurl);  //设置URL
+		window.location.href=thisurl;
+	}
+</script>
+<script>
+//设置URL
+function setUrlParam(para_name,para_value,url)
+{
+	    if(para_value==''){
+		   return delQueStr(url,para_name);
+	    }
+        var strNewUrl=new String();
+        var strUrl=url;
+        //alert(strUrl);
+        if(strUrl.indexOf("?")!=-1)
+        {
+            strUrl=strUrl.substr(strUrl.indexOf("?")+1);
+            //alert(strUrl);
+            if(strUrl.toLowerCase().indexOf(para_name.toLowerCase())==-1)
+            {
+                strNewUrl=url+"&"+para_name+"="+para_value;
+                return strNewUrl;
+            }else
+            {
+                var aParam=strUrl.split("&");
+                //alert(aParam.length);
+                for(var i=0;i<aParam.length;i++)
+                {
+                    if(aParam[i].substr(0,aParam[i].indexOf("=")).toLowerCase()==para_name.toLowerCase())
+                    {
+                       aParam[i]= aParam[i].substr(0,aParam[i].indexOf("="))+"="+para_value;
+                    }
+                }
+
+               strNewUrl=url.substr(0,url.indexOf("?")+1)+aParam.join("&");
+              // alert(strNewUrl);
+               return strNewUrl;
+           }
+
+        }else
+        {
+            strUrl+="?"+para_name+"="+para_value;
+            //alert(strUrl);
+            return strUrl
+        }
+}
+
+
+//删除参数值
+function delQueStr(url, ref) {
+            var str = "";
+            if (url.indexOf('?') != -1) {
+                str = url.substr(url.indexOf('?') + 1);
+            }
+            else {
+                return url;
+            }
+            var arr = "";
+            var returnurl = "";
+            var setparam = "";
+            if (str.indexOf('&') != -1) {
+                arr = str.split('&');
+                for (i in arr) {
+                    if (arr[i].split('=')[0] != ref) {
+                        returnurl = returnurl + arr[i].split('=')[0] + "=" + arr[i].split('=')[1] + "&";
+                    }
+                }
+                return url.substr(0, url.indexOf('?')) + "?" + returnurl.substr(0, returnurl.length - 1);
+            }
+            else {
+                arr = str.split('=');
+                if (arr[0] == ref) {
+                    return url.substr(0, url.indexOf('?'));
+                }
+                else {
+                    return url;
+                }
+            }
+}
+</script>
+</head>
+<body>
+<div id="append_parent"></div>
+	<div class="container" id="cpcontainer">
+		<div id="contentHeader">
+			<h3>强制房间解绑</h3>
+			<div class="searchArea">
+				<div class="search left">
+				显示：<select name="limit"  onChange="numlimit(this.value,'limit');" name="limit" id="limit">
+						<option value="{$p}" <eq name='limit' value='{$p}'>selected="selected"</eq>>{$p}</option>
+						<option value="30" <eq name='limit' value='30'>selected="selected"</eq>>30</option>
+					</select>
+					</select>
+					   　<a href="{:U('user/qzjiebang')}">[清空条件]</a>
+				</div>
+				<div class="search left">
+					<form action="{:U('user/qzjiebang')}" method="post" style="margin: 0 0 15px 0;">
+					  　房间编号：<input name="housecode" class="txt" type="text"  value="{$housecode}">
+					  　业主姓名：<input name="ownername" class="txt" type="text"  value="{$ownername}">
+					  　身份证号：<input name="papercode" class="txt" type="text" value="{$papercode}">
+
+					　	<input name="searchsubmit" type="submit"  value="查询" class="button "/>
+					</form>
+				</div>
+			</div>
+		</div>
+		<table border="0" cellpadding="0" cellspacing="0" class="content_list">
+			<form method="post" action="__URL__/bat" name="form1">
+				<thead>
+					<tr class="tb_header">
+						<th width="12%">房间编号</th>
+						<th width="6%">业主姓名</th>
+						<th width="8%">身份证号</th>
+						<th width="13%">申请时间</th>
+						<th width="8%">来源</th>
+						<th width="8%">办理状态</th>
+						<th width="8%">审核时间</th>
+						<th width="10%">详细</th>
+						<th width="10%">通过审核</th>
+					</tr>
+				</thead>
+				<volist name="guestlist" id="gu">
+					<tr class="tb_list">
+						<!--<td ><input type="checkbox" name="id[]" value="{$gu.HOUSECODE}">
+						{$gu.HOUSECODE}</td>-->
+						<td>{$gu.housecode}</td>
+						<td>{$gu.ownername}</td>
+						<td>{$gu.papercode}</td>
+						<td>{$gu.applytime}</td>
+						<td>{$gu.source}</td>
+						<td>{$gu.state}</td>
+						<td>{$gu.examinetime}</td>
+						<td><a href="__URL__/jiebangxiangxi/id/{$gu.id}"><img src="__PUBLIC__/images/update.png" title="详细" align="absmiddle"></a></td>			<td><a href="__URL__/jiebangcaozuo/rid/{$gu.housecode}/id/{$gu.id}/uid/{$gu.uid}" class="confirmSubmit" title="通过审核"><img src="__PUBLIC__/images/jb.png" align="absmiddle"></a></td>		  
+					</tr>
+				</volist>
+				<tr class="operate">
+				<td colspan="8">
+				<div class="cuspages right" id="page">{$page}</div>
+					</td>
+				</tr>
+			</form>
+		</table>
+
+	</div>
+	  <script type="text/javascript">
+$(function(){ 
+    $(".confirmSubmit").click(function() {
+	//alert($(".confirmSubmit").attr('id'));
+		var a=$("input[type='checkbox']:checked");
+		var len=a.length;
+		
+        return confirm('确认通过审核吗？');
+		
+			
+    });
+}); 
+</script>
+</body>
+</html>

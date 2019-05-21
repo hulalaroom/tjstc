@@ -1,0 +1,1 @@
+<?php	return array ( 'token' => 'stckf', 'appid' => 'wx983d1847f675ab42', 'appsecret' => 'ceb2d70924e7044875c86fb8fc0718f3', 'su_msg' => '感谢您对天津生态城公用事业客户服务平台的关注，我们将竭诚为您提供最好的服务！', 'isreply' => '0', 'reply_msg' => '自动回复的内容', );?>

@@ -1,0 +1,1983 @@
+<!doctype html>
+<html>
+
+<head>
+    <include file="Public:common-head" />
+    <link rel="stylesheet" type="text/css" href="__PUBLIC__/last/css/css1.css?v=3">
+</head>
+
+<body>
+    <div class="gray"></div>
+<div class="center_zfb">
+  <div class="title1"><span class="wrong"></span> </div>
+  <div class="content1">
+  <img src="__PUBLIC__/last/img/sfzfmdt.png">
+  </div>
+</div>
+    <assign name="hoverIndex" value="1" />
+    <include file="Public:common-toppart" />
+    <div class="nengyuan_banner">
+        <div class="content">
+            <p class="jiaofei_banner_01 font_yinying">能源公司</p>
+            <p class="jiaofei_banner_03 "></p>
+            <p class="jiaofei_banner_02 font_yinying">能源业务，一键办理</p>
+        </div>
+    </div>
+    <div class="content_bg01 ">
+        <div class="content history_content">
+            <p class="dqwz history_dqwz">
+                    当前位置：<a href="http://www.66885890.com">首页</a> &nbsp;&nbsp;&gt;&nbsp;&nbsp;
+                <a href="{:U('User/index',array('id'=>20))}">我的5890</a>&nbsp;&nbsp;&gt;&nbsp;&nbsp;
+                <a href="{:U('User/ywbl')}">业务办理</a>&nbsp;&nbsp;&gt;&nbsp;&nbsp;
+                <a href="{:U('User/ny')}">能源公司</a>&nbsp;&nbsp;&gt;&nbsp;&nbsp;
+                <span class="green">阶梯价基数核增</span>
+            </p>
+            <div class="wodeyewu_content clearfix">
+                <form id="form2" name="form2" action="{:U('User/jtjhzcg')}" method="post" enctype="multipart/form-data">
+                    <input name='housecode' type="hidden" id="housecode" value="{$housecode}">
+                    <input name='owername' type="hidden" id="owername" value="{$owername}">
+                <div class="wodeyewu_content_box01">
+                    <div class="yewu_table clearfix">
+                        <ul class="yewuleft">
+                            <li>房间编号</li>
+                            <li>房间地址</li>
+                            <li>申请人</li>
+                            <!-- <li>联系电话</li>
+                            <li>新增人口类别</li> -->
+                            <li>核增人数</li>
+                        </ul>
+                        <ul class="yewuright">
+                            <li>{$houseInfo.HOUSECODE}</li>
+                            <li>{$houseInfo.AADDRESS}</li>
+                            <li>{$houseInfo.OWNERNAME}</li>
+                            <!-- <li>{$houseInfo.CONTACTPHONE}</li>
+                            <li class="chk_group">
+                                <div class="checks checked">
+                                    <label>
+                                        <span><i></i></span>
+                                        <strong>户内人员 </strong>
+                                    </label>
+                                </div>
+                                <div class="checks">
+                                    <label>
+                                        <span><i></i></span>
+                                        <strong>户外人员 </strong>
+                                    </label>
+                                </div>
+                            </li> -->
+                            <li>
+                                <input type="hidden" name="renshu" id="renshu" value="5人">
+                                <div class="demo" style="margin-left: 170px;">
+                                    <dl class="select01">
+                                        <dt class="">1人</dt>
+                                        <dd style="display: none;">
+                                            <ul>
+                                                <li><a href="javascript:void(0)" class="select_a">1人</a></li>
+                                                <li><a href="javascript:void(0)">2人</a></li>
+                                                <li><a href="javascript:void(0)">3人</a></li>
+                                                <li><a href="javascript:void(0)">4人</a></li>
+                                                <li><a href="javascript:void(0)">5人</a></li>
+                                                <li><a href="javascript:void(0)">6人</a></li>
+                                            </ul>
+                                        </dd>
+                                    </dl>
+                                </div>
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span>合计人数:<span id="hejirenshu">5人</span></span>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="yezhushenfen">
+                        <h3>上传业主本人身份证照片</h3>
+                        <div class="yewu_tips01 ">注意：请您上传清晰、无污染的业主本人身份证照片或者扫描件，文件后缀名必须为.jpg或.png，文件大小在2M以内！</div>
+
+                        <div class="yewu_shangchuang">
+                            <div>
+                                <a href="javascript:void(0)" class="file">上传身份证（正面）照片<input type="file" name="sfz[]" id="sfz_img_z"></a>
+                                <span class="shili01"><img onmouseover="showImg('sfzzmdt',event);" onmouseout="hideImg()" src="__PUBLIC__/last/img/wodeyewu_08.png" alt="" /></span>
+                                <a href="javascript:void(0)" class="file">上传身份证（背面）照片<input type="file" name="sfz[]" id="sfz_img_b"></a>
+                                <span class="shili01"><img onmouseover="showImg('sfzfmdt',event);" onmouseout="hideImg()" src="__PUBLIC__/last/img/wodeyewu_07.png" alt="" /></span>
+                            </div>
+                            <div class="img-preview z_preview"><span><img class="img-preview-small" alt="" id="z_preview" /></span><span id="sfz_img_z_name" class="file-name"></span><a id="sfz_img_z_del">删除</a></div>
+                            <div class="img-preview b_preview"><span><img class="img-preview-small" alt="" id="b_preview" /></span><span id="sfz_img_b_name" class="file-name"></span><a id="sfz_img_b_del">删除</a></div>
+                        </div>
+                    </div>
+                    <div class="yezhushenfen">
+                        <h3>上传房产证照片</h3>
+                        <div class="yewu_tips01 ">注意：请您上传清晰、无污染的房产证照片，文件后缀名必须为.jpg或.png，文件大小在2M以内！</div>
+                        <div class="yewu_shangchuang">
+                            <div>
+                                <a href="javascript:void(0)" class="file">上传房产证照片<input type="file" name="sfz[]" id="fcz"></a>
+                                <span class="shili01"><img onmouseover="showImg('fczdt',event);" onmouseout="hideImg()" src="Public/last/img/wodeyewu_13.png" alt="" /></span>
+                            </div>
+                            <div class="img-preview fcz_preview"><span><img class="img-preview-small" alt="" id="fcz_preview" /></span><span id="fcz_name" class="file-name"></span><a id="fcz_del">删除</a></div>
+                        </div>
+                    </div>
+
+                    <div class="yezhushenfen">
+                        <h3>上传户口簿主页照片</h3>
+                        <div class="yewu_tips01 ">注意：文件后缀名必须为.jpg或.png，文件大小在2M以内清晰,无污染的照片！</div>
+                        <!-- <div class="yewu_tips02">请您上传清晰、无污染的房产证照片</div> -->
+                        <div class="yewu_shangchuang">
+                            <div>
+                                <a href="javascript:void(0)" class="file">上传户口簿户主页照片<input type="file" name="sfz[]" id="hkb"></a>
+                                <span class="shili01"><img onmouseover="showImg('hkbdt',event);" onmouseout="hideImg()" src="Public/last/img/wodeyewu_12.png" alt="" /></span>
+                            </div>
+                            <div class="img-preview hkb_preview"><span><img class="img-preview-small" alt="" id="hkb_preview" /></span><span id="hkb_name" class="file-name"></span><a id="hkb_del">删除</a></div>
+                        </div>
+                    </div>
+
+
+                    <div class="yezhushenfen">
+                        <h3>上传户口簿成员页照片</h3>
+                        <div class="yewu_tips01 ">注意：文件后缀名必须为.jpg或.png，文件大小在2M以内清晰,无污染的照片！</div>
+                        <!--1-->
+                        <div style="width:100%;border-top: dashed 1px #d5d4d4">
+                            <div class="yewu_tips02 yewu_input chk_group chk_group1" style="padding-left:10px;background: #f2f2f2;display: inline-block;">
+                                <input id="xingming1" name="xingming1" class="aaa" placeholder="请输入姓名" type="text" style="color:#8E8E8E;" value="">
+                                <input type="hidden" name="hnhw1" id="hnhw1" value="1">
+                            </div>
+							<div class="chk_group chk_group1" style="display: inline-block;vertical-align: middle;">
+								<div class="checks checked" style="display: inline-block;">
+									<label>
+										<span><i></i></span>
+										<strong>户内人员 </strong>
+									</label>
+								</div>
+								<div class="checks" style="display: inline-block;margin-left: 20px;">
+									<label>
+										<span><i></i></span>
+										<strong>户外人员 </strong>
+									</label>
+								</div>
+							</div>
+                            <div class="yewu_shangchuang" id="hunei1">
+                                <div>
+                                    <a href="javascript:void(0)" class="file">上传户口簿成员页照片(成员一)<input type="file" name="sfz[]" id="hukou11"></a>
+                                    <span class="shili01"><img onmouseover="showImg('czdt',event);" onmouseout="hideImg()" src="Public/last/img/wodeyewu_12.png" alt="" /></span>
+                                </div>
+                                <div class="img-preview hukou11_preview"><span><img class="img-preview-small" alt="" id="hukou11_preview" /></span><span id="hukou11_name" class="file-name"></span><a id="hukou11_del">删除</a></div>
+                            </div>
+                            <div class="yewu_shangchuang" id="huwai1" style="display: none">
+                                <div>
+                                    <a href="javascript:void(0)" class="file">上传外来人口居住证照片<input type="file" name="sfz[]" id="hukou121"></a>
+                                    <!--<a href="javascript:void(0)" class="file">上传关系证明照片<input type="file" name="sfz[]" id="hukou122"></a>-->
+                                </div>
+                                <div class="img-preview hukou121_preview"><span><img class="img-preview-small" alt="" id="hukou121_preview" /></span><span id="hukou121_name" class="file-name"></span><a id="hukou121_del">删除</a></div>
+                                
+                            </div>
+                        </div>
+
+                        <!--2-->
+                        <div style="width:100%;border-top: dashed 1px #d5d4d4">
+                            <div class="yewu_tips02 yewu_input" style="padding-left:10px;background: #f2f2f2;display: inline-block;">
+                                <input id="xingming2" name="xingming2" class="aaa" placeholder="请输入姓名" type="text" style="color:#8E8E8E;" value="">
+                                <input type="hidden" name="hnhw2" id="hnhw2" value="1">
+
+                            </div>
+                            <div class="chk_group chk_group2" style="display: inline-block;vertical-align: middle;">
+                                <div class="checks checked" style="display: inline-block;">
+                                    <label>
+                                        <span><i></i></span>
+                                        <strong>户内人员 </strong>
+                                    </label>
+                                </div>
+                                <div class="checks" style="display: inline-block;margin-left: 20px;">
+                                    <label>
+                                        <span><i></i></span>
+                                        <strong>户外人员 </strong>
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="yewu_shangchuang" id="hunei2">
+                                <div>
+                                    <a href="javascript:void(0)" class="file">上传户口簿成员页照片(成员二)<input type="file" name="sfz[]" id="hukou21"></a>
+                                    <span class="shili01"><img onmouseover="showImg('czdt',event);" onmouseout="hideImg()" src="Public/last/img/wodeyewu_12.png" alt="" /></span>
+                                </div>
+                                <div class="img-preview hukou21_preview"><span><img class="img-preview-small" alt="" id="hukou21_preview" /></span><span id="hukou21_name" class="file-name"></span><a id="hukou21_del">删除</a></div>
+                            </div>
+                            <div class="yewu_shangchuang" id="huwai2" style="display: none">
+                                <div>
+                                    <a href="javascript:void(0)" class="file">上传外来人口居住证照片<input type="file" name="sfz[]" id="hukou221"></a>
+                                    
+                                </div>
+                                <div class="img-preview hukou221_preview"><span><img class="img-preview-small" alt="" id="hukou221_preview" /></span><span id="hukou221_name" class="file-name"></span><a id="hukou221_del">删除</a></div>
+                                
+                            </div>
+                        </div>
+
+                    <!--3-->
+                        <div style="width:100%;border-top: dashed 1px #d5d4d4">
+                            <div class="yewu_tips02 yewu_input" style="padding-left:10px;background: #f2f2f2;display: inline-block;">
+                                <input id="xingming3" name="xingming3" class="aaa" placeholder="请输入姓名" type="text" style="color:#8E8E8E;" value="">
+                                <input type="hidden" name="hnhw3" id="hnhw3" value="1">
+
+                            </div>
+                            <div class="chk_group chk_group3" style="display: inline-block;vertical-align: middle;">
+                                <div class="checks checked" style="display: inline-block;">
+                                    <label>
+                                        <span><i></i></span>
+                                        <strong>户内人员 </strong>
+                                    </label>
+                                </div>
+                                <div class="checks" style="display: inline-block;margin-left: 20px;">
+                                    <label>
+                                        <span><i></i></span>
+                                        <strong>户外人员 </strong>
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="yewu_shangchuang" id="hunei3">
+                                <div>
+                                    <a href="javascript:void(0)" class="file">上传户口簿成员页照片(成员三)<input type="file" name="sfz[]" id="hukou31"></a>
+                                    <span class="shili01"><img onmouseover="showImg('czdt',event);" onmouseout="hideImg()" src="Public/last/img/wodeyewu_12.png" alt="" /></span>
+                                </div>
+                                <div class="img-preview hukou31_preview"><span><img class="img-preview-small" alt="" id="hukou31_preview" /></span><span id="hukou31_name" class="file-name"></span><a id="hukou31_del">删除</a></div>
+                            </div>
+                            <div class="yewu_shangchuang" id="huwai3" style="display: none">
+                                <div>
+                                    <a href="javascript:void(0)" class="file">上传外来人口居住证照片<input type="file" name="sfz[]" id="hukou321"></a>
+                                
+                                </div>
+                                <div class="img-preview hukou321_preview"><span><img class="img-preview-small" alt="" id="hukou321_preview" /></span><span id="hukou321_name" class="file-name"></span><a id="hukou321_del">删除</a></div>
+                                
+                            </div>
+                        </div>
+
+                    <!--4-->
+                        <div style="width:100%;border-top: dashed 1px #d5d4d4">
+                            <div class="yewu_tips02 yewu_input" style="padding-left:10px;background: #f2f2f2;display: inline-block;">
+                                <input id="xingming4" name="xingming4" class="aaa" placeholder="请输入姓名" type="text" style="color:#8E8E8E;" value="">
+                                <input type="hidden" name="hnhw4" id="hnhw4" value="1">
+
+                            </div>
+                            <div class="chk_group chk_group4" style="display: inline-block;vertical-align: middle;">
+                                <div class="checks checked" style="display: inline-block;">
+                                    <label>
+                                        <span><i></i></span>
+                                        <strong>户内人员 </strong>
+                                    </label>
+                                </div>
+                                <div class="checks" style="display: inline-block;margin-left: 20px;">
+                                    <label>
+                                        <span><i></i></span>
+                                        <strong>户外人员 </strong>
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="yewu_shangchuang" id="hunei4">
+                                <div>
+                                    <a href="javascript:void(0)" class="file">上传户口簿成员页照片(成员四)<input type="file" name="sfz[]" id="hukou41"></a>
+                                    <span class="shili01"><img onmouseover="showImg('czdt',event);" onmouseout="hideImg()" src="Public/last/img/wodeyewu_12.png" alt="" /></span>
+                                </div>
+                                <div class="img-preview hukou41_preview"><span><img class="img-preview-small" alt="" id="hukou41_preview" /></span><span id="hukou41_name" class="file-name"></span><a id="hukou41_del">删除</a></div>
+                            </div>
+                            <div class="yewu_shangchuang" id="huwai4" style="display: none">
+                                <div>
+                                    <a href="javascript:void(0)" class="file">上传外来人口居住证照片<input type="file" name="sfz[]" id="hukou421"></a>
+                                  
+                                </div>
+                                <div class="img-preview hukou421_preview"><span><img class="img-preview-small" alt="" id="hukou421_preview" /></span><span id="hukou421_name" class="file-name"></span><a id="hukou421_del">删除</a></div>
+                               
+                            </div>
+                        </div>
+
+                    <!--5-->
+                        <div style="width:100%;border-top: dashed 1px #d5d4d4">
+                            <div class="yewu_tips02 yewu_input" style="padding-left:10px;background: #f2f2f2;display: inline-block;">
+                                <input id="xingming5" name="xingming5" class="aaa" placeholder="请输入姓名" type="text" style="color:#8E8E8E;" value="">
+                                <input type="hidden" name="hnhw5" id="hnhw5" value="1">
+
+                            </div>
+                            <div class="chk_group chk_group5" style="display: inline-block;vertical-align: middle;">
+                                <div class="checks checked" style="display: inline-block;">
+                                    <label>
+                                        <span><i></i></span>
+                                        <strong>户内人员 </strong>
+                                    </label>
+                                </div>
+                                <div class="checks" style="display: inline-block;margin-left: 20px;">
+                                    <label>
+                                        <span><i></i></span>
+                                        <strong>户外人员 </strong>
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="yewu_shangchuang" id="hunei5">
+                                <div>
+                                    <a href="javascript:void(0)" class="file">上传户口簿成员页照片(成员五)<input type="file" name="sfz[]" id="hukou51"></a>
+                                    <span class="shili01"><img onmouseover="showImg('czdt',event);" onmouseout="hideImg()" src="Public/last/img/wodeyewu_12.png" alt="" /></span>
+                                </div>
+                                <div class="img-preview hukou51_preview"><span><img class="img-preview-small" alt="" id="hukou51_preview" /></span><span id="hukou51_name" class="file-name"></span><a id="hukou51_del">删除</a></div>
+                            </div>
+                            <div class="yewu_shangchuang" id="huwai5" style="display: none">
+                                <div>
+                                    <a href="javascript:void(0)" class="file">上传外来人口居住证照片<input type="file" name="sfz[]" id="hukou521"></a>
+                                    
+                                </div>
+                                <div class="img-preview hukou521_preview"><span><img class="img-preview-small" alt="" id="hukou521_preview" /></span><span id="hukou521_name" class="file-name"></span><a id="hukou521_del">删除</a></div>
+                                
+                            </div>
+                        </div>
+
+                    <!--6-->
+                        <div style="width:100%;border-top: dashed 1px #d5d4d4;display: none;" id="hu6">
+                            <div class="yewu_tips02 yewu_input" style="padding-left:10px;background: #f2f2f2;display: inline-block;">
+                                <input id="xingming6" name="xingming6" class="aaa" placeholder="请输入姓名" type="text" style="color:#8E8E8E;" value="">
+                                <input type="hidden" name="hnhw6" id="hnhw6" value="1">
+
+                            </div>
+                            <div class="chk_group chk_group6" style="display: inline-block;vertical-align: middle;">
+                                <div class="checks checked" style="display: inline-block;">
+                                    <label>
+                                        <span><i></i></span>
+                                        <strong>户内人员 </strong>
+                                    </label>
+                                </div>
+                                <div class="checks" style="display: inline-block;margin-left: 20px;">
+                                    <label>
+                                        <span><i></i></span>
+                                        <strong>户外人员 </strong>
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="yewu_shangchuang" id="hunei6">
+                                <div>
+                                    <a href="javascript:void(0)" class="file">上传户口簿成员页照片(成员六)<input type="file" name="sfz[]" id="hukou61"></a>
+                                    <span class="shili01"><img onmouseover="showImg('czdt',event);" onmouseout="hideImg()" src="Public/last/img/wodeyewu_12.png" alt="" /></span>
+                                </div>
+                                <div class="img-preview hukou61_preview"><span><img class="img-preview-small" alt="" id="hukou61_preview" /></span><span id="hukou61_name" class="file-name"></span><a id="hukou61_del">删除</a></div>
+                            </div>
+                            <div class="yewu_shangchuang" id="huwai6" style="display: none">
+                                <div>
+                                    <a href="javascript:void(0)" class="file">上传外来人口居住证照片<input type="file" name="sfz[]" id="hukou621"></a>
+                                   
+                                </div>
+                                <div class="img-preview hukou621_preview"><span><img class="img-preview-small" alt="" id="hukou621_preview" /></span><span id="hukou621_name" class="file-name"></span><a id="hukou621_del">删除</a></div>
+                                
+                            </div>
+                        </div>
+
+                    <!--7-->
+                        <div style="width:100%;border-top: dashed 1px #d5d4d4;display: none;" id="hu7">
+                            <div class="yewu_tips02 yewu_input" style="padding-left:10px;background: #f2f2f2;display: inline-block;">
+                                <input id="xingming7" name="xingming7" class="aaa" placeholder="请输入姓名" type="text" style="color:#8E8E8E;" value="">
+                                <input type="hidden" name="hnhw7" id="hnhw7" value="1">
+
+                            </div>
+                            <div class="chk_group chk_group7" style="display: inline-block;vertical-align: middle;">
+                                <div class="checks checked" style="display: inline-block;">
+                                    <label>
+                                        <span><i></i></span>
+                                        <strong>户内人员 </strong>
+                                    </label>
+                                </div>
+                                <div class="checks" style="display: inline-block;margin-left: 20px;">
+                                    <label>
+                                        <span><i></i></span>
+                                        <strong>户外人员 </strong>
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="yewu_shangchuang" id="hunei7">
+                                <div>
+                                    <a href="javascript:void(0)" class="file">上传户口簿成员页照片(成员七)<input type="file" name="sfz[]" id="hukou71"></a>
+                                    <span class="shili01"><img onmouseover="showImg('czdt',event);" onmouseout="hideImg()" src="Public/last/img/wodeyewu_12.png" alt="" /></span>
+                                </div>
+                                <div class="img-preview hukou71_preview"><span><img class="img-preview-small" alt="" id="hukou71_preview" /></span><span id="hukou71_name" class="file-name"></span><a id="hukou71_del">删除</a></div>
+                            </div>
+                            <div class="yewu_shangchuang" id="huwai7" style="display: none">
+                                <div>
+                                    <a href="javascript:void(0)" class="file">上传外来人口居住证照片<input type="file" name="sfz[]" id="hukou721"></a>
+                                   
+                                </div>
+                                <div class="img-preview hukou721_preview"><span><img class="img-preview-small" alt="" id="hukou721_preview" /></span><span id="hukou721_name" class="file-name"></span><a id="hukou721_del">删除</a></div>
+                                
+                            </div>
+                        </div>
+
+                    <!--8-->
+                        <div style="width:100%;border-top: dashed 1px #d5d4d4;display: none;" id="hu8">
+                            <div class="yewu_tips02 yewu_input" style="padding-left:10px;background: #f2f2f2;display: inline-block;">
+                                <input id="xingming8" name="xingming8" class="aaa" placeholder="请输入姓名" type="text" style="color:#8E8E8E;" value="">
+                                <input type="hidden" name="hnhw8" id="hnhw8" value="1">
+
+                            </div>
+                            <div class="chk_group chk_group8" style="display: inline-block;vertical-align: middle;">
+                                <div class="checks checked" style="display: inline-block;">
+                                    <label>
+                                        <span><i></i></span>
+                                        <strong>户内人员 </strong>
+                                    </label>
+                                </div>
+                                <div class="checks" style="display: inline-block;margin-left: 20px;">
+                                    <label>
+                                        <span><i></i></span>
+                                        <strong>户外人员 </strong>
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="yewu_shangchuang" id="hunei8">
+                                <div>
+                                    <a href="javascript:void(0)" class="file">上传户口簿成员页照片(成员八)<input type="file" name="sfz[]" id="hukou81"></a>
+                                    <span class="shili01"><img onmouseover="showImg('czdt',event);" onmouseout="hideImg()" src="Public/last/img/wodeyewu_12.png" alt="" /></span>
+                                </div>
+                                <div class="img-preview hukou81_preview"><span><img class="img-preview-small" alt="" id="hukou81_preview" /></span><span id="hukou81_name" class="file-name"></span><a id="hukou81_del">删除</a></div>
+                            </div>
+                            <div class="yewu_shangchuang" id="huwai8" style="display: none">
+                                <div>
+                                    <a href="javascript:void(0)" class="file">上传外来人口居住证照片<input type="file" name="sfz[]" id="hukou821"></a>
+                                 
+                                </div>
+                                <div class="img-preview hukou821_preview"><span><img class="img-preview-small" alt="" id="hukou821_preview" /></span><span id="hukou821_name" class="file-name"></span><a id="hukou821_del">删除</a></div>
+                                
+                            </div>
+                        </div>
+
+                    <!--9-->
+                        <div style="width:100%;border-top: dashed 1px #d5d4d4;display: none;" id="hu9">
+                            <div class="yewu_tips02 yewu_input" style="padding-left:10px;background: #f2f2f2;display: inline-block;">
+                                <input id="xingming9" name="xingming9" class="aaa" placeholder="请输入姓名" type="text" style="color:#8E8E8E;" value="">
+                                <input type="hidden" name="hnhw9" id="hnhw9" value="1">
+
+                            </div>
+                            <div class="chk_group chk_group9" style="display: inline-block;vertical-align: middle;">
+                                <div class="checks checked" style="display: inline-block;">
+                                    <label>
+                                        <span><i></i></span>
+                                        <strong>户内人员 </strong>
+                                    </label>
+                                </div>
+                                <div class="checks" style="display: inline-block;margin-left: 20px;">
+                                    <label>
+                                        <span><i></i></span>
+                                        <strong>户外人员 </strong>
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="yewu_shangchuang" id="hunei9">
+                                <div>
+                                    <a href="javascript:void(0)" class="file">上传户口簿成员页照片(成员九)<input type="file" name="sfz[]" id="hukou91"></a>
+                                    <span class="shili01"><img onmouseover="showImg('czdt',event);" onmouseout="hideImg()" src="Public/last/img/wodeyewu_12.png" alt="" /></span>
+                                </div>
+                                <div class="img-preview hukou91_preview"><span><img class="img-preview-small" alt="" id="hukou91_preview" /></span><span id="hukou91_name" class="file-name"></span><a id="hukou91_del">删除</a></div>
+                            </div>
+                            <div class="yewu_shangchuang" id="huwai9" style="display: none">
+                                <div>
+                                    <a href="javascript:void(0)" class="file">上传外来人口居住证照片<input type="file" name="sfz[]" id="hukou921"></a>
+                                  
+                                </div>
+                                <div class="img-preview hukou921_preview"><span><img class="img-preview-small" alt="" id="hukou921_preview" /></span><span id="hukou921_name" class="file-name"></span><a id="hukou921_del">删除</a></div>
+                                
+                            </div>
+                        </div>
+
+                    <!--10-->
+                        <div style="width:100%;border-top: dashed 1px #d5d4d4;display: none;" id="hu10">
+                            <div class="yewu_tips02 yewu_input" style="padding-left:10px;background: #f2f2f2;display: inline-block;">
+                                <input id="xingming10" name="xingming10" class="aaa" placeholder="请输入姓名" type="text" style="color:#8E8E8E;" value="">
+                                <input type="hidden" name="hnhw10" id="hnhw10" value="1">
+
+                            </div>
+                            <div class="chk_group chk_group10" style="display: inline-block;vertical-align: middle;">
+                                <div class="checks checked" style="display: inline-block;">
+                                    <label>
+                                        <span><i></i></span>
+                                        <strong>户内人员 </strong>
+                                    </label>
+                                </div>
+                                <div class="checks" style="display: inline-block;margin-left: 20px;">
+                                    <label>
+                                        <span><i></i></span>
+                                        <strong>户外人员 </strong>
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="yewu_shangchuang" id="hunei10">
+                                <div>
+                                    <a href="javascript:void(0)" class="file">上传户口簿成员页照片(成员十)<input type="file" name="sfz[]" id="hukou101"></a>
+                                    <span class="shili01"><img onmouseover="showImg('czdt',event);" onmouseout="hideImg()" src="Public/last/img/wodeyewu_12.png" alt="" /></span>
+                                </div>
+                                <div class="img-preview hukou101_preview"><span><img class="img-preview-small" alt="" id="hukou101_preview" /></span><span id="hukou101_name" class="file-name"></span><a id="hukou101_del">删除</a></div>
+                            </div>
+                            <div class="yewu_shangchuang" id="huwai10" style="display: none">
+                                <div>
+                                    <a href="javascript:void(0)" class="file">上传外来人口居住证照片<input type="file" name="sfz[]" id="hukou1021"></a>
+                                 
+                                </div>
+                                <div class="img-preview hukou1021_preview"><span><img class="img-preview-small" alt="" id="hukou1021_preview" /></span><span id="hukou1021_name" class="file-name"></span><a id="hukou1021_del">删除</a></div>
+                                
+                            </div>
+                        </div>
+					</div>
+
+
+                    <!-- <div class="yewu_yanzheng">
+                        <div class="yewu_tips03">向您手机号码<span>{$phone}</span>发送验证码<span>a href="" class="biangeng">变更手机号</a</span></div>
+                        <div class="yewu_input">
+                            <input id="valiCode" class="aaa" type="text" placeholder="请输入短信验证码" onblur="if(this.value==''){this.value='请输入短信验证码';$(this).css({color:'#8E8E8E'})}" onfocus="if(this.value=='请输入短信验证码'){this.value='';$(this).css({color:'#666'})}" style="color:#8E8E8E" value="请输入短信验证码">
+                        </div>
+                        <span>*</span>
+                        <a href="">获取验证码</a>
+                    </div> -->
+                    <div class="yewu_yanzheng">
+                        <input name="phone" id="phone" value="{$oldphone}" type="hidden">
+                        <div class="yewu_tips03">向您手机号码<span>{$phone}</span>发送验证码<span><a href="{:U('User/bgsjh')}" class="biangeng">变更手机号</a></span></div>
+                        <div class="yewu_input">
+                            <input id="phoneActive" name="phoneActiveCode" class="aaa" type="text" placeholder="请输入短信验证码" onblur="if(this.value==''){this.value='请输入短信验证码';$(this).css({color:'#8E8E8E'})}" onfocus="if(this.value=='请输入短信验证码'){this.value='';$(this).css({color:'#666'})}" style="color:#8E8E8E" value="请输入短信验证码">
+                        </div>
+                        <span>*</span>
+                        <a href="javascript:void(0);" id="getVerifyCodeBtn" disable="disable">获取验证码</a>
+                    </div>
+                    <div class="wodeyewu_btn01"><a  href="javascript:void(0);" id="tijiao">提交申请</a></div>
+                </div>
+            </div>
+            </form>
+        </div>
+    </div>
+    <include file="Public:common-footer" />
+    <include file="Public:common-script" />
+    <script type="text/javascript" src="__PUBLIC__/last/js/ImageUtils.js"></script>
+    <script type="text/javascript" src="__PUBLIC__/last/js/artDialog4.1.7/artDialog.source.js?skin=green"></script>
+    <script type="text/javascript">
+        function showImg (name,event){
+            console.log(event);
+            var scrollY = document.documentElement.scrollTop;
+            if(name == 'hkbdt'){
+                $(".center_zfb").css("width","350px");
+            }else if(name == 'fczdt'){
+                $(".center_zfb").css("width","500px");
+            }else{
+                $(".center_zfb").css("width","300px");
+            }
+            $(".content1").html("<img src='__PUBLIC__/last/img/"+name+".png'>");
+            var gao = event.clientY + scrollY - 35;
+            var heng = event.clientX + 10;
+            /*if(name == 'sfzfmdt'){
+                heng = heng - 320;
+            }*/
+            $(".center_zfb").css({"position":"absolute","top":gao+"px","left":heng+"px","margin":"0px"});
+
+
+            //$(".gray").show();
+            $(".center_zfb").show();
+        }
+function hideImg(){
+  //$(".gray").hide();
+  $(".center_zfb").hide();
+}
+    $(function() {
+        var $zPreview =  $('#z_preview'), $bPreview = $('#b_preview');
+        $('#sfz_img_z').on('change', function(e) {
+            var src, url = window.URL || window.webkitURL || window.mozURL, files = e.target.files;
+            for (var i = 0, len = files.length; i < len; ++i) {
+                var file = files[i];
+                if (url) {
+                    src = url.createObjectURL(file);
+                } else {
+                    src = e.target.result;
+                }
+
+                ImageUtils.compressPicture(file, {width:180,quality:0.5,mimeType:file.type}, function (base64) {
+                    $zPreview.prop('src',base64);
+                    $('#sfz_img_z_name').text(file.name);
+                    $('.z_preview').show();
+                });
+            }
+        });
+
+        $('#sfz_img_z_del').on('click', function() {
+            $zPreview.prop('src', '');
+            $('#sfz_img_z_name').text('');
+			var file=document.getElementById("sfz_img_z");
+			file.value="";
+            $('.z_preview').hide();
+        });
+
+        $('#sfz_img_b').on('change', function(e) {
+            var src, url = window.URL || window.webkitURL || window.mozURL, files = e.target.files;
+            for (var i = 0, len = files.length; i < len; ++i) {
+                var file = files[i];
+                if (url) {
+                    src = url.createObjectURL(file);
+                } else {
+                    src = e.target.result;
+                }
+
+                ImageUtils.compressPicture(file, {height:180,quality:0.5,mimeType:file.type}, function (base64) {
+                    $bPreview.prop('src',base64);
+                    $('#sfz_img_b_name').text(file.name);
+                    $('.b_preview').show();
+                });
+            }
+        });
+
+        $('#sfz_img_b_del').on('click', function() {
+            $bPreview.prop('src', '');
+            $('#sfz_img_b_name').text('');
+			var file=document.getElementById("sfz_img_b");
+			file.value="";
+            $('.b_preview').hide();
+        });
+
+        var $fcz = $('#fcz_preview');
+        $('#fcz').on('change', function(e) {
+            var src, url = window.URL || window.webkitURL || window.mozURL, files = e.target.files;
+            for (var i = 0, len = files.length; i < len; ++i) {
+                var file = files[i];
+                if (url) {
+                    src = url.createObjectURL(file);
+                } else {
+                    src = e.target.result;
+                }
+
+                ImageUtils.compressPicture(file, {height:180,quality:0.5,mimeType:file.type}, function (base64) {
+                    $fcz.prop('src',base64);
+                    $('#fcz_name').text(file.name);
+                    $('.fcz_preview').show();
+                });
+            }
+        });
+        $('#fcz_del').on('click', function() {
+            $fcz.prop('src', '');
+            $('#fcz_name').text('');
+			var file=document.getElementById("fcz");
+			file.value="";
+            $('.fcz_preview').hide();
+        });
+
+        var $hkb = $('#hkb_preview');
+        $('#hkb').on('change', function(e) {
+            var src, url = window.URL || window.webkitURL || window.mozURL, files = e.target.files;
+            for (var i = 0, len = files.length; i < len; ++i) {
+                var file = files[i];
+                if (url) {
+                    src = url.createObjectURL(file);
+                } else {
+                    src = e.target.result;
+                }
+
+                ImageUtils.compressPicture(file, {height:180,quality:0.5,mimeType:file.type}, function (base64) {
+                    $hkb.prop('src',base64);
+                    $('#hkb_name').text(file.name);
+                    $('.hkb_preview').show();
+                });
+            }
+        });
+        $('#hkb_del').on('click', function() {
+            $hkb.prop('src', '');
+            $('#hkb_name').text('');
+			var file=document.getElementById("hkb");
+			file.value="";
+            $('.hkb_preview').hide();
+        });
+
+
+        var $hukou11 = $('#hukou11_preview'),$hukou121 = $('#hukou121_preview');
+        $('#hukou11').on('change', function(e) {
+            var src, url = window.URL || window.webkitURL || window.mozURL, files = e.target.files;
+            for (var i = 0, len = files.length; i < len; ++i) {
+                var file = files[i];
+                if (url) {
+                    src = url.createObjectURL(file);
+                } else {
+                    src = e.target.result;
+                }
+
+                ImageUtils.compressPicture(file, {height:180,quality:0.5,mimeType:file.type}, function (base64) {
+                    $hukou11.prop('src',base64);
+                    $('#hukou11_name').text(file.name);
+                    $('.hukou11_preview').show();
+                });
+            }
+        });
+        $('#hukou11_del').on('click', function() {
+            $hukou11.prop('src', '');
+            $('#hukou11_name').text('');
+			var file=document.getElementById("hukou11");
+			file.value="";
+            $('.hukou11_preview').hide();
+        });
+        $('#hukou121').on('change', function(e) {
+            var src, url = window.URL || window.webkitURL || window.mozURL, files = e.target.files;
+            for (var i = 0, len = files.length; i < len; ++i) {
+                var file = files[i];
+                if (url) {
+                    src = url.createObjectURL(file);
+                } else {
+                    src = e.target.result;
+                }
+
+                ImageUtils.compressPicture(file, {height:180,quality:0.5,mimeType:file.type}, function (base64) {
+                    $hukou121.prop('src',base64);
+                    $('#hukou121_name').text(file.name);
+                    $('.hukou121_preview').show();
+                });
+            }
+        });
+        $('#hukou121_del').on('click', function() {
+            $hukou121.prop('src', '');
+            $('#hukou121_name').text('');
+			var file=document.getElementById("hukou121");
+			file.value="";
+            $('.hukou121_preview').hide();
+        });
+        
+
+
+        $('.chk_group1>.checks>label').click(function() {
+            var $self = $(this), $chkGroup = $('.chk_group1');
+            $chkGroup.children().removeClass('checked');
+            $chkGroup.find('.checkbox').prop('checked', false);
+            $self.parent().addClass('checked');
+            if (0 == $chkGroup.children('.checked').index()) {
+                $('#hnhw1').val(1);
+                $('#huwai1').hide();
+                $('#hunei1').show();
+                $('#hukou121_del').click();
+                $('#hukou121').val('');
+                
+            } else {
+                $('#hnhw1').val(2);
+                $('#hunei1').hide();
+                $('#huwai1').show();
+                $('#hukou11_del').click();
+                $('#hukou11').val('');
+            }
+        });
+
+        var $hukou21 = $('#hukou21_preview'),$hukou221 = $('#hukou221_preview');
+        $('#hukou21').on('change', function(e) {
+            var src, url = window.URL || window.webkitURL || window.mozURL, files = e.target.files;
+            for (var i = 0, len = files.length; i < len; ++i) {
+                var file = files[i];
+                if (url) {
+                    src = url.createObjectURL(file);
+                } else {
+                    src = e.target.result;
+                }
+
+                ImageUtils.compressPicture(file, {height:180,quality:0.5,mimeType:file.type}, function (base64) {
+                    $hukou21.prop('src',base64);
+                    $('#hukou21_name').text(file.name);
+                    $('.hukou21_preview').show();
+                });
+            }
+        });
+        $('#hukou21_del').on('click', function() {
+            $hukou21.prop('src', '');
+            $('#hukou21_name').text('');
+			var file=document.getElementById("hukou21");
+			file.value="";
+            $('.hukou21_preview').hide();
+        });
+        $('#hukou221').on('change', function(e) {
+            var src, url = window.URL || window.webkitURL || window.mozURL, files = e.target.files;
+            for (var i = 0, len = files.length; i < len; ++i) {
+                var file = files[i];
+                if (url) {
+                    src = url.createObjectURL(file);
+                } else {
+                    src = e.target.result;
+                }
+
+                ImageUtils.compressPicture(file, {height:180,quality:0.5,mimeType:file.type}, function (base64) {
+                    $hukou221.prop('src',base64);
+                    $('#hukou221_name').text(file.name);
+                    $('.hukou221_preview').show();
+                });
+            }
+        });
+        $('#hukou221_del').on('click', function() {
+            $hukou221.prop('src', '');
+            $('#hukou221_name').text('');
+            $('.hukou221_preview').hide();
+        });
+        
+        $('.chk_group2>.checks>label').click(function() {
+            var $self = $(this), $chkGroup = $('.chk_group2');
+            $chkGroup.children().removeClass('checked');
+            $chkGroup.find('.checkbox').prop('checked', false);
+            $self.parent().addClass('checked');
+
+            if (0 == $chkGroup.children('.checked').index()) {
+                $('#hnhw2').val(1);
+                $('#huwai2').hide();
+                $('#hunei2').show();
+                $('#hukou221_del').click();
+                $('#hukou221').val('');
+                
+            } else {
+                $('#hnhw2').val(2);
+                $('#hunei2').hide();
+                $('#huwai2').show();
+                $('#hukou21_del').click();
+                $('#hukou21').val('');
+            }
+        });
+
+        var $hukou31 = $('#hukou31_preview'),$hukou321 = $('#hukou321_preview');
+        $('#hukou31').on('change', function(e) {
+            var src, url = window.URL || window.webkitURL || window.mozURL, files = e.target.files;
+            for (var i = 0, len = files.length; i < len; ++i) {
+                var file = files[i];
+                if (url) {
+                    src = url.createObjectURL(file);
+                } else {
+                    src = e.target.result;
+                }
+
+                ImageUtils.compressPicture(file, {height:180,quality:0.5,mimeType:file.type}, function (base64) {
+                    $hukou31.prop('src',base64);
+                    $('#hukou31_name').text(file.name);
+                    $('.hukou31_preview').show();
+                });
+            }
+        });
+        $('#hukou31_del').on('click', function() {
+            $hukou31.prop('src', '');
+            $('#hukou31_name').text('');
+			var file=document.getElementById("hukou31");
+			file.value="";
+            $('.hukou31_preview').hide();
+        });
+        $('#hukou321').on('change', function(e) {
+            var src, url = window.URL || window.webkitURL || window.mozURL, files = e.target.files;
+            for (var i = 0, len = files.length; i < len; ++i) {
+                var file = files[i];
+                if (url) {
+                    src = url.createObjectURL(file);
+                } else {
+                    src = e.target.result;
+                }
+
+                ImageUtils.compressPicture(file, {height:180,quality:0.5,mimeType:file.type}, function (base64) {
+                    $hukou321.prop('src',base64);
+                    $('#hukou321_name').text(file.name);
+                    $('.hukou321_preview').show();
+                });
+            }
+        });
+        $('#hukou321_del').on('click', function() {
+            $hukou321.prop('src', '');
+            $('#hukou321_name').text('');
+            $('.hukou321_preview').hide();
+        });
+        
+        $('.chk_group3>.checks>label').click(function() {
+            var $self = $(this), $chkGroup = $('.chk_group3');
+            $chkGroup.children().removeClass('checked');
+            $chkGroup.find('.checkbox').prop('checked', false);
+            $self.parent().addClass('checked');
+
+            if (0 == $chkGroup.children('.checked').index()) {
+                $('#hnhw3').val(1);
+                $('#huwai3').hide();
+                $('#hunei3').show();
+                $('#hukou321_del').click();
+                $('#hukou321').val('');
+                
+            } else {
+                $('#hnhw3').val(2);
+                $('#hunei3').hide();
+                $('#huwai3').show();
+                $('#hukou31_del').click();
+                $('#hukou31').val('');
+            }
+        });
+
+var $hukou41 = $('#hukou41_preview'),$hukou421 = $('#hukou421_preview');
+        $('#hukou41').on('change', function(e) {
+            var src, url = window.URL || window.webkitURL || window.mozURL, files = e.target.files;
+            for (var i = 0, len = files.length; i < len; ++i) {
+                var file = files[i];
+                if (url) {
+                    src = url.createObjectURL(file);
+                } else {
+                    src = e.target.result;
+                }
+
+                ImageUtils.compressPicture(file, {height:180,quality:0.5,mimeType:file.type}, function (base64) {
+                    $hukou41.prop('src',base64);
+                    $('#hukou41_name').text(file.name);
+                    $('.hukou41_preview').show();
+                });
+            }
+        });
+        $('#hukou41_del').on('click', function() {
+            $hukou41.prop('src', '');
+            $('#hukou41_name').text('');
+			var file=document.getElementById("hukou41");
+			file.value="";
+            $('.hukou41_preview').hide();
+        });
+        $('#hukou421').on('change', function(e) {
+            var src, url = window.URL || window.webkitURL || window.mozURL, files = e.target.files;
+            for (var i = 0, len = files.length; i < len; ++i) {
+                var file = files[i];
+                if (url) {
+                    src = url.createObjectURL(file);
+                } else {
+                    src = e.target.result;
+                }
+
+                ImageUtils.compressPicture(file, {height:180,quality:0.5,mimeType:file.type}, function (base64) {
+                    $hukou421.prop('src',base64);
+                    $('#hukou421_name').text(file.name);
+                    $('.hukou421_preview').show();
+                });
+            }
+        });
+        $('#hukou421_del').on('click', function() {
+            $hukou421.prop('src', '');
+            $('#hukou421_name').text('');
+            $('.hukou421_preview').hide();
+        });
+        
+        $('.chk_group4>.checks>label').click(function() {
+            var $self = $(this), $chkGroup = $('.chk_group4');
+            $chkGroup.children().removeClass('checked');
+            $chkGroup.find('.checkbox').prop('checked', false);
+            $self.parent().addClass('checked');
+
+            if (0 == $chkGroup.children('.checked').index()) {
+                $('#hnhw4').val(1);
+                $('#huwai4').hide();
+                $('#hunei4').show();
+                $('#hukou421_del').click();
+                $('#hukou421').val('');
+                
+            } else {
+                $('#hnhw4').val(2);
+                $('#hunei4').hide();
+                $('#huwai4').show();
+                $('#hukou41_del').click();
+                $('#hukou41').val('');
+            }
+        });
+
+var $hukou51 = $('#hukou51_preview'),$hukou521 = $('#hukou521_preview');
+        $('#hukou51').on('change', function(e) {
+            var src, url = window.URL || window.webkitURL || window.mozURL, files = e.target.files;
+            for (var i = 0, len = files.length; i < len; ++i) {
+                var file = files[i];
+                if (url) {
+                    src = url.createObjectURL(file);
+                } else {
+                    src = e.target.result;
+                }
+
+                ImageUtils.compressPicture(file, {height:180,quality:0.5,mimeType:file.type}, function (base64) {
+                    $hukou51.prop('src',base64);
+                    $('#hukou51_name').text(file.name);
+                    $('.hukou51_preview').show();
+                });
+            }
+        });
+        $('#hukou51_del').on('click', function() {
+            $hukou51.prop('src', '');
+            $('#hukou51_name').text('');
+			var file=document.getElementById("hukou51");
+			file.value="";
+            $('.hukou51_preview').hide();
+        });
+        $('#hukou521').on('change', function(e) {
+            var src, url = window.URL || window.webkitURL || window.mozURL, files = e.target.files;
+            for (var i = 0, len = files.length; i < len; ++i) {
+                var file = files[i];
+                if (url) {
+                    src = url.createObjectURL(file);
+                } else {
+                    src = e.target.result;
+                }
+
+                ImageUtils.compressPicture(file, {height:180,quality:0.5,mimeType:file.type}, function (base64) {
+                    $hukou521.prop('src',base64);
+                    $('#hukou521_name').text(file.name);
+                    $('.hukou521_preview').show();
+                });
+            }
+        });
+        $('#hukou521_del').on('click', function() {
+            $hukou521.prop('src', '');
+            $('#hukou521_name').text('');
+            $('.hukou521_preview').hide();
+        });
+        
+        $('.chk_group5>.checks>label').click(function() {
+            var $self = $(this), $chkGroup = $('.chk_group5');
+            $chkGroup.children().removeClass('checked');
+            $chkGroup.find('.checkbox').prop('checked', false);
+            $self.parent().addClass('checked');
+
+            if (0 == $chkGroup.children('.checked').index()) {
+                $('#hnhw5').val(1);
+                $('#huwai5').hide();
+                $('#hunei5').show();
+                $('#hukou521_del').click();
+                $('#hukou521').val('');
+               
+            } else {
+                $('#hnhw5').val(2);
+                $('#hunei5').hide();
+                $('#huwai5').show();
+                $('#hukou51_del').click();
+                $('#hukou51').val('');
+            }
+        });
+
+
+var $hukou61 = $('#hukou61_preview'),$hukou621 = $('#hukou621_preview');
+        $('#hukou61').on('change', function(e) {
+            var src, url = window.URL || window.webkitURL || window.mozURL, files = e.target.files;
+            for (var i = 0, len = files.length; i < len; ++i) {
+                var file = files[i];
+                if (url) {
+                    src = url.createObjectURL(file);
+                } else {
+                    src = e.target.result;
+                }
+
+                ImageUtils.compressPicture(file, {height:180,quality:0.5,mimeType:file.type}, function (base64) {
+                    $hukou61.prop('src',base64);
+                    $('#hukou61_name').text(file.name);
+                    $('.hukou61_preview').show();
+                });
+            }
+        });
+        $('#hukou61_del').on('click', function() {
+            $hukou61.prop('src', '');
+            $('#hukou61_name').text('');
+            $('.hukou61_preview').hide();
+        });
+        $('#hukou621').on('change', function(e) {
+            var src, url = window.URL || window.webkitURL || window.mozURL, files = e.target.files;
+            for (var i = 0, len = files.length; i < len; ++i) {
+                var file = files[i];
+                if (url) {
+                    src = url.createObjectURL(file);
+                } else {
+                    src = e.target.result;
+                }
+
+                ImageUtils.compressPicture(file, {height:180,quality:0.5,mimeType:file.type}, function (base64) {
+                    $hukou621.prop('src',base64);
+                    $('#hukou621_name').text(file.name);
+                    $('.hukou621_preview').show();
+                });
+            }
+        });
+        $('#hukou621_del').on('click', function() {
+            $hukou621.prop('src', '');
+            $('#hukou621_name').text('');
+            $('.hukou621_preview').hide();
+        });
+        
+        $('.chk_group6>.checks>label').click(function() {
+            var $self = $(this), $chkGroup = $('.chk_group6');
+            $chkGroup.children().removeClass('checked');
+            $chkGroup.find('.checkbox').prop('checked', false);
+            $self.parent().addClass('checked');
+
+            if (0 == $chkGroup.children('.checked').index()) {
+                $('#hnhw6').val(1);
+                $('#huwai6').hide();
+                $('#hunei6').show();
+                $('#hukou621_del').click();
+                $('#hukou621').val('');
+                
+            } else {
+                $('#hnhw6').val(2);
+                $('#hunei6').hide();
+                $('#huwai6').show();
+                $('#hukou61_del').click();
+                $('#hukou61').val('');
+            }
+        });
+
+
+var $hukou71 = $('#hukou71_preview'),$hukou721 = $('#hukou721_preview');
+        $('#hukou71').on('change', function(e) {
+            var src, url = window.URL || window.webkitURL || window.mozURL, files = e.target.files;
+            for (var i = 0, len = files.length; i < len; ++i) {
+                var file = files[i];
+                if (url) {
+                    src = url.createObjectURL(file);
+                } else {
+                    src = e.target.result;
+                }
+
+                ImageUtils.compressPicture(file, {height:180,quality:0.5,mimeType:file.type}, function (base64) {
+                    $hukou71.prop('src',base64);
+                    $('#hukou71_name').text(file.name);
+                    $('.hukou71_preview').show();
+                });
+            }
+        });
+        $('#hukou71_del').on('click', function() {
+            $hukou71.prop('src', '');
+            $('#hukou71_name').text('');
+            $('.hukou71_preview').hide();
+        });
+        $('#hukou721').on('change', function(e) {
+            var src, url = window.URL || window.webkitURL || window.mozURL, files = e.target.files;
+            for (var i = 0, len = files.length; i < len; ++i) {
+                var file = files[i];
+                if (url) {
+                    src = url.createObjectURL(file);
+                } else {
+                    src = e.target.result;
+                }
+
+                ImageUtils.compressPicture(file, {height:180,quality:0.5,mimeType:file.type}, function (base64) {
+                    $hukou721.prop('src',base64);
+                    $('#hukou721_name').text(file.name);
+                    $('.hukou721_preview').show();
+                });
+            }
+        });
+        $('#hukou721_del').on('click', function() {
+            $hukou721.prop('src', '');
+            $('#hukou721_name').text('');
+            $('.hukou721_preview').hide();
+        });
+        
+        $('.chk_group7>.checks>label').click(function() {
+            var $self = $(this), $chkGroup = $('.chk_group7');
+            $chkGroup.children().removeClass('checked');
+            $chkGroup.find('.checkbox').prop('checked', false);
+            $self.parent().addClass('checked');
+
+            if (0 == $chkGroup.children('.checked').index()) {
+                $('#hnhw7').val(1);
+                $('#huwai7').hide();
+                $('#hunei7').show();
+                $('#hukou721_del').click();
+                $('#hukou721').val('');
+                
+            } else {
+                $('#hnhw7').val(2);
+                $('#hunei7').hide();
+                $('#huwai7').show();
+                $('#hukou71_del').click();
+                $('#hukou71').val('');
+            }
+        });
+
+
+var $hukou81 = $('#hukou81_preview'),$hukou821 = $('#hukou821_preview');
+        $('#hukou81').on('change', function(e) {
+            var src, url = window.URL || window.webkitURL || window.mozURL, files = e.target.files;
+            for (var i = 0, len = files.length; i < len; ++i) {
+                var file = files[i];
+                if (url) {
+                    src = url.createObjectURL(file);
+                } else {
+                    src = e.target.result;
+                }
+
+                ImageUtils.compressPicture(file, {height:180,quality:0.5,mimeType:file.type}, function (base64) {
+                    $hukou81.prop('src',base64);
+                    $('#hukou81_name').text(file.name);
+                    $('.hukou81_preview').show();
+                });
+            }
+        });
+        $('#hukou81_del').on('click', function() {
+            $hukou81.prop('src', '');
+            $('#hukou81_name').text('');
+            $('.hukou81_preview').hide();
+        });
+        $('#hukou821').on('change', function(e) {
+            var src, url = window.URL || window.webkitURL || window.mozURL, files = e.target.files;
+            for (var i = 0, len = files.length; i < len; ++i) {
+                var file = files[i];
+                if (url) {
+                    src = url.createObjectURL(file);
+                } else {
+                    src = e.target.result;
+                }
+
+                ImageUtils.compressPicture(file, {height:180,quality:0.5,mimeType:file.type}, function (base64) {
+                    $hukou821.prop('src',base64);
+                    $('#hukou821_name').text(file.name);
+                    $('.hukou821_preview').show();
+                });
+            }
+        });
+        $('#hukou821_del').on('click', function() {
+            $hukou821.prop('src', '');
+            $('#hukou821_name').text('');
+            $('.hukou821_preview').hide();
+        });
+        
+        $('.chk_group8>.checks>label').click(function() {
+            var $self = $(this), $chkGroup = $('.chk_group8');
+            $chkGroup.children().removeClass('checked');
+            $chkGroup.find('.checkbox').prop('checked', false);
+            $self.parent().addClass('checked');
+
+            if (0 == $chkGroup.children('.checked').index()) {
+                $('#hnhw8').val(1);
+                $('#huwai8').hide();
+                $('#hunei8').show();
+                $('#hukou821_del').click();
+                $('#hukou821').val('');
+               
+            } else {
+                $('#hnhw8').val(2);
+                $('#hunei8').hide();
+                $('#huwai8').show();
+                $('#hukou81_del').click();
+                $('#hukou81').val('');
+            }
+        });
+
+
+var $hukou91 = $('#hukou91_preview'),$hukou921 = $('#hukou921_preview');
+        $('#hukou91').on('change', function(e) {
+            var src, url = window.URL || window.webkitURL || window.mozURL, files = e.target.files;
+            for (var i = 0, len = files.length; i < len; ++i) {
+                var file = files[i];
+                if (url) {
+                    src = url.createObjectURL(file);
+                } else {
+                    src = e.target.result;
+                }
+
+                ImageUtils.compressPicture(file, {height:180,quality:0.5,mimeType:file.type}, function (base64) {
+                    $hukou91.prop('src',base64);
+                    $('#hukou91_name').text(file.name);
+                    $('.hukou91_preview').show();
+                });
+            }
+        });
+        $('#hukou91_del').on('click', function() {
+            $hukou91.prop('src', '');
+            $('#hukou91_name').text('');
+            $('.hukou91_preview').hide();
+        });
+        $('#hukou921').on('change', function(e) {
+            var src, url = window.URL || window.webkitURL || window.mozURL, files = e.target.files;
+            for (var i = 0, len = files.length; i < len; ++i) {
+                var file = files[i];
+                if (url) {
+                    src = url.createObjectURL(file);
+                } else {
+                    src = e.target.result;
+                }
+
+                ImageUtils.compressPicture(file, {height:180,quality:0.5,mimeType:file.type}, function (base64) {
+                    $hukou921.prop('src',base64);
+                    $('#hukou921_name').text(file.name);
+                    $('.hukou921_preview').show();
+                });
+            }
+        });
+        $('#hukou921_del').on('click', function() {
+            $hukou921.prop('src', '');
+            $('#hukou921_name').text('');
+            $('.hukou921_preview').hide();
+        });
+        
+        $('.chk_group9>.checks>label').click(function() {
+            var $self = $(this), $chkGroup = $('.chk_group9');
+            $chkGroup.children().removeClass('checked');
+            $chkGroup.find('.checkbox').prop('checked', false);
+            $self.parent().addClass('checked');
+
+            if (0 == $chkGroup.children('.checked').index()) {
+                $('#hnhw9').val(1);
+                $('#huwai9').hide();
+                $('#hunei9').show();
+                $('#hukou921_del').click();
+                $('#hukou921').val('');
+                
+            } else {
+                $('#hnhw9').val(2);
+                $('#hunei9').hide();
+                $('#huwai9').show();
+                $('#hukou91_del').click();
+                $('#hukou91').val('');
+            }
+        });
+
+
+var $hukou101 = $('#hukou101_preview'),$hukou1021 = $('#hukou1021_preview');
+        $('#hukou101').on('change', function(e) {
+            var src, url = window.URL || window.webkitURL || window.mozURL, files = e.target.files;
+            for (var i = 0, len = files.length; i < len; ++i) {
+                var file = files[i];
+                if (url) {
+                    src = url.createObjectURL(file);
+                } else {
+                    src = e.target.result;
+                }
+
+                ImageUtils.compressPicture(file, {height:180,quality:0.5,mimeType:file.type}, function (base64) {
+                    $hukou101.prop('src',base64);
+                    $('#hukou101_name').text(file.name);
+                    $('.hukou101_preview').show();
+                });
+            }
+        });
+        $('#hukou101_del').on('click', function() {
+            $hukou101.prop('src', '');
+            $('#hukou101_name').text('');
+            $('.hukou101_preview').hide();
+        });
+        $('#hukou1021').on('change', function(e) {
+            var src, url = window.URL || window.webkitURL || window.mozURL, files = e.target.files;
+            for (var i = 0, len = files.length; i < len; ++i) {
+                var file = files[i];
+                if (url) {
+                    src = url.createObjectURL(file);
+                } else {
+                    src = e.target.result;
+                }
+
+                ImageUtils.compressPicture(file, {height:180,quality:0.5,mimeType:file.type}, function (base64) {
+                    $hukou1021.prop('src',base64);
+                    $('#hukou1021_name').text(file.name);
+                    $('.hukou1021_preview').show();
+                });
+            }
+        });
+        $('#hukou1021_del').on('click', function() {
+            $hukou1021.prop('src', '');
+            $('#hukou1021_name').text('');
+            $('.hukou1021_preview').hide();
+        });
+       
+        $('.chk_group10>.checks>label').click(function() {
+            var $self = $(this), $chkGroup = $('.chk_group10');
+            $chkGroup.children().removeClass('checked');
+            $chkGroup.find('.checkbox').prop('checked', false);
+            $self.parent().addClass('checked');
+
+            if (0 == $chkGroup.children('.checked').index()) {
+                $('#hnhw10').val(1);
+                $('#huwai10').hide();
+                $('#hunei10').show();
+                $('#hukou1021_del').click();
+                $('#hukou1021').val('');
+                
+            } else {
+                $('#hnhw10').val(2);
+                $('#hunei10').hide();
+                $('#huwai10').show();
+                $('#hukou101_del').click();
+                $('#hukou101').val('');
+            }
+        });
+
+        var renshu = '5人';
+        $(".select01").each(function() {
+            var s = $(this);
+            var z = parseInt(s.css("z-index"));
+            var dt = $(this).children("dt");
+            var dd = $(this).children("dd");
+            var _show = function() { dd.slideDown(200);
+                dt.addClass("cur01");
+                s.css("z-index", z + 1); }; //展开效果
+            var _hide = function() { dd.slideUp(200);
+                dt.removeClass("cur01");
+                s.css("z-index", z); }; //关闭效果
+            dt.click(function() { dd.is(":hidden") ? _show() : _hide(); });
+            dd.find("a").click(function() { dt.html($(this).html());$("#renshu").val($(this).html());
+
+                var xianzairenshu = $(this).html();
+                xianzairenshu = xianzairenshu.substring(0,1);
+                renshu = parseInt(xianzairenshu)+4+'人';
+                $('#hejirenshu').text(renshu);
+                if(xianzairenshu == '2'){$("#hu6").show();$("#hu7,#hu8,#hu9,#hu10").hide();}
+                else if(xianzairenshu == '3'){$("#hu7,#hu6").show();$("#hu8,#hu9,#hu10").hide();}
+                else if(xianzairenshu == '4'){$("#hu8,#hu7,#hu6").show();$("#hu9,#hu10").hide();}
+                else if(xianzairenshu == '5'){$("#hu8,#hu9,#hu7,#hu6").show();}
+                else if(xianzairenshu == '6'){$("#hu7,#hu6,#hu8,#hu9,#hu10").show();}
+                else{$("#hu6,#hu7,#hu8,#hu9,#hu10").hide();}
+                _hide();
+
+            }); //选择效果（如需要传值，可自定义参数，在此处返回对应的“value”值 ）
+            $("body").click(function(i) {!$(i.target).parents(".select01").first().is(s) ? _hide() : ""; });
+        });
+
+        $('#getVerifyCodeBtn').on('click', function(){
+        $("#getVerifyCodeBtn").attr('disabled',true);
+            timerId = setInterval(refreshSecDisp, 1000);
+            $.ajax({
+                type: "POST",
+                url: '{:U("Public/get_phone_verify_code","",false)}',
+                data: {phone:$("#phone").val()},
+                success: function( data ) {
+                    var retCode = data.code;
+                    if ('success' !== retCode) {
+                        $('#getVerifyCodeBtn').attr('disabled', false);
+                        //$('#codeVerifyTip').text('获取手机验证码失败，请稍后再试。');
+                        art.dialog({
+                            lock:true,
+                            content: '获取手机验证码失败，请稍后再试。',
+                            time: 5
+                          });
+                        return;
+                    }
+                },
+                dataType: 'json'
+            });
+        });
+
+        var total_sec = 59;
+        var timerId;
+        function refreshSecDisp() {
+
+            var btnDisp = '获取验证码';
+            if (0 === total_sec) {
+                removeTimer(timerId, 'getVerifyCodeBtn', btnDisp);
+                timerId = null;
+                total_sec = 59;
+                return false;
+            }
+
+            btnDisp = btnDisp + '('+ total_sec +')';
+            $('#getVerifyCodeBtn').text(btnDisp);
+            total_sec = total_sec - 1;
+        }
+        function removeTimer(id, objId, objText) {
+            if (null != id) {
+                clearInterval(id);
+            }
+            $('#'+objId).text(objText);
+            $('#'+objId).attr('disabled', false);
+        }
+
+        var yaotijiao = 0;
+        $('#tijiao').on('click', function(){
+            if(yaotijiao == 1){
+                art.dialog({
+                  lock:true,
+                  content: '请不要重复提交',
+                  time: 5
+                });
+                return false;
+            }
+            yaotijiao = 1;
+
+            var sfz_img_z = $("#sfz_img_z").val();
+            if(sfz_img_z == ''){
+                art.dialog({
+                  lock:true,
+                  content: '请上传身份证正面照片',
+                  time: 5
+                });
+                yaotijiao = 0
+                return false;
+            }
+            var sfz_img_b = $("#sfz_img_b").val();
+            if(sfz_img_b == ''){
+                art.dialog({
+                  lock:true,
+                  content: '请上传身份证反面照片',
+                  time: 5
+                });
+                yaotijiao = 0
+                return false;
+            }
+            var fcz = $("#fcz").val();
+             if(fcz == ''){
+                art.dialog({
+                  lock:true,
+                  content: '请上传房产证照片',
+                  time: 5
+                });
+                yaotijiao = 0
+                return false;
+            }
+            var hkb = $("#hkb").val();
+             if(hkb == ''){
+                art.dialog({
+                  lock:true,
+                  content: '请上传户口薄主页照片',
+                  time: 5
+                });
+                yaotijiao = 0
+                return false;
+            }
+
+            var xingming1 = $("#xingming1").val();
+            if(xingming1 == ''){
+                art.dialog({
+                  lock:true,
+                  content: '请填入增加人员1姓名',
+                  time: 5
+                });
+                yaotijiao = 0
+                return false;
+            }
+            var hnhw1 = $("#hnhw1").val();
+            if(hnhw1 == '1'){
+                var hukou11 = $("#hukou11").val();
+                if(hukou11 == ''){
+                    art.dialog({
+                      lock:true,
+                      content: '请上传增加人员1图片',
+                      time: 5
+                    });
+                    yaotijiao = 0
+                    return false;
+                }
+            }else{
+                var hukou121 = $("#hukou121").val();
+                if(hukou121 == ''){
+                    art.dialog({
+                      lock:true,
+                      content: '请上传增加人员1图片',
+                      time: 5
+                    });
+                    yaotijiao = 0
+                    return false;
+                }
+                
+            }
+
+            var xingming2 = $("#xingming2").val();
+            if(xingming2 == ''){
+                art.dialog({
+                  lock:true,
+                  content: '请填入增加人员2姓名',
+                  time: 5
+                });
+                yaotijiao = 0
+                return false;
+            }
+            var hnhw2 = $("#hnhw2").val();
+            if(hnhw2 == '1'){
+                var hukou21 = $("#hukou21").val();
+                if(hukou21 == ''){
+                    art.dialog({
+                      lock:true,
+                      content: '请上传增加人员2图片',
+                      time: 5
+                    });
+                    yaotijiao = 0
+                    return false;
+                }
+            }else{
+                var hukou221 = $("#hukou221").val();
+                if(hukou221 == ''){
+                    art.dialog({
+                      lock:true,
+                      content: '请上传增加人员2图片',
+                      time: 5
+                    });
+                    yaotijiao = 0
+                    return false;
+                }
+                
+            }
+
+            var xingming3 = $("#xingming3").val();
+            if(xingming3 == ''){
+                art.dialog({
+                  lock:true,
+                  content: '请填入增加人员3姓名',
+                  time: 5
+                });
+                yaotijiao = 0
+                return false;
+            }
+            var hnhw3 = $("#hnhw3").val();
+            if(hnhw3 == '1'){
+                var hukou31 = $("#hukou31").val();
+                if(hukou31 == ''){
+                    art.dialog({
+                      lock:true,
+                      content: '请上传增加人员3图片',
+                      time: 5
+                    });
+                    yaotijiao = 0
+                    return false;
+                }
+            }else{
+                var hukou321 = $("#hukou321").val();
+                if(hukou321 == ''){
+                    art.dialog({
+                      lock:true,
+                      content: '请上传增加人员3图片',
+                      time: 5
+                    });
+                    yaotijiao = 0
+                    return false;
+                }
+                
+            }
+
+            var xingming4 = $("#xingming4").val();
+            if(xingming4 == ''){
+                art.dialog({
+                  lock:true,
+                  content: '请填入增加人员4姓名',
+                  time: 5
+                });
+                yaotijiao = 0
+                return false;
+            }
+            var hnhw4 = $("#hnhw4").val();
+            if(hnhw4 == '1'){
+                var hukou41 = $("#hukou41").val();
+                if(hukou41 == ''){
+                    art.dialog({
+                      lock:true,
+                      content: '请上传增加人员4图片',
+                      time: 5
+                    });
+                    yaotijiao = 0
+                    return false;
+                }
+            }else{
+                var hukou421 = $("#hukou421").val();
+                if(hukou421 == ''){
+                    art.dialog({
+                      lock:true,
+                      content: '请上传增加人员4图片',
+                      time: 5
+                    });
+                    yaotijiao = 0
+                    return false;
+                }
+               
+            }
+
+            var xingming5 = $("#xingming5").val();
+            if(xingming5 == ''){
+                art.dialog({
+                  lock:true,
+                  content: '请填入增加人员5姓名',
+                  time: 5
+                });
+                yaotijiao = 0
+                return false;
+            }
+            var hnhw5 = $("#hnhw5").val();
+            if(hnhw5 == '1'){
+                var hukou51 = $("#hukou51").val();
+                if(hukou51 == ''){
+                    art.dialog({
+                      lock:true,
+                      content: '请上传增加人员5图片',
+                      time: 5
+                    });
+                    yaotijiao = 0
+                    return false;
+                }
+            }else{
+                var hukou521 = $("#hukou521").val();
+                if(hukou521 == ''){
+                    art.dialog({
+                      lock:true,
+                      content: '请上传增加人员5图片',
+                      time: 5
+                    });
+                    yaotijiao = 0
+                    return false;
+                }
+                
+            }
+            if(renshu == '6人'){
+                rs6();
+            }else if(renshu == '7人'){
+                if(rs6()){rs7();}
+            }else if(renshu == '8人'){
+                if(rs6()){if(rs7()){rs8();}}
+            }else if(renshu == '9人'){
+                if(rs6()){if(rs7()){if(rs8()){rs9();}}}
+            }else if(renshu == '10人'){
+                if(rs6()){if(rs7()){if(rs8()){if(rs9()){rs10();}}}}
+            }
+
+
+              var phone = $("#phone").val();
+
+                      var phoneActive = $("#phoneActive").val();
+                      if (phoneActive == "请输入短信验证码") {
+                        art.dialog({
+                          lock:true,
+                          content: '手机验证码不能为空',
+                          time: 5
+                        });
+                        yaotijiao = 0
+                        return false;
+                      }
+                      $.ajax({
+                        type: "POST",
+                        url: '{:U("User/check_phone_verify_code","",false)}',
+                        async:false,//设置同步/异步的参数[true异步  false同步]
+                        data: {phoneActiveCode:phoneActive},
+                        success: function(ret) {
+
+                          if(ret == 1){
+                            msg = "false";
+                            key = 1;
+                          }
+                          else if(ret == 2){
+                            msg = "false";
+                            key = 2;
+                          }
+                          else{
+                            msg = "success";
+                          }
+
+                        },
+                        dataType: 'json'
+                      });
+                      if(msg=="false"){
+                        if(key == 1){
+                          art.dialog({
+                            lock:true,
+                            content: '手机验证码错误，请核对！',
+                            time: 5
+                          });
+                          yaotijiao = 0
+                          return false;
+                        }
+                        if(key == 2){
+                          art.dialog({
+                            lock:true,
+                            content: '手机验证码过期！',
+                            time: 5
+                          });
+                          yaotijiao = 0
+                          return false;
+                        }
+                      }
+
+                      $.ajax({
+                        type: "POST",
+                        url: '{:U("User/check_phoneRight","",false)}',
+                        async:false,//设置同步/异步的参数[true异步  false同步]
+                        data: {vHOUSECODE:$('#housecode').val(),vOWNERNAME:$('#owername').val(),vMOBILEPHONE:phone},
+                        success: function(res) {
+                          ret = res['CODE'];
+                          if(ret == 44){
+                            msg = "false";
+                            key = ret;
+                          }
+                          else{
+                            msg = "success";
+                          }
+
+                        },
+                        dataType: 'json'
+                      });
+                      if(msg=="false"){
+                        if(key == 44){
+                          art.dialog({
+                            lock:true,
+                            content: '房间信息的原手机号不正确，请核对！',
+                            time: 5
+                          });
+                          return false;
+                        }
+                      }
+
+
+                  document.getElementById("form2").submit();
+
+          });
+
+        function rs6(){
+            var xingming6 = $("#xingming6").val();
+            if(xingming6 == ''){
+                art.dialog({
+                  lock:true,
+                  content: '请填入增加人员6姓名',
+                  time: 5
+                });
+                yaotijiao = 0
+                return false;
+            }
+            var hnhw6 = $("#hnhw6").val();
+            if(hnhw6 == '1'){
+                var hukou61 = $("#hukou61").val();
+                if(hukou61 == ''){
+                    art.dialog({
+                      lock:true,
+                      content: '请上传增加人员6图片',
+                      time: 5
+                    });
+                    yaotijiao = 0
+                    return false;
+                }
+            }else{
+                var hukou621 = $("#hukou621").val();
+                if(hukou621 == ''){
+                    art.dialog({
+                      lock:true,
+                      content: '请上传增加人员6图片',
+                      time: 5
+                    });
+                    yaotijiao = 0
+                    return false;
+                }
+                
+            }
+            return true;
+        }
+
+        function rs7(){
+            var xingming7 = $("#xingming7").val();
+            if(xingming7 == ''){
+                art.dialog({
+                  lock:true,
+                  content: '请填入增加人员7姓名',
+                  time: 5
+                });
+                yaotijiao = 0
+                return false;
+            }
+            var hnhw7 = $("#hnhw7").val();
+            if(hnhw7 == '1'){
+                var hukou71 = $("#hukou71").val();
+                if(hukou71 == ''){
+                    art.dialog({
+                      lock:true,
+                      content: '请上传增加人员7图片',
+                      time: 5
+                    });
+                    yaotijiao = 0
+                    return false;
+                }
+            }else{
+                var hukou721 = $("#hukou721").val();
+                if(hukou721 == ''){
+                    art.dialog({
+                      lock:true,
+                      content: '请上传增加人员7图片',
+                      time: 5
+                    });
+                    yaotijiao = 0
+                    return false;
+                }
+                
+            }
+            return true;
+        }
+
+        function rs8(){
+            var xingming8 = $("#xingming8").val();
+            if(xingming8 == ''){
+                art.dialog({
+                  lock:true,
+                  content: '请填入增加人员8姓名',
+                  time: 5
+                });
+                yaotijiao = 0
+                return false;
+            }
+            var hnhw8 = $("#hnhw8").val();
+            if(hnhw8 == '1'){
+                var hukou81 = $("#hukou81").val();
+                if(hukou81 == ''){
+                    art.dialog({
+                      lock:true,
+                      content: '请上传增加人员8图片',
+                      time: 5
+                    });
+                    yaotijiao = 0
+                    return false;
+                }
+            }else{
+                var hukou821 = $("#hukou821").val();
+                if(hukou821 == ''){
+                    art.dialog({
+                      lock:true,
+                      content: '请上传增加人员8图片',
+                      time: 5
+                    });
+                    yaotijiao = 0
+                    return false;
+                }
+                
+            }
+            return true;
+        }
+
+        function rs9(){
+            var xingming9 = $("#xingming9").val();
+            if(xingming9 == ''){
+                art.dialog({
+                  lock:true,
+                  content: '请填入增加人员9姓名',
+                  time: 5
+                });
+                yaotijiao = 0
+                return false;
+            }
+            var hnhw9 = $("#hnhw9").val();
+            if(hnhw9 == '1'){
+                var hukou91 = $("#hukou91").val();
+                if(hukou91 == ''){
+                    art.dialog({
+                      lock:true,
+                      content: '请上传增加人员9图片',
+                      time: 5
+                    });
+                    yaotijiao = 0
+                    return false;
+                }
+            }else{
+                var hukou921 = $("#hukou921").val();
+                if(hukou921 == ''){
+                    art.dialog({
+                      lock:true,
+                      content: '请上传增加人员9图片',
+                      time: 5
+                    });
+                    yaotijiao = 0
+                    return false;
+                }
+                
+            }
+            return true;
+        }
+
+        function rs10(){
+            var xingming10 = $("#xingming10").val();
+            if(xingming10 == ''){
+                art.dialog({
+                  lock:true,
+                  content: '请填入增加人员10姓名',
+                  time: 5
+                });
+                yaotijiao = 0
+                return false;
+            }
+            var hnhw10 = $("#hnhw10").val();
+            if(hnhw10 == '1'){
+                var hukou101 = $("#hukou101").val();
+                if(hukou101 == ''){
+                    art.dialog({
+                      lock:true,
+                      content: '请上传增加人员10图片',
+                      time: 5
+                    });
+                    yaotijiao = 0
+                    return false;
+                }
+            }else{
+                var hukou1021 = $("#hukou1021").val();
+                if(hukou1021 == ''){
+                    art.dialog({
+                      lock:true,
+                      content: '请上传增加人员10图片',
+                      time: 5
+                    });
+                    yaotijiao = 0
+                    return false;
+                }
+                
+            }
+            return true;
+        }
+    });
+    </script>
+</body>
+</html>

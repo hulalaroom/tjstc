@@ -1,0 +1,176 @@
+<include file="Public:header" />
+<div class="main_block">
+  <include file="Public:top" />
+  <div class="content_block">
+    <div class="left_side fl">
+      <div class="l_menu">
+		<div class="left_other_menu">
+			<dl>
+				<dt><a href="{:U('Article/company',array('id'=>$pid,'status'=>$status))}"><img src="/Uploads/image/allicon/icon_fwdt.jpg"/></a>
+				</dt>
+				<dd> <a href="{:U('Article/company',array('id'=>$pid,'status'=>$status))}">服务公告</a>
+				</dd>
+			</dl>
+		</div>
+		<div style="padding-left: 20px;margin: 0px auto;">
+		{~$cat=get_child($cate,$pid);}
+			<volist name="cat" id="c" key="k">
+				 <if condition="($c.title eq '业务介绍')">
+					<if condition="($status eq 5)">
+					   <dl>
+						   <div style="height:56px;">
+								<dt><a><img src="{$c['pic']}"/></a>
+								</dt>
+								<dd> <a>{$c.title}</a> <span>{$c.summary}</span> 
+								</dd>
+							</div>
+							<div class="bin_2nd_menu_box">
+								<ul>
+									{~$cat_info=get_child($cate,148);}
+									<volist name="cat_info" id="ci" key="ki">
+										<li>
+											<a href="<empty name='ci.url'>
+											 <empty name="ci['tpl']">{:U($ci['Model']['name'].'/index','id='.$ci['id'])}
+											 <else/>
+											 {:U($ci['Model']['name'].'/'.$ci['tpl'],'id='.$ci['id'])}</empty>
+											 <else/>
+											 {$ci.url}</empty>">{$ci.title}</a>
+										</li>
+									 </volist>	
+								</ul>
+								<div class="clear"></div>
+							</div>
+						</dl>
+						<else />	
+							<dl>
+								<dt><a href="<empty name='c.url'>
+									<empty name="c['tpl']">{:U($c['Model']['name'].'/index','id='.$c['id'])}
+									<else/>
+									{:U($c['Model']['name'].'/'.$c['tpl'],'id='.$c['id'])}</empty>
+									<else/>
+									{$c.url}</empty>"><img src="{$c['pic']}"/></a>
+								</dt>
+								<dd> <a href="<empty name='c.url'>
+									 <empty name="c['tpl']">{:U($c['Model']['name'].'/index','id='.$c['id'])}
+									 <else/>
+									 {:U($c['Model']['name'].'/'.$c['tpl'],'id='.$c['id'])}</empty>
+									 <else/>
+									 {$c.url}</empty>">{$c.title}</a> <span>{$c.summary}</span> 
+								</dd>
+							</dl>
+						</if>	
+				<else />
+					<dl>
+						<dt><a href="<empty name='c.url'>
+							<empty name="c['tpl']">{:U($c['Model']['name'].'/index','id='.$c['id'])}
+							<else/>
+							{:U($c['Model']['name'].'/'.$c['tpl'],'id='.$c['id'])}</empty>
+							<else/>
+							{$c.url}</empty>"><img src="{$c['pic']}"/></a>
+						</dt>
+						<dd> <a href="<empty name='c.url'>
+							 <empty name="c['tpl']">{:U($c['Model']['name'].'/index','id='.$c['id'])}
+							 <else/>
+							 {:U($c['Model']['name'].'/'.$c['tpl'],'id='.$c['id'])}</empty>
+							 <else/>
+							 {$c.url}</empty>">{$c.title}</a> <span>{$c.summary}</span> 
+						</dd>
+					</dl>	
+				</if>
+			</volist>
+		</div>
+	</div>	
+   <include file="Public:left" /></div>
+    <div class="middle_con">
+	  <script type="text/javascript" src="__PUBLIC__/js/index_tab.js"></script>
+	  <!--tab end-->
+    </div>
+    <div class="right_side">
+    </div>
+	        <div class="main_con fr">
+        	<div class="bread_nav">
+            	<div class="l fl"></div>
+                <div class="m fl" style="line-height:30px;">
+                	<span class="list_style"></span>
+                    <span>您当前的位置:</span>
+					<span><a href="./" title="首页">首页</a></span>
+					<span>></span>
+					<span>成员单位</span>
+					<span>></span>
+					<span>
+						<if condition="($id eq 142) or ($id eq 147) or ($id eq 148) or ($id eq 149) or ($id eq 150) or ($id eq 151) or ($id eq 152)">
+							<a href="/index.php?s=/page/viewss/id/147/status/5.html" title="能源公司">能源公司</a>
+						</if>
+						<if condition="($id eq 143) or ($id eq 153) or ($id eq 154)">
+							<a href="/index.php?s=/page/viewss/id/153/status/6.html" title="环保公司">环保公司</a>
+						</if>
+						<if condition="($id eq 144) or ($id eq 155) or ($id eq 156)">
+							<a href="/index.php?s=/page/viewss/id/155/status/7.html" title="市政景观公司">市政景观公司</a>
+						</if>
+						<if condition="($id eq 145) or ($id eq 157) or ($id eq 158)">
+							<a href="/index.php?s=/page/viewss/id/157/status/8.html" title="绿色交通公司">绿色交通公司</a>
+						</if>
+						<if condition="($id eq 146) or ($id eq 159) or ($id eq 160)">
+							<a href="/index.php?s=/page/viewss/id/159/status/9.html" title="水务公司">水务公司</a>
+						</if>
+					</span>
+					<span>></span>
+					<if condition="($id eq 149) or ($id eq 150) or ($id eq 151) or ($id eq 152)">
+						<span>业务介绍</span><span>></span>
+					</if>
+					<span style="color: #009f3f;">
+						<if condition="($id eq 147) or ($id eq 153) or ($id eq 155) or ($id eq 157) or ($id eq 159)">
+							公司介绍
+						<elseif condition="($id eq 154) or ($id eq 156) or ($id eq 158) or ($id eq 160)"/>
+							业务介绍
+						<elseif condition="$id eq 149"/>
+							自来水
+						<elseif condition="$id eq 150"/>
+							天然气
+						<elseif condition="$id eq 151"/>
+							供热
+						<elseif condition="$id eq 152"/>
+							新能源
+						</if>
+					</span>
+                </div>
+                <div class="r fl"></div>
+            </div>
+            <div class="artical">
+            <!-- begin -->
+			
+				<div class="article_show">
+                	
+                    <div class="article_title">
+                    	<h1>{$title}</h1>
+                       
+                    </div>
+                    
+                   	<div class="article_content">
+                    	  {$content}
+					
+                     <script>
+						$(window).load(function(){
+							var image_limit=700;
+					  		var image=new Image();
+							$(".article_show img").each(function(i){
+								image.src=$(this).attr("src");
+								if(image.width>=image_limit){
+									$(this).css("width",image_limit);
+								}
+							});
+                        });
+                       </script>
+                    </div>
+                	
+                </div>
+			
+			<!-- end -->
+            </div>
+        </div>
+  </div>
+</div>
+
+  <include file="Public:footer" />
+</body>
+</html>

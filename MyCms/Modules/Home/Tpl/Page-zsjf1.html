@@ -1,0 +1,367 @@
+<html>
+<head>
+    <include file="Public:common-head"/>
+    <link rel="stylesheet" type="text/css" href="__PUBLIC__/last/css/selectFilter.css">
+</head>
+<body>
+<include file="Public:common-toppart"/>
+
+<div class="jiaofei_banner">
+    <div class="content">
+        <p class="jiaofei_banner_01 font_yinying">在线缴费</p>
+        <p class="jiaofei_banner_03 "></p>
+        <p class="jiaofei_banner_02 font_yinying">续费随心，省事无忧</p>
+    </div>
+</div>
+
+<div class="content_bg">
+	<div class="content history_content">
+		<p class="dqwz history_dqwz">
+			当前位置：<a href="http://www.66885890.com">首页</a> &nbsp;&nbsp;&gt;&nbsp;&nbsp;
+			<a href="{:U('User/index',array('id'=>20))}">我的5890</a>&nbsp;&nbsp;&gt;&nbsp;&nbsp;
+			<a href="{:U('User/jfyw')}">缴费业务</a>&nbsp;&nbsp;&gt;&nbsp;&nbsp;
+			<span class="green">在线缴费</span>
+		</p>
+		<div class="history_bill" style="padding:0 20px">
+			<div class="history_inputbox clearfix" style="margin:0 auto;padding:25px 25px 5px 25px">
+ 				<form id="payToPage" action="./index.php?s=/page/zsjf1/id/210.html" method="post">
+					<div class="history_inputboxone"><span>房间编号：</span>
+						<div class="item_one" style="height:36px">	<!-- 这里开始 -->
+							<div class="filter-box" id="aaa">
+								<div class="filter-text">
+									<input class="filter-title" type="text" readonly placeholder="请选择" />
+									<i class="icon icon-filter-arrow"></i>
+								</div>
+								<select  name="houseCode" id="houseCode">
+									<volist name="houselist" id="hc">
+									  <option value="{$hc.houseCode}" <if condition="$hc.houseCode eq $code">selected</if>>{$hc.address}</option>
+									 </volist>
+								</select>
+							</div>
+						</div>
+					</div>
+ 					<!-- <button><span>查询</span></button> -->
+					  <a class="cklszd_btn" type="input" id="jl"><span>查看缴费历史记录</span></a>
+ 				</form>
+			</div>
+		</div>
+
+		<div class="zaixianjiaofei_table">
+			<table style="width: 100%;" class="history_table">
+				<tbody id="jisuandingbu">
+					<tr class="zaixianjiaofei_tabletr">
+						<th style="width: 13%; border-radius: 5px 0 0 0;">收费项目</th>
+						<th style="width: 13%;">收费期</th>
+						<th style="width: 13%;">表号/编号</th>
+						<th style="width: 13%;">面积/用量</th>
+						<th style="width: 12%;">违约金(￥)</th>
+						<th style="width: 12%;">费用小计(￥)</th>
+						<th style="width: 12%;">费用状态</th>
+						<th style="width: 12%; border-radius: 0 5px 0 0;">操作</th>
+					</tr>
+
+					<volist name="nowlist" id="nl">
+					<tr class="zaixianjiaofei_tabletrone dangqizhangdan_trhover">
+						<td><span><img <if condition="$nl.ITEMNAME eq '自来水'">src="__PUBLIC__/style/img/water.png" <elseif condition="$nl.ITEMNAME eq '天然气'"/>src="__PUBLIC__/style/img/tianranqi.png" 
+						<elseif condition="$nl.ITEMNAME eq '阶梯水价二'"/>src="__PUBLIC__/style/img/water.png"
+						<elseif condition="$nl.ITEMNAME eq '阶梯水价三'"/>src="__PUBLIC__/style/img/water.png"
+						<elseif condition="$nl.ITEMNAME eq '阶梯天然气价二'"/>src="__PUBLIC__/style/img/tianranqi.png" 
+						<elseif condition="$nl.ITEMNAME eq '阶梯天然气价三'"/>src="__PUBLIC__/style/img/tianranqi.png" 
+						<elseif condition="$nl.ITEMNAME eq '供热'"/>src="__PUBLIC__/style/img/gongnuan.png" <elseif condition="$nl.ITEMNAME eq '再生水'"/>src="__PUBLIC__/style/img/water_01.png"</if>></span>{$nl.ITEMNAME}</td>
+						<td>{$nl.CHARGEMONTH}</td>
+						<td>{$nl.CLOCKNUMBER}</td>
+						<td>{$nl.POINTNUMBER}<if condition="$nl.ITEMNAME eq '自来水'">t <elseif condition="$nl.ITEMNAME eq '天然气'"/>Nm³ <elseif condition="$nl.ITEMNAME eq '供热'"/>m³ <elseif condition="$nl.ITEMNAME eq '再生水'"/>t</if></td>
+						<td>{$nl.WYJ|number_format=###, 2, '.', ''}</td>
+						<td>{$nl.DQXJ|number_format=###, 2, '.', ''}</td>
+						<td class="orange" >{$nl.QFZT}</td>
+						<td>
+							<if condition="$nl.QFZT eq '未缴' && $nl.ITEMNAME neq '再生水'">
+								<if condition="$nl.STATUS eq 0">
+									<if condition="$nl.payOn eq on">
+										<if condition="$nl.hh24h eq on">
+											<button class="btn03" onclick="payInfo('{$nl.HOUSECODE}','{$nl.ITEMCODE}','{$nl.DQXJ}','{$nl.CHARGEMONTH}','{$nl.CLOCKNUMBER}')"><span>缴费</span></button>
+										<else/>
+											<button class="btn03" onclick="javascript:alert('温馨提示：线上交费受理时间为10:00-17:00');return false;">缴费</button>
+										</if>
+									<else/>
+										<button class="btn03" onclick="javascript:alert('请将前面的欠费交清才可以交本次费用');return false;">缴费</button>
+									</if>
+								<else/>
+									<button class="btn03" onclick="javascript:alert('此次交易已被锁定，无法交费');return false;">缴费</button>
+								</if>
+							<else/>
+								<button class="btn03 dqzd_btn"><span>缴费</span></button>
+							</if>
+						</td>
+					</tr>
+					</volist>
+
+					<volist name="grlist" id="nl">
+					<tr class='zaixianjiaofei_tabletrone dangqizhangdan_trhover tanchu'>
+						<td><span><img src="__PUBLIC__/style/img/gongnuan.png"></span>{$nl.ITEMNAME}</td>
+						<td>{$nl.CHARGEMONTH}</td>
+						<td>{$nl.CLOCKNUMBER}</td>
+						<td>{$nl.POINTNUMBER}m³ </td>
+						<td>{$nl.WYJ|number_format=###, 2, '.', ''}</td>
+						<td>{$nl.DQXJ|number_format=###, 2, '.', ''}</td>
+						<td class="orange" >未缴</td>
+						<td>
+							<if condition="$nl.STATUS eq 0">
+								<if condition="$nl.payOn eq on">
+									<if condition="$nl.hh24h eq on">
+										<button class="btn03" onclick="payInfo('{$nl.HOUSECODE}','{$nl.ITEMCODE}','{$nl.DQXJ}','{$nl.CHARGEMONTH}','{$nl.CLOCKNUMBER}')"><span>缴费</span></button>
+									<else/>
+										<button class="btn03" onclick="javascript:alert('温馨提示：线上交费受理时间为10:00-17:00');return false;">缴费</button>
+									</if>
+								<else/>
+									<button class="btn03" onclick="javascript:alert('请将前面的欠费交清才可以交本次费用');return false;">缴费</button>
+								</if>
+							<else/>
+								<button class="btn03" onclick="javascript:alert('此次交易已被锁定，无法交费');return false;">缴费</button>
+							</if>
+						</td>
+					</tr>
+				 </volist>
+
+				 <if condition="$nowlist[0]['POINTNUMBER'] eq '' && $grlist[0]['POINTNUMBER'] eq ''">
+					<tr class='zaixianjiaofei_tabletrone dangqizhangdan_trhover'>
+						<td>暂无数据</td>
+					</tr>
+				 </if>
+				</tbody>
+			</table>
+		<volist name="grlist" id="nl">
+			<if condition="$nl.DNBS eq 1">
+			<div class="tanceng tanchuceng{$i} clearfix" style="display:none">
+				<div class="tanceng_content">
+					<div class="tanceng_border">
+						<p class="clearfix"><span class="tancengleft">采暖面积</span><span class="tancengright">{$nl.POINTNUMBER}</span></p>
+						<p class="clearfix"><span class="tancengleft">面积单价</span><span class="tancengcenter">*</span><span class="tancengright">{$nl.PRICE}</span></p>
+						<if condition="$nl.STOP eq 1">
+						<p class="clearfix"><span class="tancengleft">停供系数</span><span class="tancengcenter">*</span><span class="tancengright">0.2</span></p>
+						</if>
+					</div>
+					<div class="tanceng_border">
+						<p class="clearfix"><span class="tancengleft">面积热费</span><span class="tancengcenter">=</span><span class="tancengright">{$nl.PLS}</span></p>
+						<p class="clearfix"><span class="tancengleft">优惠金额</span><span class="tancengcenter">-</span><span class="tancengright">{$nl.YHJM}</span></p>
+					</div>
+					<div class="tanceng_border">
+						<p class="clearfix"><span class="tancengleft">费用小计</span><span class="tancengcenter">=</span><span class="tancengright">{$nl.XJ1}</span></p>
+						<p class="clearfix"><span class="tancengleft">减免费用</span><span class="tancengcenter">-</span><span class="tancengright">{$nl.MINUSMONEY}</span></p>
+					</div>
+					<div class="tanceng_border">
+						<p class="clearfix"><span class="tancengleft">费用小计</span><span class="tancengcenter">=</span><span class="tancengright">{$nl.XJ2}</span></p>
+						<p class="clearfix"><span class="tancengleft">上年节余</span><span class="tancengcenter">-</span><span class="tancengright">{$nl.IMP}</span></p>
+					</div>
+					<div class="tanceng_border">
+						<p class="clearfix"><span class="tancengleft">费用小计</span><span class="tancengcenter">=</span><span class="tancengright">{$nl.HJ}</span></p>
+						<p class="clearfix"><span class="tancengleft">违约金</span><span class="tancengcenter">+</span><span class="tancengright">{$nl.WYJ}</span></p>
+					</div>
+					
+					<p class="clearfix"><span class="tancengleft">合计</span><span class="tancengcenter">=</span><span class="tancengright">{$nl.DQXJ}</span></p>
+				</div>
+				 
+			</div>
+			</if>
+		</volist>
+		</div>
+		<!--foreach name="houselist" item="vo" >
+			<div class="zaixianjiaofei_table">
+				<table style="width: 100%;" class="history_table">
+					<tbody>
+						<tr class="zaixianjiaofei_tabletr">
+							<th style="width: 17%; border-radius: 5px 0 0 0;">收费项目</th>
+							<th style="width: 17%;">收费期</th>
+							<th style="width: 17%;">表号/编号</th>
+							<th style="width: 17%;">面积/用量</th>
+							<th style="width: 16%;">缴费金额(￥)</th>
+							<th style="width: 16%; border-radius: 0 5px 0 0;">操作</th>
+						</tr>
+
+						<foreach name="vo.feiyong" item="vo1" >
+							<if condition="$vo1.SHOW eq 0">
+								<if condition="$vo1.aa eq 0">
+									<tr class="zaixianjiaofei_tabletrone">
+									<td>
+										<span><img <if condition="$vo1.TYPENMAE eq '水费'">src="__PUBLIC__/style/img/water.png" <elseif condition="$vo1.TYPENMAE eq '天然气'"/>src="__PUBLIC__/style/img/tianranqi.png" <elseif condition="$vo1.TYPENMAE eq '采暖'"/>src="__PUBLIC__/style/img/gongnuan.png" <elseif condition="$vo1.TYPENMAE eq '再生水'"/>src="__PUBLIC__/style/img/water_01.png"</if>></span>
+										{$vo1.TYPENMAE}
+									</td>
+										<td>{$vo1.CHARGEMONTH}</td>
+										<td>{$vo1.CLOCKNUMBER}</td>
+										<td>{$vo1.YONG_LIANG}</td>
+										<td class="orange" >{$vo1.QIAN}</td>
+										<if condition="$vo1.STATUS eq 0">
+											<td>
+												<if condition="$vo1.payOn eq on">
+													<if condition="$vo1.hh24h eq on ">
+														<button  class="btn03" onclick="payInfo('{$vo1.HOUSECODE}','{$vo1.TYPE}','{$vo1.QIAN}','{$vo1.CHARGEMONTH}','{$vo1.CLOCKNUMBER}')">交费</button>
+													<else/>
+														<button class="btn03" onclick="javascript:alert('温馨提示：线上交费受理时间为10:00-16:00');return false;">交费</button>
+													</if>
+
+													  <else/>
+													  <button class="btn03" onclick="javascript:alert('请将前面的欠费交清才可以交本次费用');return false;">交费</button>
+													</if>
+												 <else/>
+												  <button class="btn03" onclick="javascript:alert('此次交易已被锁定，无法交费');return false;">交费</button>
+												</if>
+
+											</td>
+									<else/>
+									<tr class="zaixianjiaofei_tabletrone">
+									<td>
+										<span><img <if condition="$vo1.TYPENMAE eq '水费'">src="__PUBLIC__/style/img/water.png" <elseif condition="$vo1.TYPENMAE eq '天然气'"/>src="__PUBLIC__/style/img/tianranqi.png" <elseif condition="$vo1.TYPENMAE eq '供热'"/>src="__PUBLIC__/style/img/gongnuan.png" <elseif condition="$vo1.TYPENMAE eq '再生水'"/>src="__PUBLIC__/style/img/water_01.png"</if>></span>
+										{$vo1.TYPENMAE}
+									</td>
+										<td>{$vo1.CHARGEMONTH}</td>
+										<td>{$vo1.CLOCKNUMBER}</td>
+										<td>10(m³)</td>
+										<td class="orange" >{$vo1.QIAN}</td>
+										<if condition="$vo1.STATUS eq 0">
+											<td>
+												<if condition="$vo1.payOn eq on">
+												<if condition="$vo1.hh24h eq on ">
+													<button  class="btn03"onclick="payInfo('{$vo1.HOUSECODE}','{$vo1.TYPE}','{$vo1.QIAN}','{$vo1.CHARGEMONTH}','{$vo1.CLOCKNUMBER}')">交费</button>
+												<else/>
+													<button class="btn03" onclick="javascript:alert('温馨提示：线上交费受理时间为10:00-17:00');return false;">交费</button>
+												</if>
+
+												  <else/>
+												  <button class="btn03" onclick="javascript:alert('请将前面的欠费交清才可以交本次费用');return false;">交费</button>
+												</if>
+												 <else/>
+												  <button class="btn03" onclick="javascript:alert('此次交易已被锁定，无法交费');return false;">交费</button>
+												</if>
+
+											</td>
+										</if>
+									</tr>
+								  </if>
+							   </if>
+						</foreach>
+					</tbody>
+				</table>
+			</div>
+		</foreach-->
+
+		<div class="dianzifapiao_warm">
+			<p class="warm">温馨提示：<br>
+				<span style="font-weight:bold;color:#FF0000">关于线上交费：</span>受理时间为每天上午10:00至下午17:00。<br/>
+				<span style="font-weight:bold;color:#FF0000">交费时间：</span>用户应在每月15日前通过银行窗口、ATM、网银等方式向能源服务卡内存入足够金额用以支付用水、用气费用。若您办理的能源服务卡尚未寄至手中，您可于每月15日前至能源窗口交费。<br/>
+				<span style="font-weight:bold;color:#FF0000">能源公司提醒您：</span>请您按规定于每月15日前交清上月用水、用气费用，逾期未缴费的按日加收违约金。持能源服务卡用户，指定银行在结算日（每月15日）自动完成应收费用的扣缴。<br/>
+				
+				<span style="font-weight:bold;color:#FF0000">水务公司提醒您：</span>请您按规定于每月12日前交清上月再生水费用，逾期未缴费的按日加收违约金。持能源服务卡用户，指定银行在结算日（每月12日）自动完成应收费用的扣缴。<br />
+				<span style="font-weight:bold;color:#FF0000">本查询结果仅供参考，如有疑问，请于能源窗口询问或致电022-66885890。</span>
+			</p>
+		</div>
+	</div>
+</div>
+<style type="text/css">
+ #loading  
+{  
+    position:fixed;  
+    top:40%;  
+    left:45%;  
+    z-index:999;  
+} 
+</style>
+
+
+   <div id="loading"  >  
+      <img src="./Public/img/loading.gif" class="img-responsive">  
+    </div><pre name="code" class="css">  
+<form id="payToPage1" action="./index.php?s=/page/jjPage1/id/210.html" method="post">
+      <input type="hidden" id="housecode" name="housecode">
+      <input type="hidden" id="type" name="type">
+      <input type="hidden" id="qian" name="qian">
+      <input type="hidden" id="chargemonth" name="chargemonth">
+      <input type="hidden" id="clocknumber" name="clocknumber">
+</form>
+
+<include file="Public:common-footer"/>
+<include file="Public:common-script"/>
+<script type="text/javascript" src="__PUBLIC__/last/js/selectFilter.js"></script>
+
+<script type="text/javascript" src="__PUBLIC__/last/js/jquery.KinSlideshow-1.2.1.min.js" ></script>
+<script type="text/javascript" src="__PUBLIC__/last/js/jquery.textSearch-1.0.js"></script>
+<script type="text/javascript" src="__PUBLIC__/last/js/script.js"></script>
+<script type="text/javascript">
+  $(window).load(function(){  
+    //适当延迟隐藏，提高loading效果  
+   // $('#loading').delay(1000).hide(0);  
+    $('#loading').hide(0);  
+}); 
+//历史记录跳转传值                                               
+ $("#jl").click(function(){
+   var url="/index.php?s=/Union/lsjf.html";
+			 var temp=document.createElement("form");
+			    temp.action = url; 
+      temp.method = "post"; 
+      temp.style.display = "none"; 
+	  var PARAMS={hcode:$("#houseCode").val()};
+      for (var x in PARAMS) { 
+        var opt = document.createElement("textarea"); 
+        opt.name = x; 
+        opt.value = PARAMS[x]; 
+		// alert(opt.value) 
+        temp.appendChild(opt); 
+        } 
+      document.body.appendChild(temp); 
+      temp.submit(); 
+            //location.href="/index.php?s=/Union/lsjf/hcode/"+$("#houseCode").val()+".html";//发送txt里面的内容
+        })
+  function payInfo(housecode,type,qian,chargemonth,clocknumber){
+    $("#housecode").val(housecode);
+    $("#type").val(type);
+    $("#qian").val(qian);
+    $("#chargemonth").val(chargemonth);
+	$("#clocknumber").val(clocknumber);
+    if(confirm("请确认本次缴费？"))
+    {
+      $("#payToPage1").submit();
+    }
+  }
+
+ /*function getForm(){
+     document.getElementById('payToPage').action = "";
+     document.getElementById("payToPage").submit();
+  }*/
+  	$(function(){
+
+
+
+	//$(".tanceng").toggle();
+		$(".tanchu").mouseover(function(e){
+			var jg = $(".tanchu").index(this) + 1;
+			var tip = $(".tanchuceng"+jg);
+			var tipTop = $('#jisuandingbu').offset().top-$(window).scrollTop();
+			//alert(e.clientX);
+			//tip.css("left",e.clientX-50+"px").css("top",e.clientY-tipTop+"px");
+			tip.css("left",e.clientX-100+"px").css("top",e.clientY-tipTop+"px");
+			tip.css("display","block");
+		})
+		$(".tanchu").mouseout(function(){
+			var jg = $(".tanchu").index(this) + 1;
+			var tip = $(".tanchuceng"+jg);
+			tip.css("display","none");
+		});
+	});
+ </script>
+</body>
+</html>
+<script type="text/javascript">
+
+
+	//本小插件支持移动端哦
+
+	//这里是初始化
+	$('#aaa').selectFilter({
+		callBack : function (val){
+			//返回选择的值
+			console.log(val+'-是返回的值');
+			$('#payToPage').submit();
+		}
+	});
+
+</script>
+

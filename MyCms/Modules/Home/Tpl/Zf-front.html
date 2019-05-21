@@ -1,0 +1,66 @@
+<!doctype html>
+<html>
+<head>
+    <include file="Public:common-head"/>
+</head>
+
+<body>
+<include file="Public:common-toppart"/>
+
+<link type="text/css" rel="stylesheet" href="__PUBLIC__/css/pay.css"/>
+<div class="main_block">
+    
+        <div class="content_block">
+            <div class="main_con fr">
+                <!-- begin -->
+                <div class="success clearfix">
+                    <div class="stu"></div>
+                    <ul>
+                        <li class="zfcg" style='color:#249339' id="abc">{$map.Message}</li>
+                        <li style='color:#249339;font-size:14px;'>收款商户名：生态城能源投资建设公司</li>
+                        <li style='color:#249339;font-size:14px;'>支付金额：{$map.txnAmt}</li>
+                        <li style='color:#249339;font-size:14px;'>订单号：{$map.orderId}</li>
+                    </ul>
+                    <div class="clearfix"></div>
+                    <p><span id="mes">60</span>秒后跳转到商家页面，或点此[<a href="/index.php?s=/user/index.html">直接跳转</a>]</p>
+                </div>
+                <!-- end -->
+            </div>
+        </div>
+</div>
+</div>
+<script language="javascript" type="text/javascript">
+    var i = 60;
+    var intervalid;
+    intervalid = setInterval("fun()", 1000);
+    function fun() {
+        if (i == 0) {
+           window.location.href = "/index.php?s=/user/index.html";
+            //clearInterval(intervalid);
+        }
+        document.getElementById("mes").innerHTML = i;
+        i--;
+    }
+</script>
+<script type="text/javascript">	
+	$(document).ready(function(){
+				//var aa=document.getElementById("abc").innerHTML;
+				//console.log(aa);
+                var isMobile = /Android|webOS|iPhone|iPad|BlackBerry/i.test(navigator.userAgent)
+				if (isMobile) {
+					jsapp.appback();
+					/*if(aa=='交易失败'){
+                    window.location.href = "http://www.66885890.com:9898/stcSys/sct/payInfo/payFail";
+					}
+					if(aa=='交易成功'){
+                    window.location.href = "http://www.66885890.com:9898/stcSys/sct/payInfo/paySuccess";
+					}*/
+				}
+            })
+</script>
+<include file="Public:common-footer"/>
+<include file="Public:common-script"/>
+<script type="text/javascript" src="__PUBLIC__/last/js/jquery.easing.min.js"></script>
+<script type="text/javascript" src="__PUBLIC__/last/js/banner.js"></script>
+</body>
+</html>

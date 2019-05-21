@@ -1,0 +1,71 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href='__PUBLIC__/css/common.css'>
+<script type="text/javascript" src="__PUBLIC__/js/jquery-1.7.1.min.js"></script>
+<title>无标题文档</title>
+</head>
+<body>
+<div id="append_parent"></div>
+<div class="container" id="cpcontainer">
+  <table class="content_list">
+    <thead>
+      <tr >
+        <td >备忘录(记录未完成或待办事宜)<span id="notebookMessage"></span></td>
+      </tr>
+    </thead>
+    <tr>
+      <td><textarea name="notebook" cols="80" rows="6" id="notebook" onblur="updateNotebook()" >{$notice}</textarea></td>
+    </tr>
+  </table>
+  <table class="content_list">
+    <thead>
+      <tr >
+        <td colspan="2" class="tbTitle">系统信息</td>
+      </tr>
+    </thead>
+
+    <tr>
+      <td >操作系统软件</td>
+      <td >{$serverOs}</td>
+    </tr>
+    <tr>
+      <td >PHP版本</td>
+      <td >{$phpVersion}</td>
+    </tr>
+    <tr>
+      <td >上传许可</td>
+      <td >{$fileupload}</td>
+    </tr>
+    <tr>
+      <td >主机名</td>
+      <td >{$serverUri}</td>
+    </tr>
+
+    <tr>
+      <td >PHP环境</td>
+      <td >magic_quote_gpc:{$magic_quote_gpc} allow_url_fopen:{$allow_url_fopen}</td>
+    </tr>
+  </table>
+</div>
+<script language="javascript"> 
+<!-- 
+function updateNotebook()
+{
+  $("#notebookMessage").fadeIn(2000);//fadeIn 是jq淡入隐藏
+  $("#notebookMessage").html('<span style="color:#FF0000"><img src="__PUBLIC__/images/loading.gif" align="absmiddle">正在更新数据...</span>'); 
+  $.post("__URL__/notice",{notebook:$('#notebook').val()},function(data){
+      if(data.status == 'true'){
+          $("#notebookMessage").html('<span style="color:#FF0000">'+data.message+'</span>'); 
+      }else{
+          alert(data.message);
+      }
+      $("#notebookMessage").fadeOut(2000);  
+  }, 'json');
+
+}
+//--> 
+</script>
+</body>
+</html>

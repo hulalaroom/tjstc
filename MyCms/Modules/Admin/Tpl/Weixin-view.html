@@ -1,0 +1,58 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href='__PUBLIC__/css/common.css'>
+<script type="text/javascript" src="__PUBLIC__/js/jquery-1.7.1.min.js"></script>
+<script type="text/javascript" src="__PUBLIC__/js/base.js"></script>
+<script type="text/javascript" src="__PUBLIC__/js/jscolor/jscolor.js"></script>
+<script type="text/javascript" src="__PUBLIC__/js/kindeditor/kindeditor-min.js"></script>
+<link rel="stylesheet" href="__PUBLIC__/js/kindeditor/themes/default/default.css" />
+<script charset="utf-8" src="__PUBLIC__/js/kindeditor/lang/zh_CN.js"></script>
+<script type="text/javascript" src="__PUBLIC__/js/artDialog/jquery.artDialog.source.js?skin=blue"></script>
+<script src="__PUBLIC__/js/artDialog/plugins/iframeTools.source.js"></script>
+<script type="text/javascript" src="__PUBLIC__/js/date/jquery-ym-datePlugin-0.1.js"></script>
+<link rel="stylesheet" href="__PUBLIC__/js/date/jquery-ui.css" />
+<link rel="stylesheet" id="skin" href="__PUBLIC__/js/date/jquery-ui-1.9.2.custom.min1.css" />
+<style>
+#ttt {
+
+	width:670px;
+	height:130px;
+
+}
+
+</style>
+
+<title>无标题文档</title>
+</head>
+<body>
+<div id="append_parent"></div>
+<div class="container" id="cpcontainer">
+  <div id="contentHeader">
+    <h3>微信管理</h3>
+    <div class="searchArea">
+      <ul class="action left" >
+       <li><a href="__URL__/{$type}" class="actionBtn"><span>返回</span></a></li>        
+        <li><a href="__URL__/add" class="current"><span>录入</span></a></li>
+      </ul>
+    </div>
+  </div>
+
+
+
+      <table class="form_table">
+    
+      <tr>
+        <td class="tb_title">内容：</td>
+      </tr>
+      <tr >
+        <td ><textarea id="ttt"   name="content" <eq name="type" value="view"> disabled</eq>>{$Content}{$content}</textarea>
+        </td>
+      </tr>  
+    </table>
+  </form>
+
+</div>
+</body>
+</html>

@@ -1,0 +1,63 @@
+<include file="Public:header" />
+<div class="main_block"> <include file="Public:top" />
+  <div class="content_block">
+    <div class="left_side fl">
+        <eq name="submenu" value="show">
+        <div style="height:375px;"></div>
+        <else/>
+     <div class="l_menu">
+		{~$cat=get_child($cate,4);}
+        <volist name="cat" id="c" key="k">
+            <dl <eq name='c.id' value='$_GET.id'> class="hover"</eq>>
+            <dt><a href="<notempty name='c.url'>{$c.url}<else/>{:U($c['Model']['name'].'/index','id='.$c['id'])}</notempty>"><img src="{$c.pic}"/></a>
+              <!--<img src="{$c.cat_pic}"/>-->
+            </dt>
+            <dd> <a href="<notempty name='c.url'>{$c.url}<else/>{:U($c['Model']['name'].'/index','id='.$c['id'])}</notempty>">{$c.title}</a> <span>{$c.summary}</span> </dd>
+          </dl>
+        </volist>
+      </div>
+        </eq>
+     <include file="Public:left" />  
+    </div>
+    <div class="main_con fr">
+      <div class="bread_nav">
+        <div class="l fl"></div>
+        <div class="m fl"> 
+			<span class="list_style"></span> <span>您当前的位置:</span> 
+			<a>首页</a>
+			<span>></span>
+            <a href="{:U('User/index')}">我的5890</a>
+             <span>></span>
+			 <a href="{:U('User/addtag')}">我的订阅</a>
+             <span>></span>
+            <span style="color:#009f3f;">{$tag}</span>
+		</div>
+        <div class="r fl"></div>
+      </div>
+      <div class="artical">
+        <!-- begin -->
+        <div class="article_list">
+          <ul>
+            <volist name="tag_list" id="tag">
+                <li><span class="ar">{$tag.start_time|date="Y-m-d",###}</span><a class="title" href="{:U('Article/view','id='.$tag['id'])}" target="_blank" title="">{$tag.title}</a></li>
+            </volist>
+          </ul>
+          <script>
+					$(".article_list ul li").hover(
+						function(){
+							$(this).find(".ar").css("color","#00a040");
+						},
+						function(){
+							$(this).find(".ar").css("color","#656565");
+						}
+					);
+					</script>
+        </div>
+        <!-- end -->
+      </div>
+    </div>
+  </div>
+</div>
+  <include file="Public:footer" />
+</body>
+</html>

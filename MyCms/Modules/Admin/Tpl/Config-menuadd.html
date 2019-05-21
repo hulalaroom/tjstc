@@ -1,0 +1,132 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+  <link rel="stylesheet" type="text/css" href='__PUBLIC__/css/common.css'>
+  <script type="text/javascript" src="__PUBLIC__/js/jquery-1.7.1.min.js"></script>
+  <script type="text/javascript" src="__PUBLIC__/js/base.js"></script>
+  <title></title>
+  <style type="text/css">
+    #operator_field * {
+      vertical-align: middle;
+    }
+  </style>
+</head>
+<body>
+<div id="append_parent"></div>
+<div class="container" id="cpcontainer">
+  <div id="contentHeader">
+    <h3>菜单管理</h3>
+
+    <div class="searchArea">
+      <ul class="action left">
+        <li><a href="{:U('Config/menu')}" class="actionBtn"><span>返回</span></a></li>
+        <li><a href="{:U('Config/menuadd')}" class="current"><span>录入</span></a></li>
+      </ul>
+      <div class="search right"></div>
+    </div>
+  </div>
+  <eq name="type" value="add">
+    <form name="form1" action="{:U('Config/menuinsert')}" method="post">
+      <else/>
+      <form name="form1" action="{:U('Config/menuupdate')}" method="post">
+        <input name="id" type="hidden" value="{$id}"/>
+  </eq>
+  <table class="form_table">
+    <tr>
+      <td class="tb_title">标题：</td>
+    </tr>
+    <tr>
+      <td><input size="30" maxlength="128" name="title" type="text" value="{$title}"/>
+      </td>
+    </tr>
+    <tr>
+      <td class="tb_title">所属菜单：</td>
+    </tr>
+    <tr>
+      <td><select id="pid" name="pid">
+        <option value="0">顶级菜单</option>
+        <volist name="list" id="menu">
+          <option value="{$menu.id}"
+          <eq name="menu.id" value="$pid"> selected="selected"</eq>
+          >{$menu.html}{$menu.title}
+          </option>
+        </volist>
+      </select>
+      </td>
+    </tr>
+    <tr>
+      <td class="tb_title">模块：</td>
+    </tr>
+    <tr>
+      <td><input size="30" maxlength="128" name="module" type="text" value="{$module}"/></td>
+    </tr>
+    <tr>
+      <td class="tb_title">操作：</td>
+    </tr>
+    <tr>
+      <td><input size="30" maxlength="128" name="action" type="text" value="{$action}"/></td>
+    </tr>
+    <tr>
+      <td class="tb_title">排序：</td>
+    </tr>
+    <tr>
+      <td><input size="30" maxlength="3" name="sort" type="text" value="{$sort}"/></td>
+    </tr>
+    <tr id="operator_lable">
+      <td class="tb_title">操作人：</td>
+    </tr>
+    <tr id="operator_field">
+      <td class="tb_title">
+        <volist name="user_list" id="adminor" key="cnt">
+          <if condition='$cnt gt 5 && $cnt % 5 == 1'><br></if>
+          <if condition='in_array($adminor["id"], $userIds)'>
+            <input type="checkbox" id="user_id_{$adminor.id}" name="user_id[]" value="{$adminor.id}" checked="checked"/>
+          <else/>
+            <input type="checkbox" id="user_id_{$adminor.id}" name="user_id[]" value="{$adminor.id}"/>
+          </if>
+          <label for="user_id_{$adminor.id}">{$adminor.admin_nick}({$adminor.adminname})</label>
+        </volist>
+      </td>
+    </tr>
+    <tr>
+      <td class="tb_title">状态：</td>
+    </tr>
+    <tr>
+      <td><select name="status">
+        <option value="1"
+        <eq name="status" value="1"> selected="selected"</eq>
+        >启用
+        </option>
+        <option value="0"
+        <eq name="status" value="0"> selected="selected"</eq>
+        >停用
+        </option>
+      </select>
+      </td>
+    </tr>
+    <tr class="submit">
+      <td colspan="2"><input type="submit" name="editsubmit" value="提交" class="button" tabindex="3"/></td>
+    </tr>
+  </table>
+  </form>
+</div>
+<script type="text/javascript">
+  $(function () {
+    $("#pid").on('change', function () {
+      if (this.value == '0') {
+        $('#operator_lable').hide();
+        $('#operator_field').hide();
+        $('#operator_field input[name="user_id[]"]').removeAttr('name');
+      } else {
+        $('#operator_field input[type="checkbox"]').attr('name', "user_id[]");
+        $('#operator_lable').show();
+        $('#operator_field').show();
+      }
+    });
+    $("#pid").trigger('change');
+  });
+</script>
+</body>
+</html>

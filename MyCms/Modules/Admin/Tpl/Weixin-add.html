@@ -1,0 +1,162 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href='__PUBLIC__/css/common.css'>
+<script type="text/javascript" src="__PUBLIC__/js/jquery-1.7.1.min.js"></script>
+<script type="text/javascript" src="__PUBLIC__/js/base.js"></script>
+<script type="text/javascript" src="__PUBLIC__/js/jscolor/jscolor.js"></script>
+<script type="text/javascript" src="__PUBLIC__/js/kindeditor/kindeditor-min.js"></script>
+<link rel="stylesheet" href="__PUBLIC__/js/kindeditor/themes/default/default.css" />
+<script charset="utf-8" src="__PUBLIC__/js/kindeditor/lang/zh_CN.js"></script>
+<script type="text/javascript" src="__PUBLIC__/js/artDialog/jquery.artDialog.source.js?skin=blue"></script>
+<script src="__PUBLIC__/js/artDialog/plugins/iframeTools.source.js"></script>
+<script type="text/javascript" src="__PUBLIC__/js/date/jquery-ym-datePlugin-0.1.js"></script>
+<link rel="stylesheet" href="__PUBLIC__/js/date/jquery-ui.css" />
+<link rel="stylesheet" id="skin" href="__PUBLIC__/js/date/jquery-ui-1.9.2.custom.min1.css" />
+<script>
+    var WEB_SESSION_ID = '{$Think.session.myid}';
+
+        
+        </script>
+<script type="text/javascript">
+$(document).ready(function(){
+	//默认功能
+    $(".riqi").ymdateplugin();
+	
+	//显示时间的选择
+	$(".shijian").ymdateplugin({
+		showTimePanel: true
+	});
+	
+});
+</script>
+<style>
+#ttt {
+
+	width:670px;
+	height:130px;
+
+}
+
+</style>
+<script language="JavaScript"> 
+<!--操作全部-->
+function moveAllOption(e1, e2){ 
+ var fromObjOptions=e1.options; 
+  for(var i=0;i<fromObjOptions.length;i++){ 
+   fromObjOptions[0].selected=true; 
+   e2.appendChild(fromObjOptions[i]); 
+   i--; 
+  } 
+ //document.myform.city.value=getvalue(document.getElementById('list2') ); 
+}
+
+<!--操作单个-->
+function moveOption(e1, e2){ 
+ var fromObjOptions=e1.options; 
+  for(var i=0;i<fromObjOptions.length;i++){ 
+   if(fromObjOptions[i].selected){ 
+    e2.appendChild(fromObjOptions[i]); 
+    i--; 
+   } 
+  } 
+ //document.myform.city.value=getvalue(document.getElementById('list2'));
+ 
+} 
+
+function getvalue(geto){ 
+var allvalue = ""; 
+for(var i=0;i<geto.options.length;i++){ 
+allvalue +=geto.options[i].value + ","; 
+} 
+return allvalue; 
+} 
+
+function changepos1111(obj,index) 
+{ 
+if(index==-1){ 
+if (obj.selectedIndex>0){ 
+obj.options(obj.selectedIndex).swapNode(obj.options(obj.selectedIndex-1)) 
+} 
+} 
+else if(index==1){ 
+if (obj.selectedIndex<obj.options.length-1){ 
+obj.options(obj.selectedIndex).swapNode(obj.options(obj.selectedIndex+1)) 
+} 
+} 
+
+
+} 
+ 
+</script> 
+<title>无标题文档</title>
+</head>
+<body>
+<div id="append_parent"></div>
+<div class="container" id="cpcontainer">
+  <div id="contentHeader">
+    <h3>微信管理</h3>
+    <div class="searchArea">
+      <ul class="action left" >
+       <li><a href="__URL__/index" class="actionBtn"><span>返回</span></a></li>        
+        <li><a href="__URL__/add" class="current"><span>录入</span></a></li>
+      </ul>
+    </div>
+  </div>
+  
+<form id="myform" name="myform" action="__URL__/insert" method="post">
+
+
+      <table class="form_table">
+          <neq name="type" value="view">
+           <tr>
+        <td class="tb_title" >选择用户：</td>
+      </tr>
+          <tr>
+              <td>
+                  <br>
+            <select style="height:200px;WIDTH:300px" multiple name="list1" id="list1" size="10" ondblclick="moveOption(document.myform.list1, document.myform.list2)">
+                  <volist name="ulist" id="ulist">
+    		<option value="{$ulist.openid}">{$ulist.nickname}</option>
+                  </volist>
+    	</select>
+                      &nbsp;&nbsp;<a href="javascript:moveOption(document.myform.list1, document.myform.list2)"><img id="add" src="__PUBLIC__/images/create.gif" align="absmiddle"></a>&nbsp;&nbsp;<a href="javascript:moveOption(document.myform.list2, document.myform.list1)"><img  id="remove" src="__PUBLIC__/images/delete.png" align="absmiddle"></a>&nbsp;
+      
+                      <select id="list2" style="height:200px;WIDTH:300px" multiple name="touser[]" size="12" ondblclick="moveOption(document.myform.list2, document.myform.list1)"> 
+</select> 
+    		
+    	</select>
+                 <br>&nbsp;
+        </td>
+          </tr>
+          <tr><td><div style=" width:320px; float:left; margin-right:50px;"><a href="javascript:moveAllOption(document.myform.list1, document.myform.list2)" id="addAll" style="float:right;"><img  src="__PUBLIC__/images/create.gif" align="absmiddle">全选</a></div><div style=" width:220px; float:left;"><a href="javascript:moveAllOption(document.myform.list2, document.myform.list1)"  id="removeAll" style="float:left;"><img src="__PUBLIC__/images/delete.png" align="absmiddle">全消</a></div></td></tr>
+          </neq>
+    <!--      <tr>
+        <td class="tb_title" >标题：</td>
+      </tr>
+      <tr >
+          <td ><input size="60" maxlength="128" name="title" type="text" value="{$title}"  <eq name="type" value="view"> disabled</eq>/>
+        </td>
+      </tr>
+     -->
+      <tr>
+        <td class="tb_title">内容：</td>
+      </tr>
+      <tr >
+        <td ><textarea id="ttt"   name="content" <eq name="type" value="view"> disabled</eq>>{$Content}</textarea>
+        </td>
+      </tr>
+    <neq name="type" value="view">
+      <tr class="submit">
+        <td colspan="2" ><input type="hidden" name="pic" id="pic" value="{$pic}" />
+          <input type="submit" name="editsubmit" value="提交" class="button"/>
+        </td>
+      </tr>
+    </neq>
+    </table>
+  </form>
+
+</div>
+</body>
+</html>

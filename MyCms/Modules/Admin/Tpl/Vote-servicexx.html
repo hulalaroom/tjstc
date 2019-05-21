@@ -1,0 +1,81 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href='__PUBLIC__/css/common.css'>
+<script type="text/javascript" src="__PUBLIC__/js/jquery-1.7.1.min.js"></script>
+<script type="text/javascript" src="__PUBLIC__/js/base.js"></script>
+<title>住宅小区物业满意度调查问卷</title>
+</head>
+<body>
+<div id="append_parent"></div>
+<div class="container" id="cpcontainer">
+  <div id="contentHeader">
+    <h3>住宅小区物业满意度调查问卷</h3>
+    <div class="searchArea">
+      <ul class="action left" >
+        <li class="current"><a href="__URL__/service" class="actionBtn"><span>返回</span></a></li>
+      </ul>
+      <div class="search right"> </div>
+    </div>
+  </div>
+		<table class="form_table">
+			<tr>
+			  <td colspan="6"><b>问卷明细</b></td>
+			</tr>
+			<tr>
+			  <td width="13%"><b>小区名称</b></td>
+			  <td width="20%">{$list['village']}</td>
+			  <td width="13%"><b>业主姓名</b></td>
+			  <td width="20%">{$list['username']}</td>
+			  <td width="13%"><b>房间编号</b></td>
+			  <td width="20%">{$list['housecode']}</td>
+			</tr>
+			<tr>
+			  <td width="13%"><b>联系电话</b></td>
+			  <td width="20%">{$list['phone']}</td>
+			  <td width="13%"><b>投票时间</b></td>
+			  <td colspan="3">{$list['vote_time']|date="Y-m-d H:i:s",###}</td>
+			</tr>
+			<tr>
+			  <td width="13%"><b>您对物业工作人员的行为规范、服务热情是否满意？</b></td>
+			  <td width="20%">{$list['firchoose']}&nbsp;</td>
+			  <td width="13%"><b>您对本小区物业报事处置响应是否满意？</b></td>
+			  <td width="20%">{$list['secchoose']}&nbsp;</td>
+			  <td width="13%"><b>保安巡逻值勤情况是否满意？</b></td>
+			  <td width="20%">{$list['thichoose']}&nbsp;</td>
+			</tr>
+			<tr>
+			  <td width="13%"><b>您对小区机动车辆、非机动车管理是否满意？</b></td>
+			  <td width="20%">{$list['fourchoose']}&nbsp;</td>
+			  <td width="13%"><b>您对小区景观、绿化养护服务是否满意？</b></td>
+			  <td width="20%">{$list['fifchoose']}&nbsp;</td>
+			  <td width="13%"><b>您对小区楼内走楼、电梯等公共部位清洁度是否满意？</b></td>
+			  <td width="20%">{$list['sixchoose']}&nbsp;</td>
+			</tr>
+			<tr>
+			  <td width="13%"><b>公共照明维护管理是否满意？</b></td>
+			  <td width="20%">{$list['sevchoose']}&nbsp;</td>
+			  <td width="13%"><b>电梯运行情况是否满意？</b></td>
+			  <td width="20%">{$list['eightchoose']}&nbsp;</td>
+			  <td width="13%"><b>您对本小区门禁、消防设施等公共设施设备维护程度是否满意？</b></td>
+			  <td width="20%">{$list['ninchoose']}&nbsp;</td>
+			</tr>
+			<tr>
+			  <td width="13%"><b>您认为本小区主要问题有哪些？</b></td>
+			  <td width="20%">{$list['zxfirchoose']}&nbsp;</td>
+			  <td width="13%"><b>您认为小区物业服务应重点改进的地方？</b></td>
+			  <td width="20%">{$list['zxsecchoose']}&nbsp;</td>
+			  <td width="13%"><b>您认为生态城内物业服务整体水平如何？</b></td>
+			  <td width="20%">{$list['zxthichoose']}&nbsp;</td>
+			</tr>
+			<tr>
+			  <td colspan="2"><b>您对目前小区物业工作有何其他方面的建议和意见？</b></td>
+			  <td colspan="4">{$list['zxfourchoose']}</td>
+			</tr>
+			
+		</table>
+		
+</div>
+</body>
+</html>

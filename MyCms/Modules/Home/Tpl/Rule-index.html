@@ -1,0 +1,70 @@
+<!doctype html>
+<html>
+<head>
+    <include file="Public:common-head"/>
+</head>
+
+<body>
+<include file="Public:common-toppart"/>
+<!--<include file="Public:common-slider"/>-->
+
+<div class="content_bg">
+    <div class="content history_content">
+        <p class="dqwz history_dqwz">当前位置：{$nav}</p>
+
+        <div class="list-contianer clearfix">
+            <div class="list-top-border"></div>
+            <div class="list-tab">
+                <ul>
+                    <li class="list-tab-item <eq name="cid" value="1">cur</eq>"><a href="{:U('Rule/index',array('id'=>$id,'cid'=>1))}"><span><img src="__PUBLIC__/last/img/xxgk/home_icon017.png" alt=""/></span>供热服务</a></li>
+                    <li class="list-tab-item <eq name="cid" value="2">cur</eq>"><a href="{:U('Rule/index',array('id'=>$id,'cid'=>2))}"><span><img src="__PUBLIC__/last/img/xxgk/home_icon015.png" alt=""/></span>供水服务</a></li>
+                    <li class="list-tab-item <eq name="cid" value="3">cur</eq>"><a href="{:U('Rule/index',array('id'=>$id,'cid'=>3))}"><span><img src="__PUBLIC__/last/img/xxgk/home_icon016.png" alt=""/></span>供气服务</a></li>
+                    <li class="list-tab-item <eq name="cid" value="4">cur</eq>"><a href="{:U('Rule/index',array('id'=>$id,'cid'=>4))}"><span><img src="__PUBLIC__/last/img/xxgk/home_icon024.png" alt=""/></span>再生水服务</a></li>
+                </ul>
+            </div>
+
+            <div class="list-tab-content-container">
+                <div class="list-tab-content on">
+                    <if condition="$totalCount eq 0">
+                        <div class="article-section no-data">当前没有信息</div>
+                    <else/>
+                        <ul>
+                          <volist name="tglist" id="rule">
+                              <li class="clearfix">
+                                  <a target="_blank" title="{$rule.title}" href="{:U('Rule/view',array('id'=>$rule['id']))}">{$rule.title|cutstr_html=###,30}<span class="date">{$rule.create_time|date='Y-m-d',###}</span></a>
+                              </li>
+                          </volist>
+                        </ul>
+                        <if condition="$pageCount gt 1">
+                            <div class="page">
+                                <a href="{:U('Rule/index',array('id'=>$id,'cid'=>$cid))}" class="pageFirst">首页</a>
+                                <a href="{:U('Rule/index',array('id'=>$id,'cid'=>$cid,'page'=>$prevPage))}" class="pagePrev">上一页</a>
+                                <for start="$pageStart" end="$pageEnd" comparison="elt" name="k">
+                                    <a href="{:U('Rule/index',array('id'=>$id,'cid'=>$cid,'page'=>$k))}" class="<eq name="paged" value="$k">on</eq>">{$k}</a>
+                                </for>
+                                <a href="{:U('Rule/index',array('id'=>$id,'cid'=>$cid,'page'=>$nextPage))}" class="pageNext">下一页</a>
+                                <a href="{:U('Rule/index',array('id'=>$id,'cid'=>$cid,'page'=>$pageCount))}" class="pageLast">末页</a>
+                                <a class="pageInfo">共{$pageCount}页/{$totalCount}条</a>
+                            </div>
+                        </if>
+                    </if>
+                    <br>
+                    <br>
+                    <br>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<include file="Public:common-footer"/>
+<include file="Public:common-script"/>
+<script type="text/javascript" src="__PUBLIC__/last/js/jquery.easing.min.js"></script>
+<script type="text/javascript" src="__PUBLIC__/last/js/banner.js"></script>
+<script type="text/javascript">
+    $(function () {
+        initBanner();
+    });
+</script>
+</body>
+</html>

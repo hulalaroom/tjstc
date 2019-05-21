@@ -1,0 +1,367 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href='__PUBLIC__/css/common.css'>
+<script type="text/javascript" src="__PUBLIC__/js/jquery-1.7.1.min.js"></script>
+<script type="text/javascript" src="__PUBLIC__/js/base.js"></script>
+<script type="text/javascript" src="__PUBLIC__/js/jscolor/jscolor.js"></script>
+<script type="text/javascript" src="__PUBLIC__/js/kindeditor/kindeditor-min.js"></script>
+<link rel="stylesheet" href="__PUBLIC__/js/kindeditor/themes/default/default.css" />
+<script charset="utf-8" src="__PUBLIC__/js/kindeditor/lang/zh_CN.js"></script>
+<script type="text/javascript" src="__PUBLIC__/js/date/jquery-ym-datePlugin-0.1.js"></script>
+<link rel="stylesheet" href="__PUBLIC__/js/date/jquery-ui.css" />
+<link rel="stylesheet" id="skin" href="__PUBLIC__/js/date/jquery-ui-1.9.2.custom.min1.css" />
+<script>
+    var WEB_SESSION_ID = '{$Think.session.myid}';    
+    var IMG_DEL = '{:U("Attach/del")}';
+	// 图片预览
+	function showpic(event,imgsrc){
+		/*var left = event.clientX+document.body.scrollLeft+20;
+		var top = event.clientY+document.body.scrollTop+20;*/
+		var left = event.pageX + 20;
+		var top = event.pageY + 20;
+		$("#preview").css({left:left,top:top,display:""});
+		$("#pic_a1").attr("src",imgsrc);
+	}
+	// 取消预览
+	function hiddenpic(){
+		$("#preview").css({display:"none"});
+	}    
+    function remove(obj,file){
+        if(confirm('确定删除?')){
+			$.ajax({
+				url: '{:U("Attach/del")}',
+				type : 'POST',
+				data : 'file='+file,
+				
+				success: function(res){
+					$('#'+obj).remove();
+				}
+			});
+		}		
+	}
+            //编辑器
+	KindEditor.ready(function(K) {
+		var editor1 = K.create('textarea[name="content"]', {
+			allowFileManager : true,
+			uploadJson : '{:U("Attach/upload")}',
+			fileManagerJson :  '{:U("Attach/filelist")}',
+			 width : '675px',
+			height : '300px',
+			afterCreate : function() {
+				var self = this;
+				K.ctrl(document, 13, function() {
+					self.sync();
+					K('form[name=example]')[0].submit();
+				});
+				K.ctrl(self.edit.doc, 13, function() {
+					self.sync();
+					K('form[name=example]')[0].submit();
+				});
+			}
+		});
+		//自定义
+		var editor = K.editor({
+			allowFileManager : true,        
+			uploadJson : '{:U("Attach/upload")}',
+			fileManagerJson :  '{:U("Attach/filelist")}'
+		});
+		//取消缩略图                         
+		K('#clear').click(function() {
+			K('#image img').remove();
+			K('#image').append('<img  src="__PUBLIC__/images/thumb.png">');
+			K('#pic').val('');
+		});			
+		//缩略图                         
+		K('#image').click(function() {
+			editor.loadPlugin('image', function() {
+				editor.plugin.imageDialog({
+					//imageUrl : K('#image1 img'),											   
+					clickFn : function(url, title, width, height, border, align) {
+						//K('#image1 img').append('<img src="' + data.url + '">');
+						K('#image img').remove();
+						K('#image').append('<img src="'+url+'">');
+						editor.hideDialog();
+						K('#pic').val(url);
+					}
+				});
+			});
+		});
+		//批量上传
+		var j=0;
+		K('#imuoload').click(function() {
+			editor.loadPlugin('multiimage', function() {
+				editor.plugin.multiImageDialog({										   
+					clickFn : function(urlList) {
+						var div = K('#pics_images');					  
+						K.each(urlList, function(i, data) {
+//                          div.append('<div id="image_'+(j+1)+'" class="imglist">标题：&nbsp;&nbsp;<input  value="'+data.url+'" name="pics[]" type="hidden"><input  value="'+data.name+'" name="pictitle[]" class="ti">&nbsp;&nbsp;<a href="javascript:remove( &quot;image_'+(j+1)+' &quot;, &quot;'+data.url+'&quot;);"><img src="__PUBLIC__/images/del.png" alt="删除" width="18" height="18" border="0" align="absmiddle" title="删除"></a> &nbsp;&nbsp; <a href="javascript:;" onmouseover="showpic(event, &quot;'+data.url+'&quot;);" onmouseout="hiddenpic();">'+data.savename+'</a></div>');
+							div.append('<li id="image'+(j+1)+'"><div class="get selected"><img src="'+data.url+'"><input type="text"  name="pictitle[]" value="'+data.name+'"><input type="hidden"  name="pics[]" value="'+data.url+'"></div><a href="javascript:remove( &quot;image'+(j+1)+' &quot;, &quot;'+data.url+'&quot;);">删除</a></li>');
+							j++;
+						});
+						editor.hideDialog();
+					}
+				});
+			});
+		});
+	   // 文件上传
+		K('#insertfile').click(function() {
+			editor.loadPlugin('insertfile', function() {
+				editor.plugin.fileDialog({
+					fileUrl : K('#src').val(),
+					clickFn : function(url, title) {
+						K('#src').val(url);
+						editor.hideDialog();
+					}
+				});
+			});
+		});   
+	});
+</script>
+<script type="text/javascript">
+$(document).ready(function(){
+	//默认功能
+    $(".riqi").ymdateplugin();	
+	//显示时间的选择
+	$(".shijian").ymdateplugin({
+		showTimePanel: true,
+                changeMonth: true,
+		changeYear: true
+	});	
+});
+</script>
+<style>
+#im {
+	z-index: 991;
+	background-color: white;
+	border: #f7f7f7 solid 2px;
+	position: absolute;
+	width:220px;
+	height:195px;
+	left: 460px;
+	text-align: center;
+	top: 160px;
+	padding-top: 2px;
+}
+#image {
+	display: block;
+	height: 150px;
+	line-height: 150px;
+	width: 220px;
+	cursor: pointer;
+	text-align: center;
+        display: table-cell;
+     vertical-align:middle;
+}
+#image img {
+	vertical-align: middle; margin: auto; max-width: 220px; max-height: 150px;
+}
+#imuoload:hover{ text-decoration: underline; cursor:  pointer; }
+#clear {
+	background: #51B148;
+	color: #FFF;
+	font: bold 14px arial, sans-serif;
+	padding: 0.15em 1em;
+	text-transform: uppercase;
+	margin: 0 auto;
+	overflow: visible;
+	width: auto;
+	cursor: pointer;
+	padding: 7px 20px;
+	display: block;
+}
+#insertfile {
+	background: #51B148;
+	color: #FFF;
+	font: bold 14px arial, sans-serif;
+	padding: 0.15em 1em;
+	text-transform: uppercase;
+	margin: 0 auto;
+	overflow: visible;
+	width: auto;
+	cursor: pointer;
+	padding: 4px 20px;
+	
+}
+#pics_images{float: left; width: 100%; }
+#pics_images li{ float: left; width: 87px; height: 120px;  margin: 15px 0;margin-right: 15px;}
+#pics_images li img{ float: left; width: 87px;height: 75px;}
+#pics_images li input{ float: left; width: 81px; height: 20px; line-height: 20px;}
+#pics_images li a{ float: left; width: 87px; height: 25px; line-height: 25px; text-align: center;}
+#pics_images li a:hover{ background-color:  #99ccff; color: white;}
+</style>
+<title>无标题文档</title>
+</head>
+<body>
+<div id="append_parent"></div>
+	<div class="container" id="cpcontainer">
+		<div id="contentHeader">
+			<h3>文章管理</h3>
+		<div class="searchArea">
+			<ul class="action left" >
+				<li><a href="__URL__/index" class="actionBtn"><span>返回</span></a></li>
+				<li><a class="current" href="__URL__/add" class="actionBtn"><span>录入</span></a></li>
+			</ul>
+		</div>
+		</div>
+		<eq name="type" value="add">
+		<form name="form1" action="__URL__/insert" method="post">
+		<else/>
+		<form name="form1" id="form1" action="__URL__/update" method="post">
+			<input name="id"  type="hidden" value="{$id}" />
+			<input name="cate"  type="hidden" value="{$type}" />
+		</eq>
+			<div id="im"><a id="image"><img  src="<empty name='pic'>__PUBLIC__/images/thumb.png<else />{$pic}</empty>"></a>
+				<input type="button" class="actionBtn" id="clear" value="取消">
+			</div>
+				<table class="form_table">
+					<tr>
+						<td class="tb_title" >标题：</td>
+					</tr>
+					<tr >
+						<td ><input size="60" maxlength="128" name="title" id="title" type="text" value="{$title}" />
+						<input name="bold" type="checkbox"  value="1"<eq name="bold" value="1"> checked="checked"</eq> >
+						加粗
+						<input name="underline" type="checkbox" value="1" <eq name="underline" value="1"> checked="checked"</eq>>
+						下划线
+						<input name="color" class="color {required:false}"  value="{$color}" size="5" style="bg-color:{$color};"></td>
+					</tr>
+					<tr>
+						<td class="tb_title">所属栏目：</td>
+					</tr>
+					<tr >
+						<td >
+							<select name="cat_id" id="catId">
+								<volist name="list" id="cat">
+									 							  
+										<option value="{$cat.id}" <eq name="cat.id" value="$cat_id"> selected="selected"</eq>				
+									<neq name="cat.Model.name" value="$Think.MODULE_NAME">disabled=""</neq>>{$cat.html}{$cat.title}</option>
+								</volist>
+							</select>
+						  *存在子栏目或不是文章模型不可选
+						</td>
+					</tr><input size="30" maxlength="80" name="tpl"  type="hidden"  value="{$tpl}" />
+
+					<tr>
+					<td class="tb_title">跳转网址(此处若填写，则不显示内容)：</td>
+					</tr>
+					<tr >
+						<td  ><input size="40" maxlength="128" name="url"  type="text" value="{$url}" /></td>
+					</tr>
+					<tr>
+					<td class="tb_title">(焦点图尺寸:800*340)</td>
+					</tr>
+					<tr>
+						<td class="tb_title">内容：</td>
+					</tr>
+					<tr >
+						<td >
+							<textarea name="content">{$content}</textarea>
+						</td>
+					</tr>
+					<tr>
+					<td class="tb_title">信息来源：</td>
+					</tr>
+					<tr >
+        <td><input size="40" maxlength="128" name="tag"  type="text" value="{$tag}" /> *多个来源请用英文逗号隔开【,】</td>
+      </tr>
+					<tr>
+						<td class="tb_title">组图：</td>
+					</tr>
+					<tr >
+						<td>
+							<div>
+								<p><span id="imuoload"><img src="__PUBLIC__/images/create.gif" align="absmiddle">添加图片</span></p>
+								<ul id="pics_images">
+									<volist name="piclist" id="pics" key="k">
+								
+									<li id="image_{$k}"><div class="get selected"><img src="{$pics.pic}"><input type="text"  name="pictitle[]" value="{$pics.title}"><input type="hidden"  name="pics[]" value="{$pics.pic}"></div><a href="javascript:remove( &quot;image_{$k} &quot;, &quot;{$pics.pic}&quot;);">删除</a></li>  
+									</volist>
+								</ul>
+							</div>
+						 </td>
+					</tr>
+					<tr>
+						<td class="tb_title">附件：</td>
+					</tr>
+					<tr >
+						<td>
+							<input size="50"  name="file"  type="text" value="{$file}" id="src" /><input type="button" class="actionBtn" id="insertfile" value="上传">
+						</td>
+					</tr>
+					<tr>
+						<td class="tb_title">时间：</td>
+					</tr>
+					<tr >
+						<td >发布时间：<input autocomplete="off" size="20" name="start_time"  type="text" value="<notempty name='start_time'>{$start_time|date='Y-m-d H:i:s',###}<else/>{$now|date='Y-m-d H:i:s',###}</notempty>" class="shijian" />&nbsp;&nbsp;&nbsp;&nbsp;到期时间：<input autocomplete="off" size="20" name="end_time"  type="text" value="<notempty name='end_time'>{$end_time|date='Y-m-d H:i:s',###}</notempty>"  class="shijian"/>
+					  留空则永久有效</td>
+					</tr>
+					<if condition="(true === $_SESSION['is_supper_admin']) OR ($common_id eq 11)"> 
+						<tr >
+							<td class="tb_title">状态：</td>
+						</tr>
+						<tr>
+							<td>
+								<select name="status">
+									<option value="1" <eq name="status" value="1"> selected="selected"</eq>>正常</option>
+									<option value="0" <eq name="status" value="0"> selected="selected"</eq>>停用</option>
+								</select>
+								<select name="istop">
+									<option value="0" <eq name="istop" value="0"> selected="selected"</eq>>非置顶</option>  
+									<option value="1" <eq name="istop" value="1"> selected="selected"</eq>>置顶</option>
+								</select>
+								<select name="isre">
+									<option value="1"<eq name="isre" value="1"> selected="selected"</eq>>通过审核</option>
+									<option value="0" <eq name="isre" value="0"> selected="selected"</eq>>未通过审核</option>
+								</select>
+								<select name="ishot">
+									<option value="1" <eq name="ishot" value="1"> selected="selected"</eq>>微信推荐</option>
+									<option value="0" <eq name="ishot" value="0"> selected="selected"</eq>>暂不推荐</option>
+								</select>
+							</td>
+						</tr>
+					</if>
+					<input size="50" maxlength="80" name="keywords" type="hidden"  value="{$keywords}" />
+					<tr class="submit">
+						<td colspan="2" ><input type="hidden" name="pic" id="pic" value="{$pic}" />
+							<input type="submit" name="editsubmit" value="提交"  onclick="getUrl(1)" class="button"/>&nbsp;&nbsp;
+							<neq name="type" value="add">
+								<if condition="($cat_id neq 51) AND ($cat_id neq 52) AND ($cat_id neq 54) AND ($cat_id neq 29)">
+								<input type="submit" value="页面预览" class="button" onclick="getUrl(2)"/>
+								</if>
+							</neq>
+						</td>
+					</tr>
+				</table>
+			</form>
+	<script type="text/javascript">
+		function getUrl(differance){
+			//var cate = document.getElementById("cate").value;
+			if(differance == 2){
+				form1.action="__URL__/views";
+				form1.target="_blank";
+				form1.submit();
+			}
+			else{
+				form1.target="";
+				if(cate == "add"){
+					alert('123');
+					var title = document.getElementById("title").value;
+					if(title == ''){
+						alert('情输入标题!');
+						return false;
+					}
+					form1.action="__URL__/insert";
+				}
+				else{
+					form1.action="__URL__/update";
+				}
+				form1.submit();
+			}
+			
+		}
+	</script>
+	</div>
+</body>
+</html>

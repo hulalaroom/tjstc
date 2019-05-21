@@ -1,0 +1,77 @@
+<link type="text/css" rel="stylesheet" href="__PUBLIC__/css/base.css"/>
+<link type="text/css" rel="stylesheet" href="__PUBLIC__/css/my_5890.css"/>
+<link type="text/css" rel="stylesheet" href="__PUBLIC__/css/article.css"/>
+<link type="text/css" rel="stylesheet" href="__PUBLIC__/css/business.css"/>
+<link type="text/css" rel="stylesheet" href="__PUBLIC__/css/index.css"/>
+<link type="text/css" rel="stylesheet" href="__PUBLIC__/css/member.css"/>
+<link type="text/css" rel="stylesheet" href="__PUBLIC__/css/validator.css"/>
+<ul class="pgroup" style="max-height:400px;width:660px;">
+  <li>
+    <h4 style="width:180px; text-align:right">受理状态 :</h4>
+    <eq name="status" value="0"><span class="col_o">待接收</span></eq>
+    <eq name="status" value="1"><span class="col_b">已接收</span></eq>
+	<eq name="status" value="2"><span class="col_b">处理完毕</span></eq>
+  </li>
+   <li>
+    <h4 style="width:180px; text-align:right">登记时间 :</h4>
+    <span>{$create_time|date='Y-m-d H:i:s',###}</span> </li>
+  <li>
+    <h4 style="width:180px; text-align:right">业主名称 :</h4>
+    <span>{$ownername}</span> </li>
+  <li>
+    <h4 style="width:180px; text-align:right">身份证明(编号)：</h4>
+    <span>{$papercode}</span> </li>
+  <li>
+    <h4 style="width:180px; text-align:right">移动电话：</h4>
+    <span>{$phone}</span> </li>
+  <li>
+  <li>
+    <h4 style="width:180px; text-align:right">固定电话：</h4>
+    <span>{$FixedPhone}</span> </li>
+  <li>
+  <li>
+    <h4 style="width:180px; text-align:right">单位名称：</h4>
+    <span>{$workunit}</span> </li>
+  <li>
+  <li>
+    <h4 style="width:180px; text-align:right">单位地址及电话：</h4>
+    <span>{$UnitAddressPhone}</span> </li>
+  <li>
+  <li>
+    <h4 style="width:180px; text-align:right">主要家庭成员姓名及联系电话：</h4>
+    <span>{$FamilyNamePhone}</span> </li>
+  <li>
+  <li>
+    <h4 style="width:180px; text-align:right">建筑面积（m2）：</h4>
+    <span>{$BuiltUpArea}</span> </li>
+  <li>
+  <li>
+    <h4 style="width:180px; text-align:right">公摊面积（m2）：</h4>
+    <span>{$PoolArea}</span> </li>
+  <li>
+  <li>
+    <h4 style="width:180px; text-align:right">层高（m2）：</h4>
+    <span>{$FloorHeight}</span> </li>
+  <li>
+  <li>
+    <h4 style="width:180px; text-align:right">套内建筑面积（m2）：</h4>
+    <span>{$SleeveBuiltUpArea}</span> </li>
+  <li>
+  <li>
+    <h4 style="width:180px; text-align:right">超高面积（m2）：</h4>
+    <span>{$UltraHighArea}</span> </li>
+  <li>
+  <li>
+    <h4 style="width:180px; text-align:right">供热计费面积（m2）：</h4>
+    <span>{$HeatingArea}</span> </li>
+	<!--
+  <eq name="status" value="1">
+  <li>
+    <h4>回复时间 :</h4>
+    <span>{$update_time|date='Y-m-d H:i:s',###}</span> </li>
+  <li style="border:none">
+    <h4>回复内容 :</h4>
+    <span class="f_14">{$content}</span> </li>
+ </eq>
+ -->
+</ul>

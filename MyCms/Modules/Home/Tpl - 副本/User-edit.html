@@ -1,0 +1,157 @@
+<include file="Public:header" />
+<div class="main_block">
+    <include file="Public:top" />
+    <div class="content_block">
+        <div class="left_side fl"><include file="Public:left" /></div>
+
+        <div class="main_con fr">
+            <div class="bread_nav">
+                <div class="l fl"></div>
+                <div class="m fl" style="line-height:30px;">
+                    <span class="list_style"></span>
+                    <span>您当前的位置:</span>
+                    <a href="/">首页</a>
+                    <span>></span>
+					<a href="{:U('User/index')}">我的5890</a>
+                    <span>></span> 
+					<span style="color:#009f3f;">个人设置</span>
+                </div>
+                <div class="r fl"></div>
+            </div>
+            <div class="shezhi">
+                <!-- begin -->
+                <div class="bar"><h3>&nbsp;账户设置</h3></div>
+                <div class="pa_block">
+                <form id="form2" name="form2" method="post" action="__URL__/editok">
+                    <table class="bdys" width="100%" border="0" cellspacing="6" cellpadding="0" align="center">
+                        <tr>
+
+                        </tr>
+						<tr>
+                            <td align="right"><span>用户名称：</span></td>
+                            <td align="left" colspan=2><input type="text" name="name" id="name" class="fl" size="30" value="{$username}" autocomplete="off" readonly="true"><div class="my_isright"><div id="nameTip"></div></div></td>
+                        </tr>
+						<tr>
+                            <td align="right"><span>真实姓名：</span></td>
+                            <td align="left" colspan=2><input type="text" name="nickname" id="nickname" class="fl" size="30" value="{$nickname}" autocomplete="off"><div class="my_isright"><div id="nicknameTip"></div></div></td>
+                        </tr>
+                        <tr>
+                            <td align="right"><span>电子邮箱：</span></td>
+                            <!--<td align="left" colspan=2><input type="" name="email" class="fl" size="30" value="{$email}" autocomplete="off" disabled="disabled"></td>-->
+							<td align="left" colspan=2><input type="text" name="email" id="email" class="fl" size="30" value="{$email}" autocomplete="off"><div class="my_isright"><div id="emailTip"></div></div></td>
+                        </tr>
+                        <tr>
+                            <td align="right"><span>手机号码：</span></td>
+                            <td align="left" colspan=2><input type="text" name="phone" id="phone" class="fl" size="30" value="{$phone}" autocomplete="off"><div class="my_isright"><div id="phoneTip"></div></div></td>
+                        </tr>
+                        <tr>
+                            <td align="right"><span>邮寄地址：</span></td>
+                            <td align="left" colspan=2><input type="text" name="address" id="address" class="fl" size="30" value="{$address}" autocomplete="off"><div class="my_isright"><div id="addressTip"></div></div></td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td align="left">
+                                <input name="id" type="hidden" value="{$Think.session.uid}" />
+                                <input type="submit" name="" class="btn1 Submit"  value="修 改"/>
+                                <input type="button" name="" class="btn1 Reset ma_L" value="返 回" onclick="javascript:window.location.href='{:U('User/index')}'">
+                                </td>
+                        </tr>
+                    </table>
+                </form>
+
+                </div>
+                <!-- end -->
+            </div>
+        </div>
+
+
+    </div>
+</div>
+
+
+
+<include file="Public:footer" />
+</body>
+</html>
+<script type="text/javascript" src="__PUBLIC__/js/formValidator-4.1.3.min.js"></script>
+<script type="text/javascript" src="__PUBLIC__/js/formvalidatorregex.js"></script>
+<script type="text/javascript">
+    $(document).ready(function(){   
+        //提供回调函数，提供提交返回结果的处理   
+        var options = {
+            //            beforeSubmit: showRequest,
+            //提交前处理 
+            success: showResponse,
+            //处理完成 
+            resetForm: false,
+            dataType: 'json'
+        };    
+        $('#form2').submit(function() {
+            if ($.formValidator.pageIsValid('1')==true) 
+            { 
+                $(this).ajaxSubmit(options);
+                return false; 
+            } 
+          
+        });
+       
+        //初始化验证插件，如果提交出错，则弹出对话框，如果正确，则通过ajax提交表单请求。
+        $.formValidator.initConfig({autotip:true,formID:"form2",
+            onsuccess:function(msg){
+              
+                return false;},
+            onError:function(msg){}
+
+        });
+  
+        //表单验证   
+		 /*$("#name").formValidator({oncorrect:"正确",onShow:"由数字、英文字母或者下划线组成"}).inputValidator({min:6,max:35,onError:"6-35个字符,请确认"}).regexValidator({regExp:"username",dataType:"enum",onError:"数字、英文字母或者下划线组成"}).ajaxValidator({
+            type : "POST",
+            dataType : "html",
+            data : {name:$.trim($("#name").val())},
+            async : true,//异步传输，false为同步
+            url : "{:U('User/check_user')}",
+            success : function(data){
+				if( data == "true" ){
+                    return true;
+                }else{
+                    return "该用户名已注册,请重新输入";
+                }
+            },	
+            error: function(jqXHR, textStatus, errorThrown){alert("服务器没有返回数据，可能服务器忙，请重试"+errorThrown);},
+            onError : "该用户名不可用，请更换用户名",
+            onWait : "正在进行合法性校验，请稍候..."
+        });*/
+		$("#nickname").formValidator({oncorrect:"正确",onShow:"数字、中文、英文字母或下划线组成"}).inputValidator({min:4,max:35,onError:"4-35个字符,请确认"});
+		$("#email").formValidator({oncorrect:"正确"}).regexValidator({regExp:"email",dataType:"enum",onError:"邮箱格式错误"}).ajaxValidator({
+            type : "POST",
+            dataType : "html",
+            data:{email:$.trim($("#email").val())},
+            async : true,//异步传输，false为同步
+            url : "{:U('User/check_email')}",
+            success : function(data){
+                if( data == "false" ){
+                    return true;
+                }else{
+                    return "该邮箱已注册,请重新输入";
+                }
+            },	
+            error: function(jqXHR, textStatus, errorThrown){alert("服务器没有返回数据，可能服务器忙，请重试"+errorThrown);},
+            onError : "该邮箱不可用，请更换邮箱",
+            onWait : "正在进行合法性校验，请稍候..."
+        });
+        $("#phone").formValidator({onShow:"请输入手机号码或座机号码",onFocus:"请输入手机号码或座机号码",onCorrect:"正确",onEmpty:"不能为空"}).regexValidator({regExp:["intege"],dataType:"enum",onError:"格式不正确"});
+        $("#address").formValidator({oncorrect:"正确",onEmpty:"请输入邮寄地址"}).inputValidator({min:20,onError:"至少要输入10个汉字或20个字符"});      
+    }); 
+    
+    function showResponse(res) {
+        art.dialog({
+            title: res.title,
+            content: res.message,
+            time: res.time
+        });
+        if (res.url) {
+            window.location.href = res.url;
+        }
+    }  
+</script>

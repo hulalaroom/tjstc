@@ -1,0 +1,463 @@
+<include file="Public:header"/>
+
+<volist name="gglist" id="list">
+	<div id="show">
+		<div id="dropin" style="position:absolute;visibility:hidden;width:1159px;z-index:10005; height:250px; margin-left:50%;left:-580px;">
+			<div align="right" style="color:#FFFFFF;"><a href="javascript:dismissbox()" title="关闭"><img src="/Public/images/exit.png" alt="关闭"/></a></div>
+			<div style="position:relative;">
+				<div><img src="{$list.pic}" alt="{$list.title}"/></div>
+				<div style="right:45px;top:55px;WIDTH:580px;position:absolute;z-index:10010;HEIGHT: 442px; OVERFLOW-y: scroll;  scrollbar-face-color:#70807d; scrollbar-arrow-color:#ffffff; scrollbar-highlight-color:#ffffff; scrollbar-3dlight-color:#70807d; scrollbar-shadow-color:#ffffff; scrollbar-darkshadow-color:#70807d; scrollbar-track-color:#ffffff; color:#FFFFFF;">
+ {$list.content}
+</div>		
+			</div>
+		</div>
+	</div>
+</volist>
+<div class="main_block">
+<include file="Public:index-top"/>
+<div class="content_block">
+<div class="left_side fl">
+  <div style="height:375px;"></div>
+    <a target="_blank" href="{:U('/page/map')}" class="map ma_B <eq name='submenu' value='show'> ma_T2</eq>" >
+		<img src="/public/images/img_map.gif"/>
+	</a> 
+	<neq name="topid" value="20"><a target="_blank" href="{:U('/user/addtag')}" class="mes ma_B1"> <img src="/public/images/img_message.jpg"/> </a> </neq>
+	<!--在线调查-->
+	  <div class="ma_T3">
+		<div class="bread_nav">
+		  <div class="l fl"></div>
+		  <div class="m new_m fl">
+			<h1 class="fl new_w3">在线调查</h1>
+			<a target="_blank" href="{:U('/vote/index','id=21')}" class="more fr"></a></div>
+		  <div class="r fl"></div>
+		</div>
+		<div class="l_block list gg_con new_h2">
+		  <ul>
+			<empty name="votelist">
+			  <div class="nodata">暂无数据</div>
+			</empty>
+			<volist name="votelist" id="list">
+			  <li><a target="_blank" title="{$list.title}" href="<notempty name='list.tpl'>{:U('/Vote'.'/'.$list['tpl'],'id='.$list['id'])}<else/>{:U('/Vote/view','id='.$list['id'])}</notempty>">{$list.title|cutstr_html=###,20}</a>
+			</volist>
+		  </ul>
+		</div>
+	  </div>
+  <!--信息订阅-->
+	 <eq name="topid" value="20">
+		 <div class="ma_T3">
+				<div class="bread_nav">
+					<div class="l fl"></div>
+					<div class="m new_m5890 fl">
+						<h1 class="fl">信息订阅</h1><a target="_blank" style="width:55px;" class="more fr" href="{:U('/user/addtag')}"></a>
+					</div>
+					<div class="r fl"></div>
+				</div>
+				<div class="l_block list gg_con new_h1 xina">
+					<!--信息订阅-->
+					<ul>
+						<volist name="ban" id="t">
+							<li>
+								<a target="_blank" href="{:U('/article/view','id='.$t['id'])}" title="{$t.title}">{$t.title|cutstr_html=###,14}</a>
+							</li>
+						</volist>
+					</ul>
+				</div>
+			</div>
+	 </eq>
+</div>
+<div class="middle_con">
+  <div class="top">
+    <!--焦点图start-->
+    <div id="KinSlideshow" style="visibility:hidden;">
+      <volist name="jdlist" id="vo">
+        <a target="_blank"
+        <empty name="vo.url">href="{:U('/article/view1','id='.$vo['id'])}"
+          <else/>
+          href="{$vo.url}"
+        </empty>
+        style=" display:inline-block;"><img width="500" height="270" src="{$vo.pic}" alt="{$vo.title}"/></a>
+      </volist>
+    </div>
+    <!--焦点图end-->
+    <div class="ad">
+	   <!--焦点图下方 start update by wangshipeng 2014.06.01-->
+      <volist name="jdxflist" id="vo">
+        <a target="_blank"
+        <empty name="vo.url">href="javascript:"
+          <else/>
+          	href="{$vo.url}"
+        </empty>
+        ><img width="243" height="180" src="{$vo.pic}" alt="{$vo.title}"/>&nbsp;</a>
+      </volist>
+   
+     <!--焦点图下方 end update by wangshipeng 2014.06.01-->	
+
+      <!--<a target="_blank" href="{$Think.config.index_url}"> <img src="{$Think.config.index_pic}"/> </a>
+      <a target="_blank" href="{$Think.config.index_url2}" class="ma_L"><img src="{$Think.config.index_pic2}"/> </a>-->
+    </div>
+  </div>
+  <!--服务公告-->
+  <div class="ma_T">
+    <div class="bread_nav">
+      <div class="l fl"></div>
+      <div class="m new_w1 fl">
+		<div style="float:left"><h1><a target="_blank" onmouseover="javascript:getTab(0)">服务公告</a></h1></div>
+		<div style="float:left; padding-left:30px; width:76%">
+			<span id="tgn"><a target="_blank" onmouseover="javascript:getTab(1)">停供能信息</a></span>
+			<span id="hd"><a target="_blank" onmouseover="javascript:getTab(2)">活动通知</a></span>
+			<div style="float:right"><a target="_blank" href="{:U('/article/cat','id=1')}" class="more fr"></a></div>
+		</div>
+      </div>
+      <div class="r fl"></div>
+    </div>
+    <div class="l_block zxcx">
+	   <div class="new_w2" id="fwgg">
+       	<div class="bin-stop-serve-box">
+			<empty name="fwlist">
+			  <div class="nodata">暂无数据</div>
+			</empty>
+			<volist name="fwlist" id="fw" key="k">
+				<ul>
+				<li class="bin_stop_serve_title"><a target="_blank" title="{$fw.title}" href="{:U('/article/view','id='.$fw['id'])}">{$fw.title|cutstr_html=###,20}</a></li>
+				<li class="bin_stop_serve_date">{$fw.create_time|date='Y-m-d',###}</li>
+			  </ul>
+			</volist>
+			<div class="clear"></div>
+		</div>
+       </div>
+      <div class="new_w2" id="tgnxx">
+       	<div class="bin-stop-serve-box">
+			<empty name="tglist">
+			  <div class="nodata">暂无数据</div>
+			</empty>
+			<volist name="tglist" id="list">
+				<if condition="$list.isre eq 1">	
+				  <ul>
+					<li class="bin_stop_serve_title"><a target="_blank" title="{$list.title}" href="{:U('/article/view','id='.$list['id'])}">{$list.title|cutstr_html=###,20}</a></li>
+					<li class="bin_stop_serve_date">{$list.create_time|date='Y-m-d',###}</li>
+				  </ul>
+				</if>
+			</volist>
+			<div class="clear"></div>
+		</div>
+       </div>
+	   <div class="new_w2" id="hdgg" style="display:none;">
+       	<div class="bin-stop-serve-box">
+			<empty name="hdlist">
+			  <div class="nodata">暂无数据</div>
+			</empty>
+			<volist name="hdlist" id="list">
+				<if condition="$list.isre eq 1">	
+				  <ul>
+					<li class="bin_stop_serve_title"><a target="_blank" title="{$list.title}" href="{:U('/article/view','id='.$list['id'])}">{$list.title|cutstr_html=###,20}</a></li>
+					<li class="bin_stop_serve_date">{$list.create_time|date='Y-m-d',###}</li>
+				  </ul>
+				</if>
+			</volist>
+			<div class="clear"></div>
+		</div>
+       </div>
+	  </div>
+  </div>
+  <!--服务公告-->
+  
+  <!--自助服务-->
+  <div class="ma_T">
+    <div class="bread_nav">
+      <div class="l fl"></div>
+      <div class="m new_w1 fl">
+	  	<div style="float:right; padding-right:20px;"><a target="_blank" href="{:U('/page/zizhu','id=8')}" class="more fr"></a></div>
+        <h1>自助服务</h1>
+      </div>
+      <div class="r fl"></div>
+    </div>
+    <div class="l_block new_h3 fwzn">
+      <div class=“binbin_ser_box” style="overflow:hidden">
+		  <div class="bin-service-self-box">
+			 <volist name="zzlist" id="c" key="k">
+				 <if condition="$k lt 11">
+					   <ul>
+						 <li class="bin-service-self-ps" ><a target="_blank" href="<notempty name='c.url'>{$c.url}<else/>{:U('/page/'.$c['tpl'],'id='.$c['id'])}</notempty>"><img src="{$c.pic}" width="56" height="56" /></a></li>
+						 <li class="bin-service-self-text" ><a target="_blank" href="<notempty name='c.url'>{$c.url}<else/>{:U('/page/'.$c['tpl'],'id='.$c['id'])}</notempty>">{$c.title|msubstr=0,4}</a></li>
+					   </ul>
+				 </if>
+			 </volist>
+		  
+			<div class="clear"></div>
+		</div>
+	  </div>   
+    </div>
+  </div>
+  <!--自助服务-->
+  <!--轮换start-->
+
+  <!--政策法规 tab start-->
+  <div class="tabbox  ma_T" id="statetab">
+    <div class="bread_nav">
+      <div class="l fl"></div>
+      <div class="m new_w1 fl">
+
+        <ul class="tab tabbtn">
+          <volist name="zclist" id="vo">
+            <li>
+              <h1>{$vo.title}</h1>
+            </li>
+          </volist>
+        </ul>
+      </div>
+      <div class="r fl"></div>
+    </div>
+    <volist name="zclist" id="vo">
+      {~$zx = get_list($vo['id'].'|Article|1|1')}
+
+      <div class="l_block tabcon" style="height:142px; padding-top:20px;">
+        <a target="_blank" href="{:U('/article/index','id='.$vo['id'])}" class="fr"
+           style="position:absolute; right:20px; bottom:173px;-index:999;"><img src="/public/images/more.png"></a>
+        <volist name="zx" id="tj">
+          <if condition="$vo['id'] eq 6"> 
+	          <dl class="zcfg">
+	            <dt>
+	              <a target="_blank" href="{:U('/Article/view','id='.$tj['id'])}" title="{$tj.title}"><img src="{$tj.pic}"/></a>
+	            </dt>
+	            <dd>
+	              <a target="_blank" href="{:U('/Article/view','id='.$tj['id'])}" title="{$tj.title}">
+	                <h2>{$tj.title|cutstr_html=###,26}</h2>
+	              </a>
+	
+	              <p>{$tj.content|cutstr_html=###,26}</p>
+	              <a target="_blank" href="{:U('/Article/view','id='.$tj['id'])}" title="{$tj.title}">详细>></a>
+	            </dd>
+	          </dl>
+	         </if>
+        </volist>
+        <ul class="zcfg zcfg_newh">
+          {~$qt = get_list($vo['id'].'|Article|6')}
+          <empty name="qt">
+            <div class="nodata">暂无数据</div>
+          </empty>
+          <volist name="qt" id="view">
+            <li><a target="_blank" href="{:U('/article/view','id='.$view['id'])}"
+                   title="{$view.title}">{$view.title|cutstr_html=###,10}</a></li>
+          </volist>
+        </ul>
+      </div>
+    </volist>
+  </div>
+  <script type="text/javascript" src="/public/js/index_tab.js"></script>
+  <!--tab end-->
+  <!--轮换end-->
+</div>
+<div class="right_side">
+  <div class="zxjf"><a target="_blank" href="/index.php?s=/article/down"><img src="/public/images/img_fee.jpg"/></a></div>
+  <!--区域动态-->
+  <div style="margin-top:11px;">
+    <div class="bread_nav">
+      <div class="l fl"></div>
+      <div class="m fl" style="width:225px;">
+        <h1 class="fl">区域动态</h1><a target="_blank" href="{:U('/article/energy','id=161')}" class="more fr"></a>
+
+      </div>
+
+      <div class="r fl"></div>
+    </div>
+    <div class="l_block list gg_con" style="height:265px; overflow:hidden;">
+      <ul>
+        <empty name="qylist">
+          <div class="nodata">暂无数据</div>
+        </empty>
+        <volist name="qylist" id="list">
+			<if condition="$list.isre eq 1">	
+			  <li>
+				<!-- start update by wanghispeng 2014-05-28 -->
+				<a target="_blank" title="{$list.title}" href="{:U('/article/view1','id='.$list['id'])}">{$list.title|cutstr_html=###,10}</a>
+				<span style="width: 65px;float: right;text-align:right;">{$list.create_time|date='Y-m-d',###}</span>
+				<!-- end update by wanghispeng 2014-05-28 -->
+			  </li>
+			</if>
+        </volist>
+      </ul>
+    </div>
+  </div>
+  <!--区域动态-->
+  <!--合同预约登记-->
+  <div class="im_li ma_T4">
+      <volist name="htlist" id="vo">
+        <a target="_blank"
+        <empty name="vo.url">href="javascript:"
+          <else/>
+          href="{$vo.url}"
+        </empty>
+        ><img width="243" height="180" src="{$vo.pic}" alt="{$vo.title}"/></a>
+      </volist>
+
+  </div>
+  <!--合同预约登记-->
+  
+  <!--便民信息-->
+  <div style="margin-top:12px;">
+    <div class="bread_nav">
+      <div class="l fl"></div>
+      <div class="m fl" style="width:225px;">
+        <h1>便民信息</h1>
+      </div>
+      <div class="r fl"></div>
+    </div>
+    <div class="l_block new_h3 fwzn">
+      <div class=“binbin_ser_box” style="overflow:hidden">
+		  <div class="bian-min-service-self-box">
+			 <volist name="bmlist" id="c" key="k">
+				<ul>
+				 <li class="bin-service-self-ps" ><a target="_blank" href="<notempty name='c.url'>{$c.url}<else/>{:U('/'.page.'/'.$c['tpl'],'id='.$c['id'])}</notempty>"><img src="{$c.pic}" width="56" height="56" /></a></li>
+				 <li class="bin-service-self-text" ><a target="_blank" href="<notempty name='c.url'>{$c.url}<else/>{:U('/'.page.'/'.$c['tpl'],'id='.$c['id'])}</notempty>">{$c.title|msubstr=0,4}</a></li>
+			   </ul>
+			 </volist>
+			<div class="clear"></div>
+		</div>
+	  </div>
+	</div>   
+  </div>
+  <!--便民信息-->
+  
+  <!--大家都在办理-->
+  <div style="margin-top:12px;">
+    <div class="bread_nav">
+      <div class="l fl"></div>
+      <div class="m fl" style="width:225px;">
+        <h1>大家都在办理</h1>
+      </div>
+      <div class="r fl"></div>
+    </div>
+    <div class="l_block list banli" style="height:162px;">
+      <ul>
+        <li><span class="num01"></span><a target="_blank" title="费用查询" href="{:U('/page/lsfy','id=13')}">费用查询</a></li>
+        <li><span class="num02"></span><a target="_blank" title="用量查询" href="{:U('/page/lsyn','id=14')}">用量查询</a></li>
+        <li><span class="num03"></span><a target="_blank" title="报修服务" href="{:U('/business/bx','id=17')}">报修服务</a></li>
+        <li><span class="num04"></span><a target="_blank" title="开通服务" href="{:U('/business/kt','id=15')}">开通服务</a></li>
+      </ul>
+    </div>
+  </div>
+  <!--大家都在办理-->
+</div>
+</div>
+</div>
+<include file="Public:footer"/>
+</div>
+</body>
+</html>
+<script>
+  $(function () {
+    $("#KinSlideshow").KinSlideshow({ isHasTitleBar: false, isHasTitleFont: false,
+      btn: {btn_bgColor: "#666666", btn_bgHoverColor: "#FF8A00", btn_fontColor: "#ffffff", btn_fontHoverColor: "#ffffff", btn_fontFamily: "Verdana", btn_borderWidth: 0, btn_bgAlpha: 1
+
+      }
+    });
+  })
+</script>   
+<script>
+  function getTab(num) {
+  	if(num ==0){
+		document.getElementById("tgnxx").style.display = "none";
+		document.getElementById("hdgg").style.display = "none";
+		document.getElementById("fwgg").style.display = "";
+	}
+  	else if(num ==1) {
+		document.getElementById("tgnxx").style.display = "";
+		document.getElementById("hdgg").style.display = "none";
+		document.getElementById("fwgg").style.display = "none";
+		document.getElementById('tgn').style.backgroundImage="url(/Public/images/tab_bg.jpg)";
+		document.getElementById('hd').style.backgroundImage="";
+	}
+	else {
+		document.getElementById("fwgg").style.display = "none";
+		document.getElementById("tgnxx").style.display = "none";
+		document.getElementById("hdgg").style.display = "";
+		document.getElementById('tgn').style.backgroundImage="";
+		document.getElementById('hd').style.backgroundImage="url(/Public/images/tab_bg.jpg)";
+	}
+  }
+</script> 
+<style>
+.mesWindow{border:#666 1px solid;}
+.mesWindowTop{border-bottom:#eee 1px solid;margin-left:4px;padding:3px;font-weight:bold;text-align:left;font-size:12px;}
+.mesWindowContent{margin:4px;font-size:12px;}
+.mesWindow .close{height:15px;width:28px;border:none;cursor:pointer;text-decoration:underline;background:#fff}
+</style>
+
+<script language="JavaScript1.2">
+var ie=document.all
+var dom=document.getElementById
+var ns4=document.layers
+var bouncelimit=32 //(must be divisible by 8)
+var curtop
+var direction="up"
+var boxheight=''
+function initbox(){
+	
+	document.getElementById("show").style.cssText="position: absolute;+margin-left:-10%;z-index:10005; width:100%; height:1450px; background-image:url(/Public/images/letter-an-bg.png);"
+	if (!dom&&!ie&&!ns4)
+		
+		return
+		crossobj=(dom)?document.getElementById("dropin").style : ie? document.all.dropin : document.dropin
+		/*scroll_top=(ie)? document.body.scrollTop : window.pageYOffset
+		crossobj.top=scroll_top-250*/
+		crossobj.visibility=(dom||ie)? "visible" : "show"
+		dropstart=setInterval("dropin()",50)
+}
+
+function dropin(){
+
+scroll_top=(ie)? document.body.scrollTop : window.pageYOffset
+if (parseInt(crossobj.top)<100+scroll_top)
+crossobj.top=parseInt(crossobj.top)+40
+else{
+clearInterval(dropstart)
+bouncestart=setInterval("bouncein()",50)
+}
+}
+
+function bouncein(){
+
+crossobj.top=parseInt(crossobj.top)-bouncelimit
+if (bouncelimit<0)
+bouncelimit+=8
+bouncelimit=bouncelimit*-1
+if (bouncelimit==0){
+clearInterval(bouncestart)
+}
+}
+
+function dismissbox(){
+
+document.getElementById("show").style.cssText=""
+if (window.bouncestart) clearInterval(bouncestart)
+crossobj.visibility="hidden";
+
+}
+
+function get_cookie(Name) {
+var search = Name + "="
+var returnvalue = ""
+
+if (document.cookie.length > 0) {
+offset = document.cookie.indexOf(search)
+if (offset != -1) {
+offset += search.length
+end = document.cookie.indexOf(";", offset)
+if (end == -1)
+end = document.cookie.length;
+returnvalue=unescape(document.cookie.substring(offset, end))
+}
+}
+return returnvalue;
+}
+
+function dropornot(){
+$("#tianqi").attr('src','http://tianqi.2345.com/plugin/widget/index.htm?s=3&z=2&t=1&v=0&d=1&k=&f=1&q=1&e=0&a=0&c=54527&w=180&h=26');
+if (get_cookie("droppedin")==""){
+window.onload=initbox
+document.cookie="droppedin=yes"
+}
+}
+dropornot()
+
+</script>

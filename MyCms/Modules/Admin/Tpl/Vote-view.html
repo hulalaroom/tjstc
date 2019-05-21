@@ -1,0 +1,70 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href='__PUBLIC__/css/common.css'>
+<script type="text/javascript" src="__PUBLIC__/js/jquery-1.7.1.min.js"></script>
+<script type="text/javascript" src="__PUBLIC__/js/base.js"></script>
+<title>公交车满意度调查问卷</title>
+</head>
+<body>
+<div id="append_parent"></div>
+<div class="container" id="cpcontainer">
+  <div id="contentHeader">
+    <h3>公交车满意度调查问卷</h3>
+    <div class="searchArea">
+      <ul class="action left" >
+        <li class="current"><a href="__URL__/survey" class="actionBtn"><span>返回</span></a></li>
+      </ul>
+      <div class="search right"> </div>
+    </div>
+  </div>
+		<table class="form_table">
+			<tr>
+			  <td colspan="6"><b>投票明细</b></td>
+			</tr>
+			<tr>
+			  <td width="12%">年龄范围</td>
+			  <td width="20%">{$list['firchoose']}&nbsp;</td>
+			  <td width="12%">所属情况</td>
+			  <td width="20%">{$list['secchoose']}&nbsp;</td>
+			  <td width="12%">出行情况</td>
+			  <td width="20%">{$list['thichoose']}&nbsp;</td>
+			</tr>
+			<tr>
+			  <td width="12%">出行起始点</td>
+			  <td width="20%">{$list['startplace']} - {$list['endplace']}&nbsp;</td>
+			  <td width="12%">乘坐公交时间段</td>
+			  <td width="20%">{$list['fifchoose']}&nbsp;</td>
+			  <td width="12%">满意度评价</td>
+			  <td width="20%">{$list['sixchoose']}&nbsp;</td>
+			</tr>
+			<tr>
+			  <td width="12%">存在问题</td>
+			  <td width="20%">{$list['sevchoose']}&nbsp;</td>
+			  <td width="12%">生态城外出行方式</td>
+			  <td width="20%">{$list['eightchoose']}&nbsp;</td>
+			  <td width="12%">投诉解决情况存在问题</td>
+			  <td width="20%">{$list['ninchoose']}&nbsp;</td>
+			</tr>
+			<tr>
+			  <td width="12%">生态城内使用私家车次数</td>
+			  <td width="20%">{$list['cartimes']}&nbsp;</td>
+			  <td width="12%">生态城外使用私家车次数</td>
+			  <td width="20%">{$list['cartime']}&nbsp;</td>
+			  <td width="12%">&nbsp;</td>
+			  <td width="20%">&nbsp;</td>
+			</tr>
+			<tr>
+			  <td width="12%">投票时间</td>
+			  <td width="20%">{$list['createtime']|date="Y-m-d H:i:s",###}&nbsp;</td>
+			  <td width="12%">留言</td>
+			  <td width="20%">{$list['content']}&nbsp;</td>
+			  <td width="12%"></td>
+			  <td width="20%"></td>
+			</tr>
+		</table>
+		
+</div>
+</body>
+</html>

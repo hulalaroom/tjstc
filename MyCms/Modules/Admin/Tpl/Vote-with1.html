@@ -1,0 +1,73 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href='__PUBLIC__/css/common.css'>
+<script type="text/javascript" src="__PUBLIC__/js/jquery-1.7.1.min.js"></script>
+<script type="text/javascript" src="__PUBLIC__/js/base.js"></script>
+<title>2017能源公司专题调查问卷</title>
+</head>
+<body>
+<div id="append_parent"></div>
+<div class="container" id="cpcontainer">
+  <div id="contentHeader">
+    <h3>2017能源公司专题调查问卷</h3>
+    <div class="searchArea">
+      <ul class="action left" >
+        <li class="current"><a href="__URL__/energy1" class="actionBtn"><span>返回</span></a></li>
+      </ul>
+      <div class="search right"> </div>
+    </div>
+  </div>
+		<table class="form_table">
+			<tr>
+			  <td colspan="6"><b>投票明细</b></td>
+			</tr>
+			<tr>
+			  <td width="12%">房间地址</td>
+			  <td colspan="5">{$list['address']}</td>
+			</tr>
+			<tr>
+			  <td width="12%">整体运营服务是否满意</td>
+			  <td width="20%">{$list['firchoose']}&nbsp;</td>
+			  <td width="12%">故障维修服务是否满意</td>
+			  <td width="20%">{$list['secchoose']}&nbsp;</td>
+			  <td width="12%">能源服务窗口服务是否满意</td>
+			  <td width="20%">{$list['thichoose']}&nbsp;</td>
+			</tr>
+			<tr>
+			  <td width="12%">反馈问题处置结果是否满意</td>
+			  <td width="20%">{$list['fourthchoose']}&nbsp;</td>
+			  <td width="12%">自来水供应是否满意</td>
+			  <td width="20%">{$list['fifchoose']}&nbsp;</td>
+			  <td width="12%">不满意的原因</td>
+			  <td width="20%">{$list['sixchoose']}&nbsp;</td>
+			</tr>
+			<tr>
+			  <td width="12%">天然气供应是否满意</td>
+			  <td width="20%">{$list['sevchoose']}&nbsp;</td>
+			  <td width="12%">不满意的原因</td>
+			  <td colspan="3">{$list['eightchoose']}&nbsp;</td>
+			  
+			</tr>
+			<tr>
+			  <td width="12%">采暖供应是否满意</td>
+			  <td width="20%">{$list['ninchoose']}&nbsp;</td>
+			  <td width="12%">不满意的原因</td>
+			  <td width="20%">{$list['tenchoose']}&nbsp;</td>
+			  <td width="12%">相关政策、信息公示等工作是否满意</td>
+			  <td width="20%">{$list['elechoose']}&nbsp;</td>
+			</tr>
+			<tr>
+			  <td width="12%">常用的交费方式</td>
+			  <td width="20%">{$list['twchoose']}</td>
+			  <td width="12%">投票时间</td>
+			  <td width="20%">{$list['createtime']|date="Y-m-d H:i:s",###}&nbsp;</td>
+			  <td width="12%">留言</td>
+			  <td width="20%">{$list['content']}&nbsp;</td>
+			</tr>
+		</table>
+		
+</div>
+</body>
+</html>

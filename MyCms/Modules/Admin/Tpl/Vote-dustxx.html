@@ -1,0 +1,64 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href='__PUBLIC__/css/common.css'>
+<script type="text/javascript" src="__PUBLIC__/js/jquery-1.7.1.min.js"></script>
+<script type="text/javascript" src="__PUBLIC__/js/base.js"></script>
+<title>垃圾气力输送系统调查问卷</title>
+</head>
+<body>
+<div id="append_parent"></div>
+<div class="container" id="cpcontainer">
+  <div id="contentHeader">
+    <h3>垃圾气力输送系统调查问卷</h3>
+    <div class="searchArea">
+      <ul class="action left" >
+        <li class="current"><a href="__URL__/dust" class="actionBtn"><span>返回</span></a></li>
+      </ul>
+      <div class="search right"> </div>
+    </div>
+  </div>
+		<table class="form_table">
+			<tr>
+			  <td colspan="6"><b>投票明细</b></td>
+			</tr>
+			<tr>
+			  <td colspan="2">小区名称</td>
+			  <td colspan="4">{$list['housename']}</td>
+			</tr>
+			
+			<tr>
+			  <td width="13%">是否了解应用了气力垃圾输送系统</td>
+			  <td width="20%">{$list['firchoose']}&nbsp;</td>
+			  <td width="13%">垃圾中转站建在什么位置好</td>
+			  <td width="20%">{$list['secchoose']}&nbsp;</td>
+			  <td width="13%">小区采用哪种形式投放口</td>
+			  <td width="20%">{$list['thichoose']}&nbsp;</td>
+			</tr>
+			<tr>
+			  <td width="13%">是否愿意将垃圾投放至室外投放口</td>
+			  <td width="20%">{$list['fourthchoose']}&nbsp;</td>
+			  <td width="13%">是否会给您的生活带来方便</td>
+			  <td width="20%">{$list['fifchoose']}&nbsp;</td>
+			  <td width="13%">应建在什么位置</td>
+			  <td width="20%">{$list['sixchoose']}&nbsp;</td>
+			</tr>
+			<tr>
+			  <td width="13%">最担心的问题</td>
+			  <td width="20%">{$list['sevchoose']}&nbsp;</td>
+			  <td width="13%">投放口有哪些不足</td>
+			  <td width="20%">{$list['eightchoose']}&nbsp;</td>
+			  <td width="13%">投放口的外观颜色</td>
+			  <td width="20%">{$list['ninchoose']}&nbsp;</td>
+			</tr>
+			<tr>
+			  <td colspan="2">对气力垃圾收运工作的宝贵意见和建议</td>
+			  <td colspan="4">{$list['content']}</td>
+			</tr>
+			
+		</table>
+		
+</div>
+</body>
+</html>

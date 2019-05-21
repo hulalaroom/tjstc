@@ -1,0 +1,270 @@
+<include file="Public:header" />
+<div class="main_block">
+  <include file="Public:top" />
+	<div class="left_side fl" style="margin-top:10px;">
+        <include file="Public:left" /></div>
+        <div class="main_con fr" style="margin-top:10px;">
+        	<div class="bread_nav">
+            	<div class="l fl"></div>
+                <div class="m fl">
+                 <span class="list_style"></span> <span>您当前的位置:业务评价</span> 
+                </div>
+                <div class="r fl"></div>
+            </div>
+            <div class="artical">
+				<form action="__URL__/save" method="post" id="form2" name="form2">
+					<div class="wrapper">
+						业务办理速度
+						<span id="result"></span><input type="text" name="blsd" id="blsd" value="0" style="display:none;"/>
+							<ul id="star">
+								<li>★</li>
+								<li>★</li>
+								<li>★</li>
+								<li>★</li>
+								<li>★</li>
+							</ul>
+						<span id="star_word">一般</span>
+					</div>  
+					
+					<div class="wrapper">
+						业务办理质量
+						<span id="result1"></span><input type="hidden" name="blzl" id="blzl" value=""/>
+							<ul id="star1">
+								<li>★</li>
+								<li>★</li>
+								<li>★</li>
+								<li>★</li>
+								<li>★</li>
+							</ul>
+						<div id="star_word1">一般</div>
+					</div>
+					
+					<div class="wrapper">
+						服务态度
+						<span id="result2"></span><input type="hidden" name="fwtd" id="fwtd" value=""/>
+							<ul id="star2">
+								<li>★</li>
+								<li>★</li>
+								<li>★</li>
+								<li>★</li>
+								<li>★</li>
+							</ul>
+						<div id="star_word2">一般</div>
+					</div>
+					
+					<div class="wrapper">
+						备注<br/>
+						<textarea rows="8" cols="40" name="description"></textarea>
+					</div>
+					<div class="wrapper">
+						<input type="submit" name="submit" value="提交"/>
+						<input type="button" name="buttpn" value="重置"/>
+					</div>
+				</form>
+			</div>
+	</div>
+</div>
+<include file="Public:footer" />
+</body>  
+<style>
+.wrapper{width:300px; margin:10px auto; font:14px/1.5 arial;}
+/*tab*/
+#star{overflow:hidden;}
+#star li{float:left; width:20px; height:20px; margin:2px; display:inline; color:#999; font:bold 18px arial; cursor:pointer}
+#star .act{color:#c00}
+#star_word{width:80px; height:30px; line-height:30px; border:1px solid #ccc; margin:10px; text-align:center; display:none}
+
+#star1{overflow:hidden;}
+#star1 li{float:left; width:20px; height:20px; margin:2px; display:inline; color:#999; font:bold 18px arial; cursor:pointer}
+#star1 .act{color:#c00}
+#star_word1{width:80px; height:30px; line-height:30px; border:1px solid #ccc; margin:10px; text-align:center; display:none}
+
+#star2{overflow:hidden;}
+#star2 li{float:left; width:20px; height:20px; margin:2px; display:inline; color:#999; font:bold 18px arial; cursor:pointer}
+#star2 .act{color:#c00}
+#star_word2{width:80px; height:30px; line-height:30px; border:1px solid #ccc; margin:10px; text-align:center; display:none}
+
+</style>
+<script>
+window.onload = function(){
+
+    var star = document.getElementById("star");
+	var star1 = document.getElementById("star1");
+	var star2 = document.getElementById("star2");
+    var star_li = star.getElementsByTagName("li");
+	var star1_li = star1.getElementsByTagName("li");
+	var star2_li = star2.getElementsByTagName("li");
+    var star_word = document.getElementById("star_word");
+	var star_word1 = document.getElementById("star_word1");
+	var star_word2 = document.getElementById("star_word2");
+    var result = document.getElementById("result");
+	var result1 = document.getElementById("result1");
+	var result2 = document.getElementById("result2");
+	var blsd = document.getElementById("blsd").value;
+	var blzl = document.getElementById("blzl").value;
+	var fwtd = document.getElementById("fwtd").value; 
+    var i=0;
+    var j=0;
+    var len = star_li.length;
+	var len1 = star1_li.length;
+	var len2 = star2_li.length;
+    var word = ['很差','差','一般',"好","很好"]
+	var word1 = ['很差','差','一般',"好","很好"]
+	var word2 = ['很差','差','一般',"好","很好"]
+    
+    for(i=0; i<len; i++){
+        star_li[i].index = i;
+        
+		star_li[i].onmouseover = function(){
+		  result.innerHTML = (this.index+1)+"分";
+		  blsd = this.index+1;
+		  star_word.style.display = "block";
+			star_word.innerHTML = word[this.index];
+			for(i=0; i<=this.index; i++){
+			  star_li[i].className = "act";
+			}
+			for(i=this.index; i<=len; i++){
+			  star_li[i+1].className = "";
+			}
+		}
+	
+		star_li[i].onmouseout = function(){
+		  result.innerHTML = (this.index+1)+"分";
+		  blsd = this.index+1;
+		  star_word.style.display = "none";
+			for(i=0; i<=this.index; i++){
+			  star_li[i].className = "act";
+			}
+			for(i=this.index; i<=len; i++){
+			  star_li[i+1].className = "";
+			}
+		}
+		
+		star_li[i].onclick = function(){
+		  result.innerHTML = (this.index+1)+"分";
+		  blsd = this.index+1;
+		}
+
+    }
+	
+	
+	  for(i=0; i<len1; i++){
+		star1_li[i].index = i;
+		  
+		star1_li[i].onmouseover = function(){
+		  result1.innerHTML = (this.index+1)+"分";
+		  blzl = this.index+1;
+		  star_word1.style.display = "block";
+			star_word1.innerHTML = word[this.index];
+			for(i=0; i<=this.index; i++){
+			  star1_li[i].className = "act";
+			}
+			for(i=this.index; i<=len1; i++){
+			  star1_li[i+1].className = "";
+			}
+		}
+
+		star1_li[i].onmouseout = function(){
+		  result1.innerHTML = (this.index+1)+"分";
+		  blzl = this.index+1;
+		  star_word1.style.display = "none";
+			for(i=0; i<=this.index; i++){
+			  star1_li[i].className = "act";
+			}
+			for(i=this.index; i<=len1; i++){
+			  star1_li[i+1].className = "";
+			}
+		}
+		
+		star1_li[i].onclick = function(){
+		  result1.innerHTML = (this.index+1)+"分";
+		  blzl = this.index+1;
+		}
+        
+    }
+	
+	
+	 for(i=0; i<len2; i++){
+		star2_li[i].index = i;
+		  
+		star2_li[i].onmouseover = function(){
+		  result2.innerHTML = (this.index+1)+"分";
+		  //fwtd = this.index+1;
+		  star_word2.style.display = "block";
+			star_word2.innerHTML = word[this.index];
+			for(i=0; i<=this.index; i++){
+			  star2_li[i].className = "act";
+			}
+			for(i=this.index; i<=len2; i++){
+			  star2_li[i+1].className = "";
+			}
+		}
+
+		star2_li[i].onmouseout = function(){
+		  result2.innerHTML = (this.index+1)+"分";
+		  //fwtd = this.index+1;
+		  star_word2.style.display = "none";
+			for(i=0; i<=this.index; i++){
+			  star2_li[i].className = "act";
+			}
+			for(i=this.index; i<=len2; i++){
+			  star2_li[i+1].className = "";
+			}
+		}
+		
+		star2_li[i].onclick = function(){
+		  result2.innerHTML = (this.index+1)+"分";
+		  //fwtd = this.index+1;
+		}
+        
+
+    }
+
+}
+</script>
+
+<script type="text/javascript">
+ 
+    $(document).ready(function(){   
+        //提供回调函数，提供提交返回结果的处理   
+        var options = {
+            //            beforeSubmit: showRequest,
+            //提交前处理 
+            success: showResponse,
+            //处理完成 
+            resetForm: false,
+            dataType: 'json'
+        };    
+        $('#form2').submit(function() {
+            if ($.formValidator.pageIsValid('1')==true) 
+            { 
+                $(this).ajaxSubmit(options);
+                return false; 
+            } 
+
+          
+        });
+       
+        //初始化验证插件，如果提交出错，则弹出对话框，如果正确，则通过ajax提交表单请求。
+        $.formValidator.initConfig({autotip:true,formID:"form2",
+            onsuccess:function(msg){
+              
+                return false;},
+            onError:function(msg){}
+
+        });
+         
+    }); 
+    
+    function showResponse(res) {
+        art.dialog({
+            title: res.title,
+            content: res.message,
+            time: res.time
+        });
+        if (res.url) {
+            window.location.href = res.url;
+        }
+    }  
+</script>
+</html>

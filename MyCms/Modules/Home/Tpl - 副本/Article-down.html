@@ -1,0 +1,82 @@
+<include file="Public:header-login" />
+<link rel="stylesheet" href="/Public/css/css.css">
+    <include file="Public:top" />
+	<!--下载内容区-->
+		<div class="focus">
+			<div class="focusbox">         
+				<div class="focusimg">
+				<ul class="fimglist clearfix">
+					<li class="ard_box">
+						<div class="ard_info">
+							<div class="info_title">客户服务平台客户端Android版</div>
+						  <div class="info_con">完美支持Android/2.x/3.x/4.x<br/>版本：V1.3<br/>更新：2018.01.02<br/>大小：9..44MB<br/>下载次数：12096</div>
+							<div class="v_info_download_btn">
+							<div class="btn_box1"><a onclick="downHandle()"><img src="/Public/images/ard_btn.png" width="218" height="75" /></a></div>
+	
+							</div>
+						</div>
+					</li>
+					<li class="app_box">            
+						<div class="app_info">
+						  <div class="info_title">客户服务平台客户端IOS版</div>
+						  <div class="info_con">完美支持ios7.0及以上版本<br/>版本：V1.0.3<br/>更新：2018.01.02<br/>大小：12.3MB</div>
+							<div class="v_info_download_btn">
+							<div class="btn_box"><a onclick="down_ios()"><img src="/Public/images/app_btn.png" width="172" height="75" /></a></div>
+	
+							</div>
+						</div>
+					</li>
+				 </ul>
+			  </div> 
+				<div class="focustool">
+					<ul class="ftoollist clearfix"><!--通过控制该ul的left值来实现列表的左右移动，增量为1000px-->
+						<li class="on"><a><img src="/Public/images/adr_btn.jpg"></a></li>
+						<li><a><img src="/Public/images/app_btn.jpg"></a></li><!--当前项时为该li添加class: on-->
+					</ul>
+				</div>
+			</div>
+		</div>
+	<!--下载内容区-->
+<include file="Public:footer" />
+<script type="text/javascript" src="/Public/js/jquery.js"></script>
+<script type="text/javascript">
+    jQuery.noConflict();
+	jQuery(document).ready(function($){
+		$(".guidelist li").hover(
+			function () {
+				$(this).attr("class", "mouseon");
+			  },
+			  function () {
+				$(this).attr("class", "mouseout");
+			  }
+		);
+		$(".ftoollist li").mouseover(function(){
+			$(this).siblings().removeClass("on");
+			$(this).addClass("on");
+			var preNumber=$(this).prevAll().size();
+			$(".fimglist li").removeClass("onpre");
+			$(".fimglist li:nth-child("+preNumber+")").addClass("");
+			var margin = 1000;
+			margin = margin *preNumber; 
+			margin = margin * -1;
+			$(".fimglist").stop().animate({marginLeft: margin + "px"}, {duration: 500});
+		});
+	});
+</script>
+<script type="text/javascript">
+	function downHandle(){
+	  window.art.dialog({
+		content: '确定下载？(您也可以在360手机助手中搜索"5890"进行下载)',
+		ok:function () { 
+		window.location = "http://www.66885890.com/Uploads/EcoCity.apk";
+			 },
+			cancelVal: '关闭',
+			cancel: true
+		});
+}
+	function down_ios(){
+		window.art.dialog({title: '提示',content: '请登陆App Store,搜索"5890"进行下载！',time: 4,fixed:true});
+	}
+</script>
+</body>
+</html>

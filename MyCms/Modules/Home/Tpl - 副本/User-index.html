@@ -1,0 +1,327 @@
+<include file="Public:header1" />
+
+<div class="house_bannermin">
+	<div class="content">
+<p class="house_dqwz">当前位置：<a href="__GROUP__">首页</a> &nbsp;&nbsp;&gt;&nbsp;&nbsp;<span class="green">我的5890</span></p>
+
+<div class="house_touming clearfix">
+
+	<div class="house_bannerleft">
+		<div>下午好，<span class="name">{$Think.session.unick}</span>
+		<span class="house_bj"><a href="{:U('User/edit')}"><img src="__PUBLIC__/style/img/house_sz01.png" alt="信息变更" /></a></span>房间数量：<span class="house_num">{$houselist | count} 套</span></div>
+		<div>
+			<span>账户名：{$Think.session.uname} </span> 
+			<span><img src="__PUBLIC__/style/img/house_sz06.png" alt="{$Think.session.unick}" title="{$Think.session.unick}"/></span>  
+			<span class="house_sz05"><img src="__PUBLIC__/style/img/house_sz05.png" title="{$Think.session.uphone}"/></span>
+			<span>|</span>
+			<span class="dlsj">上次登录时间：<eq name="Think.session.last_login_time" value="0">您是首次登录<else/>{$Think.session.last_login_time|date="Y-m-d H:i:s",###}</eq></span></div>
+		
+	</div>
+	<div class="house_bannerright">
+		<ul class="clearfix">
+			<a href="{:U('User/fjxx')}"><li class="house_sz07">房间管理</li></a>
+			<a href="{:U('User/edit')}"><li class="house_sz02">个人设置</li></a>
+			<a href="{:U('User/pass')}"><li class="house_sz03">密码设置</li></a>
+			<a href="{:U('Public/logout')}"><li class="house_sz04">安全退出</li></a>
+		</ul>
+   </div>
+	</div>
+</div>
+</div>
+
+
+<if condition="$houselist eq null"> 
+
+<div class="house_box clearfix">
+ <div class="left">
+
+  <dl class="reminder">
+   <dt><i></i>温馨提示：</dt>
+   <dd>想要使用查询及缴费等相关功能，请您先填写房间信息</dd>
+   <dd></dd>
+  </dl>
+
+  <div class="house_button"><a href="{:U('User/bind')}#B"><img src="__PUBLIC__/style/img/house_03.png" alt=""></a> <p>注册房间</p></div>
+
+ </div>
+ <div class="right clearfix">
+  <div class="house_one">
+   <p><img src="__PUBLIC__/style/img/house_001.png" alt=""></p>
+   <div class="house_font">
+    <p class="house_title"> 查询业务 </p>
+    <i></i>
+    <p class="mingxi">为难您提供能源用量及费用账单，明细一目了然</p>
+
+   </div>
+   
+   
+  </div>
+
+
+  <div class="house_one house_two">
+   <p><img src="__PUBLIC__/style/img/house_002.png" alt=""></p>
+   <div class="house_font">
+    <p class="house_title"> 缴费业务 </p>
+    <i></i>
+    <p class="mingxi">帮助您随时随地在线缴费，免去窗口排队</p>
+
+ </div>
+
+
+  </div>
+
+
+
+  <div class="house_one">
+   <p><img src="__PUBLIC__/style/img/house_003.png" alt=""></p>
+   <div class="house_font">
+    <p class="house_title"> 业务办理 </p>
+    <i></i>
+    <p class="mingxi">帮助您网上办理业务，多项业务一键预约</p>
+
+
+
+   </div>
+
+
+  </div>
+
+  <div class="house_one house_two">
+   <p><img src="__PUBLIC__/style/img/house_004.png" alt=""></p>
+   <div class="house_font">
+    <p class="house_title"> 绿色生活 </p>
+    <i></i>
+    <p class="mingxi">帮助您分析用能和能耗情况，助力环保绿色生活</p>
+
+
+
+   </div>
+
+
+  </div>
+
+
+  
+ </div>
+
+
+
+</div>
+
+
+<else /> 
+
+
+
+<div class="house_box clearfix">
+ <div class="left left_lv">
+
+  <div class="house_buttonwhite"><a href="{:U('User/bind')}#B"><img src="__PUBLIC__/style/img/house_033.png" alt=""></a> <p>注册房间</p></div>
+  <div class="house_form">
+  	<div class="clearfix">
+  		<div class="clearfix"><p class="house_form01">业主姓名</p><p class="house_form02" id="zhuhumingcheng"></p></div>
+  		<div class="clearfix"><p class="house_form01 house_form01one">房间地址</p><p class="house_form02 house_form02none clearfix"> 
+	<form action="" method="get" class="fjdz_xiala">
+		<select name="drop1" id="drop1" class="ui-select" onChange="click_search()">
+			<volist name="houselist" id="hlist" key="k">				
+				<option value="{$hlist.houseCode}" class="hh">{$hlist.address}</option>				
+			</volist>
+		</select>
+	</form>		
+  		</p></div>
+  		<div class="clearfix"><p class="house_form01">房间编号</p><p class="house_form02" id="fangjianbianhao"></p></div>
+   
+  		
+  	</div>
+  	
+  	<div class="five_logo">
+  		<dl class="house_water">
+  			<dt id="house_water_pic"></dt>
+  			<dd id="house_water_word"></dd>
+  		</dl>
+  		
+   		<dl class="house_gas">
+  			<dt id="house_gas_pic"></dt>
+  			<dd id="house_gas_word"></dd>
+  		</dl>
+   		<dl class="house_hot">
+  			<dt id="house_hot_pic"></dt>
+  			<dd id="house_hot_word"></dd>
+  		</dl>
+  		<dl class="house_water02">
+  			<dt id="house_water02_pic"></dt>
+  			<dd id="house_water02_word"></dd>
+  		</dl>
+  		<dl class="house_green">
+  			<dt id="house_green_pic"></dt>
+  			<dd id="house_green_word"><a href="">环保积分</a></dd>
+  		</dl>  		
+  		
+  	</div>
+  	
+  	
+  </div>
+
+ </div>
+ <div class="right clearfix">
+  <div class="house_one  ">
+   <p><a href="/index.php?s=/page/dqzd/id/13.htm"><img src="__PUBLIC__/style/img/house_0011.png" alt=""></a></p>
+   <div class="house_font">
+    <p class="house_title"><a href="/index.php?s=/page/dqzd/id/13.html">查询业务</a></p>
+    <i></i>
+    <p class="mingxi">为难您提供能源用量及费用账单，明细一目了然</p>
+
+   </div>
+   
+   
+  </div>
+
+
+  <div class="house_one house_two">
+   <p><a href="{:U('User/jfyw')}"><img src="__PUBLIC__/style/img/house_0022.png" alt=""></a></p>
+   <div class="house_font">
+    <p class="house_title"><a href="{:U('User/jfyw')}">缴费业务</a></p>
+    <i></i>
+    <p class="mingxi">帮助您随时随地在线缴费，免去窗口排队</p>
+
+ </div>
+
+
+  </div>
+
+
+
+  <div class="house_one house_onelv">
+   <p><a href="{:U('User/ywbl')}"><img src="__PUBLIC__/style/img/house_0033.png" alt=""></a></p>
+   <div class="house_font">
+    <p class="house_title"><a href="{:U('User/ywbl')}">业务办理</a></p>
+    <i></i>
+    <p class="mingxi">帮助您网上办理业务，多项业务一键预约</p>
+
+
+
+   </div>
+
+
+  </div>
+
+  <div class="house_one house_two house_onelv">
+   <p><a href="{:U('User/lssh')}"><img src="__PUBLIC__/style/img/house_0044.png" alt=""></a></p>
+   <div class="house_font">
+    <p class="house_title"><a href="{:U('User/lssh')}">绿色生活</a></p>
+    <i></i>
+    <p class="mingxi">帮助您分析用能和能耗情况，助力环保绿色生活</p>
+
+
+
+   </div>
+
+
+  </div>
+
+
+  
+ </div>
+
+
+
+</div>
+
+</if>
+
+<include file="Public:footer1" />
+</body>
+</html>
+<script type="text/javascript" src="__PUBLIC__/js/jquery-1.8.3.min.js"></script>
+<script type="text/javascript" src="__PUBLIC__/js/jquery.form.min.js"></script>
+<script type="text/javascript" src="__PUBLIC__/js/artDialog4.1.7/artDialog.source.js?skin=green"></script>
+<script type="text/javascript" src="__PUBLIC__/js/artDialog4.1.7/plugins/iframeTools.js"></script>
+<script src="__PUBLIC__/js/jquery.KinSlideshow-1.2.1.min.js" type="text/javascript"></script>
+
+<script>
+
+function click_search() {
+	
+	houseCode = $("#drop1").val();
+	
+	//获取房间信息
+    $.ajax({
+        url: '{:U("/User/ajax_getHouse")}',
+        type: 'POST',
+        data: 'houseCode=' + houseCode,
+        dataType: 'json',
+        success: function(res) {
+			$("#zhuhumingcheng").html(res["OWNERNAME"]);
+			$("#fangjianbianhao").html(res["HOUSECODE"]);
+        }
+    });
+
+	//获取开通状态
+    $.ajax({
+        url: '{:U("/User/ajax_getHouseStatus")}',
+        type: 'POST',
+        data: 'houseCode=' + houseCode,
+        dataType: 'json',
+        success: function(res) {
+			
+			if(res["WATERSTATUS"] == "正常"){
+				$("#house_water_pic").html('<a href="/index.php?s=/page/zxcx/id/75.html"><img src="__PUBLIC__/style/img/zc_water.png" /></a>');
+				$("#house_water_word").html('<a href="/index.php?s=/page/zxcx/id/75.html" style="color:#5BBAF7">自来水</a>');
+			}
+			else{
+				$("#house_water_pic").html('<a><img src="__PUBLIC__/style/img/zc_water_01.png" /></a>');
+				$("#house_water_word").html('<a style="color:#ADADAD">自来水</a>');
+			}
+			if(res["GASSTATUS"] == "正常"){
+				$("#house_gas_pic").html('<a href="/index.php?s=/page/zxcx/id/82.html"><img src="__PUBLIC__/style/img/zc_gas.png" /></a>');
+				$("#house_gas_word").html('<a href="/index.php?s=/page/zxcx/id/82.html" style="color:#FFC12C">天然气</a>');
+			}
+			else{
+				$("#house_gas_pic").html('<a><img src="__PUBLIC__/style/img/zc_gas_01.png" /></a>');
+				$("#house_gas_word").html('<a style="color:#ADADAD">天然气</a>');
+			}
+			if(res["HOTWATERSTATUS"] == "开通"){
+				$("#house_hot_pic").html('<a href="#"><img src="__PUBLIC__/style/img/zc_heating.png" /></a>');
+				$("#house_hot_word").html('<a href="#" style="color:#FF5B1A">供暖</a>');
+			}
+			else{
+				$("#house_hot_pic").html('<a><img src="__PUBLIC__/style/img/zc_heating_01.png" /></a>');
+				$("#house_hot_word").html('<a style="color:#ADADAD">供暖</a>');
+			}
+			if(res["ZSSSTATUS"] == "开通"){
+				$("#house_water02_pic").html('<a href="#"><img src="__PUBLIC__/style/img/zc_zss.png" /></a>');
+				$("#house_water02_word").html('<a href="#" style="color:#13AB85">再生水</a>');
+			}
+			else{
+				$("#house_water02_pic").html('<a><img src="__PUBLIC__/style/img/zc_zss_01.png" /></a>');
+				$("#house_water02_word").html('<a style="color:#ADADAD">再生水</a>');
+			}
+        }
+    });
+
+	//获取环保积分状态
+    $.ajax({
+        url: '{:U("/User/ajax_getHuanBaoStatus")}',
+        type: 'POST',
+        data: 'houseCode=' + houseCode,
+        dataType: 'json',
+        success: function(res) {
+			
+			if(res == 1){
+				$("#house_green_pic").html('<a href="#"><img src="__PUBLIC__/style/img/zc_jifen.png" /></a>');
+				$("#house_green_word").html('<a href="#" style="color:#10C75D">环保积分</a>');
+			}
+			else{
+				$("#house_green_pic").html('<a><img src="__PUBLIC__/style/img/zc_jifen_01.png" /></a>');
+				$("#house_green_word").html('<a style="color:#ADADAD">环保积分</a>');
+			}
+			
+        }
+    });
+}   
+</script>
+<script>
+$(function() {
+    click_search(); 
+});
+</script>

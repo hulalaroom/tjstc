@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<script type="text/javascript">
+    function onload(){
+        document.forms[0].submit();
+    }
+</script>
+<body onload="onload()">
+<FORM METHOD="POST" id="form" ACTION="https://ebspay.boc.cn/PGWPortal/RecvOrder.do">
+    <INPUT TYPE="hidden" SIZE="25" ID="merchantNo" NAME="merchantNo" VALUE="{$merchantNo}">
+    <INPUT TYPE="hidden" SIZE="10" ID="payType" NAME="payType" VALUE="1">
+    <INPUT TYPE="hidden" SIZE="19" ID="orderNo" NAME="orderNo" VALUE="{$lsh}">
+    <INPUT TYPE="hidden" SIZE="3" ID="curCode" NAME="curCode" VALUE="001">
+    <INPUT TYPE="hidden" SIZE="13" ID="orderAmount" NAME="orderAmount" VALUE="{$totalmoney}">
+    <INPUT TYPE="hidden" SIZE="14" ID="orderTime" NAME="orderTime" VALUE="{$dateTime}">
+    <INPUT TYPE="hidden" SIZE="30" ID="orderNote" NAME="orderNote" VALUE="{$orderNote}">
+    <INPUT TYPE="hidden" SIZE="100" ID="orderUrl" NAME="orderUrl" VALUE="http://www.66885890.com/index.php?s=/pay/returnPay.html">
+    <textarea style="display: none" ID="signData"  NAME="signData" cols=100 rows=12 >{$signData}</textarea>
+	
+</FORM>
+</body>
+</html>

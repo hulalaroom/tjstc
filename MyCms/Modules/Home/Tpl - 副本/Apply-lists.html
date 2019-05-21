@@ -1,0 +1,80 @@
+<include file="Public:header" />
+<div class="main_block"> <include file="Public:top" />
+  <div class="content_block">
+    <div class="left_side fl">
+      
+      <include file="Public:left" /></div>
+        <div class="main_con fr">
+      <div class="bread_nav">
+        <div class="l fl"></div>
+        <div class="m fl" style="line-height:30px;"> <span class="list_style"></span> <span>您当前的位置:</span> {$nav} </div>
+        <div class="r fl"></div>
+      </div>
+      <div class="artical">
+        <!-- begin -->
+        <div class="bus_title fl">
+          <h2>[{$housename}]申请绑定记录:</h2>
+        </div>
+		<!--<empty name="list">
+			没有相关记录..
+		</empty>-->
+        <div class="bus_table fl">
+          <div class="bus_tablet tc">
+            <ul>
+              <li class="w1 fl"> <span>序号</span> </li>
+              <li class="w3 fl"> <span>申请人</span> </li>
+              <li class="w3 fl"> <span>联系电话</span> </li>
+			  <li class="w3 fl"> <span>操作</span> </li>
+            </ul>
+          </div>
+          <div class="bus_tableb tc">
+            <ul>
+			<empty name="list"><p class="nodata">暂无信息</p></empty>
+            <volist name="list" id="vo" key="k">
+              <li class="ff_hover cur_po">
+                <ul>
+                  <li class="w1 fl">
+                    <p>{$k}</p>
+                  </li>
+                  <li class="w3 fl"  onclick="views('{$vo[0]['id']}');"> <span>{$vo[0]['username']}</span> </li>
+                  <li class="w3 fl"  onclick="views('{$vo[0]['id']}');"> <span>{$vo[0]['phone']}</span> </li>
+				  <li class="w3 fl"> <span class="col_b"><input type="button" value="同意绑定" onclick="agreeBid('{$vo[0]['id']}')"/>&nbsp;&nbsp;<input type="button" value="取消绑定" onclick="cancleBid('{$vo[0]['id']}')"/></span></li>
+                </ul>
+              </li>
+              </volist>
+            </ul>
+          </div>
+        </div>
+		 <!--<div class="list_page">{$page}</div>-->
+        <!-- end -->
+      </div>
+    </div>
+  </div>
+</div>
+  <include file="Public:footer" />
+    <script>
+    function views(id){
+	var view_tip ='查看:'+'用户信息';
+	window.art.dialog.open('__URL__/view/id/'+id,{
+		 title:view_tip,
+		 width:766,
+		 fixed:true,lock:true,
+		 button:[{
+				name:'关闭'
+		 }]					   
+	});
+}
+
+	function agreeBid(id){
+		var roomBind = confirm("确定同意绑定？若同意，您将不再是此房间的业主，此操作不可恢复，请谨慎操作！");
+		if(roomBind==true){    
+			alert("456");
+		}     
+	}
+	
+	function cancleBid(){
+		alert("456");
+	}
+  </script>
+</body>
+</html>

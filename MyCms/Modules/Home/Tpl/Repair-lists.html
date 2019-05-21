@@ -1,0 +1,113 @@
+<include file="Public:header" />
+<div class="main_block"> <include file="Public:top" />
+  <div class="content_block">
+    <div class="left_side fl">
+      <div class="l_menu">
+      		 <!--上级菜单-->
+			{~$cat=get_info($cate,$id);}
+			 <volist name="cat" id="m" key="l">
+				<a href="javascript:history.go(-1);" title="返回上一页">
+					<div class="bb_l_menu_title">
+						{$m.title} 
+					</div>
+				</a>
+			</volist>
+		  <div class="left_other_menu">
+          <notempty name="cat">	
+				   {~$cat=get_child($cate,$id);}
+				 </notempty>	
+				 <empty name="cat">	
+					{~$cat=get_child($cate,$pid);}
+				 </empty>	
+          <volist name="cat" id="c" key="k">
+          <dl>
+            <dt><a href="<notempty name='c.url'>{$c.url}<else/>
+                  <empty name="c['tpl']">{:U($c['Model']['name'].'/index','id='.$c['id'])}<else/>{:U($c['Model']['name'].'/'.$c['tpl'],'id='.$c['id'])}</empty>
+                  
+                  </notempty>"><div style="height:50px;"><img src="{$c.pic}"/></div></a>
+              <!--<img src="{$c.cat_pic}"/>-->
+            </dt>
+          <dd> <a href="<notempty name='c.url'>{$c.url}<else/>
+                  <empty name="c['tpl']">{:U($c['Model']['name'].'/index','id='.$c['id'])}<else/>{:U($c['Model']['name'].'/'.$c['tpl'],'id='.$c['id'])}</empty>
+                  
+                  </notempty>">{$c.title}</a> <span>{$c.summary}</span> </dd>
+        </dl>
+          </volist></div>
+      </div>
+      <include file="Public:left" />
+    </div>
+        <div class="main_con fr">
+      <div class="bread_nav">
+        <div class="l fl"></div>
+           <div class="m fl" style="line-height:30px;"> <span class="list_style"></span> <span>您当前的位置:</span> <a  href="/index.php?s=">首页</a><span>&gt;</span><a href="/index.php?s=/page/zizhu/id/8.html">自助服务</a><span>&gt;</span><a href="/index.php?s=/business/lists/id/10.html">业务办理</a><span>&gt;</span><span style="color: #009f3f;">终端设备维修预约</span> </div>
+        <div class="r fl"></div>
+      </div>
+      <div class="artical">
+	  	<!-- begin -->
+        <div class="bus_title fl">
+          <h2>智能物回终端机报修单记录:<div style="float:right"><a href="{:U('Repair/index','id=119')}" title="智能物回终端机报修单登记入口"><img src="/Public/images/root.gif" alt="智能物回终端机报修单登记入口"></a></div></h2>
+        </div>
+		<!--<empty name="list">
+			没有相关记录..
+		</empty>-->
+        <div class="bus_table fl">
+          <div class="bus_tablet tc">
+            <ul>
+              <li class="w1 fl"> <span>序号</span> </li>
+              <li class="w2 fl"> <span>报修人</span> </li>
+              <li class="w3 fl"> <span>报修时间</span> </li>
+              <li class="w4 fl"> <span>受理状态</span> </li>
+            </ul>
+          </div>
+          <div class="bus_tableb tc">
+            <ul>
+			<empty name="list"><p class="nodata">暂无信息</p></empty>
+            <volist name="list" id="vo" key="k">
+              <li class="ff_hover cur_po"  onclick="views('{$vo.ID}','{$vo.RepairMan}');">
+                <ul>
+                  <li class="w1 fl">
+                    <p>{$k}</p>
+                  </li>
+                  <li class="w2 fl"> <span>{$vo.RepairMan}</span> </li>
+                  <li class="w3 fl"> <span>{$vo.Repair_time|date="Y-m-d H:i:s",###}</span> </li>
+                  <li class="w4 fl"> 
+										<eq name="vo.status" value="0"><span class="col_o">未受理</span></eq>
+				   					<eq name="vo.status" value="1"><span class="col_b">已受理</span></eq>
+				   					<eq name="vo.status" value="2"><span class="col_o">已办结</span></eq>
+								  </li>
+                </ul>
+              </li>
+			  
+              </volist>
+            
+            </ul>
+			
+          </div>
+		 
+        </div>
+		 <div class="list_page">{$page}</div>
+        <!-- end -->
+
+      </div>
+    </div>
+  </div>
+</div>
+  <include file="Public:footer" />
+    <script>
+      function views(id,title,type){
+	var view_tip ='终端设备维修预约记录';
+	window.art.dialog.open('__URL__/view/id/'+id,{
+		 title:view_tip,
+			 width:566,
+		// height:400,
+		 fixed:true,
+//		 id:id,
+                 padding:'16px',
+		 button:[{
+				name:'关闭'
+		 }]					   
+	});
+}
+  </script>
+</body>
+</html>

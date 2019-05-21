@@ -1,0 +1,56 @@
+    <div class="hearder_top">
+        <div class="hearder_head">
+            <div class="hearder_font clearfix">
+                <div class="hearder_fontleft">
+                    <span>欢迎来到{$Think.config.site_name}！</span><span><a href=""><img src="__PUBLIC__/last/img/public_img/head_weibo.png"
+                                                                       alt=""></a></span><span><a href=""><img
+                    src="__PUBLIC__/last/img/public_img/head_weixin.png" alt=""></a></span>
+                    <a href="{:U('Article/down')}" style="color:#b7b7b7"><span><img src="__PUBLIC__/last/img/public_img/head_shouji.png" alt=""><span>移动应用</span><span class="top_jiantou"><img
+                        src="__PUBLIC__/last/img/public_img/top_jiantou.png" alt=""></span></span></a></div>
+                <div class="hearder_fontright">
+                    <a onclick="setHomepage(window.location.href);">设为首页</a>|
+                    <a onclick="javascript:addFavorite2()">加入收藏</a>|
+                    <a href="" class="tel_span"><span><img src="__PUBLIC__/last/img/public_img/tel.png" alt=""></span>客服热线：022-66885890</a>
+                </div>
+            </div>
+        </div>
+        <div class="hearder_logo clearfix">
+            <p class="logo"><a href="/"><img src="__PUBLIC__/last/img/public_img/logo.png" alt=""></a></p>
+            <div class="home_weather clearfix">
+                <iframe id="fancybox-frame" name="fancybox-frame1534376700673" frameborder="0" scrolling="no" hspace="0" src="http://i.tianqi.com/index.php?c=code&a=getcode&id=35&h=55&w=200"></iframe>
+            </div>
+            <div class="home_search">
+                <form name="form1" id="form1" action="{:U('Article/search')}" method="post">
+                    <input id="keys" name="keys" class="aaa" type="text" placeholder="输入您想要输入的内容" />
+                    <button onclick="return check()"> <img src="__PUBLIC__/last/img/public_img/head_search.png" alt="" /></button>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="home_link">
+        <div class="home_link_box">
+            <ul class="clearfix">
+                <li><a href="/" <if condition="$homePage eq true">class="hoverbg02"</if>>首页</a></li>
+                {~$topmenu=get_menu($cate, 0);}
+                <volist name="topmenu" id="vo">
+                    <li class="dropdown">
+                        <if condition="$vo.id eq 20">
+                            <a class="<eq name="vo.id" value="$topid">hoverbg02</eq> blod" href="<empty name='vo.url'><empty name="vo['tpl']">{:U($vo['Model']['name'].'/index','id='.$vo['id'])}<else/>{:U($vo['Model']['name'].'/'.$vo['tpl'],'id='.$vo['id'])}</empty><else/>{$vo.url}</empty>"></a>
+                        <else/>
+                            <if condition="$vo.id eq 4">
+                                <a <eq name="vo.id" value="$topid"> class="hoverbg02"</eq>>{$vo['title']}</a>
+                                <ul>
+                                    <li><a href="{:U('Orgs/index',array('id'=>141,'cid'=>1))}">成员单位</a></li>
+                                    <li><a href="{:U('Srv/index',array('id'=>6,'cid'=>1))}">服务标准</a></li>
+                                    <li><a href="{:U('Rule/index',array('id'=>5,'cid'=>1))}">政策法规</a></li>
+                                    <li><a href="{:U('Question/index',array('id'=>7,'cid'=>1))}">常见问题</a></li>
+                                </ul>
+                            <else/>
+                                <a <eq name="vo.id" value="$topid"> class="hoverbg02"</eq> href="<empty name='vo.url'><empty name="vo['tpl']">{:U($vo['Model']['name'].'/index','id='.$vo['id'])}<else/>{:U($vo['Model']['name'].'/'.$vo['tpl'],'id='.$vo['id'])}</empty><else/>{$vo.url}</empty>">{$vo['title']}</a>
+                            </if>
+                        </if>
+                    </li>
+                </volist>
+            </ul>
+        </div>
+    </div>

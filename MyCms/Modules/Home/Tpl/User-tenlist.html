@@ -1,0 +1,90 @@
+<include file="Public:header" />
+<div class="main_block"> <include file="Public:top" />
+    <div class="content_block">
+        <div class="left_side fl"><include file="Public:left" /></div>
+        <div class="main_con fr">
+            <div class="bread_nav">
+                <div class="l fl"></div>
+
+                <div class="m fl" style="line-height:30px;"> <span class="list_style"></span> <span>您当前的位置:</span><a href="__GROUP__">首页</a><span>&gt;</span></span><a href="{:U('User/index')}">我的5890</a><span>&gt;</span><span style="color: #009f3f;">申请绑定记录</span></div>
+
+                <div class="r fl"></div>
+            </div>
+            <div>
+                <!-- begin -->
+				<br/>
+				<span style="font-size:14px; font-weight:bold; color:red;">温馨提示:</span>
+				<span style="font-size:13px;color:red;">此栏目的操作不可撤销，所以请谨慎操作。如有疑问，请拨打022-66885890进行咨询，谢谢您的配合！</span> 	                <br/><br/>
+				房间地址：{$infor['houseName']}
+                <div class="tab_mes">
+                    <table width="100%" id="hover_000" class="b_5890" cellpadding="" cellspacing="1" bgcolor="#e5e5e5">
+                        <tr>
+                            <th width="15%">序号</th>
+                            <th width="15%">申请人</th>
+							<th width="20%">联系电话</th>
+							<th>电子邮箱</th>
+                            <th width="20%">操作</th>
+                        </tr>
+						{~$jl = get_infor($userlist,$infor['houseCode'])}
+						<empty name="jl"><tr><td td colspan="5" style="text-align:center">暂时没有租客绑定或者相关记录已经处理完毕，如有疑问，请拨打022-66885890进行咨询，谢谢您的配合！<a href="javascript:history.go(-1)" style="color:#66CC00">返回>></a></td></tr></empty>
+                        <volist name="jl" id="alist" key="k">
+							<if condition="$alist.upstatus eq 1">
+								<tr id="bind_{$alist['id']}" onClick="javascript:views(this,'{$alist.id}')" <eq name="k" value="1"> class="hover_000"</eq>>
+							<else />
+								<tr id="bind_{$alist['id']}">
+							</if>
+							<td>{$k}</td>
+							<td>{$alist.nickname}</td>
+							<td>{$alist.phone}</td>
+							<td>{$alist.email}</td>
+							<td><input type="button" name="jiebang" value="解绑" onclick="bindHandle({$alist.id},'{$infor.houseCode}')" style="background: url('/Public/images/sw_04.jpg') no-repeat scroll 0% 0% transparent;width:44px; height:24px; color:#FFFFFF;"/>
+							</td>
+							</tr>
+                        </volist>
+                    </table>
+                </div>
+                <!-- end -->
+            </div>
+        </div>
+    </div>
+</div>
+<include file="Public:footer" />
+<script>
+function views(id, title) {
+    var view_tip = '查看记录详细信息';
+    window.art.dialog.open('__GROUP__/view/id/' + id, {
+        title: view_tip,
+        width: 566,
+        /* height:400,*/
+        fixed: true,
+        //		 id:id,
+        padding: '16px',
+        button: [{
+            name: '关闭'
+        }]
+    });
+}
+
+function bindHandle(id, housecode){
+	  window.art.dialog({
+		content: '您确定进行此操作吗？（此操作不可撤销，请谨慎操作）',
+		ok:function () { 
+		$.ajax({
+        url: '{:U("User/unbound")}',
+        type : 'POST',
+        data : {id:id,houseCode:housecode},
+        dataType: 'json', 
+        success: function(res){
+            art.dialog({title: res.title,content: res.message,time:res.time}); 
+            if (res.status==1) {
+               $("#bind_"+id).remove();    
+			}   
+        }
+    }); 
+			 },
+			cancelVal: '关闭',
+			cancel: true
+		});
+}
+</script>
+</body></html>

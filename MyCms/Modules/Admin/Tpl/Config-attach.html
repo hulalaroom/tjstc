@@ -1,0 +1,248 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href='__PUBLIC__/css/common.css'>
+<script type="text/javascript" src="__PUBLIC__/js/jquery-1.7.1.min.js"></script>
+<script type="text/javascript" src="__PUBLIC__/js/base.js"></script>
+<title>无标题文档</title>
+<script>
+     $(function(){
+    $('#J_locate_list > li > a').click(function(e){
+		e.preventDefault();
+		var $this = $(this);
+		$this.parents('li').addClass('current').siblings('.current').removeClass('current');
+		$('#J_locate_input').val($this.data('value'));
+	});
+          })
+</script>
+<style>
+/*
+===================
+方位选择 例子：水印
+===================
+*/
+.locate {
+	border:1px solid #ccc;
+	border-right: 1px solid #ccc;
+	background:#fff;
+	width:210px;
+	margin: 5px;
+	float: left;
+}
+.locate ul {
+	margin-top:-1px;
+	margin-left:-1px;
+	float: left;
+}
+.locate li {
+	border-left:1px solid #ccc;
+	border-top:1px solid #ccc;
+	float:left;
+	width:69px;
+	height:40px;
+	text-align:center;
+}
+.locate li a {
+	color:#333;
+	display:block;
+	border:1px solid #fff;
+	line-height:38px;
+}
+.locate li a:hover {
+	text-decoration:none;
+	background:#e4e4e4;
+}
+.locate li.current a {
+	background:#266aae;
+	color:#fff;
+}
+</style>
+</head>
+<body>
+<div id="append_parent"></div>
+<div class="container" id="cpcontainer">
+  <div id="contentHeader">
+    <h3>附件配置</h3>
+    <div class="searchArea">
+      <ul class="action left" >
+        <li><a href="__URL__/index" class="actionBtn"><span>基本配置</span></a></li>
+        <li><a class="current" href="__URL__/attach" class="actionBtn"><span>附件配置</span></a></li>
+        <li><a href="__URL__/email" class="actionBtn"><span>邮箱配置</span></a></li>
+		<li><a href="__URL__/content" ><span>页面配置</span></a></li>
+                 <li><a  href="__URL__/weixin" ><span>微信配置</span></a></li>
+      </ul>
+    </div>
+  </div>
+  <form action="{:U('Config/attach_update')}" method="post" name="form1">
+    <table class="content_list">
+      <tbody>
+        <tr>
+          <td class="tb_title">附件大小限制：</td>
+        </tr>
+        <tr>
+          <td><input type="text" class="txt" name="attach_maxsize" value="{$Think.config.attach_maxsize}">
+            MB</td>
+        </tr>
+        <tr>
+          <td class="tb_title">文件上传类型：</td>
+        </tr>
+        <tr>
+          <td><input type="text" class="txt" name="attach_ext_file" value="{$Think.config.attach_ext_file}" >
+          </td>
+        </tr>
+        <tr>
+          <td class="tb_title">flash视频上传类型：</td>
+        </tr>
+        <tr>
+          <td><input type="text" class="txt" name="attach_ext_flash" value="{$Think.config.attach_ext_flash}">
+          </td>
+        </tr>
+        <tr>
+          <td class="tb_title">media音频上传类型：</td>
+        </tr>
+        <tr>
+          <td><input type="text" class="txt" name="attach_ext_media" value="{$Think.config.attach_ext_media}">
+          </td>
+        </tr>
+        <tr>
+          <td class="tb_title">图片上传类型：</td>
+        </tr>
+        <tr>
+          <td><input type="text" class="txt" name="attach_ext_image" value="{$Think.config.attach_ext_image}">
+          </td>
+        </tr>
+        <tr>
+          <td class="tb_title">图片是否缩略：</td>
+        </tr>
+        <tr>
+          <td><select name="attach_isthumb">
+              <option value="1"
+              <eq name="Think.config.attach_isthumb" value="1"> selected="selected" </eq>
+              >是
+              </option>
+              <option value="0" 
+              <eq name="Think.config.attach_isthumb" value="0"> selected="selected" </eq>
+              >否
+              </option>
+            </select></td>
+        </tr>
+        <tr>
+          <td class="tb_title">缩略图前缀：</td>
+        </tr>
+        <tr>
+          <td><input type="text" class="txt" name="attach_thumpre" value="{$Think.config.attach_thumpre}">
+          </td>
+        </tr>
+        <tr>
+          <td class="tb_title">缩略图最大宽度：</td>
+        </tr>
+        <tr>
+          <td><input type="text" class="txt" name="attach_thumbmaxwidth" value="{$Think.config.attach_thumbmaxwidth}">
+          </td>
+        </tr>
+      <td class="tb_title">缩略图最大高度：</td>
+      </tr>
+      <tr>
+        <td><input type="text" class="txt" name="attach_thumbmaxheight" value="{$Think.config.attach_thumbmaxheight}">
+        </td>
+      </tr>
+      <tr>
+        <td class="tb_title">是否删除原图：</td>
+      </tr>
+      <tr>
+        <td><select name="attach_thumbremove">
+            <option value="1"
+            <eq name="Think.config.attach_thumbremove" value="1"> selected="selected" </eq>
+            >是
+            </option>
+            <option value="0" 
+            <eq name="Think.config.attach_thumbremove" value="0"> selected="selected" </eq>
+            >否
+            </option>
+          </select></td>
+      </tr>
+      <tr>
+        <td class="tb_title">是否加水印：</td>
+      </tr>
+      <tr>
+        <td><select name="attach_iswater">
+            <option value="1"
+            <eq name="Think.config.attach_iswater" value="1"> selected="selected" </eq>
+            >是
+            </option>
+            <option value="0" 
+            <eq name="Think.config.attach_iswater" value="0"> selected="selected" </eq>
+            >否
+            </option>
+          </select></td>
+      </tr>
+      <tr>
+        <td class="tb_title">水印图片路径：</td>
+      </tr>
+      <tr>
+        <td><input type="text" class="txt" name="attach_markpic" value="{$Think.config.attach_markpic}">
+        </td>
+      </tr>
+      <tr>
+        <td class="tb_title">水印图片透明度：</td>
+      </tr>
+      <tr>
+        <td><input type="text" class="txt" name="attach_alpha" value="{$Think.config.attach_alpha}">
+        </td>
+      </tr>
+      <tr>
+        <td class="tb_title">水印位置：</td>
+      </tr>
+      <tr>
+        <td><div class="locate">
+            <ul class="cc" id="J_locate_list">
+              <li 
+              <eq name="Think.config.attach_position" value="1"> class="current"</eq>
+              ><a href="" data-value="1">左上</a>
+              </li>
+              <li 
+              <eq name="Think.config.attach_position" value="2"> class="current"</eq>
+              ><a href="" data-value="2">中上</a>
+              </li>
+              <li 
+              <eq name="Think.config.attach_position" value="3"> class="current"</eq>
+              ><a href="" data-value="3">右上</a>
+              </li>
+              <li 
+              <eq name="Think.config.attach_position" value="4"> class="current"</eq>
+              ><a href="" data-value="4">左中</a>
+              </li>
+              <li 
+              <eq name="Think.config.attach_position" value="5"> class="current"</eq>
+              ><a href="" data-value="5">中心</a>
+              </li>
+              <li 
+              <eq name="Think.config.attach_position" value="6"> class="current"</eq>
+              ><a href="" data-value="6">右中</a>
+              </li>
+              <li 
+              <eq name="Think.config.attach_position" value="7"> class="current"</eq>
+              ><a href="" data-value="7">左下</a>
+              </li>
+              <li 
+              <eq name="Think.config.attach_position" value="8"> class="current"</eq>
+              ><a href="" data-value="8">中下</a>
+              </li>
+              <li 
+              <eq name="Think.config.attach_position" value="9"> class="current"</eq>
+              ><a href="" data-value="9">右下</a>
+              </li>
+            </ul>
+            <input id="J_locate_input" name="attach_position" type="hidden" value="{$Think.config.attach_position}">
+          </div></td>
+      </tr>
+      <tr class="submit">
+        <td><input type="submit" value="提交" class="button" tabindex="3"></td>
+      </tr>
+      </tbody>
+    </table>
+  </form>
+</div>
+</body>
+</html>

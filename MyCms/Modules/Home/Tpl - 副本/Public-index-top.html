@@ -1,0 +1,95 @@
+<div class="head_block" style="margin:0 auto; width:1000px;">
+  <div class="logo"> <a class="logo fl" href="/"></a>
+    <div class="search fr">
+      <form name="form1" id="form1" action="{:U('Article/search')}" method="post">
+        <label>
+        <input class="text" id="keys" type="text"  value="<neq name='keys' value=''>{$keys}<else/>输入您想搜索的内容</neq>"  name="keys"/>
+        <input class="but" type="submit" value="" onclick="return check()"/>
+        </label>
+      </form>
+    </div>
+
+  </div>
+  <!-- start update by wanghispeng 2014-05-28 -->
+  <div style=" width:775px; padding-left:225px;">
+    <div style=" height:25; width:90px; float:left;"><img src="/Public/images/service-gg.jpg"/></div>
+	<div style=" width:680px; height:25px; float:left;">
+	<marquee id="notices" style="color:#414141;font-size:12px;line-height:25px;float:left" direction="left" height="25" scrollamount="1" onmouseover="notices.stop()" onmouseout="notices.start()" scrolldelay="30" width="680">
+		<empty name="fwlist">
+		  <div class="nodata">暂无数据</div>
+		</empty>
+		<volist name="fwlist" id="notices" key="k">
+			<if condition="$notices.isre eq 1">
+				<a target="_blank" title="{$notices.title}" href="{:U('Article/view','id='.$notices['id'])}">{$notices.title}</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+ 			</if> 
+		</volist>
+	</marquee> </div>
+	<div style="clear:both;"></div>
+  </div>
+  <!-- end update by wanghispeng 2014-05-28 -->
+  <script type="text/javascript">
+	function check()
+	{
+		 var key;
+		 key=$("#keys").val().replace(/(^\s*)|(\s*$)/g, "");
+		 if(key==''||key=='输入您想搜索的内容'){
+			art.dialog({content:'关键词不能为空',time:2});
+			return false;
+		 }
+		 else
+		 {
+			  return true;
+		 }
+	}
+  </script>
+
+  <div class="nav">
+    <div id="l_menu" class="fl">
+      <div class="<eq name='submenu' value='show'>nav_l_zk_none<else/>nav_l_zk</eq>"><strong>成员单位</strong>
+        <div class="l_menu_index <eq name='submenu' value='show'>dis</eq>" >
+          <dl>
+            <dt><a href="{:U('Page/viewss','id=147&status=5')}" title="能源公司"><img src="./Uploads/image/allicon/left-menu001.png" alt="能源公司"/></a></dt>
+            <dd><a href="{:U('Page/viewss','id=147&status=5')}" title="能源公司">能源公司</a> <span>能源公司信息</span></dd>
+          </dl>
+          <dl>
+            <dt><a href="{:U('Page/viewss','id=153&status=6')}" title="环保公司"><img src="./Uploads/image/allicon/left-menu005.png" alt="环保公司"/></a></dt>
+            <dd> <a href="{:U('Page/viewss','id=153&status=6')}" title="环保公司">环保公司</a> <span>环保公司信息</span> </dd>
+          </dl>
+          <dl>
+            <dt> <a href="{:U('Page/viewss','id=155&status=7')}" title="市政景观公司"><img src="./Uploads/image/allicon/left-menu004.png" alt="市政景观公司"/></a></dt>
+            <dd> <a href="{:U('Page/viewss','id=155&status=7')}" title="市政景观公司">市政景观公司</a> <span>市政景观公司信息</span> </dd>
+          </dl>
+          <dl>
+            <dt><a href="{:U('Page/viewss','id=157&status=8')}" title="绿色交通公司"><img src="./Uploads/image/allicon/left-menu003.png" alt="绿色公交公司"/></a></dt>
+            <dd> <a href="{:U('Page/viewss','id=157&status=8')}" title="绿色交通公司">绿色交通公司</a> <span>绿色交通公司信息</span> </dd>
+          </dl>
+          <dl>
+            <dt><a href="{:U('Page/viewss','id=159&status=9')}" title="水务公司"><img src="./Uploads/image/allicon/left-menu002.png" alt="水务公司"/></a></dt>
+            <dd> <a href="{:U('Page/viewss','id=159&status=9')}" title="水务公司">水务公司</a> <span>水务公司信息</span> </dd>
+          </dl>
+          <!--<dl>
+            <dt><a href="{:U('Guestbook/lists','id=11')}" title="建议与投诉"><img src="./Uploads/image/allicon/icon_tsjy.jpg" alt="建议与投诉"/></a></dt>
+            <dd> <a href="{:U('Guestbook/lists','id=11')}" title="建议与投诉">建议与投诉</a> <span>服务质量建议与投诉</span> </dd>
+          </dl>-->
+        </div>
+      </div>
+    </div>
+    <div class="nav_r">
+      <div><a <empty name="topid"> class="hover"</empty>
+        href="http://www.66885890.com">首页</a><span></span> {~$topmenu=get_menu($cate, 0);}
+        <volist name="topmenu" id="vo"> <a
+          <eq name="vo.id" value="$topid"> class="hover"</eq>
+          href="
+          <empty name='vo.url'>
+            <empty name="vo['tpl']">{:U($vo['Model']['name'].'/index','id='.$vo['id'])}
+              <else/>
+              {:U($vo['Model']['name'].'/'.$vo['tpl'],'id='.$vo['id'])}</empty>
+            <else/>
+            {$vo.url}</empty>
+          ">
+          {$vo['title']}
+          </a><span></span> </volist>
+      </div>
+      <a class="fw" href="{:U('Article/fuwu','id=30')}"></a> </div>
+  </div><div style="clear:both;"></div>
+</div>

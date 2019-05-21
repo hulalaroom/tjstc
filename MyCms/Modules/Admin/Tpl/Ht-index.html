@@ -1,0 +1,211 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href='__PUBLIC__/css/common.css'>
+<script type="text/javascript" src="__PUBLIC__/js/jquery-1.7.1.min.js"></script>
+<script type="text/javascript" src="__PUBLIC__/js/base.js"></script>
+<script src="__PUBLIC__/js/jquery.textSearch-1.0.js" type="text/javascript"></script>
+<title>合同预约</title>
+<script>
+     var thisurl = window.location.href;
+  $(function(){
+              //
+              <notempty name='keyword'>$(".title").textSearch('{$keyword}');</notempty>
+                //搜索绑定事件
+                $("#getform").submit(function(){
+                    thisurl  =  delQueStr(thisurl,'p');;
+                    thisurl  = setUrlParam('limit',$(this).find('select[name=limit]').val(),thisurl);
+                    thisurl  = setUrlParam('start_time',$(this).find('input[name=start_time]').val(),thisurl);
+                    thisurl  = setUrlParam('end_time',$(this).find('input[name=end_time]').val(),thisurl);
+                    thisurl  = setUrlParam('types',$(this).find('select[name=types]').val(),thisurl);
+                    thisurl  = setUrlParam('keyword',$(this).find('input[name=keyword]').val(),thisurl);
+                    window.location.href = thisurl;
+                    return false;							  
+                })
+            })    
+ //下拉搜索
+            function select_search(value,name){
+                thisurl = delQueStr(thisurl,'p');
+                thisurl = setUrlParam(name,value,thisurl);  //设置URL
+                window.location.href = thisurl;
+            }   
+             function numlimit(num,limit){
+				thisurl = delQueStr(thisurl,'p');;
+				thisurl = setUrlParam(limit,num,thisurl);  //设置URL
+				window.location.href=thisurl;
+             }
+</script>  
+<script>
+
+
+//设置URL
+function setUrlParam(para_name,para_value,url)
+{
+	    if(para_value==''){
+		   return delQueStr(url,para_name);
+	    }
+        var strNewUrl=new String();
+        var strUrl=url;
+        //alert(strUrl);
+        if(strUrl.indexOf("?")!=-1)
+        {
+            strUrl=strUrl.substr(strUrl.indexOf("?")+1);
+            //alert(strUrl);
+            if(strUrl.toLowerCase().indexOf(para_name.toLowerCase())==-1)
+            {
+                strNewUrl=url+"&"+para_name+"="+para_value;
+                return strNewUrl;
+            }else
+            {
+                var aParam=strUrl.split("&");
+                //alert(aParam.length);
+                for(var i=0;i<aParam.length;i++)
+                {
+                    if(aParam[i].substr(0,aParam[i].indexOf("=")).toLowerCase()==para_name.toLowerCase())
+                    {
+                       aParam[i]= aParam[i].substr(0,aParam[i].indexOf("="))+"="+para_value;
+                    }
+                }
+               
+               strNewUrl=url.substr(0,url.indexOf("?")+1)+aParam.join("&");
+              // alert(strNewUrl);
+               return strNewUrl;
+           }
+            
+        }else
+        {
+            strUrl+="?"+para_name+"="+para_value;
+            //alert(strUrl);
+            return strUrl
+        }
+}
+
+
+//删除参数值
+function delQueStr(url, ref) {
+            var str = "";
+            if (url.indexOf('?') != -1) {
+                str = url.substr(url.indexOf('?') + 1);
+            }
+            else {
+                return url;
+            }
+            var arr = "";
+            var returnurl = "";
+            var setparam = "";
+            if (str.indexOf('&') != -1) {
+                arr = str.split('&');
+                for (i in arr) {
+                    if (arr[i].split('=')[0] != ref) {
+                        returnurl = returnurl + arr[i].split('=')[0] + "=" + arr[i].split('=')[1] + "&";
+                    }
+                }
+                return url.substr(0, url.indexOf('?')) + "?" + returnurl.substr(0, returnurl.length - 1);
+            }
+            else {
+                arr = str.split('=');
+                if (arr[0] == ref) {
+                    return url.substr(0, url.indexOf('?'));
+                }
+                else {
+                    return url;
+                }
+            }
+}
+    
+</script>
+</head>
+<body>
+<div id="append_parent"></div>
+<div class="container" id="cpcontainer">
+  <div id="contentHeader">
+    <h3>合同预约</h3>
+    <div class="searchArea">
+      <div class="search right">
+          <form name="sou" id="getform" action="{:U('Ht/index')}" method="get">
+              <a href="{:U('Ht/index')}">[清空条件]</a>
+          显示：<select name="limit"  onChange="numlimit(this.value,'limit');" name="limit">
+            <option value="{$p}" <eq name='limit' value='{$p}'>selected="selected"</eq>>{$p}</option>
+            <option value="30" <eq name='limit' value='30'>selected="selected"</eq>>30</option>
+          </select>
+          </select>
+         关键词：
+          <select name="types">
+            <option value="title" <eq name='types' value='title'>selected="selected"</eq>>标题</option>
+        
+          </select>
+        <input id="title" type="text" name="keyword" value="{$keyword}" class="txt" size="15"/>
+        <input name="searchsubmit" type="submit"  value="查询" class="button "/>
+          </form>
+      </div>
+    </div>
+  </div>
+  <table border="0" cellpadding="0" cellspacing="0" class="content_list">
+    <form method="post" action="__URL__/bat" name="form1">
+      <thead>
+        <tr class="tb_header">
+          <th width="10%">ID</th>
+          <th width="10%">使用方</th>
+          <th width="10%">房屋类型</th>
+          <th width="15%">采暖形式</th>
+          <th width="15%">乙方签字</th>
+		  <th width="20%">签订时间</th>
+		  <th width="10%">受理状态</th>
+          <th>操作</th>
+        </tr>
+      </thead>
+	  <empty name="contractlist"><tr><td colspan="8"><p class="nodata">暂无信息</p></td></tr></empty>
+      <volist name="contractlist" id="gu">
+	  <if condition="$gu.housecode neq ''">
+        <tr class="tb_list">
+          <td ><input type="checkbox" name="id[]" value="{$gu.ht_id}">
+            {$gu.ht_id}</td>
+		  <td  class="title">{$gu.syf}</td>
+		  <td>{$gu.fwlx}</td>
+		  <td>{$gu.cnxs}</td>
+		  <td>{$gu.yfqz}</td>
+		   <td>{$gu.ht_cjsj|date="Y-m-d H:i:s",###}</td>
+		  <td align="center">
+			<eq name="gu.status" value="1"><span style="color:red">驳回</span></eq>
+			<eq name="gu.status" value="2"><span style="color:blue">网站审核</span></eq>
+			<eq name="gu.status" value="3"><span style="color:orange">片区审核</span></eq>
+			<eq name="gu.status" value="4"><span style="color:green">审核完毕</span></eq>
+		  </td>
+          <td><a href="__URL__/edit/id/{$gu.ht_id}"><img src="__PUBLIC__/images/update.png" title="查看" align="absmiddle"></a>&nbsp;&nbsp;<a href="{:U('Ht/bat','command=delete&id='.$gu['ht_id'])}" class="confirmSubmit"><img src="__PUBLIC__/images/delete.png" align="absmiddle" title="删除"></a></td>
+        </tr>
+	  </if>
+      </volist>
+      <tr class="operate">
+        <td colspan="8"><div class="cuspages right">{$page}</div>
+          <div class="fixsel">
+            <input type="checkbox" name="chkall" id="chkall" onClick="checkAll(this.form, 'id')" />
+            <label for="chkall">全选</label>
+			&nbsp;&nbsp;选择操作：
+            <select name="command">
+              <option value="unstatus">同意</option>
+              <option value="delete">删除</option>
+            </select>
+            <input id="submit_maskall" class="button confirmSubmit" type="submit" value="提交" name="maskall" />
+          </div></td>
+      </tr>
+    </form>
+  </table>
+  <script type="text/javascript">
+$(function(){ 
+    $(".confirmSubmit").click(function() {
+		var a=$("input[type='checkbox']:checked");
+		var len=a.length;
+		if(len<1){
+			alert("您未选择任何选项！");
+			return false;
+		}else{
+        return confirm('本操作不可恢复，确定继续？');
+		}
+			
+    });
+}); 
+</script>
+</div>
+</body>
+</html>

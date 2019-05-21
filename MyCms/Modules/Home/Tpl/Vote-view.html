@@ -1,0 +1,250 @@
+<include file="Public:header" />
+<div class="main_block">
+    <include file="Public:top" />
+    <div class="content_block">
+
+        <div class="left_side fl">
+            <include file="Public:left" />  
+        </div>
+
+
+        <div class="main_con fr">
+            <div class="bread_nav">
+                <div class="l fl"></div>
+                <div class="m fl" style="line-height:30px;"> <span class="list_style"></span> <span>您当前的位置:</span> {$nav} </div>
+                <div class="r fl"></div>
+            </div>
+
+            <form id="form2" name="form2" action="__URL__/save1" method="post">
+                <input type="hidden" name="id" value="{$vote.id}"/>
+				<input type="hidden" name="flag" value="{$flag}"/>
+                <!-- begin -->
+                <div class="survey">
+                    <div class="survey_content">
+
+                        <div class="tit"><h2>{$vote.title}</h2></div>
+                        <p>发布时间：{$vote.start_time|date="Y-m-d H:i:s",###}&nbsp;&nbsp;<a href="{:U('Vote/result','voteid='.$vote[id])}" class="col_g">[查看结果]</a></p>
+                        <volist name="votelist" id="vo" key="k">
+                            <div class="question" id="">
+                                <div class="title_dc " id="sc{$k-1}">
+                                    {$k}、{$vo.listname}
+                                    <eq name="vo.is_mc" value="0">（单选）</eq>
+                                    <eq name="vo.is_mc" value="1">（多选）</eq>
+                                    <input class="yanzheng" type="hidden" id="list_{$vo.listid}">
+                                    <span class="tip">(必选)</span>	</div>
+                                <div class="content_da line">
+                                    <table class="que" width="100%" border="0" cellpadding="0" cellspacing="0">
+                                        <tbody>
+                                        <if condition =" $vo['is_mc'] eq 1">
+                                            <volist name="option[$vo['listid']]" id="op">								
+                                                <tr class="fo">
+                                                    <td width="430">
+                                                        <label><input id="{$k-1}" type="checkbox" class="Radio" name="optionid[{$vo.listid}][{$op.id}]" value="{$op.id}" onclick="check(this,'{$vo.listid}')">
+                                                            <span class="option">{$op.option}</span>
+                                                        </label>
+                                                    </td>
+                                                </tr>
+                                            </volist>
+                                            <else/>
+                                            <volist name="option[$vo['listid']]" id="op">
+                                                <tr>
+                                                    <td width="430">
+                                                        <label><input  id="{$k-1}" type="radio" class="Radio" name="optionid[{$vo.listid}][]" value="{$op.id}" onclick="check(this,'{$vo.listid}')">
+                                                            <span class="option">{$op.option}</span>
+                                                        </label>
+                                                    </td>
+                                                </tr>
+                                            </volist>
+                                        </if>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </volist>
+                        <div class="tjan">
+                            <input class="btn1 Submit" type="submit" value="提 交">
+                        </div>
+                    </div>
+
+                </div>
+                <!-- end -->
+            </form>  
+        </div>
+
+
+    </div>
+</div>
+
+
+
+<include file="Public:footer" />
+</body>
+</html>
+<script type="text/javascript"> 
+    $(document).ready(function(){   
+        //提供回调函数，提供提交返回结果的处理   
+        var options = {
+            beforeSubmit: checkstate,
+            //提交前处理 
+            success: showResponse,
+            //处理完成 
+            resetForm: false,
+            dataType: 'json'
+        };    
+        $('#form2').submit(function() {          
+            $(this).ajaxSubmit(options);
+            return false;
+        });
+    }); 
+    
+    //
+
+    function showResponse(res) {
+        //    alert(res.status);
+        art.dialog({
+            title: res.title,
+            content: res.message,
+            time: res.time
+        });
+        if (res.url) {
+            window.location.href = res.url;
+        }
+    }
+    
+    
+    function showExpire() {
+        //    alert(res.status);
+        art.dialog({
+            title: '提示',
+            content: '此次调查已经结束，感谢您的关注！',
+            time: 10
+        });
+    }
+    
+    var t;var v;
+    function check(obj,id){
+        t= $("#list_"+id).val();
+         if ($(obj).attr("checked") == true || $(obj).attr("checked") == "checked"){
+            v=t*1+id*1;
+            $("#list_"+id).val(v);
+        }else{
+            $("#list_"+id).val(t-id);
+        }
+   
+    }
+    
+    function checkstate() 
+    {
+        for(var i=0;i<$(".yanzheng").length;i++)
+        {
+           
+            if($(".yanzheng").eq(i).val() == ''||$(".yanzheng").eq(i).val() == '0'||$(".yanzheng").eq(i).val() == null){
+                 $(".tip").eq(i).css("font-weight","bold");
+              $("#sc" + i).ScrollTo();
+                
+//                $("#"+i).focus();
+                 //alert('还有选项没填写!');
+                 
+				  window.art.dialog({title: '提交失败',content: '还有选项没填写',time: 2});
+                return false;
+            };
+        }
+        return true;
+    }
+	   	 
+
+    
+    
+    jQuery.getPos = function (e)
+{
+    var l = 0;
+    var t  = 0;
+    var w = jQuery.intval(jQuery.css(e,'width'));
+    var h = jQuery.intval(jQuery.css(e,'height'));
+    var wb = e.offsetWidth;
+    var hb = e.offsetHeight;
+    while (e.offsetParent){
+        l += e.offsetLeft + (e.currentStyle?jQuery.intval(e.currentStyle.borderLeftWidth):0);
+        t += e.offsetTop  + (e.currentStyle?jQuery.intval(e.currentStyle.borderTopWidth):0);
+        e = e.offsetParent;
+    }
+    l += e.offsetLeft + (e.currentStyle?jQuery.intval(e.currentStyle.borderLeftWidth):0);
+    t  += e.offsetTop  + (e.currentStyle?jQuery.intval(e.currentStyle.borderTopWidth):0);
+    return {x:l, y:t, w:w, h:h, wb:wb, hb:hb};
+};
+jQuery.getClient = function(e)
+{
+    if (e) {
+        w = e.clientWidth;
+        h = e.clientHeight;
+    } else {
+        w = (window.innerWidth) ? window.innerWidth : (document.documentElement && document.documentElement.clientWidth) ? document.documentElement.clientWidth : document.body.offsetWidth;
+        h = (window.innerHeight) ? window.innerHeight : (document.documentElement && document.documentElement.clientHeight) ? document.documentElement.clientHeight : document.body.offsetHeight;
+    }
+    return {w:w,h:h};
+};
+jQuery.getScroll = function (e) 
+{
+    if (e) {
+        t = e.scrollTop;
+        l = e.scrollLeft;
+        w = e.scrollWidth;
+        h = e.scrollHeight;
+    } else  {
+        if (document.documentElement && document.documentElement.scrollTop) {
+            t = document.documentElement.scrollTop;
+            l = document.documentElement.scrollLeft;
+            w = document.documentElement.scrollWidth;
+            h = document.documentElement.scrollHeight;
+        } else if (document.body) {
+            t = document.body.scrollTop;
+            l = document.body.scrollLeft;
+            w = document.body.scrollWidth;
+            h = document.body.scrollHeight;
+        }
+    }
+    return { t: t, l: l, w: w, h: h };
+};
+
+jQuery.intval = function (v)
+{
+    v = parseInt(v);
+    return isNaN(v) ? 0 : v;
+};
+
+jQuery.fn.ScrollTo = function(s) {
+    o = jQuery.speed(s);
+    return this.each(function(){
+        new jQuery.fx.ScrollTo(this, o);
+    });
+};
+
+jQuery.fx.ScrollTo = function (e, o)
+{
+    var z = this;
+    z.o = o;
+    z.e = e;
+    z.p = jQuery.getPos(e);
+    z.s = jQuery.getScroll();
+    z.clear = function(){clearInterval(z.timer);z.timer=null};
+    z.t=(new Date).getTime();
+    z.step = function(){
+        var t = (new Date).getTime();
+        var p = (t - z.t) / z.o.duration;
+        if (t >= z.o.duration+z.t) {
+            z.clear();
+            setTimeout(function(){z.scroll(z.p.y, z.p.x)},13);
+        } else {
+            st = ((-Math.cos(p*Math.PI)/2) + 0.5) * (z.p.y-z.s.t) + z.s.t;
+            sl = ((-Math.cos(p*Math.PI)/2) + 0.5) * (z.p.x-z.s.l) + z.s.l;
+            z.scroll(st, sl);
+        }
+    };
+    z.scroll = function (t, l){window.scrollTo(l, t)};
+    z.timer=setInterval(function(){z.step();},13);
+};
+
+<notempty name="expire">
+showExpire();
+</notempty>
+</script>

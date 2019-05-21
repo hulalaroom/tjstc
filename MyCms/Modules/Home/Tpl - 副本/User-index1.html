@@ -1,0 +1,643 @@
+<include file="Public:header" />
+<style>
+.qfqk {
+	position: relative;
+}
+.yuan1 {
+	background: url(/public/images/yuan2.png) no-repeat;
+	position: absolute;
+	right: 150px;
+	bottom: 186px;
+	text-align: center;
+	width:60px;
+	height: 60px;
+	line-height: 60px;
+	color: #000;
+	font-size: 19px;
+	display:none;
+}
+
+
+.yuan2 {
+	background: url(/public/images/yuan2.png) no-repeat;
+	position: absolute;
+	right: 150px;
+	bottom: 186px;
+	text-align: center;
+	width:60px;
+	height: 60px;
+	line-height: 60px;
+	color: #000;
+	font-size: 19px;
+	display:none;	
+}
+
+
+.yuan3 {
+	background: url(/public/images/yuan3.png) no-repeat;
+	position: absolute;
+	right: 142px;
+	bottom: 198px;
+	text-align: center;
+	width: 68px;
+	height: 68px;
+	line-height: 68px;
+	color: #000;
+	font-size: 22px;
+	display:none;	
+}
+
+
+.yuan4 {
+	background: url(/public/images/yuan4.png) no-repeat;
+	position: absolute;
+	right: 142px;
+	bottom: 212px;
+	text-align: center;
+	width: 70px;
+	height: 70px;
+	line-height: 70px;
+	color: #000;
+	font-size: 23px;
+	display:none;
+}
+
+
+.yuan5 {
+	background: url(/public/images/yuan5.png) no-repeat;
+	position: absolute;
+	right: 142px;
+	bottom: 224px;
+	text-align: center;
+	width: 79px;
+	height: 79px;
+	line-height: 79px;
+	color: #000;
+	font-size: 28px;
+	display:none;
+}
+
+.yuan1 span,.yuan2 span,.yuan3 span,.yuan4 span,.yuan5 span{
+color:#fff;}
+</style>
+<div class="main_block"> <include file="Public:top" />
+    <div class="content_block">
+        <div class="left_side fl">
+			 <div class="l_menu">
+				<div class="left_other_menu">
+					  <dl>
+						  <dt><a href="/index.php?s=/page/zsjf/id/210.html"><img src="/Uploads/image/20161020/58083a949b4f3382900145.png"></a>
+						  </dt>
+						  <dd><a href="/index.php?s=/page/zsjf/id/210.html">在线缴费</a>
+							<span>在线缴费</span></dd>
+					  </dl>
+					  <dl>
+						<dt><a href="/index.php?s=/page/lsfy1/id/13.html" title="账单明细"><img src="/Uploads/image/allicon/icon/iconb_fycx.jpg" alt="费用明细"/></a>
+						</dt>
+					  <dd> <a href="/index.php?s=/page/lsfy1/id/13.html" title="账单明细">账单明细</a> <span>当期账单查询</span> </dd>
+					</dl>
+					<dl>
+					  <dt><a href="/index.php?s=/page/lszd/id/200.html"><img src="/Uploads/image/20151102/5636da394e29c.jpg" alt="历史账单"/></a>
+					  </dt>
+					  <dd><a href="/index.php?s=/page/lszd/id/200.html">历史账单</a>
+						<span>历史账单查询</span></dd>
+					</dl>
+					<dl>
+						<dt><a href="/index.php?s=/page/lsyn/id/14.html" title="历史用量"><img src="/Uploads/image/allicon/icon/iconb_yncx.jpg" alt="历史用量"/></a>
+						</dt>
+					  <dd> <a href="/index.php?s=/page/lsyn/id/14.html" title="历史用量">历史用量</a> <span>历史用量查询</span> </dd>
+					</dl>
+					<dl>
+						<dt><a href="/index.php?s=/business/lists/id/10.html" title="业务办理"><img src="/Uploads/image/allicon/icon_ywsl.jpg" alt="业务办理"/></a>
+						</dt>
+					  <dd> <a href="/index.php?s=/business/lists/id/10.html" title="业务办理">业务办理</a> <span>开通/关闭/报修业务</span> </dd>
+					</dl>
+				</div>
+			  </div>
+			<include file="Public:left" />
+		</div>
+        <div class="main_con fr">
+            <div class="bread_nav">
+                <div class="l fl"></div>
+
+                <div class="m fl" style="line-height:30px;"> <span class="list_style"></span> <span>您当前的位置:</span><a href="__GROUP__">首页</a><span>&gt;</span><span style="color: #009f3f;">我的5890</span></div>
+
+                <div class="r fl"></div>
+            </div>
+            <div>
+                <!-- begin -->
+                <div class="user">
+                    <form>
+                        <dl>
+                            <dt> <empty name="avator"><image src="__PUBLIC__/images/no_photo.png" title="暂无头像"><else/><img src="{$avator}" title="我的头像"/></empty> <a class="user" href="{:U('User/editavator')}">更换头像</a> </dt>
+                            <dd>
+                                <ul>
+                                    <li>用户名:<i>{$Think.session.unick}</i> </li>
+                                    <li> 上次登录时间:<i><eq name="Think.session.last_login_time" value="0">您是首次登录<else/>{$Think.session.last_login_time|date="Y-m-d H:i:s",###}</eq></i> </li>
+                                    <li class="sw03">
+                                        <h3>账户管理</h3>
+                                        <p> <a href="{:U('User/edit')}" style="margin:0 20px;" title="注册信息设置">个人设置</a> <a href="{:U('User/pass')}" style="margin:0 20px;" title="注册密码设置">密码设置</a><a href="{:U('User/bind')}#B" style="margin:0 20px;" title="绑定或解绑房间">绑定房间</a> <a href="{:U('User/apply')}" style="margin:0 10px;display:none;" title="房间申请绑定记录和解绑租客">房间操作</a> <a href="{:U('User/message')}" style="margin:0 20px;" title="我的消息">我的消息
+                                                <notempty name="count">（{$count}）</notempty>
+                                            </a> </p>
+                                    </li>
+                                </ul>
+                            </dd>
+                        </dl>
+                    </form>
+                </div>
+				<div></div>
+                
+                <div class="cx" style="border: none;">
+                    <h1 style="font-size:14px;">房间信息</h1>
+                </div>
+				<div class="cx">
+                    <div class="tit">
+                        <div class="cx_tab fl">
+                            <volist name="houselist" id="hlist" key="k">
+								<if condition="$k eq 1">
+                            		<h1 class="hover fl tab" id="housetab{$k}" onClick="javascript:click_search(this,'{$hlist.houseCode}',{$k})" ><a title="{$hlist.address}">{$hlist.communityname|msubstr=0,4}</a></h1>
+								<else />
+									<h1 class="fl tab" id="housetab{$k}" onClick="javascript:click_search(this,'{$hlist.houseCode}',{$k})" ><a title="{$hlist.address}">{$hlist.communityname|msubstr=0,4}</a></h1>
+								</if>	
+                            </volist>
+                        </div>
+                    </div>
+					<form name="form2">
+					<table width="701" class="user_sea_table">
+						<tr class="sea_trs">
+						  <th width="20%">房间地址</th>
+						  <td id="fangjiandizhi" width="30%">{$fjxx['13']}&nbsp;</td>
+						  <th width="20%">用户编号</th>
+						  <td id="fangjianbianhao" width="30%">{$fjxx['11']}&nbsp;</td>
+						</tr>
+						<tr class="sea_trd">
+						  <th width="20%">入住时间</th>
+						  <td id="ruzhushijian" width="30%">{$fjxx['5']}&nbsp;</td>
+						  <th width="20%">采暖面积</th>
+						  <td id="cainuanmianji" width="30%">{$fjxx['11']}&nbsp;</td>
+						</tr>
+						<tr class="sea_trs" style="display:none">
+						  <th width="20%">自来水表号</th>
+						  <td id="cainuanmianji" width="30%">{$fjxx['14']}&nbsp;</td>
+						  <th width="20%">天然气表号</th>
+						  <td id="cainuanbiaozhun" width="30%">{$fjxx['15']}&nbsp;</td>
+						</tr>
+						<tr class="sea_trs">
+						  <th width="20%">业主姓名</th>
+						  <td id="zhuhumingcheng" width="30%">{$fjxx['1']}&nbsp;</td>
+						  <th width="20%">身份证号</th>
+						  <td id="shenfenzhenghao" width="30%">{$fjxx['2']}&nbsp;</td>
+						</tr>
+						<tr class="sea_trd">
+						  <th width="20%">代缴银行</th>
+						  <td id="daijiaoyinhang" width="30%">{$fjxx['8']}&nbsp;</td>
+						  <th width="20%">能源卡号</th>
+						  <td id="yinhangkahao" width="30%">{$fjxx['9']}&nbsp;</td>
+						</tr>
+						<tr>
+							<td colspan="4"><span style="line-height:30px; font-weight:bold">（温馨提示：请您尽快完善个人信息，以便于我们为您提供更全面、快捷的服务。此信息仅限用作网站平台注册用户的信息变更。如您需要变更 “供用能合同”中的信息请直接到能源窗口办理）</span><a href="{:U('User/room')}" style="line-height:30px; font-weight:bold;color:#FF0000">>>修改个人信息</a></td>
+						</tr>
+				  </table>
+				  </form>
+                </div>
+
+				<div class="cx" style="border: none;" style="border:1px red solid">
+                    <h1 style="font-size:14px;">账单明细<span style="font-size:12px;color:red;" id="notice"> (网站上的各项用能信息仅供参考，请以实际出账单为准！)</span></h1>
+                </div>
+                <div class="tab_mes qfqk">
+                    <ul id="qianfeiqingkuang">
+						
+						<li> 当期水费：<b class="g" id="shui">载入中...</b>元；当期用量：<b class="g" id="shuiliang">载入中...</b>吨；之前欠费：<b class="o" id="shui_qian">载入中...</b>元，其中欠费本金<b class="o" id="shui_benjin">载入中...</b>元，违约金<b class="o" id="shui_zhina">载入中...</b>元。</li>
+						<li> 当期燃气费：<b class="g" id="ranqi">载入中...</b>元；当期用量：<b class="g" id="ranqiliang">载入中...</b>立方米；之前欠费：<b class="o" id="ranqi_qian">载入中...</b>元，其中欠费本金<b class="o" id="ranqi_benjin">载入中...</b>元，违约金<b class="o" id="ranqi_zhina">载入中...</b>元。</li>
+						<li> 当期采暖费：<b class="g" id="cainuan">载入中...</b>元；采暖面积：<b class="g" id="cainuanliang">载入中...</b>平方米；之前欠费：<b class="o" id="cainuan_qian">载入中...</b>元，其中欠费本金<b class="o" id="cainuan_benjin">载入中...</b>元，违约金<b class="o" id="cainuan_zhina">载入中...</b>元。</li>
+						<li id="jiliang"> <span id='title' style='color:#666'>2016-2017采暖计量热表初始读数：</span> <b class="g" id="hotbiao">载入中...</b>；<span style="display:none">终止读数：<b class="g" id="hotnowbiao">载入中...</b></span></li>
+						<li style="display:none" id="jiliang_1"> <span style='color:#666'>2016-2017采暖计量热表（二）初始读数：</span> <b class="g" id="hotbiao_1">载入中...</b>；<span style="display:none">终止读数：<b class="g" id="hotnowbiao_1">载入中...</b></span></li>
+						<li> 2017年阶梯价计费起始表数： 水表读数<b class="g" id="shuibiao">载入中...</b>；气表读数：<b class="g" id="qibiao">载入中...</b></li>
+
+						<li style="display:none" id="jl_1"> <span style='color:#666' id='jlsj_1'></span> <b class="g" id="dyds_1">载入中...</b>；<span >累计热量：<b class="g" id="ljrl_1">载入中...</b>；</span><span >占面积采暖费：<b class="g" id="mj_1">载入中...</b></span></li>
+
+						<li style="display:none" id="jl_2"> <span style='color:#666' id='jlsj_2'></span> <b class="g" id="dyds_2">载入中...</b>；<span >累计热量：<b class="g" id="ljrl_2">载入中...</b>；</span><span>占面积采暖费：<b class="g" id="mj_2">载入中...</b></span></li>
+
+						<li style="display:none" id="jl_3"> <span style='color:#666' id='jlsj_3'></span> <b class="g" id="dyds_3">载入中...</b>；<span>累计热量：<b class="g" id="ljrl_3">载入中...</b>；</span><span>占面积采暖费：<b class="g" id="mj_3">载入中...</b></span></li>
+
+						<li style="display:none" id="jl_4"> <span style='color:#666' id='jlsj_4'></span> <b class="g" id="dyds_4">载入中...</b>；<span>累计热量：<b class="g" id="ljrl_4">载入中...</b>；</span><span>占面积采暖费：<b class="g" id="mj_4">载入中...</b></span></li>
+
+						<li style="display:none" id="jl_5"> <span style='color:#666' id='jlsj_5'></span> <b class="g" id="dyds_5">载入中...</b>；<span>累计热量：<b class="g" id="ljrl_5">载入中...</b>；</span><span>占面积采暖费：<b class="g" id="mj_5">载入中...</b></span></li>
+						
+						
+						<li> 
+							<a href="/index.php?s=/page/lszd/id/200.html" title="历史费用">历史费用</a>
+							<a  href="/index.php?s=/page/lsyn/id/14.html" title="历史用量">历史用量</a>&nbsp;&nbsp;&nbsp;
+						</li>
+						<li> 
+							<span style="line-height:25px;">
+								<span style="font-weight:bold;color:#FF0000">温馨提示：</span><br/>
+								<!-- span style="font-weight:bold;color:#FF0000">计量结算费用计算公式：</span>采暖费=基本热费+计量热费=采暖面积*7.5+(热表终止数-热表初始数)*0.13<br/-->
+								<span style="font-weight:bold;color:#FF0000">交费时间：</span>用户应在每月15日前通过银行窗口、ATM、网银等方式向能源服务卡内存入足够金额用以支付用水、用气费用。若您办理的能源服务卡尚未寄至手中，您可于每月15日前至能源窗口交费。<br/>
+								<span style="font-weight:bold;color:#FF0000">能源公司提醒您：</span>请您按规定于每月15日前交清上月用水、用气费用，逾期未缴费的按日加收违约金。持能源服务卡用户，指定银行在结算日（每月15日）自动完成应收费用的扣缴。
+								<span style="font-weight:bold;color:#FF0000">本查询结果仅供参考，如有疑问，请于能源窗口询问或致电022-66885890。</span>
+							</span>
+						</li>
+                    </ul>
+					<div class="yuan1"> <span id="yuan1"></span> </div>
+				    <div class="yuan2"> <span id="yuan2"></span> </div>
+				    <div class="yuan3"> <span id="yuan3"></span> </div>
+				    <div class="yuan4"> <span id="yuan4"></span> </div>
+				    <div class="yuan5"> <span id="yuan5"></span> </div>
+                    <input type="hidden" id="houseCode" name="houseCode" value="">
+                    <input type="hidden" id="itemCode" name="itemCode" value="B">
+                    <input type="hidden" id="buss" name="buss" value="0">
+                </div>
+                
+                <div class="tab_mes">
+                    <h1>业务办理记录<a style="height:20px; margin-top:-10px; margin-right:20px;" class="more fr" href="{:U('Business/lists','id=10')}"></a></h1>
+                    <table cellpadding="" width="100%" cellspacing="1" id="hover_000" bgcolor="#e5e5e5">
+                        <tr>
+                            <th width="11%">序号</th>
+                            <th width="29%">内容</th>
+                            <th width="20%">时间</th>
+                            <th width="20%">状态</th>
+                        </tr>
+                        {~$list=get_yewu('10|Business|5');}
+                        <empty name="list"><tr><td colspan="4"><p class="nodata">暂无信息</p></td></tr></empty>
+                        <volist name="list" id="vo" key="k">
+                            <tr>
+                                <td>{$k}</td>
+                                <td>{$vo.summary|cutstr_html=###,20}</td>
+                                <td>{$vo.create_time|date="Y-m-d H:i:s",###}</td>
+                                <td>
+									<eq name="vo.status" value="0"><span class="col_r">未受理</span></eq>
+									<eq name="vo.status" value="1"><span class="col_b">受理中</span></eq>
+									<eq name="vo.status" value="2"><span class="col_g">已受理</span></eq>
+									<eq name="vo.status" value="3"><span class="col_o">已办结</span></eq>
+								</td>
+                            </tr>
+                        </volist>
+
+                    </table>
+                </div>
+
+				<br/>
+				<div class="tab_mes">
+                    <h1>投诉建议记录<a style="height:20px; margin-top:-10px; margin-right:20px;" class="more fr" href="{:U('Guestbook/lists','id=11')}"></a></h1>
+                    <table cellpadding="" width="100%" cellspacing="1" id="hover_000" bgcolor="#e5e5e5">
+                        <tr>
+                            <th width="11%">序号</th>
+                            <th width="29%">标题</th>
+                            <th width="20%">时间</th>
+                            <th width="20%">状态</th>
+                        </tr>
+                        {~$blist=get_yewu('11|Guestbook|5');}
+                        <empty name="blist"><tr><td colspan="4"><p class="nodata">暂无信息</p></td></tr></empty>
+                        <volist name="blist" id="bu" key="k">
+                            <tr>
+                                <td>{$k}</td>
+                                <td>{$bu.title}</td>
+                                <td>{$bu.create_time|date="Y-m-d H:i:s",###}</td>
+                                <td>
+									<eq name="bu.status" value="0"><span class="col_r">未受理</span></eq>
+									<eq name="bu.status" value="1"><span class="col_b">受理中</span></eq>
+									<eq name="bu.status" value="2"><span class="col_g">已受理</span></eq>
+									<eq name="bu.status" value="3"><span class="col_o">已办结</span></eq>
+								</td>
+                            </tr>
+                        </volist>
+
+                    </table>
+                </div>
+                <!-- end -->
+            </div>
+        </div>
+    </div>
+</div>
+<include file="Public:footer" />
+<script>
+
+var houseCode = '{$houselist[0]["houseCode"]}';
+var itemCode = 0;
+var chargeMonth = '{$now}';
+var buss = 'B';
+
+</script>
+<script>
+function click_search(obj, houseCode, a) {
+	
+    if (a) {
+        $(".tab").removeClass('hover');
+        $("#housetab" + a).addClass('hover');
+    }
+
+	$(obj).addClass('hover_000').siblings().removeClass('hover_000');
+    $("#cainuan").html('载入中...');
+	$("#cainuanliang").html('载入中...');
+    $("#cainuan_qian").html('载入中...');
+    $("#shui").html('载入中...');
+	$("#shuiliang").html('载入中...');
+    $("#shui_qian").html('载入中...');
+    $("#ranqi").html('载入中...');
+	$("#ranqiliang").html('载入中...');
+    $("#ranqi_qian").html('载入中...');
+	$("#shui_benjin").html('载入中...');
+	$("#shui_zhina").html('载入中...');
+	$("#ranqi_benjin").html('载入中...');
+	$("#ranqi_zhina").html('载入中...');
+	$("#cainuan_benjin").html('载入中...');
+	$("#cainuan_zhina").html('载入中...');
+	$("shuibiao").html('载入中...');
+	$("qibiao").html('载入中...');
+    $("#houseCode").val(houseCode);
+	
+	//获取数据
+    $.ajax({
+        url: '{:U("/User/ajax_getHouse")}',
+        type: 'POST',
+        data: 'houseCode=' + houseCode,
+        dataType: 'json',
+        success: function(res) {
+		 
+			if (res != 0) {
+				if (res.error) {
+					
+					art.dialog({
+						content: '接口错误，请联系管理员!',
+						time: 2
+					});
+				} else {
+				$("#zhuhumingcheng").html(res["OWNERNAME"]);
+				$("#shenfenzhenghao").html(res["PAPERCODE"]);
+				//$("#gongzuodanwei").html(res[3]);
+				//$("#youjidizhi").html(res[4]);
+				$("#ruzhushijian").html(res["ENTERDATE"]);
+				//$("#lianxiren").html(res[6]);
+				//$("#lianxidianhua").html(res[7]);
+				$("#daijiaoyinhang").html(res["BANK"]);
+				$("#yinhangkahao").html(res["BANKNUMBER"]);
+				//$("#hetongbianhao").html(res[10]);
+				$("#cainuanmianji").html(res["HCHARGEAREA"]);
+				//$("#cainuanbiaozhun").html(res[12]);
+				$("#fangjiandizhi").html(res["AADDRESS"]);
+				$("#fangjianbianhao").html(res["HOUSECODE"]);
+				//$("#zilaishuibiaohao").html(res[14]);
+				//$("#tianranqibiaohao").html(res[15]);
+			}
+			}
+        }
+    });
+
+
+	//获取数据
+    $.ajax({
+        url: '{:U("/User/ajax_getNumber")}',
+        type: 'POST',
+        data: 'houseCode=' + houseCode,
+        dataType: 'json',
+        success: function(res) {
+		    
+			if (res != 0) {
+				if (res.error) {
+					
+					art.dialog({
+						content: '接口错误，请联系管理员!',
+						time: 2
+					});
+				} else {
+				
+				$("#shuibiao").html(res["ZLSDS"]);
+				$("#qibiao").html(res["TRQDS"]);
+				
+			}
+			}
+        }
+    });
+
+	//获取数据
+    $.ajax({
+        url: '{:U("/User/ajax_getHotNumber1")}',
+        type: 'POST',
+        data: 'houseCode=' + houseCode,
+        dataType: 'json',
+        success: function(res) {
+			 var jsonLength=0;
+			 for (var i in res) {
+				jsonLength++;
+			 }
+             
+		    if(res == 0){
+				$("#hotbiao").html('暂无数据');
+				$("#hotbiao_1").html('暂无数据');
+			}
+			if (res != 0) {
+				if (res.error) {
+					
+					art.dialog({
+						content: '接口错误，请联系管理员!',
+						time: 2
+					});
+				} else {
+					if(jsonLength == 1){
+						$("#title").html("2016-2017采暖计量热表初始读数：");
+						document.getElementById("jiliang_1").style.display="none";
+						$("#hotbiao").html(res[0]["RJLCSS"]+' kwh');
+						$("#hotnowbiao").html(res[0]["RJLZZS"]+' kwh');
+						//$("#hotbiao").html('暂无数据');
+					}
+					if(jsonLength == 2){
+						$("#hotbiao").html(res[0]["RJLCSS"]+' kwh');
+						$("#hotnowbiao").html(res[0]["RJLZZS"]+' kwh');
+						document.getElementById("jiliang_1").style.display="block";
+						$("#title").html("2016-2017采暖计量热表（一）初始读数：");
+						$("#hotbiao_1").html(res[1]["RJLCSS"]+' kwh');
+						$("#hotnowbiao_1").html(res[1]["RJLZZS"]+' kwh');
+					}
+					
+					
+			}
+			
+			}
+        }
+    });
+
+	//获取计量数据
+    $.ajax({
+        url: '{:U("/User/ajax_getMeterNumber")}',
+        type: 'POST',
+        data: 'houseCode=' + houseCode,
+        dataType: 'json',
+        success: function(res) {
+			 var jsonLength=0;
+			 var myDate = new Date();
+			 var dqnd	= myDate.getFullYear();
+			 for (var i in res) {
+				var yr = res[i]['metetTime'].substr(5,5);
+				var nd = res[i]['metetTime'].substr(0,4);
+				var yue = res[i]['metetTime'].substr(5,2);
+				var ri = res[i]['metetTime'].substr(8,2);
+				if(yr == '01-15' || yr == '02-15' || yr == '03-15'){
+					nd = res[i]['metetTime'].substr(0,4)-1;
+				}
+				if(nd == dqnd){
+					var rbs = res[i]['nowNum'];
+					if(rbs == ''){
+						rbs = '暂无数据';
+					}
+					var ljrl = res[i]['allTotal'];
+					if(ljrl == ''){
+						ljrl = '暂无数据';
+					}
+					var percent = res[i]['percent'];
+					if(percent == ''){
+						percent = '暂无数据';
+					}
+					else{
+						percent = percent+'%';
+					}
+					var sj = parseInt(nd)+parseInt(1);
+					var key = parseInt(i)+parseInt(1);
+					var cnnd = nd+'-'+sj+'采暖季'+yue+"月"+ri+"日热表读数：";
+					document.getElementById("jl_"+key).style.display="block";
+					$("#jlsj_"+key).html(cnnd);
+					$("#dyds_"+key).html(rbs);
+					$("#ljrl_"+key).html(ljrl);
+					$("#mj_"+key).html(percent);
+				}
+				jsonLength++;
+			 }
+			 
+			 $(".yuan"+jsonLength).show();
+			 $("#yuan"+jsonLength).html(percent);
+            
+        }
+    });
+
+	//获取数据
+    /*$.ajax({
+        url: '{:U("/User/ajax_getHotNowNumber")}',
+        type: 'POST',
+        data: 'houseCode=' + houseCode,
+        dataType: 'json',
+        success: function(res) {
+		    if(res == null){
+				$("#hotnowbiao").html('暂无数据');
+			}
+			if (res != 0) {
+				if (res.error) {
+					
+					art.dialog({
+						content: '接口错误，请联系管理员!',
+						time: 2
+					});
+				} 
+				else {
+					
+					$("#hotnowbiao").html(res["ENERGY"]+' kwh');
+				
+				}
+			}
+			
+        }
+    });*/
+	
+    $.ajax({
+        url: '{:U("/User/ajax_getOweCharge")}',
+        type: 'POST',
+        data: 'houseCode=' + houseCode,
+        dataType: 'json',
+        success: function(res) {
+            if (res != 0) {
+                if (res.error) {
+                    $("#qianfeiqingkuang").html('本月没有数据!');
+					$("#quxian").html('本月没有数据');
+                } else {
+					var shui_qian = (res[0]['ZQYSFZJ'] - res[0]['DYSF']).toFixed(2);
+					if(shui_qian < 0){
+						shui_qian = 0;
+					}
+					var ranqi_qian = (res[0]['ZQYRQFZJ'] - res[0]['DYRQF']).toFixed(2);
+					if(ranqi_qian < 0){
+						ranqi_qian = 0;
+					}
+					var dysf = parseFloat(res[0]['DYSF']) + parseFloat(res[0]['DYSF2']) + parseFloat(res[0]['DYSF3']);
+					var dysfyl = parseFloat(res[0]['SFYL']) + parseFloat(res[0]['SFYL2']) + parseFloat(res[0]['SFYL3']);
+					var dyrqf = parseFloat(res[0]['DYRQF']) + parseFloat(res[0]['DYRQF2']) + parseFloat(res[0]['DYRQF3']);
+					var dyrqfyl = parseFloat(res[0]['RQYL']) + parseFloat(res[0]['RQYL2']) + parseFloat(res[0]['RQYL3']);
+                    $("#shui").html(dysf);
+					$("#shuiliang").html(dysfyl);
+                    $("#shui_qian").html(shui_qian);
+					$("#shui_benjin").html(res[0]['ZQYSF']);
+					$("#shui_zhina").html(res[0]['ZQYSFZNJ']);
+                    $("#ranqi").html(dyrqf);
+					$("#ranqiliang").html(dyrqfyl);
+                    $("#ranqi_qian").html(ranqi_qian);
+					$("#ranqi_benjin").html(res[0]['ZQYRQF']);
+					$("#ranqi_zhina").html(res[0]['ZQYRQFZNJ']);
+					
+                    itemCode = $("#itemCode").val();
+                    chargeMonth = $("#chargeMonth").val();
+                    buss = $("#buss").val();
+                    
+                }
+            }
+			else{
+				$("#shui").html('无数据...');
+				$("#shuiliang").html('无数据...');
+				$("#shui_qian").html('无数据...');
+				$("#ranqi").html('无数据...');
+				$("#ranqiliang").html('无数据...');
+				$("#ranqi_qian").html('无数据...');
+				$("#shui_benjin").html('无数据...');
+				$("#shui_zhina").html('无数据...');
+				$("#ranqi_benjin").html('无数据...');
+				$("#ranqi_zhina").html('无数据...');
+			}
+        }
+    });
+
+	$.ajax({
+        url: '{:U("/User/ajax_getCnCharge")}',
+        type: 'POST',
+        data: 'houseCode=' + houseCode,
+        dataType: 'json',
+        success: function(res) {
+			
+            if (res != null) {
+                if (res.error) {
+                    $("#qianfeiqingkuang").html('本月没有数据!');
+					$("#quxian").html('本月没有数据');
+                } else {
+					var cainuan_qian = parseFloat(res['ZQ_QFBJ']) + parseFloat(res['ZQ_WYJ']);
+					if(cainuan_qian < 0){
+						cainuan_qian = 0;
+					}
+					var cainuan = parseFloat(res['DN_YJBJ']) - parseFloat(res['DN_YHJM']) - parseFloat(res['QN_JY']) + parseFloat(res['DN_WYJ']) - parseFloat(res['DN_YJ']);
+					$("#cainuan").html(cainuan);
+					$("#cainuanliang").html(res['CHARGEAREA']);
+					$("#cainuan_qian").html(cainuan_qian);
+					$("#cainuan_benjin").html(res['ZQ_QFBJ']);
+					$("#cainuan_zhina").html(res['ZQ_WYJ']);
+					
+                    itemCode = $("#itemCode").val();
+                    chargeMonth = $("#chargeMonth").val();
+                    buss = $("#buss").val();
+                    
+                }
+            }
+			else{
+				$("#cainuan").html('暂无数据');
+				$("#cainuanliang").html('暂无数据');
+				$("#cainuan_qian").html('暂无数据');
+				$("#cainuan_benjin").html('暂无数据');
+				$("#cainuan_zhina").html('暂无数据');
+			}
+        }
+    });
+	
+
+}   
+</script>
+
+<script>
+$(function() {
+    click_search('#houseCode1', houseCode, ''); //载入默认欠费
+});
+</script>
+

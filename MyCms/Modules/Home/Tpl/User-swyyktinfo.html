@@ -1,0 +1,358 @@
+<!doctype html>
+<html>
+<head>
+    <include file="Public:common-head" />
+    <link rel="stylesheet" type="text/css" href="__PUBLIC__/last/css/css1.css?v=3">
+	<link rel="stylesheet" type="text/css" href="__PUBLIC__/last/css/selectFilter.css">
+</head>
+
+<body>
+    <div class="gray"></div>
+<div class="center_zfb">
+  <div class="title1"><span class="wrong"></span> </div>
+  <div class="content1">
+  <img src="__PUBLIC__/last/img/sfzfmdt.png">
+  </div>
+</div>
+    <assign name="hoverIndex" value="1" />
+    <include file="Public:common-toppart" />
+<div class="shuiwu_banner">
+	<div class="content">
+		<p class="jiaofei_banner_01 font_yinying">水务公司</p>
+		<p class="jiaofei_banner_03 "></p>
+		<p class="jiaofei_banner_02 font_yinying">水务业务，一键办理</p>
+	</div>
+</div>
+<div class="content_bg01 ">
+	<div class="content history_content">
+        <p class="dqwz history_dqwz">
+          当前位置：<a href="http://www.66885890.com">首页</a> &nbsp;&nbsp;&gt;&nbsp;&nbsp;
+    <a href="{:U('User/index',array('id'=>20))}">我的5890</a>&nbsp;&nbsp;&gt;&nbsp;&nbsp;
+    <a href="{:U('User/ywbl')}">业务办理</a>&nbsp;&nbsp;&gt;&nbsp;&nbsp;
+    <a href="{:U('User/sw')}">水务公司</a>&nbsp;&nbsp;&gt;&nbsp;&nbsp;
+    <span class="green">开通预约申请</span>
+        </p>
+		<div class="wodeyewu_content clearfix">
+			<div class="wodeyewu_content_box03">
+				<form id="form2" name="form2" action="{:U('User/swyyktcg')}" method="post" enctype="multipart/form-data">
+					<input name='housecode' type="hidden" id="housecode" value="{$housecode}">
+                	<input name='owername' type="hidden" id="owername" value="{$owername}">
+					<input name='banknumber' type="hidden" id="banknumber" value="{$banknumber}">
+					<!--<input name="xq" type="hidden" id="xq" value="星期一">
+					<input name="sj" type="hidden" id="sj" value="08:30-10:00">-->
+				<div class="yewu_table clearfix">
+					<ul class="yewuleft">
+						<li>房间编号</li>
+						<li>房间地址</li>
+						<li>申请人</li>
+						<li>能源卡号</li>
+						<li>申请开通时间</li>
+					</ul>
+
+					<ul class="yewuright">
+						<li>{$houseInfo.HOUSECODE}</li>
+						<li>{$houseInfo.AADDRESS}</li>
+						<li>{$houseInfo.OWNERNAME}</li>
+						<li>{$houseInfo.BANKNUMBER}</li>
+
+						<li>
+                <div class="demo">
+                     <select class="form-control" name="xq" style="padding: 0 6px;height: 32px;line-height: 32px;font-size: 18px; border-radius: 3px;border:1px solid #d4d4d4;background: #fff url(/Public/last/img/input_jiantou.png) no-repeat 326px center;margin-bottom: 15px;">
+										
+											<option value="星期一,{$beginDateNextMon}">{$beginDateNextMon}（星期一）</option>
+											<option value="星期三,{$beginDateNextWed}">{$beginDateNextWed}（星期三）</option>
+											<option value="星期六,{$beginDateNextSat}">{$beginDateNextSat}（星期六）</option>
+											<option value="星期一,{$endDateNextMon}">{$endDateNextMon}（星期一）</option>
+											<option value="星期三,{$endDateNextWed}">{$endDateNextWed}（星期三）</option>
+											<option value="星期六,{$endDateNextSat}">{$endDateNextSat}（星期六）</option>
+
+										
+									</select>
+                </div>
+
+
+                <div class="demo" style="margin-left: 30px;">
+                    <dl class="select02">
+									<select class="form-control" name="sj" style="padding: 0 6px;height: 32px;line-height: 32px;color: #333; font-size: 18px;border-radius: 3px;border:1px solid #d4d4d4;margin-bottom: 15px; ">
+										
+										<option>08:30-10:00</option>
+										<option>18:00-19:30</option>
+									</select>
+                    </dl>
+                </div>
+            </li>
+					</ul>
+				</div>
+				<div class="yezhushenfen yezhushenfen01">
+					<h3>上传能源卡照片</h3>
+					<div class="yewu_tips01 ">注意：文件后缀名必须为.jpg或.png，文件大小在2M以内！</div>
+					<div class="yewu_tips02" style="margin-left: 240px;">注意： 每日下午16:00停止预约，至少提前一天预约，每个时间点限定4人。</div>
+					<div class="yewu_shangchuang" style="margin-left: 290px;">
+						<div>
+							<a href="javascript:void(0)" class="file file01">上传能源卡正面相片<input type="file" name="sfz" id="sfz_img_z"></a>
+							<span class="shili01"><img onmouseover="showImg('nykdt1',event);" onmouseout="hideImg()" src="__PUBLIC__/last/img/wodeyewu_14.png" alt="" /></span>
+							<span class="shili01"><img onmouseover="showImg('nykdt2',event);" onmouseout="hideImg()" src="__PUBLIC__/last/img/wodeyewu_15.png" alt="" /></span>
+						</div>
+						<div class="img-preview z_preview"><span><img class="img-preview-small" alt="" id="z_preview" /></span><span id="sfz_img_z_name" class="file-name"></span><a id="sfz_img_z_del">删除</a></div>
+						<!-- <div class="shanchu"><span><img src="__PUBLIC__/last/img/wodeyewu_06.png" alt="" /></span>××××××××身份证（正面）.jpg
+							<a>删除</a>
+						</div> -->
+					</div>
+
+					<div class="yewu_yanzheng">
+						<input name="phone" id="phone" value="{$oldphone}" type="hidden">
+						<div class="yewu_tips03">向您手机号码<span class="tel01">{$phone}</span>发送验证码<span><a href="{:U('User/swbgsjh')}" class="biangeng">变更手机号</a></span></div>
+						<div class="yewu_input yewu_input01">
+							<input id="phoneActive" name="phoneActiveCode" class="aaa" type="text" placeholder="请输入短信验证码" onblur="if(this.value==''){this.value='请输入短信验证码';$(this).css({color:'#8E8E8E'})}" onfocus="if(this.value=='请输入短信验证码'){this.value='';$(this).css({color:'#666'})}" style="color:#8E8E8E" value="请输入短信验证码">
+						</div>
+						<span>*</span>
+						<a href="javascript:void(0);" id="getVerifyCodeBtn" disable="disable" class="shuiwu_btn">获取验证码</a>
+					</div>
+				</div>
+				<div class="wodeyewu_btn01 wodeyewu_btn03"><a  href="javascript:void(0);" id="tijiao">提交申请</a></div>
+
+			</div>
+		</form>
+		</div>
+	</div>
+</div>
+
+<include file="Public:common-footer" />
+<include file="Public:common-script" />
+<script type="text/javascript" src="__PUBLIC__/last/js/selectFilter.js"></script>
+<script type="text/javascript" src="__PUBLIC__/last/js/ImageUtils.js"></script>
+<script type="text/javascript" src="__PUBLIC__/last/js/artDialog4.1.7/artDialog.source.js?skin=green"></script>
+<script type="text/javascript">
+  function showImg (name,event){
+            console.log(event);
+            var scrollY = document.documentElement.scrollTop;
+            if(name == 'hkbdt'){
+                $(".center_zfb").css("width","350px");
+            }else if(name == 'fczdt'){
+                $(".center_zfb").css("width","700px");
+            }else{
+                $(".center_zfb").css("width","300px");
+            }
+            $(".content1").html("<img src='__PUBLIC__/last/img/"+name+".png'>");
+            var gao = event.clientY + scrollY - 35;
+            var heng = event.clientX + 10;
+            $(".center_zfb").css({"position":"absolute","top":gao+"px","left":heng+"px","margin":"0px"});
+
+            //$(".gray").show();
+            $(".center_zfb").show();
+        }
+function hideImg(){
+  //$(".gray").hide();
+  $(".center_zfb").hide();
+}
+$(function() {
+	/*$('.chk_group>.checks>label').click(function() {
+		var $self = $(this),$chkGroup = $('.chk_group');
+		$chkGroup.children().removeClass('checked');
+		$chkGroup.find('.checkbox').prop('checked', false);
+		$self.parent().addClass('checked');
+	});*/
+
+      //var renshu = '5人';
+      $(".select01").each(function() {
+          var s = $(this);
+          var z = parseInt(s.css("z-index"));
+          var dt = $(this).children("dt");
+          var dd = $(this).children("dd");
+          var _show = function() { dd.slideDown(200);
+              dt.addClass("cur01");
+              s.css("z-index", z + 1); }; //展开效果
+          var _hide = function() { dd.slideUp(200);
+              dt.removeClass("cur01");
+              s.css("z-index", z); }; //关闭效果
+          dt.click(function() { dd.is(":hidden") ? _show() : _hide(); });
+          dd.find("a").click(function() {
+		  dt.html($(this).html());
+		  $("#xq").val($(this).html());
+
+                  _hide();
+
+          }); //选择效果（如需要传值，可自定义参数，在此处返回对应的“value”值 ）
+          $("body").click(function(i) {!$(i.target).parents(".select01").first().is(s) ? _hide() : ""; });
+      });
+	  $(".select02").each(function() {
+          var s = $(this);
+          var z = parseInt(s.css("z-index"));
+          var dt = $(this).children("dt");
+          var dd = $(this).children("dd");
+          var _show = function() { dd.slideDown(200);
+              dt.addClass("cur01");
+              s.css("z-index", z + 1); }; //展开效果
+          var _hide = function() { dd.slideUp(200);
+              dt.removeClass("cur01");
+              s.css("z-index", z); }; //关闭效果
+          dt.click(function() { dd.is(":hidden") ? _show() : _hide(); });
+          dd.find("a").click(function() {
+		  dt.html($(this).html());
+		  $("#sj").val($(this).html());
+
+                  _hide();
+
+          }); //选择效果（如需要传值，可自定义参数，在此处返回对应的“value”值 ）
+          $("body").click(function(i) {!$(i.target).parents(".select02").first().is(s) ? _hide() : ""; });
+      });
+
+
+	var $zPreview =  $('#z_preview')
+		$('#sfz_img_z').on('change', function(e) {
+			var src, url = window.URL || window.webkitURL || window.mozURL, files = e.target.files;
+			var size = this.files[0].size / 1024;
+				if(size>2048){
+				alert("图片大小不能大于2M！");
+				return false;
+			}
+			
+            for (var i = 0, len = files.length; i < len; ++i) {
+            	var file = files[i];
+                if (url) {
+                    src = url.createObjectURL(file);
+                } else {
+                    src = e.target.result;
+                }
+
+				ImageUtils.compressPicture(file, {width:180,quality:0.5,mimeType:file.type}, function (base64) {
+                    $zPreview.prop('src',base64);
+                    $('#sfz_img_z_name').text(file.name);
+                    $('.z_preview').show();
+                });
+            }
+		});
+
+		$('#sfz_img_z_del').on('click', function() {
+			var inp=document.getElementById('sfz_img_z');
+			$zPreview.prop('src', '');
+            $('#sfz_img_z_name').text('');
+			inp.value="";
+			$('.z_preview').hide();
+		});
+
+
+$('#getVerifyCodeBtn').on('click', function(){
+        $("#getVerifyCodeBtn").attr('disabled',true);
+            timerId = setInterval(refreshSecDisp, 1000);
+            $.ajax({
+                type: "POST",
+                url: '{:U("Public/get_phone_verify_code","",false)}',
+                data: {phone:$("#phone").val()},
+                success: function( data ) {
+                    var retCode = data.code;
+                    if ('success' !== retCode) {
+                        $('#getVerifyCodeBtn').attr('disabled', false);
+                        //$('#codeVerifyTip').text('获取手机验证码失败，请稍后再试。');
+                        art.dialog({
+		                    lock:true,
+		                    content: '获取手机验证码失败，请稍后再试。',
+		                    time: 5
+		                  });
+                        return;
+                    }
+                },
+                dataType: 'json'
+            });
+        });
+
+        var total_sec = 59;
+        var timerId;
+        function refreshSecDisp() {
+
+            var btnDisp = '获取验证码';
+            if (0 === total_sec) {
+                removeTimer(timerId, 'getVerifyCodeBtn', btnDisp);
+                timerId = null;
+                total_sec = 59;
+                return false;
+            }
+
+            btnDisp = btnDisp + '('+ total_sec +')';
+            $('#getVerifyCodeBtn').text(btnDisp);
+            total_sec = total_sec - 1;
+        }
+        function removeTimer(id, objId, objText) {
+            if (null != id) {
+                clearInterval(id);
+            }
+            $('#'+objId).text(objText);
+            $('#'+objId).attr('disabled', false);
+        }
+
+        $('#tijiao').on('click', function(){
+
+		var banknumber = $("#banknumber").val();
+        	if (banknumber =="" ) {
+                art.dialog({
+                  lock:true,
+                  content: '请您先进行能源卡绑定操作再进行预约开通',
+                  time: 5
+                });
+                return false;
+              }
+			  var sfz_img_z = $("#sfz_img_z").val();
+              if (sfz_img_z == "") {
+                        art.dialog({
+                          lock:true,
+                          content: '请上传能源卡照片',
+                          time: 5
+                        });
+                        return false;
+                      }
+			var phone = $("#phone").val();
+                      var phoneActive = $("#phoneActive").val();
+                      if (phoneActive == "请输入短信验证码") {
+                        art.dialog({
+                          lock:true,
+                          content: '手机验证码不能为空',
+                          time: 5
+                        });
+                        return false;
+                      }
+                      $.ajax({
+                        type: "POST",
+                        url: '{:U("User/check_phone_verify_code","",false)}',
+                        async:false,//设置同步/异步的参数[true异步  false同步]
+                        data: {phoneActiveCode:phoneActive},
+                        success: function(ret) {
+
+                          if(ret == 1){
+                            msg = "false";
+                            key = 1;
+                          }
+                          else if(ret == 2){
+                            msg = "false";
+                            key = 2;
+                          }
+                          else{
+                            msg = "success";
+                          }
+
+                        },
+                        dataType: 'json'
+                      });
+                      if(msg=="false"){
+                        if(key == 1){
+                          art.dialog({
+                            lock:true,
+                            content: '手机验证码错误，请核对！',
+                            time: 5
+                          });
+                          return false;
+                        }
+                        if(key == 2){
+                          art.dialog({
+                            lock:true,
+                            content: '手机验证码过期！',
+                            time: 5
+                          });
+                          return false;
+                        }
+                      } 
+                  document.getElementById("form2").submit();
+          });
+});
+</script>
+</body>
+</html>

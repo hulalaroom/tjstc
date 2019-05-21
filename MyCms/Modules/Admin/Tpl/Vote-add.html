@@ -1,0 +1,413 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href='__PUBLIC__/css/common.css'>
+<script type="text/javascript" src="__PUBLIC__/js/jquery-1.7.1.min.js"></script>
+<script type="text/javascript" src="__PUBLIC__/js/base.js"></script>
+<script type="text/javascript" src="__PUBLIC__/js/jscolor/jscolor.js"></script>
+<script type="text/javascript" src="__PUBLIC__/js/kindeditor/kindeditor-min.js"></script>
+<link rel="stylesheet" href="__PUBLIC__/js/kindeditor/themes/default/default.css" />
+<script charset="utf-8" src="__PUBLIC__/js/kindeditor/lang/zh_CN.js"></script>
+<script type="text/javascript" src="__PUBLIC__/js/artDialog/jquery.artDialog.source.js?skin=blue"></script>
+<script src="__PUBLIC__/js/artDialog/plugins/iframeTools.source.js"></script>
+<script type="text/javascript" src="__PUBLIC__/js/date/jquery-ym-datePlugin-0.1.js"></script>
+<link rel="stylesheet" href="__PUBLIC__/js/date/jquery-ui.css" />
+<link rel="stylesheet" id="skin" href="__PUBLIC__/js/date/jquery-ui-1.9.2.custom.min1.css" />
+<script>
+    var WEB_SESSION_ID = '{$Think.session.myid}';
+    
+    var IMG_DEL = '{:U("Attach/del")}';
+    			// 图片预览
+			function showpic(event,imgsrc){
+				/*var left = event.clientX+document.body.scrollLeft+20;
+				var top = event.clientY+document.body.scrollTop+20;*/
+				var left = event.pageX + 20;
+				var top = event.pageY + 20;
+				$("#preview").css({left:left,top:top,display:""});
+				$("#pic_a1").attr("src",imgsrc);
+			}
+			// 取消预览
+			function hiddenpic(){
+				$("#preview").css({display:"none"});
+			}
+    
+    
+    
+    
+    
+    function remove(obj,file){
+        if(confirm('确定删除?')){
+					$.ajax({
+						url: '{:U("Attach/del")}',
+						type : 'POST',
+						data : 'file='+file,
+						
+						success: function(res){
+							$('#'+obj).remove();
+						}
+					});
+				}
+		
+}
+            //编辑器
+            KindEditor.ready(function(K) {
+                var editor1 = K.create('textarea[name="content"]', {
+                    allowFileManager : true,
+                      uploadJson : '{:U("Attach/upload")}',
+                    fileManagerJson :  '{:U("Attach/filelist")}',
+                      width : '675px',
+                        height : '300px',
+                    afterCreate : function() {
+                        var self = this;
+                        K.ctrl(document, 13, function() {
+                            self.sync();
+                            K('form[name=example]')[0].submit();
+                        });
+                        K.ctrl(self.edit.doc, 13, function() {
+                            self.sync();
+                            K('form[name=example]')[0].submit();
+                        });
+                    }
+                });
+      
+        
+                //自定义
+                var editor = K.editor({ 
+                    allowFileManager : true,        
+                    uploadJson : '{:U("Attach/upload")}',
+                    fileManagerJson :  '{:U("Attach/filelist")}'
+                });
+                //取消缩略图                         
+                K('#clear').click(function() {
+                    K('#image img').remove();
+                    K('#image').append('<img  src="__PUBLIC__/images/thumb.png">');
+                    K('#pic').val('');
+                });                         
+                                
+                //缩略图                         
+                K('#image').click(function() {
+                    editor.loadPlugin('image', function() {
+                        editor.plugin.imageDialog({
+                            //imageUrl : K('#image1 img'),
+                                                       
+                            clickFn : function(url, title, width, height, border, align) {
+                                //K('#image1 img').append('<img src="' + data.url + '">');
+                                K('#image img').remove();
+                                K('#image').append('<img src="'+url+'">');
+                                editor.hideDialog();
+                                K('#pic').val(url);
+                            }
+                        });
+                    });
+                });
+                                
+                //批量上传
+                var j=0;
+                K('#imuoload').click(function() {
+                    editor.loadPlugin('multiimage', function() {
+                        editor.plugin.multiImageDialog({
+                                                   
+                            clickFn : function(urlList) {
+                                var div = K('#pics_images');
+                              
+                              K.each(urlList, function(i, data) {
+//                                    div.append('<div id="image_'+(j+1)+'" class="imglist">标题：&nbsp;&nbsp;<input  value="'+data.url+'" name="pics[]" type="hidden"><input  value="'+data.name+'" name="pictitle[]" class="ti">&nbsp;&nbsp;<a href="javascript:remove( &quot;image_'+(j+1)+' &quot;, &quot;'+data.url+'&quot;);"><img src="__PUBLIC__/images/del.png" alt="删除" width="18" height="18" border="0" align="absmiddle" title="删除"></a> &nbsp;&nbsp; <a href="javascript:;" onmouseover="showpic(event, &quot;'+data.url+'&quot;);" onmouseout="hiddenpic();">'+data.savename+'</a></div>');
+                                   div.append('<li id="image'+(j+1)+'"><div class="get selected"><img     src="'+data.url+'"><input type="text"  name="pictitle[]" value="'+data.name+'"><input type="hidden"  name="pics[]" value="'+data.url+'"></div><a href="javascript:remove( &quot;image'+(j+1)+' &quot;, &quot;'+data.url+'&quot;);">删除</a></li>');
+                                    j++;
+
+                                });
+                                editor.hideDialog();
+                            }
+                        });
+                    });
+                });
+		       // 文件上传
+				K('#insertfile').click(function() {
+					editor.loadPlugin('insertfile', function() {
+						editor.plugin.fileDialog({
+							fileUrl : K('#src').val(),
+							clickFn : function(url, title) {
+								K('#src').val(url);
+								editor.hideDialog();
+							}
+						});
+					});
+				});
+		
+				
+             
+                //                 
+            });
+		var i=0;
+		var j = new Array();
+		function addlist(){
+			j[i] = 0;
+			
+			$("#list").append('<div id="t_'+(i+1)+'"><span>题目'+(i+1)+'</span><input type="text"  size = "40" name="listname['+i+']" id="textfield" />&nbsp;&nbsp;<select name="is_mc['+i+']" > <option value="1">多选</option><option value="0">单选</option></select>&nbsp;&nbsp;<a onclick="addoption('+i+');">点击添加选项</a> | <a  href="javascript:yichu(&quot;t_'+(i+1)+'&quot;)">移除</a><p id="pp_'+i+'"></p></div>');
+			i++;
+		}
+	
+		function addoption(i){
+			$("#pp_"+i).append('<div id="pt_'+(j[i]+1)+'"><p>|--'+(j[i]+1)+'&nbsp;&nbsp;<input type="text" size="35" name="option['+i+']['+j[i]+']"> <a  href="javascript:yichu(&quot;pt_'+(j[i]+1)+'&quot;)">移除</a></p></div>');
+			j[i]++;
+		}
+function yichu(a){
+  
+   $("#"+a).remove();
+}
+        </script>
+<script type="text/javascript">
+$(document).ready(function(){
+	//默认功能
+    $(".riqi").ymdateplugin();
+	
+	//显示时间的选择
+	$(".shijian").ymdateplugin({
+		showTimePanel: true
+	});
+	
+});
+</script>
+<style>
+#im {
+	z-index: 991;
+	background-color: white;
+	border: #f7f7f7 solid 2px;
+	position: absolute;
+	width:220px;
+	height:195px;
+	left: 460px;
+	text-align: center;
+	top: 160px;
+	padding-top: 2px;
+}
+#image {
+	display: block;
+	height: 150px;
+	line-height: 150px;
+	width: 220px;
+	cursor: pointer;
+	text-align: center;
+        display: table-cell;
+     vertical-align:middle;
+}
+#image img {
+	vertical-align: middle; margin: auto; max-width: 220px; max-height: 150px;
+}
+#imuoload:hover{ text-decoration: underline; cursor:  pointer; }
+#clear {
+	background: #51B148;
+	color: #FFF;
+	font: bold 14px arial, sans-serif;
+	padding: 0.15em 1em;
+	text-transform: uppercase;
+	margin: 0 auto;
+	overflow: visible;
+	width: auto;
+	cursor: pointer;
+	padding: 7px 20px;
+	display: block;
+}
+#insertfile {
+	background: #51B148;
+	color: #FFF;
+	font: bold 14px arial, sans-serif;
+	padding: 0.15em 1em;
+	text-transform: uppercase;
+	margin: 0 auto;
+	overflow: visible;
+	width: auto;
+	cursor: pointer;
+	padding: 4px 20px;
+	
+}
+#pics_images{float: left; width: 100%; }
+#pics_images li{ float: left; width: 87px; height: 120px;  margin: 15px 0;margin-right: 15px;}
+#pics_images li img{ float: left; width: 87px;height: 75px;}
+#pics_images li input{ float: left; width: 81px; height: 20px; line-height: 20px;}
+#pics_images li a{ float: left; width: 87px; height: 25px; line-height: 25px; text-align: center;}
+#pics_images li a:hover{ background-color:  #99ccff; color: white;}
+
+
+#list{ width:600px; height:auto; padding:10px;}
+#list p{width:600px; padding-left:20px; padding-top:3px; padding-bottom:3px;}
+.list_show{ width:600px; height:auto;}
+.list_show p{ padding-right:10px;}
+.list_show p a{ float:right}
+.list_show p span{ float:right; margin-right:10px;}
+.list_show p:hover{ background:#F0F0EE}
+.option{ width:580px; height:auto;padding-left:20px;}
+.option a{float:right}
+.opdiv{ width:1000px;height:25px;}
+.opdiv p{ float:left}
+.opdiv ul{ magin-left:20px; float:left;padding-left:10px;}
+.opdiv ul li{float:left; width:60px; text-algin:left;}
+.opdiv:hover{ background:#F0F0EE}
+.ratio{ width:200px; height:15px;border:1px solid #BDB2B2; float:left; margin-top:4px;}
+.percent{float:left; height:15px; }
+</style>
+<title>无标题文档</title>
+</head>
+<body>
+<div id="append_parent"></div>
+<div class="container" id="cpcontainer">
+  <div id="contentHeader">
+    <h3>调查模型</h3>
+    <div class="searchArea">
+      <ul class="action left" >
+        <li class="current"><a href="__URL__/index" class="actionBtn"><span>返回</span></a></li>
+        <li class="current"><a href="__URL__/add" class="actionBtn"><span>录入</span></a></li>
+      </ul>
+    </div>
+  </div>
+      <eq name="type" value="add">
+<form name="form1" action="__URL__/insert" method="post">
+  <else/>
+  <form name="form1"  action="__URL__/update" method="post">
+    <input  name="id"  type="hidden" value="{$vote.id}" />
+    </eq>
+      <div id="im"><a id="image"><img  src="<empty name='vote.pic'>__PUBLIC__/images/thumb.png<else />{$vote.pic}</empty>"></a>
+      <input type="button" class="actionBtn" id="clear" value="取消">
+    </div>
+    <table class="form_table">
+      <tr>
+        <td class="tb_title" >标题：</td>
+      </tr>
+      <tr >
+          <td ><input size="60" maxlength="128" name="title" type="text" value="{$vote.title}" />
+      </tr>
+      <tr>
+        <td class="tb_title">所属栏目：</td>
+      </tr>
+      <tr >
+       <td ><select name="cat_id">
+            <volist name="list" id="cat"> <option value="{$cat.id}" 
+              
+              
+              <eq name="cat.id" value="$cat_id"> selected="selected"</eq>
+              <neq name="cat.Model.name" value="$Think.MODULE_NAME">disabled=""</neq>
+              <eq name="cat.child" value="1">disabled=""</eq>
+              >{$cat.html}{$cat.title}
+              
+              
+              </option>
+            </volist>
+          </select>
+          *存在子栏目或不是文章模型不可选</td>
+      </tr>
+      <tr>
+        <td class="tb_title">模板：</td>
+      </tr>
+      <tr >
+        <td ><input size="30" maxlength="80" name="tpl"  type="text" value="{$vote.tpl}" />
+          留空则继承栏目中设置的模板</td>
+      </tr>
+     <tr>
+        <td class="tb_title">跳转网址(此处若填写，则不显示内容)：</td>
+      </tr>
+      <tr >
+        <td  ><input size="40" maxlength="128" name="url"  type="text" value="{$vote.url}" /></td>
+      </tr>
+	  <tr>
+        <td class="tb_title">摘要：</td>
+      </tr>
+      <tr >
+        <td><textarea rows="5" cols="90" name="summary">{$vote.summary}</textarea></td>
+      </tr>
+      <tr>
+        <td class="tb_title">内容：</td>
+      </tr>
+      <tr >
+        <td ><textarea   name="content" >{$vote.content}</textarea>
+        </td>
+      </tr>
+    <tr>
+        <td class="tb_title">时间：</td>
+      </tr>
+           <tr >
+          <td >发布时间：<input autocomplete="off" size="20" name="start_time"  type="text" value="<notempty name='vote.start_time'>{$vote.start_time|date='Y-m-d H:i:s',###}<else/>{$now|date='Y-m-d H:i:s',###}</notempty>" class="shijian" />&nbsp;&nbsp;&nbsp;&nbsp;到期时间：<input autocomplete="off" size="20" name="end_time"  type="text" value="<notempty name='vote.end_time'>{$vote.end_time|date='Y-m-d H:i:s',###}</notempty>"  class="shijian"/>
+          留空则永久有效</td>
+      </tr>
+	  <notempty name="votelist">
+	  <tr>
+			<td class="tb_title">已有题目：&nbsp;&nbsp;<a href="__URL__/editlist/voteid/{$vote.id}">编辑已有题目</a></td>
+	  </tr>
+	  <tr>
+		
+		<td>
+			<div class="list_show">
+				<volist name="votelist" id="vl">
+					<p>
+						题目<?php echo $key+1;?>.
+						{$vl.listname}
+						<a  href="__URL__/dellist/listid/{$vl.listid}">删除</a>
+						<span><eq name="vl.is_mc" value="1">多选</eq><eq name="vl.is_mc" value="0">单选</eq></span>
+						
+					</p>
+					<volist name="option[$vl['listid']]" id="op">
+					<div class="opdiv">
+						<p class="option">
+							|--选项<?php echo $key+1;?>.{$op.option}
+							<span><a href="__URL__/deloption/id/{$op.id}">删除</a></span>
+						</p>
+						
+						<div class="ratio">
+							<div class="percent" style="width:{$op.ratio}px;background:#D8D0D0;"></div>	
+						</div>
+						<ul>
+							<li>{$op.poll}</li>
+							<li>{$op.percent}%</li>
+						</ul>
+					</div>
+					</volist>
+				</volist>
+			</div>
+		</td>
+	  </tr>
+	  </notempty >
+	   <tr>
+			<td class="tb_title">添加新题目：&nbsp;&nbsp;<a  href="javascript:" onclick="addlist();">点击添加题目</a></td>
+	   </tr>
+		<tr>
+			<td>
+				<ul id="list">
+				</ul>
+			</td>
+		</tr>
+      <tr >
+        <td class="tb_title">状态：</td>
+      </tr>
+      <tr >
+        <td  ><select name="status">
+            <option value="1" <eq name="status" value="1"> selected="selected"</eq>>显示</option>
+            <option value="0" <eq name="status" value="0"> selected="selected"</eq>>隐藏</option>
+          </select>
+		 </td>
+      </tr>
+      <tr>
+        <td  class="tb_title">SEO关键字：</td>
+      </tr>
+      <tr >
+        <td ><input size="50" maxlength="80" name="keywords" type="text" value="{$vote.keywords}" /></td>
+      </tr>
+      <tr>
+        <td class="tb_title">SEO描述：</td>
+      </tr>
+	  <input type="hidden" name="pic" id="pic" value="{$vote.pic}" />
+      <tr >
+        <td ><textarea rows="5" cols="80" name="description">{$vote.description}</textarea></td>
+      </tr>
+      <tr class="submit">
+        <td colspan="2" >
+          <input type="submit" name="editsubmit" value="提交" class="button"/>
+        </td>
+      </tr>
+    </table>
+  </form>
+  <script type="text/javascript">
+
+</script>
+</div>
+</body>
+</html>

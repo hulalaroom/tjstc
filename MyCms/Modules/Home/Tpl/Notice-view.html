@@ -1,0 +1,128 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="UTF-8">
+<meta http-equiv="pragma" content="no-cache">
+<meta http-equiv="cache-control" content="no-cache">
+<meta http-equiv="expires" content="0">
+<meta name="keywords" content="<notempty name="keywords">{$keywords}<else/>{$Think.config.site_key}</notempty>" />
+<meta name="description" content="<notempty name="description">{$description}<else/>{$Think.config.site_desc}</notempty>" />
+
+<title><notempty name="title">{$title} - </notempty> {$Think.config.site_name}</title>
+<script type="text/javascript">
+	// 设置为主页
+	function SetHome(obj,vrl){
+	try{
+	obj.style.behavior='url(#default#homepage)';obj.setHomePage(vrl);
+	}
+	catch(e){
+	if(window.netscape) {
+	try {
+	netscape.security.PrivilegeManager.enablePrivilege("UniversalXPConnect");
+	}
+	catch (e) {
+	//alert("此操作被浏览器拒绝！\n请在浏览器地址栏输入“about:config”并回车\n然后将 [signed.applets.codebase_principal_support]的值设置为'true',双击即可。");
+	alert("此操作被浏览器拒绝！\n请在浏览器右上角设置-》选项-》主页当中进行设置");
+	}
+	var prefs = Components.classes['@mozilla.org/preferences-service;1'].getService(Components.interfaces.nsIPrefBranch);
+	prefs.setCharPref('browser.startup.homepage',vrl);
+	}else{
+	alert("您的浏览器不支持，请按照下面步骤操作：1.打开浏览器设置。2.点击设置网页。3.输入："+vrl+"点击确定。");
+	}
+	}
+	}
+	// 加入收藏 兼容360和IE6
+	function shoucang(sTitle,sURL)
+	{
+		try
+		{
+			window.external.addFavorite(sURL, sTitle);
+		}
+		catch (e)
+		{
+		try
+		{
+			window.sidebar.addPanel(sTitle, sURL, "");
+		}
+		catch (e)
+		{
+			alert("加入收藏失败，请使用Ctrl+D进行添加");
+		}
+		}
+	}
+	</script>
+<link rel="stylesheet" type="text/css" href="__PUBLIC__/last/css/redefine2.css">
+<link rel="stylesheet" type="text/css" href="__PUBLIC__/last/css/layout.css">
+<link rel="stylesheet" type="text/css" href="__PUBLIC__/last/css/css.css?v=8">
+    <link rel="stylesheet" type="text/css" href="__PUBLIC__/last/js/share/css/share.min.css">
+</head>
+
+<body>
+<include file="Public:common-toppart"/>
+<!--<include file="Public:common-slider"/>-->
+
+<div class="content_bg">
+    <div class="content history_content">
+        <p class="dqwz history_dqwz">当前位置：{$nav}</p>
+
+        <div class="list-contianer clearfix">
+            <div class="list-top-border"></div>
+            <div class="list-tab">
+                <ul>
+                    <li class="list-tab-item <eq name="cid" value="1">cur</eq>"><a href="{:U('Notice/index',array('id'=>$id,'cid'=>1))}"><span><img src="__PUBLIC__/last/img/liebiao03.png" alt=""/></span>停供能信息</a></li>
+                    <li class="list-tab-item <eq name="cid" value="2">cur</eq>"><a href="{:U('Notice/index',array('id'=>$id,'cid'=>2))}"><span><img src="__PUBLIC__/last/img/liebiao01.png" alt=""/></span>水质公告</a></li>
+                    <li class="list-tab-item <eq name="cid" value="3">cur</eq>"><a href="{:U('Notice/index',array('id'=>$id,'cid'=>3))}"><span><img src="__PUBLIC__/last/img/liebiao04.png" alt=""/></span>通知公告</a></li>
+                    <li class="list-tab-item <eq name="cid" value="4">cur</eq>"><a href="{:U('Notice/index',array('id'=>$id,'cid'=>4))}"><span><img src="__PUBLIC__/last/img/liebiao08.png" alt=""/></span>区域动态</a></li>
+                </ul>
+            </div>
+
+            <div class="list-tab-content-container">
+                <div class="list-tab-content on">
+                    <div class=" publictab history_zlscon on">
+                        <div class="fuwugonggao fuwugonggao01" style="width:900px">
+                            <p class="xiangqing_title">{$notice.title}</p>
+                            <div class="xiangqing_date"><if condition="$notice['tag'] neq ''">消息来源&nbsp;:&nbsp;{$notice.tag}&nbsp;&nbsp;&nbsp;&nbsp;</if><if condition="$notice['click'] neq 0">浏览次数&nbsp;:&nbsp;{$notice.click}&nbsp;&nbsp;&nbsp;&nbsp;</if>发布时间：{$notice.start_time|date="Y-m-d",###} <span>我要分享</span>
+                                <span>
+                                    <div class="social-share" data-initialized="true">
+                                        <a href="#" class="social-share-icon icon-wechat"></a>
+                                        <a href="#" class="social-share-icon icon-weibo"></a>
+                                        <a href="#" class="social-share-icon icon-qq"></a>
+                                    </div>
+                                </span>
+                            </div>
+                            <div class="xiangqing_zhengwen">
+                                {$notice.content}
+                            </div>
+
+                            <div class="xiangqing_fanye">
+                                <empty name="prevview">
+                                    <a href="">上一篇：没有了</a>
+                                <else/>
+                                    <a href="{:U('Notice/view','id='.$prevview['id'])}">上一篇：{$prevview.title}</a>
+                                </empty>
+                                <empty name="nextview">
+                                    <a href="">下一篇：没有了</a>
+                                <else/>
+                                    <a href="{:U('Notice/view','id='.$nextview['id'])}">下一篇：{$nextview.title}</a>
+                                </empty>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<include file="Public:common-footer"/>
+<include file="Public:common-script"/>
+<script type="text/javascript" src="__PUBLIC__/last/js/share/js/social-share.min.js"></script>
+<script type="text/javascript" src="__PUBLIC__/last/js/jquery.easing.min.js"></script>
+<script type="text/javascript" src="__PUBLIC__/last/js/banner.js"></script>
+<script type="text/javascript">
+    $(function () {
+        initBanner();
+    });
+</script>
+</body>
+</html>

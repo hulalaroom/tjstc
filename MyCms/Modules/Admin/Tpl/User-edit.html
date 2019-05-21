@@ -1,0 +1,140 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href='__PUBLIC__/css/common.css'>
+<script type="text/javascript" src="__PUBLIC__/js/jquery-1.7.1.min.js"></script>
+<script type="text/javascript" src="__PUBLIC__/js/base.js"></script>
+<title>无标题文档</title>
+</head>
+<body>
+<div id="append_parent"></div>
+<div class="container" id="cpcontainer">
+  <div id="contentHeader">
+    <h3>用户管理</h3>
+    <div class="searchArea">
+      <ul class="action left" >
+        <li class="current"><a href="__URL__/index" class="actionBtn"><span>返回</span></a></li>
+        <!--<li ><a href="__URL__/add" class="actionBtn"><span>录入</span></a></li>-->
+      </ul>
+      <div class="search right"> </div>
+    </div>
+  </div>
+  <eq name="type" value="add">
+  <form name="form1"  action="__URL__/insert" method="post">
+  <else/>
+  <form name="form1"  action="__URL__/update" method="post">
+    <input  name="id"  type="hidden" value="{$id}" />
+    </eq>
+    <table class="form_table">
+        <tr>
+        <td class="tb_title" >用户基本信息：</td>
+      </tr>
+	  <notempty name="avator">
+	  <tr>
+        <td class="tb_title" >头像：</td>
+      </tr>
+      <tr >
+        <td ><img src="{$avator}" width="70" height="70" title="用户头像">
+        </td>
+      </tr>
+	  </notempty>
+        <tr>
+        <td >用户组：<select name="group_id">
+           
+            <volist name="glist" id="group"> <option value="{$group.id}" 
+              <eq name="group.id" value="$group_id"> selected="selected"</eq>
+              >{$group.title}
+              </option>
+            </volist>
+            </select>
+        </td>
+      </tr>
+	  
+      <tr>
+        <td class="tb_title" >用户名：</td>
+      </tr>
+      <tr >
+        <td >{$username}
+        </td>
+      </tr>
+         <tr>
+        <td class="tb_title" >真实姓名：</td>
+      </tr>
+      <tr >
+        <td ><input size="10" maxlength="128" name="nickname"  type="text" value="{$nickname}" />
+        </td>
+      </tr>
+	  <tr>
+        <td class="tb_title" >积分：</td>
+      </tr>
+      <tr >
+        <td ><input size="10" maxlength="128" name="point"  type="text" value="{$point}" />
+        </td>
+      </tr>
+	   <tr>
+        <td class="tb_title" >联系方式：</td>
+      </tr>
+      <tr >
+        <td >{$phone}
+        </td>
+      </tr>
+	  <tr>
+        <td class="tb_title" >邮箱：</td>
+      </tr>
+      <tr >
+        <td >{$email}
+        </td>
+      </tr>
+     <tr>
+        <td class="tb_title" >邮寄地址：</td>
+      </tr>
+      <tr >
+        <td >{$address}
+        </td>
+      </tr>
+     <tr>
+        <td >
+		<span class="tb_title">最后登录时间：</span>
+		
+		<notempty name="last_login_time">{$last_login_time|date="Y-m-d H:i:s",###}<else/>暂未登录</notempty>
+		</td>
+      </tr>
+	  <tr>
+        <td >
+		<span class="tb_title">最后登录IP：</span>
+		
+		<notempty name="last_login_ip">{$last_login_ip}<else/>暂未登录</notempty>
+		</td>
+      </tr>
+     <tr>
+        <td >
+		<span class="tb_title">登录次数：</span>
+		
+		{$login_count}
+		</td>
+      </tr>
+      <tr>
+        <td class="tb_title">状态：</td>
+      </tr>
+      <tr >
+        <td >状态：<select name="status">
+            <option value="1" 
+            <eq name="status" value="1"> selected="selected"</eq>
+            >启用
+            </option>
+            <option value="0" 
+            <eq name="status" value="0"> selected="selected"</eq>
+            >停用
+            </option>
+          </select>
+        </td>
+      </tr>
+      <tr class="submit">
+        <td colspan="2" ><input type="submit" name="editsubmit" value="提交" class="button" tabindex="3" /></td>
+      </tr>
+    </table>
+  </form>
+</div>
+</body>
+</html>

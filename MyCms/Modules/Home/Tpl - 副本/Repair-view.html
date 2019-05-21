@@ -1,0 +1,40 @@
+<link type="text/css" rel="stylesheet" href="__PUBLIC__/css/base.css"/>
+<link type="text/css" rel="stylesheet" href="__PUBLIC__/css/my_5890.css"/>
+<link type="text/css" rel="stylesheet" href="__PUBLIC__/css/article.css"/>
+<link type="text/css" rel="stylesheet" href="__PUBLIC__/css/business.css"/>
+<link type="text/css" rel="stylesheet" href="__PUBLIC__/css/index.css"/>
+<link type="text/css" rel="stylesheet" href="__PUBLIC__/css/member.css"/>
+<link type="text/css" rel="stylesheet" href="__PUBLIC__/css/validator.css"/>
+<ul class="pgroup" style="max-height:400px;">
+  <li>
+    <h4>受理状态 :</h4>
+    <eq name="status" value="0"><span class="col_o">未受理</span></eq>
+    <eq name="status" value="1"><span class="col_b">已受理</span></eq>
+    <eq name="status" value="2"><span class="col_b">已办结</span></eq>
+  </li>
+  <li>
+    <h4>报修人 :</h4>
+    <span>{$RepairMan}</span> </li>
+  <li>
+    <h4>联系电话 :</h4>
+    <span>{$RepairTel}</span> </li>
+  <li>
+    <h4 >具体地点 :</h4>
+    <span class="f_14">{$Address}</span> </li>
+  <li>
+    <h4 >故障描述 :</h4>
+    <span class="f_14">{$FaultDescription}</span> </li>
+  <li>
+    <h4>发布时间 :</h4>
+    <span>{$Repair_time|date='Y-m-d H:i:s',###}</span> </li>
+  <if condition="$status eq 2">
+	 <li>
+		<h4>回复内容 :</h4>
+		<span class="f_14">{$content}</span>
+	</li>
+	<li>
+		<h4>回复时间 :</h4>
+		<span class="f_14">{$updatetime|date='Y-m-d H:i:s',###}</span>
+	</li>
+  </if>
+</ul>

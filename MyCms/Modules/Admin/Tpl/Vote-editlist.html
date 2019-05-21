@@ -1,0 +1,151 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href='__PUBLIC__/css/common.css'>
+<script type="text/javascript" src="__PUBLIC__/js/jquery-1.7.1.min.js"></script>
+<script type="text/javascript" src="__PUBLIC__/js/base.js"></script>
+<script type="text/javascript" src="__PUBLIC__/js/jscolor/jscolor.js"></script>
+<script type="text/javascript" src="__PUBLIC__/js/kindeditor/kindeditor-min.js"></script>
+<link rel="stylesheet" href="__PUBLIC__/js/kindeditor/themes/default/default.css" />
+<script charset="utf-8" src="__PUBLIC__/js/kindeditor/lang/zh_CN.js"></script>
+<script type="text/javascript" src="__PUBLIC__/js/artDialog/jquery.artDialog.source.js?skin=blue"></script>
+<script src="__PUBLIC__/js/artDialog/plugins/iframeTools.source.js"></script>
+<style>
+#im {
+	z-index: 991;
+	background-color: white;
+	border: #f7f7f7 solid 2px;
+	position: absolute;
+	width:220px;
+	height:195px;
+	left: 460px;
+	text-align: center;
+	top: 160px;
+	padding-top: 2px;
+}
+#image {
+	display: block;
+	height: 150px;
+	line-height: 150px;
+	width: 220px;
+	cursor: pointer;
+	text-align: center;
+        display: table-cell;
+     vertical-align:middle;
+}
+#image img {
+	vertical-align: middle; margin: auto; max-width: 220px; max-height: 150px;
+}
+#imuoload:hover{ text-decoration: underline; cursor:  pointer; }
+#clear {
+	background: #51B148;
+	color: #FFF;
+	font: bold 14px arial, sans-serif;
+	padding: 0.15em 1em;
+	text-transform: uppercase;
+	margin: 0 auto;
+	overflow: visible;
+	width: auto;
+	cursor: pointer;
+	padding: 7px 20px;
+	display: block;
+}
+#insertfile {
+	background: #51B148;
+	color: #FFF;
+	font: bold 14px arial, sans-serif;
+	padding: 0.15em 1em;
+	text-transform: uppercase;
+	margin: 0 auto;
+	overflow: visible;
+	width: auto;
+	cursor: pointer;
+	padding: 4px 20px;
+	
+}
+#pics_images{float: left; width: 100%; }
+#pics_images li{ float: left; width: 87px; height: 120px;  margin: 15px 0;margin-right: 15px;}
+#pics_images li img{ float: left; width: 87px;height: 75px;}
+#pics_images li input{ float: left; width: 81px; height: 20px; line-height: 20px;}
+#pics_images li a{ float: left; width: 87px; height: 25px; line-height: 25px; text-align: center;}
+#pics_images li a:hover{ background-color:  #99ccff; color: white;}
+
+
+.title{ margin-bottom:5px; margin-top:3px;width:600px; padding-right:10px;}
+.title:hover{background:#F0F0EE}
+.title a{float:right}
+.option{ width:580px; height:auto;padding-left:20px; padding-right:10px;}
+.option a{float:right}
+.option:hover{background:#F0F0EE}
+
+.opdiv{ width:1000px; height25px; float:left;}
+.opdiv p{ float:left; margin-top:3px;}
+.opdiv ul{ magin-left:20px; float:left;padding-left:10px;}
+.opdiv ul li{float:left; width:60px; text-algin:left;}
+.opdiv:hover{ background:#F0F0EE}
+.ratio{ width:200px; height:15px;border:1px solid #BDB2B2; float:left; margin-top:6px;}
+.percent{float:left; height:15px; }
+</style>
+<title>无标题文档</title>
+</head>
+<body>
+<div id="append_parent"></div>
+<div class="container" id="cpcontainer">
+  <div id="contentHeader">
+    <h3>{$vote.title}</h3>
+    <div class="searchArea">
+      <ul class="action left" >
+        <li class="current"><a href="__URL__/edit/id/{$vote.id}" class="actionBtn"><span>返回</span></a></li>
+      </ul>
+    </div>
+  </div>
+  <form name="form1"  action="__URL__/updatelist" method="post">
+    <input  name="id"  type="hidden" value="{$vote.id}" />
+    <table class="form_table">
+	  <tr>
+			<td class="tb_title">已有题目：</td>
+	  </tr>
+	  <volist name="votelist" id="vo">
+	  <tr>
+		<td>	
+			<p class="title">
+				题目<?php echo $key+1;?>&nbsp;&nbsp;
+				<input type="text" name="listname[{$vo.listid}]" size="60" value="{$vo.listname}"/>
+				<select name="is_mc[{$vo.listid}]">
+					<option value="1" <eq name="vo.is_mc" value="1"> selected="selected"</eq>>多选</option>
+					<option value="0" <eq name="vo.is_mc" value="0"> selected="selected"</eq>>单选</option>
+				</select>	
+				<a href="__URL__/dellist/listid/{$vo.listid}">删除</a>
+				<input type="hidden"  name="listid[{$vo.listid}]" value="{$vo.listid}"/>
+				
+			</p>
+			
+			<volist name="option[$vo['listid']]" id="op">
+				<div class="opdiv">
+					<p class="option">|-- 选项<?php echo $key+1;?>&nbsp;&nbsp;<input type="text" size="50" name="option[{$vo.listid}][{$op.id}]" value="{$op.option}"/><a href="__URL__/deloption/id/{$op.id}">删除</a></span></p>
+					<div class="ratio">
+							<div class="percent" style="width:{$op.ratio}px;background:#D8D0D0;"></div>	
+					</div>
+					<ul>
+						<li>{$op.poll}</li>
+						<li>{$op.percent}%</li>
+					</ul>
+				</div>
+			</volist>
+		</td>
+	  </tr>
+	  </volist>
+      <tr class="submit">
+        <td colspan="2" ><input type="hidden" name="pic" id="pic" value="{$pic}" />
+          <input type="submit" name="editsubmit" value="提交" class="button"/>
+        </td>
+      </tr>
+    </table>
+  </form>
+  <script type="text/javascript">
+
+</script>
+</div>
+</body>
+</html>

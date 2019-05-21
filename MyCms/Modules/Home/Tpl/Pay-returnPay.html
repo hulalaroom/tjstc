@@ -1,0 +1,58 @@
+<include file="Public:header"/>
+<link type="text/css" rel="stylesheet" href="__PUBLIC__/css/pay.css"/>
+<style>
+	.closebox{
+		margin-left:129px;
+	}
+	.close{
+		display:inline-block;
+		border-radius:3px;
+		-moz-border-radius:3px;
+		width:182px;
+		height:42px;
+		background:#f99c1b;
+		font-size:20px;
+		color:#fff;
+		text-align:center;
+		line-height:42px;
+		letter-spacing:5px;
+	}
+</style>
+<div class="main_block">
+    <include file="Public:top"/>
+        <div class="content_block">
+            <div class="main_con fr">
+                <!-- begin -->
+                <div class="success clearfix">
+                    <div class="stu"></div>
+                    <ul>
+                        <li class="zfcg">{$map.Message}</li>
+                        <li>收款商户名：天津生态城能源投资建设公司</li>
+                        <li>支付金额：{$map.payAmount}</li>
+                        <li>订单号：{$map.orderNo}</li>
+                    </ul>
+                    <div class="clearfix"></div>
+                    <p><span id="mes">5</span>秒后跳转到商家页面，或点此[<a href="./index.php?s=/user/index.html">直接跳转</a>]</p>
+					<div class="closebox" style='margin-top:20px;display:none'><a href="/index.php?s=/union/bill.html" class="close">申请电子发票</a></div>
+                </div>
+                <!-- end -->
+            </div>
+        </div>
+</div>
+</div>
+<script language="javascript" type="text/javascript">
+    var i = 5;
+    var intervalid;
+    intervalid = setInterval("fun()", 1000);
+    function fun() {
+        if (i == 0) {
+           // window.location.href = "./index.php?s=/user/index.html";
+            clearInterval(intervalid);
+        }
+        document.getElementById("mes").innerHTML = i;
+        i--;
+    }
+</script>
+    <include file="Public:footer"/>
+</body>
+</html>

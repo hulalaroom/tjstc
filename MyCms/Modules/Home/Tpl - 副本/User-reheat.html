@@ -1,0 +1,197 @@
+<include file="Public:header1" />
+
+<link rel="stylesheet" type="text/css" href="Public/style1/css/redefine.css">
+<link rel="stylesheet" type="text/css" href="Public/style1/css/layout.css">
+<link rel="stylesheet" type="text/css" href="Public/style1/css/css.css">
+<div>
+<div class="nengyuan_banner">
+	<div class="content">
+		<p class="jiaofei_banner_01 font_yinying">能源公司</p>
+<p class="jiaofei_banner_03 "></p>
+<p class="jiaofei_banner_02 font_yinying">能源业务，一键办理</p>
+		
+	</div>
+
+	
+</div>
+    <div class="content_bg01 ">
+		<div class="content history_content">
+         <p class="dqwz history_dqwz">当前位置：{$nav} (业务导航不准确&顶部导航高亮不准确)</p>
+
+
+
+
+	
+	
+<div class="wodeyewu_content clearfix">
+	<div class="wodeyewu_content_box01">
+		<div class="yewu_table clearfix">
+			<ul class="yewuleft">
+				<li>房间编号</li>
+				<li>房间地址</li>
+				<li>申请人</li>
+				<li>申请恢复采暖季</li>
+
+			</ul>
+			
+			<ul class="yewuright">
+				<li>
+					<div class="filter-box" id="aaa" style="width:300px;margin:0 auto;padding-top:5px">
+						<div class="filter-text">
+							<input class="filter-title" type="text" readonly placeholder="请选择" />
+							<i class="icon icon-filter-arrow"></i>
+						</div>
+						<select name="houseCode" id="houseCode">
+							<volist name="houselist" id="hc">
+							   <option value="{$hc.houseCode}" data-address="{$hc.address}" <if condition="$hc.houseCode eq $code">selected</if>>{$hc.houseCode}</option>
+							 </volist>
+						</select>
+					</div>
+				</li>
+				<li id="address_label"></li>
+				<li>{$userName}</li>
+				<li>{$chargeMonth}</li>
+			</ul>
+			
+
+		</div>
+		<div class="yezhushenfen">
+			<h3>上传业主本人身份证照片</h3>
+			<div class="yewu_tips01 ">注意：文件后缀名必须为.jpg，文件大小在2M以内！</div>
+			<div class="yewu_tips02">请您上传清晰、无污染的业主本人身份证照片或者扫描件</div>
+			<div class="yewu_shangchuang">
+				<div>
+					<a href="" class="file">上传身份证（正面）照片<input type="file" name="" id=""></a>
+					<span class="shili01"><img src="Public/style1/img/wodeyewu_08.png" alt="" /></span>
+					<a href="" class="file">上传身份证（背面）照片<input type="file" name="" id=""></a>
+					<span class="shili01"><img src="Public/style1/img/wodeyewu_07.png" alt="" /></span>
+				</div>	
+				<div class="shanchu"><span><img src="Public/style1/img/wodeyewu_06.png" alt="" /></span>××××××××身份证（正面）.jpg <a>删除</a></div>
+				<div class="shanchu"><span><img src="Public/style1/img/wodeyewu_06.png" alt="" /></span>××××××××身份证（正面）.jpg <a>删除</a></div>
+			</div>
+			<div class="yewu_yanzheng">
+			<div class="yewu_tips03">向您手机号码<span>{$phone}</span>发送验证码<span><a href="" class="biangeng">变更手机号</a></span></div>	
+			<div class="yewu_input">
+             <input id="valiCode" class="aaa" type="text" placeholder="请输入短信验证码" onblur="if(this.value==''){this.value='请输入短信验证码';$(this).css({color:'#8E8E8E'})}" onfocus="if(this.value=='请输入短信验证码'){this.value='';$(this).css({color:'#666'})}" style="color:#8E8E8E" value="请输入短信验证码">
+
+			</div>
+			<span>*</span>	
+			<a href="#" id="obtainVerfyCode">获取验证码</a>
+			</div>
+		</div>
+		
+		
+		
+		<div class="wodeyewu_btn01">
+	<a href="">提交申请</a>
+	
+</div>
+		
+	</div>
+
+
+</div>
+	
+		
+</div>	
+
+
+	
+</div>	
+</div>
+
+
+ 
+
+<div class="footer">
+
+<div class="foot clearfix">
+<dl>
+<dt><a href="#">常用查询</a></dt>
+<dd><a href="#">账单查询</a></dd>
+<dd><a href="#">用量查询</a></dd>
+<dd><a href="#">业务查询</a></dd>
+<dd><a href="#">交费查询</a></dd>
+<dd><a href="#">节能查询</a></dd>
+
+</dl>
+
+<dl>
+<dt><a href="#">常用服务</a></dt>
+<dd><a href="#">在线缴费</a></dd>
+<dd><a href="#">业务办理</a></dd>
+<dd><a href="#">个人信息订阅</a></dd>
+<dd><a href="#">能源服务卡</a></dd>
+<dd><a href="#">智能物</a>回</dd>
+<dd><a href="#">合同签订</a></dd>
+</dl>
+
+<dl>
+<dt><a href="#">服务支持</a></dt>
+ <dd><a href="#">停供能通知</a></dd>
+<dd><a href="#">服务标准</a></dd>
+<dd><a href="#">政策法规</a></dd>
+<dd><a href="#">营业网点</a></dd>
+<dd><a href="#">服务公告</a></dd>
+
+ 
+</dl>
+
+<dl>
+<dt><a href="#">常见问题</a></dt>
+ <dd><a href="#">网站使用</a></dd>
+<dd><a href="#">供热计量</a></dd>
+<dd><a href="#">能源服务卡</a></dd>
+<dd><a href="#">智能物回</a></dd>
+<dd><a href="#">合同签订</a></dd>
+<dd><a href="#">积分兑换</a></dd>
+</dl>
+
+<dl>
+<dt><a href="#">投诉建议</a></dt>
+<dd><a href="#">投诉</a></dd>
+<dd><a href="#">建议</a></dd>
+</dl>
+
+<dl>
+<dt><a href="#"></a></dt>
+<dd><img src="Public/style1/img/public_img/footer-erweima.png" alt=""> </dd>
+<dd class="foot_ewm"> 扫一扫关注 </dd>
+
+</dl>
+
+</div>
+
+
+<div class="foot_bottom">
+<p>天津生态城公用事业客户服务平台 版权所有Copyright © 2014-2018 TIANJIN ECO-CITY Utilities Customer Service Platform All Reserved</p>
+<p>津ICP备12000779号-4</p>
+</div>
+
+
+</div>
+ 
+
+<script src="Public/style1/js/jquery-1.11.2.min.js"></script>
+
+<script type="text/javascript" src="__PUBLIC__/style/js/selectFilter.js"></script>
+<script type="text/javascript">
+    $(function() {
+		var $addressLabel = $('#address_label'),$houseSel = $('#houseCode');
+		$('#aaa').selectFilter({
+			callBack : function (val){
+				$addressLabel.text($houseSel.children('option:selected').attr('data-address'));
+			}
+		});
+
+		var address = $houseSel.children('option:selected').attr('data-address');
+		$addressLabel.text(address);
+
+		$('#obtainVerfyCode').on('click', function(event) {
+			event.preventDefault();
+			alert('sms code has been send.');
+		});
+    });
+</script>
+</body>
+</html>

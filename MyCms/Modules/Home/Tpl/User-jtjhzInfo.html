@@ -1,0 +1,111 @@
+<!doctype html>
+<html>
+<head>
+    <include file="Public:common-head" />
+    <link rel="stylesheet" type="text/css" href="__PUBLIC__/last/css/selectFilter.css">
+</head>
+
+<body>
+    <assign name="hoverIndex" value="1" />
+    <include file="Public:common-toppart" />
+<div class="nengyuan_banner">
+	<div class="content">
+		<p class="jiaofei_banner_01 font_yinying">能源公司</p>
+<p class="jiaofei_banner_03 "></p>
+<p class="jiaofei_banner_02 font_yinying">能源业务，一键办理</p>
+
+	</div>
+
+
+</div>
+    <div class="content_bg01 ">
+	<div class="content history_content">
+
+            <p class="dqwz history_dqwz">
+                    当前位置：<a href="http://www.66885890.com">首页</a> &nbsp;&nbsp;&gt;&nbsp;&nbsp;
+                <a href="{:U('User/index',array('id'=>20))}">我的5890</a>&nbsp;&nbsp;&gt;&nbsp;&nbsp;
+                <a href="{:U('User/ywbl')}">业务办理</a>&nbsp;&nbsp;&gt;&nbsp;&nbsp;
+                <a href="{:U('User/ny')}">能源公司</a>&nbsp;&nbsp;&gt;&nbsp;&nbsp;
+                <span class="green">阶梯价基数核增业务办理须知</span>
+            </p>
+
+
+
+
+
+<div class="wodeyewu_content clearfix">
+	<div class="wodeyewu_content_box01">
+		<div class="yewu_box clearfix">
+			<p class="yewu_title">阶梯价基数核增业务办理须知</p>
+				<p>1.家庭人口默认设置为4人，家庭人口4人及4人以下的不需申请办理用能基数核增手续，4人以上方可申请。月平均用水量不超过15吨（即水费不超过73元），月平均用气量不超过25立方米（即气费不超过66元），不需办理增核业务。</p>
+				<p>2.家庭人口4人以上，如办理阶梯价增核业务且审核通过，则每增加一人，每阶梯年用水量分别增加36立方米；每阶梯年用气量分别增加60立方米。</p>
+				<p>3.新增人口为户内人员的，需上传本人身份证、本市居民户口薄及房产证，上传的户口簿地址需在天津生态城且人员均在同一户口簿上。</p>
+				<p>4.新增人口为户外人员的，需上传本人身份证、本市居民户口薄及房产证、外来人口居住证。</p>
+				<p>5.同一家庭成员仅可申请一套房产的用水、用气基数核增手续，重复申请不予办理。</p>
+				<p>6.阶梯价基数核增业务办理成功后，用水、用气基数有效期为4年，居民用户应在有效期到期前两个月，到能源公司办理续期手续。逾期未办理的，用水、用气基数恢复至按照户内人口4人及4人几下家庭标准执行阶梯价格。家庭人口在4年有效期内如有变动，应到能源公司公用事业服务窗口办理人口增减手续。</p>
+				<p>7.没有申请办理用水、用气基数核增手续的用户将一律按照户内人口4人及4人以下家庭标准执行阶梯价格。</p>
+				<p>8.用户申请该项业务后，应于2个工作日后线上查询办理结果，如查询结果为审核不成功，则需重新申请。</p>
+				<p>9.用户保证提供的有关证明、资料等信息真实、准确、完整。</p>
+		</div>
+
+	</div>
+		<div class="fuxuankuang">
+				<div class=" box box01">
+		<ul>
+			<li id="chk_accept">我已认真阅读阶梯价基数核增业务办理须知</li>
+		</ul>
+	</div>
+
+
+</div>
+		<div class="wodeyewu_btn01 wodeyewu_btn02"><a id="fireOkBtn">确定</a></div>
+<form method="post" action="{:U('User/jtjhz')}" id="accept_form">
+    <input type="hidden" id="accept" name="accept" value="0">
+</form>
+
+</div>
+
+
+</div>
+
+
+
+</div>
+
+
+<include file="Public:common-footer" />
+<include file="Public:common-script" />
+<script type="text/javascript" src="__PUBLIC__/last/js/artDialog4.1.7/artDialog.source.js?skin=green"></script>
+<script type="text/javascript">
+    $(function() {
+        var $ali = $('#chk_accept');
+        $ali.on('click', function() {
+            var $self = $(this);
+            var chked = $self.attr('checked');
+            if (chked) {
+                $self.attr('checked', false).removeClass('on');
+            } else {
+                $self.attr('checked', true).addClass('on');
+            }
+        });
+
+        var $okBtn = $('#fireOkBtn');
+        $okBtn.on('click', function(event) {
+            event.preventDefault();
+            var accepted = $ali.attr('checked');
+            if (!accepted) {
+                art.dialog({
+                    lock:true,
+                    content: '请确认您已认真阅读并同意阶梯价基数核增提示',
+                    time: 3
+                });
+                return false;
+            }
+
+            $('#accept').val('1');
+            $('#accept_form').submit();
+        });
+    });
+</script>
+</body>
+</html>

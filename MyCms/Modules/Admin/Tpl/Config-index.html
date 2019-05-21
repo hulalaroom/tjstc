@@ -1,0 +1,92 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href='__PUBLIC__/css/common.css'>
+<script type="text/javascript" src="__PUBLIC__/js/jquery-1.7.1.min.js"></script>
+<script type="text/javascript" src="__PUBLIC__/js/base.js"></script>
+<title>无标题文档</title>
+</head>
+<body>
+<div id="append_parent"></div>
+<div class="container" id="cpcontainer">
+
+<div id="contentHeader">
+  <h3>站点设置</h3>
+  <div class="searchArea">
+      <ul class="action left" >
+        <li><a class="current" href="__URL__/index" class="actionBtn"><span>基本配置</span></a></li>
+        <li><a href="__URL__/attach" class="actionBtn"><span>附件配置</span></a></li>
+        <li><a href="__URL__/email" class="actionBtn"><span>邮箱配置</span></a></li>
+		<li><a href="__URL__/content" ><span>页面配置</span></a></li>
+                 <li><a  href="__URL__/weixin" ><span>微信配置</span></a></li>
+      </ul>
+    </div>
+</div>
+<form action="{:U('Config/site_update')}" method="post" name="form1">
+  <table class="content_list">
+    <tbody><tr>
+      <td class="tb_title">网站名称：</td>
+    </tr>
+    <tr>
+        <td><input type="text" class="txt" name="site_name" value="{$Think.config.site_name}">
+       将显示在浏览器窗口标题等位置</td>
+    </tr>
+<!--    <tr>
+      <td class="tb_title"> 网站 URL：</td>
+    </tr>
+    <tr>
+        <td><input type="text" class="txt" name="site_url" value="{$Think.config.site_url}">
+       </td>
+    </tr>-->
+    
+<!--    <tr>
+      <td class="tb_title">站点开关/关闭说明：</td>
+    </tr>
+    <tr>
+      <td><select name="site_status">
+              <option value="1"<eq name="Think.config.site_status" value="1"> selected="selected" </eq>>开启</option>
+          <option value="0" <eq name="Think.config.site_status" value="0"> selected="selected" </eq>>关闭</option>
+        </select></td>
+    </tr>
+    <tr>
+      <td><textarea name="site_lock_reason" class="tarea">{$Think.config.site_lock_reason}</textarea></td>
+    </tr>-->
+               <tr>
+      <td class="tb_title">SEO关键词：</td>
+    </tr>
+    <tr>
+      <td><input type="text" class="txt" name="site_key" value="{$Think.config.site_key}">
+       SEO关键词</td>
+    </tr>
+    <tr>
+      <td class="tb_title">SEO描述：</td>
+    </tr>
+    <tr>
+      <td><textarea rows="6" name="site_desc" id="site_stats" cols="50" class="tarea ">{$Think.config.site_desc}</textarea>
+        请填写SEO描述</td>
+    </tr>  
+    <tr>
+      <td class="tb_title">网站备案号：</td>
+    </tr>
+    <tr>
+      <td><input type="text" class="txt" name="site_icp" value="{$Think.config.site_icp}">
+        请填写 ICP 备案号</td>
+    </tr>
+    <tr>
+      <td class="tb_title">网站第三方统计代码：</td>
+    </tr>
+    <tr>
+      <td><textarea rows="6" name="site_tongji" id="site_stats" cols="50" class="tarea ">{$Think.config.site_tongji}</textarea>
+        请填写第三方统计的 js 代码</td>
+    </tr>
+
+    <tr class="submit">
+      <td><input type="submit"  value="提交" class="button" tabindex="3"></td>
+    </tr>
+  </tbody></table>
+</form>
+</div>
+
+</body>
+</html>

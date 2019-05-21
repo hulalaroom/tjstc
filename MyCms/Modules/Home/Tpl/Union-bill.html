@@ -1,0 +1,543 @@
+<!doctype html>
+<html>
+<head>
+    <include file="Public:common-head"/>
+	<link rel="stylesheet" type="text/css" href="__PUBLIC__/style/css/selectFilter.css">
+
+</head>
+
+<body>
+<include file="Public:common-toppart"/>
+<!--	<div class="gray"></div>
+<div class="center_zfb">
+
+ <div class="contentbox1">
+ <div class="fptitle">电子发票详情</div>
+ <div class="order_title" id="ddbh"></div>
+ <div class="orderul">
+ <ul class="clearfix">
+ <li class="lione">发票类型</li>
+ <li class="litwo">电子发票</li>
+ </ul>
+ <ul class="clearfix" style="display:none">
+ <li class="lione">发票内容</li>
+ <li class="litwo" id='fpnr'>个人明细</li>
+ </ul>
+ <ul class="clearfix">
+ <li class="lione">发票抬头</li>
+ <li class="litwo" id='fqtt'>个人</li>
+ </ul>
+ <ul class="clearfix">
+ <li class="lione">发票状态</li>
+ <li class="litwo" id='fqzt'></li>
+ </ul>
+ <ul class="clearfix" style='display:none' id='bz'>
+	<li class="lione">未通过说明</li>
+	<li class="litwo" id='bzsm'></li>
+ </ul>
+
+
+ </div>
+
+
+ </div>
+  <div class="contenttwo" style='display:none;font-size:15px;' id='fp'>
+	  <ul class="clearfix ulborder">
+	  <li>发票代码</li>
+	  <li class="liborder">发票号码</li>
+	  <li>下载</li>
+	  </ul>
+	  <ul class="clearfix">
+		  <li id='fpdm'></li>
+		  <li id='fphm' class="liborder"></li>
+		  <li><a id='fpxz' class="down">电子发票下载</a></li>
+	  </ul>
+  </div>
+ <div class="closebox" style='margin-top:10px'><a class="close">关闭</a></div>
+
+</div>-->
+<form name="form2" id="form2" action="" method="post">
+<div class="jiaofei_banner">
+	<div class="content">
+		<p class="jiaofei_banner_01 font_yinying">在线缴费</p>
+		<p class="jiaofei_banner_03 "></p>
+		<p class="jiaofei_banner_02 font_yinying">续费随心，省事无忧</p>
+	</div>
+</div>
+    <div class="content_bg">
+	<div class="content history_content">
+	<p class="jiaofei_dqwz">当前位置：<a href="/">首页</a> &nbsp;&nbsp;&gt;&nbsp;&nbsp;<a href="{:U('User/index')}">我的5890</a>&nbsp;&nbsp;&gt;&nbsp;&nbsp;<a href="{:U('User/jfyw')}">缴费业务</a>&nbsp;&nbsp;&gt;&nbsp;&nbsp;<span class="green">电子发票</span></p>
+<div class="history_bill" style="padding:0 20px">
+	<div class="history_inputbox clearfix" style="margin:0 auto">
+		<div class="history_inputboxone"><span>房间编号：</span>
+
+		<div class="item_one">	<!-- 这里开始 -->
+					<div class="filter-box" id="aaa">
+				<div class="filter-text">
+					<input class="filter-title" type="text" readonly="" placeholder="请选择">
+					<i class="icon icon-filter-arrow"></i>
+				</div>
+				<select name="houseCode">
+					<volist name="houselist" id="hc">
+					   <option value="{$hc.houseCode}" <if condition="$hc.houseCode eq $code">selected="selected"</if>>{$hc.address}</option>
+					 </volist>
+				</select>
+
+		</div>
+			</div>
+
+
+
+		</div>
+		<div class="history_inputboxtwo"><span>年份：</span>
+		<input type="hidden" name="kssj" id="kssj">
+		<input type="hidden" name="jssj" id="jssj">
+
+			<div class="demo">
+					<dl class="select01">
+							<select id="selectAge1" name="selectAge1" class="form-control" style="width:120px;padding: 0 6px;height: 34px;line-height: 32px; color: #666; font-size: 15px;border-radius: 3px; border: 1px solid #e6e6e6; ">
+								<option>请选择</option>
+								<option>2018</option>
+								<option>2019</option>
+							</select>
+					</dl>
+			</div>
+		</div>
+		<div class="history_inputboxtwo"><span>月份：</span>
+		<div class="demo">
+					<dl class="select01">
+							<select id="selectAge2" name="selectAge2" class="form-control" style="width:120px;padding: 0 6px;height: 34px;line-height: 32px; color: #666; font-size: 15px;border-radius: 3px; border: 1px solid #e6e6e6;">
+								<option>请选择</option>
+							</select>
+					</dl>
+			</div>
+		
+
+
+
+
+
+
+
+
+
+
+
+			</div>
+			<button type='button' onclick="submitform2()"><span>查询</span></button>
+
+		</div>
+		
+
+		</div>
+	</div>
+
+<volist name="billlist" id="vo">
+	<div class="dianzifapiao_table" style="padding:10px 10px 0 10px">
+
+	<table width="100%" border="0" cellspacing="0" cellpadding="0">
+	  <tbody>
+		<volist name="vo['infor']" id="billinfor">
+			<if condition="$key eq 1">
+				<tr class="dianzifapiao_tr ">
+				  <td colspan="8"><span class="dianzifapiao_sfq" style="font-size: 15px;font-weight: bold;">收费日期：{$billinfor.operatedate|substr=0,10}&nbsp{$billinfor.operatedate|substr=11,8}</span><span class="dianzifapiao_ddh" style="font-size: 15px;font-weight: bold;">单号：{$billinfor.billcode}</span><span class="dianzifapiao_jftj" style="font-size: 15px;font-weight: bold;">缴费途径：{$billinfor.jffs}</span></td>
+				</tr>
+			</if>
+		</volist>
+		<tr class="dianzifapiao_tr01" style="height: 40px;">
+		  <td width="12%">收费项目</td>
+		  <td width="12%">收费期</td>
+		  <td width="12%">单价(￥)</td>
+		  <td width="12%">面积/用量</td>
+		  <td width="12%">缴纳费用(￥)</td>
+		  <td width="14%">费用状态</td>
+		  <!--<td width="14%">发票状态</td>-->
+		  <td width="12%">操作</td>
+		</tr>
+		<volist name="vo['data']" id="bill">
+			<tr class="dianzifapiao_tr02">
+			  <td>
+				<span>
+					<if condition="($bill.itemcode eq B) OR ($bill.itemcode eq N) OR ($bill.itemcode eq M)"> <img src="__PUBLIC__/style/img/water.png" /></if>
+					<if condition="($bill.itemcode eq D) OR ($bill.itemcode eq P) OR ($bill.itemcode eq Q)"> <img src="__PUBLIC__/style/img/tianranqi.png" /></if>
+					<if condition="($bill.itemcode eq A)"> <img src="__PUBLIC__/style/img/gongnuan.png" /></if>
+				</span>
+				{$bill.itemname}
+			  </td>
+			  <td>{$bill.chargemonth}</td>
+			  <td>{$bill.price|number_format=###, 2, '.', ''}</td>
+			  <td>{$bill.chargearea|number_format=###, 1, '.', ''}</td>
+			  <if condition="$key eq 0">
+				  <td rowspan="{$vo['infor'] | count}">{$bill.sshj|number_format=###, 2, '.', ''}</td>
+				  <td rowspan="{$vo['infor'] | count}" class="dianzifapiao_td01" style="font-size: 14px;"><span><img src="__PUBLIC__/style/img/duihao2.png" /></span>已缴成功</td>
+				  <!--<td rowspan="{$vo['infor'] | count}" class="dianzifapiao_td02">{$bill.invstatus}</td>-->
+				  <td rowspan="{$vo['infor'] | count}">
+
+				  <if condition="$bill.invurl eq ''">
+					<a class="btn02" onclick="apply('{$bill.billcode}','{$bill.invstatus}')"><span>申请</span></a><br>
+					<else />
+						<a class="btn01"><span>申请</span></a><br>
+					</if>
+
+					<if condition="$bill.invurl eq ''">
+						<a class="btn01"><span>下载</span></a><br>
+						
+					<else />
+						<a class="btn02" onclick="downloadFp('{$bill.invurl}','{$bill.invstatus}')"><span>下载</span></a><br>
+					</if>
+
+					
+
+				  </td>
+			  </if>
+			</tr>
+
+		</volist>
+	  </tbody>
+	</table>
+	</div>
+</volist>
+<input type='hidden' name='page' id='page' value="{$page}">
+    <div class="page">
+		{$fy}
+	</div>
+</form>
+<!--<div class="page">
+<a href=""><span><img src="img/page_left.png" alt="" /></span> </a>
+<a href=""><span class="page_num">1</span> </a>
+<a href=""><span><img src="img/page_right.png" alt="" /></span> </a>
+<input type="text" name="" id="" value="20条/页" />跳至
+<input type="text" name="" id="" value="" />页
+</div>-->
+<div class="dianzifapiao_warm" style="padding:0 20px">
+<p class="warm">温馨提示：<br>
+	<span class="promptColor_red">单次缴纳多种能源费用问题：</span><br>
+	在能源公司大厅缴费，如果单次缴纳了多个月份、多个收费项目的费用，并且当时只打印了收据，在开具电子发票时会将单次缴纳的所有缴费记录开具在一张电子发票上。<br>
+	例：在缴费大厅缴费，同时缴纳了201811、201812月份的自来水费，及201811、201812的天然气费，在开具电子发票时会同时将这四笔缴费记录开具在一张电子发票上。<br>
+	<span class="promptColor_red">注意：只有2018年11月1日之后缴纳的费用才可以申请电子发票。</span>
+</p>
+</div>
+
+	</div>
+	</div>
+<style type="text/css">
+ #loading  
+{  
+    position:fixed;  
+    top:40%;  
+    left:45%;  
+    z-index:999;  
+} 
+</style>
+
+
+   <div id="loading"  >  
+      <img src="./Public/img/loading.gif" class="img-responsive">  
+    </div><pre name="code" class="css">  
+<include file="Public:common-footer"/>
+<include file="Public:common-script"/>
+<!--<script type="text/javascript" src="__PUBLIC__/last/js/jquery.easing.min.js"></script>
+<script type="text/javascript" src="__PUBLIC__/last/js/banner.js"></script>
+<script type="text/javascript">
+    $(function () {
+        initBanner();
+    });
+</script>-->
+
+<script type="text/javascript" src="__PUBLIC__/style/js/jquery.min.js"></script>
+<script type="text/javascript" src="__PUBLIC__/style/js/selectFilter.js"></script>
+<script src="__PUBLIC__/js/jquery.KinSlideshow-1.2.1.min.js" type="text/javascript"></script>
+<script src="__PUBLIC__/js/jquery.textSearch-1.0.js" type="text/javascript"></script>
+<script src="__PUBLIC__/js/script.js" type="text/javascript" charset="utf-8"></script>
+<script type="text/javascript" src="__PUBLIC__/js/Calendar.js"></script>
+<script src="__PUBLIC__/last/js/laydate/laydate.js"></script>
+<script>
+  $(window).load(function(){  
+    //适当延迟隐藏，提高loading效果  
+   // $('#loading').delay(1000).hide(0);  
+    $('#loading').hide(0);  
+});  
+!function(){
+laydate.skin('molv');//切换皮肤，请查看skins下面皮肤库
+laydate({elem: '#demo'});//绑定元素
+}();
+
+//更改后的日期下来框
+/*
+ var selectAge1 = document.getElementById("selectAge1");
+	 var myDate = new Date();
+	 selectAge1.onclick = function(){
+	 selectAge1.options[0].text = myDate.getFullYear();
+	  selectAge1.options[1].text=myDate.getFullYear()-1;
+                    }
+					 var selectAge2 = document.getElementById("selectAge2");
+	 var myDate = new Date();
+	 selectAge2.onclick = function(){
+	 selectAge2.options[0].text = myDate.getFullYear();
+	  selectAge2.options[1].text=myDate.getFullYear()-1;
+                    }
+					*/
+/*
+					if($("#kssj").val()!="2018-01-01")
+					{
+					var jssjs= new Array();
+				jssjs=$("#jssj").val().split("-");
+				for (i=0;i<jssjs.length ;i++ )
+				{
+				selectAge1.options[0].text=jssjs[0];
+				selectyue1.options[0].text=jssjs[1];
+				    selectAge1.val(jssjs[0]);
+					selectyue1.val(jssjs[1]);
+					alert(jssjs[0]);
+					alert(jssjs[1]);
+				}
+				}
+				if($("#kssj").val()!="2018-01-01"){
+					var kssjs= new Array();
+				kssjs=$("#kssj").val().split("-");
+				for (i=0;i<kssjs.length ;i++ )
+				{
+				selectAge2.options[0].text=kssjs[0];
+				selectyue2.options[0].text=kssjs[1];
+				    selectAge2.val(kssjs[0]);
+					selectyue2.val(kssjs[1]);
+				}
+					}
+					*/
+
+
+
+
+//日期范围限制
+var start = {
+    elem: '#start',
+    format: 'YYYY-MM-DD',
+    min: laydate.now(), //设定最小日期为当前日期
+    max: '2099-06-16', //最大日期
+    istime: true,
+    istoday: false,
+    choose: function(datas){
+         end.min = datas; //开始日选好后，重置结束日的最小日期
+         end.start = datas //将结束日的初始值设定为开始日
+    }
+};
+var end = {
+    elem: '#end',
+    format: 'YYYY-MM-DD',
+    min: laydate.now(),
+    max: '2099-06-16',
+    istime: true,
+    istoday: false,
+    choose: function(datas){
+        start.max = datas; //结束日选好后，充值开始日的最大日期
+    }
+};
+laydate(start);
+laydate(end);
+//自定义日期格式
+laydate({
+    elem: '#test1',
+    format: 'YYYY年MM月DD日',
+    festival: true, //显示节日
+    choose: function(datas){ //选择日期完毕的回调
+        alert('得到：'+datas);
+    }
+});
+//日期范围限定在昨天到明天
+laydate({
+    elem: '#hello3',
+    min: laydate.now(-1), //-1代表昨天，-2代表前天，以此类推
+    max: laydate.now(+1) //+1代表明天，+2代表后天，以此类推
+});
+</script>
+
+<script type="text/javascript">
+	//本小插件支持移动端哦
+
+	$("#__calendarPanel").hide();
+	//这里是初始化
+	$('#aaa').selectFilter({
+		callBack : function (val){
+			//返回选择的值
+			console.log(val+'-是返回的值')
+		}
+	});
+	$('#bbb').selectFilter({
+		callBack : function (val){
+			//返回选择的值
+			console.log(val+'-是返回的值')
+		}
+	});
+	$('#ccc').selectFilter({
+		callBack : function (val){
+			//返回选择的值
+			console.log(val+'-是返回的值')
+		}
+	});
+	function showshijian(){
+		new Calendar().show(this);
+	}
+
+</script>
+<script>
+	$('#selectAge1').on('change', function() {
+            var nian = this.value;
+			$('#selectAge2').html('');
+			$.ajax({
+						url: 'http://www.66885890.com/index.php?s=/union/yue',
+						type : 'POST',
+						async: false,
+						data : {nian: nian},
+						dataType: 'json',
+						success: function(ret){
+
+					var optionStr = [];
+					$.each(ret, function(i, item){
+						if(i==0){optionStr.push('<option value="">' +"请选择"+ "</option>")};
+						optionStr.push('<option value="'+ item.MON +'">' +item.MON+ "</option>");
+					});
+					$("#selectAge2").append(optionStr.join(''));
+					
+                }
+            });
+	});
+</script>
+<script type="text/javascript">
+	function getDetail(billcode,invurl,invoicecode,invoicenumber,examineopinion,invstatus,owner){
+		$("#ddbh").html('订单编号：'+billcode);
+		$("#fqzt").html(invstatus);
+		$("#fqtt").html(owner);
+		if(invstatus == '审核未通过'){
+			$("#bzsm").html(examineopinion);
+			$("#bz").show();
+		}
+		else{
+			$("#bz").hide();
+		}
+		if(invstatus == '可下载'){
+			if(invoicenumber == '' || invoicecode == '' || invurl == ''){
+				$("#fp").hide();
+			}
+			else{
+				$("#fpdm").html(invoicenumber);
+				$("#fphm").html(invoicecode);
+				$('#fpxz').attr('href',invurl);
+				$("#fp").show();
+			}
+
+		}
+		else{
+			$("#fp").hide();
+		}
+
+		$(".gray").show();
+		$(".center_zfb").show();
+	}
+
+	function downloadFp(invurl,invstatus){
+
+		
+			if(invurl == ''){
+				alert('下载异常，请稍候再试！');
+				return false;
+			}
+			//location.href = 'http://www.66885890.com/Public/images/123.rar';
+			downloadFile(invurl);
+		
+
+	}
+
+	function downloadFile(url) {
+	   try{
+			var elemIF = document.createElement("iframe");
+			elemIF.src = url;
+			elemIF.style.display = "none";
+			document.body.appendChild(elemIF);
+		}catch(e){
+			zzrw.alert("下载异常！");
+		}
+	}
+
+	function apply(billcode,invstatus){
+
+		if(invstatus == '未申请' || invstatus == '审核未通过'){
+			$.ajax({
+				url: '{:U("/Union/applyInvioce")}',
+				type: 'POST',
+				data: {billcode:billcode,invstatus:invstatus},
+				dataType: 'json',
+				success: function(res) {
+					if(res["r_code"] == '0000'){
+						alert("申请成功，请耐心等待审核！");
+					}
+					else{
+						alert(res["r_meaning"]+'!');
+					}
+					//location.reload();
+					document.getElementById("form2").submit();
+				}
+			});
+		}
+		else{
+			alert('发票状态为：'+invstatus+'，无法申请！');
+			return false;
+		}
+
+	}
+$(document).ready(function(){
+
+  $(".close").click(function(){
+  $(".gray").hide();
+  $(".center_zfb").hide();
+  });
+
+});
+</script>
+
+<script type="text/javascript">
+
+	function checkForm(){
+		var kssj = $("#kssj").val();
+		var jssj = $("#jssj").val();
+		document.getElementById('page').value = '';
+
+		if(kssj == '' || jssj == ''){
+			art.dialog({content:'交费日期不能为空',time:10});
+			return false;
+		}
+
+		var s1 = '2018-01-01';
+		s1 = new Date(s1.replace(/-/g, "/"));
+		s2 = new Date(kssj.replace(/-/g, "/"));
+		s3 = new Date(jssj.replace(/-/g, "/"));
+		var days = s2.getTime() - s1.getTime();
+		var time = parseInt(days / (1000 * 60 * 60 * 24));
+
+		var days1 = s3.getTime() - s1.getTime();
+		var time1 = parseInt(days1 / (1000 * 60 * 60 * 24));
+
+		if(time < 0 || time1 < 0){
+			art.dialog({content:'2018年1月1日之后的订单才可申请发票，请选择正确的交费日期',time:10});
+			return false;
+		}
+
+		return true;
+	}
+
+
+	function getPage(p){
+		document.getElementById('page').value = p;
+		document.getElementById("form2").submit();
+	}
+ function	submitform2()
+ {
+
+$("#kssj").val(selectAge1.value+"-"+selectAge2.value+"-01");
+$("#jssj").val(selectAge1.value+"-"+selectAge2.value+"-31");
+
+document.getElementById("form2").submit();
+
+ }
+</script>
+</body>
+</html>

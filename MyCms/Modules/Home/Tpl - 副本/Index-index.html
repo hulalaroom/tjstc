@@ -1,0 +1,455 @@
+<!doctype html>
+<html>
+<head>
+    <include file="Public:common-head" />
+</head>
+
+<body>
+    <include file="Public:common-toppart" />
+    <div class="home_banner">
+        <img src="__PUBLIC__/last/img/public_img/home_banner.jpg" alt="" />
+    </div>
+    <div class="home_tips">
+        <span class="home_tipsleft">通知公告</span>
+        <span class="home_tipscenter clearfix">
+    <marquee id="affiche" align="right" behavior="scroll" direction="left" loop="-1" scrollamount="4" scrolldelay="1"
+         onmouseout="this.start()" onmouseover="this.stop()" width="968">
+         <volist name="fwlist" id="notices" key="k">
+            <a target="_blank" title="{$notices.title}" href="{:U('Article/view','id='.$notices['id'])}" style="color:#333">{$notices.title}</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        </volist>
+    </marquee>
+</span>
+        <span class="home_tipsright"><a href="">More>></a></span>
+    </div>
+    <div class="home_content_01 clearfix">
+        <div class="home_content_01left">
+            <div id="fsD1" class="focus">
+                <div id="D1pic1" class="fPic">
+                    <volist name="jdlist" id="vo">
+                        <div class="fcon" style="display: none;">
+                            <a target="_blank" <empty name="vo.url">href="{:U('Article/view1','id='.$vo['id'])}"
+            <else/>
+              href="{$vo.url}"
+            </empty>><img src="{$vo.pic}" style="opacity: 1; " alt="{$vo.title}"></a>
+                            <span class="shadow"><a target="_blank" <empty name="vo.url">href="{:U('Article/view1','id='.$vo['id'])}"
+            <else/>
+              href="{$vo.url}"
+            </empty>>{$vo.title}</a></span>
+                        </div>
+                    </volist>
+                </div>
+                <div class="fbg">
+                    <div class="D1fBt" id="D1fBt">
+                        <volist name="jdlist" id="vo">
+                            <a href="javascript:void(0)" hidefocus="true" target="_self"><i>{$key+1}</i></a>
+                        </volist>
+                    </div>
+                </div>
+                <span class="prev"></span>
+                <span class="next"></span>
+            </div>
+        </div>
+        <div class="home_content_01right">
+            <div class="news_tabbox">
+                <ul class="news_tab">
+                    <li class="houseone news_cur"><i>停供能信息</i></li>
+                    <li class="housetwo"><i>水质公告</i></li>
+                    <li class="housethree"><i>活动通知</i></li>
+                    <li class="housethree"><i>区域动态</i></li>
+                </ul>
+                <div class="news_tabcontent">
+                    <div class="news_con news_con01 news_on">
+                        <volist name="tglist" id="list">
+                            <if condition="$list.isre eq 1 AND $key eq 0">
+                                <h2>{$list.title|cutstr_html=###,30}</h2>
+                                <p><span>{$list.content|cutstr_html=###,30}</span><span><a href="{:U('Article/view','id='.$list['id'])}">[详情]</a></span></p>
+                            </if>
+                        </volist>
+                        <ul>
+                            <volist name="tglist" id="list">
+                                <if condition="$list.isre eq 1 AND $key neq 0">
+                                    <li class="clearfix">
+                                        <a target="_blank" title="{$list.title}" href="{:U('Article/view','id='.$list['id'])}">{$list.title|cutstr_html=###,30}</a>
+                                        <span>{$list.create_time|date='Y-m-d',###}</span>
+                                    </li>
+                                </if>
+                            </volist>
+                        </ul>
+                    </div>
+                    <div class="news_con news_con01">
+                        <volist name="waterlist" id="list">
+                            <if condition="$list.isre eq 1 AND $key eq 0">
+                                <h2>{$list.title|cutstr_html=###,30}</h2>
+                                <p><span>{$list.content|cutstr_html=###,30}</span><span><a href="{:U('Article/view','id='.$list['id'])}">[详情]</a></span></p>
+                            </if>
+                        </volist>
+                        <ul>
+                            <volist name="waterlist" id="list">
+                                <if condition="$list.isre eq 1 AND $key neq 0">
+                                    <li class="clearfix">
+                                        <a target="_blank" title="{$list.title}" href="{:U('Article/view','id='.$list['id'])}">{$list.title|cutstr_html=###,30}</a>
+                                        <span>{$list.create_time|date='Y-m-d',###}</span>
+                                    </li>
+                                </if>
+                            </volist>
+                        </ul>
+                    </div>
+                    <div class="news_con news_con01">
+                        <volist name="hdlist" id="list">
+                            <if condition="$list.isre eq 1 AND $key eq 0">
+                                <h2>{$list.title|cutstr_html=###,30}</h2>
+                                <p><span>{$list.content|cutstr_html=###,30}</span><span><a href="{:U('Article/view','id='.$list['id'])}">[详情]</a></span></p>
+                            </if>
+                        </volist>
+                        <ul>
+                            <volist name="hdlist" id="list">
+                                <if condition="$list.isre eq 1 AND $key neq 0">
+                                    <li class="clearfix">
+                                        <a target="_blank" title="{$list.title}" href="{:U('Article/view','id='.$list['id'])}">{$list.title|cutstr_html=###,30}</a>
+                                        <span>{$list.create_time|date='Y-m-d',###}</span>
+                                    </li>
+                                </if>
+                            </volist>
+                        </ul>
+                    </div>
+                    <div class="news_con news_con01">
+                        <volist name="qylist" id="list">
+                            <if condition="$list.isre eq 1 AND $key eq 0">
+                                <h2>{$list.title|cutstr_html=###,30}</h2>
+                                <p><span>{$list.content|cutstr_html=###,30}</span><span><a href="{:U('Article/view','id='.$list['id'])}">[详情]</a></span></p>
+                            </if>
+                        </volist>
+                        <ul>
+                            <volist name="qylist" id="list">
+                                <if condition="$list.isre eq 1 AND $key neq 0">
+                                    <li class="clearfix">
+                                        <a target="_blank" title="{$list.title}" href="{:U('Article/view','id='.$list['id'])}">{$list.title|cutstr_html=###,30}</a>
+                                        <span>{$list.create_time|date='Y-m-d',###}</span>
+                                    </li>
+                                </if>
+                            </volist>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="home_content_02 clearfix">
+        <ul class="clearfix">
+            <li class="home_content_02one"><a href="{:U('Public/login')}">登录/注册”我的5890”</a></li>
+            <li class="home_content_02two"><a href="http://103.233.4.27:8089/TecidSupportSite/Login.aspx">配套系统登录入口</a></li>
+            <li class="home_content_02three"><a href="{:U('Vote/index','id=21')}">调查问卷</a></li>
+            <li class="home_content_02four"><a href="{:U('Article/down')}">手机客户端下载</a></li>
+        </ul>
+    </div>
+    <div class="home_content_wap">
+        <div class="home_content_03 clearfix">
+            <div class="home_content_03title"><span class="xian"></span><span>业务办理</span><span class="xian"></span></div>
+            <ul class="home_content_03one">
+                <li>
+                    <a href="">
+            <span><img src="__PUBLIC__/last/img/public_img/home_08.png" alt="" /></span>
+            <h3>网签合同办理</h3>
+            <i></i>
+            <span class="liaojie">我想了解</span>
+            
+        </a>
+                </li>
+            </ul>
+            <ul>
+                <li>
+                    <a href="">
+            <span><img src="__PUBLIC__/last/img/public_img/home_09.png" alt="" /></span>
+            <h3>用能查询业务</h3>
+            <i></i>
+            <span class="liaojie">我想了解</span>
+            
+        </a>
+                </li>
+            </ul>
+            <ul>
+                <li>
+                    <a href="">
+            <span><img src="__PUBLIC__/last/img/public_img/home_10.png" alt="" /></span>
+            <h3>费用交纳业务</h3>
+            <i></i>
+            <span class="liaojie">我想了解</span>
+            
+        </a>
+                </li>
+            </ul>
+            <ul>
+                <li>
+                    <a href="">
+            <span><img src="__PUBLIC__/last/img/public_img/home_11.png" alt="" /></span>
+            <h3>环保积分查询</h3>
+            <i></i>
+            <span class="liaojie">我想了解</span>
+            
+        </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="home_content_04">
+        <div class="home_content_03title"><span class="xian"></span><span>信息公开</span><span class="xian"></span></div>
+        <div class="news_tabbox">
+            <ul class="news_tab">
+                <li class="houseone news_cur"><i>成员单位</i></li>
+                <li class="housetwo"><i>服务标准</i></li>
+                <li class="housethree"><i>政策法规</i></li>
+                <li class="housethree"><i>常见问题</i></li>
+            </ul>
+            <div class="news_tabcontent">
+                <div class="news_con news_con01 news_on">
+                    <div class="pic_con clearfix">
+                        <div class="btn_change left_btn">上一页</div>
+                        <div class="btn_change right_btn">下一页</div>
+                        <div class="pic_content">
+                            <div class="pic_lists">
+                                <ul class="clearfix">
+                                    <li class="gundongfirst"><a href="#"><span>能源公司</span><span class="cyimg"><img src="__PUBLIC__/last/img/public_img/home_icon05.png" alt="" /></span></a></li>
+                                    <li class=""><a href="#"><span>市政景观公司</span><span class="cyimg"><img src="__PUBLIC__/last/img/public_img/home_icon09.png" alt="" /></span></a></li>
+                                    <li class=""><a href="#"><span>水务公司</span><span class="cyimg"><img src="__PUBLIC__/last/img/public_img/home_icon08.png" alt="" /></span></a></li>
+                                    <li class=""><a href="#"><span>环保公司</span><span class="cyimg"><img src="__PUBLIC__/last/img/public_img/home_icon06.png" alt="" /></span></a></li>
+                                    <li class=""><a href="#"><span>交通公司</span><span class="cyimg"><img src="__PUBLIC__/last/img/public_img/home_icon07.png" alt="" /></span></a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <!--content end-->
+                    </div>
+                </div>
+                <div class="news_con news_con02">
+                    <div class="pic_con clearfix">
+                        <div class="btn_change left_btn">上一页</div>
+                        <div class="btn_change right_btn">下一页</div>
+                        <div class="pic_content">
+                            <div class="pic_lists">
+                                <ul class="clearfix">
+                                    <li class="gundongfirst"><a href="#"><span>居民用能</span><span class="cyimg"><img src="__PUBLIC__/last/img/public_img/home_icon10.png" alt="" /></span></a></li>
+                                    <li class=""><a href="#"><span>非居民用能</span><span class="cyimg"><img src="__PUBLIC__/last/img/public_img/home_icon11.png" alt="" /></span></a></li>
+                                    <li class=""><a href="#"><span>垃圾收费</span><span class="cyimg"><img src="__PUBLIC__/last/img/public_img/home_icon12.png" alt="" /></span></a></li>
+                                    <li class=""><a href="#"><span>服务时限</span><span class="cyimg"><img src="__PUBLIC__/last/img/public_img/home_icon13.png" alt="" /></span></a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <!--content end-->
+                    </div>
+                </div>
+                <div class="news_con news_con03">
+                    <div class="pic_con clearfix">
+                        <div class="btn_change left_btn">上一页</div>
+                        <div class="btn_change right_btn">下一页</div>
+                        <div class="pic_content">
+                            <div class="pic_lists">
+                                <ul class="clearfix">
+                                    <li class="gundongfirst"><a href="#"><span>供热服务</span><span class="cyimg"><img src="__PUBLIC__/last/img/public_img/home_icon14.png" alt="" /></span></a></li>
+                                    <li class=""><a href="#"><span>供水服务</span><span class="cyimg"><img src="__PUBLIC__/last/img/public_img/home_icon15.png" alt="" /></span></a></li>
+                                    <li class=""><a href="#"><span>供气服务</span><span class="cyimg"><img src="__PUBLIC__/last/img/public_img/home_icon16.png" alt="" /></span></a></li>
+                                    <li class=""><a href="#"><span>空气质量</span><span class="cyimg"><img src="__PUBLIC__/last/img/public_img/home_icon17.png" alt="" /></span></a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <!--content end-->
+                    </div>
+                </div>
+                <div class="news_con news_con04">
+                    <div class="pic_con clearfix">
+                        <div class="btn_change left_btn">上一页</div>
+                        <div class="btn_change right_btn">下一页</div>
+                        <div class="pic_content">
+                            <div class="pic_lists">
+                                <ul class="clearfix">
+                                    <li class="gundongfirst"><a href="#"><span>自来水</span><span class="cyimg"><img src="__PUBLIC__/last/img/public_img/home_icon18.png" alt="" /></span></a></li>
+                                    <li class=""><a href="#"><span>天然气</span><span class="cyimg"><img src="__PUBLIC__/last/img/public_img/home_icon19.png" alt="" /></span></a></li>
+                                    <li class=""><a href="#"><span>供热</span><span class="cyimg"><img src="__PUBLIC__/last/img/public_img/home_icon20.png" alt="" /></span></a></li>
+                                    <li class=""><a href="#"><span>气力垃圾</span><span class="cyimg"><img src="__PUBLIC__/last/img/public_img/home_icon21.png" alt="" /></span></a></li>
+                                    <li class=""><a href="#"><span>通讯专业</span><span class="cyimg"><img src="__PUBLIC__/last/img/public_img/home_icon22.png" alt="" /></span></a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <!--content end-->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="home_content_wap">
+        <div class="home_content_05 clearfix">
+            <div class="home_content_03title"><span class="xian"></span><span>服务专栏</span><span class="xian"></span></div>
+            <ul class="home_content_05one home_content_05one01">
+                <li>
+                    <a href="">
+            <span><img src="__PUBLIC__/last/img/public_img/home_icon01.png" alt=""></span>
+            <h3>营业网点</h3>
+            <span class="fuzl01">（商业街、三社区）</span>
+            
+        </a>
+                </li>
+            </ul>
+            <ul class="home_content_05one">
+                <li>
+                    <a href="">
+            <span><img src="__PUBLIC__/last/img/public_img/home_icon02.png" alt=""></span>
+            <h3>公交站点</h3>
+            <span class="fuzl01">(生态城1-4号线)</span>
+            
+        </a>
+                </li>
+            </ul>
+            <ul class="home_content_05one">
+                <li>
+                    <a href="">
+            <span><img src="__PUBLIC__/last/img/public_img/home_icon03.png" alt=""></span>
+            <h3>垃圾分类</h3>
+            <span class="fuzl01">（兑换店）</span>
+            
+        </a>
+                </li>
+            </ul>
+            <ul class="home_content_05one">
+                <li>
+                    <a href="">
+            <span><img src="__PUBLIC__/last/img/public_img/home_icon04.png" alt=""></span>
+            <h3>生态城景观</h3>
+            <span class="fuzl01">（公园、道路）</span>
+            
+        </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="home_content_06">
+        <div class="home_content_06box">
+            <div class="pic_con">
+                <div class="btn_change left_btn">上一页</div>
+                <div class="btn_change right_btn">下一页</div>
+                <div class="pic_content">
+                    <div class="pic_lists">
+                        <ul class="clearfix">
+                            <li class="gundongfirst"><a href="#"><img src="__PUBLIC__/last/img/public_img/home_12.png"/></a></li>
+                            <li><a href="#"><a href="#"><img src="__PUBLIC__/last/img/public_img/home_13.png"/></a></li>
+                            <li><a href="#"><a href="#"><img src="__PUBLIC__/last/img/public_img/home_14.png"/></a></li>
+                            <li><a href="#"><a href="#"><img src="__PUBLIC__/last/img/public_img/home_15.png"/></a></li>
+                            <li><a href="#"><a href="#"><img src="__PUBLIC__/last/img/public_img/home_14.png"/></a></li>
+                            <li><a href="#"><a href="#"><img src="__PUBLIC__/last/img/public_img/home_15.png"/></a></li>
+                        </ul>
+                    </div>
+                </div>
+                <!--content end-->
+            </div>
+        </div>
+    </div>
+    <include file="Public:common-footer" />
+    <include file="Public:common-script" />
+
+    <script type="text/javascript" src="__PUBLIC__/last/js/koala.min.1.5.js"></script>
+    <script type="text/javascript">
+    $(function() {
+        $(".news_tab li").click(function() {
+            $(".news_tab li").eq($(this).index()).addClass("news_cur").siblings().removeClass('news_cur');
+            $(" .news_con").hide().eq($(this).index()).show();
+        });
+
+        $(".home_content_04 .news_tab li").click(function() {
+            $(".home_content_04 .news_tab li").eq($(this).index()).addClass("home_content_04 news_cur").siblings().removeClass('home_content_04 news_cur');
+            $(".home_content_04 .news_con").hide().eq($(this).index()).show();
+        });
+
+        var page = 1;
+        var i = 3;
+        var $p_Div = $(".home_content_04 .pic_content");
+        var $picDiv = $(".home_content_04 .pic_lists");
+        var picNum = $picDiv.children("ul").children("li").length;
+        var page_count = Math.ceil(picNum / 3);
+        var $pDiv_w = $p_Div.width() + 12;
+
+        $(".home_content_04 .right_btn").click(function() {
+            if (page_count > page) {
+                $picDiv.animate({ left: '-' + page * $pDiv_w + "px" }, "normal");
+                page++;
+                $(".home_content_04 .left_btn").css({ 'background': 'url(__PUBLIC__/last/img/public_img/home_23.png) no-repeat' });
+                if (page >= page_count) {
+                    $(this).css({ 'background': 'url(__PUBLIC__/last/img/public_img/home_24.png) no-repeat' });
+                } else {
+                    $(this).css({ 'background': 'url(__PUBLIC__/last/img/public_img/home_24.png) no-repeat' });
+                }
+            }
+            $(this).siblings(".home_content_04 .highlight_tip").find("span").eq((page - 1)).addClass("current").siblings().removeClass("current");
+        });
+
+        $(".home_content_04 .left_btn").click(function() {
+            if (page > 1) {
+                $picDiv.animate({ left: "+=" + $pDiv_w + 'px' }, "normal");
+                page--;
+                $(".home_content_04 .right_btn").css({ 'background': 'url(__PUBLIC__/last/img/public_img/home_24.png) no-repeat' });
+                if (page <= 1) {
+                    $(this).css({ 'background': 'url(__PUBLIC__/last/img/public_img/home_23.png) no-repeat' });
+                } else {
+                    $(this).css({ 'background': 'url(__PUBLIC__/last/img/public_img/home_23.png) no-repeat' });
+                }
+            }
+            $(this).siblings(".highlight_tip").find("span").eq((page - 1)).addClass("current").siblings().removeClass("current");
+        });
+
+        $(".home_content_04 .pic_lists>ul>li").hover(function() {
+            $(this).children("p").show();
+        }, function() {
+            $(this).children("p").hide();
+        });
+
+        var page1 = 1;
+        var $p_Div_1 = $(".home_content_06 .pic_content");
+        var $picDiv_1 = $(".home_content_06 .pic_lists");
+        var picNum1 = $picDiv_1.children("ul").children("li").length;
+        var page_count_1 = Math.ceil(picNum1 / 3);
+        var $pDiv_w_1 = $p_Div_1.width() + 12;
+
+        $(".home_content_06 .right_btn").click(function() {
+            if (page_count_1 > page1) {
+                $picDiv_1.animate({ left: '-' + page1 * $pDiv_w_1 + "px" }, "normal");
+                page1++;
+                $(".home_content_06 .left_btn").css({ 'background': 'url(__PUBLIC__/last/img/public_img/home_21.png) no-repeat' });
+                if (page1 >= page_count_1) {
+                    $(this).css({ 'background': 'url(__PUBLIC__/last/img/public_img/home_22.png) no-repeat' });
+                } else {
+                    $(this).css({ 'background': 'url(__PUBLIC__/last/img/public_img/home_22.png) no-repeat' });
+                }
+            }
+            $(this).siblings(".home_content_06 .highlight_tip").find("span").eq((page1 - 1)).addClass("current").siblings().removeClass("current");
+        });
+
+        $(".home_content_06 .left_btn").click(function() {
+            if (page1 > 1) {
+                $picDiv_1.animate({ left: "+=" + $pDiv_w_1 + 'px' }, "normal");
+                page1--;
+                $(".home_content_06 .right_btn").css({ 'background': 'url(__PUBLIC__/last/img/public_img/home_22.png) no-repeat' });
+                if (page1 <= 1) {
+                    $(this).css({ 'background': 'url(__PUBLIC__/last/img/public_img/home_21.png) no-repeat' });
+                } else {
+                    $(this).css({ 'background': 'url(__PUBLIC__/last/img/public_img/home_21.png) no-repeat' });
+                }
+            }
+        });
+
+        Qfast.add('widgets', { path: "__PUBLIC__/last/js/terminator2.2.min.js", type: "js", requires: ['fx'] });
+        Qfast(false, 'widgets', function() {
+            K.tabs({
+                id: 'fsD1', //焦点图包裹id  
+                conId: "D1pic1", //** 大图域包裹id  
+                tabId: "D1fBt",
+                tabTn: "a",
+                conCn: '.fcon', //** 大图域配置class       
+                auto: 1, //自动播放 1或0
+                effect: 'fade', //效果配置
+                eType: 'click', //** 鼠标事件
+                pageBt: true, //是否有按钮切换页码
+                bns: ['.prev', '.next'], //** 前后按钮配置class                          
+                interval: 3000 //** 停顿时间  
+            })
+        });
+    });
+    </script>
+</body>
+
+</html>

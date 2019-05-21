@@ -1,0 +1,57 @@
+<include file="Public:header"/>
+<link type="text/css" rel="stylesheet" href="__PUBLIC__/css/pay.css"/>
+<div class="main_block">
+  <include file="Public:top"/>
+  <form id="payToPage" action="./index.php?s=/union/index.html" method="post">
+  <div class="content_block">
+    <div class="main_con fr">
+		
+	  <input id="merId" type="hidden" name="merId" placeholder="" value="104120049000035" required="required"/>
+	  <input id="txnAmt" type="hidden" name="txnAmt" placeholder="交易金额" required="required" value="{$txnAmt}"/>
+	  <input id="txnTime" type="hidden" name="txnTime" placeholder="订单发送时间，YYYYMMDDhhmmss格式" value="<?php date_default_timezone_set('PRC');  echo date('YmdHis')?>" required="required"/>
+	  <input id="orderId" type="hidden" name="orderId" placeholder="商户订单号" required="required" value="{$orderid}"/>
+	  <input id="reqReserved" type="hidden" name="reqReserved" placeholder="订单信息" required="required" value="{$housecode}@{$type}@{$chargemonth}@{$bh}"/>
+	  
+        <!-- begin -->
+        <div class="pay">
+          <h1>账单信息</h1>
+          <div class="pay_xq ">
+            <span class="nqf">收费项目：{$typeName}</span>
+            <span class="zdrq">账单时间：{$dateInfo}</span>
+            <span class="fy">费用：<span class="yuan">{$clocknumber}</span></span>
+            <span class="dz">房间地址：{$info.houseName}</span>
+          </div>
+          <div class="bk"></div>
+          <div class="pay_tu"><img src="__PUBLIC__/images/zf.png" /></div>
+		  
+          <div class="fkfs clearfix">
+            <div class="fkfsyhk">付款方式：<span>中国银联</span></div>
+            <div class="fkyh">请在下面选择付款方式</div>
+          </div>
+          <div class="xzyh">
+            <div class="biaodan">
+                <input type="radio" name="cardTyp"   value="0" checked/><img src="__PUBLIC__/images/qt1.png" /><span class="eee">(支持'中国银行'、'建设银行'、'农业银行'、'工商银行'等多家全国性银行以及区域性银行卡)</span>
+                <!--<input  type="radio"  name="cardTyp"  value="1" /><img src="__PUBLIC__/images/qt.png" />
+				<span class="eee">(选择其他银行缴费时，不支持'中国银行'卡)</span>-->
+              <span>请确保您的卡已开通网上支付，否则将无法支付成功。</span>
+            </div>
+            <div class="anniu"><button onclick="javascript:$('#payToPage').submit()">下一步</button></div>
+          </div>
+          <div class="wxts">
+            <span style="font-weight:bold;color:#FF0000">温馨提示：</span><br />
+			<span style="font-weight:bold;color:#FF0000">1、交费方式：中国银联目前支持'中国银行'、'建设银行'、'农业银行'、'工商银行'等多家全国性银行以及区域性银行卡的缴费。</span><br />
+            <span style="font-weight:bold;color:#FF0000">2、交费时间：用户应在每月15日前通过银行窗口、ATM、网银等方式向能源服务卡内存入足够金额用以支付用水、用气费用。若您办理的能源服务卡尚未寄至手中，您可于每月15日前至能源窗口交费。</span><br />
+            <span style="font-weight:bold;color:#FF0000">3、能源公司提醒您：请您按规定于每月15日前交清上月用水、用气费用，逾期未缴费的按日加收违约金。持能源服务卡用户，指定银行在结算日（每月15日）自动完成应收费用的扣缴。 本查询结果仅供参考，如有疑问，请于能源窗口询问或致电022-66885890。</span>
+          </div>
+        </div>
+        <!-- end -->
+      </div>
+    </div>
+  </div>
+</div>
+
+</form>
+
+<include file="Public:footer"/>
+</body>
+</html>

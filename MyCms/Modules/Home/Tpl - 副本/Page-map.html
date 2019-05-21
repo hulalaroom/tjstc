@@ -1,0 +1,89 @@
+<include file="Public:header"/>
+<style type="text/css">
+  html, body {
+    margin: 0;
+    padding: 0;
+  }
+
+  .iw_poi_title {
+    color: #CC5522;
+    font-size: 14px;
+    font-weight: bold;
+    overflow: hidden;
+    padding-right: 13px;
+    white-space: nowrap
+  }
+
+  .map_addr {
+    padding-left: 4em;
+    padding-right: 3em;
+    text-align: left;
+    color: rgb(0, 160, 64);
+    font-family: "微软雅黑";
+    font-size: 14px;
+    line-height: 24px;
+  }
+
+  .align-center {
+    text-align: center;
+  }
+
+  .blank_line {
+    height: 2em;
+  }
+
+  .iw_poi_content {
+    font: 12px arial, sans-serif;
+    overflow: visible;
+    padding-top: 4px;
+    white-space: -moz-pre-wrap;
+    word-wrap: break-word
+  }
+  .ditu {
+    width:697px;
+    border:#ccc solid 1px;
+  }
+
+.ditu h1 { font-size: 48px; /* 18px / 12px = 1.5 */ }
+.ditu h2 { font-size: 16px; }
+.ditu h3 { font-size: 14px; }
+.ditu h4, h5, h6 { font-size: 100%; }
+</style>
+<div class="main_block">
+  <include file="Public:top"/>
+  <div class="content_block">
+    <div class="left_side fl">
+
+      <include file="Public:left"/>
+    </div>
+    <div class="middle_con">
+      <script type="text/javascript" src="__PUBLIC__/js/index_tab.js"></script>
+      <!--tab end-->
+    </div>
+    <div class="right_side">
+    </div>
+    <div class="main_con fr">
+      <div class="bread_nav">
+        <div class="l fl"></div>
+        <div class="m fl" style="line-height:30px;">
+          <span class="list_style"></span>
+          <span>您当前的位置:</span>
+          <a href="__GROUP__">首页</a>
+          <span>></span>
+          <span style="color: #009f3f;">营业场所地址</span>
+        </div>
+        <div class="r fl"></div>
+      </div>
+      <div class="artical">
+        <!-- begin -->
+        <div class="article_show">
+          <div class="ditu" id="dituContent">{$contents}</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<include file="Public:footer"/>
+</body>
+</html>

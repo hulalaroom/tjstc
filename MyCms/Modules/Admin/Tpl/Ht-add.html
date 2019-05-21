@@ -1,0 +1,280 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href='__PUBLIC__/css/common.css'>
+<script type="text/javascript" src="__PUBLIC__/js/jquery-1.7.1.min.js"></script>
+<script type="text/javascript" src="__PUBLIC__/js/base.js"></script>
+<script type="text/javascript" src="__PUBLIC__/js/jscolor/jscolor.js"></script>
+<script type="text/javascript" src="__PUBLIC__/js/kindeditor/kindeditor-min.js"></script>
+<link rel="stylesheet" href="__PUBLIC__/js/kindeditor/themes/default/default.css" />
+<script charset="utf-8" src="__PUBLIC__/js/kindeditor/lang/zh_CN.js"></script>
+<script>
+        var editor;
+        KindEditor.ready(function(K) {
+             
+                editor = K.create('textarea[name="content"]', {
+                        allowFileManager : true,
+						uploadJson : '__APP__/Upload/upload/session_id/{$Think.session.myid}',
+						fileManagerJson :  '__APP__/Upload/filelist/session_id/{$Think.session.myid}',
+                        width : '675px',
+                        height : '300px'
+                });
+                //缩略图                         
+                K('#image').click(function() {
+                    editor.loadPlugin('image', function() {
+                        editor.plugin.imageDialog({
+                            //imageUrl : K('#image1 img'),
+                                                       
+                            clickFn : function(url, title, width, height, border, align) {
+                                //K('#image1 img').append('<img src="' + data.url + '">');
+                                K('#image img').remove();
+                                K('#image').append('<img src="'+url+'">');
+                                editor.hideDialog();
+                                K('#pic').val(url);
+                            }
+                        });
+                    });
+                });
+                  //取消缩略图                         
+                K('#clear').click(function() {
+                    K('#image img').remove();
+                    K('#image').append('<img  src="__PUBLIC__/images/imageList.png">');
+                    K('#pic').val('');
+                });  
+                //
+
+        });
+</script>
+<style>
+#im {
+	z-index: 991;
+	background-color: white;
+	border: #99ccff solid 2px;
+	position: absolute;
+	width:220px;
+	height:195px;
+	left: 460px;
+	text-align: center;
+	top: 160px;
+	padding-top: 2px;
+}
+#image {
+	display: block;
+	height: 150px;
+	line-height: 150px;
+	width: 220px;
+	cursor: pointer;
+	text-align: center;
+        display: table-cell;
+     vertical-align:middle;
+}
+#image img {
+	vertical-align: middle; margin: auto; max-width: 220px; max-height: 150px;
+}
+#clear {
+	background: #51B148;
+	color: #FFF;
+	font: bold 14px arial, sans-serif;
+	padding: 0.15em 1em;
+	text-transform: uppercase;
+	margin: 0 auto;
+	overflow: visible;
+	width: auto;
+	cursor: pointer;
+	padding: 7px 20px;
+	display: block;
+}
+.summary{ width:450px; height:auto; float:left; padding-left:10px}
+</style>
+<title>合同预约</title>
+</head>
+<body>
+<div id="append_parent"></div>
+<div class="container" id="cpcontainer">
+  <div id="contentHeader">
+    <h3>合同预约</h3>
+    <div class="searchArea">
+      <ul class="action left" >
+        <li><a href="__URL__/index" class="actionBtn"><span>返回</span></a></li>
+      </ul>
+    </div>
+  </div>
+      <eq name="type" value="add">
+<form name="form1" action="__URL__/insert" method="post">
+  <else/>
+  <form name="form1"  action="__URL__/update" method="post">
+    <input  name="id"  type="hidden" value="{$ht_id}" />
+	<input name="cat_id" type="hidden" value="{$cat_id}">
+    </eq>
+  <form name="form1" id="form1" action="__URL__/insert" method="post">
+    <table class="form_table">
+	  <tr>
+		  <td width="12%">合同类型：</td>
+		  <td width="20%"><if condition="$ht_ytes eq 1 ">天津生态城居民住宅供用能合同<else/>天津生态城居民住宅计量供用热合同</if></td>
+		  <td width="12%">房间编号：</td>
+		  <td width="20%">{$housecode}</td>
+		  <td width="12%">房间地址：</td>
+		  <td width="20%">{$address}</td>
+	  </tr>
+	  <tr>
+		  <td width="12%">使用方：</td>
+		  <td width="20%">{$syf}</td>
+		  <td width="12%">房屋类别：</td>
+		  <td width="20%">{$fwlx}</td>
+		  <td width="12%">采暖形式：</td>
+		  <td width="20%">{$cnxs}</td>
+	  </tr>
+	  <if condition="$ht_ytes eq 1 ">
+		  <tr>
+			  <td width="12%">开户银行：</td>
+			  <td width="20%">{$khyh}</td>
+			  <td width="12%">开户姓名：</td>
+			  <td width="20%">{$khm}</td>
+			  <td width="12%">使用关系：</td>
+			  <td width="20%">{$syfgx}</td>
+		  </tr>
+		  <tr>
+			  <td width="12%">身份证号：</td>
+			  <td width="20%">{$khrsfz}</td>
+			  <td width="12%">能源卡号：</td>
+			  <td width="20%">{$nykh}</td>
+			  <td width="12%">交费方式：</td>
+			  <td width="20%">{$fjm_jffs}</td>
+		  </tr>
+		  <tr>
+			  <td width="12%">开户银行：</td>
+			  <td width="20%">{$fjm_khyh}</td>
+			  <td width="12%">开户账号：</td>
+			  <td width="20%">{$fjm_zh}</td>
+			  <td width="12%">其它事项：</td>
+			  <td width="20%">{$sfydqtsx}</td>
+		  </tr>
+	  </if>
+	  <tr>
+		  <td width="12%">乙方签字：</td>
+		  <td width="20%">{$yfqz}</td>
+		  <td width="12%"></td>
+		  <td width="20%"></td>
+		  <td width="12%"></td>
+		  <td width="20%"></td>
+	  </tr>
+	   
+
+	  <if condition="$ht_ytes eq 1 ">
+	  <tr>
+		  <td colspan="6" style="color:red">“用户登记表”---第一业主</td>
+	  </tr>
+	  <tr>
+		  <td width="12%">业主姓名：</td>
+		  <td width="20%">{$yhdj_a_yzxm}</td>
+		  <td width="12%">证件类型：</td>
+		  <td width="20%">{$yhdj_a_zjlx}</td>
+		  <td width="12%">证件号码：</td>
+		  <td width="20%">{$yhdj_a_zjhm}</td>
+	  </tr>
+	  <tr>
+		  <td width="12%">移动电话：</td>
+		  <td width="20%">{$yhdj_a_yddh}</td>
+		  <td width="12%">固定电话：</td>
+		  <td width="20%">{$yhdj_a_gddh}</td>
+		  <td width="12%">邮寄地址：</td>
+		  <td width="20%">{$yhdj_a_yjdz}</td>
+	  </tr>
+	  <tr>
+		  <td width="12%">邮政编号：</td>
+		  <td width="20%">{$yhdj_a_yb}</td>
+		  <td width="12%">单位名称：</td>
+		  <td width="20%">{$yhdj_a_dwmc}</td>
+		  <td width="12%">单位地址：</td>
+		  <td width="20%">{$yhdj_a_dwdzhdh}</td>
+	  </tr>
+	  <tr>
+		  <td width="12%">成员姓名：</td>
+		  <td width="20%">{$yhdj_a_zyjtcyxm}</td>
+		  <td width="12%">联系电话：</td>
+		  <td width="20%">{$yhdj_a_zyjtcydh}</td>
+		  <td width="12%"></td>
+		  <td width="20%"></td>
+	  </tr>
+
+
+	   <tr>
+		  <td colspan="6" style="color:red">“用户登记表”---第二业主</td>
+	  </tr>
+	  <tr>
+		  <td width="12%">业主姓名：</td>
+		  <td width="20%">{$yhdj_b_yzxm}</td>
+		  <td width="12%">证件类型：</td>
+		  <td width="20%">{$yhdj_b_zjlx}</td>
+		  <td width="12%">证件号码：</td>
+		  <td width="20%">{$yhdj_b_zjhm}</td>
+	  </tr>
+	  <tr>
+		  <td width="12%">移动电话：</td>
+		  <td width="20%">{$yhdj_b_yddh}</td>
+		  <td width="12%">固定电话：</td>
+		  <td width="20%">{$yhdj_b_gddh}</td>
+		  <td width="12%">邮寄地址：</td>
+		  <td width="20%">{$yhdj_b_yjdz}</td>
+	  </tr>
+	  <tr>
+		  <td width="12%">邮政编号：</td>
+		  <td width="20%">{$yhdj_b_yb}</td>
+		  <td width="12%">单位名称：</td>
+		  <td width="20%">{$yhdj_b_dwmc}</td>
+		  <td width="12%">单位地址：</td>
+		  <td width="20%">{$yhdj_b_dwdzhdh}</td>
+	  </tr>
+	  </if>
+
+	  <tr>
+		  <td colspan="6" style="color:red">证件照</td>
+	  </tr>
+	   <tr>
+		  <td width="12%">身份证：</td>
+		  <td width="20%"><a href="__URL__/view/id/{$ht_id}/type/1" target="_blank"/>查看</a></td>
+		  <td width="12%">购房合同或房产证：</td>
+		  <td width="20%"><a href="__URL__/view/id/{$ht_id}/type/2" target="_blank"/>查看</a></td>
+		  <td width="12%"></td>
+		  <td width="20%"></td>
+	  </tr>
+
+	  <if condition="$status eq 1">
+		  <tr>
+			<td>驳回原因：</td>
+			<td colspan="5">
+				{$remark}
+			</td>
+		  </tr>
+	  </if>
+      
+	  <if condition="$status eq 2">
+		  <tr>
+			<td>合同状态</td>
+			<td colspan="5">
+				
+				<select name="status">
+					<option value="1"<eq name="status" value="1"> selected="selected"</eq>>不同意</option>
+					<option value="3"<eq name="status" value="3"> selected="selected"</eq>>同意</option>
+				</select>
+			</td>
+		  </tr>
+		  <tr>
+			<td class="tb_title" colspan="6">说明：</td>
+		  </tr>
+		  <tr >
+			<td  colspan="6"><textarea name="content">{$remark}</textarea>
+			</td>
+		  </tr>
+		  <tr class="submit">
+			<td colspan="2" >
+			  <input type="submit" name="editsubmit" value="提交" class="button"/>
+			</td>
+		  </tr>
+	  </if>
+    </table>
+  </form>
+</div>
+</body>
+</html>

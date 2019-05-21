@@ -1,0 +1,197 @@
+<!doctype html>
+<html>
+<head>
+    <include file="Public:common-head" />
+	<link rel="stylesheet" type="text/css" href="__PUBLIC__/last/css/selectFilter.css">
+</head>
+
+<body>
+    <assign name="hoverIndex" value="1" />
+    <include file="Public:common-toppart" />
+
+    <div class="wodeyewu_banner">
+        <div class="content">
+            <p class="jiaofei_banner_01 font_yinying">我的业务</p>
+            <p class="jiaofei_banner_03 "></p>
+            <p class="jiaofei_banner_02 font_yinying">我的业务，一键办理</p>
+        </div>
+    </div>
+    <div class="content_bg01 ">
+        <div class="content history_content">
+            <p class="dqwz history_dqwz">
+                当前位置：<a href="__GROUP__">首页</a> &nbsp;&nbsp;&gt;&nbsp;&nbsp;
+                <a href="{:U('User/index',array('id'=>20))}">我的5890</a>&nbsp;&nbsp;&gt;&nbsp;&nbsp;
+                <a href="{:U('User/ywbl')}">业务办理</a>&nbsp;&nbsp;&gt;&nbsp;&nbsp;
+                <span class="green">我的业务</span>
+            </p>
+            <div class="wodeyewu_content clearfix">
+                <div class="wodeyewu_content_left">
+                    <div class="wodeyewu_wdyw"><span><img src="__PUBLIC__/last/img/wodeyewu_04.png" alt="" /></span>我的业务</div>
+                    <ul class="wodeyewu_tab">
+                        <li class="wodeyewu_nygs cur">能源公司</li>
+                        <li class="wodeyewu_swgs">水务公司</li>
+                        <li class="wodeyewu_hbgs">环保公司</li>
+						<li class="wodeyewu_qtyw">其他业务</li>
+                    </ul>
+                </div>
+                <div class="wodeyewu_content_right">
+                    <!-- 能源公司-->
+                    <div class=" publictab wodeyewu_nygstable on">
+                        <div class="wodeyewu_nygstable01">
+                            <table>
+                                <tr class="yewu_tr01" style="background: #ffb77d;">
+                                    <td width="5%" align="center">序号</td>
+                                    <td width="22%" align="center"><span class="shuxian">|</span><span class="fjbh">房间编号</span><span class="shuxian">|</span></td>
+                                    <td width="8%" align="center"><span>业主姓名</span></td>
+                                    <td width="22%" align="center"><span class="shuxian">|</span><span class="fjbh">申请时间</span><span class="shuxian">|</span></td>
+                                    <td width="10%" align="center"><span>业务类型</span></td>
+                                    <td width="11%" align="center"><span class="shuxian">|</span><span class="blzt">办理状态</span><span class="shuxian">|</span></td>
+                                    <td width="11%" align="center"><span>受理时限</span></td>
+                                    <td width="11%" align="center"><span class="shuxian">|</span><span class="cz">操作</span></td>
+                                </tr>
+                                <empty name="nyywList">
+                                    <tr>
+                                        <td colspan="8" style="text-align:center">暂无信息</td>
+                                    </tr>
+                                </empty>
+                                <volist name="nyywList" id="vo" key="k">
+                                    <tr>
+                                        <td  width="5%">{$k}</td>
+                                        <td width="22%">{$vo.HOUSECODE}</td>
+                                        <td width="8%">{$vo.OWNERNAME}</td>
+                                        <td width="22%">{$vo.APPLYDATE}</td>
+                                        <td width="10%">{$vo.BUSINESSTYPE}</td>
+                                        <td  width="11%">{$vo.EXAMINESTATUS}</td>
+                                        <td width="11%">{$vo.SLSX}</td>
+                                        <td width="11%"><a href="{:U('Business/listDetail',array('Businesscode'=>$vo['BUSINESSCODE'],'Businesstype'=>$vo['BUSINESSTYPE']))}">详情</a></td>
+                                    </tr>
+                                </volist>
+                            </table>
+                        </div>
+                        <div class="wodeyewu_btn">
+                            <!-- <a href="" onclick="javascript:window.history.back()">返回</a> -->
+                            <!-- <a href="">导出</a> -->
+                        </div>
+                    </div>
+                    <!-- 水务公司-->
+                    <div class="publictab wodeyewu_swgstable">
+                        <div class="wodeyewu_swgstable01">
+                            <table>
+                                <tr class="yewu_tr01" style="background: #b2d9ff;">
+                                   <td width="5%">序号</td>
+                                    <td width="22%"><span class="shuxian">|</span><span class="fjbh">房间编号</span><span class="shuxian">|</span></td>
+                                    <td width="8%"><span>业主姓名</span></td>
+                                    <td width="22%"><span class="shuxian">|</span><span class="fjbh">申请时间</span><span class="shuxian">|</span></td>
+                                    <td width="10%"><span>业务类型</span></td>
+                                    <td width="11%"><span class="shuxian">|</span><span class="blzt">办理状态</span><span class="shuxian">|</span></td>
+                                    <td width="11%"><span>受理时限</span></td>
+                                    <td width="11%"><span class="shuxian">|</span><span class="cz">操作</span></td>
+                                </tr>
+                                <empty name="swywList">
+                                    <tr>
+                                        <td colspan="8" style="text-align:center">暂无信息</td>
+                                    </tr>
+                                </empty>
+                                <volist name="swywList" id="vo" key="k">
+                                    <tr>
+                                        <td>{$k}</td>
+                                        <td>{$vo.HOUSECODE}</td>
+                                        <td>{$vo.OWNERNAME}</td>
+                                        <td>{$vo.APPLYDATE}</td>
+                                        <td>{$vo.BUSINESSTYPE}</td>
+                                        <td>{$vo.EXAMINESTATUS}</td>
+                                        <td>{$vo.SLSX}</td>
+                                        <td><a href="{:U('Business/listSwDetail',array('Businesscode'=>$vo['BUSINESSCODE'],'Businesstype'=>$vo['BUSINESSTYPE']))}">详情</a></td>
+                                    </tr>
+                                </volist>
+                            </table>
+                        </div>
+                    </div>
+                    <!-- 环保公司-->
+                    <div class="publictab wodeyewu_hbgstable">
+                        <div class="wodeyewu_hbgstable01">
+                            <table>
+                                <tr class="yewu_tr01" style="background: #5efba0;">
+                                   <td width="5%">序号</td>
+                                    <td width="22%"><span class="shuxian">|</span><span class="fjbh">房间编号</span><span class="shuxian">|</span></td>
+                                    <td width="8%"><span>业主姓名</span></td>
+                                    <td width="22%"><span class="shuxian">|</span><span class="fjbh">申请时间</span><span class="shuxian">|</span></td>
+                                    <td width="11%"><span>业务类型</span></td>
+                                    <td width="11%"><span class="shuxian">|</span><span class="blzt">办理状态</span><span class="shuxian">|</span></td>
+                                    <!--<td width="11%"><span>受理时限</span></td>-->
+                                    
+                                </tr>
+                                <empty name="hbywlist">
+                                    <tr>
+                                        <td colspan="8" style="text-align:center">暂无信息</td>
+                                    </tr>
+                                </empty>
+								<volist name="hbywlist" id="vo" key="k">
+                                    <tr>
+                                        <td>{$k}</td>
+                                        <td>{$vo.HOUSECODE}</td>
+                                        <td>{$vo.OWNERNAME}</td>
+                                        <td>{$vo.APPLYDATE}</td>
+                                        <td>{$vo.BUSINESSTYPE}</td>
+                                        <td>{$vo.EXAMINESTATUS}</td>
+                                        <!--<td>{$vo.SLSX}</td>-->
+                                    </tr>
+                                </volist>
+                            </table>
+                        </div>
+                    </div>
+					<!-- 其他业务-->
+                    <div class=" publictab wodeyewu_qtywtable">
+                        <div class="wodeyewu_qtywtable01">
+                            <table>
+                                <tr class="yewu_tr01" style="background: #d6a3ff;">
+                                    <td width="5%" align="center">序号</td>
+                                    <td width="12%" align="center"><span class="shuxian">|</span><span class="fjbh">申请人</span><span class="shuxian">|</span></td>
+                                    <td width="10%" align="center"><span>类别</span></td>
+                                    <td width="20%" align="center"><span class="shuxian">|</span><span class="fjbh">申请时间</span><span class="shuxian">|</span></td>
+                                    <td width="10" align="center"><span>状态</span></td>
+                                    <td width="22%" align="center"><span class="shuxian">|</span><span class="blzt">内容</span><span class="shuxian">|</span></td>
+                                    <td width="11%" align="center"><span class="shuxian">|</span><span class="cz">详情</span></td>
+                                </tr>
+                                <empty name="shouli">
+                                    <tr>
+                                        <td colspan="8" style="text-align:center">暂无信息</td>
+                                    </tr>
+                                </empty>
+                                <volist name="shouli" id="sl">
+                                    <tr>
+                                        <td  width="5%">{$i}</td>
+                                        <td width="12%">{$sl.proposer}</td>
+                                        <td width="8%">报修</td>
+                                        <td width="20%">{$sl.operatedate}</td>
+                                        <td width="8%">{$sl.state}</td>
+										<td width="22%">{$sl.Content|msubstr=0,8,'utf-8',true}</td>
+                                        <td width="11%"><a href="/index.php?s=/guestbook/acceptanceRecordView/aid/{$sl.id}">详情</a></td>
+                                    </tr>
+                                </volist>
+                            </table>
+                        </div>
+                        <div class="wodeyewu_btn">
+                            <!-- <a href="" onclick="javascript:window.history.back()">返回</a> -->
+                            <!-- <a href="">导出</a> -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+<include file="Public:common-footer" />
+<include file="Public:common-script" />
+
+<script src="Public/style1/js/jquery-1.11.2.min.js"></script>
+<script type="text/javascript">
+    $(function() {
+		$('.wodeyewu_tab>li').on('click', function() {
+			var $self = $(this), index = $self.index();
+			$self.addClass('cur').siblings().removeClass('cur');
+			$(".publictab").removeClass('on').eq(index).addClass('on');
+		});
+    });
+</script>
+</body>
+</html>

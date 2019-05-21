@@ -1,0 +1,828 @@
+<!doctype html>
+<html>
+<head>
+<include file="Public:common-head"/>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="__PUBLIC__/css/redefine.css">
+<link rel="stylesheet" type="text/css" href="__PUBLIC__/css/layout.css">
+
+<link rel="stylesheet" type="text/css" href="__PUBLIC__/css/onlineRepairCss.css">
+<script src="http://libs.baidu.com/jquery/1.7.2/jquery.min.js"></script>
+<script src="https://cdn.staticfile.org/html5shiv/r29/html5.min.js"></script>
+<script src="https://cdn.staticfile.org/respond.js/1.4.2/respond.min.js"></script>
+<script src="js/mycss.js"></script>
+<script src="laydate/laydate.js"></script>
+<style>
+ .addImages {
+	display:inline-block;
+	width:160px;
+	height:145px;
+	float:left;
+	-webkit-box-sizing:border-box;
+	-moz-box-sizing:border-box;
+	box-sizing:border-box;
+	
+	background:#FFFFFF;
+	position:relative;
+	overflow:hidden;
+	margin:10px
+}
+
+.cover {
+	position:absolute;
+	z-index:1;
+	top:0;
+	left:0;
+	width:160px;
+	height:130px;
+	background-color:rgba(0,0,0,.3);
+	display:none;
+	line-height:125px;
+	text-align:center;
+	cursor:pointer;
+}
+
+.cover .delbtn {
+	color:red;
+	font-size:20px;
+}
+
+.imageDiv:hover .cover {
+	display:block;
+}
+
+.text-detail {
+	margin-top:40px;
+	text-align:center;
+}
+
+.text-detail span {
+	font-size:40px;
+}
+
+.file {
+	position:absolute;
+	top:0;
+	left:0;
+	width:160px;
+	height:145px;
+	opacity:0;
+}
+</style>
+<style>
+.select {
+
+	/*Chrome和Firefox里面的边框是不一样的，所以复写了一下*/
+	appearance:none;
+	-moz-appearance:none; 
+	-webkit-appearance:none;　　
+
+	/*很关键：将默认的select选择框样式清除*/
+
+	background: url("../img/input_jiantou.png"); no-repeat 326px center;
+}
+
+</style>
+
+</head>
+
+<body>
+<include file="Public:common-toppart"/>
+<div class="zxbx_ts_banner1"  >
+		<div class="content" >
+			<p class="jiaofei_banner_01 font_yinying" style="color: #fff" >在线报修</p>
+			<p class="jiaofei_banner_03 "></p>
+			<p class="jiaofei_banner_02 font_yinying" style="color: #fff" >在线报修便捷您的日常生活</p>
+		</div>
+	</div>
+    <div class="content_bg">
+	<div class="content history_content">
+	<p class="jiaofei_dqwz history_dqwz" style="color:#999;font-size: 16px;">当前位置：<a href="__GROUP__" style="color:#999">首页</a> &nbsp;&nbsp;&gt;&nbsp;&nbsp;<a href="{:U('User/ywbl')}" style="color:#999">业务办理</a> &nbsp;&nbsp;&gt;&nbsp;&nbsp;<span class="green" id="type">在线报修</span></p>
+	<div class="history_billcontent clearfix" style="">
+	<div class="history_billcontentpad">
+		<div class="history_billcontentleft">
+			<ul class="history_tab  luxian_tab">
+			   <a href="/index.php?s=/guestbook/onlineRepair" style="text-decoration:none;color:#666;outline:none;" >
+					<li class=" clearfix cur">
+						<span class="img_fl"><img src="__PUBLIC__/img/zxbx_bx_2.png" alt="" style="padding-bottom:30px" /></span>在线报修
+					</li>
+				</a>
+				<!--<a href="/index.php?s=/guestbook/acceptanceRecord" style="text-decoration:none;color:#666;outline:none;" >
+					<li class=" clearfix ">
+						<span class="img_fl"><img src="__PUBLIC__/img/zxbx_ar.png" alt="" style="padding-bottom:30px" /></span>受理记录
+				   </li>
+			   </a>-->
+			</ul>        
+        </div>        
+<div class="history_billcontentright">
+<div class=" history_trqcon" id="bx">
+<form id="form2" name="form2" action="{:U('Guestbook/bxinsert')}" method="post">
+	<div class="fuwuzhuanlan">
+		<div class="house_tabcontent">
+			<div class="fangjian11 luxian fangjian_01 house_on" style="box-shadow: 2px 5px 6px #dbfbe8;">
+				<div class="yewu_table clearfix">
+					<ul class="yewuleft">
+						<li><span style="font-size: 18px;color: #fd8320;">*</span>&nbsp;房间地址</li>
+						<li><span style="font-size: 18px;color: #fd8320;">*</span>&nbsp;联系人&nbsp;&nbsp;&nbsp;&nbsp;</li>
+						<li><span style="font-size: 18px;color: #fd8320;">*</span>&nbsp;联系电话</li>
+						<li><span style="font-size: 18px;color: #fd8320;">*</span>&nbsp;涉及行业</li>
+						<li><span style="font-size: 18px;color: #fd8320;">*</span>&nbsp;涉及种类</li>
+						<li><span style="font-size: 18px;color: #fd8320;">*</span>&nbsp;办理类别</li>
+						<li style=" height:100px; line-height:100px;"><span style="font-size: 18px;color: #fd8320;">*</span>&nbsp;报修内容</li>
+					</ul>
+					<ul class="yewuright">
+						<li>
+							<div class="demo">
+								<dl class="select01">
+									<select class="form-control" name="housename" id="housename" style="padding: 0 6px;height: 32px;line-height: 32px;color: #333; font-size: 18px; width:350px;border-radius: 3px;border:1px solid #d4d4d4 ">
+										<option>请选择</option>
+										<volist name="roominfo" id="room">
+										
+											<option id="{$room.houseCode}" value="{$room.HOUSECODE}">{$room.ADDRESS}</option>
+										</volist>
+									</select>
+								</dl>
+							</div>
+						</li>
+						<input type="hidden" name="uid" id="uid" value="{$uid}">
+						<li>
+							<div class="item_one hbjf_input" style="width: 90%">
+								<input type="text" name="name" id="name" value="" placeholder="请输入联系人姓名" style="width:336px;background: #ffffff;border:1px solid #d4d4d4;height: 30px;">
+							</div>
+						</li>
+						<li>
+							<div class="item_one hbjf_input" style="width: 90%">
+								<input type="text" name="phone" id="phone" value="" placeholder="请输入联系电话" style="width:336px;background: #ffffff;border:1px solid #d4d4d4;height: 30px;">
+							</div>
+						</li>
+						<li>
+							<div class="demo">
+								<dl class="select01">
+									<select id="sjhy" name="sjhy" class="form-control" style="padding: 0 6px;height: 32px;line-height: 32px; color: #333; font-size: 18px; width:350px;border-radius: 3px;border:1px solid #d4d4d4 ">
+										<option>请选择</option>
+									</select>
+								</dl>
+							</div>
+						</li>
+						<li>
+							<div class="demo">
+								<dl class="select01">
+									<select id="sjzl" name="sjzl" class="form-control" style="padding: 0 6px;height: 32px;line-height: 32px;\ color: #333; font-size: 18px; width:350px;border-radius: 3px;border:1px solid #d4d4d4 ">
+										<option>请选择</option>
+									</select>
+								</dl>
+							</div>
+						</li>
+						<li>
+							<div class="demo">
+								<dl class="select01">
+									<select id="bllb" name="bllb" class="form-control" style="padding: 0 6px;height: 32px;line-height: 32px; color: #333; font-size: 18px; width:350px;border-radius: 3px;border:1px solid #d4d4d4 ">
+										<option>请选择</option>
+									</select>
+								</dl>
+							</div>
+						</li>
+						<li style=" height:100px; line-height:100px;">
+							<div class="zxbx">
+								<textarea rows="3" cols="20" id="neirong" name="neirong" placeholder="请输入内容，最多输入100个字！" style="width: 350px;"></textarea>
+							</div>
+						</li>
+					</ul>
+					<!-- 表单-->
+				</div>
+				<div class="yezhushenfen yezhushenfen02" style="height: 350px;">
+					<h3 style="color:#fbb96f ;">上传需要报修物件照片</h3>
+					<div class="zxbx_box_xian" >注意：文件后缀名必须为.jpg或.png，文件大小在2M以内！</div>
+					<div class="zxbx_zp picDiv">
+						
+						
+						<div style="padding-left:140px">
+							<div class="addImages" style="float:left">
+								<a href="javascript:;" id="img_o" style="outline:none;">
+									<img src="__PUBLIC__/img/zhaopian.jpg" id="show_o" style="width:90%;" onclick="imgClick(this)"/>
+									<input id="file_o" name="file_o" class="filepath file" type="file" style="display:none;" accept="image/*">							
+								</a>
+							</div>
+							
+							<div class="addImages" style="float:left;margin-left:20px;margin-right:20px">
+								<a href="javascript:;" id="img_t" style="outline:none;">
+									<img src="__PUBLIC__/img/zhaopian.jpg" id="show_t" style="width:90%" onclick="imgClick(this)"/>
+									<input id="file_t" name="file_t" class="filepath file" type="file" style="display:none;" accept="image/*">							
+								</a>
+							</div>
+							
+							<div class="addImages" style="float:left">
+								<a href="javascript:;" id="img_th" style="outline:none;">
+									<img src="__PUBLIC__/img/zhaopian.jpg" id="show_th" style="width:90%" onclick="imgClick(this)"/>
+									<input id="file_th" name="file_th" class="filepath file" type="file" style="display:none;" accept="image/*">							
+								</a>
+							</div>
+									
+						</div>
+						<div class="msg" style="display: none;"></div>
+						<div class="jiebang" style="width: 50%; float: left; padding-left:25px">
+							<a class="jiebang_btn01" style="margin-left:170px" onclick="checkFrom()"><span>提交申请</span></a>
+						</div>
+						<div class="zxbx_box" style="float: left; ">
+							<a href=""><span>重置</span></a>
+						</div>
+					</div>
+				</div>
+			</div>
+		<div style="width: 100%; height: 40px;"></div>
+</form>
+</div>
+</div> 		
+</div>
+	<input id="t1" type="hidden">
+	<input id="t2" type="hidden">
+	<input id="t3" type="hidden">
+</div>
+	
+		
+</div>	
+	</div>
+</div>
+
+
+ 
+
+<include file="Public:common-footer"/>
+ 
+ 		<script type="text/javascript" src="js/jquery.min.js"></script>
+
+<script>
+$(document).ready(function() {
+	$(".house_tab li").click(function() {
+		$(".house_tab li").eq($(this).index()).addClass("luxian_cur").siblings().removeClass('luxian_cur');
+		$(".house_tabcontent .fangjian").hide().eq($(this).index()).show();        
+	});
+});
+</script>
+
+<script type="text/javascript" src="js/jquery.min.js"></script>
+<script>
+	$('#housename').on('change', function() {
+		var housecode = this.value;
+		$('#sjhy').html('');
+		$.ajax({
+			url: 'http://www.66885890.com/index.php?s=/guestbook/hs',
+			type : 'POST',
+			async: false,
+			data : {housecode: housecode},
+			dataType: 'json',
+			success: function(ret){
+
+				var optionStr = [];
+				$.each(ret, function(i, item){
+					if(i==0){optionStr.push('<option value="">' +"请选择"+ "</option>")};
+					optionStr.push('<option value="'+ item.involveindustry +'">' +item.involveindustry+ "</option>");
+					//optionStr.push('<li data-value="'+ item.BUILDINGCODE +'"><a title="'+ item.BUILDINGCODE +'">' +item.BUILDINGNAME+ "</a></li>");
+				});
+				$("#sjhy").append(optionStr.join(''));						
+			}
+		});
+	});
+</script>
+<script>
+	$('#sjhy').on('change', function() {
+		var sjhy = this.value;
+		$('#sjzl').html('');
+		$.ajax({
+			url: 'http://www.66885890.com/index.php?s=/guestbook/sjhy',
+			type : 'POST',
+			async: false,
+			data : {sjhy: sjhy},
+			dataType: 'json',
+			success: function(ret){
+
+				var optionStr = [];
+				$.each(ret, function(i, item){
+					if(i==0){optionStr.push('<option value="">' +"请选择"+ "</option>")};
+					optionStr.push('<option value="'+ item.involvetypeid +'">' +item.involvetype+ "</option>");
+					//optionStr.push('<li data-value="'+ item.BUILDINGCODE +'"><a title="'+ item.BUILDINGCODE +'">' +item.BUILDINGNAME+ "</a></li>");
+				});
+				$("#sjzl").append(optionStr.join(''));						
+			}
+		});
+	});
+</script>
+<script>
+	$('#sjzl').on('change', function() {
+		var sjzl = this.value;
+		$('#bllb').html('');
+		$.ajax({
+			url: 'http://www.66885890.com/index.php?s=/guestbook/sjzl',
+			type : 'POST',
+			async: false,
+			data : {sjzl: sjzl},
+			dataType: 'json',
+			success: function(ret){
+
+				var optionStr = [];
+				$.each(ret, function(i, item){
+					if(i==0){optionStr.push('<option value="">' +"请选择"+ "</option>")};
+					optionStr.push('<option value="'+ item.handletypeid +'">' +item.handletype+ "</option>");
+					//optionStr.push('<li data-value="'+ item.BUILDINGCODE +'"><a title="'+ item.BUILDINGCODE +'">' +item.BUILDINGNAME+ "</a></li>");
+				});
+				$("#bllb").append(optionStr.join(''));					
+			}
+		});
+	});
+</script>
+<script>
+$(function (){
+//加载页面清空文件的判断值
+	$("#t1").val("");
+	$("#t2").val("");
+	$("#t3").val("");
+});
+function imgClick(_this){
+
+	var imgId=$(_this).attr("id");
+	if(imgId=="show_o"){
+		document.getElementById("file_o").click();  
+	}else if(imgId=="show_t"){
+		document.getElementById("file_t").click();  
+	}else if(imgId=="show_th"){
+		document.getElementById("file_th").click();  
+	}
+}
+
+$("#file_o").change(function(e) { 
+	//判断图片大小
+	var size = this.files[0].size / 1024;
+	if(size>2048){
+		alert("图片大小不能大于2M！");
+		return;
+	}
+	
+	var objUrl = getObjectURL(this.files[0]) ;
+   	$("#show_o").attr("src","");
+	$("#show_o").attr("src",objUrl);
+	var docObj = $(this)[0];
+    //得到所有的图片文件
+    var fileList = docObj.files;
+	Base64(fileList,'show_o');
+	$("#t1").val("1");
+});
+
+$("#file_t").change(function(e) { 
+	//判断图片大小
+	var size = this.files[0].size / 1024;
+	if(size>2048){
+		alert("图片大小不能大于2M！");
+		return;
+	}
+	var objUrl = getObjectURL(this.files[0]) ;
+   	$("#show_t").attr("src","");
+	$("#show_t").attr("src",objUrl);
+	
+	var docObj = $(this)[0];
+    //得到所有的图片文件
+    var fileList = docObj.files;
+	Base64(fileList,'show_t');
+	$("#t2").val("1");
+});
+
+$("#file_th").change(function(e) { 
+	//判断图片大小
+	var size = this.files[0].size / 1024;
+	if(size>2048){
+		alert("图片大小不能大于2M！");
+		return;
+	}
+	var objUrl = getObjectURL(this.files[0]) ;
+   	$("#show_th").attr("src","");
+	$("#show_th").attr("src",objUrl);
+	
+	var docObj = $(this)[0];
+    //得到所有的图片文件
+    var fileList = docObj.files;
+	Base64(fileList,'show_th');
+	$("#t3").val("1");
+});
+//获取图片地址
+function getObjectURL(file) 
+  {
+    var url = null ;
+    if (window.createObjectURL!=undefined) 
+    { // basic
+      url = window.createObjectURL(file) ;
+    }
+    else if (window.URL!=undefined) 
+    {
+      // mozilla(firefox)
+      url = window.URL.createObjectURL(file) ;
+    } 
+    else if (window.webkitURL!=undefined) {
+      // webkit or chrome
+      url = window.webkitURL.createObjectURL(file) ;
+    }
+    return url ;
+  }
+
+
+/*
+
+var imgArray=new Array();
+
+//图片上传预览功能
+var userAgent = navigator.userAgent; //用于判断浏览器类型
+
+$(".file").change(function(e) { 
+    //获取选择图片的对象
+    var docObj = $(this)[0];
+    var picDiv = $(this).parents(".addImages");
+    //得到所有的图片文件
+    var fileList = docObj.files;
+	//判断图片大小
+	var size = this.files[0].size / 1024;
+	if(size>2048){
+		alert("图片大小不能大于2M！");
+		return;
+	}
+	
+	if($(".imageDiv").length>2){
+		alert("最多上传三张");
+		return ;
+	}	
+	//getBase64("https://z649319834.github.io/Learn_Example/video_track/webvtt.jpg");
+	//getBase64("C:/Users/Administrator/Desktop/test/1.jpg");
+    //循环遍历
+    for (var i = 0; i < fileList.length; i++) {
+		var fileName=fileList[i].name;		
+        //动态添加html元素
+        var picHtml = "<div class='imageDiv' > <img id='" + fileList[i].name + "' name='img' /> <div class='cover'><i class='delbtn' id='" + fileList[i].name + "'>删除</i></div></div>";
+        //console.log(picHtml);
+        picDiv.prepend(picHtml);
+        //获取图片imgi的对象
+        var imgObjPreview = document.getElementById(fileList[i].name);		
+		//console.log(imgObjPreview);
+        if (fileList && fileList[i]) {
+            //图片属性
+            imgObjPreview.style.display = 'block';
+            imgObjPreview.style.width = '160px';
+            imgObjPreview.style.height = '130px';
+            if (userAgent.indexOf('MSIE') == -1) {
+                //IE以外浏览器
+                imgObjPreview.src = window.URL.createObjectURL(docObj.files[i]); //获取上传图片文件的物理路径;
+				//alert(getBase64(imgObjPreview.src));
+				var  base64;
+				window.URL = window.URL || window.webkitURL;
+				var xhr = new XMLHttpRequest();
+				xhr.open("get", imgObjPreview.src, true);
+				// 至关重要
+				xhr.responseType = "blob";
+				xhr.onload = function () {
+				if (this.status == 200) {
+					  //得到一个blob对象
+					var blob = this.response;
+					  //console.log("blob", blob)
+					  // 至关重要
+					let oFileReader = new FileReader();
+					oFileReader.onloadend = function (e) {
+						base64 = e.target.result;
+						var data = {};
+						data["fileName"] = fileName;
+						
+						var reg=/^data:image\/(jpeg|png|gif);base64,/;						
+						var str=base64.replace(reg,'');//去除base64编码的前缀
+						var	c=str.replace(/\+/g,'%2B');//将base64编码中的+号替换为(%2B)在http传输途中原+号会被解码为空，换成(%2B)传到接口后编码会识别(%2B)为+号
+						  var datas=[];
+						 
+						//将得到的base64编码存入数组
+						data["fileBase64"] = c;
+						datas.push(data);
+						imgArray.push(data);
+						var jsonString = JSON.stringify(imgArray);  
+						epc=eval("("+jsonString+")");
+						
+						  //console.log(epc);
+					};
+					oFileReader.readAsDataURL(blob);
+				 
+				}
+			}				  
+			xhr.send();			
+            //console.log(imgObjPreview.src);
+
+            } else {
+                //IE浏览器
+                if (docObj.value.indexOf(",") != -1) {
+                    var srcArr = docObj.value.split(",");
+                    imgObjPreview.src = srcArr[i];
+                } else {
+                    imgObjPreview.src = docObj.value;
+                }
+            }
+        }
+    }*/
+	//alert(JSON.stringify(imgArray) );
+    /*删除功能*/
+  /* $(document).on("click",".delbtn",function () {
+		var _this=$(this);
+		//获取id
+		var fileNameId=$(this).attr('id');
+		var ar=new Array();
+		//得到重新编排的数组
+		ar=deleteJson(imgArray,fileNameId);		
+        var jsonString = JSON.stringify(ar);  
+		epc="";
+		epc=eval("("+jsonString+")");
+		//console.log(epc);
+        _this.parents(".imageDiv").remove();
+    });
+});*/
+//删除功能-删除指定数组*/
+function deleteJson(imgArray,fileNameId){
+	var newArr = new Array();
+	//重新编排数组
+	for(var i=0;i< imgArray.length;i++){
+		var j=imgArray[i];
+		if(j.fileName!=fileNameId){
+			newArr.push(j);				
+		}			
+	}
+	return newArr;
+		
+}
+</script>
+<script>
+var epc;
+var epc_t;
+var epc_th;
+function Base64(fileList,dom){
+
+var userAgent = navigator.userAgent; //用于判断浏览器类型
+	 for (var i = 0; i < fileList.length; i++) {
+		var fileName=fileList[i].name;		
+        //获取图片imgi的对象
+        var imgObjPreview = document.getElementById(dom);		
+		//console.log(imgObjPreview);
+        if (fileList && fileList[i]) {
+            //图片属性
+            imgObjPreview.style.display = 'block';
+            imgObjPreview.style.width = '160px';
+            imgObjPreview.style.height = '130px';
+            if (userAgent.indexOf('MSIE') == -1) {
+                //IE以外浏览器
+                imgObjPreview.src = window.URL.createObjectURL(fileList[i]); //获取上传图片文件的物理路径;
+				//alert(getBase64(imgObjPreview.src));
+				var  base64;
+				window.URL = window.URL || window.webkitURL;
+				var xhr = new XMLHttpRequest();
+				xhr.open("get", imgObjPreview.src, true);
+				// 至关重要
+				xhr.responseType = "blob";
+				xhr.onload = function () {
+				var imgArray=new Array();
+				if (this.status == 200) {
+					  //得到一个blob对象
+					var blob = this.response;
+					  //console.log("blob", blob)
+					  // 至关重要
+					let oFileReader = new FileReader();
+					oFileReader.onloadend = function (e) {
+						base64 = e.target.result;
+						var data = {};
+						data["fileName"] = fileName;
+						
+						var reg=/^data:image\/(jpeg|png|gif);base64,/;						
+						var str=base64.replace(reg,'');//去除base64编码的前缀
+						var	c=str.replace(/\+/g,'%2B');//将base64编码中的+号替换为(%2B)在http传输途中原+号会被解码为空，换成(%2B)传到接口后编码会识别(%2B)为+号
+						  var datas=[];
+						 
+						//将得到的base64编码存入数组
+						data["fileBase64"] = c;
+						datas.push(data);
+						imgArray.push(data);
+						var jsonString = JSON.stringify(imgArray);  
+						if(dom=="show_o"){
+							epc=datas;
+						}else if(dom=="show_t"){
+							epc_t=datas;
+						}else if(dom=="show_th"){
+							epc_th=datas;
+						}
+					};
+					
+					oFileReader.readAsDataURL(blob);
+				 
+				}
+			}				  
+			xhr.send();			
+            //console.log(imgObjPreview.src);
+
+            } else {
+                //IE浏览器
+                if (docObj.value.indexOf(",") != -1) {
+                    var srcArr = docObj.value.split(",");
+                    imgObjPreview.src = srcArr[i];
+                } else {
+                    imgObjPreview.src = docObj.value;
+                }
+            }
+		
+        }
+		
+    }
+	
+}
+function checkFrom() {
+var sum = [];
+	var t1=$("#t1").val();
+	var t2=$("#t2").val();
+	var t3=$("#t3").val();
+	if(t1=="1"&&t2=="1"&&t3=="1"){
+		for (var i = 0; i < epc.length; i++) {
+			var obj = {
+				fileName: epc[i].fileName,
+				fileBase64: epc[i].fileBase64
+			};
+			var objt = {
+			fileName: epc_t[i].fileName,
+			fileBase64: epc_t[i].fileBase64
+			   
+			};
+			var objth = {
+			fileName: epc_th[i].fileName,
+			fileBase64: epc_th[i].fileBase64
+			   
+			};
+			
+			sum.push(obj,objth,objth);
+		}
+	}else if(t1=="1"&&t2=="1"){
+		for (var i = 0; i < epc.length; i++) {
+			var obj = {
+				fileName: epc[i].fileName,
+				fileBase64: epc[i].fileBase64
+			};
+			var objt = {
+			fileName: epc_t[i].fileName,
+			fileBase64: epc_t[i].fileBase64
+			   
+			};
+			
+			
+			sum.push(obj,objt);
+		}
+	}else if(t1=="1"&&t3=="1"){
+		for (var i = 0; i < epc.length; i++) {
+			var obj = {
+				fileName: epc[i].fileName,
+				fileBase64: epc[i].fileBase64
+			};
+			var objth = {
+			fileName: epc_th[i].fileName,
+			fileBase64: epc_th[i].fileBase64
+			   
+			};
+			
+			
+			sum.push(obj,objth);
+		}	
+	}else if(t2=="1"&&t3=="1"){
+		for (var i = 0; i < epc_t.length; i++) {
+			var objt = {
+				fileName: epc_t[i].fileName,
+				fileBase64: epc_t[i].fileBase64
+			};
+			var objth = {
+			fileName: epc_th[i].fileName,
+			fileBase64: epc_th[i].fileBase64
+			   
+			};
+			
+			
+			sum.push(objt,objth);
+		}	
+	}else if(t1=="1"){
+		for (var i = 0; i < epc.length; i++) {
+			var obj = {
+				fileName: epc[i].fileName,
+				fileBase64: epc[i].fileBase64
+			};
+			
+			sum.push(obj);
+		}
+	}else if(t2=="1"){
+		for (var i = 0; i < epc_t.length; i++) {
+			var objt = {
+				fileName: epc_t[i].fileName,
+				fileBase64: epc_t[i].fileBase64
+			};
+			
+			sum.push(objt);
+		}
+	}else if(t3=="1"){
+		for (var i = 0; i < epc_th.length; i++) {
+			var objth = {
+				fileName: epc_th[i].fileName,
+				fileBase64: epc_th[i].fileBase64
+			};
+			
+			sum.push(objth);
+		}
+	}
+	
+
+
+		//console.log(epc);
+
+
+
+//console.log(sum);
+		//alert(imgArray);
+
+		var neirong = $("#neirong").val();
+		var name = $("#name").val();
+		var phone = $("#phone").val();
+		var sjhy = $("#sjhy").val();
+		var sjzl = $("#sjzl").val();
+		var bllb = $("#bllb").val();
+		var housename=$('#housename').val();
+		if (neirong == "") {
+			alert('提交内容不能为空');
+			return false;
+		}
+		
+		if (housename == "请选择") {
+			alert('请选择绑定房间后再进行操作');
+			window.top.location="http://www.66885890.com/index.php?s=/user/bind";
+			return false;
+		}
+		if (name == "") {
+			alert('联系人不能为空');
+			return false;
+		}
+		if (phone == "") {
+			alert('联系电话不能为空');
+			return false;
+		}
+		if (sjhy == "请选择") {
+			alert('请选择涉及行业');
+			return false;
+		}
+		if (sjzl == "请选择") {
+			alert('请选择涉及种类');
+			return false;
+		}
+		if(phone.length!=11){
+            alert('请输入正确的手机号');
+            return false;
+        }
+		if (bllb == "请选择") {
+			alert('请选择办理类别');
+			return false;
+		}	
+
+		
+			$.ajax({
+            //几个参数需要注意一下
+				headers: {
+					Accept: "Content-Type:application/x-www-form-urlencoded"
+				},
+                type: "POST",//方法类型
+                dataType: "json",//预期服务器返回的数据类型
+                url: "{:U('Guestbook/bxinsert')}" ,//url
+                data: {	"epc":JSON.stringify(sum),//图片数据
+						"housecode":$('#housename').val(),
+						"housename":$('#housename option:selected').text(),
+						"uid":$('#uid').val(),
+						"name":$('#name').val(),
+						"phone":$('#phone').val(),
+						"sjhy":$('#sjhy').val(),
+						"sjzl":$('#sjzl').val(),
+						"bllb":$('#bllb').val(),
+						"neirong":$('#neirong').val()
+						},
+                success:function(msg){
+				var data='';
+				if(msg!=''){
+					data = eval("("+msg+")");
+				}
+				if(data==1){
+					alert('提交成功，我们已受理您的业务，请耐心等待工作人员后续处理');
+					window.top.location="http://www.66885890.com/index.php?s=/business/lists/id/10.html";
+					}
+				else{
+					alert('提交失败，请稍后再试');
+					window.top.location="http://www.66885890.com/index.php?s=/guestbook/onlineRepair";
+				}
+			}
+            });
+
+		
+
+   //document.getElementById("form2").submit();
+}
+function chongzhiFrom(){
+	document.getElementById("form2").reset();
+}
+
+
+</script>
+</body>
+</html>

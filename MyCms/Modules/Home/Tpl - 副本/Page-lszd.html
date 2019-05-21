@@ -1,0 +1,783 @@
+<include file="Public:header1" />
+
+<script src="http://libs.baidu.com/jquery/1.7.2/jquery.min.js"></script>
+<script src="https://cdn.staticfile.org/html5shiv/r29/html5.min.js"></script>
+<script src="https://cdn.staticfile.org/respond.js/1.4.2/respond.min.js"></script>
+<script src="__PUBLIC__/style/js/mycss.js"></script>
+<script src="__PUBLIC__/style/laydate/laydate.js"></script>
+
+<style type="text/css">
+
+.demo-input{
+  padding-left: 10px;
+   height: 32px; 
+   min-width: 230px; 
+   line-height: 32px;
+  border: 1px solid #e6e6e6;  background-color: #fff; 
+  border-radius: 2px;
+  outline: none;}
+	
+
+</style>
+<script>
+    lay('#version').html('-v'+ laydate.v);
+
+    //执行一个laydate实例
+    //常规用法
+    laydate.render({
+      elem: '#test1' //指定元素
+    });
+    laydate.render({
+      elem: '#test12' //指定元素
+    });
+    //国际版
+    laydate.render({
+      elem: '#test1-1'
+      ,lang: 'en'
+    }); 
+    //年选择器
+    laydate.render({
+      elem: '#test2'
+      ,type: 'year'
+    });
+    //年月选择器
+    laydate.render({
+      elem: '#test3'
+      ,type: 'month'
+    });
+    //时间选择器
+    laydate.render({
+      elem: '#test4'
+      ,type: 'time'
+    });
+    //时间选择器
+    laydate.render({
+      elem: '#test5'
+      ,type: 'datetime'
+    });
+    //日期范围
+    laydate.render({
+      elem: '#test6'
+      ,range: true
+    });
+    //年范围
+    laydate.render({
+      elem: '#test7'
+      ,type: 'year'
+      ,range: true
+    });
+    //年月范围
+    laydate.render({
+      elem: '#test8'
+      ,type: 'month'
+      ,range: true
+    });
+    //时间范围
+    laydate.render({
+      elem: '#test9'
+      ,type: 'time'
+      ,range: true
+    });
+    //日期时间范围
+    laydate.render({
+      elem: '#test10'
+      ,type: 'datetime'
+      ,range: true
+    }); 
+    //墨绿主题
+    laydate.render({
+      elem: '#test29'
+      ,theme: 'molv'
+    });
+    //自定义颜色
+    laydate.render({
+      elem: '#test30'
+      ,theme: '#393D49'
+    });
+    //格子主题
+    laydate.render({
+      elem: '#test31'
+      ,theme: 'grid'
+    });
+
+    </script>
+
+<div class="lishizhangdan_banner">
+	<div class="content">
+		<p class="jiaofei_banner_01 font_yinying">历史账单</p>
+<p class="jiaofei_banner_03 "></p>
+<p class="jiaofei_banner_02 font_yinying">诚信纳费源于一点一滴&nbsp;&nbsp;&nbsp;&nbsp;阳光服务始于一言一行</p>
+		
+	</div>
+
+	
+</div>
+    <div class="content_bg">
+	<div class="content history_content">
+	<p class="jiaofei_dqwz history_dqwz">当前位置：<a href="/">首页</a> &nbsp;&nbsp;&gt;&nbsp;&nbsp;<a href="">我的5890</a>&nbsp;&nbsp;&gt;&nbsp;&nbsp;<a href="">在线缴费</a>&nbsp;&nbsp;&gt;&nbsp;&nbsp;<span class="green">历史账单</span></p>	
+
+
+<form id="form2" name="form2" method="post" action="">
+<div class="history_bill" id="sqr"><!-- 自来水、再生水、天然气、供热搜索条件 -->
+		<div class="history_inputbox clearfix">
+		<div class="history_inputboxone"><span>房间编号：</span>
+		
+		<div class="item_one">	<!-- 这里开始 -->		
+					<div class="filter-box" id="aaa">
+				<div class="filter-text">
+					<input class="filter-title" type="text" readonly="" placeholder="pleace select">
+					<i class="icon icon-filter-arrow"></i>
+				</div>
+				<select name="houseCode" id="houseCode">
+					<volist name="houselist" id="hc">
+                      <option value="{$hc.houseCode}" <if condition="$hc.houseCode eq $code">selected="selected"</if>>{$hc.address}</option>
+                    </volist>
+				</select>
+			</div>
+			<!-- 这里结束 --></div>
+		
+		</div>	
+		<div class="history_inputboxtwo"><span>账单年度：</span>
+				<div class="item_one">	<!-- 这里开始 -->		
+					<div class="filter-box" id="bbb">
+				<div class="filter-text">
+					<input class="filter-title" type="text" readonly="" placeholder="pleace select">
+					<i class="icon icon-filter-arrow"></i>
+				</div>
+				<select name="year" id="year">
+					<option value="{$year}" <if condition="$year eq $age"> selected="selected"</if>>{$year}年</option>
+					<option value="{$year-1}" <if condition="$year-1 eq $age"> selected="selected"</if>>{$year-1}年</option>
+					<option value="{$year-2}" <if condition="$year-2 eq $age"> selected="selected"</if>>{$year-2}年</option>
+					<option value="{$year-3}" <if condition="$year-3 eq $age"> selected="selected"</if>>{$year-3}年</option>
+					<option value="{$year-4}" <if condition="$year-4 eq $age"> selected="selected"</if>>{$year-4}年</option>
+				</select>
+			</div>
+			<!-- 这里结束 --></div>	
+			
+		</div>
+		<input type="hidden" value="{$zlslist | count}" id="zlsnum">
+		<input type="hidden" value="{$trqlist | count}" id="trqnum">
+		<input type="hidden" value="{$zsslist | count}" id="zssnum">
+		<input type="hidden" value="{$jllist | count}" id="jlnum">
+		<input type="hidden" name="itemCode" id="itemCode" value="{$itemCode}">
+		<input type="hidden" value="{$id}" name="id">
+		<button><span>查询</span></button>		
+		
+		</div>		
+	</div>
+
+
+<div class="history_bill" id="hbjf" style="display:none"><!--环保积分搜索条件 -->
+	<div class="history_inputbox clearfix">
+	<div class="history_inputboxone"><span>积分卡号：</span>
+	
+	<div class="item_one"> 
+	<input type="text" name="" id="" value="" />
+
+	</div>
+
+	</div>	
+	<div class="history_inputboxtwo"><span>选择日期：</span>
+			<div class="item_one">	<!-- 这里开始 -->	
+			<div class="date-box">
+			<input type="text" class="demo-input" placeholder="输入日期" id="test1">	
+			</div>
+			
+			</div>	 --  
+			<div class="item_one">	<!-- 这里开始 -->	
+				<div class="date-box">
+		<input type="text" class="demo-input" placeholder="输入日期" id="test12">	</div>	
+		<!-- 这里结束 --></div>	
+		
+	</div>
+	
+	<input type="hidden" value="{$id}" name="id">
+	<button><span>查询</span></button>		
+	
+	</div>		
+</div>
+</form>	
+	
+	<div class="history_billcontent clearfix">
+		<div class="history_billcontentpad">
+		<div class="history_billcontentleft">
+		<ul class="history_tab">
+           <li <if condition="$itemCode eq 'B'">class='history_zls cur' <else/>class='history_zls'</if> onclick="getTest()"><span><img src="__PUBLIC__/style/img/lszd_zls.png" alt="" /></span>自来水</li>
+           <li <if condition="$itemCode eq 'D'">class='history_trq cur' <else/>class='history_trq'</if>><span><img src="__PUBLIC__/style/img/lszd_trq.png" alt="" /></span>天然气</li>
+           <li <if condition="$itemCode eq 'E'">class='history_zlsgr cur' <else/>class='history_zlsgr'</if>><span><img src="__PUBLIC__/style/img/lszd_gr.png" alt="" /></span>供热</li>
+           <li <if condition="$itemCode eq 'S'">class='history_zss cur' <else/>class='history_zss'</if>><span><img src="__PUBLIC__/style/img/lszd_zss.png" alt="" /></span>再生水</li>
+           <li class="history_hb"><span><img src="__PUBLIC__/style/img/lszd_jf.png" alt="" /></span>环保</li>
+        </ul>
+        </div>
+        
+<div class="history_billcontentright">
+	
+	
+<!-- 自来水--> 
+<div <if condition="$itemCode eq 'B'">class="publictab history_zlscon on" <else/>class='publictab history_zlscon'</if>> 
+<p class="history_zlstips "><span>温馨提示：</span>本页面费用及用量数据仅供参考使用，详细内容以实际出账单为准。</p>	
+<div class="">
+	
+<table style="width: 100%;" class="history_table">
+
+<tr class="history_tabletr">
+	<th style="width: 15%; border-radius: 5px 0 0 0;">序号</th>
+	<th style="width: 25%;">收费期</th>
+	<th style="width: 25%;">用量（吨/t）</th>
+	<th style="width: 35%; border-radius: 0 5px 0 0;">缴纳费用 （人民币/￥）</th>
+</tr>	
+<volist name="zlslist" id="his" key="h">
+	<if condition="$his.CHARGEMONTH !=''"> 
+		<tr class="history_tabletrone">
+			<td><p class="num">{$h}</p></td>
+			<td>{$his.CHARGEMONTH}</td>
+			<td>{$his.YL}</td>
+			<td>{$his.NOWCASH}</td>
+		</tr>
+	</if>
+</volist> 
+
+</table>	
+
+</div>	
+
+<div class="waterjs" id="container0"></div>
+<p class="warm">温馨提示：<br>
+ 交费时间：用户应在每月15日前通过银行窗口、ATM、网银等方式向能源服务卡内存入足够金额用以支付用水、用气费用。若您办理的能源服务卡尚未寄至手中，您可于每月15日前至能源窗口交费。<br />
+<span>能源公司提醒您：</span>请您按规定于每月15日前交清上月用水、用气费用，逾期未缴费的按日加收违约金。持能源服务卡用户，指定银行在结算日（每月15日）自动完成应收费用的扣缴。 本查询结果仅供参考，如有疑问，请于能源窗口询问或致电022-66885890。</p>
+	
+</div>
+
+<!-- 天然气--> 
+<div <if condition="$itemCode eq 'D'">class="publictab history_trqcon on" <else/>class="publictab history_trqcon"</if>>
+	
+<p class="history_zlstips "><span>天然气温馨提示：</span>本页面费用及用量数据仅供参考使用，详细内容以实际出账单为准。</p>	
+<div class="">	
+<table style="width: 100%;" class="history_table">
+<tbody><tr class="history_tabletr">
+	<th style="width: 15%; border-radius: 5px 0 0 0;">序号</th>
+	<th style="width: 25%;">收费期</th>
+	<th style="width: 25%;">用量（标立方/Nm³）</th>
+	<th style="width: 35%; border-radius: 0 5px 0 0;">缴纳费用 （人民币/￥）</th>
+</tr>	
+<volist name="trqlist" id="his" key="h">
+	<if condition="$his.CHARGEMONTH !=''"> 
+		<tr class="history_tabletrone">
+			<td><p class="num">{$h}</p></td>
+			<td>{$his.CHARGEMONTH}</td>
+			<td>{$his.YL}</td>
+			<td>{$his.NOWCASH}</td>
+		</tr>	
+	</if>
+</volist> 
+
+</tbody></table>	
+</div>	
+<div class="waterjs" id="container1"></div>
+<p class="warm">温馨提示：<br>
+ 交费时间：用户应在每月15日前通过银行窗口、ATM、网银等方式向能源服务卡内存入足够金额用以支付用水、用气费用。若您办理的能源服务卡尚未寄至手中，您可于每月15日前至能源窗口交费。<br />
+<span>能源公司提醒您：</span>请您按规定于每月15日前交清上月用水、用气费用，逾期未缴费的按日加收违约金。持能源服务卡用户，指定银行在结算日（每月15日）自动完成应收费用的扣缴。 本查询结果仅供参考，如有疑问，请于能源窗口询问或致电022-66885890。</p>	
+
+</div>
+
+<!-- 供热（热计量）--> 
+<div <if condition="$itemCode eq 'E'">class="publictab history_grcon on"<else/>class="publictab history_grcon"</if>>
+<div class="history_mianji"><!-- 供热（面积）--> 
+<p class="history_zlstips"><span>温馨提示：</span>目前显示账单信息以及用量图标信息。</p>	
+<div class="">
+	
+<table style="width: 100%;" class="history_table">
+
+<tbody><tr class="history_tabletr">
+	<th style="width: 15%; border-radius: 5px 0 0 0;">序号</th>
+	<th style="width: 25%;">收费期</th>
+	<th style="width: 25%;">面积(平方米/㎡)</th>
+	<th style="width: 35%; border-radius: 0 5px 0 0;">缴纳费用 （人民币/￥）</th>
+</tr>	
+
+<volist name="relist" id="his" key="h">
+	<if condition="$his.CHARGEMONTH !=''"> 
+		<tr class="history_tabletrone">
+			<td><p class="num">{$h}</p></td>
+			<td>{$his.CHARGEMONTH}</td>
+			<td>{$his.YL}</td>
+			<td>{$his.NOWCASH}</td>
+		</tr>	
+	</if>
+</volist> 
+ 
+
+</tbody></table>	
+
+</div>		
+<p class="warm" style="display:none">温馨提示：<br>
+ 交费时间：用户应在每月15日前通过银行窗口、ATM、网银等方式向能源服务卡内存入足够金额用以支付用水、用气费用。若您办理的能源服务卡尚未寄至手中，您可于每月15日前至能源窗口交费。
+<span>能源公司提醒您：</span>请您按规定于每月15日前交清上月用水、用气费用，逾期未缴费的按日加收违约金。持能源服务卡用户，指定银行在结算日（每月15日）自动完成应收费用的扣缴。 本查询结果仅供参考，如有疑问，请于能源窗口询问或致电022-66885890。</p>	
+</div>	
+	
+<div class="history_reyongliang">	
+<table style="width: 100%;" class="history_table">
+
+<tbody><tr class="history_tabletr">
+	<th style="width: 10%; border-radius: 5px 0 0 0;">序号</th>
+	<th style="width: 15%;">收费期</th>
+	<th style="width: 17%;">表号</th>
+	<th style="width: 15%;">热表读数</th>
+	<th style="width: 22%;">热表用量（千瓦时/kWh）</th>
+	<th style="width: 30%; border-radius: 0 5px 0 0;">缴纳费用 （人民币/￥）</th>
+</tr>	
+
+<volist name="jllist" id="his" key="h">
+	<if condition="$his.nowNum !=''"> 
+		<tr class="history_tabletrone">
+			<td><p class="num">{$h}</p></td>
+			<td>{$his.metetTime}</td>
+			<td></td>
+			<td>{$his.nowNum}</td>
+			<td>{$his.allTotal}</td>
+			<td>{$his.fee}</td>
+		</tr>
+	</if>
+</volist> 
+
+ 
+</tbody></table>	
+
+</div>
+<div class="waterjs" id="container3"></div>	
+<p class="warm">温馨提示：<br>
+ 交费时间：用户应在每月15日前通过银行窗口、ATM、网银等方式向能源服务卡内存入足够金额用以支付用水、用气费用。若您办理的能源服务卡尚未寄至手中，您可于每月15日前至能源窗口交费。<br />
+<span>能源公司提醒您：</span>请您按规定于每月15日前交清上月用水、用气费用，逾期未缴费的按日加收违约金。持能源服务卡用户，指定银行在结算日（每月15日）自动完成应收费用的扣缴。 本查询结果仅供参考，如有疑问，请于能源窗口询问或致电022-66885890。</p>	
+	
+</div>
+
+<!-- 再生水--> 
+<div <if condition="$itemCode eq 'S'">class="publictab history_zlscon on"<else/>class="publictab history_zlscon"</if>>
+	
+<p class="history_zlstips "><span>再生水温馨提示：</span>本页面费用及用量数据仅供参考使用，详细内容以实际出账单为准。</p>	
+<div class="">
+	
+<table style="width: 100%;" class="history_table">
+
+<tbody><tr class="history_tabletr">
+	<th style="width: 15%; border-radius: 5px 0 0 0;">序号</th>
+	<th style="width: 25%;">收费期</th>
+	<th style="width: 25%;">用量（吨/t）</th>
+	<th style="width: 35%; border-radius: 0 5px 0 0;">缴纳费用 （人民币/￥）</th>
+</tr>	
+
+<volist name="zsslist" id="his" key="h">
+	<if condition="$his.CHARGEMONTH !=''"> 
+		<tr class="history_tabletrone">
+			<td><p class="num">{$h}</p></td>
+			<td>{$his.CHARGEMONTH}</td>
+			<td>{$his.YL}</td>
+			<td>{$his.NOWCASH}</td>
+		</tr>	
+	</if>
+</volist> 
+ 
+
+</tbody></table>	
+
+</div>	
+
+<div class="waterjs" id="container2"></div>
+<p class="warm">温馨提示：<br>
+ 交费时间：用户应在每月15日前通过银行窗口、ATM、网银等方式向能源服务卡内存入足够金额用以支付用水、用气费用。若您办理的能源服务卡尚未寄至手中，您可于每月15日前至能源窗口交费。<br />
+<span>能源公司提醒您：</span>请您按规定于每月15日前交清上月用水、用气费用，逾期未缴费的按日加收违约金。持能源服务卡用户，指定银行在结算日（每月15日）自动完成应收费用的扣缴。 本查询结果仅供参考，如有疑问，请于能源窗口询问或致电022-66885890。</p>	
+	
+	
+	
+	
+	
+</div>
+
+<!-- 环保积分--> 
+<div class="publictab history_hbcon">
+<div class="history_zlscon">
+<p class=" history_zlstips history_hbjftips"> 你好！   1001-001-01-01-01   您的当前环保积分余额：<span>1200</span> ,  可用积分：<span>1200</span></p>	
+<div class="">
+	
+<table style="width: 100%;" class="history_jifentable">
+
+<tbody>
+	
+	<tr style="width: 100%; height:58px; font-size: 16px; font-weight: bold; color: #333;"><td colspan="6">积分消费明细</td></tr>
+	<tr class="history_jifentabletr">
+	<td style="width: 10%; border-left: none;">序号</td>
+	<td style="width: 15%;">事件</td>
+	<td style="width: 15%;">积分增加</td>
+	<td style="width: 15%;">积分减少</td>
+	<td style="width: 20%;">积分有效期</td>
+	<td style="width: 25%; border-right: none; ">操作时间</td>
+</tr>	
+
+<tr class="history_tabletrtwo">
+	<td><p class="num1">1</p></td>
+	<td>礼物换取</td>
+	<td class="jfzj">--</td>
+	<td class="jfjs">180</td>
+	<td>2018-04-26 </td>
+	<td>2018-04-26 15:00</td>
+</tr>	
+ 
+<tr class="history_tabletrtwo">
+	<td><p class="num1">2</p></td>
+	<td>礼物换取</td>
+	<td class="jfzj">--</td>
+	<td class="jfjs">180</td>
+	<td>2018-04-26 </td>
+	<td>2018-04-26 15:00</td>
+</tr>	
+
+</tbody></table>	
+
+</div>	
+
+	
+</div></div>
+
+
+</div> 		
+</div>	
+</div>
+	
+		
+</div>	
+
+	
+</div>	
+</div>
+
+
+<include file="Public:footer1" />
+
+<script type="text/javascript" src="__PUBLIC__/style/js/selectFilter.js"></script>
+<script type="text/javascript">
+	//本小插件支持移动端哦
+	
+	//这里是初始化
+	$('#aaa').selectFilter({
+		callBack : function (val){
+			//返回选择的值
+			console.log(val+'-是返回的值')
+		}
+	});
+	
+	//这里是初始化
+	$('#bbb').selectFilter({
+		callBack : function (val){
+			//返回选择的值
+			console.log(val+'-是返回的值')
+		}
+	});
+				//这里是初始化
+	$('#ccc').selectFilter({
+		callBack : function (val){
+			//返回选择的值
+			console.log(val+'-是返回的值')
+		}
+	});
+							//这里是初始化
+	$('#ddd').selectFilter({
+		callBack : function (val){
+			//返回选择的值
+			console.log(val+'-是返回的值')
+		}
+	});
+							//这里是初始化
+	$('#eee').selectFilter({
+		callBack : function (val){
+			//返回选择的值
+			console.log(val+'-是返回的值')
+		}
+	});
+							//这里是初始化
+	$('#fff').selectFilter({
+		callBack : function (val){
+			//返回选择的值
+			console.log(val+'-是返回的值')
+		}
+	});
+	
+	
+</script> 
+<script src="__PUBLIC__/js/highcharts1/highcharts.js" type="text/javascript"></script>
+<script src="__PUBLIC__/js/highcharts1/exporting.js" type="text/javascript"></script>
+<script>
+	var sj = $("#year").val();
+	var fjbh = $("#houseCode").val();
+	var data = new Array();
+	var url = '{:U("Page/ajax_getHistoryData","",false)}';
+	var zlsnum = $("#zlsnum").val();
+	var zssnum = $("#zssnum").val();
+	var trqnum = $("#trqnum").val();
+	var jlnum = $("#jlnum").val();
+	
+	var redata =  new Array(parseInt(sj)-1+".09",parseInt(sj)-1+".10",parseInt(sj)-1+".11",parseInt(sj)-1+".12",sj+".01",sj+".02",sj+".03",sj+".04",sj+".05",sj+".06",sj+".07",sj+".08");
+	function getData(num,code){
+		if(code == "S"){
+			url = '{:U("Page/ajax_getZssHistoryData","",false)}';
+		}
+		
+		$.ajax({
+		   url: url,
+		   type : 'POST',
+		   async: false,
+		   data : {houseCode:fjbh, sj:sj, lx:code},
+		   dataType: 'json',
+		   success: function(ret){
+			  
+			  if(ret.length !=0){
+				  data = new Array(null,null,null,null,null,null,null,null,null,null,null,null);
+				  for (var i=0;i<12;i++){ 
+					if(i<ret.length){
+						var flag = parseInt(ret[i]['CHARGEMONTH'].substr(ret[i]['CHARGEMONTH'].length-2))-1;
+						if(num == 1){
+							data[flag] = parseFloat(ret[i]['YL']);
+						}
+						if(num == 2){
+							data[flag] = parseFloat(ret[i]['NOWCASH']);
+						}
+					}
+				  } 
+			  }
+			}
+			 
+		});
+		return data;
+	}
+
+	function getReData(num){
+		
+		$.ajax({
+		   url: '{:U("Page/ajax_getHistoryReData","",false)}',
+		   type : 'POST',
+		   async: false,
+		   data : {houseCode:fjbh, sj:sj},
+		   dataType: 'json',
+		   success: function(ret){
+				
+			    if(ret.length !=0){
+				  data = new Array(null,null,null,null,null,null,null,null,null,null,null,null);
+				  for (var i=0;i<12;i++){ 
+					if(i<ret.length){
+						var k = i+3;
+						if(num == 1){
+							data[k] = parseFloat(ret[i]['allTotal']);
+						}
+						if(num == 2){
+							data[k] = Math.floor(parseFloat(ret[i]['allTotal'])*13)/100;
+						}
+						k++;
+					}
+				  } 
+			  }
+			}
+			 
+		});
+		return data;
+	}
+function setData(){
+	
+	var dw = '吨';
+	for(var m=0;m<4;m++){
+		var flag = 'container'+m;
+		if(m==0){
+			code = "B";
+		}
+		if(m==1){
+			code = "D";
+			dw = '标立方/Nm³';
+		}
+		if(m==2){
+			code = "S";
+			dw = '吨';
+		}
+		if(m==3){
+			code = "E";
+		}
+		
+		
+		if((m==0 && zlsnum !=0) || (m==1 && trqnum !=0) || (m==2 && zssnum !=0)){
+			var chart = Highcharts.chart(flag, {
+					exporting: {   
+						enabled: false
+					},   
+					credits:{
+						enabled:false
+					},
+					chart: {
+						zoomType: 'xy'
+					},
+					title: {
+						text: ''
+					},
+					
+					xAxis: [{
+						categories: ['1月', '2月', '3月', '4月', '5月', '6月',
+									 '7月', '8月', '9月', '10月', '11月', '12月'],
+						crosshair: true
+					}],
+					yAxis: [{ 
+						labels: {
+							format: '{value}',
+							style: {
+								color: Highcharts.getOptions().colors[1]
+							}
+						},
+						title: {
+			
+							text: '价格（元）',
+							style: {
+								color: Highcharts.getOptions().colors[1]
+							}
+						}
+					}, { 
+						title: {
+							
+							text: '用量'+'（'+dw+'）',
+							style: {
+								color: Highcharts.getOptions().colors[0]
+							}
+						},
+						labels: {
+							format: '{value}',
+							style: {
+								color: Highcharts.getOptions().colors[0]
+							}
+						},
+						opposite: true
+					}],
+					tooltip: {
+						shared: true
+					},
+					legend: {
+						layout: 'vertical',
+						align: 'left',
+						x: 60,
+						verticalAlign: 'top',
+						y: 0,
+						floating: true,
+						backgroundColor: (Highcharts.theme && Highcharts.theme.legendBackgroundColor) || '#FFFFFF'
+					},
+					series: [{
+						name: '用量',
+						type: 'column',
+						color:'#73D3FF',
+						yAxis: 1,
+						data: getData(1,code),
+						tooltip: {
+							valueSuffix: dw
+						}
+					}, {
+						name: '费用',
+						type: 'spline',
+						color:'#52596B',
+						data:getData(2,code),
+						marker: {
+							symbol: 'square',
+							lineWidth: 2
+						},
+						tooltip: {
+							valueSuffix: '元'
+						}
+					}]
+				});
+		}
+		if(m==3 && jlnum !=0){
+			var chart = Highcharts.chart(flag, {
+					exporting: {   
+						enabled: false
+					},   
+					credits:{
+						enabled:false
+					},
+					chart: {
+						zoomType: 'xy'
+					},
+					title: {
+						text: ''
+					},
+					
+					xAxis: [{
+						categories: redata,
+						crosshair: true
+					}],
+					yAxis: [{ 
+						labels: {
+							format: '{value}',
+							style: {
+								color: Highcharts.getOptions().colors[1]
+							}
+						},
+						title: {
+							text: '价格（元）',
+							style: {
+								color: Highcharts.getOptions().colors[1]
+							}
+						}
+					}, { 
+						title: {
+							text: '用量（千瓦时）',
+							style: {
+								color: Highcharts.getOptions().colors[0]
+							}
+						},
+						labels: {
+							format: '{value}',
+							style: {
+								color: Highcharts.getOptions().colors[0]
+							}
+						},
+						opposite: true
+					}],
+					tooltip: {
+						shared: true
+					},
+					legend: {
+						layout: 'vertical',
+						align: 'left',
+						x: 60,
+						verticalAlign: 'top',
+						y: 0,
+						floating: true,
+						backgroundColor: (Highcharts.theme && Highcharts.theme.legendBackgroundColor) || '#FFFFFF'
+					},
+					series: [{
+						name: '用量',
+						type: 'column',
+						color:'red',
+						yAxis: 1,
+						data: getReData(1),
+						tooltip: {
+							valueSuffix: '千瓦时'
+						}
+					}, {
+						name: '费用',
+						type: 'spline',
+						color:'#52596B',
+						data: getReData(2),
+						marker: {
+							symbol: 'square',
+							lineWidth: 2
+						},
+						tooltip: {
+							valueSuffix: '元'
+						}
+					}]
+				});
+		   }
+		
+	}
+}	  
+	
+</script>
+<script>
+$(function() {
+    setData(); //载入默认柱状图数据
+});
+</script>
+</body>
+</html>

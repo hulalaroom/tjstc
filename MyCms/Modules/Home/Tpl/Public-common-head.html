@@ -1,0 +1,53 @@
+<meta charset="UTF-8">
+<meta http-equiv="pragma" content="no-cache">
+<meta http-equiv="cache-control" content="no-cache">
+<meta http-equiv="expires" content="0">
+<meta name="keywords" content="<notempty name="keywords">{$keywords}<else/>{$Think.config.site_key}</notempty>" />
+<meta name="description" content="<notempty name="description">{$description}<else/>{$Think.config.site_desc}</notempty>" />
+
+<title><notempty name="title">{$title} - </notempty> {$Think.config.site_name}</title>
+<script type="text/javascript">
+	// 设置为主页
+	function SetHome(obj,vrl){
+	try{
+	obj.style.behavior='url(#default#homepage)';obj.setHomePage(vrl);
+	}
+	catch(e){
+	if(window.netscape) {
+	try {
+	netscape.security.PrivilegeManager.enablePrivilege("UniversalXPConnect");
+	}
+	catch (e) {
+	//alert("此操作被浏览器拒绝！\n请在浏览器地址栏输入“about:config”并回车\n然后将 [signed.applets.codebase_principal_support]的值设置为'true',双击即可。");
+	alert("此操作被浏览器拒绝！\n请在浏览器右上角设置-》选项-》主页当中进行设置");
+	}
+	var prefs = Components.classes['@mozilla.org/preferences-service;1'].getService(Components.interfaces.nsIPrefBranch);
+	prefs.setCharPref('browser.startup.homepage',vrl);
+	}else{
+	alert("您的浏览器不支持，请按照下面步骤操作：1.打开浏览器设置。2.点击设置网页。3.输入："+vrl+"点击确定。");
+	}
+	}
+	}
+	// 加入收藏 兼容360和IE6
+	function shoucang(sTitle,sURL)
+	{
+		try
+		{
+			window.external.addFavorite(sURL, sTitle);
+		}
+		catch (e)
+		{
+		try
+		{
+			window.sidebar.addPanel(sTitle, sURL, "");
+		}
+		catch (e)
+		{
+			alert("加入收藏失败，请使用Ctrl+D进行添加");
+		}
+		}
+	}
+	</script>
+<link rel="stylesheet" type="text/css" href="__PUBLIC__/last/css/redefine.css">
+<link rel="stylesheet" type="text/css" href="__PUBLIC__/last/css/layout.css">
+<link rel="stylesheet" type="text/css" href="__PUBLIC__/last/css/css.css?v=8">

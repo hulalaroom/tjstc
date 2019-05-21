@@ -1,0 +1,98 @@
+<!doctype html>
+<html>
+
+<head>
+    <include file="Public:common-head"/>
+</head>
+
+<body>
+<assign name="hoverIndex" value="1"/>
+<include file="Public:common-toppart"/>
+
+<div class="huanbao_banner">
+    <div class="content">
+        <p class="jiaofei_banner_01 font_yinying">环保公司</p>
+        <p class="jiaofei_banner_03 "></p>
+        <p class="jiaofei_banner_02 font_yinying">环保业务，一键办理</p>
+
+    </div>
+
+
+</div>
+<div class="content_bg01 ">
+    <div class="content history_content">
+        <p class="dqwz history_dqwz">
+		当前位置：<a href="http://www.66885890.com">首页</a> &nbsp;&nbsp;&gt;&nbsp;&nbsp;
+		<a href="{:U('User/index',array('id'=>20))}">我的5890</a>&nbsp;&nbsp;&gt;&nbsp;&nbsp;
+		<a href="{:U('User/ywbl')}">业务办理</a>&nbsp;&nbsp;&gt;&nbsp;&nbsp;
+				<a href="{:U('User/hb')}">环保公司</a>&nbsp;&nbsp;&gt;&nbsp;&nbsp;
+		<a href="{:U('User/swZsTip')}">大件垃圾回收预约</a>&nbsp;&nbsp;&gt;&nbsp;&nbsp;
+		<span class="green">大件垃圾回收规则</span>
+		</p>
+        <div class="wodeyewu_content clearfix">
+            <div class="wodeyewu_content_box02">
+                <div class="yewu_box clearfix">
+                    <p class="yewu_title huanbao_title">大件垃圾回收规则</p>
+					<p>1、垃圾分类大件物品是指家具类、家电类及超过2000积分的贵重物品。不包括纸类、瓶罐类及其他可通过物回终端设备回收的物品。</p>
+					<p>用户通过预约热线进行电话预约，预约时需提供回收地址、联系方式和回收物品名称。如若回收物品不属于大件范围，则预约不成功。居民预约时须提供准确有效信息。如信息不符或物品未达到预约回收要求，工作人员可拒绝回收。</p>
+					<p>3、大件预约上门回收时间是每周四，如环保公司工作人员与居民电话沟通后另外约定时间，则按照约定时间上门回收。</p>
+					<p>4、用户需在工作人员上门回收服务之前对物品进行分类打包处理或者对进出楼道和电梯有困难的大型家具进行拆解处理。</p>
+					<p>5、如回收物品在作业车辆无法到达的位置（如地库）需居民把物品移至作业车辆停靠位置。</p>			
+					<p>6、如物品体积和重量与一般同类物品差异较大，最终积分由工作人员与居民协商确定。</p>			
+					<p>7、回收完成后居民提供积分卡号并在大件预约回收服务单上签字确认。工作人员须认真核对居民提供积分卡号是否正确。</p>	
+                </div>
+
+            </div>
+            <div class="fuxuankuang">
+                <div class="box">
+                    <ul>
+                        <li id="chk_accept">已认真阅读申请人应履行的责任</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="wodeyewu_btn15"><a id="fireOkBtn">确定</a></div>
+            <form method="post" action="{:U('User/hbUp')}" id="accept_form">
+                <input type="hidden" id="accept" name="accept" value="0">
+            </form>
+        </div>
+    </div>
+</div>
+
+
+<include file="Public:common-footer"/>
+<include file="Public:common-script"/>
+<script type="text/javascript" src="__PUBLIC__/last/js/artDialog4.1.7/artDialog.source.js?skin=green"></script>
+<script type="text/javascript">
+    $(function () {
+        var $ali = $('#chk_accept');
+        $ali.on('click', function () {
+            var $self = $(this);
+            var chked = $self.attr('checked');
+            if (chked) {
+                $self.attr('checked', false).removeClass('on');
+            } else {
+                $self.attr('checked', true).addClass('on');
+            }
+        });
+
+        var $okBtn = $('#fireOkBtn');
+        $okBtn.on('click', function (event) {
+            event.preventDefault();
+            var accepted = $ali.attr('checked');
+            if (!accepted) {
+                art.dialog({
+                    lock: true,
+                    content: '请确认您已认真阅读并同意申请人应履行的责任',
+                    time: 3
+                });
+                return false;
+            }
+
+            $('#accept').val('1');
+            $('#accept_form').submit();
+        });
+    });
+</script>
+</body>
+</html>

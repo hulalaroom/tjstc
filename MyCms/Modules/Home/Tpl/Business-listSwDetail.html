@@ -1,0 +1,159 @@
+<!doctype html>
+<html>
+
+<head>
+    <include file="Public:common-head" />
+</head>
+
+<body>
+    <assign name="hoverIndex" value="1" />
+    <include file="Public:common-toppart" />
+    <div class="shuiwu_banner">
+        <div class="content">
+            <p class="jiaofei_banner_01 font_yinying">水务公司</p>
+            <p class="jiaofei_banner_03 "></p>
+            <p class="jiaofei_banner_02 font_yinying">水务业务，一键办理</p>
+        </div>
+    </div>
+    <div class="content_bg01 ">
+        <div class="content history_content">
+            <p class="dqwz history_dqwz">
+                当前位置：<a href="__GROUP__">首页</a> &nbsp;&nbsp;&gt;&nbsp;&nbsp;
+                <a href="{:U('User/index',array('id'=>20))}">我的5890</a>&nbsp;&nbsp;&gt;&nbsp;&nbsp;
+                <a href="{:U('User/ywbl')}">业务办理</a>&nbsp;&nbsp;&gt;&nbsp;&nbsp;
+                <a href="{:U('business/lists',array('id'=>10))}">我的业务</a>&nbsp;&nbsp;&gt;&nbsp;&nbsp;
+                <span class="green">水务业务</span>
+            </p>
+            <div class="wodeyewu_content clearfix">
+                <div class="wodeyewu_content_box03">
+                    <div class="yewu_table clearfix">
+                        <if condition="$businesstype eq '再生水停闭'">
+                            <ul class="yewuleft">
+                                <li>申请停闭再生水日期</li>
+                                <li>开户银行</li>
+                                <li>账户名</li>
+                                <li>银行卡号</li>
+                                <li>银行行号</li>
+                                <li>办理时间</li>
+                                <li>审核状态</li>
+                                <li>审核内容</li>
+                                <li>处理状态</li>
+                            </ul>
+                            <ul class="yewuright">
+                                <li>{$nyywList[0].CLOSEDATE}</li>
+                                <li>{$nyywList[0].BANKNAME}</li>
+                                <li>{$nyywList[0].ACCOUNTNAME}</li>
+                                <li>{$nyywList[0].BANKNUMBER}</li>
+                                <li>{$nyywList[0].BANKLINECODE}</li>
+                                <li>{$nyywList[0].EXAMINEDATE}</li>
+                                <li>
+                                    <if condition="$nyywList[0]['EXAMINESTATUS'] eq '已通过'">
+                                        <span class="blzt_01"><img src="__PUBLIC__/last/img/wodeyewu_03.png" alt=""></span>
+                                    <elseif condition="$nyywList[0]['EXAMINESTATUS'] eq '审核中'"/>
+                                        <span class="blzt_01"><img src="__PUBLIC__/last/img/wodeyewu_01.png" alt=""></span>
+                                    <else />
+                                        <span class="blzt_01"><img src="__PUBLIC__/last/img/wodeyewu_02.png" alt=""></span>
+                                    </if>
+                                    {$nyywList[0].EXAMINESTATUS}
+                                </li>
+                                <li>{$nyywList[0].EXAMINEOPINION}</li>
+                                <li>
+                                    <if condition="$nyywList[0]['EXAMINESTATUS'] eq '已通过'">
+                                        <span class="blzt_01"><img src="__PUBLIC__/last/img/wodeyewu_03.png" alt=""></span>
+                                    <elseif condition="$nyywList[0]['EXAMINESTATUS'] eq '审核中'"/>
+                                        <span class="blzt_01"><img src="__PUBLIC__/last/img/wodeyewu_01.png" alt=""></span>
+                                    <else />
+                                        <span class="blzt_01"><img src="__PUBLIC__/last/img/wodeyewu_02.png" alt=""></span>
+                                    </if>
+                                    {$nyywList[0].EXAMINESTATUS}
+                                </li>
+                            </ul>
+						<elseif condition="$businesstype eq '再生水开通'"/>
+							 <ul class="yewuleft">
+                                <li>申请开通再生水办理时间</li>
+                                <li>审核状态</li>
+                                <li>处理状态</li>
+                            </ul>
+                            <ul class="yewuright">
+                                <li>{$nyywList[0].WEEK}　{$nyywList[0].TIMESLOT}</li>
+                                <li>
+                                    <if condition="$nyywList[0]['EXAMINESTATUS'] eq '已通过'">
+                                        <span class="blzt_01"><img src="__PUBLIC__/last/img/wodeyewu_03.png" alt=""></span>
+                                    <elseif condition="$nyywList[0]['EXAMINESTATUS'] eq '审核中'"/>
+                                        <span class="blzt_01"><img src="__PUBLIC__/last/img/wodeyewu_01.png" alt=""></span>
+                                    <else />
+                                        <span class="blzt_01"><img src="__PUBLIC__/last/img/wodeyewu_02.png" alt=""></span>
+                                    </if>
+                                    {$nyywList[0].EXAMINESTATUS}
+                                </li>
+                                <li>
+                                    <if condition="$nyywList[0]['EXAMINESTATUS'] eq '已通过'">
+                                        <span class="blzt_01"><img src="__PUBLIC__/last/img/wodeyewu_03.png" alt=""></span>
+                                    <elseif condition="$nyywList[0]['EXAMINESTATUS'] eq '审核中'"/>
+                                        <span class="blzt_01"><img src="__PUBLIC__/last/img/wodeyewu_01.png" alt=""></span>
+                                    <else />
+                                        <span class="blzt_01"><img src="__PUBLIC__/last/img/wodeyewu_02.png" alt=""></span>
+                                    </if>
+                                    {$nyywList[0].EXAMINESTATUS}
+                                </li>
+                            </ul>
+                        <else />
+                            <ul class="yewuleft">
+                                <li>能源卡所属银行</li>
+                                <li>能源卡号</li>
+                                <li>能源卡有效期限</li>
+                                <li>办理时间</li>
+                                <li>审核状态</li>
+                                <li>审核内容</li>
+                                <li>绑定/变更状态</li>
+                            </ul>
+                            <ul class="yewuright">
+                                <li>{$nyywList[0].BANK}</li>
+                                <li>{$nyywList[0].BANKNUMBER}</li>
+                                <li>{$nyywList[0].CARDENDDATE}</li>
+                                <li>{$nyywList[0].EXAMINEDATE}</li>
+                                <li>
+                                    <if condition="$nyywList[0]['EXAMINESTATUS'] eq '已通过'">
+                                        <span class="blzt_01"><img src="__PUBLIC__/last/img/wodeyewu_03.png" alt=""></span>
+                                    <elseif condition="$nyywList[0]['EXAMINESTATUS'] eq '审核中'"/>
+                                        <span class="blzt_01"><img src="__PUBLIC__/last/img/wodeyewu_01.png" alt=""></span>
+                                    <else />
+                                        <span class="blzt_01"><img src="__PUBLIC__/last/img/wodeyewu_02.png" alt=""></span>
+                                    </if>
+                                    {$nyywList[0].EXAMINESTATUS}
+                                </li>
+                                <li>{$nyywList[0].EXAMINEOPINION}</li>
+                                <li>
+                                    <if condition="$nyywList[0]['EXAMINESTATUS'] eq '已通过'">
+                                        <span class="blzt_01"><img src="__PUBLIC__/last/img/wodeyewu_03.png" alt=""></span>
+                                    <elseif condition="$nyywList[0]['EXAMINESTATUS'] eq '审核中'"/>
+                                        <span class="blzt_01"><img src="__PUBLIC__/last/img/wodeyewu_01.png" alt=""></span>
+                                    <else />
+                                        <span class="blzt_01"><img src="__PUBLIC__/last/img/wodeyewu_02.png" alt=""></span>
+                                    </if>
+                                    {$nyywList[0].EXAMINESTATUS}
+                                </li>
+                            </ul>
+                        </if>
+                    </div>
+                    <div class="wodeyewu_btn08">
+                        <if condition="$nyywList[0]['BANK'] eq ''">
+                            <a href="{:U('User/swZsTip')}">再次申请</a>
+                        <else />
+                            <a href="{:U('User/swbg')}">再次申请</a>
+                        </if>
+                        &nbsp;&nbsp;&nbsp;&nbsp;<a href="javascript:window.history.go(-1)">返回</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <include file="Public:common-footer" />
+    <include file="Public:common-script" />
+    <script type="text/javascript">
+    /*$(function() {
+
+    });*/
+    </script>
+</body>
+</html>

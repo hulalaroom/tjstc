@@ -1,0 +1,152 @@
+<!doctype html>
+<html>
+<head>
+    <include file="Public:common-head"/>
+</head>
+
+<body>
+<include file="Public:common-toppart"/>
+<!--<include file="Public:common-slider"/>-->
+
+<div class="content_bg">
+    <div class="content history_content">
+        <p class="jiaofei_dqwz dqwz_bg">        当前位置：<a href="http://www.66885890.com">首页</a> &nbsp;&nbsp;&gt;&nbsp;&nbsp;
+        <a href="/index.php?s=/user/index/id">我的5890</a>&nbsp;&nbsp;&gt;&nbsp;&nbsp;
+        <span class="green">个人设置</span></p>
+
+        <div class="house_bdcgcontent clearfix">
+        <p class="bangding_xian"></p>
+			<div class="bangding_inputcontent">
+				<form id="form2" name="form2" method="post" action="__URL__/editok">
+				<div class="gerenshezhi clearfix">
+					<div class="bangding_left">
+					<input name="id" type="hidden" value="{$Think.session.uid}" />
+					<div><span class="name01">用户名称：</span><input type="text" name="name" id="name" class="fl" size="30" value="{$username}" autocomplete="off" readonly="true"><span class="xing"></span></div>
+					<div><span class="name01">真实姓名：</span><input type="text" name="nickname" id="nickname" class="fl" size="30" value="{$nickname}" autocomplete="off"><span class="xing" id="nicknameTip"><i><img src="__PUBLIC__/last/img/shezhi_01.png" alt="" /></i>数字、中文、英文字母或下划线组成</span></div>
+					<div><span class="name01">电子邮箱：</span><input type="text" name="email" id="email" class="fl" size="30" value="{$email}" autocomplete="off"><span class="xing" id="emailTip"><i><img src="__PUBLIC__/last/img/shezhi_01.png" alt="" /></i>请输入内容</span></div>
+					<div><span class="name01">手机号码：</span><input type="text" name="phone" id="phone" class="fl" size="30" value="{$phone}" autocomplete="off"><span class="xing" id="phoneTip"><i><img src="__PUBLIC__/last/img/shezhi_01.png" alt="" /></i>请输入手机号码或座机号码</span></div>
+					<div><span class="name01">邮寄地址：</span><input type="text" name="address" id="address" class="fl" size="30" value="{$address}" autocomplete="off"><span class="xing" id="addressTip"><i><img src="__PUBLIC__/last/img/shezhi_01.png" alt="" /></i>请输入内容</span></div>       		
+					</div>
+				</div>
+				
+				<div class="bangding_button">
+					<button type='submit' class="bangding_button01"><span>提交</span></button>
+					<button type='button' class="bangding_button02" onclick="javascript:window.location.href='{:U('User/index')}'"><span>返回</span></button>
+				</div>
+				</form>
+			</div>
+		</div>
+    </div>
+</div>
+
+<include file="Public:common-footer"/>
+<include file="Public:common-script"/>
+<script type="text/javascript" src="__PUBLIC__/last/js/jquery.easing.min.js"></script>
+<script type="text/javascript" src="__PUBLIC__/last/js/banner.js"></script>
+<script type="text/javascript" src="/Public/js/jquery-1.8.3.min.js"></script>
+
+<script type="text/javascript" src="/Public/js/jquery.form.min.js"></script>
+<script type="text/javascript" src="/Public/js/artDialog4.1.7/artDialog.source.js?skin=green"></script>
+<script type="text/javascript" src="/Public/js/artDialog4.1.7/plugins/iframeTools.js"></script>
+<script src="/Public/js/jquery.KinSlideshow-1.2.1.min.js" type="text/javascript"></script>
+<script type="text/javascript" src="__PUBLIC__/js/formValidator-4.1.3.min.js"></script>
+<script type="text/javascript" src="__PUBLIC__/js/formvalidatorregex.js"></script>
+<script type="text/javascript">
+    $(document).ready(function(){  
+		initBanner();	
+        //提供回调函数，提供提交返回结果的处理   
+        var options = {
+            //            beforeSubmit: showRequest,
+            //提交前处理 
+            success: showResponse,
+            //处理完成 
+            resetForm: false,
+            dataType: 'json'
+        };    
+        $('#form2').submit(function() {
+            if ($.formValidator.pageIsValid('1')==true) 
+            { 
+                $(this).ajaxSubmit(options);
+                return false; 
+            } 
+          
+        });
+       
+        //初始化验证插件，如果提交出错，则弹出对话框，如果正确，则通过ajax提交表单请求。
+        $.formValidator.initConfig({autotip:true,formID:"form2",
+            onsuccess:function(msg){
+                return false;},
+            onError:function(msg){}
+
+        });
+  
+        //表单验证   
+		 /*$("#name").formValidator({oncorrect:"正确",onShow:"由数字、英文字母或者下划线组成"}).inputValidator({min:6,max:35,onError:"6-35个字符,请确认"}).regexValidator({regExp:"username",dataType:"enum",onError:"数字、英文字母或者下划线组成"}).ajaxValidator({
+            type : "POST",
+            dataType : "html",
+            data : {name:$.trim($("#name").val())},
+            async : true,//异步传输，false为同步
+            url : "{:U('User/check_user')}",
+            success : function(data){
+				if( data == "true" ){
+                    return true;
+                }else{
+                    return "该用户名已注册,请重新输入";
+                }
+            },	
+            error: function(jqXHR, textStatus, errorThrown){alert("服务器没有返回数据，可能服务器忙，请重试"+errorThrown);},
+            onError : "该用户名不可用，请更换用户名",
+            onWait : "正在进行合法性校验，请稍候..."
+        });*/
+		$("#nickname").formValidator({oncorrect:"正确",onShow:"数字、中文、英文字母或下划线组成"}).inputValidator({min:4,max:35,onError:"4-35个字符,请确认"});
+		$("#email").formValidator({oncorrect:"正确"}).regexValidator({regExp:"email",dataType:"enum",onError:"邮箱格式错误"}).ajaxValidator({
+            type : "POST",
+            dataType : "html",
+            data:{email:$.trim($("#email").val())},
+            async : true,//异步传输，false为同步
+            url : "{:U('User/check_email')}",
+            success : function(data){
+                if( data == "false" ){
+                    return true;
+                }else{
+                    return "该邮箱已注册,请重新输入";
+                }
+            },	
+            error: function(jqXHR, textStatus, errorThrown){alert("服务器没有返回数据，可能服务器忙，请重试"+errorThrown);},
+            onError : "该邮箱不可用，请更换邮箱",
+            onWait : "正在进行合法性校验，请稍候..."
+        });
+        $("#phone").formValidator({onShow:"请输入手机号码或座机号码",onFocus:"请输入手机号码或座机号码",onCorrect:"正确",onEmpty:"不能为空"}).regexValidator({regExp:["intege"],dataType:"enum",onError:"格式不正确"}).ajaxValidator({
+			type : "POST",
+            dataType : "html",
+            data:{phone:$.trim($("#phone").val())},
+            async : true,//异步传输，false为同步
+            url : "{:U('User/check_phone')}",
+            success : function(data){
+                if( data == "true" ){
+                    return true;
+                }else{
+                    return "该手机号已注册,请重新输入";
+                }
+            },
+			error: function(jqXHR, textStatus, errorThrown){alert("服务器没有返回数据，可能服务器忙，请重试"+errorThrown);},
+            onError : "该手机号不可用，请更换手机号",
+            onWait : "正在进行合法性校验，请稍候..."
+        });
+		
+        $("#address").formValidator({oncorrect:"正确",onEmpty:"请输入邮寄地址"}).inputValidator({min:20,onError:"至少要输入10个汉字或20个字符"});      
+    }); 
+    
+    function showResponse(res) {
+        art.dialog({
+            title: res.title,
+            content: res.message,
+            time: res.time
+        });
+        if (res.url) {
+            window.location.href = res.url;
+        }
+    }  
+</script>
+</body>
+</html>

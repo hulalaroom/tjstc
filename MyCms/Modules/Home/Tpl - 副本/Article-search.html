@@ -1,0 +1,60 @@
+<include file="Public:header" />
+<div class="main_block"> <include file="Public:top" />
+  <div class="content_block">
+    <div class="left_side fl">
+        <eq name="submenu" value="show">
+        <div style="height:375px;"></div>
+        <else/>
+        </eq>
+        <include file="Public:left" />
+    </div>
+        <div class="main_con fr">
+      <div class="bread_nav">
+        <div class="l fl"></div>
+        <div class="m fl" style="line-height:30px;"> <span class="list_style"></span> <span>您当前的位置:</span> {$nav} </div>
+        <div class="r fl"></div>
+      </div>
+      <div class="artical">
+        <!-- begin -->
+        <div class="article_list">
+			<empty name="art_list"><div class="nodata">暂无内容<div></empty>
+          <ul>
+            <volist name="art_list" id="art">
+				<if condition="$art.cat_id eq 161">
+                	<li><span class="ar">{$art.start_time|date="Y-m-d",###}</span>
+							<a class="title" href="{:U('Article/view1','id='.$art['id'])}" target="_blank" title="">{$art.title}</a>
+					</li>
+				<else />
+					<li><span class="ar">{$art.start_time|date="Y-m-d",###}</span>
+							<a class="title" href="{:U('Article/view','id='.$art['id'])}" target="_blank" title="">{$art.title}</a>
+					</li>
+				</if>
+            </volist>
+            <!-- <li><span>2013年11月9日 15:47:38</span><a href="" target="_blank" title="">建设项目情况及报告书评价结论</a></li>
+                        <li><span>2013年11月9日 15:47:38</span><a href="" target="_blank" title="">关于组织申报天津市2014年度电力需求侧管理专项资金备选项目的通知</a></li>
+                        <li><span>2013年11月9日 15:47:38</span><a href="" target="_blank" title="">建设项目情况及报告书评价结论</a></li>
+                        <li><span>2013年11月9日 15:47:38</span><a href="" target="_blank" title="">关于组织申报天津市2014年度电力需求侧管理专项资金备选项目的通知</a></li>
+                        <li><span>2013年11月9日 15:47:38</span><a href="" target="_blank" title="">建设项目情况及报告书评价结论</a></li>
+                        <li><span>2013年11月9日 15:47:38</span><a href="" target="_blank" title="">关于组织申报天津市2014年度电力需求侧管理专项资金备选项目的通知</a></li>
+                        <li><span>2013年11月9日 15:47:38</span><a href="" target="_blank" title="">建设项目情况及报告书评价结论</a></li>-->
+          </ul>
+          <script>
+					$(".article_list ul li").hover(
+						function(){
+							$(this).find(".ar").css("color","#00a040");
+						},
+						function(){
+							$(this).find(".ar").css("color","#656565");
+						}
+					);
+					</script>
+                                        <div class="list_page">{$page}</div>
+        </div>
+        <!-- end -->
+      </div>
+    </div>
+  </div>
+</div></div></div>
+  <include file="Public:footer" />
+</body>
+</html>

@@ -1,0 +1,1 @@
+<?php	return array ( 'mail_host' => 'smtp.qiye.163.com', 'mail_from' => '66885890@tjeco-city.com', 'mail_pass' => 'net158', 'mail_fromname' => '天津生态城公用事业客户服务平台', );?>

@@ -1,0 +1,51 @@
+<!doctype html>
+<html>
+<head>
+    <include file="Public:common-head" />
+</head>
+
+<body>
+    <assign name="hoverIndex" value="1" />
+    <include file="Public:common-toppart" />
+
+    <div class="huanbao_banner">
+    	<div class="content">
+    		<p class="jiaofei_banner_01 font_yinying">环保公司</p>
+            <p class="jiaofei_banner_03 "></p>
+            <p class="jiaofei_banner_02 font_yinying">环保业务，一键办理</p>
+    	</div>
+    </div>
+
+    <div class="content_bg01 ">
+        <div class="content history_content">
+            <p class="dqwz history_dqwz"></p>
+            <div class="wodeyewu_content clearfix">
+            	<div class="wodeyewu_content_box04">
+            		<div class="yewu_box clearfix">
+            			
+                            <if condition="$ret eq 0">
+							<div class="tijiao_left"><img src="__PUBLIC__/last/img/wodeyewu_16.png" alt="" /></div>
+            					<div class="tijiao_right">
+                                <p><span class="green">预约成功！</span></p>
+                                <p class="yewu_small">预约成功 已收到您的预约订单，我们将尽快与您联系确认具体回收时间</p>
+                            <elseif condition="$ret eq 1"/>
+							<div class="tijiao_left"><img src="__PUBLIC__/last/img/wodeyewu_88.png" alt="" /></div>
+            					<div class="tijiao_right">
+                                <p><span class="green">预约失败！</span></p>
+                                <p class="yewu_small">该预约回收日期名额已满，请您换个日期再次预约！</p>
+							<else/>
+							<div class="tijiao_left"><img src="__PUBLIC__/last/img/wodeyewu_16.png" alt="" /></div>
+            					<div class="tijiao_right">
+                                <p><span class="green">预约失败！</span></p>
+                                <p class="yewu_small">请确认手机号码与办理环保积分卡时预留手机号码一致</p>
+                            </if>
+                            <div class="wodeyewu_btn07"><a href="{:U('User/index',array('id'=>20))}">返回5890</a></div>
+            			</div>
+            		</div>
+            	</div>
+            </div>
+        </div>
+    </div>
+<include file="Public:common-footer" />
+</body>
+</html>

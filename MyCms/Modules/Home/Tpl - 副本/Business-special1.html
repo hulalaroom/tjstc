@@ -1,0 +1,109 @@
+<include file="Public:header"/>
+<div class="main_block">
+  <include file="Public:top"/>
+  <div class="content_block">
+    <div class="left_side fl">
+      <include file="Public:left"/>
+    </div>
+    <div class="main_con fr">
+      <div class="bread_nav">
+        <div class="l fl"></div>
+        <div class="m fl" style="line-height:30px;"> <span class="list_style"></span> <span>您当前的位置:</span> {$nav} </div>
+        <div class="r fl"></div>
+      </div>
+	  <form name="search" id="search" action="{:U('Article/service')}" method="post">
+	  	<input type="hidden" name="id" value="{$id}"/>	
+		<table border="0" cellpadding="0" cellspacing="0" class="tab_search" align="right">
+			<tr>
+				<td>
+					<input type="text" name="searchinput" title="Search" class="searchinput" id="searchinput" onkeydown="if (event.keyCode==13) {}" onblur="if(this.value=='')value='- 请输入搜索内容 -';" onfocus="if(this.value=='- 请输入搜索内容 -')value='';" value="- 请输入搜索内容 -" size="10"/>
+				</td>
+				<td>
+					<input type="image" width="21" height="17" class="searchaction" onclick="return check_service()" alt="Search" src="/Public/images/magglass.gif" border="0" hspace="2"/>
+				</td>
+			</tr>
+		</table>
+	  </form>
+      <div class="artical1">
+        <!-- begin -->
+        <div class="article_list">
+          <empty name="art_list">
+            <div class="nodata">暂无内容
+              <div>
+          </empty>
+          <ul>
+            <volist name="art_list" id="art">
+              <li>
+                <span class="ar">{$art.start_time|date="Y-m-d",###}</span>
+                <a class="title" href="{:U('Article/view','id='.$art['id'])}" target="_blank" title="">{$art.title}</a>
+              </li>
+            </volist>
+          </ul>
+          <script>
+            $(".article_list ul li").hover(
+                function () {
+                  $(this).find(".ar").css("color", "#00a040");
+                },
+                function () {
+                  $(this).find(".ar").css("color", "#656565");
+                }
+            );
+          </script>
+          <div class="list_page">{$page}</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  </div>
+  </div>
+  </div>
+  <include file="Public:footer"/>
+  </body>
+  
+  <style type="text/css">
+.searchinput{
+	border-right-width: 0px;
+	padding-left: 3px;
+	width: 168px;
+	font-family: arial;
+	float: left;
+	border-top-width: 0px;
+	border-bottom-width: 0px;
+	color: #636365;
+	margin-left: 4px;
+	font-size: 8pt;
+	vertical-align: middle;
+	border-left-width: 0px;
+	margin-right: 3px;
+}
+.tab_search{
+	border-bottom: #cccccc 1px solid;
+	border-left: #cccccc 1px solid;
+	height: 25px;
+	border-top: #cccccc 1px solid;
+	border-right: #cccccc 1px solid;
+	margin-top:2px;
+}
+.searchaction{
+	width: 21px;
+	float: left;
+	height: 17px;
+}
+</style>
+<script type="text/javascript">
+	function check_service()
+	{
+		 var key;
+		 key=$("#searchinput").val().replace(/(^\s*)|(\s*$)/g, "");
+		 if(key==''||key=='- 请输入搜索内容 -'){
+			art.dialog({content:'关键词不能为空',time:2});
+			return false;
+		 }
+		 else
+		 {
+			  return true;
+		 }
+	}
+</script>
+
+</html>

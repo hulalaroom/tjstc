@@ -1,0 +1,195 @@
+<include file="Public:header" />
+<div class="main_block">
+  <include file="Public:top" />
+    <div class="content_block">
+	
+    	<div class="left_side fl">
+        	
+          <include file="Public:left" /></div>
+		
+        <div class="main_con fr">
+        	<div class="bread_nav">
+            	<div class="l fl"></div>
+                <div class="m fl" style="line-height:30px;"> <span class="list_style"></span> <span>您当前的位置:</span> {$nav} </div>
+                <div class="r fl"></div>
+            </div>
+            <div class="artical">
+            <!-- begin -->
+            
+            
+                    <div class="ny_banner"><img src="__PUBLIC__/images/banenr01.jpg"/></div>
+     <form action="__URL__/insert" method="post" id="form2" name="form2">
+          <table class="bdys" width="170%" border="0" cellspacing="0" cellpadding="0" align="center">
+		  	<tr>
+                <td width="180" align="right">房间：</td>
+                <td align="left" colspan=1>
+                  <select name="houseCode" id="houseCode">
+                    <volist name="houselist" id="hc">
+                      <option value="{$hc.houseCode}">{$hc.houseName}</option>
+                    </volist>
+                  </select>
+                </td>
+			</tr>	
+            <tr>
+              <td width="180" align="right"><span>业主名称：</span></td>
+              <td align="left" colspan=1><input size="53" type="text" name="ownername" class="gu_title fl" size="" id="ownername" /><div class="my_isright" style="width:200px;"><div id="ownernameTip" style="30px;"></div></div>
+              </td>
+            </tr>
+			<tr>
+              <td width="180" align="right"><span>身份证明(编号)：</span></td>
+              <td align="left" colspan=1><input size="30" type="" name="papercode" class="gu_title fl" size="" id="papercode" /><div class="my_isright" style="width:200px;"><div id="papercodeTip"></div></div>
+              </td>
+            </tr>
+			<tr>
+              <td width="180" align="right"><span>移动电话：</span></td>
+              <td align="left" colspan=1><input size="30" type="" name="phone" class="gu_title fl" size="" id="phone" /><div class="my_isright" style="width:200px;"><div id="phoneTip"></div></div>
+              </td>
+            </tr>
+			<tr>
+              <td width="180" align="right"><span>固定电话：</span></td>
+              <td align="left" colspan=1><input size="30" type="" name="fixedPhone" class="gu_title fl" size="" id="fixedPhone" /><div class="my_isright" style="width:200px;"><div id="fixedPhoneTip"></div></div>
+              </td>
+            </tr>
+			<tr>
+              <td width="180" align="right"><span>单位名称：</span></td>
+              <td align="left" colspan=1><input size="30" type="" name="workunit" class="gu_title fl" size="" id="workunit" /><div class="my_isright" style="width:200px;"><div id="workunitTip"></div></div>
+              </td>
+            </tr>
+			<tr>
+              <td width="180" align="right"><span>单位地址及电话：</span></td>
+              <td align="left" colspan=1><input size="30" type="" name="unitAddressPhone" class="gu_title fl" size="" id="unitAddressPhone" /><div class="my_isright" style="width:200px;"><div id="unitAddressPhoneTip"></div></div>
+              </td>
+            </tr>
+			<tr>
+              <td width="180" align="right"><span>主要家庭成员姓名及联系电话：</span></td>
+              <td align="left" colspan=1><input size="30" type="" name="familyNamePhone" class="gu_title fl" size="" id="familyNamePhone" /><div class="my_isright" style="width:200px;"><div id="familyNamePhoneTip"></div></div>
+              </td>
+            </tr>
+			<tr>
+              <td width="180" align="right"><span>建筑面积（m2）:</span></td>
+              <td align="left" colspan=1><input size="30" type="" name="builtUpArea" class="gu_title fl" size="" id="builtUpArea" /><div class="my_isright" style="width:200px;"><div id="builtUpAreaTip"></div></div>
+              </td>
+            </tr>
+			<tr>
+              <td width="180" align="right"><span>公摊面积（m2）:</span></td>
+              <td align="left" colspan=1><input size="30" type="" name="poolArea" class="gu_title fl" size="" id="poolArea" /><div class="my_isright" style="width:200px;"><div id="poolAreaTip"></div></div>
+              </td>
+            </tr>
+			<tr>
+              <td width="180" align="right"><span>层高（m2）:</span></td>
+              <td align="left" colspan=1><input size="30" type="" name="floorHeight" class="gu_title fl" size="" id="floorHeight" /><div class="my_isright" style="width:200px;"><div id="floorHeightTip"></div></div>
+              </td>
+            </tr>
+			<tr>
+              <td width="180" align="right"><span>套内建筑面积（m2）:</span></td>
+              <td align="left" colspan=1><input size="30" type="" name="sleeveBuiltUpArea" class="gu_title fl" size="" id="sleeveBuiltUpArea" /><div class="my_isright" style="width:200px;"><div id="sleeveBuiltUpAreaTip"></div></div>
+              </td>
+            </tr>
+			<tr>
+              <td width="180" align="right"><span>超高面积（m2）:</span></td>
+              <td align="left" colspan=1><input size="30" type="" name="ultraHighArea" class="gu_title fl" size="" id="ultraHighArea" /><div class="my_isright" style="width:200px;"><div id="ultraHighAreaTip"></div></div>
+              </td>
+            </tr>
+			<tr>
+              <td width="180" align="right"><span>供热计费面积（m2）:</span></td>
+              <td align="left" colspan=1><input size="30" type="" name="heatingArea" class="gu_title fl" size="" id="heatingArea" /><div class="my_isright" style="width:200px;"><div id="heatingAreaTip"></div></div>
+              </td>
+            </tr>
+            <!--<tr>
+              <td class="pa_5" align="right"valign="middle"><span>内&nbsp;&nbsp;&nbsp;&nbsp;容:</span></td>
+              <td class="pa_5" align="left" colspan=1><textarea cols="37"rows="4" name="content" class="gu_content fl" id="content"></textarea><div class="my_isright"><div id="summaryTip"></div></div></td>
+            </tr>-->
+            <tr class="btn00">
+              <td></td>
+              <td align="left"><input type="hidden" value="{$Think.get.id}" name="cat_id"/>
+                <input type="reset" name="" class="btn1 Reset"  value="重 置" />
+                <input type="submit" name="" class="btn1 Submit"  value="提 交"/></td>
+            </tr>
+          </table>
+        </form>
+
+			<!-- end -->
+            </div>
+        </div>
+		
+		 <script>
+            $(function(){	 
+                $("#getcode").click(function(){
+                    $imgstr="__URL__/verify/randcode="+Math.random();
+                    $(this).attr("src",$imgstr);
+                });
+            });</script>
+			
+    </div>
+</div>
+
+
+
+  <include file="Public:footer" />
+</body>
+</html>
+<script type="text/javascript" src="__PUBLIC__/js/formValidator-4.1.3.min.js"></script>
+<script type="text/javascript" src="__PUBLIC__/js/formvalidatorregex.js"></script>
+<script type="text/javascript">
+ 
+    $(document).ready(function(){   
+        //提供回调函数，提供提交返回结果的处理   
+        var options = {
+            //            beforeSubmit: showRequest,
+            //提交前处理 
+            success: showResponse,
+            //处理完成 
+            resetForm: false,
+            dataType: 'json'
+        };    
+        $('#form2').submit(function() {
+            if ($.formValidator.pageIsValid('1')==true) 
+            { 
+                $(this).ajaxSubmit(options);
+                return false; 
+            } 
+
+          
+        });
+       
+        //初始化验证插件，如果提交出错，则弹出对话框，如果正确，则通过ajax提交表单请求。
+        $.formValidator.initConfig({autotip:true,formID:"form2",submitOnce:false,
+            onsuccess:function(msg){
+              
+                return false;},
+            onError:function(msg){}
+
+        });
+  
+       //表单验证   
+		$("#ownername").formValidator({oncorrect:"输入正确",onShow:"必填"}).regexValidator({regExp:["notempty"],dataType:"enum",onError:"请输入内容"});
+        $("#papercode").formValidator({oncorrect:"输入正确",onShow:"必填"}).regexValidator({regExp:["notempty"],dataType:"enum",onError:"请输入内容"});
+		$("#phone").formValidator({oncorrect:"输入正确",onShow:"必填"}).regexValidator({regExp:["notempty"],dataType:"enum",onError:"请输入内容"});
+		$("#fixedPhone").formValidator({oncorrect:"输入正确",onShow:"必填"}).regexValidator({regExp:["notempty"],dataType:"enum",onError:"请输入内容"});
+		$("#workunit").formValidator({oncorrect:"输入正确",onShow:"必填"}).regexValidator({regExp:["notempty"],dataType:"enum",onError:"请输入内容"});
+		$("#unitAddressPhone").formValidator({oncorrect:"输入正确",onShow:"必填"}).regexValidator({regExp:["notempty"],dataType:"enum",onError:"请输入内容"});
+		$("#familyNamePhone").formValidator({oncorrect:"输入正确",onShow:"必填"}).regexValidator({regExp:["notempty"],dataType:"enum",onError:"请输入内容"});
+		
+		$("#builtUpArea").formValidator({oncorrect:"输入正确",onShow:"必填"}).regexValidator({regExp:["decmal6"],dataType:"enum",onError:"必须是正数,精确到后两位"});
+		$("#poolArea").formValidator({oncorrect:"输入正确",onShow:"必填"}).regexValidator({regExp:["decmal6"],dataType:"enum",onError:"必须是正数,精确到后两位"});
+		$("#floorHeight").formValidator({oncorrect:"输入正确",onShow:"必填"}).regexValidator({regExp:["decmal6"],dataType:"enum",onError:"必须是正数,精确到后两位"});
+		$("#sleeveBuiltUpArea").formValidator({oncorrect:"输入正确",onShow:"必填"}).regexValidator({regExp:["decmal6"],dataType:"enum",onError:"必须是正数,精确到后两位"});
+		$("#ultraHighArea").formValidator({oncorrect:"输入正确",onShow:"必填"}).regexValidator({regExp:["decmal6"],dataType:"enum",onError:"必须是正数,精确到后两位"});
+		$("#heatingArea").formValidator({oncorrect:"输入正确",onShow:"必填"}).regexValidator({regExp:["decmal6"],dataType:"enum",onError:"必须是正数,精确到后两位"});
+        $("#phone").formValidator({onShow:"请输入你的手机号码",onFocus:"例：158xxxxxxxx",onCorrect:"输入正确",onEmpty:"不能为空"}).regexValidator({regExp:["mobile"],dataType:"enum",onError:"格式不正确"});
+		$("#fixedPhone").formValidator({onShow:"请输入你的固定电话号码",onFocus:"例：0577-xxxxxxxx",onCorrect:"输入正确",onEmpty:"不能为空"}).regexValidator({regExp:["tel"],dataType:"enum",onError:"格式不正确"});
+                
+    });   
+
+    function showResponse(res) {
+        //    alert(res.status);
+        art.dialog({
+            title: res.title,
+            content: res.message,
+            time: res.time
+        });
+        if (res.url) {
+            window.location.href = res.url;
+        }
+    }  
+</script>

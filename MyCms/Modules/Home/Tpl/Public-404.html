@@ -1,0 +1,35 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<include file="Public:common-head"/>
+<style>
+/*404*/
+.main_4{display:table; margin: auto; margin-top:100px;background: url(__PUBLIC__/images/img_404.gif) no-repeat right top; padding:35px 200px 25px 0; width:320px; height:181px;}
+.main_4 h1,.main_4 h2,.main_4 p a{font-family:"Microsoft YaHei",Tahoma, Geneva, sans-serif; font-weight:700;}
+.main_4 h1{margin-bottom:10px; font-size:18px;}
+.main_4 h2{font-size:24px; text-indent:0.5em;}
+.main_4 p a{display:inline-block; height:25px; line-height:24px; font-weight:300; color:#fff; float:left; padding-left:10px; font-size:14px; margin:15px 12px;text-align: left;}
+.main_4 p a.sw01{width:86px; background:url(__PUBLIC__/images/sw1_404.gif) no-repeat;}
+.main_4 p a.sw02{width:99px; background:url(__PUBLIC__/images/sw2_404.gif) no-repeat;}
+</style>
+<title>{$Think.config.site_name}</title>
+
+</head>
+<body>
+<include file="Public:common-toppart"/>
+
+<div class="main_block">
+
+<div class="main_4">
+	<h1>
+    “真的很抱歉，我们搞丢了页面……”
+    </h1>
+	<h2>要不去首页看看?</h2>
+    <p><a class="sw01" href="__GROUP__">返回首页</a><a class="sw02" href="javascript:history.go(-1);">返回上一页</a></p>
+</div>
+</div>
+<include file="Public:common-footer"/>
+<include file="Public:common-script"/>
+</body>
+</html>

@@ -1,0 +1,400 @@
+<include file="Public:header" />
+<div class="main_block">
+  <include file="Public:top" />
+  <div class="content_block">
+    <div class="left_side fl">
+      <div class="l_menu">
+		 <!--上级菜单-->
+		{~$cat=get_info($cate,$pid);}
+		 <volist name="cat" id="m" key="l">
+			<a href="javascript:history.go(-1);" title="返回上一页">
+				<div class="bb_l_menu_title">
+					{$m.title} 
+				</div>
+			</a>
+		</volist>
+		<div class="left_other_menu">
+		{~$cat=get_child($cate,$pid);}
+		<volist name="cat" id="c" key="k">
+			<dl <eq name='c.id' value='$cat_id'> class="hover"</eq>>
+				<dt><a href="<notempty name='c.url'>{$c.url}<else/>{:U($c['Model']['name'].'/'.$c['tpl'],'id='.$c['id'])}</notempty>"><img src="{$c.pic}"/></a>
+				</dt>
+				<dd> <a href="<notempty name='c.url'>{$c.url}<else/>{:U($c['Model']['name'].'/'.$c['tpl'],'id='.$c['id'])}</notempty>">{$c.title}</a> <span>{$c.summary}</span> </dd>
+			</dl>
+		</volist></div>
+	</div>	
+   <include file="Public:left" /></div>
+    <div class="middle_con">
+	  <!--tab end-->
+    </div>
+    <div class="right_side">
+    </div>
+	        <div class="main_con fr">
+        	<div class="bread_nav">
+            	<div class="l fl"></div>
+                <div class="m fl" style="line-height:30px;">
+                	<span class="list_style"></span>
+                    <span>您当前的位置:</span>
+					<a href="__GROUP__">首页</a>
+					<span>></span>
+					<span style="color: #009f3f;">供热优惠申请</span>
+                </div>
+                <div class="r fl"></div>
+            </div>
+            <div class="artical">
+            <!-- begin -->
+			
+				<div class="article_show">
+                	
+                    <div class="article_title">
+                    	<h1>2016-2017供热期采暖费优惠申请</h1>
+                    </div>
+                    
+                   	<div class="article_content">
+						<form action="__URL__/save1" method="post" id="form2" name="form2">
+						   <div class="ts_text" style="line-height:30px;">
+								欢迎您访问生态城公用事业客服平台！申请前请仔细阅读以下《说明条款》：<br/>1、 2016年6、7、8月提前交纳采暖费的用户可依次优惠采暖费金额的3%、2%、1%。其余时段交费不享受优惠。 面积热费标准为25元/平米。<br/>2、 申请人应准确填写、核实信息，如因基础信息不准确造成扣款不成功其后果由申请人自行承担。<br/>3、 无能源卡或能源卡未成功激活的用户不能网上申请提前缴费。<br/>4、用户提出提前批扣采暖费申请后，需保障能源卡中有足够余额，实际批扣日期以用户能源卡有足够交费金额到账时间为准。<br/>5、 供热计量用户在当年12月31日前按面积热费标准交纳供热采暖费，如在优惠期交费，按照面积热费标准交纳的采暖费金额进行优惠，自6月1日起，用户缴纳下一采暖季热费时对上一采暖季热费进行结算。结算金额低于用户按照面积热费标准交纳的采暖费金额的，差额部分自动冲抵下一采暖季热费，不再另行退费；结算金额高于按照面积热费标准交纳的采暖费金额的用户应补交差额。<br/>6、 扣费成功后您可于2016年12月31日前至生态城公用事业服务大厅能源窗口领取发票。<br/>7、未尽事宜参照《天津生态城居民住宅供用能合同（燃气、自来水、供热）》相关约定。
+							</div>
+							
+							<div class="dc_info_table_1">
+								<table border="0" cellpadding="0" cellspacing="0" style="width:100.0%;" width="100%">
+								  <tbody>
+									<tr>
+									  <td style="width:50%;height:50px;">房间地址：
+										<select style="width:205px; height:26px;" name="address" id="address" onchange="click_search('');" >
+											<volist name="houselist" id="hlist" key="k">
+												<option value="{$hlist.houseCode}">{$hlist.address}</option>
+											</volist>
+										</select>
+									  </td>
+									  <td style="width:50%; height:50px;"><span class="cnq">采暖期：</span>
+										<input style="width:205px; height:20px; border:0px;" name="heattime" id="heattime" type="text" value="2016-2017年度" readonly/></td>
+									  
+									</tr>
+									<tr>
+									  <td style="width:50%; height:50px;">业主名称：
+										<input style="width:205px; height:20px; border:0px;" name="username" id="username" type="text" readonly/>
+									  </td>
+									  <td  style="width:50%; height:50px;">身份证号：
+										<input style="width:205px; height:20px; border:0px;" name="idcard" id="idcard" type="text" readonly/></td>
+									  
+									</tr>
+									<tr>
+									  <td style="width:50%; height:50px;">联系电话：
+										<input style="width:205px; height:20px; border:0px;" name="tel" id="tel" type="text" readonly/></td>
+									  <td style="width:50%; height:50px;">采暖面积：
+										<input style="width:205px; height:20px; border:0px;" name="area" id="area" type="text" readonly/></td>
+									</tr>
+									<tr>
+									  <td style="width:50%; height:50px;">本期应交：
+										<input style="width:205px; height:20px; border:0px;" name="payable" id="payable" type="text" readonly/></td>
+									  <td style="width:50%; height:50px;"><span class="cnq">优惠金额：</span>
+										<input style="width:205px; height:20px; border:0px;" name="discount" id="discount" type="text" readonly/></td>
+									</tr>
+									<tr>
+									  <td style="width:50%; height:50px;">结余金额：
+										<input style="width:205px; height:20px; border:0px;" name="left" id="left" type="text" readonly/></td>
+									  <td style="width:50%; height:50px;"><span class="cnq">本期实际应交：</span>
+										<input style="width:205px; height:20px; border:0px;" name="pay" id="pay" type="text" readonly/></td>
+									</tr>
+									<tr>
+									  <td style="width:50%; height:50px;">能源卡号：
+										<input style="width:205px; height:20px;" name="cardnumber" id="cardnumber" type="text" /><span  class="xing">*</span>
+										<span style="display:none"><input style="width:205px; height:20px; border:0px;" name="allpapernumber" id="allpapernumber" type="text" readonly/></span>
+										<span style="display:none"><input style="width:205px; height:20px; border:0px;" name="allbanknumber" id="allbanknumber" type="text" readonly/></span>
+										<span style="display:none"><input style="width:205px; height:20px; border:0px;" name="telephone" id="telephone" type="text" readonly/></span>	
+									  </td>
+									  <td  style="width:50%; height:50px;"><span class="cnq">验证码：</span>
+										<input style="width:71px; height:20px;" id="phoneActiveCode" name="phoneActiveCode" type="text" />
+										<input id="getVerifyCodeBtn" type='button' class="sw03_new" style="vertical-align: middle;color: black;height: 26px;font-size:12px;"value="获取验证码" /></td>
+									</tr>
+								   </tbody>
+								</table>
+								<span class="yzmsm">说明：网上和电话优惠申请每月月底最后一天截止至14：00点，之后优惠申请将按次月优惠点享受。<br/>如未收到验证码或更改联系方式，您可拨打022-66885890进行咨询</span><br/>
+								
+								<span style="text-align:center;padding-left:240px;">
+									<input id="xieyi" type="checkbox" name="xieyi"/>我已阅读并同意遵守《说明条款》
+								</span>&nbsp;&nbsp;
+
+								<div class="tjan" style="text-align:center">
+									<input type="reset" name="" class="btn1 Reset"  value="重 置" />
+									<input class="btn1 Submit" type="submit" value="提 交">
+								</div>
+							</div>
+					</form>
+                    </div>
+                	
+                </div>
+			
+			<!-- end -->
+            </div>
+        </div>
+  </div>
+</div>
+
+  <include file="Public:footer" />
+</body>
+</html>
+<script>
+var houseCode = '{$houselist[0]["houseCode"]}';
+</script>
+<script type="text/javascript" src="__PUBLIC__/js/formValidator-4.1.3.min.js"></script>
+<script type="text/javascript" src="__PUBLIC__/js/formvalidatorregex.js"></script>
+<script type="text/javascript">
+                    function ok(){
+                        art.dialog({
+                            title:'说明条款',
+                            content: '<?php echo C('user_public_reg1_3');?>',
+                            okVal:'同意',
+                            width:800,		
+                            fixed:true,
+                            lock:true,
+                            ok: function () {
+                                //this.title('3秒后自动关闭').time(3);
+                                $('#xieyi').attr('checked', 'checked');
+								 $('#xieyi').blur();
+                                return true;
+                            },
+                            cancelVal: '取消',
+                            cancel: true //为true等价于function(){}
+                        });
+                    }
+                </script>
+<script>
+
+$(document).ready(function(){   
+        //提供回调函数，提供提交返回结果的处理 
+		try{
+			var options = {
+            //beforeSubmit: checkstate,
+            //提交前处理 
+            success: showResponse,
+            //处理完成 
+            resetForm: false,
+            dataType: 'json'
+        };    
+        $('#form2').submit(function() { 
+            $(this).ajaxSubmit(options);
+            return false;
+        });
+		}catch(e){
+			alert(e);	
+		}
+        
+    }); 
+
+ function showResponse(res) {
+        art.dialog({
+            title: res.title,
+            content: res.message,
+            time: res.time
+        });
+        if (res.url) {
+            window.location.href = res.url;
+        }
+    }
+
+	function click_search(houseCode) {
+		if(houseCode == ''){
+			houseCode = $("#address").val();
+		}
+		
+		//获取数据
+		$.ajax({
+			url: '{:U("/User/ajax_getHouseApply")}',
+			type: 'POST',
+			data: 'houseCode=' + houseCode,
+			dataType: 'json',
+			success: function(res) {
+				//alert(res);
+				if (res != 0) {
+					if (res.error) {
+						art.dialog({
+							content: '接口错误，请联系管理员!',
+							time: 2
+						});
+					} else {
+					document.getElementById('username').value = res['OWNERNAME'];
+					document.getElementById('idcard').value = res['PAPERCODE'];
+					document.getElementById('telephone').value = res['MOBILEPHONE'];
+					document.getElementById('tel').value = res['MOBILEPHONE'].substr(0,4)+'*****'+res['MOBILEPHONE'].substr(9,3);
+					document.getElementById('area').value = res['HCHARGEAREA'];
+					
+					document.getElementById('allpapernumber').value = res['ALLPAPERCODE'];
+					document.getElementById('allbanknumber').value = res['ALLBANKNUMBER'];
+				}
+				}
+			}
+		});
+
+		//获取数据
+		$.ajax({
+			url: '{:U("/User/ajax_getHouseJf")}',
+			type: 'POST',
+			data: 'houseCode=' + houseCode,
+			dataType: 'json',
+			success: function(res) {
+				document.getElementById('payable').value = "";
+				document.getElementById('discount').value = "";
+				document.getElementById('left').value = "";
+				document.getElementById('pay').value = "";
+				if (res != 0) {
+					if (res.error) {
+						art.dialog({
+							content: '接口错误，请联系管理员!',
+							time: 2
+						});
+					} else {
+					document.getElementById('payable').value = res['TOTALACCOUNT'];
+					document.getElementById('discount').value = res['JM'];
+					document.getElementById('left').value = res['JYJE'];
+					document.getElementById('pay').value = res['SJYJJE'];
+					
+				}
+				}
+			}
+		});
+	}
+
+	 $('#getVerifyCodeBtn').on('click', function(){
+		targetId = 'getVerifyCodeBtn';
+		getVerifyCode(targetId);
+		return false;
+	});
+
+	var total_sec = 29;
+	var timerId = null;
+
+	function removeTimer(id, objId, objText) {
+		if (null != id) {
+			clearInterval(id);
+		}
+		$('#'+objId).val(objText);
+		$('#'+objId).attr('disabled', false);
+	}
+
+	var targetId = '';
+	function refreshSecDisp() {
+		var btnDisp = '获取验证码';
+		if (0 === total_sec) {
+			removeTimer(timerId, targetId, btnDisp);
+			timerId = null;
+			total_sec = 29;
+			return;
+		}
+
+		btnDisp = btnDisp + '(' + total_sec + ')';
+		$('#'+targetId).val(btnDisp);
+		total_sec = total_sec - 1;
+	}
+
+	function getVerifyCode(objId) {
+            if (null != timerId) {
+                art.dialog({title: '提示信息',content: '正在请求中，请稍后再获取！',time:2}); 
+                return;
+            }
+			var username = document.getElementById("username").value;
+			var idcard = document.getElementById("idcard").value;
+			var telephone = document.getElementById("telephone").value;
+			var area = document.getElementById("area").value;
+			
+			var cardnumber = document.getElementById("cardnumber").value;
+			var allbanknumber = document.getElementById("allbanknumber").value;
+			if(username == '' || idcard == '' ||telephone == '' ||area == ''){
+				alert("由于您的房间信息有所缺失，您需要到服务大厅窗口办理，感谢您的关注!");
+				return;
+			}
+			if(allbanknumber == ''){
+				alert("由于您的能源卡信息缺失，您需要到服务大厅窗口办理，感谢您的关注!");
+				return;
+			}
+			if(cardnumber ==''){
+				alert("请填写能源卡号！");
+				return;
+			}
+			else{
+				if(cardnumber != allbanknumber){
+					alert("“能源卡号”与系统记录卡号不一致！");
+					return;
+				}
+			}
+			
+			
+			/*var myreg = /^(((13[0-9]{1})|(15[0-9]{1})|(14[0-9]{1})|(17[0-9]{1})|(18[0-9]{1}))+\d{8})$/;
+            if ('' == $('#cardnumber').val()) {
+                art.dialog({title: '提示信息',content: '请输入正确的能源卡号！',time:2});
+                $("#cardnumber").focus();
+                return;
+            }*/
+			
+            $('#'+objId).attr('disabled', true);
+			$.ajax({
+                type: "POST",
+                url: '{:U("Public/get_phone_verify_code","",false)}',
+                data: {phone:$('#telephone').val()},
+                success: function( data ) {
+                    var retCode = data.code;
+                    if ('success' !== retCode) {
+                        $('#'+objId).attr('disabled', false);
+                        art.dialog({title: '提示信息',content: '获取手机验证码失败，请稍后再试。',time:2}); 
+                        return;
+                    }
+
+                    $('#'+objId).attr('disabled', true)
+
+                    timerId = setInterval(refreshSecDisp, 1000);
+                },
+                dataType: 'json'
+            });
+	}
+</script>
+<script>
+$(function() {
+    click_search(houseCode); //默认载入第一间绑定房
+});
+</script>
+<style>
+table{
+	border-top:1px #dedede solid;
+	border-left:1px #dedede solid;
+}
+tr td {
+	border-bottom:1px #dedede solid;
+	border-right:1px #dedede solid;
+	text-align: left;
+	font-family: "宋体";
+	font-size: 12px;
+}
+table input {
+	outline: none;
+	height: 22px;
+}
+td {
+	padding-left: 20px;
+	padding-right: 20px;
+}
+select {
+	border: #dedede 1px solid;
+	height: 27px;
+	width: 160px;
+}
+input {
+	border: #dedede 1px solid;
+}
+input.nob{
+	border:none;}
+input.yzm {
+	width: 80px;
+	height: 20px;
+	margin-right: 6px;
+}
+.yzmsm {
+	color: #F00;
+	font-size: 12px;
+	padding-top: 6px;
+}
+.xing {
+	color: #F00;
+	padding: 0 5px;
+}
+</style>

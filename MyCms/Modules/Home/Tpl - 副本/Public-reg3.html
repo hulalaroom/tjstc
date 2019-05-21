@@ -1,0 +1,49 @@
+<include file="Public:header" />
+<div class="main_block">
+	<div class="head_block">
+    	<div class="logo">
+        	<a class="logo fl" href="/index.html"></a>
+            <div class="m_leaf fr"></div>
+        </div>
+    </div>
+	<div class="m_content_bloc_h fl">
+    	<img src="__PUBLIC__/images/m_images/m_content_block_h.jpg" width="970" height="10" />
+    </div>
+	<div class="m_content_block fl">
+    	<h1 class="fl">用户注册</h1>
+    	<div class="m_state fr">
+        	<span>已有账号？请</span><a class="log_reg fl" href="__URL__/login">登录</a>
+        </div>
+    	<div class="m_nav fr">
+          <div class="fl"><img src="__PUBLIC__/images/m_images/reg_step_3.jpg" width="926" height="34" /></div>
+            <div class="m_form fl">
+                    <div class="fl m_success">
+                    	<h1>恭喜您注册成功</h1>
+                        <div class="fl m_zh"><span>您的帐号：</span><a href="__URL__/login" title="点击登录">[ {$Think.session.linshi} ]</a></div>
+                         <div class="fl ">
+                    	
+                        <div id="verify_by_mail" style="display: none" class="fl m_instructions_reg3">
+							您的注册验证邮件已经发送到您的邮箱<a target="_blank" href="{$Think.session.linshi_url}">{$Think.session.linshi_email}</a>请登陆邮箱进行验证。<br>
+                          <a target="_blank" href="{$Think.session.linshi_url}" class="sw02_new col_fff">现在就去激活</a>
+			</div>
+                    </div>
+                    </div>
+            </div>
+        </div>
+    </div>
+	<div class="m_content_bloc_h fl">
+    	<img src="__PUBLIC__/images/m_images/m_content_block_f.jpg" width="970" height="10" />
+    </div>
+</div>
+<include file="Public:footer" />
+<script type="text/javascript">
+
+$(document).ready(function(){
+	var WEB_AUTH_CODE = '{$Think.session.disp_mail_flag}';
+	if (1 == WEB_AUTH_CODE) {
+		$('#verify_by_mail').show();
+	}
+});
+</script>
+</body>
+</html>

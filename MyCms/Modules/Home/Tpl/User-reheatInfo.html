@@ -1,0 +1,102 @@
+<!doctype html>
+<html>
+
+<head>
+    <include file="Public:common-head"/>
+</head>
+
+<body>
+<assign name="hoverIndex" value="1"/>
+<include file="Public:common-toppart"/>
+
+<div class="nengyuan_banner">
+    <div class="content">
+        <p class="jiaofei_banner_01 font_yinying">我的业务</p>
+        <p class="jiaofei_banner_03 "></p>
+        <p class="jiaofei_banner_02 font_yinying">我的业务，一键办理</p>
+
+    </div>
+
+
+</div>
+<div class="content_bg01 ">
+    <div class="content history_content">
+        <p class="dqwz history_dqwz">
+            当前位置：<a href="http://www.66885890.com">首页</a> &nbsp;&nbsp;&gt;&nbsp;&nbsp;
+                <a href="{:U('User/index',array('id'=>20))}">我的5890</a>&nbsp;&nbsp;&gt;&nbsp;&nbsp;
+                <a href="{:U('User/ywbl')}">业务办理</a>&nbsp;&nbsp;&gt;&nbsp;&nbsp;
+                <a href="{:U('User/ny')}">能源公司</a>&nbsp;&nbsp;&gt;&nbsp;&nbsp;
+                <span class="green">申请人应履行的责任</span>
+        </p>
+        <div class="wodeyewu_content clearfix">
+            <div class="wodeyewu_content_box01">
+                <div class="yewu_box clearfix">
+                    <p class="yewu_title">申请人应履行的责任</p>
+                    <p>1. 用户有恢复用热需求的，应于<span class="orange">当年6月1日至9月30日前</span>向供热单位提交申请，非申请期内，不予以受理恢复供热业务。</p>
+                    <p>2. 用户恢复用热申请由房屋产权人提出，房屋产权人需提供真实、完整的有效身份证明。</p>
+                    <p>3. 恢复用热期限最短为一个供热期，实施范围包括供用热合同约定的全部区域。</p>
+                    <p>4. 当年办理暂停用热的用户，于当年不能办理恢复用热手续。</p>
+                    <p>5. 恢复供热前，用户如有欠费应予以补齐。</p>
+                    <p>6. 自供热单位受理用户的恢复用热申请起，双方之前签订的《天津生态城居民住宅暂停供用热合同》同时废止。 同时恢复供热期间双方的各项权责义务按《天津生态城居民住宅供用能合同（燃气、自来水、供热）》中相应条款执行。</p>
+                    <p>7. 用户应自行清理供热设施周边障碍物，由供热单位对供热系统采取恢复用热措施。</p>
+                    <p>8. 凡因用户原因造成供热单位无法对供热系统进行恢复供热的，用户需负全面责任，并交纳全额采暖费。</p>
+                    <p>9.恢复供热后，用户应在本采暖季的打压试水和供热初期仔细检查供热设施有无跑、冒、滴、漏现象，出现上述现象及时报修，否则由此产生的一切损失及相关法律责任由用户承担。</p>
+					<p>10.用户申请该项业务后，应于2个工作日后线上查询办理结果，如查询结果为审核不成功，则需重新申请。</p>
+					<p>11.用户恢复用热办理成功后应于12月31日前按面积热费标准交纳采暖费，逾期未缴纳将产生违约金。</p>
+
+                </div>
+
+            </div>
+            <div class="fuxuankuang">
+                <div class="box box01">
+                    <ul>
+                        <li id="chk_accept">已认真阅读申请人应履行的责任</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="wodeyewu_btn01 wodeyewu_btn02"><a id="fireOkBtn">确定</a></div>
+            <form method="post" action="{:U('User/reheat')}" id="accept_form">
+                <input type="hidden" id="accept" name="accept" value="0">
+            </form>
+        </div>
+    </div>
+</div>
+
+
+<include file="Public:common-footer"/>
+<include file="Public:common-script"/>
+<script type="text/javascript" src="__PUBLIC__/last/js/artDialog4.1.7/artDialog.source.js?skin=green"></script>
+<script type="text/javascript">
+    $(function () {
+        var $ali = $('#chk_accept');
+        $ali.on('click', function () {
+            var $self = $(this);
+            var chked = $self.attr('checked');
+            if (chked) {
+                $self.attr('checked', false).removeClass('on');
+            } else {
+                $self.attr('checked', true).addClass('on');
+            }
+        });
+
+        var $okBtn = $('#fireOkBtn');
+        $okBtn.on('click', function (event) {
+            event.preventDefault();
+            var accepted = $ali.attr('checked');
+            if (!accepted) {
+                art.dialog({
+                    lock: true,
+                    content: '请确认您已认真阅读并同意申请人应履行的责任',
+                    time: 3
+                });
+                return false;
+            }
+
+            $('#accept').val('1');
+            $('#accept_form').submit();
+        });
+    });
+</script>
+</body>
+</html>

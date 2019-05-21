@@ -1,0 +1,88 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href='__PUBLIC__/css/common.css'>
+<script type="text/javascript" src="__PUBLIC__/js/jquery-1.7.1.min.js"></script>
+<script type="text/javascript" src="__PUBLIC__/js/base.js"></script>
+<title>无标题文档</title>
+</head>
+<body>
+<div id="append_parent"></div>
+<div class="container" id="cpcontainer">
+  <div id="contentHeader">
+    <h3>用户组</h3>
+    <div class="searchArea">
+      <ul class="action left">
+        <li><a href="__URL__/add" class="actionBtn"><span>录入</span></a></li>
+      </ul>
+<!--      <div class="search right">名称
+        <input id="title" type="text" name="title" value="" class="txt" size="15"/>
+        <input name="searchsubmit" type="submit"  value="查询" class="button "/>
+      </div>-->
+    </div>
+  </div>
+  <table border="0" cellpadding="0" cellspacing="0" class="content_list">
+    <form method="post" action="__URL__/bat" name="form1">
+      <thead>
+        <tr class="tb_header">
+          <th width="12%">ID</th>
+          <th >名称</th>
+          <th width="10%">积分下限</th>
+          <th width="10%">积分上限</th>
+          <th width="10%">状态</th>
+       
+          <th>操作</th>
+        </tr>
+      </thead>
+      <volist name="glist" id="group">
+        <tr class="tb_list">
+          <td ><input type="checkbox" name="id[]" value="{$group.id}">
+            {$group.id}</td>
+            <td ><a title="点击进入{$group.title}" href="__APP__/User/index/group_id/{$group.id}" style=" text-decoration: none;">{$group.title}</a></td>
+          <td>{$group.down_point}</td>
+          <td>{$group.up_point}</td>
+     
+           <td><span>
+            <eq name="group.status" value="1"><img src="__PUBLIC__/images/icon_right.gif" align="absmiddle">
+              <else/><img src="__PUBLIC__/images/deletesmall.gif" align="absmiddle"></eq>
+            </span></td>
+        
+          <td><a href="__URL__/edit/id/{$group.id}"><img src="__PUBLIC__/images/update.png" align="absmiddle"></a>&nbsp;&nbsp;<a href="{:U('Group/bat','command=delete&id='.$group['id'])}" class="confirmSubmit"><img src="__PUBLIC__/images/delete.png" align="absmiddle"></a></td>
+        </tr>
+      </volist>
+      <tr class="operate">
+        <td colspan="6"><div class="cuspages right"> </div>
+          <div class="fixsel">
+            <input type="checkbox" name="chkall" id="chkall" onClick="checkAll(this.form, 'id')" />
+            <label for="chkall">全选</label>
+			&nbsp;&nbsp;选择操作：
+            <select name="command">
+              <option value="status">启用</option>
+              <option value="unstatus">停用</option>
+              <option value="delete">删除</option>
+              
+            </select>
+            <input id="submit_maskall" class="button confirmSubmit" type="submit" value="提交" name="maskall" />
+          </div></td>
+      </tr>
+    </form>
+  </table>
+  <script type="text/javascript">
+$(function(){ 
+    $(".confirmSubmit").click(function() {
+		var a=$("input[type='checkbox']:checked");
+		var len=a.length;
+		if(len<1){
+			alert("您未选择任何选项！");
+			return false;
+		}else{
+        return confirm('本操作不可恢复，确定继续？');
+		}
+			
+    });
+}); 
+</script>
+</div>
+</body>
+</html>

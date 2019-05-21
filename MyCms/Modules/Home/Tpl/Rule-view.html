@@ -1,0 +1,66 @@
+<!doctype html>
+<html>
+<head>
+    <include file="Public:common-head"/>
+    <link rel="stylesheet" type="text/css" href="__PUBLIC__/last/js/share/css/share.min.css">
+</head>
+
+<body>
+<include file="Public:common-toppart"/>
+<!--<include file="Public:common-slider"/>-->
+
+<div class="content_bg">
+    <div class="content history_content">
+        <p class="dqwz history_dqwz">当前位置：{$nav}</p>
+        <div class="history_billcontent clearfix">
+            <div class="history_billcontentpad">
+
+                <div class="">
+                    <div class=" publictab history_zlscon on">
+                        <div class="fuwugonggao fuwugonggao01">
+                            <p class="xiangqing_title">{$rule.title}</p>
+                            <div class="xiangqing_date">发布时间：{$rule.start_time|date="Y-m-d",###} <span>我要分享</span>
+                                <span>
+                                    <div class="social-share" data-initialized="true">
+                                        <a href="#" class="social-share-icon icon-wechat"></a>
+                                        <a href="#" class="social-share-icon icon-weibo"></a>
+                                        <a href="#" class="social-share-icon icon-qq"></a>
+                                    </div>
+                                </span>
+                            </div>
+                            <div class="xiangqing_zhengwen">
+                                {$rule.content}
+                            </div>
+
+                            <div class="xiangqing_fanye">
+                                <empty name="prevview">
+                                    <a href="">上一篇：没有了</a>
+                                <else/>
+                                    <a href="{:U('Notice/view','id='.$prevview['id'])}">上一篇：{$prevview.title}</a>
+                                </empty>
+                                <empty name="nextview">
+                                    <a href="">下一篇：没有了</a>
+                                <else/>
+                                    <a href="{:U('Notice/view','id='.$nextview['id'])}">下一篇：{$nextview.title}</a>
+                                </empty>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<include file="Public:common-footer"/>
+<include file="Public:common-script"/>
+<script type="text/javascript" src="__PUBLIC__/last/js/share/js/social-share.min.js"></script>
+<script type="text/javascript" src="__PUBLIC__/last/js/jquery.easing.min.js"></script>
+<script type="text/javascript" src="__PUBLIC__/last/js/banner.js"></script>
+<script type="text/javascript">
+    $(function () {
+        initBanner();
+    });
+</script>
+</body>
+</html>

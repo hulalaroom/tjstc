@@ -1,0 +1,109 @@
+<include file="Public:header" />
+<div class="main_block">
+    <include file="Public:top" />
+    <div class="content_block">
+
+        <div class="left_side fl">
+		  <div class="left_other_menu">
+        	<notempty name="cat">
+        	{~$cat=get_child($cate,76);}
+					 <div class="l_menu">
+		        <volist name="cat" id="c" key="k">
+							<dl>
+								<dt><a href="<empty name='c.url'>
+									<empty name="c['tpl']">{:U($c['Model']['name'].'/index','id='.$c['id'])}
+									<else/>
+									{:U($c['Model']['name'].'/'.$c['tpl'],'id='.$c['id'])}</empty>
+									<else/>
+									{$c.url}</empty>"><img src="{$c['pic']}"/></a>
+								</dt>
+								<dd> <a href="<empty name='c.url'>
+									 <empty name="c['tpl']">{:U($c['Model']['name'].'/index','id='.$c['id'])}
+									 <else/>
+									 {:U($c['Model']['name'].'/'.$c['tpl'],'id='.$c['id'])}</empty>
+									 <else/>
+									 {$c.url}</empty>">{$c.title}</a> <span>{$c.summary}</span> 
+								</dd>
+							</dl>
+		                </volist></div>
+		            </div>
+		        </notempty>
+            <include file="Public:left" />
+        </div>
+
+
+        <div class="main_con fr">
+            <div class="bread_nav">
+                <div class="l fl"></div>
+                <div class="m fl" style="line-height:30px;">
+                    <span class="list_style"></span>
+                    <span>您当前的位置:</span><a href="index.php?s=">首页&nbsp;></a><a href="index.php?s=/article/company/id/76.html">&nbsp;成员单位</a>
+                    {$nav}
+                </div>
+                <div class="r fl"></div>
+            </div>
+            <div class="artical">
+                <!-- begin -->
+
+                <div class="article_show">
+
+                    <div class="article_title">
+                        <h1>{$title}</h1>
+						<!-- start update by wangshipeng 2014.05.29
+                        <p>消息来源：{$tag} &nbsp;&nbsp; 发布时间：{$start_time|date="Y-m-d H:i:s",###}</p> -->
+						<!-- end update by wangshipeng 2014.05.29 -->
+                    </div>
+
+                    <div class="article_content">
+                        {$content}
+                        <script>
+                            $(window).load(function(){
+                                var image_limit=700;
+                                var image=new Image();
+                                $(".article_show img").each(function(i){
+                                    image.src=$(this).attr("src");
+                                    if(image.width>=image_limit){
+                                        $(this).css("width",image_limit);
+                                    }
+                                });
+                            });
+                        </script>
+                    </div>
+                </div>
+                <!-- end -->
+            </div>
+        </div>
+
+
+    </div>
+</div>
+
+
+
+<include file="Public:footer" />
+<script>
+    function addtag(obj,id){
+	
+						 
+						 
+        $.ajax({
+            url: '{:U("User/addtag")}',
+            type : 'GET',
+            data : {id:id},
+            dataType: 'json', 
+            success: function(res){
+				
+						art.dialog({title: res.title,content: res.message,time:res.time});  
+						if(res.status=='1'){
+					$(obj).addClass('taged');
+				}
+                if (res.url) {
+
+                    window.location.href = res.url;
+                }
+            }
+        });
+    }
+</script>
+</body>
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta http-equiv="refresh" content="{$waitSecond};url={$jumpUrl}">
+<title>提示信息</title>
+<script type="text/javascript" src="__PUBLIC__/js/jquery-1.8.3.min.js"></script>
+<script type="text/javascript" src="__PUBLIC__/js/artDialog4.1.7/artDialog.source.js?skin=green"></script>
+<script type="text/javascript" src="__PUBLIC__/js/artDialog4.1.7/plugins/iframeTools.js"></script>
+<link rel="stylesheet" type="text/css" href="__PUBLIC__/css/404.css" />
+</head>
+<body>
+<div id="outer">
+  <div id="middle">
+    <div id="inner" class="greenBorder">
+      <div id="msg" class="radius5 boder div_bg">
+        <present name="message" >
+          <div id="line">提示信息</div>
+          <div id="msg_info"  class="success" >
+            <p  class="txt_tsk"><?php echo($message); ?></p>
+            <!---->
+              <div><a href="{$jumpUrl}" id="jump" class="btn btn_submit">返回</a></div>
+            <!---->
+          </div>
+          <else/>
+          <div id="line">提示信息</div>
+          <div id="msg_info"   class="error">
+            <p  class="txt_tsk"><?php echo($error); ?></p>
+            <!---->
+              <div><a href="{$jumpUrl}" id="jump" class="btn btn_submit">返回</a></div>
+            <!---->
+          </div>
+        </present>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+</body>
+</html>

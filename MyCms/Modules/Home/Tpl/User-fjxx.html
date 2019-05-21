@@ -1,0 +1,636 @@
+<!doctype html>
+<html>
+<head>
+    <include file="Public:common-head"/>
+	<link rel="stylesheet" type="text/css" href="__PUBLIC__/style/css/selectFilter.css">
+
+</head>
+
+<body>
+<include file="Public:common-toppart"/>
+<!--<include file="Public:common-slider"/>-->
+
+<form id="form2" action="{:U('User/unbindok')}" method="post">
+<div class="house_banner">
+	<div class="content">
+		<p class="jiaofei_banner_01 font_yinying">房间详细信息</p>
+<p class="jiaofei_banner_03"></p>
+<p class="jiaofei_banner_02 font_yinying">一户多房，轻松管理</p>
+
+	</div>
+
+
+</div>
+    <input type="hidden" value="{$diyi}" id="diyi">
+    <input type="hidden" value="{$disan}" id="disan">
+    <div class="content_bg content_bg01">
+	<div class="content ">
+	<p class="jiaofei_dqwz dqwz_bg">
+        当前位置：<a href="http://www.66885890.com">首页</a> &nbsp;&nbsp;&gt;&nbsp;&nbsp;
+        <a href="{:U('User/index',array('id'=>20))}">我的5890</a>&nbsp;&nbsp;&gt;&nbsp;&nbsp;
+        <span class="green">房间详细信息</span>
+    </p>
+	<div class="house_tabbox">
+		<ul class="house_tab">
+			<volist name="houselist" id="hlist" key="k">
+				<if condition="$k eq 1">
+					<li class="houseone house_cur" id="housetab{$k}" onClick="javascript:click_search(this,'{$hlist.houseCode}',{$k})" ><span>{$k}</span><i>{$hlist.communityname|msubstr=0,4}</i></h1>
+				<else />
+					<li class="housethree" onClick="javascript:click_search(this,'{$hlist.houseCode}',{$k})"><span>{$k}</span><i>{$hlist.communityname|msubstr=0,4}</i></li>
+
+				</if>
+			</volist>
+		</ul>
+<div class="house_tabcontent">
+
+<div class="fangjian fangjian_01 house_on" style="padding-top: 0px;">
+    <p class="history_zlstips " style="width:1100px;background-color: #fff;"><span>温馨提示：</span>如果您进行了解绑操作，该房屋信息和数据将无法再次查询和修改。</p>
+ <table width="" border="0" cellspacing="0" cellpadding="0">
+  <tbody>
+    <tr>
+      <td class="fjdz_gray" style="width:150px">房间地址</td>
+      <td style="width:410px" id="fangjiandizhi">{$fjxx['13']}&nbsp;</td>
+      <td class="fjdz_gray" style="width:150px">业主姓名</td>
+      <td style="width:410px" id="zhuhumingcheng">{$fjxx['1']}&nbsp;</td>
+    </tr>
+    <tr>
+      <td class="fjdz_gray">房间编号</td>
+      <td id="fangjianbianhao">&nbsp;</td>
+      <td class="fjdz_gray">身份证号</td>
+      <td id="shenfenzhenghao">&nbsp;</td>
+    </tr>
+    <tr>
+      <td class="fjdz_gray">采暖面积</td>
+      <td id="cainuanmianji">&nbsp;</td>
+      <td class="fjdz_gray">入住时间</td>
+      <td id="ruzhushijian">&nbsp;</td>
+    </tr>
+    <tr>
+      <td class="fjdz_gray">能源卡号</td>
+      <td id="yinhangkahao">&nbsp;</td>
+      <td class="fjdz_gray">代缴银行</td>
+      <td id="daijiaoyinhang">&nbsp;</td>
+    </tr>
+    <tr>
+      <td class="fjdz_gray">天然气表号</td>
+      <td id="trqbh">&nbsp;</td>
+      <td class="fjdz_gray">自来水表号</td>
+      <td id="zlsbh">&nbsp;</td>
+    </tr>
+    <tr>
+      <td class="fjdz_gray">再生水表号</td>
+      <td id="zssbh">&nbsp;</td>
+      <td class="fjdz_gray">热表号</td>
+      <td id="rbh">&nbsp;</td>
+    </tr>
+    <tr>
+      <td class="fjdz_gray">环保卡号</td>
+      <td>
+            <div class="item_one hbjf_input">
+                <input type="text" name="huanbaoka" id="huanbaoka" style="text-align: center;border:none;" readonly>
+            </div>
+      </td>
+      <td class="fjdz_gray">环保积分</td>
+      <td id='point'>
+</td>
+    </tr>
+    <tr>
+      <td class="fjdz_gray">居住人数</td>
+      <td colspan="3">
+      <span style="text-align: center;display: inline-block;width: 384px;">
+        <div class="item_one" style="width: 100px;">
+            <div class="filter-box" id="aaa">
+                <div class="filter-text" style="width: 100px;background: none;margin-left: -22px;">
+                    <input class="filter-title" id="houseHoldSize" type="text" readonly="readonly" style="text-align: center;padding: 0px 0px 0px 8px;">
+                    <i class="icon icon-filter-arrow xiala" style="display: none;"></i>
+                </div>
+                <select name="filter" id="xialalist">
+                    <option value="1">1人</option>
+                    <option value="2">2人</option>
+                    <option value="3">3人</option>
+                    <option value="4">4人</option>
+                    <option value="5">5人</option>
+                    <option value="6">6人</option>
+                </select>
+            </div>
+        </div>
+      </span>
+      <span class="hetong fjdz_gray" style="width:149px;">能源合同</span>
+      <span id="nyzt"></span>
+      <span class="hetong fjdz_gray" style="width:128px;">再生水合同</span>
+      <span id='zszt'></span>
+      <!--<span class="hetong fjdz_gray">环保合同</span>
+      <span id='hbzt'></span>-->
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<input type="hidden" name="housecode" id="housecode">
+<div class="jiebang jb">
+    <a class="jiebang_btn01" onclick="xiugai();"><span>修改</span></a>
+	<a class="jiebang_btn02" style="background: url('__PUBLIC__/last/img/house_button-01.png') -8px -6px no-repeat" onclick="houseInfo();"><span>确认解绑</span></a>
+</div>
+<div class="jiebang xg" style="display: none;">
+    <a class="jiebang_btn01" onclick="editInfo();"><span>确认修改</span></a>
+    <a class="jiebang_btn02" style="background: url('__PUBLIC__/last/img/house_button-01.png') -8px -6px no-repeat" onclick="quxiao();"><span>取消</span></a>
+</div>
+</div>
+</form>
+
+</div>
+
+	</div>
+
+	<!-- <p class="warm fjxxxx_warm">
+        温馨提示：<br />
+                如果您进行了解绑操作，生成的信息数据与此账号无关
+    </p> -->
+
+	</div>
+	</div>
+
+
+<include file="Public:common-footer"/>
+<include file="Public:common-script"/>
+
+<script src="__PUBLIC__/js/jquery.KinSlideshow-1.2.1.min.js" type="text/javascript"></script>
+<script src="__PUBLIC__/js/jquery.textSearch-1.0.js" type="text/javascript"></script>
+<script src="__PUBLIC__/js/script.js" type="text/javascript" charset="utf-8"></script>
+<script type="text/javascript" src="__PUBLIC__/style/js/jquery.min.js"></script>
+<script type="text/javascript" src="__PUBLIC__/style/js/selectFilter.js"></script>
+<script type="text/javascript" src="__PUBLIC__/js/artDialog4.1.7/artDialog.source.js?skin=green"></script>
+<script type="text/javascript" src="__PUBLIC__/js/artDialog4.1.7/plugins/iframeTools.js"></script>
+<script type="text/javascript">
+var houseCode = '{$chushi}';
+var itemCode = 0;
+var chargeMonth = '{$now}';
+var buss = 'B';
+var diyi = $("#diyi").val() ? $("#diyi").val() : '';
+
+ $(document).ready(function() {
+     $(".house_tab li").click(function() {
+         $(".house_tab li").eq($(this).index()).addClass("house_cur").siblings().removeClass('house_cur');
+         //$(".house_tabcontent .fangjian").hide().eq($(this).index()).show();
+         diyi = $(this).index();
+     });
+     if(diyi){
+        $(".house_tab li").eq(diyi).click();
+        click_search('',$("#housecode").val(),diyi);
+     }
+ });
+
+
+ function xiugai(){
+     $(".jb").css('display','none');
+     $(".xg").css('display','block');
+     $('#huanbaoka').attr("readonly",false).css('border','1px solid #e6e6e6');
+
+     $('#aaa').selectFilter({
+        callBack : function (val){
+            //返回选择的值
+            console.log(val+'-是返回的值');
+        }
+     });
+     $(".xiala").css('display','block');
+ }
+
+ function quxiao(){
+     /*$(".xg").css('display','none');
+     $(".jb").css('display','block');
+     $('#huanbaoka').attr("readonly",true).css('border','none');
+     $(".xiala").css('display','none');*/
+     window.location.href=location.protocol + '//new.66885890.com/index.php?s=/user/fjxx.html&diyi=' + diyi;
+ }
+
+function plusXing (str,frontLen,endLen) {
+	if(str == null){
+	return '--';
+	}else{
+	var len = str.length-frontLen-endLen;
+	
+	var xing = '';
+	for (var i=0;i<len;i++) {
+	xing+='*';
+	}
+	return str.substring(0,frontLen)+xing+str.substring(str.length-endLen);}
+}
+
+function houseInfo(){
+    var fjbh = $("#housecode").val();
+
+    if(confirm("请确认解绑？本操作不可恢复"))
+    {
+      $("#form2").submit();
+    }
+}
+
+function editInfo(){
+
+	var houseCode = $("#housecode").val();
+    var huanbaoka = $("#huanbaoka").val();
+	//var point = $("#point").text();
+	var houseHoldSize = $("#houseHoldSize").val();
+	 if(confirm("请确认修改？")){
+		$.ajax({
+			url: '{:U("/User/ajax_editInfo")}',
+			type: 'POST',
+			data: {houseCode:houseCode,huanbaoka:huanbaoka,houseHoldSize:houseHoldSize},
+			dataType: 'json',
+			success: function(ret) {
+                if(ret == 1){alert('修改成功');}
+                else{alert('系统繁忙，请稍后再试')}
+				window.location.href=location.protocol + '//new.66885890.com/index.php?s=/user/fjxx.html&diyi=' + diyi;
+			}
+		});
+	}
+}
+
+function click_search(obj, houseCode, a) {
+	$("#housecode").val(houseCode);
+
+	//获取数据
+    $.ajax({
+        url: '{:U("/User/ajax_getHouseInfo")}',
+        type: 'POST',
+		async: false,
+        data: 'houseCode=' + houseCode,
+        dataType: 'json',
+        success: function(res) {
+			if (res != 0) {
+				if (res.error) {
+
+					art.dialog({
+						content: '接口错误，请联系管理员!',
+						time: 2
+					});
+				} else {
+
+				$("#zhuhumingcheng").html(res["OWNERNAME"]);
+				var iSFZ = plusXing(res["PAPERCODE"],4,4);
+				$("#shenfenzhenghao").html(iSFZ);
+				$("#trqbh").html(res["CLOCKNUMBER_D"]);
+				$("#zlsbh").html(res["CLOCKNUMBER_B"]);
+				$("#ruzhushijian").html(res["ENTERDATE"]);
+				$("#zssbh").html(res["CLOCKNUMBER_S"]);
+				$("#rbh").html(res["CLOCKNUMBER_E"]);
+				$("#daijiaoyinhang").html(res["BANK"]);
+				var iNYH = plusXing(res["BANKNUMBER"],4,4);
+				$("#yinhangkahao").html(iNYH);
+				$("#cainuanmianji").html(res["CHARGEAREA"]);
+				$("#fangjiandizhi").html(res["YJDZ"]);
+				$("#fangjianbianhao").html(res["HOUSECODE"]);
+                $("#houseHoldSize").text(res["householdsize"]+"人");
+				if(res["NYHT"] == '已签订'){
+					var nyht = '<span class="weiqianding yiqianding" style="width:127px;">'+res["NYHT"]+'</span>';
+				}
+				else if(res["NYHT"] == '未签订'){
+					var nyht = '<span class="weiqianding" style="width:127px;">'+res["NYHT"]+'</span>';
+				}
+				else{
+					var nyht = '<span class="weiqianding" style="width:127px;">暂无状态</span>';
+				}
+				$("#nyzt").html(nyht);
+				if(res["ZSHT"] == '已签订'){
+					var zsht = '<span class="weiqianding yiqianding"  style="width:127px;">'+res["ZSHT"]+'</span>';
+				}
+				else if(res["ZSHT"] == '未签订'){
+					var zsht = '<span class="weiqianding"  style="width:127px;">'+res["ZSHT"]+'</span>';
+				}
+				else{
+					var zsht = '<span class="weiqianding"  style="width:127px;">未签订</span>';
+				}
+				$("#zszt").html(zsht);
+				if(res["HBHT"] == '已签订'){
+					var hbht = '<span class="weiqianding yiqianding" style="width:127px;">'+res["HBHT"]+'</span>';
+				}
+				else if(res["HBHT"] == '未签订'){
+					var hbht = '<span class="weiqianding" style="width:127px;">'+res["HBHT"]+'</span>';
+				}
+				else{
+					var hbht = '<span class="weiqianding" style="width:127px;"></span>';
+				}
+				$("#hbht").html(hbht);
+				/*$("#hbzt").html('<span class="weiqianding">暂无状态</span>');*/
+			}
+			}
+        }
+    });
+
+
+	//获取居住人数、环保积分
+    $.ajax({
+        url: '{:U("/User/ajax_getInfoNumber")}',
+        type: 'POST',
+        data: 'houseCode=' + houseCode,
+        dataType: 'json',
+        success: function(ret) {
+		     $.each(ret, function(i, item){
+				if(item.houseHoldSize == null){
+                    $("#houseHoldSize").val("0人");
+                }
+                else{
+                    $("#houseHoldSize").val(item.houseHoldSize+"人");
+                }
+				//$(".filter-list li").eq(item.houseHoldSize-1).addClass("filter-selected");
+				$("#point").val(item.point);
+                $("#huanbaoka").val(item.cardnum);
+			});
+        }
+    });
+
+	/*//获取数据
+    $.ajax({
+        url: '{:U("/User/ajax_getHotNumber1")}',
+        type: 'POST',
+        data: 'houseCode=' + houseCode,
+        dataType: 'json',
+        success: function(res) {
+			 var jsonLength=0;
+			 for (var i in res) {
+				jsonLength++;
+			 }
+
+		    if(res == 0){
+				$("#hotbiao").html('暂无数据');
+				$("#hotbiao_1").html('暂无数据');
+			}
+			if (res != 0) {
+				if (res.error) {
+
+					art.dialog({
+						content: '接口错误，请联系管理员!',
+						time: 2
+					});
+				} else {
+					//var sj="<?php echo $sj;?>";
+					var sj="2017-2018";
+					if(jsonLength == 1){
+
+						$("#title").html(sj+"<span style='color:#FF3636;font-weight: bold;'>采暖计量热表</span>初始读数：");
+						document.getElementById("jiliang_1").style.display="none";
+
+						//$("#hotbiao").html(res[0]["RJLCSS"]+' kwh');
+						if(res[0]["RJLCSS"] == '' || res[0]["RJLCSS"] == null){
+							$("#hotbiao").html('暂无数据');
+						}
+						else{
+							$("#hotbiao").html(res[0]["RJLCSS"]+' kwh');
+						}
+						if(res[0]["RJLZZS"] == '' || res[0]["RJLZZS"] == null){
+							$("#hotnowbiao_2").html('暂无数据');
+						}
+						else{
+							$("#hotnowbiao_2").html(res[0]["RJLZZS"]+' kwh');
+						}
+
+						//$("#hotbiao").html('暂无数据');
+					}
+					if(jsonLength == 2){
+						$("#hotbiao").html(res[0]["RJLCSS"]+' kwh');
+						//$("#hotbiao").html('暂无数据');
+						document.getElementById("jiliang_1").style.display="block";
+
+						$("#title").html(sj+"<span style='color:#FF3636;font-weight: bold;'>采暖计量热表</span>（一）初始读数：");
+						//$("#hotbiao_1").html(res[1]["RJLCSS"]+' kwh');
+						if(res[1]["RJLCSS"] == '' || res[1]["RJLCSS"] == null){
+							$("#hotbiao_1").html('暂无数据');
+						}
+						else{
+							$("#hotbiao_1").html(res[1]["RJLCSS"]+' kwh');
+						}
+						if(res[1]["RJLZZS"] == '' || res[1]["RJLZZS"] == null){
+							$("#hotnowbiao_1").html('暂无数据');
+						}
+						else{
+							$("#hotnowbiao_1").html(res[1]["RJLZZS"]+' kwh');
+						}
+
+					}
+
+
+			}
+
+			}
+        }
+    });
+
+
+	//获取计量数据
+    $.ajax({
+        url: '{:U("/User/ajax_getMeterNumber")}',
+        type: 'POST',
+        data: 'houseCode=' + houseCode,
+        dataType: 'json',
+        success: function(res) {
+			if(res == null){
+				document.getElementById("rjlds").style.display="none";
+				document.getElementById("rjly").style.display="none";
+			}
+			else{
+				document.getElementById("rjlds").style.display="block";
+				document.getElementById("rjly").style.display="block";
+			}
+			 var jsonLength=0;
+			 var nowLength=1;
+			 var myDate = new Date();
+			 var dqnd	= myDate.getFullYear();
+			 for (var i in res) {
+				var yr = res[i]['metetTime'].substr(5,5);
+				var nd = res[i]['metetTime'].substr(0,4);
+				var yue = res[i]['metetTime'].substr(5,2);
+				var ri = res[i]['metetTime'].substr(8,2);
+
+				if(yr == '01-15' || yr == '02-15' || yr == '03-15'){
+					nd = res[i]['metetTime'].substr(0,4)-1;
+				}
+
+				//if(nd == dqnd){
+
+
+					var rbs = res[i]['nowNum'];
+
+					if(rbs == ''){
+						rbs = '暂无数据';
+					}
+					var ljrl = res[i]['allTotal'];
+					if(ljrl == ''){
+						ljrl = '暂无数据';
+					}
+					var percent = res[i]['percent'];
+					if(percent == ''){
+						percent = '暂无数据';
+					}
+					else{
+
+						percent = (Math.round(percent * 100) / 100);
+					}
+
+					var percent_1 = res[i]['percent_1'];
+					if(percent_1 == ''){
+						percent_1 = '暂无数据';
+					}
+					else{
+
+						percent_1 = (Math.round(percent_1 * 100) / 100);
+					}
+
+					var sj = parseInt(nd)+parseInt(1);
+					var key = parseInt(i)+parseInt(1);
+					var cnnd = nd+'-'+sj+'采暖季'+yue+"月"+ri+"日热表读数：";
+
+					document.getElementById("jl_"+key).style.display="block";
+
+					$("#jlsj_"+key).html(cnnd);
+					$("#dyds_"+key).html(rbs);
+					$("#ljrl_"+key).html(ljrl);
+
+					$("#mj_"+key).html(percent+'%');
+					if(i > 0){
+						flag = i-1;
+						if(res[i]['metetTime'] == res[flag]['metetTime']){
+							percent = Number(res[i]['percent'] + res[flag]['percent']);
+							percent_1 = Number(res[i]['percent_1'] + res[flag]['percent_1']);
+							nowLength++;
+						}
+					}
+
+				}
+				jsonLength++;
+			 //}
+			 var len = ++i;
+
+			 if(len < 5){
+
+				for(var m = 5;m > len;m--){
+
+					document.getElementById("jl_"+m).style.display="none";
+				}
+			 }
+
+			 for(var k=1;k<6;k++){
+				if(k == jsonLength){
+					$(".yuan"+k).show();
+
+					if(percent > 100){
+						if(k == 1){
+							$(".yuan"+k).css('background','url(/public/images/yuan5_5.png) no-repeat');
+						}
+						if(k == 2){
+							$(".yuan"+k).css('background','url(/public/images/yuan4_4.png) no-repeat');
+						}
+						if(k == 4){
+							$(".yuan"+k).css('background','url(/public/images/yuan2_2.png) no-repeat');
+						}
+						if(k == 5){
+							$(".yuan"+k).css('background','url(/public/images/yuan_1.png) no-repeat');
+						}
+
+					}
+
+					$("#yuan"+k).html(percent+'%');
+					$("#ts1").html(percent_1+'%');
+				}
+				else{
+					$(".yuan"+k).hide();
+				}
+
+			 }
+
+        }
+    });
+
+
+	//获取数据
+    $.ajax({
+        url: '{:U("/User/ajax_getHotNowNumber")}',
+        type: 'POST',
+        data: 'houseCode=' + houseCode,
+        dataType: 'json',
+        success: function(res) {
+		    if(res == null){
+				$("#hotnowbiao").html('暂无数据');
+			}
+			if (res != 0) {
+				if (res.error) {
+
+					art.dialog({
+						content: '接口错误，请联系管理员!',
+						time: 2
+					});
+				}
+				else {
+
+					$("#hotnowbiao").html(res["ENERGY"]+' kwh');
+
+				}
+			}
+
+        }
+    });
+
+    $.ajax({
+        url: '{:U("/User/ajax_getOweCharge")}',
+        type: 'POST',
+        data: 'houseCode=' + houseCode,
+        dataType: 'json',
+        success: function(res) {
+            if (res != 0) {
+                if (res.error) {
+                    $("#qianfeiqingkuang").html('本月没有数据!');
+					$("#quxian").html('本月没有数据');
+                } else {
+					var shui_qian = (res[0]['ZQYSFZJ'] - res[0]['DYSF']).toFixed(2);
+					if(shui_qian < 0){
+						shui_qian = 0;
+					}
+					var ranqi_qian = (res[0]['ZQYRQFZJ'] - res[0]['DYRQF']).toFixed(2);
+					if(ranqi_qian < 0){
+						ranqi_qian = 0;
+					}
+					var dysf = parseFloat(res[0]['DYSF']) + parseFloat(res[0]['DYSF2']) + parseFloat(res[0]['DYSF3']);
+					var dysfyl = parseFloat(res[0]['SFYL']) + parseFloat(res[0]['SFYL2']) + parseFloat(res[0]['SFYL3']);
+					var dyrqf = parseFloat(res[0]['DYRQF']) + parseFloat(res[0]['DYRQF2']) + parseFloat(res[0]['DYRQF3']);
+					var dyrqfyl = parseFloat(res[0]['RQYL']) + parseFloat(res[0]['RQYL2']) + parseFloat(res[0]['RQYL3']);
+                    $("#shui").html(dysf);
+					$("#shuiliang").html(dysfyl);
+                    $("#shui_qian").html(shui_qian);
+					$("#shui_benjin").html(res[0]['ZQYSF']);
+					$("#shui_zhina").html(res[0]['ZQYSFZNJ']);
+                    $("#ranqi").html(dyrqf);
+					$("#ranqiliang").html(dyrqfyl);
+                    $("#ranqi_qian").html(ranqi_qian);
+					$("#ranqi_benjin").html(res[0]['ZQYRQF']);
+					$("#ranqi_zhina").html(res[0]['ZQYRQFZNJ']);
+
+                    itemCode = $("#itemCode").val();
+                    chargeMonth = $("#chargeMonth").val();
+                    buss = $("#buss").val();
+
+                }
+            }
+			else{
+				$("#shui").html('无数据...');
+				$("#shuiliang").html('无数据...');
+				$("#shui_qian").html('无数据...');
+				$("#ranqi").html('无数据...');
+				$("#ranqiliang").html('无数据...');
+				$("#ranqi_qian").html('无数据...');
+				$("#shui_benjin").html('无数据...');
+				$("#shui_zhina").html('无数据...');
+				$("#ranqi_benjin").html('无数据...');
+				$("#ranqi_zhina").html('无数据...');
+			}
+        }
+    });*/
+
+}
+</script>
+
+<script>
+$(function() {
+    click_search('#houseCode1', houseCode, ''); //载入默认欠费
+});
+</script>
+</body>
+</html>

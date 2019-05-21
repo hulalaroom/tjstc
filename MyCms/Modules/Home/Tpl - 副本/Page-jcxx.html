@@ -1,0 +1,327 @@
+<include file="Public:header" />
+<div class="main_block"> <include file="Public:top" />
+  <div class="content_block">
+    <div class="left_side fl">
+      <div class="l_menu"> 
+		<div class="left_other_menu">
+         {~$cat=get_child($cate,$pid);}
+          <volist name="cat" id="c" key="k">
+          <dl <eq name='c.id' value='$id'> class="hover"</eq>>
+            <dt><a href="<notempty name='c.url'>{$c.url}<else/>{:U($c['Model']['name'].'/'.$c['tpl'],'id='.$c['id'])}</notempty>"><img src="{$c.pic}"/></a>
+              <!--<img src="{$c.cat_pic}"/>-->
+            </dt>
+          <dd> <a href="<notempty name='c.url'>{$c.url}<else/>{:U($c['Model']['name'].'/'.$c['tpl'],'id='.$c['id'])}</notempty>">{$c.title}</a> <span>{$c.summary}</span> </dd>
+        </dl>
+          </volist></div>
+      </div>
+        <include file="Public:left" />
+    </div>
+      <div class="main_con fr">
+      <div class="bread_nav">
+        <div class="l fl"></div>
+        <div class="m fl" style="line-height:30px;"> <span class="list_style"></span> <span>您当前的位置:</span> {$nav} </div>
+        <div class="r fl"></div>
+      </div>
+	  <form name="form2" id="form2" action="{:U('Page/save')}" method="post">
+      <div class="artical">
+          <div class="tab_mes" style="clear:both;margin-bottom: 30px;">
+                <table class="b_5890" cellpadding="" cellspacing="1" bgcolor="#e5e5e5" id="hover_000">
+                    	<tbody>
+                            <tr>
+                        	<th width="10%">序号</th>
+                            <!--<th width="30%">房间</th>-->              
+                            <th>房间地址</th>
+                        </tr>
+                        <volist name="houselist" id="hlist" key="k">
+                            <tr onclick="javascript:click_search(this,'{$hlist.houseCode}')" <eq name="k" value="1"> class="hover_000"</eq>>
+                        	<td>{$k}</td>
+                            <!--<td>{$hlist.houseName}</td>-->                       
+                        <td>{$hlist.address}<input type="hidden" id="housecode" name="housecode" value="{$hlist.houseCode}"/></td>
+                        </tr>
+                        </volist>
+                    </tbody></table>               
+                </div>
+          	<notempty name="fjxx['error']">
+            <div class="bus_title fl">
+          <h2>接口错误，请联系管理员!</h2>
+        </div>
+            
+            <else/>
+        <!-- begin -->
+        <div class="bus_title fl">
+          <h2>基础信息:</h2>
+        </div>
+        <div class="mar">
+		
+          <table width="701" class="sea_table">
+          <!-- start update by wangshipeng 2014-05-28 -->
+		  <!-- 
+            <tr class="sea_trd" width="118">
+              <th>小区编号</th>
+              <td id="xiaoqubianhao"  width="300">{$fjxx['1']}&nbsp;</td>
+              <th width="118">小区名称</th>
+              <td id="xiaoqumingcheng" width="162">{$fjxx['2']}&nbsp;</td>
+            </tr>
+            <tr class="sea_trs">
+              <th>大楼编号</th>
+              <td id="daloubianhao">{$fjxx['3']}&nbsp;</td>
+              <th>大楼名称</th>
+              <td id="daloumingcheng">{$fjxx['4']}&nbsp;</td>
+            </tr>
+            <tr class="sea_trd">
+              <th>单元号</th>
+              <td id="danyuanhao">{$fjxx['5']}&nbsp;</td>
+              <th>楼&nbsp;&nbsp;&nbsp;&nbsp;层</th>
+              <td id="louceng">{$fjxx['6']}&nbsp;</td>
+            </tr>
+            <tr class="sea_trs">
+              <th>门&nbsp;牌&nbsp;号</th>
+              <td id="menpaihao">{$fjxx['7']}&nbsp;</td>
+			 -->
+			<!-- end update by wangshipeng 2014-05-28  -->
+			<tr class="sea_trs">
+              <th>住户名称</th>
+              <td colspan="3" id="zhuhumingcheng">{$fjxx['1']}&nbsp;</td>
+            </tr>
+            <tr class="sea_trd">
+              <th>身份证号</th>
+              <td id="shenfenzhenghao">{$fjxx['2']}&nbsp;</td>
+              <th>联&nbsp;系&nbsp;人</th>
+              <td id="lianxiren"><span id="linkman">{$fjxx['6']}</span>&nbsp;<input type="hidden" name="oldlianxiren" id="oldlianxiren" value="{$fjxx['6']}"/></td>
+            </tr>
+            <tr class="sea_trs">
+              <th>工作单位</th>
+              <td colspan="3" id="gongzuodanwei"><span id="workunit">{$fjxx['3']}</span>&nbsp;&nbsp;<input type="hidden" name="oldgongzuodanwei" id="oldgongzuodanwei" value="{$fjxx['3']}"/></td>
+            </tr>
+            <tr class="sea_trd">
+              <th>入住时间</th>
+              <td id="ruzhushijian">{$fjxx['5']}&nbsp;</td>
+              <th>联系电话</th>
+              <td id="lianxidianhua"><span id="linktel">{$fjxx['7']}</span>&nbsp;<input type="hidden" name="oldlianxidianhua" id="oldlianxidianhua" value="{$fjxx['7']}"/></td>
+            </tr>
+            <tr class="sea_trs">
+              <th>邮寄地址</th>
+              <td colspan="3" id="youjidizhi"><span id="mailingaddress">{$fjxx['4']}</span>&nbsp;<input type="hidden" name="oldyoujidizhi" id="oldyoujidizhi" value="{$fjxx['4']}"/></td>
+            </tr>
+            <tr class="sea_trd">
+              <th>代缴银行</th>
+              <td id="daijiaoyinhang">{$fjxx['8']}&nbsp;</td>
+              <th>银行卡号</th>
+              <td id="yinhangkahao">{$fjxx['9']}&nbsp;</td>
+            </tr>
+            <tr class="sea_trs">
+              <th>合同编号</th>
+              <td colspan="3" id="hetongbianhao">{$fjxx['10']}&nbsp;</td>
+            </tr>
+            <tr class="sea_trd">
+              <th>采暖收费面积</th>
+              <td id="cainuanmianji">{$fjxx['11']}&nbsp;</td>
+              <th>采暖收费标准</th>
+              <td id="cainuanbiaozhun">{$fjxx['12']}&nbsp;</td>
+            </tr>
+			<tr class="sea_trs">
+              <th>自来水表号</th>
+              <td id="cainuanmianji">{$fjxx['14']}&nbsp;</td>
+              <th>天然气表号</th>
+              <td id="cainuanbiaozhun">{$fjxx['15']}&nbsp;</td>
+            </tr>
+			<notempty name='housedetail'>
+				<tr class="sea_trs">
+				  <td colspan="4" align="center">
+					  <img src="/Public/images/edit.gif" alt="编辑" id="click" style="border:0px;"/>&nbsp;
+					  <input type="image" src="/Public/images/save.gif" id="baocun" style="display:none"/>&nbsp;
+					  <img src="/Public/images/cancle.gif" alt="取消" id="quxiao" style="display:none; border:0px;"/>
+				  </td>
+				</tr>
+			</notempty>
+          </table>
+		
+        </div>
+        </notempty>
+        <!-- end -->
+      </div>
+    </div>
+  </form>
+  </div>
+</div>
+  <include file="Public:footer" />
+</body>
+</html>
+<script>
+function click_search(obj, houseCode) {
+   $(obj).addClass('hover_000').siblings().removeClass('hover_000');
+   document.getElementById("click").style.display = "";
+   document.getElementById("baocun").style.display = "none";
+   document.getElementById("quxiao").style.display = "none";
+	//清空表格信息
+	/*  $("#xiaoqubianhao").html('');
+            $("#xiaoqumingcheng").html('');
+            $("#daloubianhao").html('');
+            $("#daloumingcheng").html('');
+            $("#danyuanhao").html('');
+            $("#louceng").html('');
+            $("#menpaihao").html('');
+            $("#zhuhumingcheng").html('');
+            $("#shenfenzhenghao").html('');
+            $("#gongzuodanwei").html('');
+            $("#youjidizhi").html('');
+            $("#ruzhushijian").html('');
+            $("#lianxiren").html('');
+            $("#lianxidianhua").html('');
+            $("#daijiaoyinhang").html('');
+            $("#yinhangkahao").html('');
+            $("#hetongbianhao").html('');
+            $("#cainuanmianji").html('');
+            $("#zhilengmianji").html('');
+            $("#cainuanbiaozhun").html('');
+            $("#zhilengbiaozhun").html('');*/
+	//获取数据
+    $.ajax({
+        url: '{:U("User/ajax_getHouse")}',
+        type: 'POST',
+        data: 'houseCode=' + houseCode,
+        dataType: 'json',
+        success: function(res) {
+			//
+			 
+			if (res != 0) {
+                    if (res.error) {
+                        
+                        art.dialog({
+                            content: '接口错误，请联系管理员!',
+                            time: 2
+                        });
+                    } else {
+           /* $("#xiaoqubianhao").html(res[1]);
+            $("#xiaoqumingcheng").html(res[2]);
+            $("#daloubianhao").html(res[3]);
+            $("#daloumingcheng").html(res[4]);
+            $("#danyuanhao").html(res[5]);
+            $("#louceng").html(res[6]);
+            $("#menpaihao").html(res[7]);*/
+            $("#zhuhumingcheng").html(res["OWNERNAME"]);
+            $("#shenfenzhenghao").html(res["PAPERCODE"]);
+            $("#gongzuodanwei").html(res["WORKUNIT"]);
+            $("#youjidizhi").html(res["ADDRESS"]);
+            $("#ruzhushijian").html(res["ENTERDATE"]);
+            $("#lianxiren").html(res["CONTACTMAN"]);
+            $("#lianxidianhua").html(res["CONTACTPHONE"]);
+            $("#daijiaoyinhang").html(res["BANK"]);
+            $("#yinhangkahao").html(res["BANKNUMBER"]);
+            $("#hetongbianhao").html(res["COMPACT_ID"]);
+            $("#cainuanmianji").html(res["HCHARGEAREA"]);
+            /* $("#zhilengmianji").html(res[19]); */
+            $("#cainuanbiaozhun").html(res["HSTANDARDNAME"]);
+			
+			}
+			}
+        }
+    });
+
+}   
+</script>    
+
+<script type="text/javascript">
+
+document.getElementById("click").onclick=function(){
+
+	document.getElementById("click").style.display = "none";
+	document.getElementById("baocun").style.display = "";
+	document.getElementById("quxiao").style.display = "";
+	
+    var text1=document.getElementById("linkman");
+	var text2=document.getElementById("linktel");
+	var text3=document.getElementById("workunit");
+	var text4=document.getElementById("mailingaddress");
+    var val1=text1.innerHTML;
+	
+	var val2=text2.innerHTML;
+	
+	var val3=text3.innerHTML;
+	
+	var val4=text4.innerHTML;
+
+    text1.innerHTML="<input type='text' id='lxr' name='lxr' style='height:20px;' size='30' value="+val1+">";
+    document.getElementById("linkman").addEventListener("blur",function(e){
+        text1.innerHTML=document.getElementById("lxr").value;
+    });
+	text2.innerHTML="<input type='text' id='lxdh' name='lxdh' style='height:20px;' size='30' value="+val2+">";
+    document.getElementById("linktel").addEventListener("blur",function(e){
+        text2.innerHTML=document.getElementById("lxdh").value;
+    });
+	text3.innerHTML="<input type='text' id='gzdw' name='gzdw' style='height:20px;' size='30' value="+val3+">";
+    document.getElementById("workunit").addEventListener("blur",function(e){
+        text3.innerHTML=document.getElementById("gzdw").value;
+    });
+	text4.innerHTML="<input type='text' id='yjdz' name='yjdz' style='height:20px;' size='30' value="+val4+">";
+    document.getElementById("mailingaddress").addEventListener("blur",function(e){
+        text4.innerHTML=document.getElementById("yjdz").value;
+    });
+};
+
+document.getElementById("quxiao").onclick=function(){
+
+	document.getElementById("click").style.display = "";
+	document.getElementById("baocun").style.display = "none";
+	document.getElementById("quxiao").style.display = "none";
+	
+	var value1=document.getElementById("oldlianxiren").value;
+	var value2=document.getElementById("oldlianxidianhua").value;
+	var value3=document.getElementById("oldgongzuodanwei").value;
+	var value4=document.getElementById("oldyoujidizhi").value;
+	
+    document.getElementById("linkman").innerHTML=""+value1+"";
+	document.getElementById("linktel").innerHTML=""+value2+"";
+	document.getElementById("workunit").innerHTML=""+value3+"";
+	document.getElementById("mailingaddress").innerHTML=""+value4+"";
+};
+</script>
+
+<script type="text/javascript" src="__PUBLIC__/js/formValidator-4.1.3.min.js"></script>
+<script type="text/javascript" src="__PUBLIC__/js/formvalidatorregex.js"></script>
+<script type="text/javascript">
+ 
+    $(document).ready(function(){   
+        //提供回调函数，提供提交返回结果的处理   
+        var options = {
+            //            beforeSubmit: showRequest,
+            //提交前处理 
+            success: showResponse,
+            //处理完成 
+            resetForm: false,
+            dataType: 'json'
+        };    
+        $('#form2').submit(function() {
+            if ($.formValidator.pageIsValid('1')==true) 
+            { 
+                $(this).ajaxSubmit(options);
+                return false; 
+            } 
+
+          
+        });
+       
+        //初始化验证插件，如果提交出错，则弹出对话框，如果正确，则通过ajax提交表单请求。
+        $.formValidator.initConfig({autotip:true,formID:"form2",
+            onsuccess:function(msg){
+              
+                return false;},
+            onError:function(msg){}
+
+        });
+         
+    }); 
+    
+    function showResponse(res) {
+        //    alert(res.status);
+        art.dialog({
+            title: res.title,
+            content: res.message,
+            time: res.time
+        });
+        if (res.url) {
+            window.location.href = res.url;
+        }
+    }  
+</script>
+    

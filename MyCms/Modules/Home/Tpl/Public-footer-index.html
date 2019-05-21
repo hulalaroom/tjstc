@@ -1,0 +1,72 @@
+ <!--友情链接-->
+<div style="text-align:center;margin-top:5px;margin-bottom:5px;">
+	
+</div>
+<!--友情链接-->
+<div class="foot_block">
+  <div class="foot_nav">
+    <div> 
+	 <a href="http://www.eco-city.gov.cn/" title="中国-新加坡天津生态城" target="_blank"><img src="/Public/images/gwh-logo.jpg" alt="中国-新加坡天津生态城"></img></a>
+	 <a href="http://www.tjeco-city.com/cn/index.asp" title="天津生态城投资开发有限公司" target="_blank"><img src="/Public/images/stc-logo.jpg" alt="天津生态城投资开发有限公司"></img></a>
+	 <a href="http://www.tjeco.org/" title="中新天津生态城网上社区" target="_blank"><img src="/Public/images/sq-logo.jpg" alt="中新天津生态城网上社区"></img></a>
+	 <a href="http://www.ecodreamers.cn" title="生态梦网" target="_blank"><img src="/Public/images/stmw-logo.jpg" alt="生态梦网"></img></a>
+	 	<a href="http://www.tianjineco-city.com/" title="合资公司" target="_blank"><img src="/Public/images/tz-logo.jpg" alt="合资公司"></img></a>
+	</div>
+  </div>
+  <div class="foot_mes"> {$Think.config.site_tongji}<br />
+    {$Think.config.site_icp}</div>
+</div>
+
+<neq name="ACTION_NAME" value="login">
+<script type="text/javascript">
+$(function(){
+	
+	// 页面浮动面板
+	$("#floatPanel > .ctrolPanel > a.arrow").eq(0).click(function(){
+		$("html,body").animate({scrollTop :0}, 800);
+		return false;
+	});
+	$("#floatPanel > .ctrolPanel > a.arrow").eq(1).click(function(){
+		$("html,body").animate({scrollTop : $(document).height()}, 800);
+		return false;
+	});
+
+	var objPopPanel = $("#floatPanel > .popPanel");	
+	var w = objPopPanel.outerWidth();
+	
+	$("#floatPanel > .ctrolPanel > a.qrcode").bind({mouseover:function(){
+		objPopPanel.css("width","0px").show();
+		objPopPanel.animate({"width" : w + "px"},300);
+		return false;
+	},mouseout : function(){
+			objPopPanel.animate({"width" : "0px"},300);
+			return false;
+			objPopPanel.css("width",w + "px");
+		}	
+	});
+	
+});
+</script>
+
+<div id="floatPanel">
+
+	<div class="ctrolPanel">
+		<a class="arrow" href="#"><span>顶部</span></a>
+		<a class="contact" href="{:U('Guestbook/lists','id=11')}" target="_blank"><span>建议</span></a>
+		<a class="qrcode" href="#"><span>微信二维码</span></a>
+		<a class="qqkf" href="#" title="在线客服"><span></span></a>
+		<a class="arrow" href="#"><span>底部</span></a>
+	</div>
+	
+	<div class="popPanel">
+		<div class="popPanel-inner">
+			<div class="qrcodePanel"><img src="__PUBLIC__/images/weixin.png" /><span>扫描二维码关注我为好友</span></div>
+			<div class="arrowPanel">
+				<div class="arrow01"></div>
+				<div class="arrow02"></div>
+			</div>
+		</div>
+	</div>
+	
+</div>
+</neq>

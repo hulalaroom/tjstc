@@ -1,0 +1,107 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href='__PUBLIC__/css/common.css'>
+<script type="text/javascript" src="__PUBLIC__/js/jquery-1.7.1.min.js"></script>
+<script type="text/javascript" src="__PUBLIC__/js/base.js"></script>
+<title>生态城2014年物业满意度调查问卷</title>
+</head>
+<body>
+<div id="append_parent"></div>
+<div class="container" id="cpcontainer">
+  <div id="contentHeader">
+    <h3>生态城2014年物业满意度调查问卷</h3>
+    <div class="searchArea">
+      <ul class="action left" >
+		<volist name="houselist" id="hlist" key="k">
+			<li class="current"><a href="__URL__/infor/housecode/{$hlist.houseCode}/id/{$id}"  class="actionBtn"title="{$hlist.address}"><span>{$hlist.address|msubstr=0,5}</span></a></li>
+		</volist>
+        <li class="current"><a href="__URL__/result" class="actionBtn"><span>返回</span></a></li>
+      </ul>
+      <div class="search right"> </div>
+    </div>
+  </div>
+		<table class="form_table">
+			<tr>
+			  <td colspan="6"><b>业主信息</b></td>
+			</tr>
+			<tr>
+			  <td width="12%">房间地址</td>
+			  <td width="20%">{$list['roomname']}</td>
+			  <td width="12%"></td>
+			  <td width="20%"></td>
+			  <td width="12%"></td>
+			  <td width="20%"></td>
+			</tr>
+			<tr>
+			  <td width="12%">业主姓名</td>
+			  <td width="20%">{$list['username']}&nbsp;</td>
+			  <td width="12%">联系电话</td>
+			  <td width="20%">{$list['phone']}&nbsp;</td>
+			  <td width="12%">小区名称</td>
+			  <td width="20%">
+			  	<eq name="list.housename" value="1001">红树湾花园</eq>
+				<eq name="list.housename" value="5011">鲲贝园</eq>
+				<eq name="list.housename" value="5005">世茂鲲玉园</eq>
+				<eq name="list.housename" value="5009">新新园</eq>
+				<eq name="list.housename" value="5006">万科锦庐园</eq>
+				<eq name="list.housename" value="5007">天和园</eq>
+				<eq name="list.housename" value="5004">和畅园公屋1A</eq>
+				<eq name="list.housename" value="5010">吉宝季景华庭</eq>
+				<eq name="list.housename" value="5003">美林园</eq>
+				<eq name="list.housename" value="5008">景杉园</eq>
+				<eq name="list.housename" value="5013">荣馨园</eq>
+			  	&nbsp;
+			  </td>
+			  
+			</tr>
+			<tr>
+			  <td width="12%">联系方式</td>
+			  <td width="20%">{$list['telephone']}&nbsp;</td>
+			  <td width="12%">房屋状态</td>
+			  <td width="20%">{$list['status']}&nbsp;</td>
+			  <td width="12%">验证码</td>
+			  <td width="20%">{$list['code']}&nbsp;</td>
+			</tr>
+			
+			<tr>
+			  <td width="12%">投票时间</td>
+			  <td width="20%">{$list['updatetime']|date="Y-m-d H:i:s",###}&nbsp;</td>
+			  <td width="12%">留言</td>
+			  <td width="20%">{$list['content']}&nbsp;</td>
+			  <td width="12%"></td>
+			  <td width="20%"></td>
+			</tr>
+			<tr>
+			  <td colspan="6"><b>投票明细</b></td>
+			</tr>
+			<tr>
+			  <td width="12%">综合服务表现</td>
+			  <td width="20%">{$list['firchoose']}&nbsp;</td>
+			  <td width="12%">环境清洁服</td>
+			  <td width="20%">{$list['secchoose']}&nbsp;</td>
+			  <td width="12%">绿化景观服务</td>
+			  <td width="20%">{$list['thichoose']}&nbsp;</td>
+			</tr>
+			<tr>
+			  <td width="12%">治安安全管理</td>
+			  <td width="20%">{$list['fouchoose']}&nbsp;</td>
+			  <td width="12%">停车场及车辆管理</td>
+			  <td width="20%">{$list['fifchoose']}&nbsp;</td>
+			  <td width="12%">电梯、公共照明服务</td>
+			  <td width="20%">{$list['sixchoose']}&nbsp;</td>
+			</tr>
+			<tr>
+			  <td width="12%">社区文化活动</td>
+			  <td width="20%">{$list['sevchoose']}&nbsp;</td>
+			  <td width="12%"></td>
+			  <td width="20%">&nbsp;</td>
+			  <td width="12%"></td>
+			  <td width="20%">&nbsp;</td>
+			</tr>
+		</table>
+		
+</div>
+</body>
+</html>

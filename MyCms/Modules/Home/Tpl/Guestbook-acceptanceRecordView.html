@@ -1,0 +1,105 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<include file="Public:common-head"/>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="__PUBLIC__/css/redefine.css">
+<link rel="stylesheet" type="text/css" href="__PUBLIC__/css/layout.css">
+<link rel="stylesheet" type="text/css" href="__PUBLIC__/last/css/tipso.min.css">
+<link rel="stylesheet" type="text/css" href="__PUBLIC__/css/onlineRepairCss.css">
+<script src="http://libs.baidu.com/jquery/1.7.2/jquery.min.js"></script>
+<script src="https://cdn.staticfile.org/html5shiv/r29/html5.min.js"></script>
+<script src="https://cdn.staticfile.org/respond.js/1.4.2/respond.min.js"></script>
+<script src="js/mycss.js"></script>
+<script src="laydate/laydate.js"></script>
+</head>
+<body style="font-family:'Microsoft YaHei'">
+<include file="Public:common-toppart"/>
+<div class="zxbx_ts_banner1">
+	<div class="content">
+		<p class="jiaofei_banner_01 font_yinying" style="color: #fff" >在线报修</p>
+		<p class="jiaofei_banner_03 "></p>
+		<p class="jiaofei_banner_02 font_yinying" style="color: #fff" >在线报修便捷您的日常生活</p>
+	</div>
+</div>	
+</div>
+<div class="content_bg">
+		<div class="content history_content">
+			<p class="dqwz history_dqwz" style="color:#999;font-size: 16px;">当前位置：<a href="__GROUP__" style="color:#999">首页
+				</a> &nbsp;&nbsp;&gt;&nbsp;&nbsp;<a href="{:U('User/ywbl')}" style="color:#999">业务办理</a> &nbsp;&nbsp;&gt;&nbsp;&nbsp;
+				<a href="/index.php?s=/business/lists/id/10.html" style="color:#999">
+				<span class="green" id="type">受理记录</span>
+				</a>
+			</p>
+			<div class="wodeyewu_content clearfix">
+				<div class="wodeyewu_content_box01" style="border: 1px solid #10c55c;">
+					<div class="yewu_table clearfix">
+						<ul class="yewuleft">
+							<li>申请人</li>
+							<li>联系电话</li>
+							<li>申请时间</li>
+							<li>状态</li>
+							<li>涉及行业</li>
+							<li>涉及种类</li>
+							<li>办理类别</li>
+							<li>附件</li>
+							<li>内容</li>
+							<li>回复内容</li>
+							<li>回复时间</li>
+						</ul>
+						<volist name="shouli" id="sl">
+							<ul class="yewuright">
+								<li>{$sl.proposer}</li>
+								<li>{$sl.contactnumber}</li>
+								<li>{$sl.operatedate}</li>
+								<li>{$sl.state}</li>
+								<li>{$sl.involveindustry}</li>
+								<li>{$sl.involvetype}</li>
+								<li>{$sl.handletype}</li>
+								<li>
+								<if condition="$sl.pic1 neq ''">
+									<a href="http://www.66885890.com:9898/resources/{$sl.pic1}" target="view_window" style="text-decoration:none">附件1　</a>
+								</if>
+								<if condition="$sl.pic2 neq ''">
+									<a href="http://www.66885890.com:9898/resources/{$sl.pic2}" target="view_window" style="text-decoration:none">附件2　</a>
+								</if>
+								<if condition="$sl.pic3 neq ''">
+									<a href="http://www.66885890.com:9898/resources/{$sl.pic3}" target="view_window" style="text-decoration:none">附件3　</a>
+								</if>
+								</li>
+								<li style=" font-size: 20px; width:100%;line-height: 50px; text-align: center;position:static;" id="tip1" data-tipso="{$sl.Content}">{$sl.Content|msubstr=0,20,'utf-8',true}...</li>
+								<li>{$sl.answercontent}</li>
+								<li>{$sl.answertime}</li>
+							</ul>
+						</volist>
+					</div>
+				</div>
+			</div>			
+		</div>		
+</div>	
+</div>
+<include file="Public:common-footer"/>
+<include file="Public:common-script" />
+<script type="text/javascript" src="js/jquery.min.js"></script>
+<script type="text/javascript" src="__PUBLIC__/last/js/tipso.min.js"></script>
+<script type="text/javascript">
+$('label').click(function(){
+	var checkedTrue = $('.checkedTrue').is(':checked');
+	if(checkedTrue ==true){
+		$('.checks').addClass('checked')
+	}else{
+		$('.checks').removeClass('checked')
+	}	
+})
+</script>
+<script>
+$(function() {
+	$('#tip1').tipso({
+		useTitle: false,
+		background: '#13d463'
+	});
+});
+</script>
+</body>
+</html>

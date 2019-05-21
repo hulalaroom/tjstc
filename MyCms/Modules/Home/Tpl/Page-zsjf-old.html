@@ -1,0 +1,250 @@
+<include file="Public:header"/>
+
+<link type="text/css" rel="stylesheet" href="__PUBLIC__/css/pay.css"/>
+
+<div class="main_block">
+  <include file="Public:top"/>
+  <div class="content_block">
+    <div class="left_side fl">
+      <div class="l_menu">
+      	 <!--上级菜单-->
+		{~$cat=get_info($cate,$pid);}
+		 <volist name="cat" id="m" key="l">
+			<a href="javascript:history.go(-1);" title="返回上一页">
+				<div class="bb_l_menu_title">
+					{$m.title} 
+				</div>
+			</a>
+		</volist>
+		<div class="left_other_menu">
+        {~$cat=get_child($cate,$pid);}
+        <volist name="cat" id="c" key="k">
+          <dl
+          <eq name='c.id' value='$id'> class="hover" </eq>
+          >
+          <dt><a href="<notempty name='c.url'>{$c.url}<else/>{:U($c['Model']['name'].'/'.$c['tpl'],'id='.$c['id'])}</notempty>"><img src="{$c.pic}"/></a>
+          </dt>
+          <dd><a href="<notempty name='c.url'>{$c.url}<else/>{:U($c['Model']['name'].'/'.$c['tpl'],'id='.$c['id'])}</notempty>">{$c.title}</a>
+            <span>{$c.summary}</span></dd>
+          </dl>
+        </volist></div>
+      </div>
+      <include file="Public:left"/>
+    </div>
+    <div class="main_con fr">
+      <div class="bread_nav">
+        <div class="l fl"></div>
+        <div class="m fl" style="line-height:30px;"> <span class="list_style"></span> <span>您当前的位置:</span> {$nav} </div>
+        <div class="r fl"></div>
+      </div>
+      <div class="artical">
+        <!-- begin -->
+        <foreach name="houselist" item="vo" >
+			
+            <div class="fjxxfjxx">
+              <div class="fjxx">
+                <h1>{$vo.houseName}</h1>
+                <ul class=" biaotou clearfix">
+                  <li class="biaotou_sj">时间</li>
+                  <li class="biaotou_xm">项目</li>
+                  <li class="biaotou_fy">费用</li>
+                  <li class="biaotou_cz">操作</li>
+                </ul>
+                <ul class=" neirong clearfix">
+                  <foreach name="vo.feiyong" item="vo1" >
+					<if condition="$vo1.SHOW eq 0">
+						<if condition="$vo1.aa eq 0">
+						  <li class="biaotou_sj">{$vo1.CHARGEMONTH}</li>
+						  <li class="biaotou_xm">{$vo1.TYPENMAE}</li>
+						  <li class="biaotou_fy">{$vo1.QIAN}</li>
+						  <li class="biaotou_cz ww">
+							<if condition="$vo1.STATUS eq 0">
+								<if condition="$vo1.payOn eq on">
+									<if condition="$vo1.hh24h eq on ">
+										<button onclick="payInfo('{$vo1.HOUSECODE}','{$vo1.TYPE}','{$vo1.QIAN}','{$vo1.CHARGEMONTH}')">交费</button>
+									<else/>
+										<button onclick="javascript:alert('温馨提示：线上交费受理时间为10:00-17:00')">交费</button>
+									</if>
+							   
+								  <else/>
+								  <button onclick="javascript:alert('请将前面的欠费交清才可以交本次费用')">交费</button>
+								</if>
+							 <else/>
+							  <button onclick="javascript:alert('此次交易已被锁定，无法交费')">交费</button>
+							</if>
+						  </li>
+						  <else/>
+						  <li class="biaotou_sj co">{$vo1.CHARGEMONTH}</li>
+						  <li class="biaotou_xm co">{$vo1.TYPENMAE}</li>
+						  <li class="biaotou_fy co">{$vo1.QIAN}</li>
+						  <li class="biaotou_cz ww co">
+							<if condition="$vo1.STATUS eq 0">
+								<if condition="$vo1.payOn eq on">
+									<if condition="$vo1.hh24h eq on ">
+										<button onclick="payInfo('{$vo1.HOUSECODE}','{$vo1.TYPE}','{$vo1.QIAN}','{$vo1.CHARGEMONTH}')">交费</button>
+									<else/>
+										<button onclick="javascript:alert('温馨提示：线上交费受理时间为10:00-17:00')">交费</button>
+									</if>
+								  <else/>
+								  <button onclick="javascript:alert('请将前面的欠费交清才可以交本次费用')">交费</button>
+								</if>
+							<else/>
+							  <button onclick="javascript:alert('此次交易已被锁定，无法交费')">交费</button>
+							</if>
+						  </li>
+						</if>
+					</if>
+                  </foreach>
+                </ul>
+              </div>
+            </div>
+			
+        </foreach>
+        <!-- end -->
+	        <div style="line-height:25px;">
+				<span style="line-height:25px;">
+					<span style="font-weight:bold;color:#FF0000">温馨提示：</span><br/>
+					<span style="font-weight:bold;color:#FF0000">关于线上交费：</span>受理时间为每天上午10:00至下午17:00。<br/>
+					<span style="font-weight:bold;color:#FF0000">交费时间：</span>用户应在每月15日前通过银行窗口、ATM、网银等方式向能源服务卡内存入足够金额用以支付用水、用气费用。若您办理的能源服务卡尚未寄至手中，您可于每月15日前至能源窗口交费。<br/>
+					<span style="font-weight:bold;color:#FF0000">能源公司提醒您：</span>请您按规定于每月15日前交清上月用水、用气费用，逾期未缴费的按日加收违约金。持能源服务卡用户，指定银行在结算日（每月15日）自动完成应收费用的扣缴。
+					<span style="font-weight:bold;color:#FF0000">本查询结果仅供参考，如有疑问，请于能源窗口询问或致电022-66885890。</span>
+				</span>
+			</div>
+		</div> 
+      </div>
+    </div>
+  </div>
+</div>
+  <form id="payToPage" action="./index.php?s=/page/jjPage/id/210.html" method="post">
+      <input type="hidden" id="housecode" name="housecode">
+      <input type="hidden" id="type" name="type">
+      <input type="hidden" id="qian" name="qian">
+      <input type="hidden" id="chargemonth" name="chargemonth">
+  </form>
+<script type="text/javascript">
+  function payInfo(housecode,type,qian,chargemonth){
+    $("#housecode").val(housecode);
+    $("#type").val(type);
+    $("#qian").val(qian);
+    $("#chargemonth").val(chargemonth);
+    if(confirm("请确认本次缴费？"))
+    {
+      $("#payToPage").submit();
+    }
+  }
+
+</script>
+<script type="text/javascript" src="__PUBLIC__/js/date/jquery-ym-datePlugin-0.1.js"></script>
+<link rel="stylesheet" href="__PUBLIC__/js/date/jquery-ui.css"/>
+<link rel="stylesheet" id="skin" href="__PUBLIC__/js/date/jquery-ui-1.9.2.custom.min1.css"/>
+<style>
+  .ui-datepicker-title span {
+    display: inline-block;
+  }
+
+  .pm_show_lbl_1 {
+    padding-left: 6px;
+    font-size: 32px;
+    color: #908f8f;
+    font-family: "微软雅黑";
+    font-weight: bold;
+  }
+  .pm_show_lbl_2 {
+    color: #ff9e00;
+    font-family: arial;
+    font-size: 70px;
+  }
+  .pm_show_lbl_3 {
+    font-size: 18px;
+    color: #908F8F;
+    font-weight: bold;
+    font-family: arial;
+  }
+  .pm_show_lbl_4 {
+    font-size: 30px;
+    font-family: arial;
+    font-weight: bold;
+    color: red;
+    padding: 0 2px 0 2px;
+  }
+
+  div#chartCanves {
+    border: 1px solid rgb(204, 204, 204);
+  }
+  div#pieChart, .chargelist {
+    margin: 0;
+    padding: 0;
+    height: 350px;
+    width: 350px;
+    border-bottom: 1px solid rgb(204, 204, 204);
+    float: left;
+  }
+  .chargelist {
+    border-left: 1px solid rgb(204, 204, 204);
+  }
+  .chargelist_title {
+    text-align: center;
+    vertical-align: middle;
+    font-size: 1.2em;
+    font-style: normal;
+    height: 2em;
+    line-height: 2em;
+    border-bottom: 1px solid rgb(204, 204, 204);
+  }
+  .bus_tablet_li {
+    text-align: center;
+    vertical-align: middle;
+    float:left;
+  }
+
+  .size_two_words {
+    width: 78px;
+    line-height: 32px;
+  }
+   .size_two_words_all {
+    width: 236px;
+	line-height: 20px;
+  }
+  .left_side_li {
+    border-left: 1px solid rgb(204, 204, 204);
+  }
+  .right_side_li {
+    width: 78px;
+    text-align: right;
+    border-left: 1px solid rgb(204, 204, 204);
+  }
+  .item, .item_end {
+    height: 22px;
+    border: none;
+    border-bottom: 1px solid rgb(204, 204, 204);
+    color: rgb(254,103,4);
+  }
+  .item_end {
+    border-bottom: 2px solid rgb(204, 204, 204);
+  }
+  .item .size_two_words, .item_end .size_two_words {
+    line-height: 22px;
+  }
+  .pm_show {
+    width: 100%;
+    height: 126px;
+    background-position: 215px -10px;
+    border-bottom: 2px dashed rgb(204, 204, 204);
+  }
+  .b_box{ width:701px; height:auto; border:1px solid #c7c7c7; margin-top:10px;}
+  .b_box thead td{ padding:8px; font-size:12px; color:#158402; background-color:#f0fdf4;}
+  .b_box tbody td{ padding:8px; font-size:12px; color:#2b2b2b;}
+  .right_line{ border-right:1px solid #dee4e0;}
+  .bottom_line{ border-bottom:1px solid #dee4e0;}
+  .b_box_title{ width:701px;height:32px; background-color:#35ad0d; line-height:32px; font-size:12px; color:#fff; font-weight:bolder;}
+  .b_box_1{ width:701px; height:auto; border:1px solid #c7c7c7;}
+  .b_box_1 thead td{font-size:12px; color:#fff; font-weight:bolder; background-color:#35ad0c; text-align:center;}
+  #imp_text01{ text-align:left; overflow:hidden}
+  #imp_text02{ text-align:center; font-weight:bolder;}
+  .b_box_1 tbody td{ padding:7px; font-size:12px; color:#2b2b2b; text-align:center; border-right:1px solid #ccc; }
+  #right_line_none{ border:none;}
+  #right_line_none_1{ border-right:none; border-top:1px #ccc solid}
+</style>
+<include file="Public:footer"/>
+</body>
+</html>

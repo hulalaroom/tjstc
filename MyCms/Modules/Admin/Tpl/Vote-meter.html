@@ -1,0 +1,153 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href='__PUBLIC__/css/common.css'>
+<script type="text/javascript" src="__PUBLIC__/js/jquery-1.7.1.min.js"></script>
+<script type="text/javascript" src="__PUBLIC__/js/base.js"></script>
+<script src="__PUBLIC__/js/jquery.textSearch-1.0.js" type="text/javascript"></script>
+<script type="text/javascript" src="__PUBLIC__/js/Calendar.js"></script>
+<title>计量管理</title>
+</head>
+<body>
+<div id="append_parent"></div>
+<div class="container" id="cpcontainer">
+  <div id="contentHeader">
+    <h3>计量管理</h3>
+  </div>
+  <form method="post" action="__URL__/meter"  enctype="multipart/form-data">
+	  <table border="0" cellpadding="0" cellspacing="0" class="content_list">
+		 
+			<tr>
+			　　　　　　抄表时间：
+				<select name="sj">
+					<option value='{$sj}'>{$sj}</option>
+				</select>　
+			
+			　房间编号：
+				<input name="housecode"  type="text">　
+			
+			
+				　<input type="submit"  value="查询" class="button "/>　
+			
+
+			   
+				<td style="text-align:right;padding-bottom: 20px;">
+				<input onclick="putout" value="发布" class="button confirmSubmit" />
+				<input type="hidden" id="test" name="test" value="<?=$test;?>"  />
+				 </td>
+			</tr>
+	  </table>
+  </form>
+ <div class="nober">
+  <table class="content_list" id="jl">
+		<thead>
+		  <tr class="tb_header">
+			<td colspan="8"><b>计量数据</b></td>
+			
+	      </tr>
+		</thead>
+		  <tr>
+			<td class="tb_title" width="11%">序号</td>
+			<td class="tb_title" width="14%">房间编号</td>
+			<td class="tb_title" width="13%">抄表时间</td>
+			<td class="tb_title" width="9%" style="text-align:center">初始读数</td>
+			<td class="tb_title" width="9%" style="text-align:center">当期读数</td>
+			<td class="tb_title" width="9%" style="text-align:center">当月用量</td>
+			<td class="tb_title" width="9%" style="text-align:center">累计热量</td>
+			<td class="tb_title" width="9%" style="text-align:center">占面积采暖费</td>
+			<td class="tb_title" width="9%" style="text-align:center">修改</td>
+		  </tr>
+		  <empty name="result_list">
+			  <tr>
+				<td colspan="7" style="text-align:center;">请上传文件后进行查看！</td>
+			  </tr>
+		  </empty>
+		
+		  <notempty name="result_list">
+			  <volist name="result_list" id="result">
+				 
+					<tr style="text-align:center">
+						<td width="11%">{$i}</td>
+						<td width="14%">{$result.housecode}</td>
+						<td id='mytd' width="13%" >{$result.metetTime}</td>
+						<td width="9%" style="text-align:center" ><input type="text" id="startNum" name="startNum" value={$result.startNum}></td>
+						<td width="9%" style="text-align:center"><input type="text" id="nowNum" name="nowNum" value={$result.nowNum}></td>
+						<td width="9%" style="text-align:center"><input type="text"id="allTotal" name="allTotal" value={$result.allTotal}></td>
+						<td width="9%" style="text-align:center"><input type="text"id="meterAccount" name="meterAccount"value={$result.meterAccount}></td>
+						
+						<td width="9%" style="text-align:center"><input type="text"id="percent" name="percent" value={$result.percent}></td>
+					
+                        <td width="9%" style="text-align:center"><button  onclick="xq({$result.id},{$i})">修改</button></td>
+					</tr>
+				 
+			  </volist>
+			  <tr>
+				<td colspan="7"><div class="cuspages right">{$page}</div>
+			 </tr>
+		  </notempty>
+		</table>
+		<div>
+<!--<script type="text/javascript">
+	$(function(){ 
+		$(".confirmSubmit").click(function() {
+			var a=$("input[type='checkbox']:checked");
+			var len=a.length;
+			if(len<1){
+				alert("您未选择查询方式，请选择查询方式后，再进行操作！");
+				return false;
+			}
+			return;	
+		});
+	}); 
+</script>
+-->
+<script language="javascript" type="text/javascript">  
+     function xq(id,i)
+
+	{
+	    
+//获取input框的值 进行修改	   
+ var ci=(i-1)*5;
+ var startNum = document.getElementsByClassName("nober")[0].getElementsByTagName("input")[ci].value;
+ var nowNum = document.getElementsByClassName("nober")[0].getElementsByTagName("input")[ci+1].value;
+ var allTotal = document.getElementsByClassName("nober")[0].getElementsByTagName("input")[ci+2].value;
+ var percent = document.getElementsByClassName("nober")[0].getElementsByTagName("input")[ci+3].value;
+  var meterAccount = document.getElementsByClassName("nober")[0].getElementsByTagName("input")[ci+4].value;
+
+       
+
+	$.ajax({
+						url: '{:U("Attach/xq","",false)}',
+						type : 'POST',
+						data : {id:id,startNum:startNum,nowNum:nowNum,allTotal:allTotal,percent:percent,meterAccount:meterAccount},
+						success: function(res){
+							alert("修改成功");
+						}
+					});
+      
+	
+	}
+ </script> 
+<script  language="javascript" type="text/javascript">
+	$(function(){ 
+	
+		$(".confirmSubmit").click(function() {
+	
+	var operateTime = document.getElementById("test").value;
+	
+			$.ajax({
+						url: '{:U("Attach/putout","",false)}',
+						type : 'POST',
+						data : {operateTime:operateTime},
+						
+						success: function(res){
+							alert("发布成功");
+						}
+					});
+		});
+	}); 
+</script>
+</div>
+</body>
+</html>

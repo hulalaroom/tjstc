@@ -1,0 +1,1472 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="8e3adf24-56cf-4437-9f6f-b78f6644f560" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/../Common/common.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Conf/api.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Conf/attach.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Conf/config.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Conf/content.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Conf/email.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Conf/para.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Conf/site.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Conf/weixin.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Lib/Action/AdminAction.class.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Lib/Action/CommonAction.class.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Lib/Action/HomeAction.class.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Lib/Action/HomeAction.class.php.bak" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Lib/Model/AdminModel.class.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Lib/Model/ArticleModel.class.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Lib/Model/BusinessModel.class.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Lib/Model/CateModel.class.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Lib/Model/CateModel.class20140724.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Lib/Model/ContractModel.class.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Lib/Model/EnergyMeterModel.class.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Lib/Model/GuestbookModel.class.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Lib/Model/HtModel.class.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Lib/Model/MessageModel.class.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Lib/Model/OwnerModel.class.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Lib/Model/PageModel.class.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Lib/Model/RecoverysingleModel.class.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Lib/Model/RepairModel.class.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Lib/Model/UserMessageModel.class.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Lib/Model/UserModel.class.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Lib/Model/UserRoomModel.class.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Lib/Model/VoteModel.class.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Lib/Model/WikiModel.class.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Lib/pay/boc.class.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Lib/pay/cert/BOC-CA.cer" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Lib/pay/cert/BOC-CA11.cer" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Lib/pay/cert/cert.pem" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Lib/pay/cert/cert1.pem" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Lib/pay/cert/demo.pfx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Lib/pay/cert/demo1.pfx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Lib/pay/cert/key.pem" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Lib/pay/cert/key1.pem" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Action/ApiAction.class.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Action/ArticleAction.class.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Action/AttachAction.class.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Action/BusinessAction.class.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Action/BusinessEnquiryAction.class.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Action/CateAction.class.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Action/ConfigAction.class.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Action/DatabaseAction.class.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Action/GroupAction.class.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Action/GuestbookAction.class.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Action/HtAction.class.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Action/IndexAction.class.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Action/ManagerAction.class.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Action/MapAction.class.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Action/MenuAction.class.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Action/MessageAction.class.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Action/ModelAction.class.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Action/NetAction.class.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Action/OwnerAction.class.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Action/PageAction.class.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Action/PayAction.class.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Action/PublicAction.class.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Action/RepairAction.class.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Action/RoomAction.class.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Action/SingleAction.class.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Action/UserAction.class.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Action/VoteAction.class.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Action/WeixinAction.class.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Common/function.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Common/function.php.bak" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Conf/config.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/ORG/MySQLReback.class.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/ORG/ThinkWechat.class.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/ORG/Wechat.class.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/Article-add.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/Article-index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/Article-oracle.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/Business-edit.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/Business-index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/BusinessEnquiry-index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/Cate-add.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/Cate-index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/Config-attach.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/Config-content.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/Config-email.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/Config-index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/Config-menu.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/Config-menuadd.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/Config-weixin.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/Database-index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/Group-add.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/Group-index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/Guestbook-add.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/Guestbook-index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/Guestbook-zxindex.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/Ht-add.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/Ht-index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/Ht-view.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/Index-cache.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/Index-home.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/Index-index - 副本.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/Index-index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/Index-main.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/Index-view.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/Manager-add.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/Manager-index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/Map-index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/Menu-index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/Message-add.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/Message-index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/Message-re.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/Model-add.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/Model-index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/Net-add.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/Net-edit.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/Net-index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/Owner-add.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/Owner-index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/Page-add.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/Page-apply.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/Page-apply1.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/Page-applyview.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/Page-applyview1.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/Page-index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/Public-footer.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/Public-header.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/Public-index-top.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/Public-index-top.html.bak" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/Public-login.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/Public-repass.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/Repair-add.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/Repair-index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/Room-add.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/Room-index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/Single-add.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/Single-index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/User-account.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/User-add.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/User-check.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/User-choose.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/User-edit.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/User-index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/User-infor.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/User-information.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/User-jiebang.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/User-jiebangxiangxi.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/User-pass.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/User-pay.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/User-qzjiebang.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/User-score_rule_add.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/User-score_rule_index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/User-view.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/User-xx.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/Vote-add.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/Vote-cause.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/Vote-causeView.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/Vote-custom.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/Vote-custom_view.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/Vote-dust.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/Vote-dustxx.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/Vote-editlist.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/Vote-energy.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/Vote-energy1.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/Vote-hb.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/Vote-hbxx.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/Vote-heat.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/Vote-heating.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/Vote-index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/Vote-infor.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/Vote-meter.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/Vote-meter1.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/Vote-payment.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/Vote-result.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/Vote-service.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/Vote-servicexx.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/Vote-survey.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/Vote-userlogin.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/Vote-view.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/Vote-with.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/Vote-with1.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/Weixin-add.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/Weixin-fa.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/Weixin-index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/Weixin-re.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/Weixin-view.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/css/404.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/css/base.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/css/common.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/css/login-style.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/css/manage.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/images/ajax_loader.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/images/bg_button.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/images/bg_input.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/images/ck.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/images/create.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/images/delete.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/images/deletesmall.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/images/download.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/images/error.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/images/error.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/images/ext/do.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/images/ext/doc.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/images/ext/flv.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/images/ext/pdf.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/images/ext/ppt.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/images/ext/rar.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/images/ext/txt.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/images/ext/xls.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/images/folder.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/images/glyphicons-halflings.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/images/icon_right.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/images/image.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/images/imageList.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/images/insert.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/images/jb.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/images/light.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/images/loading.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/images/login-bg.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/images/login_button.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/images/mm.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/images/msg_error.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/images/msg_right.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/images/new.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/images/ok.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/images/process.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/images/refresh.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/images/reset_button.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/images/search.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/images/stallion-sprite.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/images/thumb.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/images/tui.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/images/tui1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/images/update.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/images/user_edit.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/images/xx.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/Calendar.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/DatePicker.js.bak" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/artDialog/_doc/API.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/artDialog/_doc/ajaxContent/content.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/artDialog/_doc/ajaxContent/content.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/artDialog/_doc/ajaxContent/googleMaps.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/artDialog/_doc/ajaxContent/login.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/artDialog/_doc/commercial_license.doc" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/artDialog/_doc/demo.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/artDialog/_doc/demo.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/artDialog/_doc/down.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/artDialog/_doc/frameset.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/artDialog/_doc/googleMaps.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/artDialog/_doc/helloWorld.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/artDialog/_doc/highlight/AUTHORS.en.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/artDialog/_doc/highlight/LICENSE" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/artDialog/_doc/highlight/export.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/artDialog/_doc/highlight/highlight.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/artDialog/_doc/highlight/highlight.pack.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/artDialog/_doc/highlight/languages/javascript.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/artDialog/_doc/highlight/readme.eng.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/artDialog/_doc/highlight/styles/magula.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/artDialog/_doc/highlight/test.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/artDialog/_doc/iframe.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/artDialog/_doc/iframeA.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/artDialog/_doc/iframeB.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/artDialog/_doc/iframeTop.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/artDialog/_doc/iframe_frameset.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/artDialog/_doc/images/alipay.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/artDialog/_doc/images/bg.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/artDialog/_doc/images/bottom.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/artDialog/_doc/images/doc.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/artDialog/_doc/images/lixiaolong.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/artDialog/_doc/images/logo.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/artDialog/_doc/images/opensource.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/artDialog/_doc/images/photo.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/artDialog/_doc/images/text.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/artDialog/_doc/labs.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/artDialog/_doc/license.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/artDialog/_doc/log.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/artDialog/_doc/login_iframe.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/artDialog/_doc/login_iframe_2.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/artDialog/_doc/new.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/artDialog/_doc/plugin.iframe.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/artDialog/_doc/topFrame.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/artDialog/_doc/upd.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/artDialog/artDialog.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/artDialog/artDialog.source.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/artDialog/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/artDialog/jquery.artDialog.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/artDialog/jquery.artDialog.source.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/artDialog/license.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/artDialog/plugins/iframeTools.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/artDialog/plugins/iframeTools.source.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/artDialog/skins/aero.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/artDialog/skins/aero/aero_s.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/artDialog/skins/aero/aero_s2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/artDialog/skins/aero/ie6/aui_close.hover.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/artDialog/skins/aero/ie6/aui_close.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/artDialog/skins/aero/ie6/aui_e.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/artDialog/skins/aero/ie6/aui_n.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/artDialog/skins/aero/ie6/aui_ne.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/artDialog/skins/aero/ie6/aui_nw.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/artDialog/skins/aero/ie6/aui_s.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/artDialog/skins/aero/ie6/aui_se.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/artDialog/skins/aero/ie6/aui_sw.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/artDialog/skins/aero/ie6/aui_title_icon.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/artDialog/skins/aero/ie6/aui_w.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/artDialog/skins/black.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/artDialog/skins/black/bg.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/artDialog/skins/black/bg2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/artDialog/skins/black/bg_css3.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/artDialog/skins/black/bg_css3_2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/artDialog/skins/black/ie6/close.hover.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/artDialog/skins/black/ie6/close.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/artDialog/skins/black/ie6/e.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/artDialog/skins/black/ie6/n.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/artDialog/skins/black/ie6/ne.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/artDialog/skins/black/ie6/nw.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/artDialog/skins/black/ie6/s.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/artDialog/skins/black/ie6/se.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/artDialog/skins/black/ie6/sw.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/artDialog/skins/black/ie6/w.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/artDialog/skins/blue.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/artDialog/skins/blue/bg.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/artDialog/skins/blue/bg2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/artDialog/skins/blue/bg_css3.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/artDialog/skins/blue/bg_css3_2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/artDialog/skins/blue/ie6/close.hover.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/artDialog/skins/blue/ie6/close.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/artDialog/skins/blue/ie6/e.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/artDialog/skins/blue/ie6/n.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/artDialog/skins/blue/ie6/ne.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/artDialog/skins/blue/ie6/nw.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/artDialog/skins/blue/ie6/s.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/artDialog/skins/blue/ie6/se.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/artDialog/skins/blue/ie6/sw.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/artDialog/skins/blue/ie6/w.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/artDialog/skins/chrome.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/artDialog/skins/chrome/border.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/artDialog/skins/chrome/chrome_s.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/artDialog/skins/default.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/artDialog/skins/green.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/artDialog/skins/green/bg.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/artDialog/skins/green/bg2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/artDialog/skins/green/bg_css3.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/artDialog/skins/green/bg_css3_2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/artDialog/skins/green/color_bg.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/artDialog/skins/green/ie6/close.hover.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/artDialog/skins/green/ie6/close.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/artDialog/skins/green/ie6/e.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/artDialog/skins/green/ie6/n.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/artDialog/skins/green/ie6/ne.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/artDialog/skins/green/ie6/nw.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/artDialog/skins/green/ie6/s.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/artDialog/skins/green/ie6/se.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/artDialog/skins/green/ie6/sw.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/artDialog/skins/green/ie6/w.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/artDialog/skins/icons/error.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/artDialog/skins/icons/face-sad.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/artDialog/skins/icons/face-smile.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/artDialog/skins/icons/loading.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/artDialog/skins/icons/question.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/artDialog/skins/icons/succeed.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/artDialog/skins/icons/warning.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/artDialog/skins/idialog.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/artDialog/skins/idialog/idialog_s.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/artDialog/skins/idialog/idialog_s2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/artDialog/skins/idialog/ie6/aui_close.hover.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/artDialog/skins/idialog/ie6/aui_close.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/artDialog/skins/idialog/ie6/aui_e.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/artDialog/skins/idialog/ie6/aui_n.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/artDialog/skins/idialog/ie6/aui_ne.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/artDialog/skins/idialog/ie6/aui_nw.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/artDialog/skins/idialog/ie6/aui_s.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/artDialog/skins/idialog/ie6/aui_se.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/artDialog/skins/idialog/ie6/aui_sw.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/artDialog/skins/idialog/ie6/aui_w.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/artDialog/skins/opera.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/artDialog/skins/opera/ie6/aui_close.hover.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/artDialog/skins/opera/ie6/aui_close.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/artDialog/skins/opera/ie6/aui_e.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/artDialog/skins/opera/ie6/aui_n.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/artDialog/skins/opera/ie6/aui_ne.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/artDialog/skins/opera/ie6/aui_nw.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/artDialog/skins/opera/ie6/aui_s.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/artDialog/skins/opera/ie6/aui_se.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/artDialog/skins/opera/ie6/aui_sw.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/artDialog/skins/opera/ie6/aui_w.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/artDialog/skins/opera/s1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/artDialog/skins/opera/s2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/artDialog/skins/simple.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/artDialog/skins/twitter.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/base.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/date/images/ui-bg_diagonal-maze_20_6e4f1c_10x10.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/date/images/ui-bg_diagonal-maze_40_000000_10x10.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/date/images/ui-bg_diagonals-medium_20_d34d17_40x40.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/date/images/ui-bg_diagonals-small_0_aaaaaa_40x40.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/date/images/ui-bg_diagonals-small_25_c5ddfc_40x40.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/date/images/ui-bg_diagonals-small_40_db4865_40x40.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/date/images/ui-bg_diagonals-small_50_93c3cd_40x40.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/date/images/ui-bg_diagonals-small_50_ff3853_40x40.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/date/images/ui-bg_diagonals-small_75_ccd232_40x40.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/date/images/ui-bg_diagonals-thick_15_0b3e6f_40x40.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/date/images/ui-bg_diagonals-thick_15_444444_40x40.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/date/images/ui-bg_diagonals-thick_18_b81900_40x40.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/date/images/ui-bg_diagonals-thick_20_666666_40x40.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/date/images/ui-bg_diagonals-thick_20_e69700_40x40.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/date/images/ui-bg_diagonals-thick_22_1484e6_40x40.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/date/images/ui-bg_diagonals-thick_26_2293f7_40x40.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/date/images/ui-bg_diagonals-thick_75_f3d8d8_40x40.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/date/images/ui-bg_diagonals-thick_90_eeeeee_40x40.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/date/images/ui-bg_diagonals-thick_95_ffdc2e_40x40.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/date/images/ui-bg_dots-medium_30_0b58a2_4x4.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/date/images/ui-bg_dots-medium_80_ffff38_4x4.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/date/images/ui-bg_dots-small_20_333333_2x2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/date/images/ui-bg_dots-small_30_a32d00_2x2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/date/images/ui-bg_dots-small_35_35414f_2x2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/date/images/ui-bg_dots-small_40_00498f_2x2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/date/images/ui-bg_dots-small_65_a6a6a6_2x2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/date/images/ui-bg_fine-grain_10_eceadf_60x60.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/date/images/ui-bg_fine-grain_10_f8f7f6_60x60.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/date/images/ui-bg_fine-grain_15_eceadf_60x60.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/date/images/ui-bg_fine-grain_15_f7f3de_60x60.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/date/images/ui-bg_fine-grain_15_ffffff_60x60.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/date/images/ui-bg_fine-grain_65_654b24_60x60.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/date/images/ui-bg_fine-grain_68_b83400_60x60.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/date/images/ui-bg_flat_0_333333_40x100.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/date/images/ui-bg_flat_0_aaaaaa_40x100.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/date/images/ui-bg_flat_0_e69700_40x100.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/date/images/ui-bg_flat_0_e6b900_40x100.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/date/images/ui-bg_flat_0_eeeeee_40x100.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/date/images/ui-bg_flat_10_000000_40x100.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/date/images/ui-bg_flat_15_cd0a0a_40x100.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/date/images/ui-bg_flat_30_cccccc_40x100.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/date/images/ui-bg_flat_40_292929_40x100.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/date/images/ui-bg_flat_50_5c5c5c_40x100.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/date/images/ui-bg_flat_55_994d53_40x100.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/date/images/ui-bg_flat_55_999999_40x100.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/date/images/ui-bg_flat_55_c0402a_40x100.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/date/images/ui-bg_flat_55_eeeeee_40x100.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/date/images/ui-bg_flat_55_fafafa_40x100.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/date/images/ui-bg_flat_55_fbec88_40x100.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/date/images/ui-bg_flat_55_ffffff_40x100.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/date/images/ui-bg_flat_65_ffffff_40x100.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/date/images/ui-bg_flat_75_aaaaaa_40x100.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/date/images/ui-bg_flat_75_ba9217_40x100.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/date/images/ui-bg_flat_75_ffffff_40x100.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/date/images/ui-bg_glass_100_e4f1fb_1x400.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/date/images/ui-bg_glass_100_f5f0e5_1x400.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/date/images/ui-bg_glass_100_f6f6f6_1x400.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/date/images/ui-bg_glass_100_f8f8f8_1x400.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/date/images/ui-bg_glass_100_fdf5ce_1x400.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/date/images/ui-bg_glass_20_555555_1x400.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/date/images/ui-bg_glass_25_cb842e_1x400.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/date/images/ui-bg_glass_35_dddddd_1x400.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/date/images/ui-bg_glass_40_0078a3_1x400.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/date/images/ui-bg_glass_40_ffc73d_1x400.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/date/images/ui-bg_glass_45_0078ae_1x400.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/date/images/ui-bg_glass_50_3baae3_1x400.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/date/images/ui-bg_glass_55_f8da4e_1x400.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/date/images/ui-bg_glass_55_fbf5d0_1x400.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/date/images/ui-bg_glass_55_fbf8ee_1x400.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/date/images/ui-bg_glass_55_fbf9ee_1x400.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/date/images/ui-bg_glass_55_fcf0ba_1x400.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/date/images/ui-bg_glass_60_eeeeee_1x400.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/date/images/ui-bg_glass_65_ffffff_1x400.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/date/images/ui-bg_glass_70_ede4d4_1x400.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/date/images/ui-bg_glass_75_79c9ec_1x400.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/date/images/ui-bg_glass_75_d0e5f5_1x400.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/date/images/ui-bg_glass_75_dadada_1x400.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/date/images/ui-bg_glass_75_e6e6e6_1x400.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/date/images/ui-bg_glass_80_d7ebf9_1x400.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/date/images/ui-bg_glass_85_dfeffc_1x400.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/date/images/ui-bg_glass_95_fef1ec_1x400.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/date/images/ui-bg_gloss-wave_100_ece8da_500x100.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/date/images/ui-bg_gloss-wave_16_121212_500x100.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/date/images/ui-bg_gloss-wave_20_111111_500x100.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/date/images/ui-bg_gloss-wave_25_333333_500x100.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/date/images/ui-bg_gloss-wave_30_3d3644_500x100.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/date/images/ui-bg_gloss-wave_35_f6a828_500x100.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/date/images/ui-bg_gloss-wave_45_817865_500x100.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/date/images/ui-bg_gloss-wave_45_e14f1c_500x100.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/date/images/ui-bg_gloss-wave_50_6eac2c_500x100.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/date/images/ui-bg_gloss-wave_55_5c9ccc_500x100.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/date/images/ui-bg_gloss-wave_60_fece2f_500x100.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/date/images/ui-bg_gloss-wave_70_ffdd57_500x100.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/date/images/ui-bg_gloss-wave_75_2191c0_500x100.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/date/images/ui-bg_gloss-wave_90_fff9e5_500x100.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/date/images/ui-bg_highlight-hard_100_eeeeee_1x100.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/date/images/ui-bg_highlight-hard_100_f2f5f7_1x100.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/date/images/ui-bg_highlight-hard_100_f4f0ec_1x100.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/date/images/ui-bg_highlight-hard_100_f5f3e5_1x100.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/date/images/ui-bg_highlight-hard_100_f6f6f6_1x100.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/date/images/ui-bg_highlight-hard_100_fafaf4_1x100.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/date/images/ui-bg_highlight-hard_15_459e00_1x100.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/date/images/ui-bg_highlight-hard_15_888888_1x100.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/date/images/ui-bg_highlight-hard_20_0972a5_1x100.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/date/images/ui-bg_highlight-hard_30_285c00_1x100.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/date/images/ui-bg_highlight-hard_55_555555_1x100.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/date/images/ui-bg_highlight-hard_65_fee4bd_1x100.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/date/images/ui-bg_highlight-hard_70_000000_1x100.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/date/images/ui-bg_highlight-hard_75_f5f5b5_1x100.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/date/images/ui-bg_highlight-hard_95_cccccc_1x100.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/date/images/ui-bg_highlight-soft_100_dcd9de_1x100.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/date/images/ui-bg_highlight-soft_100_deedf7_1x100.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/date/images/ui-bg_highlight-soft_100_eae6ea_1x100.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/date/images/ui-bg_highlight-soft_100_eeeeee_1x100.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/date/images/ui-bg_highlight-soft_100_f6f6f6_1x100.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/date/images/ui-bg_highlight-soft_100_f9f9f9_1x100.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/date/images/ui-bg_highlight-soft_100_feeebd_1x100.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/date/images/ui-bg_highlight-soft_15_cc0000_1x100.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/date/images/ui-bg_highlight-soft_25_0073ea_1x100.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/date/images/ui-bg_highlight-soft_25_30273a_1x100.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/date/images/ui-bg_highlight-soft_25_67b021_1x100.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/date/images/ui-bg_highlight-soft_25_ffef8f_1x100.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/date/images/ui-bg_highlight-soft_33_003147_1x100.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/date/images/ui-bg_highlight-soft_33_3a8104_1x100.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/date/images/ui-bg_highlight-soft_35_222222_1x100.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/date/images/ui-bg_highlight-soft_35_adadad_1x100.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/date/images/ui-bg_highlight-soft_44_444444_1x100.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/date/images/ui-bg_highlight-soft_45_5f5964_1x100.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/date/images/ui-bg_highlight-soft_50_4eb305_1x100.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/date/images/ui-bg_highlight-soft_50_dddddd_1x100.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/date/images/ui-bg_highlight-soft_60_4ca20b_1x100.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/date/images/ui-bg_highlight-soft_60_dddddd_1x100.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/date/images/ui-bg_highlight-soft_75_cccccc_1x100.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/date/images/ui-bg_highlight-soft_75_ffe45c_1x100.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/date/images/ui-bg_highlight-soft_80_eeeeee_1x100.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/date/images/ui-bg_highlight-soft_95_ffedad_1x100.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/date/images/ui-bg_inset-hard_100_eeeeee_1x100.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/date/images/ui-bg_inset-hard_100_f5f8f9_1x100.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/date/images/ui-bg_inset-hard_100_fcfdfd_1x100.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/date/images/ui-bg_inset-hard_75_999999_1x100.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/date/images/ui-bg_inset-soft_100_f4f0ec_1x100.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/date/images/ui-bg_inset-soft_10_285c00_1x100.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/date/images/ui-bg_inset-soft_15_121212_1x100.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/date/images/ui-bg_inset-soft_15_2b2922_1x100.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/date/images/ui-bg_inset-soft_25_000000_1x100.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/date/images/ui-bg_inset-soft_30_f58400_1x100.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/date/images/ui-bg_inset-soft_30_ffffff_1x100.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/date/images/ui-bg_inset-soft_50_c9c9c9_1x100.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/date/images/ui-bg_loop_25_000000_21x21.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/date/images/ui-bg_white-lines_85_f7f7ba_40x100.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/date/images/ui-icons_004276_256x240.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/date/images/ui-icons_00498f_256x240.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/date/images/ui-icons_0073ea_256x240.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/date/images/ui-icons_0078ae_256x240.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/date/images/ui-icons_056b93_256x240.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/date/images/ui-icons_0a82eb_256x240.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/date/images/ui-icons_0b54d5_256x240.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/date/images/ui-icons_217bc0_256x240.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/date/images/ui-icons_222222_256x240.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/date/images/ui-icons_228ef1_256x240.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/date/images/ui-icons_2694e8_256x240.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/date/images/ui-icons_2e83ff_256x240.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/date/images/ui-icons_3383bb_256x240.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/date/images/ui-icons_3572ac_256x240.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/date/images/ui-icons_3d3d3d_256x240.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/date/images/ui-icons_3d80b3_256x240.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/date/images/ui-icons_454545_256x240.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/date/images/ui-icons_469bdd_256x240.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/date/images/ui-icons_4b8e0b_256x240.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/date/images/ui-icons_4eb305_256x240.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/date/images/ui-icons_5fa5e3_256x240.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/date/images/ui-icons_666666_256x240.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/date/images/ui-icons_6da8d5_256x240.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/date/images/ui-icons_70b2e1_256x240.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/date/images/ui-icons_72a7cf_256x240.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/date/images/ui-icons_72b42d_256x240.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/date/images/ui-icons_734d99_256x240.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/date/images/ui-icons_808080_256x240.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/date/images/ui-icons_847e71_256x240.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/date/images/ui-icons_888888_256x240.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/date/images/ui-icons_88a206_256x240.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/date/images/ui-icons_8DC262_256x240.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/date/images/ui-icons_8c291d_256x240.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/date/images/ui-icons_8d78a5_256x240.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/date/images/ui-icons_98d2fb_256x240.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/date/images/ui-icons_999999_256x240.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/date/images/ui-icons_9ccdfc_256x240.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/date/images/ui-icons_a83300_256x240.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/date/images/ui-icons_a8a3ae_256x240.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/date/images/ui-icons_aaaaaa_256x240.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/date/images/ui-icons_b83400_256x240.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/date/images/ui-icons_bbbbbb_256x240.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/date/images/ui-icons_bd7b00_256x240.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/date/images/ui-icons_c02669_256x240.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/date/images/ui-icons_c47a23_256x240.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/date/images/ui-icons_c98000_256x240.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/date/images/ui-icons_cb672b_256x240.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/date/images/ui-icons_cc0000_256x240.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/date/images/ui-icons_cccccc_256x240.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/date/images/ui-icons_cd0a0a_256x240.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/date/images/ui-icons_d19405_256x240.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/date/images/ui-icons_d8e7f3_256x240.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/date/images/ui-icons_e0fdff_256x240.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/date/images/ui-icons_e1e463_256x240.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/date/images/ui-icons_eb990f_256x240.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/date/images/ui-icons_ebccce_256x240.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/date/images/ui-icons_ed9f26_256x240.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/date/images/ui-icons_eeeeee_256x240.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/date/images/ui-icons_ef8c08_256x240.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/date/images/ui-icons_f08000_256x240.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/date/images/ui-icons_f29a00_256x240.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/date/images/ui-icons_f35f07_256x240.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/date/images/ui-icons_f5e175_256x240.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/date/images/ui-icons_f7a50d_256x240.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/date/images/ui-icons_f9bd01_256x240.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/date/images/ui-icons_fadc7a_256x240.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/date/images/ui-icons_fbc856_256x240.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/date/images/ui-icons_fbdb93_256x240.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/date/images/ui-icons_fcd113_256x240.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/date/images/ui-icons_fcdd4a_256x240.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/date/images/ui-icons_ff0084_256x240.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/date/images/ui-icons_ff7519_256x240.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/date/images/ui-icons_ffd27a_256x240.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/date/images/ui-icons_ffe180_256x240.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/date/images/ui-icons_ffeb33_256x240.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/date/images/ui-icons_ffffff_256x240.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/date/jquery-ui-1.9.2.custom.min1.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/date/jquery-ui.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/date/jquery-ym-datePlugin-0.1.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/jquery-1.7.1.min.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/jquery.textSearch-1.0.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/jscolor/arrow.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/jscolor/cross.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/jscolor/hs.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/jscolor/hv.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/jscolor/jscolor.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/kindeditor/kindeditor-min.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/kindeditor/lang/ar.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/kindeditor/lang/en.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/kindeditor/lang/ko.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/kindeditor/lang/zh_CN.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/kindeditor/lang/zh_TW.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/kindeditor/php/JSON.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/kindeditor/php/demo.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/kindeditor/php/file_manager_json.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/kindeditor/php/upload_json.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/kindeditor/plugins/anchor/anchor.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/kindeditor/plugins/autoheight/autoheight.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/kindeditor/plugins/baidumap/baidumap.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/kindeditor/plugins/baidumap/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/kindeditor/plugins/baidumap/map.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/kindeditor/plugins/clearhtml/clearhtml.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/kindeditor/plugins/code/code.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/kindeditor/plugins/code/prettify.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/kindeditor/plugins/code/prettify.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/kindeditor/plugins/emoticons/emoticons.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/kindeditor/plugins/emoticons/images/0.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/kindeditor/plugins/emoticons/images/1.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/kindeditor/plugins/emoticons/images/10.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/kindeditor/plugins/emoticons/images/100.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/kindeditor/plugins/emoticons/images/101.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/kindeditor/plugins/emoticons/images/102.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/kindeditor/plugins/emoticons/images/103.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/kindeditor/plugins/emoticons/images/104.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/kindeditor/plugins/emoticons/images/105.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/kindeditor/plugins/emoticons/images/106.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/kindeditor/plugins/emoticons/images/107.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/kindeditor/plugins/emoticons/images/108.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/kindeditor/plugins/emoticons/images/109.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/kindeditor/plugins/emoticons/images/11.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/kindeditor/plugins/emoticons/images/110.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/kindeditor/plugins/emoticons/images/111.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/kindeditor/plugins/emoticons/images/112.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/kindeditor/plugins/emoticons/images/113.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/kindeditor/plugins/emoticons/images/114.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/kindeditor/plugins/emoticons/images/115.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/kindeditor/plugins/emoticons/images/116.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/kindeditor/plugins/emoticons/images/117.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/kindeditor/plugins/emoticons/images/118.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/kindeditor/plugins/emoticons/images/119.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/kindeditor/plugins/emoticons/images/12.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/kindeditor/plugins/emoticons/images/120.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/kindeditor/plugins/emoticons/images/121.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/kindeditor/plugins/emoticons/images/122.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/kindeditor/plugins/emoticons/images/123.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/kindeditor/plugins/emoticons/images/124.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/kindeditor/plugins/emoticons/images/125.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/kindeditor/plugins/emoticons/images/126.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/kindeditor/plugins/emoticons/images/127.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/kindeditor/plugins/emoticons/images/128.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/kindeditor/plugins/emoticons/images/129.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/kindeditor/plugins/emoticons/images/13.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/kindeditor/plugins/emoticons/images/130.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/kindeditor/plugins/emoticons/images/131.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/kindeditor/plugins/emoticons/images/132.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/kindeditor/plugins/emoticons/images/133.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/kindeditor/plugins/emoticons/images/134.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/kindeditor/plugins/emoticons/images/14.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/kindeditor/plugins/emoticons/images/15.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/kindeditor/plugins/emoticons/images/16.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/kindeditor/plugins/emoticons/images/17.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/kindeditor/plugins/emoticons/images/18.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/kindeditor/plugins/emoticons/images/19.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/kindeditor/plugins/emoticons/images/2.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/kindeditor/plugins/emoticons/images/20.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/kindeditor/plugins/emoticons/images/21.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/kindeditor/plugins/emoticons/images/22.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/kindeditor/plugins/emoticons/images/23.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/kindeditor/plugins/emoticons/images/24.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/kindeditor/plugins/emoticons/images/25.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/kindeditor/plugins/emoticons/images/26.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/kindeditor/plugins/emoticons/images/27.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/kindeditor/plugins/emoticons/images/28.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/kindeditor/plugins/emoticons/images/29.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/kindeditor/plugins/emoticons/images/3.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/kindeditor/plugins/emoticons/images/30.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/kindeditor/plugins/emoticons/images/31.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/kindeditor/plugins/emoticons/images/32.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/kindeditor/plugins/emoticons/images/33.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/kindeditor/plugins/emoticons/images/34.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/kindeditor/plugins/emoticons/images/35.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/kindeditor/plugins/emoticons/images/36.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/kindeditor/plugins/emoticons/images/37.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/kindeditor/plugins/emoticons/images/38.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/kindeditor/plugins/emoticons/images/39.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/kindeditor/plugins/emoticons/images/4.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/kindeditor/plugins/emoticons/images/40.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/kindeditor/plugins/emoticons/images/41.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/kindeditor/plugins/emoticons/images/42.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/kindeditor/plugins/emoticons/images/43.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/kindeditor/plugins/emoticons/images/44.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/kindeditor/plugins/emoticons/images/45.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/kindeditor/plugins/emoticons/images/46.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/kindeditor/plugins/emoticons/images/47.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/kindeditor/plugins/emoticons/images/48.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/kindeditor/plugins/emoticons/images/49.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/kindeditor/plugins/emoticons/images/5.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/kindeditor/plugins/emoticons/images/50.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/kindeditor/plugins/emoticons/images/51.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/kindeditor/plugins/emoticons/images/52.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/kindeditor/plugins/emoticons/images/53.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/kindeditor/plugins/emoticons/images/54.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/kindeditor/plugins/emoticons/images/55.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/kindeditor/plugins/emoticons/images/56.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/kindeditor/plugins/emoticons/images/57.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/kindeditor/plugins/emoticons/images/58.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/kindeditor/plugins/emoticons/images/59.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/kindeditor/plugins/emoticons/images/6.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/kindeditor/plugins/emoticons/images/60.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/kindeditor/plugins/emoticons/images/61.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/kindeditor/plugins/emoticons/images/62.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/kindeditor/plugins/emoticons/images/63.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/kindeditor/plugins/emoticons/images/64.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/kindeditor/plugins/emoticons/images/65.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/kindeditor/plugins/emoticons/images/66.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/kindeditor/plugins/emoticons/images/67.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/kindeditor/plugins/emoticons/images/68.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/kindeditor/plugins/emoticons/images/69.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/kindeditor/plugins/emoticons/images/7.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/kindeditor/plugins/emoticons/images/70.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/kindeditor/plugins/emoticons/images/71.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/kindeditor/plugins/emoticons/images/72.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/kindeditor/plugins/emoticons/images/73.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/kindeditor/plugins/emoticons/images/74.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/kindeditor/plugins/emoticons/images/75.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/kindeditor/plugins/emoticons/images/76.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/kindeditor/plugins/emoticons/images/77.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/kindeditor/plugins/emoticons/images/78.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/kindeditor/plugins/emoticons/images/79.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/kindeditor/plugins/emoticons/images/8.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/kindeditor/plugins/emoticons/images/80.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/kindeditor/plugins/emoticons/images/81.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/kindeditor/plugins/emoticons/images/82.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/kindeditor/plugins/emoticons/images/83.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/kindeditor/plugins/emoticons/images/84.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/kindeditor/plugins/emoticons/images/85.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/kindeditor/plugins/emoticons/images/86.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/kindeditor/plugins/emoticons/images/87.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/kindeditor/plugins/emoticons/images/88.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/kindeditor/plugins/emoticons/images/89.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/kindeditor/plugins/emoticons/images/9.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/kindeditor/plugins/emoticons/images/90.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/kindeditor/plugins/emoticons/images/91.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/kindeditor/plugins/emoticons/images/92.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/kindeditor/plugins/emoticons/images/93.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/kindeditor/plugins/emoticons/images/94.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/kindeditor/plugins/emoticons/images/95.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/kindeditor/plugins/emoticons/images/96.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/kindeditor/plugins/emoticons/images/97.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/kindeditor/plugins/emoticons/images/98.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/kindeditor/plugins/emoticons/images/99.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/kindeditor/plugins/emoticons/images/static.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/kindeditor/plugins/filemanager/filemanager.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/kindeditor/plugins/filemanager/images/file-16.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/kindeditor/plugins/filemanager/images/file-64.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/kindeditor/plugins/filemanager/images/folder-16.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/kindeditor/plugins/filemanager/images/folder-64.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/kindeditor/plugins/filemanager/images/go-up.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/kindeditor/plugins/flash/flash.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/kindeditor/plugins/image/image.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/kindeditor/plugins/image/images/align_left.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/kindeditor/plugins/image/images/align_right.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/kindeditor/plugins/image/images/align_top.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/kindeditor/plugins/image/images/refresh.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/kindeditor/plugins/insertfile/insertfile.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/kindeditor/plugins/lineheight/lineheight.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/kindeditor/plugins/link/link.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/kindeditor/plugins/map/map.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/kindeditor/plugins/map/map.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/kindeditor/plugins/media/media.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/kindeditor/plugins/multiimage/images/image.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/kindeditor/plugins/multiimage/images/select-files-en.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/kindeditor/plugins/multiimage/images/select-files-zh_CN.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/kindeditor/plugins/multiimage/images/swfupload.swf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/kindeditor/plugins/multiimage/multiimage.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/kindeditor/plugins/pagebreak/pagebreak.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/kindeditor/plugins/plainpaste/plainpaste.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/kindeditor/plugins/preview/preview.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/kindeditor/plugins/quickformat/quickformat.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/kindeditor/plugins/table/table.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/kindeditor/plugins/template/html/1.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/kindeditor/plugins/template/html/2.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/kindeditor/plugins/template/html/3.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/kindeditor/plugins/template/template.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/kindeditor/plugins/wordpaste/wordpaste.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/kindeditor/themes/common/anchor.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/kindeditor/themes/common/blank.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/kindeditor/themes/common/flash.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/kindeditor/themes/common/loading.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/kindeditor/themes/common/media.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/kindeditor/themes/common/rm.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/kindeditor/themes/default/background.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/kindeditor/themes/default/default.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/kindeditor/themes/default/default.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/kindeditor/themes/qq/editor.gif" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/kindeditor/themes/qq/qq.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/kindeditor/themes/simple/simple.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/uploadify/jquery.uploadify.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/uploadify/uploadify.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Admin/Tpl/js/uploadify/uploadify.swf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Home/Action/ApiAction.class.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Home/Action/ApiAction.class.php.bak2016" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Home/Action/AppAction.class.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Home/Action/ApplyAction.class.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Home/Action/ArticleAction.class.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Home/Action/BusinessAction.class.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Home/Action/ContractAction.class.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Home/Action/EmptyAction.class.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Home/Action/GuestbookAction.class.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Home/Action/GuideAction.class.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Home/Action/IndexAction.class.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Home/Action/NewsAction.class.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Home/Action/NoticeAction.class.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Home/Action/OrgsAction.class.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Home/Action/PageAction.class.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Home/Action/PayAction.class.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Home/Action/PublicAction.class.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Home/Action/QuestionAction.class.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Home/Action/RepairAction.class.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Home/Action/RuleAction.class.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Home/Action/SingleAction.class.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Home/Action/SrvAction.class.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Home/Action/UnionAction.class.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Home/Action/UserAction.class.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Home/Action/VoteAction.class.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Home/Action/WeatherAction.class.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Home/Action/ZfAction.class.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Home/Action/log.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Home/Common/function.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Home/Common/function.php.bak20150209" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Home/Conf/config.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Home/ORG/Driver/GIF.class.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Home/ORG/Driver/ImageGd.class.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Home/ORG/Driver/ImageImagick.class.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Home/ORG/Mail.class.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Home/ORG/ThinkImage.class.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Home/ORG/UploadFile.class.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Home/Tpl - 副本/Apply-lists.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Home/Tpl - 副本/Apply-view.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Home/Tpl - 副本/Article-cat.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Home/Tpl - 副本/Article-cat1.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Home/Tpl - 副本/Article-company.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Home/Tpl - 副本/Article-down.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Home/Tpl - 副本/Article-download.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Home/Tpl - 副本/Article-energy.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Home/Tpl - 副本/Article-fuwu.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Home/Tpl - 副本/Article-index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Home/Tpl - 副本/Article-index1.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Home/Tpl - 副本/Article-lists.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Home/Tpl - 副本/Article-preview.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Home/Tpl - 副本/Article-search.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Home/Tpl - 副本/Article-service.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Home/Tpl - 副本/Article-tag.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Home/Tpl - 副本/Article-view.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Home/Tpl - 副本/Article-view1.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Home/Tpl - 副本/Business-bx.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Home/Tpl - 副本/Business-kt.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Home/Tpl - 副本/Business-lists-old.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Home/Tpl - 副本/Business-lists.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Home/Tpl - 副本/Business-pj.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Home/Tpl - 副本/Business-pjview.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Home/Tpl - 副本/Business-special.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Home/Tpl - 副本/Business-special1.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Home/Tpl - 副本/Business-tg.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Home/Tpl - 副本/Business-view.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Home/Tpl - 副本/Contract-index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Home/Tpl - 副本/Contract-lists.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Home/Tpl - 副本/Contract-view.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Home/Tpl - 副本/Guestbook-index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Home/Tpl - 副本/Guestbook-lists.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Home/Tpl - 副本/Guestbook-view.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Home/Tpl - 副本/Index-index - 副本.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Home/Tpl - 副本/Index-index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Home/Tpl - 副本/Index-views.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Home/Tpl - 副本/Page-content.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Home/Tpl - 副本/Page-dqzd.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Home/Tpl - 副本/Page-gnht.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Home/Tpl - 副本/Page-htlist.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Home/Tpl - 副本/Page-htview.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Home/Tpl - 副本/Page-htviews.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Home/Tpl - 副本/Page-htyy.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Home/Tpl - 副本/Page-index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Home/Tpl - 副本/Page-jcxx.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Home/Tpl - 副本/Page-jjPage.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Home/Tpl - 副本/Page-jjPage1.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Home/Tpl - 副本/Page-jlck.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Home/Tpl - 副本/Page-jlyl.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Home/Tpl - 副本/Page-kefu.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Home/Tpl - 副本/Page-lsfy-20141105.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Home/Tpl - 副本/Page-lsfy-20170220.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Home/Tpl - 副本/Page-lsfy-bak.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Home/Tpl - 副本/Page-lsfy1.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Home/Tpl - 副本/Page-lsfy2-bak.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Home/Tpl - 副本/Page-lsyn.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Home/Tpl - 副本/Page-lszd.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Home/Tpl - 副本/Page-map.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Home/Tpl - 副本/Page-mjck.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Home/Tpl - 副本/Page-mjyl.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Home/Tpl - 副本/Page-tpck.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Home/Tpl - 副本/Page-view.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Home/Tpl - 副本/Page-views.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Home/Tpl - 副本/Page-viewss.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Home/Tpl - 副本/Page-zizhu.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Home/Tpl - 副本/Page-zsjf-old.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Home/Tpl - 副本/Page-zsjf1.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Home/Tpl - 副本/Page-zxcx.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Home/Tpl - 副本/Pay-index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Home/Tpl - 副本/Pay-returnMovePay.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Home/Tpl - 副本/Pay-returnPay.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Home/Tpl - 副本/Pay-returnPay1.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Home/Tpl - 副本/Public-404.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Home/Tpl - 副本/Public-common-footer.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Home/Tpl - 副本/Public-common-head.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Home/Tpl - 副本/Public-common-script.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Home/Tpl - 副本/Public-common-toppart-login.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Home/Tpl - 副本/Public-common-toppart.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Home/Tpl - 副本/Public-error.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Home/Tpl - 副本/Public-footer-index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Home/Tpl - 副本/Public-footer.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Home/Tpl - 副本/Public-footer1.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Home/Tpl - 副本/Public-getpass.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Home/Tpl - 副本/Public-getpass_ok.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Home/Tpl - 副本/Public-header-index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Home/Tpl - 副本/Public-header-login.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Home/Tpl - 副本/Public-header.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Home/Tpl - 副本/Public-header1.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Home/Tpl - 副本/Public-index-header.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Home/Tpl - 副本/Public-index-top.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Home/Tpl - 副本/Public-left.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Home/Tpl - 副本/Public-login.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Home/Tpl - 副本/Public-notice.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Home/Tpl - 副本/Public-reg.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Home/Tpl - 副本/Public-reg2.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Home/Tpl - 副本/Public-reg3.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Home/Tpl - 副本/Public-repass.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Home/Tpl - 副本/Public-top.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Home/Tpl - 副本/Repair-index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Home/Tpl - 副本/Repair-lists.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Home/Tpl - 副本/Repair-view.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Home/Tpl - 副本/Single-index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Home/Tpl - 副本/Single-lists.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Home/Tpl - 副本/Single-view.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Home/Tpl - 副本/Union-bill-old.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Home/Tpl - 副本/Union-bill.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Home/Tpl - 副本/Union-front.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Home/Tpl - 副本/User-addsms.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Home/Tpl - 副本/User-addtag.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Home/Tpl - 副本/User-applist.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Home/Tpl - 副本/User-apply.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Home/Tpl - 副本/User-bind.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Home/Tpl - 副本/User-bindEneryCard.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Home/Tpl - 副本/User-bindok.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Home/Tpl - 副本/User-contract.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Home/Tpl - 副本/User-edit.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Home/Tpl - 副本/User-editavator.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Home/Tpl - 副本/User-fjxx.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Home/Tpl - 副本/User-index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Home/Tpl - 副本/User-index1.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Home/Tpl - 副本/User-jfyw.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Home/Tpl - 副本/User-lssh.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Home/Tpl - 副本/User-message.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Home/Tpl - 副本/User-ny.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Home/Tpl - 副本/User-pass.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Home/Tpl - 副本/User-reheat.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Home/Tpl - 副本/User-room.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Home/Tpl - 副本/User-sms.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Home/Tpl - 副本/User-tenlist.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Home/Tpl - 副本/User-unbindno.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Home/Tpl - 副本/User-unbindok.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Home/Tpl - 副本/User-uproom.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Home/Tpl - 副本/User-view.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Home/Tpl - 副本/User-ywbl.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Home/Tpl - 副本/Vote-another.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Home/Tpl - 副本/Vote-cat.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Home/Tpl - 副本/Vote-custom - 副本.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Home/Tpl - 副本/Vote-custom.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Home/Tpl - 副本/Vote-dust.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Home/Tpl - 副本/Vote-energy.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Home/Tpl - 副本/Vote-hb.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Home/Tpl - 副本/Vote-heating.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Home/Tpl - 副本/Vote-index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Home/Tpl - 副本/Vote-other.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Home/Tpl - 副本/Vote-others.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Home/Tpl - 副本/Vote-result.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Home/Tpl - 副本/Vote-view.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Home/Tpl - 副本/Zf-front.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Home/Tpl - 副本/fwlist.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Home/Tpl - 副本/log.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Home/Tpl - 副本/new/Public-footer-index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Home/Tpl - 副本/new/Public-footer.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Home/Tpl - 副本/new/Public-header-index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Home/Tpl - 副本/new/Public-header.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Home/Tpl/App-download.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Home/Tpl/Apply-lists.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Home/Tpl/Apply-view.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Home/Tpl/Article-cat.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Home/Tpl/Article-cat1.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Home/Tpl/Article-company.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Home/Tpl/Article-detail.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Home/Tpl/Article-down.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Home/Tpl/Article-downArea.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Home/Tpl/Article-download.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Home/Tpl/Article-energy.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Home/Tpl/Article-fuwu.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Home/Tpl/Article-index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Home/Tpl/Article-index1.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Home/Tpl/Article-lists.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Home/Tpl/Article-preview.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Home/Tpl/Article-search.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Home/Tpl/Article-service.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Home/Tpl/Article-tag.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Home/Tpl/Article-view.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Home/Tpl/Article-view1.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Home/Tpl/Business-bx.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Home/Tpl/Business-kt.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Home/Tpl/Business-listDetail.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Home/Tpl/Business-listSwDetail.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Home/Tpl/Business-lists-old.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Home/Tpl/Business-lists.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Home/Tpl/Business-pj.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Home/Tpl/Business-pjview.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Home/Tpl/Business-special.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Home/Tpl/Business-special1.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Home/Tpl/Business-tg.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Home/Tpl/Business-view.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Home/Tpl/Contract-index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Home/Tpl/Contract-lists.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Home/Tpl/Contract-view.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Home/Tpl/Guestbook-acceptanceRecord.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Home/Tpl/Guestbook-acceptanceRecordView.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Home/Tpl/Guestbook-acceptanceRecordtx.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Home/Tpl/Guestbook-acceptanceRecordtxView.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Home/Tpl/Guestbook-index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Home/Tpl/Guestbook-lists.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Home/Tpl/Guestbook-onlineRepair.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Home/Tpl/Guestbook-view.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Home/Tpl/Guide-view.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Home/Tpl/Index-index - 副本.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Home/Tpl/Index-index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Home/Tpl/Index-views.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Home/Tpl/Notice-index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Home/Tpl/Notice-view - 副本.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Home/Tpl/Notice-view.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Home/Tpl/Orgs-index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Home/Tpl/Page-ceshidqzd.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Home/Tpl/Page-ceshilszd.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Home/Tpl/Page-content.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Home/Tpl/Page-dqzd.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Home/Tpl/Page-gnht.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Home/Tpl/Page-htlist.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Home/Tpl/Page-htview.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Home/Tpl/Page-htviews.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Home/Tpl/Page-htyy.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Home/Tpl/Page-index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Home/Tpl/Page-jcxx.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Home/Tpl/Page-jjPage.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Home/Tpl/Page-jjPage1.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Home/Tpl/Page-jlck.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Home/Tpl/Page-jlyl.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Home/Tpl/Page-kefu.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Home/Tpl/Page-lsfy-20141105.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Home/Tpl/Page-lsfy-20170220.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Home/Tpl/Page-lsfy-bak.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Home/Tpl/Page-lsfy1.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Home/Tpl/Page-lsfy2-bak.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Home/Tpl/Page-lsyn.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Home/Tpl/Page-lszd.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Home/Tpl/Page-map.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Home/Tpl/Page-mjck.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Home/Tpl/Page-mjyl.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Home/Tpl/Page-station.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Home/Tpl/Page-stjg.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Home/Tpl/Page-tpck.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Home/Tpl/Page-trash.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Home/Tpl/Page-view.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Home/Tpl/Page-views.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Home/Tpl/Page-viewss.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Home/Tpl/Page-zizhu.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Home/Tpl/Page-zsjf-old.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Home/Tpl/Page-zsjf1 - 副本.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Home/Tpl/Page-zsjf1.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Home/Tpl/Page-zxcx.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Home/Tpl/Pay-index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Home/Tpl/Pay-returnMovePay.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Home/Tpl/Pay-returnPay.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Home/Tpl/Pay-returnPay1.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Home/Tpl/Public-404.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Home/Tpl/Public-common-footer.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Home/Tpl/Public-common-head.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Home/Tpl/Public-common-script.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Home/Tpl/Public-common-slider.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Home/Tpl/Public-common-toppart-login.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Home/Tpl/Public-common-toppart.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Home/Tpl/Public-error.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Home/Tpl/Public-footer-index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Home/Tpl/Public-footer.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Home/Tpl/Public-footer1.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Home/Tpl/Public-getpass.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Home/Tpl/Public-getpass_ok.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Home/Tpl/Public-header-index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Home/Tpl/Public-header-login.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Home/Tpl/Public-header.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Home/Tpl/Public-header1.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Home/Tpl/Public-index-header.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Home/Tpl/Public-index-top.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Home/Tpl/Public-left.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Home/Tpl/Public-login.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Home/Tpl/Public-notice.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Home/Tpl/Public-reg.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Home/Tpl/Public-reg2.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Home/Tpl/Public-reg3.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Home/Tpl/Public-repass.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Home/Tpl/Public-top.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Home/Tpl/Question-index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Home/Tpl/Question-view.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Home/Tpl/Repair-index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Home/Tpl/Repair-lists.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Home/Tpl/Repair-view.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Home/Tpl/Rule-index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Home/Tpl/Rule-view.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Home/Tpl/Single-index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Home/Tpl/Single-lists.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Home/Tpl/Single-view.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Home/Tpl/Srv-index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Home/Tpl/Srv-view.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Home/Tpl/Union-bill-old.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Home/Tpl/Union-bill.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Home/Tpl/Union-front.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Home/Tpl/Union-lsjf.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Home/Tpl/User-addsms.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Home/Tpl/User-addtag.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Home/Tpl/User-applist.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Home/Tpl/User-apply.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Home/Tpl/User-bgsjh.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Home/Tpl/User-bgsjhInfo.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Home/Tpl/User-bgsjhOk.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Home/Tpl/User-bind.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Home/Tpl/User-bindEneryCard.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Home/Tpl/User-bindok.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Home/Tpl/User-contract.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Home/Tpl/User-djljhsTip.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Home/Tpl/User-edit.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Home/Tpl/User-editavator.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Home/Tpl/User-fjxx.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Home/Tpl/User-hb.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Home/Tpl/User-hbUp.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Home/Tpl/User-hbcg.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Home/Tpl/User-index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Home/Tpl/User-index1.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Home/Tpl/User-jfyw.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Home/Tpl/User-jtjhz.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Home/Tpl/User-jtjhzInfo.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Home/Tpl/User-jtjhzcg.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Home/Tpl/User-lssh.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Home/Tpl/User-message.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Home/Tpl/User-ny.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Home/Tpl/User-nyk.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Home/Tpl/User-nykInfo.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Home/Tpl/User-nykcg.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Home/Tpl/User-pass.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Home/Tpl/User-qxbind.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Home/Tpl/User-reheat.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Home/Tpl/User-reheatInfo.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Home/Tpl/User-room.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Home/Tpl/User-sms.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Home/Tpl/User-sw.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Home/Tpl/User-swZsTip.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Home/Tpl/User-swZsUp.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Home/Tpl/User-swbg.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Home/Tpl/User-swbgcg.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Home/Tpl/User-swbginfo.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Home/Tpl/User-swbgsjh.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Home/Tpl/User-swbgsjhInfo.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Home/Tpl/User-swbgsjhOk.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Home/Tpl/User-swyykt.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Home/Tpl/User-swyyktcg.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Home/Tpl/User-swyyktinfo.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Home/Tpl/User-tenlist.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Home/Tpl/User-unbindno.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Home/Tpl/User-unbindok.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Home/Tpl/User-uproom.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Home/Tpl/User-view.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Home/Tpl/User-ywbl.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Home/Tpl/Vote-another.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Home/Tpl/Vote-cat.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Home/Tpl/Vote-cause.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Home/Tpl/Vote-custom - 副本.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Home/Tpl/Vote-custom.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Home/Tpl/Vote-dust.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Home/Tpl/Vote-energy.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Home/Tpl/Vote-hb.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Home/Tpl/Vote-heating.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Home/Tpl/Vote-index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Home/Tpl/Vote-jianshe.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Home/Tpl/Vote-other.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Home/Tpl/Vote-others.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Home/Tpl/Vote-result.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Home/Tpl/Vote-service.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Home/Tpl/Vote-view.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Home/Tpl/Zf-front.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Home/Tpl/Zf-front_old.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Home/Tpl/fwlist.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Home/Tpl/log.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Home/Tpl/new/Public-footer-index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Home/Tpl/new/Public-footer.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Home/Tpl/new/Public-header-index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Modules/Home/Tpl/new/Public-header.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Tpl/500.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Tpl/error.html" beforeDir="false" />
+    </list>
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileEditorManager">
+    <leaf>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Modules/Admin/Tpl/Public-login.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="298">
+              <caret line="28" column="75" selection-start-line="28" selection-start-column="69" selection-end-line="28" selection-end-column="75" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/Modules/Admin/Action/PublicAction.class.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="272">
+              <caret line="40" column="34" selection-start-line="40" selection-start-column="34" selection-end-line="40" selection-end-column="34" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
+  </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>api_verify_code_url</find>
+      <find>/*zhrz</find>
+      <find>&quot;&quot;</find>
+      <find>验证码</find>
+      <find>__GROUP__</find>
+    </findStrings>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/Conf/api - 副本.php" />
+        <option value="$PROJECT_DIR$/Conf/config.php" />
+      </list>
+    </option>
+  </component>
+  <component name="ProjectFrameBounds" extendedState="6">
+    <option name="x" value="16" />
+    <option name="y" value="51" />
+    <option name="width" value="1400" />
+    <option name="height" value="761" />
+  </component>
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectView">
+    <navigator proportions="" version="1">
+      <foldersAlwaysOnTop value="true" />
+    </navigator>
+    <panes>
+      <pane id="Scope" />
+      <pane id="ProjectPane">
+        <subPane>
+          <expand>
+            <path>
+              <item name="MyCms" type="b2602c69:ProjectViewProjectNode" />
+              <item name="MyCms" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="MyCms" type="b2602c69:ProjectViewProjectNode" />
+              <item name="MyCms" type="462c0819:PsiDirectoryNode" />
+              <item name="Modules" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="MyCms" type="b2602c69:ProjectViewProjectNode" />
+              <item name="MyCms" type="462c0819:PsiDirectoryNode" />
+              <item name="Modules" type="462c0819:PsiDirectoryNode" />
+              <item name="Admin" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="MyCms" type="b2602c69:ProjectViewProjectNode" />
+              <item name="MyCms" type="462c0819:PsiDirectoryNode" />
+              <item name="Modules" type="462c0819:PsiDirectoryNode" />
+              <item name="Admin" type="462c0819:PsiDirectoryNode" />
+              <item name="Action" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="MyCms" type="b2602c69:ProjectViewProjectNode" />
+              <item name="MyCms" type="462c0819:PsiDirectoryNode" />
+              <item name="Modules" type="462c0819:PsiDirectoryNode" />
+              <item name="Admin" type="462c0819:PsiDirectoryNode" />
+              <item name="Tpl" type="462c0819:PsiDirectoryNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
+    </panes>
+  </component>
+  <component name="PropertiesComponent">
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/.." />
+    <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
+    <property name="nodejs_npm_path_reset_for_default_project" value="true" />
+    <property name="settings.editor.selected.configurable" value="project.propVCSSupport.Mappings" />
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="8e3adf24-56cf-4437-9f6f-b78f6644f560" name="Default Changelist" comment="" />
+      <created>1558400286470</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1558400286470</updated>
+      <workItem from="1558400287713" duration="502000" />
+      <workItem from="1558401371708" duration="3234000" />
+    </task>
+    <task id="LOCAL-00001" summary="初始化项目">
+      <created>1558402735108</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1558402735108</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
+    <servers />
+  </component>
+  <component name="TimeTrackingManager">
+    <option name="totallyTimeSpent" value="3736000" />
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="-8" y="-8" width="1456" height="876" extended-state="6" />
+    <layout>
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.2765043" />
+      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+      <window_info id="Favorites" order="2" side_tool="true" />
+      <window_info anchor="bottom" id="Messages" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Find" order="1" />
+      <window_info anchor="bottom" id="Run" order="2" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Database Changes" order="8" />
+      <window_info anchor="bottom" id="Version Control" order="9" />
+      <window_info anchor="bottom" id="Terminal" order="10" />
+      <window_info anchor="bottom" id="Event Log" order="11" side_tool="true" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="right" id="Database" order="3" />
+    </layout>
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="初始化项目" />
+    <option name="LAST_COMMIT_MESSAGE" value="初始化项目" />
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/Conf/api - 副本.php">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Conf/api.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="78">
+          <caret line="3" column="24" selection-start-line="3" selection-start-column="5" selection-end-line="3" selection-end-column="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Conf/attach.php">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="jar://$APPLICATION_HOME_DIR$/plugins/php/lib/php.jar!/stubs/soap/soap.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="213">
+          <caret line="259" column="7" lean-forward="true" selection-start-line="259" selection-start-column="7" selection-end-line="259" selection-end-column="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Conf/config.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="234">
+          <caret line="9" column="44" lean-forward="true" selection-start-line="9" selection-start-column="44" selection-end-line="9" selection-end-column="44" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Modules/Admin/Action/ApiAction.class.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="52">
+          <caret line="2" column="6" selection-start-line="2" selection-start-column="6" selection-end-line="2" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Modules/Admin/Tpl/Public-login.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="298">
+          <caret line="28" column="75" selection-start-line="28" selection-start-column="69" selection-end-line="28" selection-end-column="75" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Modules/Admin/Action/PublicAction.class.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="272">
+          <caret line="40" column="34" selection-start-line="40" selection-start-column="34" selection-end-line="40" selection-end-column="34" />
+        </state>
+      </provider>
+    </entry>
+  </component>
+</project>

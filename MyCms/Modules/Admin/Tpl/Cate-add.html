@@ -1,0 +1,244 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href='__PUBLIC__/css/common.css'>
+<script type="text/javascript" src="__PUBLIC__/js/jquery-1.7.1.min.js"></script>
+<script type="text/javascript" src="__PUBLIC__/js/base.js"></script>
+<script type="text/javascript" src="__PUBLIC__/js/kindeditor/kindeditor-min.js"></script>
+<link rel="stylesheet" href="__PUBLIC__/js/kindeditor/themes/default/default.css" />
+<script charset="utf-8" src="__PUBLIC__/js/kindeditor/lang/zh_CN.js"></script>
+<script>
+     var WEB_SESSION_ID = '{$Think.session.myid}';
+      //编辑器
+            KindEditor.ready(function(K) {
+                var editor1 = K.create('textarea[name="content"]', {
+                    allowFileManager : true,
+                      uploadJson : '{:U("Attach/upload")}',
+                    fileManagerJson :  '{:U("Attach/filelist")}',
+                      width : '675px',
+                        height : '300px',
+                    afterCreate : function() {
+                        var self = this;
+                        K.ctrl(document, 13, function() {
+                            self.sync();
+                            K('form[name=example]')[0].submit();
+                        });
+                        K.ctrl(self.edit.doc, 13, function() {
+                            self.sync();
+                            K('form[name=example]')[0].submit();
+                        });
+                    }
+                });
+//自定义
+                var editor = K.editor({ 
+                    allowFileManager : true,        
+                    uploadJson : '{:U("Attach/upload")}',
+                    fileManagerJson :  '{:U("Attach/filelist")}'
+                });
+                //取消缩略图                         
+                K('#clear').click(function() {
+                    K('#image img').remove();
+                    K('#image').append('<img  src="__PUBLIC__/images/thumb.png">');
+                    K('#pic').val('');
+                });                         
+                                
+                //缩略图                         
+                K('#image').click(function() {
+                    editor.loadPlugin('image', function() {
+                        editor.plugin.imageDialog({
+                            //imageUrl : K('#image1 img'),
+                                                       
+                            clickFn : function(url, title, width, height, border, align) {
+                                //K('#image1 img').append('<img src="' + data.url + '">');
+                                K('#image img').remove();
+                                K('#image').append('<img src="'+url+'">');
+                                editor.hideDialog();
+                                K('#pic').val(url);
+                            }
+                        });
+                    });
+                });    
+                
+   //
+     });
+    
+</script>
+<style>
+#im {
+	z-index: 991;
+	background-color: white;
+	border: #f7f7f7 solid 2px;
+	position: absolute;
+	width:220px;
+	height:195px;
+	left: 460px;
+	text-align: center;
+	top: 160px;
+	padding-top: 2px;
+}
+#image {
+	display: block;
+	height: 150px;
+	line-height: 150px;
+	width: 220px;
+	cursor: pointer;
+	text-align: center;
+        display: table-cell;
+     vertical-align:middle;
+}
+#image img {
+	vertical-align: middle; margin: auto; max-width: 220px; max-height: 150px;
+}
+#imuoload:hover{ text-decoration: underline; cursor:  pointer; }
+#clear {
+	background: #51B148;
+	color: #FFF;
+	font: bold 14px arial, sans-serif;
+	padding: 0.15em 1em;
+	text-transform: uppercase;
+	margin: 0 auto;
+	overflow: visible;
+	width: auto;
+	cursor: pointer;
+	padding: 7px 20px;
+	display: block;
+}    
+</style>    
+<title>无标题文档</title>
+</head>
+<body>
+<div id="append_parent"></div>
+<div class="container" id="cpcontainer">
+  <div id="contentHeader">
+    <h3>栏目管理</h3>
+    <div class="searchArea">
+      <ul class="action left" >
+        <li class="current"><a href="__URL__/index" class="actionBtn"><span>返回</span></a></li>
+        <li ><a href="__URL__/add" class="current"><span>录入</span></a></li>
+      </ul>
+      <div class="search right"> </div>
+    </div>
+  </div>
+  <eq name="type" value="add">
+  <form name="form1"  action="__URL__/insert" method="post">
+  <else/>
+  <form name="form1"  action="__URL__/update" method="post">
+    <input  name="id"  type="hidden" value="{$id}" />
+    </eq>
+    <div id="im"><a id="image"><img  src="<empty name='pic'>__PUBLIC__/images/thumb.png<else />{$pic}</empty>"></a>
+      <input type="button" class="actionBtn" id="clear" value="取消">
+    </div>
+    <table class="form_table">
+      <tr>
+        <td class="tb_title" >标题：</td>
+      </tr>
+      <tr >
+        <td >上级：<select name="pid">
+            <option value="0">顶级栏目</option>
+            <volist name="list" id="cat"> <option value="{$cat.id}" 
+              <eq name="cat.id" value="$pid"> selected="selected"</eq>
+              >{$cat.html}{$cat.title}
+              </option>
+            </volist>
+            </select>&nbsp;&nbsp;标题：<input size="30" maxlength="128" name="title"  type="text" value="{$title}" />
+        </td>
+      </tr>
+     <tr>
+        <td class="tb_title">内容摘要</td>
+      </tr>
+      <tr >
+        <td >摘要：<input size="30" maxlength="128" name="summary"  type="text" value="{$summary}" /></td>
+      </tr>
+
+      <tr>
+        <td class="tb_title">模型模版：</td>
+      </tr>
+      <tr >
+        <td  >模型：<select name="mid">
+          
+            <volist name="mlist" id="model"> <option value="{$model.id}" 
+              <eq name="model.id" value="$mid"> selected="selected"</eq>
+              >{$model.title}
+              </option>
+            </volist>
+          </select>&nbsp;&nbsp;模板：<input size="30" maxlength="128" name="tpl" type="text" value="{$tpl}" /></td>
+      </tr>
+      <tr>
+        <td class="tb_title">外链：(此处若填写，则不显示内容)</td>
+      </tr>
+      <tr >
+        <td >URL：<input size="30" maxlength="128" name="url" type="text" value="{$url}" /></td>
+      </tr>
+      <tr>
+        <td class="tb_title">导航排序：</td>
+      </tr>
+      <tr >
+        <td >导航：<select name="ismenu">
+            
+        
+            <option value="0" 
+            <eq name="ismenu" value="0"> selected="selected"</eq>
+            >否
+            </option> 
+                <option value="1" <eq name="ismenu" value="1"> selected="selected"</eq>
+            >是
+                </option></select>&nbsp;&nbsp;排序：<input size="10" maxlength="128" name="sort" type="text" value="{$sort}" /></td>
+      </tr>
+      <tr>
+        <td class="tb_title">状态：</td>
+      </tr>
+      <tr >
+        <td >状态：<select name="status">
+            <option value="1" 
+            <eq name="status" value="1"> selected="selected"</eq>
+            >启用
+            </option>
+            <option value="0" 
+            <eq name="status" value="0"> selected="selected"</eq>
+            >停用
+            </option>
+          </select>
+        </td>
+      </tr>
+      <tr class="submit"><input type="hidden" name="pic" id="pic" value="{$pic}" />
+        <td colspan="2" ><input type="submit" name="editsubmit" value="提交" class="button" tabindex="3" /></td>
+      </tr>
+    </table>
+  </form>
+  <script type="text/javascript">
+$(function(){ 
+    $(".confirmSubmit").click(function() {
+		var a=$("input[type='checkbox']:checked");
+		var len=a.length;
+		if(len<1){
+			alert("您未选择任何选项！");
+			return false;
+		}else{
+        return confirm('本操作不可恢复，确定继续？');
+		}
+			
+    });
+}); 
+</script>
+</div>
+<script language="javascript"> 
+<!-- 
+function updateNotebook()
+{
+  $("#notebookMessage").fadeIn(2000);//fadeIn 是jq淡入隐藏
+  $("#notebookMessage").html('<span style="color:#FF0000"><img src="images/loading.gif" align="absmiddle">正在更新数据...</span>'); 
+  $.post("xxx.php",{notebook:$('#notebook').val()},function(response){
+      if(response.state == 'success'){
+          $("#notebookMessage").html('<span style="color:#FF0000">'+response.message+'</span>'); 
+      }else{
+          alert(response.message);
+      }
+      $("#notebookMessage").fadeOut(2000);  
+  }, 'json');
+
+}
+//--> 
+</script>
+</body>
+</html>

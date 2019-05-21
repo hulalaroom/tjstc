@@ -1,0 +1,64 @@
+<include file="Public:header"/>
+<div class="main_block">
+  <include file="Public:top"/>
+  <div class="content_block">
+    <div class="left_side fl">
+      <div class="l_menu">
+        {~$cat=get_child($cate,$pid);}
+        <volist name="cat" id="c" key="k">
+          <dl
+          <eq name='c.id' value='$id'> class="hover"</eq>
+          >
+          <dt><a
+              href="<notempty name='c.url'>{$c.url}<else/>{:U($c['Model']['name'].'/'.$c['tpl'],'id='.$c['id'])}</notempty>"><img src="{$c.pic}"/></a>
+          </dt>
+          <dd><a
+              href="<notempty name='c.url'>{$c.url}<else/>{:U($c['Model']['name'].'/'.$c['tpl'],'id='.$c['id'])}</notempty>">{$c.title}</a>
+            <span>{$c.summary}</span></dd>
+          </dl>
+        </volist>
+      </div>
+      <include file="Public:left"/>
+    </div>
+    <div class="main_con fr">
+      <div class="bread_nav">
+        <div class="l fl"></div>
+        <div class="m fl" style="line-height:30px;"> <span class="list_style"></span> <span>您当前的位置:</span> {$nav} </div>
+        <div class="r fl"></div>
+      </div>
+      <div class="artical">
+        <!-- begin -->
+        <div class="article_list">
+          <empty name="art_list">
+            <div class="nodata">暂无内容
+              <div>
+          </empty>
+          <ul>
+            <volist name="art_list" id="art">
+              <li>
+                <span class="ar">{$art.start_time|date="Y-m-d",###}</span>
+                <a class="title" href="{:U('Article/view','id='.$art['id'])}" target="_blank" title="">{$art.title}</a>
+              </li>
+            </volist>
+          </ul>
+          <script>
+            $(".article_list ul li").hover(
+                function () {
+                  $(this).find(".ar").css("color", "#00a040");
+                },
+                function () {
+                  $(this).find(".ar").css("color", "#656565");
+                }
+            );
+          </script>
+          <div class="list_page">{$page}</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  </div>
+  </div>
+  </div>
+  <include file="Public:footer"/>
+  </body>
+  </html>

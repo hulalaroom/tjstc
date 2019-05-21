@@ -1,0 +1,126 @@
+<!doctype html>
+<html>
+<head>
+    <include file="Public:common-head"/>
+	<script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=Z1gTtjPz1mZdDt3M18AVymBQhADmk59h"></script>
+	<style type="text/css">
+        .map1{width:1200px;height: 800px;margin-bottom: 50px;}
+    </style>
+</head>
+
+<body>
+<include file="Public:common-toppart"/>
+<!--include file="Public:common-slider"/-->
+
+<div class="content_bg">
+    <div class="content history_content">
+        <p class="dqwz history_dqwz">当前位置：<a href="/index.php?s=">首页</a><span>&gt;</span>服务专栏<span>&gt;</span><span>营业网点</span></p>
+
+        <div class="list-contianer clearfix">
+            <div class="list-top-border"></div>
+            <div class="list-tab">
+                <ul>
+                    <li class="list-tab-item cur" id="syBtn">商业街</li>
+					<li class="list-tab-item" id="sqBtn">第三社区中心</li>
+                </ul>
+            </div>
+            <div class="list-tab-content-container" id="sy">
+                <div class="list-tab-content on" style="padding-left:30px;padding-right:30px;">
+                    <h1 class="article-title">商业街</h1>
+                    <div class="article-section article-content" style="overflow: hidden;">
+                        <img src="__PUBLIC__/last/img/yywd/yywd_04.png" alt="" style="float:left;">
+                        <ul style="float:left">
+                            <li style="border-bottom:none;height:2em">&nbsp;</li>
+                            <li style="padding-left:2em;border-bottom:none;background:url(__PUBLIC__/last/img/yywd/yywd_03.png) 32px center no-repeat">地址：天津生态城和旭路276号天和新乐汇3号楼首层生态城公用事业客服中心</li>
+                            <li style="padding-left:2em;border-bottom:none;background:url(__PUBLIC__/last/img/yywd/yywd_02.png) 28px center no-repeat">营业时间：周一至周日  上午9：00-11：30    下午13：00-17：00</li>
+                            <li style="padding-left:2em;border-bottom:none;background:url(__PUBLIC__/last/img/yywd/yywd_01.png) 32px center no-repeat">24h服务热线：022-66885890</li>
+                        </ul>
+                    </div>
+                    
+                    <br>
+                    <br>
+                </div>
+				<div id="allmap" class="map1"></div>
+            </div>
+
+			<div class="list-tab-content-container" id="sq" style="display:none">
+                <div class="list-tab-content on" style="padding-left:30px;padding-right:30px;">
+                    <h1 class="article-title">第三社区中心</h1>
+                    <div class="article-section article-content" style="overflow: hidden;">
+                        <img src="__PUBLIC__/last/img/yywd/yywd_06.png" alt="" style="float:left;">
+                        <ul style="float:left">
+                            <li style="border-bottom:none;height:2em">&nbsp;</li>
+                            <li style="padding-left:2em;border-bottom:none;background:url(__PUBLIC__/last/img/yywd/yywd_03.png) 32px center no-repeat">地址：天津生态城和畅路257号 第三社区服务中心</li>
+                            <li style="padding-left:2em;border-bottom:none;background:url(__PUBLIC__/last/img/yywd/yywd_02.png) 28px center no-repeat">营业时间： 周一至周五9:00-11:30；13:30-17:00</li>
+                            <li style="padding-left:2em;border-bottom:none;background:url(__PUBLIC__/last/img/yywd/yywd_01.png) 32px center no-repeat">24h服务热线：022-66885890</li>
+                        </ul>
+                    </div>
+                    <!--<div class="article-section article-content" style="text-indent:0"><img src="__PUBLIC__/last/img/yywd/yywd_05.png" alt=""></div>-->
+                    <br>
+                    <br>
+                </div>
+				<div id="allmap2" class="map1"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<include file="Public:common-footer"/>
+<include file="Public:common-script"/>
+<script type="text/javascript" src="__PUBLIC__/last/js/jquery.easing.min.js"></script>
+<script type="text/javascript" src="__PUBLIC__/last/js/banner.js"></script>
+<script type="text/javascript">
+$(function() {
+     initBanner();
+
+	$("#sqBtn").click(function(){
+		$("#sqBtn").attr("class","list-tab-item cur");
+		$("#syBtn").attr("class","list-tab-item");
+		$("#sq").show();
+		$("#sy").hide();
+	})
+	$("#syBtn").click(function(){
+		$("#syBtn").attr("class","list-tab-item cur");
+		$("#sqBtn").attr("class","list-tab-item");
+		$("#sy").show();
+		$("#sq").hide();
+	})
+	
+});
+</script>
+<script type="text/javascript">
+    // 百度地图API功能
+    var map = new BMap.Map("allmap");
+    var point = new BMap.Point(117.752217,39.12684);
+    map.centerAndZoom(point, 16);
+    var marker = new BMap.Marker(point);  // 创建标注
+    map.addOverlay(marker);              // 将标注添加到地图中
+
+    var label = new BMap.Label("<p style='color:red;font-size:14px'>　天津生态城公用事业客户中心</p><p>　地址：天津生态城和旭路276号天和新乐汇3号楼　</p><p>　24h服务热线：022-66885890</p>",{offset:new BMap.Size(20,-55)});
+    marker.setLabel(label);
+
+    map.addControl(new BMap.NavigationControl());
+    map.addControl(new BMap.ScaleControl());
+    map.addControl(new BMap.OverviewMapControl());
+    map.addControl(new BMap.MapTypeControl());
+</script>
+<script type="text/javascript">
+    // 百度地图API功能
+    var map2 = new BMap.Map("allmap2");
+    var point2 = new BMap.Point(117.763084,39.126292);
+	var point3 = new BMap.Point(117.745037,39.137417);
+    map2.centerAndZoom(point3, 16);
+    var marker2 = new BMap.Marker(point2);  // 创建标注
+    map2.addOverlay(marker2);              // 将标注添加到地图中
+
+    var label2 = new BMap.Label("<p style='color:red;font-size:14px'>　天津生态城第三社区</p><p>　地址：天津生态城和畅路257号 第三社区服务中心　</p><p>　24h服务热线：022-66885890</p>",{offset:new BMap.Size(20,-55)});
+    marker2.setLabel(label2);
+
+    map2.addControl(new BMap.NavigationControl());
+    map2.addControl(new BMap.ScaleControl());
+    map2.addControl(new BMap.OverviewMapControl());
+    map2.addControl(new BMap.MapTypeControl());
+</script>
+</body>
+</html>
+

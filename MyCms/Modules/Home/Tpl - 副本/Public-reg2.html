@@ -1,0 +1,248 @@
+<include file="Public:header-login" />
+<form id="form2" name="form2" method="post" action="{:U('Public/reg2ok')}">
+<div class="login_contend">
+    <p class="zhuce_img"></p>
+    <p class="zhuce_font"></p>
+    <div class="login_input ">
+        <div class="login_tab clearfix">
+        <div class="login_password"> 用户信息完善</div>
+        </div>
+        <div class="input_one input_two">
+        <input   name="name"  id="name" class="aaa" type="text" placeholder="请设置用户名"
+style="color:#8E8E8E" />
+            <!--<input type="text" placeholder="请设置用户名">-->
+            <div class="wrong"></div>
+        </div>
+                <div class="input_one input_two">
+                <input  id="pass" name="pass" class="aaa" type="password" placeholder="请设置账户密码"
+style="color:#8E8E8E"/>
+            <!--<input type="text" placeholder="请设置账户密码">-->
+            <div class="wrong"></div>
+        </div>
+
+        <div class="input_one input_two">
+        <input  id="passok" name="passok" class="aaa" type="password" placeholder="请确认账户密码"
+style="color:#8E8E8E" />
+           <!-- <input type="text" placeholder="请确认账户密码">-->
+            <div class="wrong"></div>
+        </div>
+
+      
+        
+<div class="checks">
+        <label>
+            <input type="checkbox" class="checkedTrue" id="xieyi" name="xieyi">
+            <span><i></i></span>
+            <strong>阅读并同意遵守<a onclick="ok();">《服务条款》</a></strong>
+        </label>
+       <!-- <a href="__URL__/login">已有账号？请登录</a>-->
+        </div>
+        <button class="login_button">注册 </button>
+		 <input type="hidden" id='phone' name='phone' value="{$Think.session.phone} "/>
+</form> 
+    </div>
+</div>
+
+
+<include file="Public:footer1" />
+</body>
+</html>
+<script type="text/javascript">
+	function ok(){
+		art.dialog({
+			title:'服务条款',
+			content: '<?php echo C('user_public_reg1_1');?>',
+			okVal:'同意',
+			width:1200,		
+			fixed:true,
+			lock:true,
+			ok: function () {
+				//this.title('3秒后自动关闭').time(3);
+				$('#xieyi').attr('checked', 'checked');
+				 $('#xieyi').blur();
+				return true;
+			},
+			cancelVal: '取消',
+			cancel: true //为true等价于function(){}
+		});
+	}
+</script>
+<script type="text/javascript" src="__PUBLIC__/js/formValidator-4.1.3.min.js"></script>
+<script type="text/javascript" src="__PUBLIC__/js/formvalidatorregex.js"></script>
+<script type="text/javascript">
+ 
+    $(document).ready(function(){   
+        //提供回调函数，提供提交返回结果的处理   
+        var options = {
+            //            beforeSubmit: showRequest,
+            //提交前处理 
+            success: showResponse,
+            //处理完成 
+            resetForm: false,
+            dataType: 'json'
+        };    
+        $('#form2').submit(function() {
+            if ($.formValidator.pageIsValid('1')==true) 
+            { 
+                $(this).ajaxSubmit(options);
+                return false; 
+            } 
+
+          
+        });
+       
+        //初始化验证插件，如果提交出错，则弹出对话框，如果正确，则通过ajax提交表单请求。
+        $.formValidator.initConfig({autotip:true,formID:"form2",
+            onsuccess:function(msg){
+              
+                return false;},
+            onError:function(msg){}
+
+        });
+  
+       $("#getcode").click(function(){
+            $imgstr="__URL__/verify/randcode="+Math.random();
+            $(this).attr("src",$imgstr);
+        });        
+
+        $('#getVerifyCodeBtn').on('click', function(){
+        	$('#codeVerifyTip').text('');
+            if ('' == $("#phone").val()) {
+                art.dialog({title: '提示信息',content: '请输入手机号码',time:10});
+                $("#phone").focus();
+                return false;
+            }
+
+			if(!(/^(13|15|18|14|17|16|19)[0-9]{9}$/.test($("#phone").val()))){ 
+			   art.dialog({
+					lock:true,
+					content: '请输入正确的手机号码',
+					time: 5
+				});
+				$("#phone").focus();
+				return false;
+			} 
+
+            $('#getVerifyCodeBtn').attr('disabled', true);
+			 timerId = setInterval(refreshSecDisp, 1000);
+            $.ajax({
+                type: "POST",
+                url: '{:U("Public/get_phone_verify_code","",false)}',
+                data: {phone:$("#phone").val()},
+                success: function( data ) {
+                    var retCode = data.code;
+                    if ('success' !== retCode) {
+                        $('#active_by_mail').attr('disabled', false);
+                        $('#active_by_phone').attr('disabled', false);
+                        $('#getVerifyCodeBtn').attr('disabled', false);
+                        $('#codeVerifyTip').text('获取手机验证码失败，请稍后再试。');
+                        return;
+                    }
+
+                   
+                },
+                dataType: 'json'
+            });
+        });
+// Ins- by lzhang 2014-02-23 ---------------------------------------------------
+    });
+    var total_sec = 59;
+    var timerId;
+    function refreshSecDisp() {
+        var btnDisp = '获取验证码';
+        if (0 === total_sec) {
+            removeTimer(timerId, 'getVerifyCodeBtn', btnDisp);
+            $('#active_by_mail').attr('disabled', false);
+            $('#active_by_phone').attr('disabled', false);
+            timerId = null;
+            total_sec = 59;
+            return;
+        }
+
+        btnDisp = btnDisp + '(' + total_sec + ')';
+        $('#getVerifyCodeBtn').val(btnDisp);
+        total_sec = total_sec - 1;
+    }
+
+    function removeTimer(id, objId, objText) {
+        if (null != id) {
+            clearInterval(id);
+        }
+        $('#'+objId).val(objText);
+        $('#'+objId).attr('disabled', false);
+	}
+
+    function showResponse(res) {
+		var name = $("#name").val();
+		if (name == "") {
+			art.dialog({
+				lock:true,
+				content: '用户名不能为空',
+				time: 5
+			});
+			$("#name").focus();
+			return false;
+		}
+		if(!(/^[0-9a-zA-Z_]{1,}$/.test(name))){ 
+		   art.dialog({
+				content: '用户名由数字、26个英文字母或者下划线组成，请正确填写',
+				time: 5
+			});
+			$("#name").focus();
+			return false;
+		}
+		
+		var pass = $("#pass").val();
+		if (pass == "") {
+			art.dialog({
+				lock:true,
+				content: '密码不能为空',
+				time: 5
+			});
+			$("#pass").focus();
+			return false;
+		}
+		
+		if(pass.length < 6){ 
+		   art.dialog({
+				content: '密码至少6位，请正确填写',
+				time: 5
+			});
+			$("#pass").focus();
+			return false;
+		} 
+        
+        var passok = $("#passok").val(); 
+		if(pass != passok){
+			art.dialog({
+				content: '密码不一致，请正确填写',
+				time: 5
+			});
+			$("#passok").focus();
+			return false;
+		}
+  
+		var xieyi = $("#xieyi").attr("checked");
+		if (xieyi != 'checked') {
+			 art.dialog({
+				content: '请阅读并同意服务条款',
+				time: 5
+			});
+			
+			return false;
+		}
+		
+        //
+       /*if(res.status=='0'){
+		 $("#getcode").click();
+	  }*/
+        art.dialog({
+            title: res.title,
+            content: res.message,
+            time: res.time
+        });
+        if (res.url) {
+            window.location.href = res.url;
+        }
+    }  
+</script>

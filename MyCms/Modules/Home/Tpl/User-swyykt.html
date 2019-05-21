@@ -1,0 +1,100 @@
+<!doctype html>
+<html>
+
+<head>
+    <include file="Public:common-head"/>
+</head>
+
+<body>
+<assign name="hoverIndex" value="1"/>
+<include file="Public:common-toppart"/>
+
+<div class="shuiwu_banner">
+    <div class="content">
+        <p class="jiaofei_banner_01 font_yinying">水务公司</p>
+        <p class="jiaofei_banner_03 "></p>
+        <p class="jiaofei_banner_02 font_yinying">水务业务，一键办理</p>
+
+    </div>
+
+
+</div>
+<div class="content_bg01 ">
+    <div class="content history_content">
+        <p class="dqwz history_dqwz">
+		当前位置：<a href="http://www.66885890.com">首页</a> &nbsp;&nbsp;&gt;&nbsp;&nbsp;
+		<a href="{:U('User/index',array('id'=>20))}">我的5890</a>&nbsp;&nbsp;&gt;&nbsp;&nbsp;
+		<a href="{:U('User/ywbl')}">业务办理</a>&nbsp;&nbsp;&gt;&nbsp;&nbsp;
+				<a href="{:U('User/sw')}">水务公司</a>&nbsp;&nbsp;&gt;&nbsp;&nbsp;
+		<span class="green">申请人应履行的责任</span>
+		</p>
+        <div class="wodeyewu_content clearfix">
+            <div class="wodeyewu_content_box03">
+                <div class="yewu_box clearfix">
+                    <p class=" shuiwu_font">申请人应履行的责任</p>
+            <p>1.再生水是通过对污水处理后达到国家杂用水标准的再生资源，可满足您冲厕（注：带有智能功能的马桶严禁使用再生水）等生活杂用，严禁饮用。</p>
+            <p>2.申请人开通范围应是整个单元整体内的再生水系统。</p>
+            <p>3.用户应在每月12日前保证缴费卡中有足够的水费金额，以免产生滞纳金。</p>
+            <p>4.若用户未收到能源卡，每月12日前可携带任意一张银行卡至水务窗口缴费。</p>
+            <p>5.房屋产权人变更后，产权人应与原房屋所有人核实再生水缴费情况，并及时缴清相关水费，同时须及时到指定地点办理过户手续并重新签订用水合同，以免因产生欠费给房屋产权人带来滞纳金等经济损失。</p>
+            <p>6.严禁房间内再生水管网未与自来水管网有任何形式连通。（检测方法：开通再生水前，若自来水处于开通状态，请检查马桶是否处于无水状态;若自来水未开通，开通再生水后，请检查自来水管道是否处于无水状态，以免发生串接现象）。</p>
+            <p>7.再生水开通时，房间内再生水设施未出现跑漏现象，否则由此引起的一切后果由申请人自行负责。</p>
+            <p>8.在申请人长期外出期间，建议将管道井内的入户总阀门及房间内进水阀关闭，以避免给申请人和他人造成不必要的损失。</p>
+            <p>9.请申请人及时办理并激活能源服务卡，并拨打服务电话66885890将卡号告知我公司,移动电话、能源卡信息变更需在该网站上及时更新。</p>
+            <p>10.如遇再生水相关政策调整，按照新政策实施执行。</p>
+                </div>
+
+            </div>
+            <div class="fuxuankuang">
+                <div class="box box02">
+                    <ul>
+                        <li id="chk_accept">已认真阅读申请人应履行的责任</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="wodeyewu_btn01 wodeyewu_btn02"><a id="fireOkBtn" style="background: url(http://www.66885890.com/Public/last/img/wodeyewu_btn14.png) 0px 0px no-repeat;">确定</a></div>
+            <form method="post" action="{:U('User/swyyktinfo')}" id="accept_form">
+                <input type="hidden" id="accept" name="accept" value="0">
+            </form>
+        </div>
+    </div>
+</div>
+
+
+<include file="Public:common-footer"/>
+<include file="Public:common-script"/>
+<script type="text/javascript" src="__PUBLIC__/last/js/artDialog4.1.7/artDialog.source.js?skin=green"></script>
+<script type="text/javascript">
+    $(function () {
+        var $ali = $('#chk_accept');
+        $ali.on('click', function () {
+            var $self = $(this);
+            var chked = $self.attr('checked');
+            if (chked) {
+                $self.attr('checked', false).removeClass('on');
+            } else {
+                $self.attr('checked', true).addClass('on');
+            }
+        });
+
+        var $okBtn = $('#fireOkBtn');
+        $okBtn.on('click', function (event) {
+            event.preventDefault();
+            var accepted = $ali.attr('checked');
+            if (!accepted) {
+                art.dialog({
+                    lock: true,
+                    content: '请确认您已认真阅读并同意申请人应履行的责任',
+                    time: 3
+                });
+                return false;
+            }
+
+            $('#accept').val('1');
+            $('#accept_form').submit();
+        });
+    });
+</script>
+</body>
+</html>

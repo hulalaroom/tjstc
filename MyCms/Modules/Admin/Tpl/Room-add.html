@@ -1,0 +1,56 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href='__PUBLIC__/css/common.css'>
+<script type="text/javascript" src="__PUBLIC__/js/jquery-1.7.1.min.js"></script>
+<script type="text/javascript" src="__PUBLIC__/js/base.js"></script>
+<title>房间绑定</title>
+</head>
+<body>
+<div id="append_parent"></div>
+<div class="container" id="cpcontainer">
+  <div id="contentHeader">
+    <h3>房间绑定</h3>
+    <div class="searchArea">
+      <ul class="action left" >
+        <li class="current"><a href="/index.php?s=/admin/user/index" class="actionBtn"><span>返回</span></a></li>
+        <!--<li ><a href="__URL__/add" class="actionBtn"><span>录入</span></a></li>-->
+      </ul>
+      <div class="search right"> </div>
+    </div>
+  </div>
+  <form name="form1"  action="__URL__/insert" method="post">
+    <table class="form_table" style="float:left">
+        <tr>
+        <td class="tb_title" >房间基本信息：</td>
+      </tr>
+      <tr>
+        <td class="tb_title" >用户名：</td>
+      </tr>
+      <tr >
+        <td ><input size="30" maxlength="128" name="username"  type="text" value="{$username}" />
+        </td>
+      </tr>
+         <tr>
+        <td class="tb_title" >房间编号：</td>
+      </tr>
+      <tr >
+        <td ><input size="30" maxlength="128" name="houseCode"  type="text" value="" />
+        </td>
+      </tr>
+	  <tr>
+        <td class="tb_title" >房间地址：</td>
+      </tr>
+      <tr >
+        <td ><input size="30" maxlength="128" name="address"  type="text" value="" />
+        </td>
+      </tr>
+      <tr class="submit">
+        <td colspan="2" ><input type="submit" name="editsubmit" value="提交" class="button" tabindex="3" /></td>
+      </tr>
+    </table>
+  </form>
+</div>
+</body>
+</html>

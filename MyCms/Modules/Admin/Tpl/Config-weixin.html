@@ -1,0 +1,88 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href='__PUBLIC__/css/common.css'>
+<script type="text/javascript" src="__PUBLIC__/js/jquery-1.7.1.min.js"></script>
+<script type="text/javascript" src="__PUBLIC__/js/base.js"></script>
+<title>无标题文档</title>
+</head>
+<body>
+<div id="append_parent"></div>
+<div class="container" id="cpcontainer">
+
+<div id="contentHeader">
+  <h3>微信设置</h3>
+  <div class="searchArea">
+      <ul class="action left" >
+        <li><a href="__URL__/index" class="actionBtn"><span>基本配置</span></a></li>
+        <li><a href="__URL__/attach" class="actionBtn"><span>附件配置</span></a></li>
+        <li><a href="__URL__/email" class="actionBtn"><span>邮箱配置</span></a></li>
+		<li><a href="__URL__/content" ><span>页面配置</span></a></li>
+                <li><a class="current"  href="__URL__/weixin" ><span>微信配置</span></a></li>
+      </ul>
+    </div>
+</div>
+<form action="{:U('Config/weixin_update')}" method="post" name="form1">
+  <table class="content_list">
+    <tbody><tr>
+      <td class="tb_title">微信开发token：</td>
+    </tr>
+    <tr>
+        <td><input type="text" class="txt" name="token" value="{$Think.config.token}">
+       </td>
+    </tr>
+    <tr>
+      <td class="tb_title">微信开发appid：</td>
+    </tr>
+    <tr>
+        <td><input type="text" class="txt" name="appid" value="{$Think.config.appid}">
+       </td>
+    </tr>
+    
+    <tr>
+      <td class="tb_title">微信开发appsecret：</td>
+    </tr>
+    <tr>
+      <td><input type="text" class="txt" name="appsecret" value="{$Think.config.appsecret}">
+        </td>
+    </tr>
+    <tr>
+      <td class="tb_title">订阅微信后的提示：</td>
+    </tr>
+    <tr>
+      <td><textarea rows="6" name="su_msg" id="site_stats" cols="50" class="tarea ">{$Think.config.su_msg}</textarea>
+        </td>
+    </tr>
+         <tr>
+          <td class="tb_title">是否开启自动回复：</td>
+        </tr>
+        <tr>
+          <td><select name="isreply">
+              <option value="1"
+              <eq name="Think.config.isreply" value="1"> selected="selected" </eq>
+              >是
+              </option>
+              <option value="0" 
+              <eq name="Think.config.isreply" value="0"> selected="selected" </eq>
+              >否
+              </option>
+            </select></td>
+        </tr>
+            <tr>
+      <td class="tb_title">自动回复内容：</td>
+    </tr>
+    <tr>
+      <td><textarea rows="6" name="reply_msg"  cols="50" class="tarea ">{$Think.config.reply_msg}</textarea>*只有开启自动回复才有效
+        </td>
+    </tr>
+
+    <tr class="submit">
+      <td><input type="submit"  value="提交" class="button" tabindex="3"></td>
+    </tr>
+  </tbody></table>
+</form>
+</div>
+
+</body>
+</html>

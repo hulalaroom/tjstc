@@ -1,0 +1,134 @@
+<!doctype html>
+<html>
+<head>
+    <include file="Public:common-head" />
+	<link rel="stylesheet" type="text/css" href="__PUBLIC__/last/css/selectFilter.css">
+</head>
+
+<body>
+    <assign name="hoverIndex" value="1" />
+    <include file="Public:common-toppart" />
+<div class="nengyuan_banner">
+	<div class="content">
+		<p class="jiaofei_banner_01 font_yinying">能源公司</p>
+		<p class="jiaofei_banner_03 "></p>
+		<p class="jiaofei_banner_02 font_yinying">能源业务，一键办理</p>
+	</div>
+</div>
+<div class="content_bg01 ">
+	<div class="content history_content">
+        <p class="dqwz history_dqwz">当前位置：{$nav} (业务导航不准确&顶部导航高亮不准确)</p>
+		<div class="wodeyewu_content clearfix">
+			<div class="wodeyewu_content_box01">
+				<div class="yewu_table clearfix">
+					<ul class="yewuleft">
+						<li>房间编号</li>
+						<li>房间地址</li>
+						<li>申请人</li>
+						<li>能源卡所属银行</li>
+						<li>能源卡号</li>
+						<li>能源卡有效期</li>
+					</ul>
+
+					<ul class="yewuright">
+						<li>
+							<div class="filter-box" id="aaa" style="width:300px;margin:0 auto;padding-top:5px">
+								<div class="filter-text">
+									<input class="filter-title" type="text" readonly placeholder="请选择" />
+									<i class="icon icon-filter-arrow"></i>
+								</div>
+								<select name="houseCode" id="houseCode">
+									<volist name="houselist" id="hc">
+									   <option value="{$hc.houseCode}" data-address="{$hc.address}" <if condition="$hc.houseCode eq $code">selected</if>>{$hc.houseCode}</option>
+									 </volist>
+								</select>
+							</div>
+						</li>
+						<li id="address_label"></li>
+						<li>{$userName}</li>
+						<li>
+							<div class="checks">
+								 <label>
+									<input type="checkbox" class="checkedTrue">
+									<span><i></i></span>
+									<strong>中国银行 </strong>
+								</label>
+							</div>
+							<div class="checks">
+								 <label>
+									<input type="checkbox" class="checkedTrue">
+									<span><i></i></span>
+									<strong>中国建设银行 </strong>
+								</label>
+							</div>
+						</li>
+						<li>
+							<input type="text" name="" id="" value=""><span class="hengxian">-</span>
+							<input type="text" name="" id="" value=""><span class="hengxian">-</span>
+							<input type="text" name="" id="" value=""><span class="hengxian">-</span>
+							<input type="text" name="" id="" value="">
+						</li>
+						<li>
+							<input type="text" name="" id="" value=""><span class="hengxian">&nbsp;</span>月
+							<input type="text" name="" id="" value=""><span class="hengxian">&nbsp;</span>年
+						</li>
+					</ul>
+				</div>
+				<div class="yezhushenfen">
+					<h3>上传业主本人身份证照片</h3>
+					<div class="yewu_tips01 ">注意：文件后缀名必须为.jpg，文件大小在2M以内！</div>
+					<div class="yewu_tips02">请您上传清晰、无污染的能源卡正面相片</div>
+					<div class="yewu_shangchuang">
+						<div>
+							<a href="" class="file">上传能源卡正面相片<input type="file" name="" id=""></a>
+							<span class="shili01"><img src="__PUBLIC__/last/img/wodeyewu_14.png" alt="" /></span>
+							<span class="shili01"><img src="__PUBLIC__/last/img/wodeyewu_15.png" alt="" /></span>
+						</div>
+						<div class="shanchu"><span><img src="__PUBLIC__/last/img/wodeyewu_06.png" alt="" /></span>××××××××身份证（正面）.jpg
+							<a>删除</a>
+						</div>
+					</div>
+
+					<div class="yewu_yanzheng">
+						<div class="yewu_tips03">向您手机号码<span>{$phone}</span>发送验证码<span><a href="" class="biangeng">变更手机号</a></span></div>
+						<div class="yewu_input">
+							<input id="valiCode" class="aaa" type="text" placeholder="请输入短信验证码" onblur="if(this.value==''){this.value='请输入短信验证码';$(this).css({color:'#8E8E8E'})}" onfocus="if(this.value=='请输入短信验证码'){this.value='';$(this).css({color:'#666'})}" style="color:#8E8E8E" value="请输入短信验证码">
+						</div>
+						<span>*</span>
+						<a href="">获取验证码</a>
+					</div>
+				</div>
+				<div class="wodeyewu_btn01"><a href="">提交申请</a></div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<include file="Public:common-footer" />
+<include file="Public:common-script" />
+<script type="text/javascript" src="__PUBLIC__/last/js/selectFilter.js"></script>
+
+<script type="text/javascript">
+$(function() {
+	$('label').click(function(){
+		var checkedTrue = $('.checkedTrue').is(':checked');
+		if(checkedTrue ==true){
+			$('.checks').addClass('checked')
+		}else{
+			$('.checks').removeClass('checked')
+		}
+	});
+
+	var $addressLabel = $('#address_label'),$houseSel = $('#houseCode');
+	$('#aaa').selectFilter({
+		callBack : function (val){
+			$addressLabel.text($houseSel.children('option:selected').attr('data-address'));
+		}
+	});
+
+	var address = $houseSel.children('option:selected').attr('data-address');
+	$addressLabel.text(address);
+});
+</script>
+</body>
+</html>

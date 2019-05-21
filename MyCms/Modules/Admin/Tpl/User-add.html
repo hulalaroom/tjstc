@@ -1,0 +1,80 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href='__PUBLIC__/css/common.css'>
+<script type="text/javascript" src="__PUBLIC__/js/jquery-1.7.1.min.js"></script>
+<script type="text/javascript" src="__PUBLIC__/js/base.js"></script>
+<title>添加用户</title>
+</head>
+<body>
+<div id="append_parent"></div>
+<div class="container" id="cpcontainer">
+  <div id="contentHeader">
+    <h3>添加用户</h3>
+    <div class="searchArea">
+      <ul class="action left" >
+        <li class="current"><a href="__URL__/index" class="actionBtn"><span>返回</span></a></li>
+      </ul>
+      <div class="search right"> </div>
+    </div>
+  </div>
+  <form name="form1"  action="__URL__/insert" method="post">
+    <table class="form_table">
+      <tr>
+        <td class="tb_title" >用户名：</td>
+      </tr>
+      <tr >
+        <td ><input size="20" maxlength="128" name="username"  type="text"/>
+        </td>
+      </tr>
+         <tr>
+        <td class="tb_title" >真实姓名：</td>
+      </tr>
+      <tr >
+        <td ><input size="20" maxlength="128" name="nickname"  type="text"/>
+        </td>
+      </tr>
+	  <tr>
+        <td class="tb_title" >密码：</td>
+      </tr>
+      <tr >
+        <td ><input size="20" maxlength="128" name="password"  type="text"/>
+        </td>
+      </tr>
+	   <tr>
+        <td class="tb_title" >重复密码：</td>
+      </tr>
+      <tr >
+        <td ><input size="20" maxlength="128" name="passok"  type="text"/>
+        </td>
+      </tr>
+	  <tr>
+        <td class="tb_title" >手机号码：</td>
+      </tr>
+      <tr >
+        <td ><input size="20" maxlength="128" name="phone"  type="text" />
+        </td>
+      </tr>
+	  <tr>
+        <td class="tb_title" >邮箱：</td>
+      </tr>
+      <tr >
+        <td ><input size="20" maxlength="128" name="email"  type="text" />
+        </td>
+      </tr>
+     <tr>
+        <td class="tb_title" >邮寄地址：</td>
+      </tr>
+      <tr >
+        <td ><input size="20" maxlength="128" name="address"  type="text" />
+        </td>
+      </tr>
+      <tr class="submit">
+        <td colspan="2" ><input type="submit" name="editsubmit" value="提交" class="button" tabindex="3" /></td>
+      </tr>
+    </table>
+  </form>
+</div>
+</body>
+</html>

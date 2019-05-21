@@ -1,0 +1,95 @@
+<!doctype html>
+<html>
+<head>
+    <include file="Public:common-head" />
+    <link rel="stylesheet" type="text/css" href="__PUBLIC__/last/css/selectFilter.css">
+</head>
+
+<body>
+    <assign name="hoverIndex" value="1" />
+    <include file="Public:common-toppart" />
+
+    <div class="nengyuan_banner">
+        <div class="content">
+            <p class="jiaofei_banner_01 font_yinying">能源公司</p>
+            <p class="jiaofei_banner_03 "></p>
+            <p class="jiaofei_banner_02 font_yinying">能源业务，一键办理</p>
+        </div>
+    </div>
+    <div class="content_bg01 ">
+        <div class="content history_content">
+            <p class="dqwz history_dqwz">
+                当前位置：<a href="http://www.66885890.com">首页</a> &nbsp;&nbsp;&gt;&nbsp;&nbsp;
+                <a href="{:U('User/index',array('id'=>20))}">我的5890</a>&nbsp;&nbsp;&gt;&nbsp;&nbsp;
+                <a href="{:U('User/ywbl')}">业务办理</a>&nbsp;&nbsp;&gt;&nbsp;&nbsp;
+                <a href="{:U('User/ny')}">能源公司</a>&nbsp;&nbsp;&gt;&nbsp;&nbsp;
+                <span class="green">绑定/变更能源卡提示</span>
+            </p>
+            <div class="wodeyewu_content clearfix">
+                <div class="wodeyewu_content_box01">
+                    <div class="yewu_box clearfix">
+                        <p class="yewu_title">绑定/变更能源卡提示</p>
+							<p>1.生态城能源服务卡根据小区分别指定不同的银行进行办理，分为中国银行能源服务卡及中国建设银行能源服务卡，中国银行能源服务卡的性质为准贷记卡，中国建设银行能源服务卡的性质为贷记卡。</p>
+							<p>2.生态城能源卡办理时可向发卡行申请透支额度。</p>
+							<p>3.生态城能源卡除具有信用卡的基本金融功能外，还具有代缴生态城居民燃气、自来水、供热费用以及公共服务等附加功能。</p>
+							<p>4.指定银行在结算日（燃气，自来水结算日为每月15日，供热费结算日为每年12月31日）自动完成应收费用的代扣代缴。</p>
+							<p>5.请您按照收到能源服务卡时，随卡信件中所述方式激活能源卡，并确认能源卡透支额度，保证能源卡中有足够金额用于支付相应能源费用。</p>
+							<p>6.能源服务卡有效期在卡片正面标注，能源服务卡到期前，用户会收到开卡行寄送的新卡，用户应及时进行绑定、激活。用户需关注能源服务卡到期日，如到期未收到新卡，请及时与发卡银行联系。</p>
+							<p>7.如因能源服务卡丢失等情况，挂失重新办卡期间，请用户通过www.66885890.com网站、5890APP、银联天津微信公众号、公用事业客户服务大厅等方式缴纳能源费用。新能源卡办理成功后，用户应及时绑定，并激活能源服务卡。</p>
+							<p>8.用户如对银行相关业务存有质疑，请及时联系发卡行进行咨询。</p>
+							<p>9.用户保证提供的能源卡信息真实、准确、完整。</p>
+							<p>10.用户申请该项业务后，应于2个工作日后线上查询办理结果，如查询结果为审核不成功，则需重新申请。</p>
+							<p><span class="orange">11.绑定能源卡信息后（如有）再生水业务，请进入水务公司页面更新能源卡业务。</span></p>
+                    </div>
+                </div>
+                <div class="fuxuankuang">
+                    <div class=" box box01">
+                        <ul>
+                            <li id="chk_accept">已认真阅读绑定/变更能源卡提示</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="wodeyewu_btn01 wodeyewu_btn02"><a id="fireOkBtn">确定</a></div>
+            </div>
+        </div>
+    </div>
+<form method="post" action="{:U('User/nyk')}" id="accept_form">
+    <input type="hidden" id="accept" name="accept" value="0">
+</form>
+<include file="Public:common-footer" />
+<include file="Public:common-script" />
+<script type="text/javascript" src="__PUBLIC__/last/js/artDialog4.1.7/artDialog.source.js?skin=green"></script>
+<script type="text/javascript">
+    $(function() {
+        var $ali = $('#chk_accept');
+        $ali.on('click', function() {
+            var $self = $(this);
+            var chked = $self.attr('checked');
+            if (chked) {
+                $self.attr('checked', false).removeClass('on');
+            } else {
+                $self.attr('checked', true).addClass('on');
+            }
+        });
+
+        var $okBtn = $('#fireOkBtn');
+        $okBtn.on('click', function(event) {
+            event.preventDefault();
+            var accepted = $ali.attr('checked');
+            if (!accepted) {
+                art.dialog({
+                    lock:true,
+                    content: '请确认您已认真阅读并同意绑定/变更能源卡提示',
+                    time: 3
+                });
+                return false;
+            }
+
+            $('#accept').val('1');
+            $('#accept_form').submit();
+        });
+    });
+</script>
+
+</body>
+</html>

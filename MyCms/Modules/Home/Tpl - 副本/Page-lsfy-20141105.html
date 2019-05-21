@@ -1,0 +1,790 @@
+<include file="Public:header"/>
+<div class="main_block">
+  <include file="Public:top"/>
+  <div class="content_block">
+    <div class="left_side fl">
+      <div class="l_menu">
+      	 <!--上级菜单-->
+		{~$cat=get_info($cate,$pid);}
+		 <volist name="cat" id="m" key="l">
+			<a href="javascript:history.go(-1);" title="返回上一页">
+				<div class="bb_l_menu_title">
+					{$m.title} 
+				</div>
+			</a>
+		</volist>
+		<div class="left_other_menu">
+        {~$cat=get_child($cate,$pid);}
+        <volist name="cat" id="c" key="k">
+          <dl
+          <eq name='c.id' value='$id'> class="hover"</eq>
+          >
+          <dt><a href="<notempty name='c.url'>{$c.url}<else/>{:U($c['Model']['name'].'/'.$c['tpl'],'id='.$c['id'])}</notempty>"><img src="{$c.pic}"/></a>
+          </dt>
+          <dd><a href="<notempty name='c.url'>{$c.url}<else/>{:U($c['Model']['name'].'/'.$c['tpl'],'id='.$c['id'])}</notempty>">{$c.title}</a>
+            <span>{$c.summary}</span></dd>
+          </dl>
+        </volist></div>
+      </div>
+      <include file="Public:left"/>
+    </div>
+    <div class="main_con fr">
+      <div class="bread_nav">
+        <div class="l fl"></div>
+        <div class="m fl" style="line-height:30px;"> <span class="list_style"></span> <span>您当前的位置:</span> {$nav} </div>
+        <div class="r fl"></div>
+      </div>
+      <div class="artical">
+        <!-- begin -->
+        <div class="bus_title fl">
+          <h2>账单明细:</h2>
+        </div>
+		
+		<div class="mar">
+          <form id="form2" name="form2" method="post" action="">
+            <table width="550" border="0" style="margin-left:70px;">
+              <tr>
+                <td width="50">房间：</td>
+                <td width="150">
+                  <select name="houseCode" id="houseCode" class="gu_select">
+                    <volist name="houselist" id="hc">
+                      <option value="{$hc.houseCode}">{$hc.houseName}</option>
+                    </volist>
+                  </select>
+                </td>
+                <td style="width: 50px; text-align: right;">年度：</td>
+                <td width="60">
+                  <select class="year" name="year" id="year">
+                    <option value="{$year}">{$year}</option>
+                    <option value="{$year-1}">{$year-1}</option>
+                    <option value="{$year-2}">{$year-2}</option>
+                    <option value="{$year-3}">{$year-3}</option>
+                    <option value="{$year-4}">{$year-4}</option>
+                  </select>
+                </td>
+                <td style="width: 50px; text-align: right;">月份：</td>
+                <td width="50">
+                  <select class="year" name="month" id="month">
+                    <volist name="monthList" id="hmon">
+                      <option value="{$hmon}" <eq name='hmon' value='$month'> selected="selected"</eq>>{$hmon}</option>
+                    </volist>
+                  </select>
+                </td>
+                <td>
+                  <input type="hidden" value="{$id}" name="id">
+                  <input type="button" id="searchBtn" class="sea_but" value="查询"/>
+                </td>
+              </tr>
+            </table>
+          </form>
+        </div>
+        
+        <div id="chartCanves" class="bus_table fl">
+          <div id="pieChart" style="width: 300px"></div>
+          <div class="chargelist" style="width:400px">
+            <div class="chargelist_title" id="house_detail_title">当月明细</div>
+            <div class="bus_tablet">
+              <ul>
+                <li class="bus_tablet_li size_two_words">类型</li>
+                <li class="bus_tablet_li size_two_words left_side_li">单价(元)</li>
+                <li class="bus_tablet_li size_two_words left_side_li">用量</li>
+                <li class="bus_tablet_li size_two_words left_side_li">当期账单(元)</li>
+                <li class="bus_tablet_li size_two_words left_side_li">上期账单(元)</li>
+              </ul>
+            </div>
+            <div class="item">
+              <ul>
+                <li class="bus_tablet_li size_two_words">自来水</li>
+                <li id="price_zls" class="bus_tablet_li size_two_words right_side_li">-&nbsp;</li>
+                <li id="ammount_zls" class="bus_tablet_li size_two_words right_side_li">-&nbsp;</li>
+                <li id="total_zls" class="bus_tablet_li size_two_words right_side_li">-&nbsp;</li>
+                <a onclick="show(1);" title="点击查看详细信息"><li id="total_l_zls" class="bus_tablet_li size_two_words right_side_li">-</li></a>
+				<li id="zls_benjin" class="bus_tablet_li size_two_words right_side_li" style="display:none">-</li>
+				<li id="zls_zhina" class="bus_tablet_li size_two_words right_side_li" style="display:none">-</li>
+              </ul>
+            </div>
+            <div class="item">
+              <ul>
+                <li class="bus_tablet_li size_two_words">天然气</li>
+                <li id="price_trq" class="bus_tablet_li size_two_words right_side_li">-&nbsp;</li>
+                <li id="ammount_trq" class="bus_tablet_li size_two_words right_side_li">-&nbsp;</li>
+                <li id="total_trq" class="bus_tablet_li size_two_words right_side_li">-&nbsp;</li>
+                <a onclick="show(2);" title="点击查看详细信息"><li id="total_l_trq" class="bus_tablet_li size_two_words right_side_li">-</li></a>
+				<li id="trq_benjin" style="display:none">-</li>
+				<li id="trq_zhina" class="bus_tablet_li size_two_words right_side_li" style="display:none">-</li>
+              </ul>
+            </div>
+            <div class="item_end">
+              <ul>
+                <li class="bus_tablet_li size_two_words">供&nbsp;&nbsp;热</li>
+                <li id="price_gr" class="bus_tablet_li size_two_words right_side_li">-&nbsp;</li>
+                <li id="ammount_gr" class="bus_tablet_li size_two_words right_side_li">-&nbsp;</li>
+                <li id="total_gr" class="bus_tablet_li size_two_words right_side_li">-&nbsp;</li>
+                <a onclick="show(3);" title="点击查看详细信息"><li id="total_l_gr" class="bus_tablet_li size_two_words right_side_li">-</li></a>
+				<li id="gr_benjin" class="bus_tablet_li size_two_words right_side_li" style="display:none">-</li>
+				<li id="gr_zhina" class="bus_tablet_li size_two_words right_side_li" style="display:none">-</li>
+              </ul>
+            </div>
+			 <div class="item_end">
+              <ul>
+                <li class="bus_tablet_li size_two_words_all">总&nbsp;&nbsp;计</li>
+                <li id="total_feiyong" class="bus_tablet_li size_two_words right_side_li" style="color:green;">-&nbsp;</li>
+                <li id="total_l_feiyong" class="bus_tablet_li size_two_words right_side_li" style="color:orange;">-</li>
+              </ul>
+            </div>
+            <div class="pm_show">
+              <p id="pm_show_lbl_1" class="pm_show_lbl_1"></p>
+              <p style="padding: 10px;"><span class="pm_show_lbl_3" id="pm_show_lbl_3"></span><span id="js_value" class="pm_show_lbl_2"></span></p>
+            </div>
+            <div>
+              <p class="pm_show_lbl_3" id="pm_show_lbl_5" style="padding: 8px 0 0 6px;"></p>
+              <p class="pm_show_lbl_3" style="padding: 0 0 0 6px;"><span id="pm_show_lbl_4" class="pm_show_lbl_3"></span><span id="pm_rate" class="pm_show_lbl_4"></span><span id="pm_show_lbl_6" class="pm_show_lbl_3"></span></p>
+            </div>
+          </div>
+          
+          <div style="clear: both;">
+            <div class="cx">
+              <div class="tit">
+                <div id="tabs" style="margin-top: 6px;margin-left: 10px;float:left;">
+                  <h1 id="tab0">月支出趋势</h1>
+				  <input type="hidden" name="hotdate" id="hotdate" value="">
+				  <input type="hidden" name="shuifee" id="shuifee" value="">
+				  <input type="hidden" name="qifee" id="qifee" value="">
+				  <input type="hidden" name="refee" id="refee" value="">
+                </div>
+              </div>
+            </div>
+            <div id="lineChart"></div>
+          </div>
+        </div>
+        <!-- end -->
+      </div>
+    </div>
+  </div>
+</div>
+
+<script type="text/javascript" src="__PUBLIC__/js/date/jquery-ym-datePlugin-0.1.js"></script>
+<link rel="stylesheet" href="__PUBLIC__/js/date/jquery-ui.css"/>
+<link rel="stylesheet" id="skin" href="__PUBLIC__/js/date/jquery-ui-1.9.2.custom.min1.css"/>
+<style>
+  .ui-datepicker-title span {
+    display: inline-block;
+  }
+
+  .pm_show_lbl_1 {
+    padding-left: 6px;
+    font-size: 32px;
+    color: #908f8f;
+    font-family: "微软雅黑";
+    font-weight: bold;
+  }
+  .pm_show_lbl_2 {
+    color: #ff9e00;
+    font-family: arial;
+    font-size: 70px;
+  }
+  .pm_show_lbl_3 {
+    font-size: 18px;
+    color: #908F8F;
+    font-weight: bold;
+    font-family: arial;
+  }
+  .pm_show_lbl_4 {
+    font-size: 30px;
+    font-family: arial;
+    font-weight: bold;
+    color: red;
+    padding: 0 2px 0 2px;
+  }
+
+  div#chartCanves {
+    border: 1px solid rgb(204, 204, 204);
+  }
+  div#pieChart, .chargelist {
+    margin: 0;
+    padding: 0;
+    height: 350px;
+    width: 350px;
+    border-bottom: 1px solid rgb(204, 204, 204);
+    float: left;
+  }
+  .chargelist {
+    border-left: 1px solid rgb(204, 204, 204);
+  }
+  .chargelist_title {
+    text-align: center;
+    vertical-align: middle;
+    font-size: 1.2em;
+    font-style: normal;
+    height: 2em;
+    line-height: 2em;
+    border-bottom: 1px solid rgb(204, 204, 204);
+  }
+  .bus_tablet_li {
+    text-align: center;
+    vertical-align: middle;
+    float:left;
+  }
+
+  .size_two_words {
+    width: 78px;
+    line-height: 32px;
+  }
+   .size_two_words_all {
+    width: 236px;
+	line-height: 20px;
+  }
+  .left_side_li {
+    border-left: 1px solid rgb(204, 204, 204);
+  }
+  .right_side_li {
+    width: 78px;
+    text-align: right;
+    border-left: 1px solid rgb(204, 204, 204);
+  }
+  .item, .item_end {
+    height: 22px;
+    border: none;
+    border-bottom: 1px solid rgb(204, 204, 204);
+    color: rgb(254,103,4);
+  }
+  .item_end {
+    border-bottom: 2px solid rgb(204, 204, 204);
+  }
+  .item .size_two_words, .item_end .size_two_words {
+    line-height: 22px;
+  }
+  .pm_show {
+    width: 100%;
+    height: 126px;
+    background-position: 215px -10px;
+    border-bottom: 2px dashed rgb(204, 204, 204);
+  }
+</style>
+<script src="__PUBLIC__/js/highcharts/highcharts.js" type="text/javascript"></script>
+<script type="text/javascript">
+  $(document).ready(function () {
+    var refreshTable= true;
+    $('#houseCode').on('change', function() {
+        refreshTable = true;
+    });
+	
+    var MONTH_STATIC = ['1月', '2月', '3月', '4月', '5月', '6月', '7月', '8月', '9月', '10月', '11月', '12月'];
+    var month_array = [];
+	
+	var year_array = [];
+	var years = parseInt($('#year').val());
+	var YEAR_STATIC = [years-2,years-1,years];
+	
+	var myDate = new Date();
+	var nowDate = myDate.getDate();
+	var nowMonth = myDate.getMonth()+1;
+	var nowYear = myDate.getFullYear();
+    $('#month').on('change', function() {
+        month_array.length = 0;
+		
+		var month = parseInt($('#month').val());
+		var num = parseInt(this.value);
+		if((month == nowMonth) && (years == nowYear) && (nowDate <25)) {
+			num = num-2;
+		}
+		else if((month == nowMonth) && (years == nowYear) && (nowDate >25)){
+			num = num-1;
+		}
+		else{
+			num = parseInt(this.value);
+		}
+		for (var i = num; i < 12; i++) {
+			month_array.push(MONTH_STATIC[i]);
+		}
+        for (var i = 0; i < num; i++) {
+            month_array.push(MONTH_STATIC[i]);
+        }
+		 for (var i = 0; i < 3; i++) {
+            year_array.push(YEAR_STATIC[i]);
+        }
+		
+    });
+	
+    $('#month').trigger('change');
+    //默认功能
+    $(".nianyue").ymdateplugin({changeMonth: true, changeYear: true});
+	
+    var pieOption = {
+      chart: {
+        plotBackgroundColor: null,
+        renderTo: 'pieChart',
+        plotBorderWidth: null,
+        plotShadow: false
+      },
+      colors:[
+          "#70d23a",
+          "#d40707",
+          "#1c57a1"
+      ],
+      title: {
+        text: ""
+      },
+      tooltip: {
+        pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+      },
+      plotOptions: {
+        pie: {
+          allowPointSelect: true,
+          cursor: 'pointer',
+          dataLabels: {
+            enabled: true,
+            format: '<b>{point.percentage:.1f} %</b>',
+            distance: -70,
+            color:'white'
+          },
+          showInLegend: true
+        }
+      },
+      series: [{
+        type: 'pie',
+        name: '所占比例',
+        data: [{
+          name: "自来水"
+        },{
+          name: "供  热"
+        },{
+          name: "天然气"
+        }]
+      }]
+    };
+
+    var lineOption = {
+      chart: {
+        plotBackgroundColor: null,
+        renderTo: 'lineChart',
+        plotBorderWidth: null,
+        plotShadow: false,
+		marginLeft: 50
+      },
+      colors:[
+        "green",
+        "red",
+        "blue",
+		"orange"
+      ],
+      title: {
+        text: '',
+        x: -20 //center
+      },
+      xAxis: {
+        categories: YEAR_STATIC
+      },
+      yAxis: {
+        title: {
+          text: ''
+        },
+		labels:{
+			enabled: false
+		},
+        plotLines: [{
+          value: 0,
+          width: 1,
+          color: '#808080'
+        }]
+      },
+      tooltip: {
+		//shared: true,
+        valueSuffix: '元',
+		valueDecimals: 2,
+		formatter:function() {
+			if(this.series.name =='供热'){
+				return '<b>'+ this.series.name +'</b><br/>'+this.x + '：'+ Math.round((this.y*20)*100)/100 +'元';
+			}
+			else if(this.series.name =='总计'){
+				return '<b>'+ this.series.name +'</b><br/>'+ this.x + '：'+ Math.round(gethot(this.x,this.y)*100)/100 +'元';
+			}
+			else{
+				return '<b>'+ this.series.name +'</b><br/>'+this.x + '：'+ Math.round(this.y*100)/100+'元';
+			}
+		}
+      },
+      legend: {
+        layout: 'vertical',
+        align: 'right',
+        verticalAlign: 'middle',
+        borderWidth: 0
+      },
+      series: [ {
+        name: "自来水"
+      }, {
+        name: "供热"
+      }, {
+        name: "天然气"
+      }, {
+        name: "总计"
+      }]
+    };
+
+
+    function getDatas(itemCode) {
+      var retData = null;
+      var params = $("#form2").serialize();
+      if (null != itemCode) {
+          params = params + "&itemCode=" + itemCode;
+      }
+
+      $.ajax({
+          url: '{:U("Page/getLsfyData","",false)}',
+          type : 'POST',
+          async: false,
+          data : params,
+          dataType: 'json',
+          success: function(ret){
+              retData = ret;
+          }
+      });
+      if (null == retData) {
+          retData = [];
+      }
+      return retData;
+    }
+
+    $("#searchBtn").on("click", function(event) {
+        event.preventDefault();
+        if ($("#houseCode").val() == "") {
+            art.dialog({id:"house_sel_dialog",title: "提示", content: "请选择房间", time: 3, esc: true, icon: 'warning',button: [{name: '关闭'}]});
+            return;
+        }
+        refreshCharts();
+    });
+
+    var pieChart = null;
+    var lineChart = null;
+
+    var chartHasCreated = false;
+    var typeUsedData = [];
+
+    function refreshCharts() {
+        if (false == chartHasCreated) {
+            pieChart = new Highcharts.Chart(pieOption);
+            lineChart = new Highcharts.Chart(lineOption);
+        }
+
+        pieChart.showLoading();
+        lineChart.showLoading();
+
+        // get datas
+        var retData = getDatas();
+        //if (null == retData) {
+            //return;
+        //}
+
+        if (false == chartHasCreated || true == refreshTable) {
+            //$("#house_detail_title").html("房间&nbsp;[" + $("houseCode").val() +"]&nbsp;当月明细");
+			//var d = new Date();
+			//var date = d.getFullYear() + "年" +(d.getMonth() + 1) + "月";
+			//$("#house_detail_title").html("当月明细"+"("+date+")");
+            // set table data
+            if (typeof(retData['tableData']) != 'undefined') {
+                setMonthInfors(retData['tableData']);
+            }
+        }
+
+        var datas = null;
+        if (typeof(retData['pieData']) != 'undefined') {
+            datas = retData['pieData'];
+        }
+        refreshPieChart(datas);
+
+        datas = null;
+        if (typeof(retData['curveData']) != 'undefined') {
+            datas = retData['curveData'];
+        }
+        refreshLineChart(datas,'tab0');
+
+        datas = null;
+        if (typeof(retData['rankingData']) != 'undefined') {
+            datas = retData['rankingData'];
+        }
+        setRankInfors(retData['rankingData']);
+
+        $("#tab0").siblings().removeClass('hover');
+        $("#tab0").addClass('hover');
+
+        pieChart.hideLoading();
+        lineChart.hideLoading();
+
+        chartHasCreated = true;
+    }
+
+    function refreshPieChart(datas) {
+        typeUsedData.length = 0;
+        var zls = null;
+        var gr = null;
+        var trq = null;
+		
+			if (null != datas && "" != datas) {
+				
+				if (typeof(datas[0]) != 'undefined') {
+					zls = datas[0];
+				}
+				if (typeof(datas[1]) != 'undefined') {
+					gr = datas[1];
+				}
+				if (typeof(datas[2]) != 'undefined') {
+					trq = datas[2];
+				}
+				typeUsedData.push({name: "自来水",y: zls,color: 'green'});
+				typeUsedData.push({name: "供  热",y: gr,color: 'red'});
+				typeUsedData.push({name: "天然气",y: trq,color: 'blue'});
+				pieChart.series[0].setData(typeUsedData);
+			}
+			else{
+				$("#PieChart").html('暂无数据');
+				typeUsedData.push({name: "暂无数据",y: zls,color: 'red'});
+				pieChart.series[0].setData(typeUsedData);
+			}
+    }
+
+    function refreshLineChart(datas,id) {
+			var line0 = [null,null,null,null,null,null,null,null,null,null,null,null];
+			var line1 = [null,null,null,null,null,null,null,null,null,null,null,null];
+			var line2 = [null,null,null,null,null,null,null,null,null,null,null,null];
+			var line3 = [null,null,null,null,null,null,null,null,null,null,null,null];
+			var xline = [null,null,null,null,null,null,null,null,null,null,null,null];
+			var count_array = [0,0,0,0,0,0,0,0,0,0,0,0];
+			
+			if (null != datas) {
+				if(id != 'tab1') {
+					if (typeof(datas[0]) != 'undefined') {
+						line0 = datas[0];
+					}
+					if (typeof(datas[1]) != 'undefined') {
+						line2 = datas[1];
+						
+					}
+					if (typeof(datas) != 'undefined') {
+						line1 = datas[2];
+					}
+					if (typeof(datas[3]) != 'undefined') {
+						xline = datas[3];
+					}
+					//总计
+					for(var i =0;i<12;i++){
+						for(var j =0;j<2;j++){
+							count_array[i]+=datas[j][i];
+						}	
+					}
+					for(var k =0;k<12;k++){
+						if((datas[2][k] !="") && (datas[2][k] !=null)){
+							count_array[k]+=datas[2][k];
+							var hotid = k;
+						}
+					}
+					//获取供热提交月份
+					for(var l =0;l<12;l++){
+						if(l == hotid){
+							document.getElementById("shuifee").value = datas[0][l];
+							document.getElementById("qifee").value = datas[1][l];
+							document.getElementById("refee").value = datas[2][l];
+							document.getElementById("hotdate").value = datas[3][l];
+						}
+					}
+					
+					line3 = count_array;
+				}
+				else{
+						line0 = datas;
+				}
+			}
+			
+			if (null != lineChart) {
+				
+				if(id !='tab1'){
+					
+					document.getElementById("lineChart").style.display = "";
+					//标示
+					lineChart.series[0].update("自来水");
+					lineChart.series[1].update("供热");
+					lineChart.series[2].update("天然气");
+					lineChart.series[3].update("总计");
+					//横坐标填充
+					lineChart.xAxis[0].setCategories(xline);
+					//曲线填充
+					lineChart.series[0].setData(line0);
+					lineChart.series[1].setData(line1);
+					lineChart.series[2].setData(line2);
+					lineChart.series[3].setData(line3);
+				}
+				else{
+					document.getElementById("lineChart").style.display = "none";
+				}
+			}
+			else{
+				$("#lineChart").html('暂无数据');
+			}
+    }
+
+    // 当月明细数据表格填充
+    function setMonthInfors(datas) {
+        if (null == datas) {
+            return;
+        }
+		var total_feiyong = 0;
+		var total_l_feiyong = 0;
+
+        var data = null;
+		var strvar = datas[3].toString();
+		var year = strvar.substr(0, 4);
+		var month = strvar.substr(4, 2);
+		$("#house_detail_title").html("当月明细"+"("+year+"-"+month+")");
+		//自来水
+        if (typeof(datas[0]) != 'undefined') {
+            data = datas[0];
+            $("#price_zls").html(data[0]+'&nbsp;');
+            $("#ammount_zls").html(data[1]+"&nbsp;(T)"+'&nbsp;');
+            $("#total_zls").html(data[2]+'&nbsp;');
+			total_feiyong = total_feiyong + data[2];
+			$("#zls_benjin").html(data[3]);
+			$("#zls_zhina").html(data[4]);
+            $("#total_l_zls").html(data[5]);
+			total_l_feiyong = total_l_feiyong + data[5];
+        }
+
+        // 供热
+        if (typeof(datas[1]) != 'undefined') {
+            data = datas[1];
+            $("#price_gr").html(data[0]+'&nbsp;');
+            if (data[4] == 0) {
+                $("#ammount_gr").html(data[1]+"&nbsp;(m²)"+'&nbsp;');
+            } else {
+                $("#ammount_gr").html(data[1]+"&nbsp;(GJ)"+'&nbsp;');
+            }
+            $("#total_gr").html(data[2]+'&nbsp;');
+			total_feiyong = total_feiyong + data[2];
+			$("#gr_benjin").html(data[3]);
+			$("#gr_zhina").html(data[4]);
+            $("#total_l_gr").html(data[5]);
+			total_l_feiyong = total_l_feiyong + data[5];
+        }
+        // 天然气
+        if (typeof(datas[2]) != 'undefined') {
+            data = datas[2];
+            $("#price_trq").html(data[0]+'&nbsp;');
+            $("#ammount_trq").html(data[1]+"&nbsp;(m³)"+'&nbsp;');
+            $("#total_trq").html(data[2]+'&nbsp;');
+			total_feiyong = total_feiyong + data[2];
+			$("#trq_benjin").html(data[3]);
+			$("#trq_zhina").html(data[4]);
+            $("#total_l_trq").html(data[5]);
+			total_l_feiyong = total_l_feiyong + data[5];
+        }
+		//总计
+		$("#total_feiyong").html(Math.round(total_feiyong*100)/100+'&nbsp;');
+		$("#total_l_feiyong").html(Math.round(total_l_feiyong*100)/100);
+
+        refreshTable = false;
+    }
+
+    function setRankInfors(datas) {
+        var jsValue = "";
+        var pmValue = "";
+        if (null != datas) {
+            if (typeof(datas[0]) != 'undefined') {
+                jsValue = datas[0];
+            }
+            if (typeof(datas[1]) != 'undefined') {
+                pmValue = datas[1] + "%";
+            }
+        }
+	    if (jsValue > 0) {
+					$('#pm_show_lbl_1').html('比去年同期节省了');
+				} else {
+					$('#pm_show_lbl_1').html('比去年同期多用了');
+				}
+			$("#js_value").html(jsValue);
+	    if(jsValue == "" ) {
+				$('#pm_show_lbl_3').html('温馨提示:暂无比对数据');
+			}
+			else {
+			
+				$('#pm_show_lbl_3').html('￥');
+				
+		 }
+		
+		$('#pm_show_lbl_4').html('你排在');
+		$('#pm_show_lbl_5').html('天津中新生态城中');
+		$("#pm_rate").html(pmValue);
+		if(pmValue == "" ) {
+			$('#pm_show_lbl_6').html('人的前面&nbsp温馨提示:暂无比对数据');
+		}
+		else {
+			$('#pm_show_lbl_6').html('人的前面');
+		}
+
+    }
+
+    $("#tabs > h1").on("click", function(event) {
+        $("#"+this.id).siblings().removeClass('hover');
+        $("#"+this.id).addClass('hover');
+
+        lineChart.showLoading();
+
+        var itemCode = "";
+        if ("tab0" == this.id) {
+            itemCode = "B";
+        } else if ("tab1" == this.id) {
+            itemCode = "A";
+        } else if ("tab2" == this.id) {
+            itemCode = "D";
+        }
+
+        var datas = getDatas(itemCode);
+        if (typeof(datas) == 'undefined') {
+            datas = null;
+        }
+
+        refreshLineChart(datas,this.id);
+        lineChart.hideLoading();
+		hotLineChart.hideLoading();
+    });
+
+    $("#searchBtn").trigger("click");
+});
+</script>
+<script>
+	function gethot(rq,fy){
+		
+		if(rq == document.getElementById("hotdate").value){
+			
+			var shuifee = document.getElementById("shuifee").value;
+			var qifee = document.getElementById("qifee").value;
+			var refee = document.getElementById("refee").value;
+			var fee = parseFloat(shuifee)+parseFloat(qifee)+parseFloat(refee)*20;
+
+			return fee;
+		}
+		else{
+			return fy;
+		}
+	}
+</script>
+<script type="text/javascript">
+	function show(num){
+		if(num == 1){
+			var zls_benjin = document.getElementById("zls_benjin").innerHTML;
+			var zls_zhina = document.getElementById("zls_zhina").innerHTML;
+			var notice = "自来水之前欠费本金："+zls_benjin+","+"滞纳金："+zls_zhina+"。";
+		}
+		if(num == 2){
+			var trq_benjin = document.getElementById("trq_benjin").innerHTML;
+			var trq_zhina = document.getElementById("trq_zhina").innerHTML;
+			var notice = "天然气之前欠费本金："+trq_benjin+","+"滞纳金："+trq_zhina+"。";
+		}
+		if(num == 3){
+			var gr_benjin = document.getElementById("gr_benjin").innerHTML;
+			var gr_zhina = document.getElementById("gr_zhina").innerHTML;
+			var notice = "供热之前欠费本金："+gr_benjin+","+"滞纳金："+gr_zhina+"。";
+		}
+		alert(notice);
+	}
+</script>
+<include file="Public:footer"/>
+</body>
+</html>

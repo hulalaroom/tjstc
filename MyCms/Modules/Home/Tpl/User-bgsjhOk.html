@@ -1,0 +1,62 @@
+<!doctype html>
+<html>
+<head>
+    <include file="Public:common-head"/>
+</head>
+
+<body>
+<assign name="hoverIndex" value="1"/>
+<include file="Public:common-toppart"/>
+<div class="nengyuan_banner">
+    <div class="content">
+        <p class="jiaofei_banner_01 font_yinying">能源公司</p>
+        <p class="jiaofei_banner_03 "></p>
+        <p class="jiaofei_banner_02 font_yinying">能源业务，一键办理</p>
+    </div>
+</div>
+<div class="content_bg01 ">
+    <div class="content history_content">
+        <p class="dqwz history_dqwz">
+
+        </p>
+        <div class="wodeyewu_content clearfix">
+            <div class="wodeyewu_content_box04">
+                <div class="yewu_box clearfix">
+                    <div class="tijiao_left tijiao_left01"><img src="__PUBLIC__/last/img/wodeyewu_05.png" alt=""/></div>
+                    <div class="tijiao_right">
+                        <if condition="$type eq 1">
+                            <if condition="$phone neq ''">
+                                <p><span class="green">房间编号为</span> <span class="orange">{$housecode}</span><span
+                                    class="green">房屋的联系方式已变更！</span></p>
+                                <p><span class="green">新的联系方式为</span> <span class="orange">{$phone}</span></p>
+                                <p class="yewu_small">请牢记新的联系方式，如有疑问，请致电 022-66885890 ！</p>
+                            <else />
+                                <p><span class="green">房间编号为</span> <span class="orange">{$housecode}</span><span
+                                    class="green">房屋的联系方式变更失败，请稍后再试</span></p>
+                                <p class="yewu_small">如有疑问，请致电 022-66885890 ！</p>
+                            </if>
+                        <else />
+                            <if condition="$date neq ''">
+                                <p><span class="green">房间编号为</span> <span class="orange">{$housecode}</span><span
+                                    class="green">的房屋已于</span><span class="orange">{$date}</span><span class="green">申请恢复供热！</span></p>
+                                <p class="yewu_small">审核结果请于两个工作日后查询，请您耐心等待，如有疑问，请致电 022-66885890 ！</p>
+                            <else />
+                                <p><span class="green">房间编号为</span> <span class="orange">{$housecode}</span><span
+                                    class="green">的房屋</span><span class="green">{$msg}</span></p>
+                                <p class="yewu_small">如有疑问，请致电 022-66885890 ！</p>
+                            </if>
+                        </if>
+                        <div class="wodeyewu_btn04 wodeyewu_btn05">
+                            <a href="{:U('User/index',array('id'=>20))}">返回5890</a>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<include file="Public:common-footer"/>
+</body>
+</html>

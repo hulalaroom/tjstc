@@ -1,0 +1,71 @@
+<include file="Public:header" />
+<div class="main_block"> <include file="Public:top" />
+    <div class="content_block">
+        <div class="left_side fl">
+			 <div class="l_menu">
+            		<!--上级菜单-->
+				{~$cat=get_info($cate,$id);}
+				 <volist name="cat" id="m" key="l">
+					<a href="javascript:history.go(-1);" title="返回上一页">
+						<div class="bb_l_menu_title" style="display:none;">
+							{$m.title} 
+						</div>
+					</a>
+				</volist>
+				<div class="left_other_menu">
+                {~$cat=get_info($cate,$id);}
+                <volist name="cat" id="c" key="k">
+                    <dl>
+                        <dt><a href="<empty name='c.url'>
+							<empty name="c['tpl']">{:U($c['Model']['name'].'/index','id='.$c['id'])}
+							  <else/>
+							  {:U($c['Model']['name'].'/'.$c['tpl'],'id='.$c['id'])}</empty>
+							<else/>
+							{$c.url}</empty>"><img src="{$c['pic']}"/></a>
+										<!--<img src="{$c.cat_pic}"/>-->
+                        </dt>
+                        <dd> <a href="<empty name='c.url'>
+							<empty name="c['tpl']">{:U($c['Model']['name'].'/index','id='.$c['id'])}
+							  <else/>
+							  {:U($c['Model']['name'].'/'.$c['tpl'],'id='.$c['id'])}</empty>
+							<else/>
+							{$c.url}</empty>">{$c.title}</a> <span>{$c.summary}</span> </dd>
+                    </dl>
+                </volist></div>
+            </div>
+			<include file="Public:left" />  
+        </div>
+        <div class="main_con fr">
+            <div class="bread_nav">
+                <div class="l fl"></div>
+                <div class="m fl" style="line-height:30px;"> <span class="list_style"></span> <span>您当前的位置:</span> {$nav} </div>
+                <div class="r fl"></div>
+            </div>
+            <div class="artical">
+               	<!-- begin -->
+				<div class="article_cat">
+					 {~$ll = get_list("$id|Article|8")}
+					<empty name="ll"><div class="nodata">暂无内容<div></empty>
+                    <volist name="ll" id="list" mod="2" >
+						<if condition="$list.isre eq 1">
+							<div class="cat_item" <eq name="mod" value="1"> style="float:right"</eq> >
+								<div class="tit"><h2><a href="{:U('Article/view1','id='.$list[id])}">{$list.title|cutstr_html=###,20}</a></h2></div>
+								<p><notempty name="list.pic"><img src="{$list.pic}" title="{$list.title}" alt="{$list.title}"/></notempty><notempty name="list.pic">{$list.content|cutstr_html=###,90}<else/>{$list.content|cutstr_html=###,140}</notempty></p>
+								<div class="arc_more"><a href="{:U('Article/view1','id='.$list[id])}" target="_blank" title="{$list.title}">[查看详细]</a></div>
+							</div> 	
+						</if>					
+                    </volist>
+                {~$c= get_list("$id|Article")}
+                <if condition="count($c) gt 8">
+                    <div class="list_more"><a href="{:U('Article/index1','pid='.$id)}">查看更多</a></div> 
+                </if>
+				</div>
+
+                <!-- end -->
+            </div>
+        </div>
+    </div>
+</div>
+<include file="Public:footer" />
+</body>
+</html>

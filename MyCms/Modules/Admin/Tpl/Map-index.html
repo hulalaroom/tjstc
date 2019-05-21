@@ -1,0 +1,273 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+  <link rel="stylesheet" type="text/css" href='__PUBLIC__/css/common.css'>
+  <script type="text/javascript" src="__PUBLIC__/js/jquery-1.7.1.min.js"></script>
+  <script type="text/javascript" src="__PUBLIC__/js/base.js"></script>
+  <script type="text/javascript" src="__PUBLIC__/js/jscolor/jscolor.js"></script>
+  <script type="text/javascript" src="__PUBLIC__/js/kindeditor/kindeditor-min.js"></script>
+  <link rel="stylesheet" href="__PUBLIC__/js/kindeditor/themes/default/default.css"/>
+  <script charset="utf-8" src="__PUBLIC__/js/kindeditor/lang/zh_CN.js"></script>
+  <script type="text/javascript" src="__PUBLIC__/js/artDialog/jquery.artDialog.source.js?skin=blue"></script>
+  <script src="__PUBLIC__/js/artDialog/plugins/iframeTools.source.js"></script>
+  <script>
+    var WEB_SESSION_ID = '{$Think.session.myid}';
+
+    var IMG_DEL = '{:U("Attach/del")}';
+    // 图片预览
+    function showpic(event, imgsrc) {
+      /*var left = event.clientX+document.body.scrollLeft+20;
+       var top = event.clientY+document.body.scrollTop+20;*/
+      var left = event.pageX + 20;
+      var top = event.pageY + 20;
+      $("#preview").css({left: left, top: top, display: ""});
+      $("#pic_a1").attr("src", imgsrc);
+    }
+    // 取消预览
+    function hiddenpic() {
+      $("#preview").css({display: "none"});
+    }
+
+    function remove(obj, file) {
+      if (confirm('确定删除?')) {
+        $.ajax({
+          url: '{:U("Attach/del")}',
+          type: 'POST',
+          data: 'file=' + file,
+
+          success: function (res) {
+            $('#' + obj).remove();
+          }
+        });
+      }
+
+    }
+    //编辑器
+    KindEditor.ready(function (K) {
+      var editor1 = K.create('textarea[name="content"]', {
+        allowFileManager: true,
+        uploadJson: '{:U("Attach/upload")}',
+        fileManagerJson: '{:U("Attach/filelist")}',
+        width: '675px',
+        height: '300px',
+        afterCreate: function () {
+          var self = this;
+          K.ctrl(document, 13, function () {
+            self.sync();
+            K('form[name=example]')[0].submit();
+          });
+          K.ctrl(self.edit.doc, 13, function () {
+            self.sync();
+            K('form[name=example]')[0].submit();
+          });
+        }
+      });
+
+
+      //自定义
+      var editor = K.editor({
+        allowFileManager: true,
+        uploadJson: '{:U("Attach/upload")}',
+        fileManagerJson: '{:U("Attach/filelist")}'
+      });
+      //取消缩略图
+      K('#clear').click(function () {
+        K('#image img').remove();
+        K('#image').append('<img  src="__PUBLIC__/images/thumb.png">');
+        K('#pic').val('');
+      });
+
+      //缩略图
+      K('#image').click(function () {
+        editor.loadPlugin('image', function () {
+          editor.plugin.imageDialog({
+            //imageUrl : K('#image1 img'),
+
+            clickFn: function (url, title, width, height, border, align) {
+              //K('#image1 img').append('<img src="' + data.url + '">');
+              K('#image img').remove();
+              K('#image').append('<img src="' + url + '">');
+              editor.hideDialog();
+              K('#pic').val(url);
+            }
+          });
+        });
+      });
+
+      //批量上传
+      var j = 0;
+      K('#imuoload').click(function () {
+        editor.loadPlugin('multiimage', function () {
+          editor.plugin.multiImageDialog({
+
+            clickFn: function (urlList) {
+              var div = K('#pics_images');
+
+              K.each(urlList, function (i, data) {
+//                                    div.append('<div id="image_'+(j+1)+'" class="imglist">标题：&nbsp;&nbsp;<input  value="'+data.url+'" name="pics[]" type="hidden"><input  value="'+data.name+'" name="pictitle[]" class="ti">&nbsp;&nbsp;<a href="javascript:remove( &quot;image_'+(j+1)+' &quot;, &quot;'+data.url+'&quot;);"><img src="__PUBLIC__/images/del.png" alt="删除" width="18" height="18" border="0" align="absmiddle" title="删除"></a> &nbsp;&nbsp; <a href="javascript:;" onmouseover="showpic(event, &quot;'+data.url+'&quot;);" onmouseout="hiddenpic();">'+data.savename+'</a></div>');
+                div.append('<li id="image' + (j + 1) + '"><div class="get selected"><img     src="' + data.url + '"><input type="text"  name="pictitle[]" value="' + data.name + '"><input type="hidden"  name="pics[]" value="' + data.url + '"></div><a href="javascript:remove( &quot;image' + (j + 1) + ' &quot;, &quot;' + data.url + '&quot;);">删除</a></li>');
+                j++;
+
+              });
+              editor.hideDialog();
+            }
+          });
+        });
+      });
+      // 文件上传
+      K('#insertfile').click(function () {
+        editor.loadPlugin('insertfile', function () {
+          editor.plugin.fileDialog({
+            fileUrl: K('#src').val(),
+            clickFn: function (url, title) {
+              K('#src').val(url);
+              editor.hideDialog();
+            }
+          });
+        });
+      });
+
+
+      //
+    });
+
+  </script>
+  <style>
+    #im {
+      z-index: 991;
+      background-color: white;
+      border: #f7f7f7 solid 2px;
+      position: absolute;
+      width: 220px;
+      height: 195px;
+      left: 460px;
+      text-align: center;
+      top: 120px;
+      padding-top: 2px;
+    }
+
+    #image {
+      display: block;
+      height: 150px;
+      line-height: 150px;
+      width: 220px;
+      cursor: pointer;
+      text-align: center;
+      display: table-cell;
+      vertical-align: middle;
+    }
+
+    #image img {
+      vertical-align: middle;
+      margin: auto;
+      max-width: 220px;
+      max-height: 150px;
+    }
+
+    #imuoload:hover {
+      text-decoration: underline;
+      cursor: pointer;
+    }
+
+    #clear {
+      background: #51B148;
+      color: #FFF;
+      font: bold 14px arial, sans-serif;
+      padding: 0.15em 1em;
+      text-transform: uppercase;
+      margin: 0 auto;
+      overflow: visible;
+      width: auto;
+      cursor: pointer;
+      padding: 7px 20px;
+      display: block;
+    }
+
+    #insertfile {
+      background: #51B148;
+      color: #FFF;
+      font: bold 14px arial, sans-serif;
+      padding: 0.15em 1em;
+      text-transform: uppercase;
+      margin: 0 auto;
+      overflow: visible;
+      width: auto;
+      cursor: pointer;
+      padding: 4px 20px;
+
+    }
+
+    #pics_images {
+      float: left;
+      width: 100%;
+    }
+
+    #pics_images li {
+      float: left;
+      width: 87px;
+      height: 120px;
+      margin: 15px 0;
+      margin-right: 15px;
+    }
+
+    #pics_images li img {
+      float: left;
+      width: 87px;
+      height: 75px;
+    }
+
+    #pics_images li input {
+      float: left;
+      width: 81px;
+      height: 20px;
+      line-height: 20px;
+    }
+
+    #pics_images li a {
+      float: left;
+      width: 87px;
+      height: 25px;
+      line-height: 25px;
+      text-align: center;
+    }
+
+    #pics_images li a:hover {
+      background-color: #99ccff;
+      color: white;
+    }
+  </style>
+  <title></title>
+</head>
+<body>
+<div id="append_parent"></div>
+<div class="container" id="cpcontainer">
+  <div id="contentHeader">
+    <h3>首页地图管理</h3>
+  </div>
+  <eq name="type" value="add">
+    <form name="form1" action="__URL__/insert" method="post">
+      <else/>
+      <form name="form1" action="__URL__/update" method="post">
+        <input name="id" type="hidden" value="{$id}"/>
+  </eq>
+  <form name="form1" id="form1" action="__URL__/insert" method="post">
+    <table class="form_table">
+      <tr>
+        <td><textarea name="content">{$content}</textarea>
+        </td>
+      </tr>
+      <tr class="submit">
+        <td colspan="2"><input type="hidden" name="pic" id="pic" value="{$pic}"/>
+          <input type="submit" name="editsubmit" value="提交" class="button"/>
+        </td>
+      </tr>
+    </table>
+  </form>
+  <script type="text/javascript">
+
+  </script>
+</div>
+</body>
+</html>

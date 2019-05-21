@@ -1,0 +1,224 @@
+<!doctype html>
+<html>
+<head>
+<include file="Public:common-head"/>
+
+<link rel="stylesheet" type="text/css" href="__PUBLIC__/css/redefine.css">
+<link rel="stylesheet" type="text/css" href="__PUBLIC__/css/layout.css">
+
+<link rel="stylesheet" type="text/css" href="__PUBLIC__/css/onlineRepairCss.css">
+<script src="http://libs.baidu.com/jquery/1.7.2/jquery.min.js"></script>
+<script src="https://cdn.staticfile.org/html5shiv/r29/html5.min.js"></script>
+<script src="https://cdn.staticfile.org/respond.js/1.4.2/respond.min.js"></script>
+<script src="js/mycss.js"></script>
+<script src="laydate/laydate.js"></script>
+<style type="text/css">
+	.fangjian11{
+	margin:0;
+	padding:0;
+	border:1px solid #10c55c;
+	padding:40px 40px 40px 40px;
+	
+}
+</style>
+
+</head>
+
+<body style="font-family:'Microsoft YaHei'">
+<include file="Public:common-toppart"/>
+<div class="zxbx_ts_banner"   id="imgDiv">
+		<div class="content" >
+			<p class="jiaofei_banner_01 font_yinying" style="color: #fff" id="pText1">投诉建议</p>
+			<p class="jiaofei_banner_03 "></p>
+			<p class="jiaofei_banner_02 font_yinying" style="color: #fff" id="pText2">解决您的烦心小事</p>
+
+		</div>
+</div>
+
+    <div class="content_bg">
+	<div class="content history_content">
+	<p class="jiaofei_dqwz history_dqwz" style="color:#999;font-size: 16px;">当前位置：<a href="__GROUP__" style="color:#999">首页</a> &nbsp;&nbsp;&gt;&nbsp;&nbsp;互动专区 &nbsp;&nbsp;&gt;&nbsp;&nbsp;<span class="green" id="type">投诉/建议</span></p>
+
+
+
+
+
+
+	
+	<div class="history_billcontent clearfix" >
+	<div class="history_billcontentpad">
+
+		 <div class="history_billcontentleft">
+		
+        <ul class="history_tab  luxian_tab">
+				<a href="/index.php?s=/guestbook/index/id/18" style="text-decoration:none;color:#666;outline:none;">
+					<li class=" clearfix cur ">
+						<span class="img_fl"><img src="__PUBLIC__/img/zxbx_ts_1.png" alt="" style="padding-bottom:30px" /></span>投诉/建议
+					</li>
+				</a>
+				<!--<a href="/index.php?s=/guestbook/acceptanceRecordtx" style="text-decoration:none;color:#666;outline:none;">
+					<li class=" clearfix">
+						<span class="img_fl"><img src="__PUBLIC__/img/zxbx_ar.png" alt="" style="padding-bottom:30px" /></span>受理记录
+					</li>
+				</a>-->
+			</ul>
+        </div>
+        
+<div class="history_billcontentright">
+	
+	
+<!-- 投诉建议--> 
+<div class=" publictab history_zlscon on" id="ts">
+
+<div class="fuwuzhuanlan">
+
+<!--	<div class="item_one hbjf_input">
+		<input type="text" name="" id="" value="">
+
+	</div>-->
+
+<div class="house_tabcontent">
+<div class="fangjian11 luxian fangjian_01 house_on" style="box-shadow: 2px 5px 6px #dbfbe8;">
+	<!-- 表单-->
+<form id="form2" name="form2" action="{:U('Guestbook/insert')}" method="post">
+	<div class="yewu_table clearfix">
+		<ul class="yewuleft">
+			<li><span style="font-size: 18px;color: #fd8320;">*</span>&nbsp;业务类型</li>
+			<li><span style="font-size: 18px;color: #fd8320;">*</span>&nbsp;联系人&nbsp;&nbsp;&nbsp;&nbsp;</li>
+			<li><span style="font-size: 18px;color: #fd8320;">*</span>&nbsp;联系电话</li>
+			<li style=" height:100px; line-height: 100px;"><span style="font-size: 18px;color: #fd8320;">*</span>&nbsp;内容&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</li>
+		</ul>
+		<ul class="yewuright">
+			<li>
+				<div class="demo">
+					<dl class="select01">
+						<dt class="yewu_dt" id="lx" style="background: #fff url(../img/input_jiantou.png) no-repeat 326px center;">投诉</dt>
+						<dd class="yewu_dd" style="margin-top:15px;">
+							<ul>
+								<li>
+									<a href="javascript:void(0)">投诉</a>
+								</li>
+								<li>
+									<a href="javascript:void(0)">建议</a>
+								</li>
+							</ul>
+						</dd>
+					</dl>
+				</div>
+			</li>
+			<input type="hidden" name="lx" id="lxinfo">
+			<input type="hidden" name="uid" value="{$uid}">
+			
+			<li>
+				<div class="item_one hbjf_input" style="width: 90%;">
+					<input type="text" name="name" id="name" value="" placeholder="请输入联系人姓名，匿名请填写匿名" style="width:68.4%;background: #fff;border: 1px solid #e6e6e6;height:34px;">
+				</div>
+			</li>
+			<li>
+				<div class="item_one hbjf_input" style="width: 90%;">
+					<input type="text" name="phone" id="phone" value="" placeholder="请输入联系电话" style="width:68.4%;background: #fff;border: 1px solid #e6e6e6;height:34px;">
+				</div>
+			</li>
+			<li style=" height:100px; line-height: 100px;">
+				<div class="zxbx">
+                   <textarea rows="3" cols="20" id="neirong" name="neirong" placeholder="请输入内容" style="font-size: 18px;"></textarea>
+				</div>
+			</li>
+		</ul>
+	</div>
+				<div class="jiebang" style="width: 50%; float: left;margin-top: 60px; ">
+					<a class="jiebang_btn01" style="margin-left:170px" onclick="checkFrom()"><span>提交申请</span></a>
+				</div>
+				<div class="zxbx_box" style="float: left;margin-top: 30px; ">
+					<a href="javascript:void(0)" onclick="chongzhiFrom()"><span>重置</span></a>
+				</div>
+</form>
+</div>
+
+
+	
+</div>
+
+</div>	
+
+</div>
+</div> 		
+</div>
+
+</div>
+	
+		
+</div>	
+	</div>
+
+
+ 
+<include file="Public:common-script"/>
+<include file="Public:common-footer"/>
+ 
+ 		
+
+<script>
+ $(document).ready(function() {
+     $(".house_tab li").click(function() {
+         $(".house_tab li").eq($(this).index()).addClass("luxian_cur").siblings().removeClass('luxian_cur');
+         $(".house_tabcontent .fangjian").hide().eq($(this).index()).show();
+        
+     });
+ });
+</script>
+
+		<script type="text/javascript" src="js/jquery.min.js"></script>
+		<script type="text/javascript">
+            $(function(){
+				
+				/*============================
+				 @author:flc
+				 @time:2014-02-11 18:16:09
+				 @qq:3407725
+				 ============================*/
+                $(".select01").each(function(){
+                    var s=$(this);
+                    var z=parseInt(s.css("z-index"));
+                    var dt=$(this).children("dt");
+                    var dd=$(this).children("dd");
+                    var _show=function(){dd.slideDown(200);dt.addClass("cur01");s.css("z-index",z+1);};   //展开效果
+                    var _hide=function(){dd.slideUp(200);dt.removeClass("cur01");s.css("z-index",z);};    //关闭效果
+                    dt.click(function(){dd.is(":hidden")?_show():_hide();});
+                    dd.find("a").click(function(){dt.html($(this).html());_hide();
+					});     //选择效果（如需要传值，可自定义参数，在此处返回对应的“value”值 ）
+                    $("body").click(function(i){ !$(i.target).parents(".select01").first().is(s) ? _hide():"";});
+                })
+            })
+		</script>
+<script>
+function checkFrom() {
+		var neirong = $("#neirong").val();
+		var name=$("#name").val();
+		var phone=$("#phone").val();
+		if (neirong == "") {
+			alert('提交内容不能为空');
+			return false;
+		}
+		if (name == "") {
+			alert('联系人不能为空');
+			return false;
+		}
+		if (phone == "") {
+			alert('联系电话不能为空');
+			return false;
+		}
+		if(phone.length!='11'){
+            alert('请输入正确的手机号');
+            return false;
+        }
+	$("#lxinfo").attr("value",$('#lx').html());
+    document.getElementById("form2").submit();
+}
+function chongzhiFrom(){
+	document.getElementById("form2").reset();
+}
+</script>
+
+</body>
+</html>

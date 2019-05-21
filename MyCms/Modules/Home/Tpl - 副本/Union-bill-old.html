@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="user-scalable=yes">
+	<title><notempty name="title">{$title} - </notempty> {$Think.config.site_name}</title>
+	<meta name="keywords" content="<notempty name="keywords">{$keywords}<else/>{$Think.config.site_key}</notempty>" />
+	<meta name="description" content="<notempty name="description">{$description}<else/>{$Think.config.site_desc}</notempty>" />
+	<link rel="stylesheet" type="text/css" href="__PUBLIC__/css/style.css"/>
+	<link rel="stylesheet" type="text/css" href="__PUBLIC__/css/css1.css"/>
+	<script type="text/javascript" src="__PUBLIC__/js/jquery-1.8.3.min.js"></script>
+	<script type="text/javascript" src="__PUBLIC__/js/jquery.form.min.js"></script>
+	<script type="text/javascript" src="__PUBLIC__/js/artDialog4.1.7/artDialog.source.js?skin=green"></script>
+	<script type="text/javascript" src="__PUBLIC__/js/artDialog4.1.7/plugins/iframeTools.js"></script>
+	<script src="__PUBLIC__/js/jquery.KinSlideshow-1.2.1.min.js" type="text/javascript"></script>
+	<script src="__PUBLIC__/js/jquery.textSearch-1.0.js" type="text/javascript"></script>
+	<script type="text/javascript" src="__PUBLIC__/js/Calendar.js"></script>
+	<script type="text/javascript">
+		
+		function check(){
+			 var key;
+			 key=$("#keys").val().replace(/(^\s*)|(\s*$)/g, "");
+			 if(key==''||key=='输入您想搜索的内容'){
+				art.dialog({content:'关键词不能为空',time:10});
+				return false;
+			 }
+			 return true;
+		}
+		function checkForm(){
+			var kssj = $("#kssj").val();
+			var jssj = $("#jssj").val();
+			document.getElementById('page').value = '';
+
+			if(kssj == '' || jssj == ''){
+				art.dialog({content:'交费日期不能为空',time:10});
+				return false;
+			}
+
+			var s1 = '2018-01-01';
+			s1 = new Date(s1.replace(/-/g, "/"));
+			s2 = new Date(kssj.replace(/-/g, "/"));
+			s3 = new Date(jssj.replace(/-/g, "/"));
+			var days = s2.getTime() - s1.getTime();
+			var time = parseInt(days / (1000 * 60 * 60 * 24));
+
+			var days1 = s3.getTime() - s1.getTime();
+			var time1 = parseInt(days1 / (1000 * 60 * 60 * 24));
+
+			if(time < 0 || time1 < 0){
+				art.dialog({content:'2018年1月1日之后的订单才可申请发票，请选择正确的交费日期',time:10});
+				return false;
+			}
+			
+			return true;
+		}
+
+
+		function getPage(p){
+			document.getElementById('page').value = p;
+			document.getElementById("form2").submit();
+		}
+    </script>
+	
+</head>
+<body>
+
+	
+	<div class="gray"></div>
+<div class="center_zfb"> 
+ 
+ <div class="contentbox">
+ <div class="fptitle">电子发票详情</div>
+ <div class="order_title" id="ddbh"></div>
+ <div class="orderul">
+ <ul class="clearfix">
+ <li class="lione">发票类型</li>
+ <li class="litwo">电子发票</li>
+ </ul>
+ <ul class="clearfix" style="display:none">
+ <li class="lione">发票内容</li>
+ <li class="litwo" id='fpnr'>个人明细</li>
+ </ul>
+ <ul class="clearfix">
+ <li class="lione">发票抬头</li>
+ <li class="litwo" id='fqtt'>个人</li>
+ </ul>
+ <ul class="clearfix">
+ <li class="lione">发票状态</li>
+ <li class="litwo" id='fqzt'></li>
+ </ul>
+ <ul class="clearfix" style='display:none' id='bz'>
+	<li class="lione">未通过说明</li>
+	<li class="litwo" id='bzsm'></li>
+ </ul>
+ 
+ 
+ </div>
+ 
+  
+ </div>
+  <div class="contenttwo" style='display:none;' id='fp'>
+	  <ul class="clearfix ulborder">
+	  <li>发票代码</li>
+	  <li class="liborder">发票号码</li>
+	  <li>下载</li>
+	  </ul> 
+	  <ul class="clearfix">
+		  <li id='fpdm'></li>
+		  <li id='fphm' class="liborder"></li>
+		  <li><a href="#" id='fpxz' class="down">电子发票下载</a></li>
+	  </ul> 
+  </div>
+ <div class="closebox" style='margin-top:10px'><a class="close">关闭</a></div>
+   
+</div>
+
+
+	<div class="headerNull"></div>
+	<div class="header">
+		<div class="Content clear">
+			<div class="floatLeft clear">
+				<div class="logo">
+					<img src="__PUBLIC__/img/logo.png" alt="logo" />
+				</div>
+				<div class="title">
+					<span class="titleName">{$Think.config.site_name}</span>
+					<span class="titlePhone">24小时客户服务热线：022-66885890</span>
+				</div>
+			</div>
+			<div class="wear floatLeft">
+				<iframe width="189" scrolling="no" height="57" frameborder="0" allowtransparency="true" src="http://i.tianqi.com/index.php?c=code&id=12&bgc=%23FFFFFF&icon=1&py=tianjin&num=1&site=14"></iframe>
+			</div>
+			<div class="search floatRight">
+				<div class="search_user">
+					<notempty name="Think.session.uname">
+						<img src="__PUBLIC__/img/icon.png" alt="userIcon" />
+						<a class="wel fl" href="{:U('User/index')}"><span>{$Think.session.unick}</span></a> 
+						<a href="{:U('Public/logout')}" class="Quit fl"><img src="__PUBLIC__/img/return.png" alt="returnIcon" style='border:0;'/></a>
+					<else/>
+						<div><span>登录</span><span>注册</span></div>
+					</notempty>
+				</div>
+				<div class="search_input">
+					<form name="form1" id="form1" action="{:U('Article/search')}" method="post">
+						<input type="text"  id="keys" name="keys" placeholder="输入您想要输入的内容"/>
+						<button  onclick="return check()"></button>
+					</form>
+				</div>
+			</div>
+		</div>
+		<div class="nav">
+			<div class="Content">
+				<ul class="clear">
+					<a href="/"><li>首页</li></a>
+					 {~$topmenu=get_menu($cate, 0);}
+					 <volist name="topmenu" id="vo"> <a
+						  <eq name="vo.id" value="$topid"> class="hover"    </eq>
+						  href="
+						  <empty name='vo.url'>
+							<empty name="vo['tpl']">{:U($vo['Model']['name'].'/index','id='.$vo['id'])}
+							  <else/>
+							  {:U($vo['Model']['name'].'/'.$vo['tpl'],'id='.$vo['id'])}</empty>
+							<else/>
+							{$vo.url}</empty>
+						  ">
+						  <li>{$vo['title']}</li>
+						  </a><span></span> 
+					   </volist>
+					<a href="/index.php?s=/article/fuwu/id/30.html"><li>服务指南</li></a>
+				</ul>
+			</div>
+		</div>
+	</div>
+	<div class="center">
+		<div class="Content centerContent">
+			<div class="notice clear">
+				<img src="__PUBLIC__/img/tips.png" alt="noticeTips" />
+				<span>通知公告</span>
+				<div class="noticeBox">
+					<ul class="clear noticeBox_show">
+						{~$ll = get_list('1|Article|10')}
+						<empty name="ll">
+						  <li>暂无数据</li>
+						</empty>
+						<volist name="ll" id="notices" key="k">
+							<if condition="($notices.isre eq 1) AND ($notices.istop eq 1)">
+								<li><a target="_blank" title="{$notices.title}" href="{:U('Article/view','id='.$notices['id'])}">{$notices.title}</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</li>
+							</if> 
+						</volist>
+					</ul>
+					
+				</div>
+			</div>
+			<div class="current">
+				<spna>你当前位置：</spna><a href="/"><span>首页></span></a><a target="_blank" title="{$notices.title}" href="{:U('User/index')}"><span>我的5890></span></a><span>电子发票</span>
+			</div>
+			<form name="form2" id="form2" action="" method="post">
+			<div class="invoice">
+				<div class="invoice_title">电子发票</div>
+				<div class="invoice_queryCriteria">
+					<span>房间地址：</span>
+					<select name="houseCode" class="queryAddress">
+						<volist name="houselist" id="hc">
+						  <option value="{$hc.houseCode}" <if condition="$hc.houseCode eq $code">selected="selected"</if>>{$hc.address}</option>
+						</volist>
+					</select>
+					<span class="queryDate">交费日期：</span>
+					<input name="kssj" type="text" id="kssj" size="10" maxlength="10" onclick="new Calendar().show(this);" readonly="readonly" class="queryTime" value='{$kssj}'/>
+					<span>&nbsp;-&nbsp;</span>
+					<input type="text" name="jssj" id="jssj" onclick="new Calendar().show(this);" readonly="readonly" size="10" maxlength="10" class="queryTime" value='{$jssj}'/>
+					<button class="queryBtn" onclick="return checkForm()">查询</button>
+				</div>
+				</form>
+				<notempty name="billlist">
+					<volist name="billlist" id="vo">
+						
+							<div class="bill">
+								<div class="bill_title clear">
+									<volist name="vo['infor']" id="billinfor">
+										<if condition="$key eq 1">
+											<div class="billTitle_time">
+												收费日期：<span>{$billinfor.operatedate|substr=0,10}</span><span>{$billinfor.operatedate|substr=11,8}</span>
+											</div>
+											<div class="billTitle_number"><span>订单号：</span><span>{$billinfor.billcode}</span></div>
+											<div class="billTitle_address"><span><!--{$billinfor.dizhi}-->&nbsp;</span></div>
+											<div class="billTitle_pay"><span>缴费途径：</span><span>{$billinfor.jffs}</span></div>
+											
+										</if>
+									</volist>
+								</div>
+								<table cellpadding="0" cellspacing="0">
+									<tr>
+										<td>收费项目</td>
+										<td>收费期</td>
+										<td>单价（元）</td>
+										<td>面积/用量</td>
+										<td style='display:none'>实收金额（元）</td>
+										<td style='display:none'>违约金金额（元）</td>
+										<td>缴纳费用（元）</td>
+										<td>费用状态</td>
+										<td>发票状态</td>
+										<td>操作</td>
+									</tr>
+									<volist name="vo['data']" id="bill">
+										<tr>
+											<td>
+											<if condition="($bill.itemcode eq B) OR ($bill.itemcode eq N) OR ($bill.itemcode eq M)"> <img src="/Public/img/water.png" style="vertical-align: middle"/></if>
+											<if condition="($bill.itemcode eq D) OR ($bill.itemcode eq P) OR ($bill.itemcode eq Q)"> <img src="/Public/img/qi.png" style="vertical-align: middle"/></if>
+											<if condition="($bill.itemcode eq A)"> <img src="/Public/img/hot.png" style="vertical-align: middle"/></if>
+											{$bill.itemname}
+											</td>
+											<td>{$bill.chargemonth}</td>
+											<td>{$bill.price}</td>
+											<td>{$bill.chargearea}</td>
+											<td style='display:none'>{$bill.cash}</td>
+											<td style='display:none'>{$bill.latefeenow}</td>
+											<if condition="$key eq 0">
+												<td rowspan="{$vo['infor'] | count}">{$bill.sshj}</td>
+												<td rowspan="{$vo['infor'] | count}">已缴成功</td>
+												<td rowspan="{$vo['infor'] | count}" class="billTd_gray">{$bill.invstatus}</td>
+												<td rowspan="{$vo['infor'] | count}" style="border-right:1px solid #e2e2e2">
+													<if condition="$bill.invstatus eq '未申请'">
+														<a class="billBtn_green" onclick="apply('{$bill.billcode}','{$bill.invstatus}')">申请</button>
+													<else />
+														<a class="billBtn_gray" style='color: #9f9f9f;text-shadow: 1px 1px #ffffff;'>申请</button>
+													</if>
+													<if condition="$bill.invstatus eq '可下载'">
+														<a class="billBtn_green" onclick="downloadFp('{$bill.invurl}','{$bill.invstatus}')">下载</button>
+													<else />
+														<a class="billBtn_gray" style='color: #9f9f9f;text-shadow: 1px 1px #ffffff;'>下载</button>
+													</if>
+													<a class="billBtn_yellow" onclick="getDetail('{$bill.billcode}','{$bill.invurl}','{$bill.invoicecode}','{$bill.invoicenumber}','{$bill.examineopinion}','{$bill.invstatus}','{$bill.owner}')">详情</button>
+												</td>
+											</if>
+										</tr>
+									</volist>
+									
+								</table>
+							</div>
+						
+					</volist>
+				</notempty>
+				<empty name="billlist">
+					<div class="bill">
+						<div class="bill_title clear">
+							<div class="billTitle_time">
+								<span>温馨提示</span><span></span>
+							</div>
+							
+						</div>
+						<table cellpadding="0" cellspacing="0">
+							<tr style="background-color:#fff;">
+								
+								<td style='width:1154px;'>经查询，暂无符合条件数据！</td>
+							</tr>
+							
+						</table>
+					</div>
+				</empty>
+				<input type='hidden' name='page' id='page' value="{$page}">
+				<if condition="$account gt ($page+1)">
+					<div class="billAdd" style='display:none'><a href='javascript:getPage()' style='color:#7b7b7b'>点击添加更多<span>+</span></a></div>
+				</if>
+				<div class="paging">
+					<ul id='fy'>
+						{$fy}
+					</ul>
+				</div>
+				<div class="prompt">
+					<p class="promptColor_red">温馨提示：</p>
+					<p>发票状态：选择房间地址和交费日期，点击查询后，下面列表显示的“发票状态”列有四种状态</p>
+					<p>1、未申请：说明此条缴费记录没有开具过电子发票，同时具备开具电子发票的条件，点击申请按钮可以申请开具电子发票。</p>
+					<p>2、可下载：说明此条缴费记录已开具电子发票，点击下载按钮可下载此条缴费记录对应PDF格式的电子发票文件。</p>
+					<p>3、审核中：说明此条缴费记录已进行了开具操作，正在由能源公司审批中，还未通过。</p>
+					<p>4、开具失效：说明此条缴费记录已开具了纸质发票或者是2018年1月1日之前的缴费记录，不具备开具电子发票的条件。</p>
+					<p class="promptColor_red">单次缴纳多种能源费用问题：</p>
+					<p>在能源公司缴费大厅缴费时，单次缴纳了多个月份和多个收费项目的费用，并且只打印了收据没有开具纸质发票，在开具电子发票时会同时将当时单次缴纳的所有缴费记录开具在一张电子发票上。</p>
+					<p>例：在缴费大厅缴费时，同时缴纳了201801、201802月份的自来水费，及201801、201802的天然气费，在开具电子发票时会同时将这四笔缴费记录开具在一张电子发票上。</p>
+					<p class="promptColor_red">注意：只有2018年1月1日之后缴纳的费用才可以申请电子发票。</p>
+				</div>
+			</div>
+		</div>
+
+
+
+
+		<div class="link">
+			<div class="Content">
+				<ul class="clear">
+					
+					<li class="linkClick" style="padding:0 25px;">友情链接</li>
+					<a href="http://www.eco-city.gov.cn/" title="中国-新加坡天津生态城" target="_blank"><li><img src="/Public/images/gwh-logo.jpg" alt="中国-新加坡天津生态城" style='border:0;'/></li></a>
+		<a href="http://www.tjeco-city.com/cn/index.asp" title="天津生态城投资开发有限公司" target="_blank"><li><img src="/Public/images/stc-logo.jpg" alt="天津生态城投资开发有限公司" style='border:0;'/></li></a>
+		<a href="http://www.tjeco.org/" title="中新天津生态城网上社区" target="_blank"><li><img src="/Public/images/sq-logo.jpg" alt="中新天津生态城网上社区" style='border:0;'/></li></a>
+		<a href="http://www.ecodreamers.com" title="生态梦网" target="_blank"><li><img src="/Public/images/stmw-logo.jpg" alt="生态梦网" style='border:0;'/></li></a>
+		<a href="http://www.tianjineco-city.com/" title="合资公司" target="_blank"><li><img src="/Public/images/tz-logo.jpg" alt="合资公司" style='border:0;'/></li></a>
+					
+				</ul>
+			</div>
+		</div>
+	</div>
+	<div class="footer">
+		<div class="Content">
+			<div class="footerContent clear">
+				<ul>
+					<li class="footerTitle">自助服务</li>
+					<li><a href="/index.php?s=/page/lsfy1/id/13.html">在线查询</a></li>
+					<li><a href="/index.php?s=/business/lists/id/10.html">业务办理</a></li>
+					<li><a href="/index.php?s=/guestbook/lists/id/11.html">投诉建议</a></li>
+				</ul>
+				<ul>
+					<li class="footerTitle">服务公告</li>
+					<li><a href="/index.php?s=/article/lists/id/2.html">停供能信息</a></li>
+					<li><a href="/index.php?s=/article/lists/id/3.html">活动通知</a></li>
+				</ul>
+				<ul>
+					<li class="footerTitle">信息公开</li>
+					<li><a href="/index.php?s=/article/lists/id/6.html">服务标准</a></li>
+					<li><a href="/index.php?s=/article/lists/id/5.html">政策法规</a></li>
+					<li><a href="/index.php?s=/article/lists/id/7.html">常见问题</a></li>
+					<li><a href="/index.php?s=/article/lists/id/199.html">防洪防汛</a></li>
+				</ul>
+				<ul>
+					<li class="footerTitle">常用服务</li>
+					<li><a href="/index.php?s=/page/zsjf1/id/210.html">在线缴费</a></li>
+					<li><a href="/index.php?s=/page/lsfy1/id/13.html">账单明细</a></li>
+					<li><a href="/index.php?s=/page/lszd/id/200.html">历史账单</a></li>
+					<li><a href="/index.php?s=/page/lsyn/id/14.html">历史用量</a></li>
+				</ul>
+				<ul>
+					<li class="footerTitle">服务指南</li>
+					<li><a href="/index.php?s=/article/lists/id/162.html">能源服务</a></li>
+					<li><a href="/index.php?s=/article/lists/id/163.html">环保服务</a></li>
+					<li><a href="/index.php?s=/page/content/id/33.html">营业网点</a></li>
+					<li><a href="/index.php?s=/page/content/id/164.html">使用须知</a></li>
+				</ul>
+				<ul class="linkCode">
+					<li>
+						<img src="__PUBLIC__/img/wx.png" alt="codePhoto" />
+						<div>扫一扫关注</div>
+					</li>
+				</ul>
+			</div>
+		</div>
+		<div class="copy">
+			<p>{$Think.config.site_tongji}</p>
+			<p>{$Think.config.site_icp}</p>
+		</div>
+	</div>
+
+
+	<script src="__PUBLIC__/js/jquery-1.9.1.min.js" type="text/javascript" charset="utf-8"></script>
+	<script src="__PUBLIC__/js/script.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript">
+		function getDetail(billcode,invurl,invoicecode,invoicenumber,examineopinion,invstatus,owner){
+			$("#ddbh").html('订单编号：'+billcode);
+			$("#fqzt").html(invstatus);
+			$("#fqtt").html(owner);
+			if(invstatus == '审核未通过'){
+				$("#bzsm").html(examineopinion);
+				$("#bz").show();
+			}
+			else{
+				$("#bz").hide();
+			}
+			if(invstatus == '可下载'){
+				if(invoicenumber == '' || invoicecode == '' || invurl == ''){
+					$("#fp").hide();
+				}
+				else{
+					$("#fpdm").html(invoicenumber);
+					$("#fphm").html(invoicecode);
+					$('#fpxz').attr('href',invurl);
+					$("#fp").show();
+				}
+			}
+			else{
+				$("#fp").hide();
+			}
+
+			$(".gray").show();
+			$(".center_zfb").show();
+		}
+
+		function downloadFp(invurl,invstatus){
+			
+			if(invstatus != '可下载'){
+				alert('发票状态为：'+invstatus+'，无法下载！');
+				return false;
+			}
+			else{
+				if(invurl == ''){
+					alert('下载异常，请稍候再试！');
+					return false;
+				}
+				//location.href = 'http://www.66885890.com/Public/images/123.rar';
+				downloadFile(invurl);
+			}
+			
+		}
+
+		function downloadFile(url) {   
+		   try{ 
+				var elemIF = document.createElement("iframe");   
+				elemIF.src = url;   
+				elemIF.style.display = "none";   
+				document.body.appendChild(elemIF);   
+			}catch(e){ 
+				zzrw.alert("下载异常！");
+			}     
+		}
+
+		function apply(billcode,invstatus){
+			
+			if(invstatus == '未申请' || invstatus == '审核未通过'){
+				$.ajax({
+					url: '{:U("/Union/applyInvioce")}',
+					type: 'POST',
+					data: {billcode:billcode,invstatus:invstatus},
+					dataType: 'json',
+					success: function(res) {
+						if(res["r_code"] == '0000'){
+							alert("申请成功，请耐心等待审核！");
+						}
+						else{
+							alert(res["r_meaning"]+'!');
+						}
+						//location.reload();
+						document.getElementById("form2").submit();
+					}
+				});
+			}
+			else{
+				alert('发票状态为：'+invstatus+'，无法申请！');
+				return false;
+			}
+			
+		}
+	$(document).ready(function(){
+	  
+	  $(".close").click(function(){
+	  $(".gray").hide();
+	  $(".center_zfb").hide();
+	  });
+	  
+	});
+	</script>	
+</body>
+</html>

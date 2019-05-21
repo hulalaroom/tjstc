@@ -1,0 +1,171 @@
+<!doctype html>
+<html>
+<head>
+    <include file="Public:common-head" append="$hoverIndex"/>
+<link rel="stylesheet" type="text/css" href="__PUBLIC__/last/css/selectFilter.css">
+</head>
+
+<body>
+    <assign name="hoverIndex" value="1" />
+    <include file="Public:common-toppart" />
+
+<div class="yewu_banner">
+	<div class="content">
+		<p class="jiaofei_banner_01 font_yinying ">业务办理</p>
+<p class="jiaofei_banner_03"></p>
+<p class="jiaofei_banner_02 font_yinying">帮助您网上办理业务，多项业务一键预约</p>
+
+	</div>
+
+
+</div>
+
+	<div class="content">
+        <p class="dqwz history_dqwz">
+			当前位置：<a href="http://www.66885890.com">首页</a> &nbsp;&nbsp;&gt;&nbsp;&nbsp;
+			<a href="{:U('User/index',array('id'=>20))}">我的5890</a>&nbsp;&nbsp;&gt;&nbsp;&nbsp;
+			<span class="green">业务办理</span>
+        </p>
+		<div class="jiaofei_box clearfix">
+						<div class="jiaofei_boxfirst">
+			<a href="{:U('business/lists','id=10')}" class="nygs01">
+				<dl class="nygsdl01">
+				<dt><img src="__PUBLIC__/last/img/banliyewu_04.png" alt="" /></dt>
+					<dd class="jiaofei_title nengyuan_title">我的业务</dd>
+					<dd class="jiaofei_nr">我的业务详细信息</dd>
+
+			</dl>
+
+
+                <dl class="nygsdl02">
+				<dt class="nygsdt_01"><img src="__PUBLIC__/last/img/banliyewu_044.png" alt="" /></dt>
+					<dd class="jiaofei_title jiaofei_title01 ">我的业务</dd>
+					<dd class="jiaofei_nr jiaofei_nr01">我的业务详细信息</dd>
+					<dd> <span class="jrbtn01">点击进入</span> </dd>
+
+			</dl>
+			</a>
+
+			</div>
+
+			<div class="jiaofei_boxtwo">
+			<a href="{:U('User/ny')}" class="nygs01">
+				<dl class="nygsdl01">
+				<dt><img src="__PUBLIC__/last/img/banliyewu_01.png" alt="" /></dt>
+					<dd class="jiaofei_title nengyuan_title">能源公司</dd>
+					<dd class="jiaofei_nr">能源公司详细信息</dd>
+
+			</dl>
+
+
+                <dl class="nygsdl02">
+				<dt class="nygsdt_01"><img src="__PUBLIC__/last/img/banliyewu_011.png" alt="" /></dt>
+					<dd class="jiaofei_title jiaofei_title01  ">能源公司</dd>
+					<dd class="jiaofei_nr jiaofei_nr01">能源公司详细信息</dd>
+					<dd> <span class="jrbtn01 jrbtn02">点击进入</span> </dd>
+
+			</dl>
+			</a>
+
+			</div>
+
+<if condition='$zss eq 1'>
+						<div class="jiaofei_boxthree">
+			<a href="{:U('User/sw')}" class="nygs01">
+				<dl class="nygsdl01">
+				<dt><img src="__PUBLIC__/last/img/banliyewu002.png" alt="" /></dt>
+					<dd class="jiaofei_title nengyuan_title">水务公司</dd>
+					<dd class="jiaofei_nr">水务公司详细信息</dd>
+
+			</dl>
+
+
+                <dl class="nygsdl02">
+				<dt class="nygsdt_01"><img src="__PUBLIC__/last/img/banliyewu0002.png" alt="" /></dt>
+					<dd class="jiaofei_title jiaofei_title01 ">水务公司</dd>
+					<dd class="jiaofei_nr jiaofei_nr01">水务公司详细信息</dd>
+					<dd> <span class="jrbtn01 jrbtn03">点击进入</span> </dd>
+
+			</dl>
+			</a>
+
+			</div>
+			<else />
+				<div class="jiaofei_boxthree">
+				<a href="javascript:void(0)" class="nygs01">
+					<dl class="nygsdl01">
+					<dt><img src="__PUBLIC__/last/img/banliyewu_02_new.png" alt="" /></dt>
+						<dd class="jiaofei_title nengyuan_title">水务公司</dd>
+						<dd class="jiaofei_nr">水务公司详细信息</dd>
+
+				</dl>
+
+
+	                <dl class="nygsdl02">
+					<dt  class="nygsdt_01"><img src="__PUBLIC__/last/img/banliyewu_02_new_01.png" alt="" /></dt>
+						<dd class="jiaofei_title jiaofei_title01 ">水务公司</dd>
+					<dd class="jiaofei_nr jiaofei_nr01">水务公司详细信息</dd>
+						<dd> <span class="jrbtn01 jrbtn03">未开通再生水</span> </dd>
+
+				</dl>
+				</a>
+
+				</div>
+		</if>
+
+<if condition='$hb eq 1'>
+			<div class="jiaofei_boxfour">
+			<a href="{:U('User/hb')}" class="nygs01">
+				<dl class="nygsdl01">
+				<dt><img src="__PUBLIC__/last/img/banliyewu_03.png" alt="" /></dt>
+					<dd class="jiaofei_title nengyuan_title">环保公司</dd>
+					<dd class="jiaofei_nr">环保公司详细信息</dd>
+
+			</dl>
+
+
+                <dl class="nygsdl02">
+				<dt class="nygsdt_01"><img src="__PUBLIC__/last/img/banliyewu_033.png" alt="" /></dt>
+					<dd class="jiaofei_title jiaofei_title01 ">环保公司</dd>
+					<dd class="jiaofei_nr jiaofei_nr01">环保公司详细信息</dd>
+					<dd> <span class="jrbtn01 jrbtn04">点击进入</span> </dd>
+
+			</dl>
+			</a>
+
+			</div>
+		<else/>
+			<div class="jiaofei_boxfour">
+			<a href="javascript:void(0)" class="nygs01">
+				<dl class="nygsdl01">
+				<dt><img src="__PUBLIC__/last/img/banliyewu_03_new.png" alt="" /></dt>
+					<dd class="jiaofei_title nengyuan_title">环保公司</dd>
+					<dd class="jiaofei_nr">环保公司详细信息</dd>
+
+			</dl>
+
+
+                <dl class="nygsdl02">
+				<dt class="nygsdt_01"><img src="__PUBLIC__/last/img/banliyewu_03_new_01.png" alt="" /></dt>
+					<dd class="jiaofei_title jiaofei_title01 ">环保公司</dd>
+					<dd class="jiaofei_nr jiaofei_nr01">环保公司详细信息</dd>
+					<dd> <span class="jrbtn01 jrbtn04">未绑定环保积分卡</span> </dd>
+
+			</dl>
+			</a>
+
+			</div>
+		</if>
+
+
+
+		</div>
+
+
+
+
+
+	</div>
+<include file="Public:common-footer" />
+</body>
+</html>

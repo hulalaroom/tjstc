@@ -1,0 +1,84 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href='__PUBLIC__/css/common.css'>
+<script type="text/javascript" src="__PUBLIC__/js/jquery-1.7.1.min.js"></script>
+<script type="text/javascript" src="__PUBLIC__/js/base.js"></script>
+<title>2018年生态城公用事业满意度调查问卷</title>
+</head>
+<body>
+<div id="append_parent"></div>
+<div class="container" id="cpcontainer">
+  <div id="contentHeader">
+    <h3>2018年生态城公用事业满意度调查问卷</h3>
+    <div class="searchArea">
+      <ul class="action left" >
+        <li class="current"><a href="__URL__/cause" class="actionBtn"><span>返回</span></a></li>
+      </ul>
+      <div class="search right"> </div>
+    </div>
+  </div>
+		<table class="form_table">
+			<tr>
+			  <td colspan="6"><b>投票明细</b></td>
+			</tr>
+			<tr>
+			  <td width="50">居住小区</td>
+			  <td width="10%">{$list['rDistrict']}</td>
+			  <td width="5%">客户姓名</td>
+			  <td width="10%">{$list['customerName']}</td>
+			  <td width="5%">用户电话</td>
+			  <td width="10%">{$list['telephone']}</td>
+			</tr>
+			<tr>
+			  <td width="5%">房号</td>
+			  <td width="10%">{$list['roomNumber']}</td>
+			  <td width="5%">投票时间</td>
+			  <td width="25%">{$list['createtime']|date="Y-m-d H:i:s",###}</td>
+			  <td width="5%"></td>
+			  <td width="10%"></td>
+			</tr>
+			<tr>
+			  <td width="13%">自来水供应及服务</td>
+			  <td width="20%">{$list['twChoose']}&nbsp;</td>
+			  <td width="13%">天然气供应及服务</td>
+			  <td width="20%">{$list['ngChoose']}&nbsp;</td>
+			  <td width="13%">供热供应及服务</td>
+			  <td width="20%">{$list['hsChoose']}&nbsp;</td>
+			</tr>
+			<tr>
+			  <td width="13%">再生水（即中水）供应及服务</td>
+			  <td width="20%">{$list['rwChoose']}&nbsp;</td>
+			  <td width="13%">水体、水质</td>
+			  <td width="20%">{$list['wqChoose']}&nbsp;</td>
+			  <td width="13%">道路、桥梁、排水、路灯等<br>市政设施整体运营</td>
+			  <td width="20%">{$list['mfChoose']}&nbsp;</td>
+			</tr>
+			<tr>
+			  <td width="13%">景观绿化的管理</td>
+			  <td width="20%">{$list['lgChoose']}&nbsp;</td>
+			  <td width="13%">道路保洁与环境卫生</td>
+			  <td width="20%">{$list['rcChoose']}&nbsp;</td>
+			  <td width="13%">智能物回<br>（积分兑换、大件回收等）</td>
+			  <td width="20%">{$list['agentChoose']}&nbsp;</td>
+			</tr>
+			<tr>
+			  <td width="13%">公交（1、2、3、4号线路）<br>车辆的安全保障</td>
+			  <td width="20%">{$list['busgChoose']}&nbsp;</td>
+			  <td width="13%">公交（1、2、3、4号线路）<br>驾驶员的仪容仪表和服务态度</td>
+			  <td width="20%">{$list['bdrChoose']}&nbsp;</td>
+			  <td width="13%">公交（1、2、3、4号线路）<br>车身及车内部的清洁卫生</td>
+			  <td width="20%">{$list['cleanupChoose']}&nbsp;</td>
+			</tr>
+			<tr>
+			  <td width="13%">公用事业相关工作意见或建议</td>
+			  <td width="20%">{$list['opinionChoose']}&nbsp;</td>
+			  <td colspan="4">{$list['content']}</td>
+			</tr>
+			
+		</table>
+		
+</div>
+</body>
+</html>

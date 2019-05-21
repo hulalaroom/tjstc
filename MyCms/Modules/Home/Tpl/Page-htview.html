@@ -1,0 +1,34 @@
+<link type="text/css" rel="stylesheet" href="__PUBLIC__/css/base.css"/>
+<link type="text/css" rel="stylesheet" href="__PUBLIC__/css/my_5890.css"/>
+<link type="text/css" rel="stylesheet" href="__PUBLIC__/css/article.css"/>
+<link type="text/css" rel="stylesheet" href="__PUBLIC__/css/business.css"/>
+<link type="text/css" rel="stylesheet" href="__PUBLIC__/css/index.css"/>
+<link type="text/css" rel="stylesheet" href="__PUBLIC__/css/member.css"/>
+<link type="text/css" rel="stylesheet" href="__PUBLIC__/css/validator.css"/>
+<ul class="pgroup" style="max-height:400px;">
+  <li>
+    <h4>受理状态 :</h4>
+   <if condition="($status eq 1) OR ($status eq '不同意')"><span class="col_o">驳回</span></if>
+	<eq name="status" value="2"><span class="col_b">网站审核</span></eq>
+	<if condition="($status eq 3) OR ($status eq '同意')"><span class="col_o">片区审核</span></if>
+	<eq name="status" value="4"><span class="col_o">审核通过</span></eq>
+  </li>
+  <li>
+    <h4>使用方 :</h4>
+    <span>{$syf}</span> </li>
+  <li>
+    <h4>房屋类别 :</h4>
+    <span>{$fwlx}</span> </li>
+  <li>
+    <h4 >采暖形式 :</h4>
+    <span class="f_14">{$cnxs}</span> </li>
+  <li>
+    <h4>申请时间 :</h4>
+    <span>{$ht_cjsj|date='Y-m-d H:i:s',###}</span> </li>
+  <if condition="($status eq 1) OR ($status eq '不同意')">
+	 <li>
+		<h4>驳回原因 :</h4>
+		<span class="f_14">{$remark}</span>
+	</li>
+  </if>
+</ul>

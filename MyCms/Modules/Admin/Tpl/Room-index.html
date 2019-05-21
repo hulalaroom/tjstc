@@ -1,0 +1,309 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href='__PUBLIC__/css/common.css'>
+<script type="text/javascript" src="__PUBLIC__/js/jquery-1.7.1.min.js"></script>
+<script type="text/javascript" src="__PUBLIC__/js/base.js"></script>
+<script src="__PUBLIC__/js/jquery.textSearch-1.0.js" type="text/javascript"></script>
+<title>无标题文档</title>
+<script>
+    var thisurl = window.location.href;
+		$(function(){
+			<notempty name='keyword'>$(".{$types}").textSearch('{$keyword}');</notempty>
+			//搜索绑定事件
+			$("#getform").submit(function(){
+				thisurl  =  delQueStr(thisurl,'p');;
+				thisurl  = setUrlParam('limit',$('select[name=limit]').val(),thisurl);
+				thisurl  = setUrlParam('start_time',$(this).find('input[name=start_time]').val(),thisurl);
+				thisurl  = setUrlParam('end_time',$(this).find('input[name=end_time]').val(),thisurl);
+				<!-- thisurl  = setUrlParam('types',$(this).find('select[name=types]').val(),thisurl); -->
+				<!-- thisurl  = setUrlParam('keyword',$(this).find('input[name=keyword]').val(),thisurl); -->
+				thisurl  = setUrlParam('username',$(this).find('input[name=username]').val(),thisurl);
+				thisurl  = setUrlParam('phone',$(this).find('input[name=phone]').val(),thisurl);
+				thisurl  = setUrlParam('housecode',$(this).find('input[name=housecode]').val(),thisurl);
+				thisurl  = setUrlParam('address',$(this).find('input[name=address]').val(),thisurl);
+				thisurl  = setUrlParam('ownerName',$(this).find('input[name=ownerName]').val(),thisurl);
+				thisurl  = setUrlParam('paperCode',$(this).find('input[name=paperCode]').val(),thisurl);
+				thisurl  = setUrlParam('bphone',$(this).find('input[name=bphone]').val(),thisurl);
+				thisurl  = setUrlParam('bankNumber',$(this).find('input[name=bankNumber]').val(),thisurl);
+				thisurl  = setUrlParam('cardnum',$(this).find('input[name=cardnum]').val(),thisurl);
+				thisurl  = setUrlParam('limit',$(this).find('input[name=limit]').val(),thisurl);
+				thisurl  = setUrlParam('xiaoqu',$(this).find('select[name=xiaoqu]').val(),thisurl);
+				thisurl  = setUrlParam('sfjb',$(this).find('select[name=sfjb]').val(),thisurl);
+				window.location.href = thisurl;
+				return false;							  
+			})
+		})    
+	//下拉搜索
+	function select_search(value,name){
+		thisurl = delQueStr(thisurl,'p');
+		thisurl = setUrlParam(name,value,thisurl);  //设置URL
+		window.location.href = thisurl;
+	}   
+	function numlimit(num,limit){
+		thisurl = delQueStr(thisurl,'p');;
+		thisurl = setUrlParam(limit,num,thisurl);  //设置URL
+		window.location.href=thisurl;
+	}
+</script>  
+<script>
+//设置URL
+function setUrlParam(para_name,para_value,url){
+	if(para_value==''){
+	   return delQueStr(url,para_name);
+	}
+	var strNewUrl=new String();
+	var strUrl=url;
+	//alert(strUrl);
+	if(strUrl.indexOf("?")!=-1){
+		strUrl=strUrl.substr(strUrl.indexOf("?")+1);
+		//alert(strUrl);
+		if(strUrl.toLowerCase().indexOf(para_name.toLowerCase())==-1){
+			strNewUrl=url+"&"+para_name+"="+para_value;
+			return strNewUrl;
+		}else{
+			var aParam=strUrl.split("&");
+			//alert(aParam.length);
+			for(var i=0;i<aParam.length;i++){
+				if(aParam[i].substr(0,aParam[i].indexOf("=")).toLowerCase()==para_name.toLowerCase())
+				{
+				   aParam[i]= aParam[i].substr(0,aParam[i].indexOf("="))+"="+para_value;
+				}
+			}
+			strNewUrl=url.substr(0,url.indexOf("?")+1)+aParam.join("&");
+			// alert(strNewUrl);
+			return strNewUrl;
+		}
+	}else{
+		strUrl+="?"+para_name+"="+para_value;
+		//alert(strUrl);
+		return strUrl
+	}
+}
+//删除参数值
+function delQueStr(url, ref) {
+	var str = "";
+	if (url.indexOf('?') != -1){
+		str = url.substr(url.indexOf('?') + 1);
+	}else {
+		return url;
+	}
+	var arr = "";
+	var returnurl = "";
+	var setparam = "";
+	if (str.indexOf('&') != -1) {
+		arr = str.split('&');
+		for (i in arr) {
+			if (arr[i].split('=')[0] != ref) {
+				returnurl = returnurl + arr[i].split('=')[0] + "=" + arr[i].split('=')[1] + "&";
+			}
+		}
+		return url.substr(0, url.indexOf('?')) + "?" + returnurl.substr(0, returnurl.length - 1);
+	}else{
+		arr = str.split('=');
+		if (arr[0] == ref) {
+			return url.substr(0, url.indexOf('?'));
+		}
+		else {
+			return url;
+		}
+	}
+}
+  
+$(function(){
+	//设置超过10个字符用...替代剩下的字符
+	$(".tb_list td").each(function(){
+	var maxwidth=12;
+		if($(this).text().length>maxwidth){
+		 $(this).text($(this).text().substring(0,maxwidth)); 
+		 $(this).html($(this).html()+'…');
+		}
+	});
+	//控制显示弹出的div以及内容
+	$('.tb_list td').live('mouseover', function(e) {
+		_text=$(this).attr('id');
+		_tooltip = "<div id='tooltipdiv'><span style='font-size:16px'> "+_text+"</span></div>";
+		$("body").append(_tooltip); 
+		$("#tooltipdiv").show();
+		$("#tooltipdiv").css({
+		"top": (e.pageY+10) + "px",
+		"left":  (e.pageX +10) + "px"
+		}).show("fast");   
+	});
+	$('.tb_list td').live('mouseout', function(e) {
+		$("#tooltipdiv").remove();
+	});
+	$('.tb_list td').live('mousemove', function(e) {
+		$("#tooltipdiv").css({
+			"top": (e.pageY+10 ) + "px",
+			"left":  (e.pageX+10)  + "px"
+		}).show();   
+	});
+});
+</script>
+<style>
+#tooltipdiv {
+	position: absolute;
+	border: 1px solid #333;
+	background: #f7f5d1;
+	padding: 3px 3px 3px 3px;
+	color: #333;
+	display: none;
+}
+
+.tb_list{
+   width:100px;overflow:hidden;
+   white-space:nowrap;
+   text-overflow:ellipsis;
+}
+
+.tb_header{
+   width:100px;overflow:hidden;
+   white-space:nowrap;
+   text-overflow:ellipsis;
+}
+   
+</style>
+</head>
+<body>
+<div id="append_parent"></div>
+<div class="container" id="cpcontainer">
+	<div id="contentHeader">
+		<h3>用户房间管理</h3>
+		<div class="searchArea">
+			<div class="search left">
+			显示：<select name="limit"  onChange="numlimit(this.value,'limit');" name="limit">
+					<option value="{$p}" <eq name='limit' value='{$p}'>selected="selected"</eq>>{$p}</option>
+					<option value="30" <eq name='limit' value='30'>selected="selected"</eq>>30</option>
+				</select>　
+					<a href="{:U('Room/index')}">[清空条件]</a>
+			</div>
+				<!--<ul class="action left">
+					<li><a href="__URL__/add" class="actionBtn"><span>绑定</span></a></li>
+				</ul>-->
+					
+			<div class="search left">
+				<form name="sou" id="getform" action="{:U('Room/index')}" method="get" style="margin: 0 0 15px 0;">
+				
+					<!--用户：<select name="uid"  onChange="select_search(this.value,'uid');" >
+					   <option>不限</option>
+					<volist name="ulist" id="user"> <option value="{$user.id}"              
+					  <eq name="user.id" value="$uid"> selected="selected"</eq>
+					>{$user.username}</option>
+					</volist>
+					</select>     -->   
+					　房间编号:　<input id="housecode" name="housecode" class="txt" type="text" value="{$housecode}">
+				  　房间地址:　<input id="address" name="address" class="txt" type="text" value="{$address}">
+				  　注册用户名:　<input id="username" name="username" class="txt" type="text" value="{$username}">
+				  
+				  　绑定手机号码:　<input id="bphone" name="bphone" class="txt" type="text" value="{$bphone}">
+				  </br>
+					<p style="height:5px"><p>				  
+				  　身份证号:　<input id="paperCode" name="paperCode" class="txt" type="text" value="{$paperCode}">
+				  　业主姓名:　<input id="ownerName" name="ownerName" class="txt" type="text" value="{$ownerName}">
+				  　注册手机号:　<input id="phone" name="phone" class="txt" type="text" value="{$phone}">
+				  　环保积分卡号:　<input id="cardnum" name="cardnum" class="txt" type="text" value="{$cardnum}">　
+				  
+				  　</br>
+				  <p style="height:5px"><p>
+				  　能源卡号:　<input id="bankNumber" name="bankNumber" class="txt" type="text" value="{$bankNumber}">
+				  　是否解绑:　<select name="sfjb" id="sfjb" >
+									<option value="">全部</option>
+									<option value="0" <eq name='sfjb' value="0">selected="selected"</eq>>已解绑</option>
+									<option value="1" <eq name='sfjb' value='1'>selected="selected"</eq>>未解绑</option>
+							</select>　　　
+				　小区:　<select name="xiaoqu" id="xiaoqu" >
+									<option value="">全部</option>
+									<volist name="xiaoqulist" id="vill">
+											<option value="{$vill.COMMUNITYCODE}" <eq name='xiaoqu' value="$vill.COMMUNITYCODE">selected="selected"</eq>>{$vill.COMMUNITYNAME}</option>
+									</volist>
+							</select>　
+							<input name="limit" type="hidden" value="{$limit}">
+					<!-- 关键词：
+					<select name="types" style="width:110px">
+						<option value="a.username" <eq name='types' value='a.username'>selected="selected"</eq>>注册用户名</option>
+						<option value="a.phone" <eq name='types' value='a.phone'>selected="selected"</eq>>注册手机号</option>
+						<option value="b.housecode" <eq name='types' value='b.housecode'>selected="selected"</eq>>房间编号</option>
+						<option value="b.address" <eq name='types' value='b.address'>selected="selected"</eq>>房间地址</option><!-- 模糊 -->
+						<!--<option value="b.ownername" <eq name='types' value='b.ownername'>selected="selected"</eq>>业主姓名</option><!-- 模糊 -->
+						<!--<option value="a.status" <eq name='types' value='a.status'>selected="selected"</eq>>身份账号</option>
+						<option value="b.phone" <eq name='types' value='b.phone'>selected="selected"</eq>>手机号码（绑定房间）</option>
+						<option value="b.bankNumber" <eq name='types' value='b.bankNumber'>selected="selected"</eq>>能源卡号</option>
+						<option value="b.cardnum" <eq name='types' value='b.cardnum'>selected="selected"</eq>>环保积分卡号</option>
+					</select>-->
+					<!-- <input id="title" type="text" name="keyword" value="{$keyword}" class="txt" size="15"/> -->
+					<input name="searchsubmit" type="submit"  value="查询" class="button" />　
+					<input  class="button" type="button" value="导出" name="download" onclick="exportdata()"/>
+				</form>
+			</div>
+		</div>
+	</div>
+	<table border="0" cellpadding="0" cellspacing="0" class="content_list">
+		<form method="post" action="__URL__/bat" name="form1">
+			<thead style="width: 100%;table-layout: fixed;">
+				<tr class="tb_header">
+					<th width="7%">序号</th>
+					<th width="7%">注册用户名</th>
+					<th width="7%">注册手机号</th>
+					<th width="7%">房间编号</th>
+					<th width="7%">房间地址</th>
+					<th width="7%">业主姓名</th>
+					<th width="7%">身份账号</th>
+					<th width="7%">绑定房间手机号</th>
+					<th width="7%">能源卡号</th>
+					<th width="8%">卡片期限</th>
+					<th width="8%">环保积分卡号</th>
+					<th width="5%">住户人数</th>
+					<th width="8%">绑定房间时间</th>
+					<th width="5%">房间是否绑定</th>
+					<th width="5%">解绑</th>
+				</tr>
+			</thead>
+			<volist name="room_list" id="user">
+				<tr class="tb_list">
+					<td id="{$i}">{$i}</td>
+					<td id="{$user.username}">{$user.username}</td>
+					<td id="{$user.aphone}">{$user.aphone}</td>
+					<td id="{$user.houseCode}">{$user.houseCode}</td>
+					<td id="{$user.address}">{$user.address}</td>
+					<td id="{$user.ownerName}">{$user.ownerName}</td>
+					<td id="{$user.paperCode}">{$user.paperCode}</td>
+					<td id="{$user.bphone}">{$user.bphone}</td>
+					<td id="{$user.bankNumber}">{$user.bankNumber}</td>
+					<td id="{$user.bankEndData}">{$user.bankEndData}</td>
+					<td id="{$user.cardnum}">{$user.cardnum}</td>
+					<td id="{$user.houseHoldSize}">{$user.houseHoldSize}</td>
+					<td id="{$user.bindtime|date="Y-m-d H:i:s",###}">{$user.bindtime|date="Y-m-d H:i:s",###}</td>
+					<td id="{$user.cardnum}">{$user.ifBind}</td>
+					<td id="解绑"><a href="{:U('Room/bat','command=delete')}&id={$user.uid}" id="{$user.uid}" class="confirmSubmit" title="解绑"><img src="__PUBLIC__/images/jb.png" align="absmiddle"></a></td>
+				</tr>
+			</volist>
+			<tr class="operate">
+				<td colspan="15"><div class="cuspages right" >{$page}</div>
+					<div class="fixsel"></div>
+				</td>
+			</tr>
+		</form>
+	</table>
+  <script type="text/javascript">
+$(function(){ 
+    $(".confirmSubmit").click(function() {
+	//alert($(".confirmSubmit").attr('id'));
+		var a=$("input[type='checkbox']:checked");
+		var len=a.length;
+		
+        return confirm('本操作不可恢复，确定继续？');
+		
+			
+    });
+}); 
+</script>
+<script language="javascript" type="text/javascript">  
+   function exportdata(){  
+     window.location.href="__APP__/Admin/Room/roomexcel";   
+   }         
+ </script>
+</div>
+</body>
+</html>

@@ -1,0 +1,130 @@
+<!doctype html>
+<html>
+<head>
+    <include file="Public:common-head"/>
+</head>
+
+<body>
+<include file="Public:common-toppart"/>
+
+<div class="jiaofei_banner">
+	<div class="content">
+		<p class="jiaofei_banner_01 font_yinying ">缴费业务</p>
+<p class="jiaofei_banner_03"></p>
+<p class="jiaofei_banner_02 font_yinying">帮助您随时随地在线缴费，免去窗口排队</p>
+		
+	</div>
+
+	
+</div>
+ <input name="hcode" id="hcode" type="hidden" value="{$hcode}">
+	<div class="content">
+	<p class="jiaofei_dqwz">当前位置：<a href="/">首页</a> &nbsp;&nbsp;&gt;&nbsp;&nbsp;<a href="{:U('User/index',array('id'=>20))}">我的5890</a>&nbsp;&nbsp;&gt;&nbsp;&nbsp;<span class="green">缴费业务</span></p>	
+		
+		<div class="jiaofei_box jiaofei_box01 clearfix">
+ 
+			
+			
+		  <div class="jiaofei_boxthree">
+			<!--<a href="{:U('Page/zsjf1','id=210')}" class="nygs01">-->
+			<a  type="button" id="jf"  class="nygs01">
+				<dl class="nygsdl01">
+				<dt><img src="__PUBLIC__/style/img/zxjf.png" alt="" /></dt>
+					<dd class="jiaofei_title nengyuan_title">在线缴费</dd>
+					<dd class="jiaofei_nr">在线缴费详细信息</dd>
+         
+			</dl>		
+			
+						
+                <dl class="nygsdl02">		
+				<dt class="nygsdt_01"><img src="__PUBLIC__/style/img/zxjfhover.png" alt="" /></dt>
+					<dd class="jiaofei_title jiaofei_title01 ">在线缴费</dd>
+					<dd class="jiaofei_nr jiaofei_nr01">在线缴费详细信息</dd>
+					<dd> <span class="jrbtn01 jrbtn04">点击进入</span> </dd>
+                
+			</dl>	
+			</a>	
+
+			</div>
+			
+			
+			<div class="jiaofei_boxfour">
+		<!--	<a href="{:U('Union/bill')}" class="nygs01">-->
+		<a  type="button" id="dz"  class="nygs01">
+				<dl class="nygsdl01">
+				<dt><img src="__PUBLIC__/style/img/dzfp.png" alt="" /></dt>
+					<dd class="jiaofei_title nengyuan_title">电子发票</dd>
+					<dd class="jiaofei_nr">电子发票详细信息</dd>
+         
+			</dl>		
+			
+						
+                <dl class="nygsdl02">		
+				<dt class="nygsdt_01"><img src="__PUBLIC__/style/img/dzfphover.png" alt="" /></dt>
+					<dd class="jiaofei_title jiaofei_title01 ">电子发票</dd>
+					<dd class="jiaofei_nr jiaofei_nr01">电子发票详细信息</dd>
+					<dd> <span class="jrbtn01 jrbtn04">点击进入</span> </dd>
+                
+			</dl>	
+			</a>	
+
+			</div>
+ 
+			
+		</div>
+		
+		
+		
+		
+		
+	</div>
+<include file="Public:common-footer"/>
+<include file="Public:common-script"/>
+<script type="text/javascript" src="__PUBLIC__/last/js/jquery.easing.min.js"></script>
+<script type="text/javascript" src="__PUBLIC__/last/js/banner.js"></script>
+<script type="text/javascript">
+    $(function () {
+       	 $("#jf").click(function(){
+		    var url="/index.php?s=/page/zsjf1.html";
+			 var temp=document.createElement("form");
+			    temp.action = url; 
+      temp.method = "post"; 
+      temp.style.display = "none"; 
+	  var PARAMS={id:210,hcode:document.getElementById("hcode").value};
+      for (var x in PARAMS) { 
+        var opt = document.createElement("textarea"); 
+        opt.name = x; 
+        opt.value = PARAMS[x]; 
+		// alert(opt.value) 
+        temp.appendChild(opt); 
+        } 
+      document.body.appendChild(temp); 
+      temp.submit(); 
+
+           // location.href="/index.php?s=/Page/zsjf1/id/210/hcode/"+document.getElementById("hcode").value+".html";//发送txt里面的内容
+        })
+		 $("#dz").click(function(){
+		    //alert('税控系统升级中！');
+		   //return false;
+		   var url="/index.php?s=/Union/bill.html";
+			 var temp=document.createElement("form");
+			    temp.action = url; 
+      temp.method = "post"; 
+      temp.style.display = "none"; 
+	  var PARAMS={hcode:document.getElementById("hcode").value};
+      for (var x in PARAMS) { 
+        var opt = document.createElement("textarea"); 
+        opt.name = x; 
+        opt.value = PARAMS[x]; 
+		// alert(opt.value) 
+        temp.appendChild(opt); 
+        } 
+      document.body.appendChild(temp); 
+      temp.submit(); 
+           // location.href="/index.php?s=/Union/bill/hcode/"+document.getElementById("hcode").value+".html";//发送txt里面的内容
+        })
+
+    });
+</script>
+</body>
+</html>

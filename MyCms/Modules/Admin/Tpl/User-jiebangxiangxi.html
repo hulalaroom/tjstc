@@ -1,0 +1,145 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href='__PUBLIC__/css/common.css'>
+<script type="text/javascript" src="__PUBLIC__/js/jquery-1.7.1.min.js"></script>
+<script type="text/javascript" src="__PUBLIC__/js/base.js"></script>
+<script type="text/javascript" src="__PUBLIC__/js/jscolor/jscolor.js"></script>
+<script type="text/javascript" src="__PUBLIC__/js/kindeditor/kindeditor-min.js"></script>
+<link rel="stylesheet" href="__PUBLIC__/js/kindeditor/themes/default/default.css" />
+<script charset="utf-8" src="__PUBLIC__/js/kindeditor/lang/zh_CN.js"></script>
+<script>
+        var editor;
+        KindEditor.ready(function(K) {
+             
+                editor = K.create('textarea[name="content"]', {
+                        allowFileManager : true,
+						uploadJson : '__APP__/Upload/upload/session_id/{$Think.session.myid}',
+						fileManagerJson :  '__APP__/Upload/filelist/session_id/{$Think.session.myid}',
+                        width : '675px',
+                        height : '300px'
+                });
+                //缩略图                         
+                K('#image').click(function() {
+                    editor.loadPlugin('image', function() {
+                        editor.plugin.imageDialog({
+                            //imageUrl : K('#image1 img'),
+                                                       
+                            clickFn : function(url, title, width, height, border, align) {
+                                //K('#image1 img').append('<img src="' + data.url + '">');
+                                K('#image img').remove();
+                                K('#image').append('<img src="'+url+'">');
+                                editor.hideDialog();
+                                K('#pic').val(url);
+                            }
+                        });
+                    });
+                });
+                  //取消缩略图                         
+                K('#clear').click(function() {
+                    K('#image img').remove();
+                    K('#image').append('<img  src="__PUBLIC__/images/imageList.png">');
+                    K('#pic').val('');
+                });  
+                //
+
+        });
+</script>
+<style>
+#im {
+	z-index: 991;
+	background-color: white;
+	border: #99ccff solid 2px;
+	position: absolute;
+	width:220px;
+	height:195px;
+	left: 460px;
+	text-align: center;
+	top: 160px;
+	padding-top: 2px;
+}
+#image {
+	display: block;
+	height: 150px;
+	line-height: 150px;
+	width: 220px;
+	cursor: pointer;
+	text-align: center;
+        display: table-cell;
+     vertical-align:middle;
+}
+#image img {
+	vertical-align: middle; margin: auto; max-width: 220px; max-height: 150px;
+}
+#clear {
+	background: #51B148;
+	color: #FFF;
+	font: bold 14px arial, sans-serif;
+	padding: 0.15em 1em;
+	text-transform: uppercase;
+	margin: 0 auto;
+	overflow: visible;
+	width: auto;
+	cursor: pointer;
+	padding: 7px 20px;
+	display: block;
+}
+.summary{ width:450px; height:auto; float:left; padding-left:10px}
+</style>
+<title>房间解绑</title>
+</head>
+<body>
+<div id="append_parent"></div>
+<div class="container" id="cpcontainer">
+  <div id="contentHeader">
+    <h3>房间解绑详细</h3>
+  </div>
+
+    <table class="form_table">
+	<volist name="guestlist" id="sl">
+      <tr>
+        <td class="tb_title" >业主姓名：{$sl.ownername}</td>
+      </tr>
+	  <tr>
+        <td class="tb_title" >身份证号：{$sl.papercode}</td>
+      </tr>
+	  <tr>
+        <td class="tb_title" >房间编号：{$sl.housecode}</td>
+      </tr>
+	  <tr>
+        <td class="tb_title" >状态：{$sl.state}</td>
+      </tr>
+	  <tr>
+        <td class="tb_title" >申请时间：{$sl.applytime}</td>
+      </tr>
+	  <tr>
+        <td class="tb_title" >来源：{$sl.source}</td>
+      </tr>
+	  <tr>
+        <td class="tb_title" >审核时间：{$sl.examinetime}</td>
+      </tr>
+	  <tr>
+        <td class="tb_title" >能源合同附件：
+				<if condition="$nyhtfile1 neq ''">
+				<a href="http://www.66885890.com:9898/resources/{$nyhtfile1}" target="view_window" style="text-decoration:none">附件1　</a>
+				</if>
+				<if condition="$nyhtfile2 neq ''">
+				<a href="http://www.66885890.com:9898/resources/{$nyhtfile2}" target="view_window" style="text-decoration:none">附件2　</a>
+				</if>
+		</td>
+		</tr>	 <tr>	
+		<td class="tb_title" >再生水合同附件：
+				<if condition="$zsshtfile1 neq ''">
+				<a href="http://www.66885890.com:9898/resources/{$zsshtfile1}" target="view_window" style="text-decoration:none">附件1　</a>
+				</if>
+				<if condition="$zsshtfile2 neq ''">
+				<a href="http://www.66885890.com:9898/resources/{$zsshtfile2}" target="view_window" style="text-decoration:none">附件2　</a>
+				</if>
+		</td>
+      </tr>
+      </volist>
+    </table>
+</div>
+</body>
+</html>

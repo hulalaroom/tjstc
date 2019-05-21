@@ -1,0 +1,29 @@
+<a href="{:U('Page/map')}" class="map ma_B <eq name='submenu' value='show'> ma_T</eq>" >
+	<img src="__PUBLIC__/images/img_map.gif"/>
+</a> 
+ <neq name="topid" value="20"><a href="{:U('User/addtag')}" class="mes ma_B"> <img src="__PUBLIC__/images/img_message.jpg"/> </a> </neq>
+<a href="{:U('Guestbook/lists','id=11')}" class="sug ma_B"> <img src="__PUBLIC__/images/img_sug.gif"/> </a>
+<a class="tel" href="/index.php?s=/article/view1/id/2.html" title="生态城公用事业服务热线"> <img src="__PUBLIC__/images/img_tel.gif"/> </a>
+ <eq name="topid" value="20">
+	 <div class="ma_T">
+			<div class="bread_nav">
+				<div class="l fl"></div>
+				<div class="m new_m5890 fl">
+					<h1 class="fl">信息订阅</h1><a style="width:55px;" class="more fr" href="{:U('User/addtag')}"></a>
+				</div>
+				<div class="r fl"></div>
+			</div>
+			<div class="l_block list gg_con new_h1 xina">
+				<!--信息订阅-->
+				<ul>
+					{~$ban = get_tag('4|id|DESC');}
+					<empty name="ban"><a href="{:U('Article/cat','id=4')}" class="col_g no_tag"><img src="__PUBLIC__/images/userup_icon.png" width="16" height="16">暂无订阅内容，现在就去添加</a></empty>
+					<volist name="ban" id="t">
+						<li>
+							<a href="{:U('Article/view','id='.$t['id'])}" title="{$t.title}">{$t.title|cutstr_html=###,14}</a>
+						</li>
+					</volist>
+				</ul>
+			</div>
+		</div>
+ </eq>

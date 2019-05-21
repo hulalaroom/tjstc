@@ -1,0 +1,59 @@
+<include file="Public:header" />
+<div class="main_block"> <include file="Public:top" />
+    <div class="content_block">
+        <div class="left_side fl"><include file="Public:left" /></div>
+        <div class="main_con fr">
+            <div class="bread_nav">
+                <div class="l fl"></div>
+
+                <div class="m fl" style="line-height:30px;"> <span class="list_style"></span> <span>您当前的位置:</span><a href="__GROUP__">首页</a><span>&gt;</span></span><a href="{:U('User/index')}">我的5890</a><span>&gt;</span><span style="color: #009f3f;">个人信息</span></div>
+
+                <div class="r fl"></div>
+            </div>
+            <div>
+                <!-- begin -->
+                <div class="tab_mes">
+                    <table width="100%" id="hover_000" class="b_5890" cellpadding="" cellspacing="1" bgcolor="#e5e5e5">
+                        <tr>
+                            <th width="5%">序号</th>
+                            <th width="20%">房间编号</th>
+                            <th>地址</th>
+                            <th width="10%">操作</th>
+                        </tr>
+                        <volist name="houselist" id="hlist" key="k">
+							<if condition="$hlist.upstatus eq 1">
+								<tr onClick="javascript:views(this,'{$hlist.id}')" <eq name="k" value="1"> id="houseCode1" class="hover_000"</eq>>
+							<else />
+								<tr>
+							</if>
+                            <td>{$k}</td>
+                            <td>{$hlist.houseCode}</td>
+                            <td>{$hlist.address}{$hlist.upstatus}</td>
+                            <td><a href="__URL__/uproom/id/{$hlist.houseCode}"><span class="col_o">修改</span></a></td>
+                            </tr>
+                        </volist>
+                    </table>
+                </div>
+                <!-- end -->
+            </div>
+        </div>
+    </div>
+</div>
+<include file="Public:footer" />
+<script>
+function views(id, title) {
+    var view_tip = '查看个人信息';
+    window.art.dialog.open('__GROUP__/view/id/' + id, {
+        title: view_tip,
+        width: 566,
+        /* height:400,*/
+        fixed: true,
+        //		 id:id,
+        padding: '16px',
+        button: [{
+            name: '关闭'
+        }]
+    });
+}
+</script>
+</body></html>

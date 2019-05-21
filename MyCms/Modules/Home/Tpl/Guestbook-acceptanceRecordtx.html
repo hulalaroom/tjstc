@@ -1,0 +1,212 @@
+<!doctype html>
+<html>
+<head>
+<include file="Public:common-head"/>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="__PUBLIC__/css/redefine.css">
+<link rel="stylesheet" type="text/css" href="__PUBLIC__/css/layout.css">
+<link rel="stylesheet" type="text/css" href="__PUBLIC__/last/css/tipso.min.css">
+<link rel="stylesheet" type="text/css" href="__PUBLIC__/css/onlineRepairCss.css">
+<script src="http://libs.baidu.com/jquery/1.7.2/jquery.min.js"></script>
+<script src="https://cdn.staticfile.org/html5shiv/r29/html5.min.js"></script>
+<script src="https://cdn.staticfile.org/respond.js/1.4.2/respond.min.js"></script>
+<script src="js/mycss.js"></script>
+<script src="laydate/laydate.js"></script>
+</head>
+<body style="font-family:'Microsoft YaHei'">
+<include file="Public:common-toppart"/>
+<div class="zxbx_ts_banner"   id="imgDiv">
+		<div class="content" >
+			<p class="jiaofei_banner_01 font_yinying" style="color: #fff" id="pText1">投诉建议</p>
+			<p class="jiaofei_banner_03 "></p>
+			<p class="jiaofei_banner_02 font_yinying" style="color: #fff" id="pText2">解决您的烦心小事</p>
+
+		</div>
+</div>
+
+<div class="content_bg">
+	<div class="content history_content">
+	<p class="dqwz history_dqwz" style="color:#999;font-size: 16px;">当前位置：
+		<a href="__GROUP__" style="color:#999">首页</a> 
+		&nbsp;&nbsp;&gt;&nbsp;&nbsp;业务办理 &nbsp;&nbsp;&gt;&nbsp;&nbsp;
+		<span class="green" id="type">受理记录</span>
+	</p>	
+	<div class="history_billcontent clearfix">
+		<div class="history_billcontentpad">
+		<div class="history_billcontentleft">
+			<ul class="history_tab  luxian_tab">
+				<a href="/index.php?s=/guestbook/index/id/18" style="text-decoration:none;color:#666;outline:none;">
+					<li class=" clearfix ">
+						<span class="img_fl"><img src="__PUBLIC__/img/zxbx_ts_1.png" alt="" style="padding-bottom:30px" /></span>投诉/建议
+					</li>
+				</a>
+				<a href="/index.php?s=/guestbook/acceptanceRecordtx" style="text-decoration:none;color:#666;outline:none;">
+					<li class=" clearfix cur">
+						<span class="img_fl"><img src="__PUBLIC__/img/zxbx_ar.png" alt="" style="padding-bottom:30px" /></span>受理记录
+					</li>
+				</a>
+			</ul>
+        </div>        
+		<div class="history_billcontentright">
+			<div class="publictab history_trqcon" id="bx" style="display: block;">
+				<!--33-->
+				<div class="fuwuzhuanlan">
+					<div class="house_tabcontent">					
+						<table style="width: 100%;" class="history_table">
+							<tbody>
+								<tr class="history_tabletr">
+									<th style="width: 16%; ">申请人</th>
+									<th style="width: 16%;">类别</th>
+									<th style="width: 16%;">申请时间</th>
+									<th style="width: 16%;">状态</th>
+									<th style="width: 20%;">内容</th>
+									<th style="width: 16%; border-radius: 0 5px 0 0;">详情</th>
+								</tr>
+								<volist name="shouli" id="sl">
+									<tr class="history_tabletrone" >
+										<td>{$sl.proposer}</td>
+										<td>{$sl.type}</td>
+										<td>{$sl.operatedate}</td>
+										<td>{$sl.state}</td>
+										<td style="text-align:center;"><span id="tip{$i}" data-tipso="{$sl.Content}" style="position:static;">{$sl.Content|msubstr=0,8,'utf-8',true}</span></td>									
+										<td>
+											<div class="jiebang" style=" float: left;height: 15px; ">
+												<a class="jiebang_btn01" href="/index.php?s=/guestbook/acceptanceRecordtxView/aid/{$sl.id}" style="transform: scale(0.8); margin-top: -50px;"><span >详情</span></a>
+											</div>
+										</td>
+									</tr>
+								</volist>
+							</tbody>
+						</table>
+					</div>
+					<!--33-->					
+				</div>
+			</div>
+		<!--11-->
+		</div>
+
+</div>		
+	</div>	
+	</div> 
+<include file="Public:common-footer"/>
+<include file="Public:common-script" />
+<script type="text/javascript" src="js/jquery.min.js"></script>
+<script type="text/javascript" src="__PUBLIC__/last/js/tipso.min.js"></script>
+<script>
+$(document).ready(function() {
+    $(".house_tab li").click(function() {
+        $(".house_tab li").eq($(this).index()).addClass("luxian_cur").siblings().removeClass('luxian_cur');
+        $(".house_tabcontent .fangjian").hide().eq($(this).index()).show();        
+    });
+});
+</script>
+
+<script type="text/javascript" src="js/jquery.min.js"></script>
+<script type="text/javascript">
+$(function(){
+	/*============================
+	 @author:flc
+	 @time:2014-02-11 18:16:09
+	 @qq:3407725
+	 ============================*/
+	$(".select01").each(function(){
+		var s=$(this);
+		var z=parseInt(s.css("z-index"));
+		var dt=$(this).children("dt");
+		var dd=$(this).children("dd");
+		var _show=function(){dd.slideDown(200);dt.addClass("cur01");s.css("z-index",z+1);};   //展开效果
+		var _hide=function(){dd.slideUp(200);dt.removeClass("cur01");s.css("z-index",z);};    //关闭效果
+		dt.click(function(){dd.is(":hidden")?_show():_hide();});
+		dd.find("a").click(function(){dt.html($(this).html());_hide();});     //选择效果（如需要传值，可自定义参数，在此处返回对应的“value”值 ）
+		$("body").click(function(i){ !$(i.target).parents(".select01").first().is(s) ? _hide():"";});
+	})
+})
+</script>
+
+<script>
+$(function() {
+	$('#tip1').tipso({
+		useTitle: false,
+		background: '#13d463'
+	});
+	$('#tip2').tipso({
+		useTitle: false,
+		background: '#13d463'
+	});
+	$('#tip3').tipso({
+		useTitle: false,
+		background: '#13d463'
+	});
+	$('#tip4').tipso({
+		useTitle: false,
+		background: '#13d463'
+	});
+	$('#tip5').tipso({
+		useTitle: false,
+		background: '#13d463'
+	});
+	$('#tip6').tipso({
+		useTitle: false,
+		background: '#13d463'
+	});
+	$('#tip7').tipso({
+		useTitle: false,
+		background: '#13d463'
+	});
+	$('#tip8').tipso({
+		useTitle: false,
+		background: '#13d463'
+	});
+	$('#tip9').tipso({
+		useTitle: false,
+		background: '#13d463'
+	});
+	$('#tip10').tipso({
+		useTitle: false,
+		background: '#13d463'
+	});
+	$('#tip11').tipso({
+		useTitle: false,
+		background: '#13d463'
+	});
+	$('#tip12').tipso({
+		useTitle: false,
+		background: '#13d463'
+	});
+	$('#tip13').tipso({
+		useTitle: false,
+		background: '#13d463'
+	});
+	$('#tip14').tipso({
+		useTitle: false,
+		background: '#13d463'
+	});
+	$('#tip15').tipso({
+		useTitle: false,
+		background: '#13d463'
+	});
+	$('#tip16').tipso({
+		useTitle: false,
+		background: '#13d463'
+	});
+	$('#tip17').tipso({
+		useTitle: false,
+		background: '#13d463'
+	});
+	$('#tip18').tipso({
+		useTitle: false,
+		background: '#13d463'
+	});
+	$('#tip19').tipso({
+		useTitle: false,
+		background: '#13d463'
+	});
+	$('#tip20').tipso({
+		useTitle: false,
+		background: '#13d463'
+	});
+
+});
+</script>
+</body>
+</html>

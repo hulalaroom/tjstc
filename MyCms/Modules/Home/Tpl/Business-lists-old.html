@@ -1,0 +1,109 @@
+<include file="Public:header" />
+<div class="main_block"> <include file="Public:top" />
+  <div class="content_block">
+    <div class="left_side fl">
+      <div class="l_menu">
+      	<!--上级菜单-->
+			{~$cat=get_info($cate,$id);}
+			 <volist name="cat" id="m" key="l">
+				<a href="javascript:history.go(-1);" title="返回上一页">
+					<div class="bb_l_menu_title">
+						{$m.title} 
+					</div>
+				</a>
+			</volist>
+			<div class="left_other_menu">	
+			 {~$cat=get_child($cate,$id);}
+			  <volist name="cat" id="c" key="k">
+			  <dl>
+				<dt><a href="<notempty name='c.url'>{$c.url}<else/>
+					  <empty name="c['tpl']">{:U($c['Model']['name'].'/index','id='.$c['id'])}<else/>{:U($c['Model']['name'].'/'.$c['tpl'],'id='.$c['id'])}</empty>
+					  
+					  </notempty>"><img src="{$c.pic}"/></a>
+				  <!--<img src="{$c.cat_pic}"/>-->
+				</dt>
+			  <dd> <a href="<notempty name='c.url'>{$c.url}<else/>
+					  <empty name="c['tpl']">{:U($c['Model']['name'].'/index','id='.$c['id'])}<else/>{:U($c['Model']['name'].'/'.$c['tpl'],'id='.$c['id'])}</empty>
+					  
+					  </notempty>">{$c.title}</a> <span>{$c.summary}</span> </dd>
+			</dl>
+			  </volist></div>
+      </div>
+      <include file="Public:left" /></div>
+        <div class="main_con fr">
+      <div class="bread_nav">
+        <div class="l fl"></div>
+        <div class="m fl" style="line-height:30px;"> <span class="list_style"></span> <span>您当前的位置:</span> {$nav} </div>
+        <div class="r fl"></div>
+      </div>
+      <div class="artical">
+        <!-- begin -->
+        <div class="bus_title fl">
+          <h2>业务办理记录</h2>
+        </div>
+        <div class="bus_table fl">
+          <div class="bus_tablet tc">
+            <ul>
+              <li class="w1 fl"> <span>序号</span> </li>
+              <li class="w4 fl"> <span>类别</span> </li>
+			  <li class="w5 fl"> <span>内容</span> </li>
+              <li class="w3 fl"> <span>时间</span> </li>
+              <li class="w4 fl"> <span>状态</span> </li>
+            </ul>
+          </div>
+          <div class="bus_tableb tc">
+            <ul>
+			<empty name="businessList"><p class="nodata">暂无信息</p></empty>
+            <volist name="businessList" id="vo" key="k">
+              <li  class="ff_hover cur_po" onclick="views('{$vo.id}','{$vo.title}',{$vo.status});">
+                <ul>
+                  <li class="w1 fl">
+                    <p>{$k}</p>
+                  </li>
+				  <li class="w4 fl">
+                    <eq name="vo.cat_id" value="15"><span class="col_o">开通预约</span></eq>
+					<eq name="vo.cat_id" value="16"><span class="col_b">停供预约</span></eq>
+					<eq name="vo.cat_id" value="17"><span class="col_b">维修预约</span></eq>
+					<eq name="vo.cat_id" value="18"><span class="col_g">投诉</span></eq>
+					<eq name="vo.cat_id" value="19"><span class="col_o">建议</span></eq>
+                  </li>
+                  <li class="w5 fl"> <span>{$vo.summary|cutstr_html=###,20}</span> </li>
+                  <li class="w3 fl"> <span>{$vo.create_time|date="Y-m-d H:i:s",###}</span> </li>
+                  <li class="w4 fl">
+						<eq name="vo.status" value="0"><span class="col_o">未受理</span></eq>
+						<eq name="vo.status" value="1"><span class="col_b">受理中</span></eq>
+						<eq name="vo.status" value="2"><span class="col_g">已受理</span></eq>
+						<eq name="vo.status" value="3"><span class="col_o">已办结</span></eq>
+						<eq name="vo.status" value="4"><span >驳回</span></eq>
+				  </li>
+                </ul>
+              </li>
+              </volist>
+             <!-- <div class="page">{$page}</div>-->
+            </ul>
+          </div>
+        </div>
+		<div class="list_page">{$page}</div>
+        <!-- end -->
+      </div>
+    </div>
+  </div>
+</div>
+  <include file="Public:footer" />
+  
+    <script>
+      function views(id,title,status){
+	    var view_tip ='查看:'+title;
+		window.art.dialog.open('__URL__/view/id/'+id,{
+			 title:view_tip,
+			 width:566,			 
+			 fixed:true,
+			 padding:'16px',
+			 button:[{
+					name:'关闭'
+			 }]					   
+		});
+	  }
+  </script>
+</body>
+</html>

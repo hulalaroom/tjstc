@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<head>
+<meta charset="utf-8">
+<title>管理登录</title>
+<link rel="stylesheet" type="text/css" href="__PUBLIC__/css/login-style.css" />
+<script type="text/javascript" src="__PUBLIC__/js/jquery-1.7.1.min.js"></script>
+<script type="text/javascript">
+var freshimg = function(){
+
+ document.getElementById('yw0').src='__URL__/verify/'+Math.random();
+
+}
+</script>
+</head>
+<body>
+<div id="login">
+  <div class="wrapper">
+    <div class="alert error" >&nbsp;</div>
+    <div class="logo">后台管理</div>
+    <div class="form">
+      <form id="login-wrap" action="__URL__/checkLogin" method="post">      <dl>
+        <dt>用户名</dt>
+        <dd> <input class="input-password" name="adminname" id="Admin_adminname" type="text" maxlength="50" /></dd>
+        <dt>密&nbsp;&nbsp;&nbsp;&nbsp;码</dt>
+        <dd> <input class="input-password" name="password" id="Admin_password" type="password" maxlength="32" /></dd>
+        <dt>验证码</dt>
+        <dd>
+            <input class="input-password verify-code" name="verify" id="Admin_captcha" type="text" style="vertical-align: middle;" />
+            <img alt="点击换图" align="middle" id="yw0" src="{:U('Public/verify')}" onclick="freshimg()" style="margin-left:2px;vertical-align: middle;"/>
+	        <span style="vertical-align: middle;"><font style="font-size: 12px;">&nbsp;点击图片更换</font></span>
+        </dd>
+        <dd>
+          <input type="submit" name="login" class="input-login" value=""/>
+          <input type="reset" name="login" class="input-reset" value=""/>
+        </dd>
+      </dl>
+      </form>    </div>
+    <br class="clear-fix"/>
+    <div class="copyright">Copyright&copy; <a title="" target="_blank" href=""></a>. All Thrusts Reserved.</div>
+  </div>
+</div>
+</body>
+</html>

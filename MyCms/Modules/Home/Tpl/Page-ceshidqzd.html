@@ -1,0 +1,714 @@
+<!doctype html>
+<html>
+<head>
+    <include file="Public:common-head"/>
+    <link rel="stylesheet" type="text/css" href="__PUBLIC__/last/css/selectFilter.css">
+</head>
+<body>
+<include file="Public:common-toppart"/>
+<div class="lishizhangdan_banner">
+	<div class="content">
+		<p class="jiaofei_banner_01 font_yinying">当期账单</p>
+        <p class="jiaofei_banner_03 "></p>
+        <p class="jiaofei_banner_02 font_yinying">用量明细，实时掌握</p>
+	</div>
+</div>
+
+<div class="content_bg">
+	<div class="content history_content">
+	    <p class="dqwz history_dqwz">
+			当前位置：<a href="http://www.66885890.com">首页</a> &nbsp;&nbsp;&gt;&nbsp;&nbsp;
+			<a href="{:U('User/index',array('id'=>20))}">我的5890</a>&nbsp;&nbsp;&gt;&nbsp;&nbsp;
+			<span class="green">查询业务</span>
+		</p>
+	    <div class="history_bill">
+            <div class="history_inputbox clearfix">
+                <form name="form2" id="form2" action="{:U('Page/ceshidqzd','id=13')}" method="post">
+                    <div class="history_inputboxone"><span>房间编号：</span>
+                		<div class="item_one">	<!-- 这里开始 -->
+                			<div class="filter-box" id="aaa">
+                				<div class="filter-text">
+                					<input class="filter-title" type="text" readonly placeholder="请选择" />
+                					<i class="icon icon-filter-arrow"></i>
+                				</div>
+                				<select name="houseCode" id="houseCode"  onclick="alert(333);">
+                					<volist name="houselist" id="hc">
+                					   <option value="{$hc.houseCode}" <if condition="$hc.houseCode eq $code">"selected"</if>>{$hc.address}</option>
+                					 </volist>
+                				</select>
+                			</div>
+                		</div>
+                       <!--  <button><span>查询</span></button> -->
+                    </div>
+                </form>
+            <!--   <a class="cklszd_btn" href="{:U('Page/lszd','id=200')}"><span>查看历史账单</span></a>-->
+			   <a  class="cklszd_btn" type="button" id="btn"><span>查看历史账单</span></a>
+		  </div>
+	   </div>
+
+
+<div class="zaixianjiaofei_table">
+	<table style="width: 100%;" class="history_table">
+        <tbody id="jisuandingbu">
+            <tr class="zaixianjiaofei_tabletr">
+            	<th style="width: 17%; border-radius: 5px 0 0 0;">收费项目</th>
+            	<th style="width: 17%;">收费期</th>
+            	<th style="width: 17%;">当期用量</th>
+            	<th style="width: 17%;">当期费用(人民币/￥)</th>
+            	<th style="width: 16%;">费用状态</th>
+            	<th style="width: 16%; border-radius: 0 5px 0 0;">缴费</th>
+            </tr>
+            <volist name="nowlist" id="nl">
+            	<tr class='zaixianjiaofei_tabletrone dangqizhangdan_trhover'>
+            		<td><span><img <if condition="$nl.ITEMNAME eq '自来水'">src="__PUBLIC__/style/img/water.png" <elseif condition="$nl.ITEMNAME eq '天然气'"/>src="__PUBLIC__/style/img/tianranqi.png"    <elseif condition="$nl.ITEMNAME eq '阶梯水价二'"/>src="__PUBLIC__/style/img/water.png"
+					 <elseif condition="$nl.ITEMNAME eq '阶梯水价三'"/>src="__PUBLIC__/style/img/water.png"
+					  <elseif condition="$nl.ITEMNAME eq '阶梯天然气价二'"/>src="__PUBLIC__/style/img/tianranqi.png" 
+					   <elseif condition="$nl.ITEMNAME eq '阶梯天然气价三'"/>src="__PUBLIC__/style/img/tianranqi.png" 
+					<elseif condition="$nl.ITEMNAME eq '供热'"/>src="__PUBLIC__/style/img/gongnuan.png" <elseif condition="$nl.ITEMNAME eq '再生水'"/>src="__PUBLIC__/style/img/water_01.png"</if>></span>{$nl.ITEMNAME}</td>
+            		<td>{$nl.CHARGEMONTH}</td>
+            		<td>{$nl.POINTNUMBER}<if condition="$nl.ITEMNAME eq '自来水'">m³ <elseif condition="$nl.ITEMNAME eq '天然气'"/>Nm³ <elseif condition="$nl.ITEMNAME eq '供热'"/>m² <elseif condition="$nl.ITEMNAME eq '再生水'"/>m³</if></td>
+            		<td>{$nl.DQFY}</td>
+            		<td class="orange" >{$nl.QFZT}</td>
+            		<td>
+						<if condition="$nl.QFZT eq '未缴' && $nl.ITEMNAME neq '再生水'">
+							<if condition="$nl.STATUS eq 0">
+								<if condition="$nl.payOn eq on">
+									<if condition="$nl.hh24h eq on">
+										<button class="btn03" onclick="payInfo('{$nl.HOUSECODE}','{$nl.ITEMCODE}','{$nl.DQFY}','{$nl.CHARGEMONTH}','{$nl.CLOCKNUMBER}')"><span>缴费</span></button>
+									<else/>
+										<button class="btn03" onclick="javascript:alert('温馨提示：线上交费受理时间为10:00-16:00');return false;">缴费</button>
+									</if>
+								<else/>
+									<button class="btn03" onclick="javascript:alert('请将前面的欠费交清才可以交本次费用');return false;">缴费</button>
+								</if>
+							<else/>
+								<button class="btn03" onclick="javascript:alert('此次交易已被锁定，无法交费');return false;">缴费</button>
+							</if>
+						<else/>
+							<button class="btn03 dqzd_btn"><span>缴费</span></button>
+						</if>
+					</td>
+            	</tr>
+             </volist>
+
+			 <volist name="grlist" id="nl">
+            	<tr class='zaixianjiaofei_tabletrone dangqizhangdan_trhover tanchu'>
+            		<td><span><img src="__PUBLIC__/style/img/gongnuan.png"></span>{$nl.ITEMNAME}</td>
+            		<td>{$nl.CHARGEMONTH}</td>
+            		<td>{$nl.POINTNUMBER}m² </td>
+            		<td>{$nl.DQFY}</td>
+            		<td class="orange" >未缴</td>
+            		<td>
+						<if condition="$nl.STATUS eq 0">
+							<if condition="$nl.payOn eq on">
+								<if condition="$nl.hh24h eq on">
+									<button class="btn03" onclick="payInfo('{$nl.HOUSECODE}','{$nl.ITEMCODE}','{$nl.DQFY}','{$nl.CHARGEMONTH}','{$nl.CLOCKNUMBER}')"><span>缴费</span></button>
+								<else/>
+									<button class="btn03" onclick="javascript:alert('温馨提示：线上交费受理时间为10:00-16:00');return false;">缴费</button>
+								</if>
+							<else/>
+								<button class="btn03" onclick="javascript:alert('请将前面的欠费交清才可以交本次费用');return false;">缴费</button>
+							</if>
+						<else/>
+							<button class="btn03" onclick="javascript:alert('此次交易已被锁定，无法交费');return false;">缴费</button>
+						</if>
+					</td>
+            	</tr>
+             </volist>
+
+			 <if condition="$nowlist[0]['POINTNUMBER'] eq '' && $grlist[0]['POINTNUMBER'] eq ''">
+				<tr class='zaixianjiaofei_tabletrone dangqizhangdan_trhover'>
+            		<td>暂无数据</td>
+            	</tr>
+			 </if>
+        </tbody>
+    </table>
+	<volist name="grlist" id="nl">
+    <div class="tanceng tanchuceng{$i} clearfix" style="display:none">
+        <div class="tanceng_content">
+        	<div class="tanceng_border">
+        	   <p class="clearfix"><span class="tancengleft">采暖面积</span><span class="tancengright">{$nl.POINTNUMBER}</span></p>
+        	   <p class="clearfix"><span class="tancengleft">面积单价</span><span class="tancengcenter">*</span><span class="tancengright">{$nl.PRICE}</span></p>
+			   <if condition="$nl.STOP eq 1">
+        	   <p class="clearfix"><span class="tancengleft">停供系数</span><span class="tancengcenter">*</span><span class="tancengright">0.2</span></p>
+			   </if>
+        	</div>
+		
+
+        	<div class="tanceng_border">
+            	<p class="clearfix"><span class="tancengleft">面积热费</span><span class="tancengcenter">=</span><span class="tancengright">{$nl.PLS}</span></p>
+            	<p class="clearfix"><span class="tancengleft">优惠金额</span><span class="tancengcenter">-</span><span class="tancengright">{$nl.YHJM}</span></p>
+        	</div>
+            <div class="tanceng_border">
+            	<p class="clearfix"><span class="tancengleft">费用小计</span><span class="tancengcenter">=</span><span class="tancengright">{$nl.XJ1}</span></p>
+            	<p class="clearfix"><span class="tancengleft">减免费用</span><span class="tancengcenter">-</span><span class="tancengright">{$nl.MINUSMONEY}</span></p>
+            </div>
+
+            <div class="tanceng_border">
+            	<p class="clearfix"><span class="tancengleft">费用小计</span><span class="tancengcenter">=</span><span class="tancengright">{$nl.XJ2}</span></p>
+              	<p class="clearfix"><span class="tancengleft">上年节余</span><span class="tancengcenter">-</span><span class="tancengright">{$nl.IMP}</span></p>
+				
+            </div>
+
+        	<p class="clearfix"><span class="tancengleft">合计</span><span class="tancengcenter">=</span><span class="tancengright">{$nl.HJ}</span></p>
+        </div>
+         <!--div class="tanceng tanceng01 clearfix">
+            <div class="tanceng_content">
+                <div class="tanceng_border">
+                    <p class="clearfix"><span class="tancengleft">采暖面积</span><span class="tancengright">78.34</span></p>
+                    <p class="clearfix"><span class="tancengleft">面积单价</span><span class="tancengcenter">*</span><span class="tancengright">25.00</span></p>
+                </div>
+                <div class="tanceng_border">
+                    <p class="clearfix"><span class="tancengleft">面积热费</span><span class="tancengcenter">=</span><span class="tancengright">1958.50</span></p>
+                    <p class="clearfix"><span class="tancengleft">停费系数</span><span class="tancengcenter">*</span><span class="tancengright">0.20</span></p>
+                </div>
+                <p class="clearfix"><span class="tancengleft">合计</span><span class="tancengcenter">=</span><span class="tancengright">1400.00</span></p>
+            </div>
+        </div-->
+    </div>
+	</volist>
+
+<div class="dangqizhangdan_chart clearfix">
+
+  <div class="water_chart">
+   <div class="water_dial2" id="zls"></div>
+
+  <div class="yijie">
+  	<span>一阶</span>
+  	<span>{$pricelist.ZLSYJ}￥/m³</span>
+  </div>
+  <div class="erjie">
+  	<span>二阶</span>
+  	<span>{$pricelist.ZLSEJ}￥/m³</span>
+  </div>
+    <div class="sanjie">
+  	<span>三阶</span>
+  	<span>{$pricelist.ZLSSJ}￥/m³</span>
+  </div>
+  <div class="kedu01" >180m³</div>
+  <div class="kedu02" >240m³</div>
+  <div class="water_dial"></div>
+   <div class="dqyl" style="left:97px;display: flex;color:#000;font-size: 18px;">
+        <span style="padding-top: 1px;">当前用量</span><span class="point_b" style="color:#00a0e9;vertical-align: middle;">{$pricelist.POINTNUMBER_B}</span><span style="padding-top: 1px;">m³</span>
+    </div>
+   <input type="hidden" id="point_b" value="{$pricelist.POINTNUMBER_B}">
+ 
+  <div class="zlsdbs" >
+	<volist name="numlist" id="nl">
+		<if condition="$nl.ITEMCODE eq 'B'">
+			<p style="margin-left:-28px;display: flex;font-size: 16px;">2018年自来水表初始读数<span class="chushi_b" style="color:#00a0e9;">{$nl.NOWPOINTNUMBER}</span><span style="padding-top: 1px;">m³</span><p/>
+		</if>
+	</volist>
+  </div>
+
+  </div>
+
+
+
+
+
+  <div class="gas_chart">
+  	   <div class="water_dial2" id="trq"></div>
+
+  <div class="yijie">
+  	<span>一阶</span>
+  	<span>{$pricelist.TRQYJ}￥/Nm³</span>
+  </div>
+  <div class="erjie">
+  	<span>二阶</span>
+  	<span>{$pricelist.TRQEJ}￥/Nm³</span>
+  </div>
+    <div class="sanjie">
+    	<span>三阶</span>
+    	<span>{$pricelist.TRQSJ}￥/Nm³</span>
+    </div>
+    <div class="kedu01" >300Nm³</div>
+    <div class="kedu02" >600Nm³</div>
+    <div class="water_dial"></div>
+    <div class="dqyl" style="left:115px;display: flex;color:#000;font-size: 18px;"><span style="padding-top: 1px;">当前用量</span><span class="point_d" style="color:#fdc12c;">{$pricelist.POINTNUMBER_D}</span><span style="padding-top: 2px;">Nm³</span></div>
+    <input type="hidden" id="point_d" value="{$pricelist.POINTNUMBER_D}">
+    <div class="zlsdbs" >
+        <volist name="numlist" id="nl">
+    		<if condition="$nl.ITEMCODE eq 'D'">
+    			<p style="margin-left:-20px;display: flex;font-size: 16px;">2018年天然气表初始读数<span class="chushi_d" style="color:#fdc12c;">{$nl.NOWPOINTNUMBER}</span><span style="padding-top: 1px;">Nm³</span><p/>
+    		</if>
+    	</volist>
+    </div>
+
+  </div>
+
+    <div class="heating_chart">
+        <div class="water_dial2" id="gongre"></div>
+        <!--div class="pointer"></div>-->
+        <div class="erjie" style="left:100px;top:100px;">
+           <!--  <span>收费面积</span>
+            <span>用热量</span> -->
+            <span>当年累计用热量</span>
+			<span>{$meteraccount}kWh</span>
+        </div>
+		<input type="hidden" id="bfb" value="{$bfb}">
+      <div class="kedu01" ><!--供热面积收费占比--></div>
+      <div class="kedu02" style="top:0px;">{$percent}%</div>
+	  <div class="water_dial"></div>
+
+	  <div style="padding-top:195px;padding-left:90px">
+	   <volist name="grData" id="dd" >
+		<if condition="$dd.cssyear neq ''"> 
+
+			<br>
+					
+					<div class="" style="color:#000;display: flex;font-size: 18px;">当月热表读数
+						<span class="point_r" style="color:#e7473e;font-weight: 800;">{$dd.nownum}</span>kWh
+					</div>
+					
+					<div class="" style="paddtig-bottom:50px">
+						<p style="margin-left:-14px;display: flex;font-size: 16px;">{$dd.cssyear}年热表初始读数<span style="color:#e7473e;font-weight: 800;">{$dd.startnum}</span>kWh</p>
+					</div>
+			</if>
+		</volist>
+	  </div>
+    </div>
+
+</div>
+
+    <div class="dianzifapiao_warm">
+        <p class="warm">温馨提示：<br>
+            <span>供热计量收费公式：采暖费=基本热费+计量热费=采暖面积*面积单价*0.3+(热表终止数-热表初始数)*0.13</span><br />
+            <span>能源公司提醒您：</span>请您按规定于每月15日前交清上月水、气费用，逾期未缴费的自16日起按日加收违约金；每年12月31日前缴纳采暖费，逾期未交费的自次年1月1日起按日加收违约金。<br />
+            <span>水务公司提醒您：</span>请您按规定于每月12日前交清上月再生水费用，逾期未缴费的按日加收违约金。持能源服务卡用户，指定银行在结算日自动完成应收费用的扣缴。<br />
+            <span>本查询结果仅供参考，如有疑问请致电022-66885890。</span>
+        </p>
+    </div>
+
+</div>
+</div>
+<style type="text/css">
+ #loading  
+{  
+    position:fixed;  
+    top:40%;  
+    left:45%;  
+    z-index:999;  
+} 
+</style>
+
+
+   <div id="loading"  >  
+      <img src="./Public/img/loading.gif" class="img-responsive">  
+    </div><pre name="code" class="css">  
+
+
+ 
+
+<form id="payToPage" action="./index.php?s=/page/jjPage1/id/210.html" method="post">
+      <input type="hidden" id="housecode" name="housecode">
+      <input type="hidden" id="type" name="type">
+      <input type="hidden" id="qian" name="qian">
+      <input type="hidden" id="chargemonth" name="chargemonth">
+      <input type="hidden" id="clocknumber" name="clocknumber">
+</form>
+
+<include file="Public:common-footer"/>
+<include file="Public:common-script"/>
+
+<script type="text/javascript" src="__PUBLIC__/last/js/selectFilter.js"></script>
+<script type="text/javascript" src="__PUBLIC__/last/js/echarts.js"></script>
+<script type="text/javascript">
+ $(window).load(function(){  
+    //适当延迟隐藏，提高loading效果  
+   // $('#loading').delay(1000).hide(0);  
+    $('#loading').hide(0);  
+});     
+  function payInfo(housecode,type,qian,chargemonth,clocknumber){
+    $("#housecode").val(housecode);
+    $("#type").val(type);
+    $("#qian").val(qian);
+    $("#chargemonth").val(chargemonth);
+	$("#clocknumber").val(clocknumber);
+    if(confirm("请确认本次缴费？"))
+    {
+      $("#payToPage").submit();
+    }
+  }
+</script>                                                
+<script type="text/javascript">
+
+ 
+ $("#btn").click(function(){
+           
+
+           location.href="/index.php?s=/Page/ceshilszd/id/200/hcode/"+$("#houseCode").val()+".html";//发送txt里面的内容
+        })
+
+                                       
+	//本小插件支持移动端哦
+
+	//这里是初始化
+	$('#aaa').selectFilter({
+		callBack : function (val){
+			//返回选择的值
+			console.log(val+'-是返回的值');
+            $('#form2').submit();
+		}
+	});
+
+</script>
+<script>
+    showNum_b($('.point_b').text(),1,0);
+    var shui_b = $('.chushi_b').length;
+    if(shui_b == 2){
+        var shuiOne = $('.chushi_b').eq(0).html();
+        var shuiTwo = $('.chushi_b').eq(1).html();
+        showNum_b(shuiOne,2,0);
+        showNum_b(shuiTwo,2,1);
+    }else{
+        showNum_b($('.chushi_b').text(),2,0);
+    }
+    showNum_d($('.point_d').text(),1);
+    showNum_d($('.chushi_d').text(),2);
+
+    function showNum_b(num,type,rank){
+        var chushi = num;
+        var n = String(chushi).split('');
+        var html = '';
+        for (var i = 0; i < n.length; i++) {
+            switch(n[i])
+            {
+                case '1':
+                  html += '<span style="display: inline-block;"><img src="__PUBLIC__/last/img/sz/b/1.png" width="10px"></span>';
+                  break;
+                case '2':
+                  html += '<span style="display: inline-block;"><img src="__PUBLIC__/last/img/sz/b/2.png" width="10px"></span>';
+                  break;
+                case '3':
+                  html += '<span style="display: inline-block;"><img src="__PUBLIC__/last/img/sz/b/3.png" width="10px" style="margin-left:1px;margin-right:1px;"></span>';
+                  break;
+                case '4':
+                  html += '<span style="display: inline-block;"><img src="__PUBLIC__/last/img/sz/b/4.png" width="10px" style="margin-left:1px;margin-right:1px;"></span>';
+                  break;
+                case '5':
+                  html += '<span style="display: inline-block;"><img src="__PUBLIC__/last/img/sz/b/5.png" width="10px" style="margin-left:1px;margin-right:1px;"></span>';
+                  break;
+                case '6':
+                  html += '<span style="display: inline-block;"><img src="__PUBLIC__/last/img/sz/b/6.png" width="10px" style="margin-left:1px;margin-right:1px;"></span>';
+                  break;
+                case '7':
+                  html += '<span style="display: inline-block;"><img src="__PUBLIC__/last/img/sz/b/7.png" width="10px" style="margin-left:1px;margin-right:1px;"></span>';
+                  break;
+                case '8':
+                  html += '<span style="display: inline-block;"><img src="__PUBLIC__/last/img/sz/b/8.png" width="10px" style="margin-left:1px;margin-right:1px;"></span>';
+                  break;
+                case '9':
+                  html += '<span style="display: inline-block;"><img src="__PUBLIC__/last/img/sz/b/9.png" width="10px" style="margin-left:1px;margin-right:1px;"></span>';
+                  break;
+                case '0':
+                  html += '<span style="display: inline-block;"><img src="__PUBLIC__/last/img/sz/b/0.png" width="10px" style="margin-left:1px;margin-right:1px;"></span>';
+                  break;
+                default:
+                  html += '<span style="display: inline-block;"><img src="__PUBLIC__/last/img/sz/b/dian.png" width="3px"></span>';
+            }
+        }
+        switch(type)
+        {
+            case 1:
+                $(".point_b").html(html);
+                break;
+            case 2:
+                $(".chushi_b").eq(rank).html(html);
+                break;
+        }
+    }
+
+    function showNum_d(num,type){
+        var chushi = num;
+        var n = String(chushi).split('');
+        var html = '';
+        for (var i = 0; i < n.length; i++) {
+            switch(n[i])
+            {
+                case '1':
+                  html += '<span style="display: inline-block;"><img src="__PUBLIC__/last/img/sz/y/1.png" width="10px" style="margin-left:1px;margin-right:1px;"></span>';
+                  break;
+                case '2':
+                  html += '<span style="display: inline-block;"><img src="__PUBLIC__/last/img/sz/y/2.png" width="10px" style="margin-left:1px;margin-right:1px;"></span>';
+                  break;
+                case '3':
+                  html += '<span style="display: inline-block;"><img src="__PUBLIC__/last/img/sz/y/3.png" width="10px" style="margin-left:1px;margin-right:1px;"></span>';
+                  break;
+                case '4':
+                  html += '<span style="display: inline-block;"><img src="__PUBLIC__/last/img/sz/y/4.png" width="10px" style="margin-left:1px;margin-right:1px;"></span>';
+                  break;
+                case '5':
+                  html += '<span style="display: inline-block;"><img src="__PUBLIC__/last/img/sz/y/5.png" width="10px" style="margin-left:1px;margin-right:1px;"></span>';
+                  break;
+                case '6':
+                  html += '<span style="display: inline-block;"><img src="__PUBLIC__/last/img/sz/y/6.png" width="10px" style="margin-left:1px;margin-right:1px;"></span>';
+                  break;
+                case '7':
+                  html += '<span style="display: inline-block;"><img src="__PUBLIC__/last/img/sz/y/7.png" width="10px" style="margin-left:1px;margin-right:1px;"></span>';
+                  break;
+                case '8':
+                  html += '<span style="display: inline-block;"><img src="__PUBLIC__/last/img/sz/y/8.png" width="10px" style="margin-left:1px;margin-right:1px;"></span>';
+                  break;
+                case '9':
+                  html += '<span style="display: inline-block;"><img src="__PUBLIC__/last/img/sz/y/9.png" width="10px" style="margin-left:1px;margin-right:1px;"></span>';
+                  break;
+                case '0':
+                  html += '<span style="display: inline-block;"><img src="__PUBLIC__/last/img/sz/y/0.png" width="10px" style="margin-left:1px;margin-right:1px;"></span>';
+                  break;
+                default:
+                  html += '<span style="display: inline-block;"><img src="__PUBLIC__/last/img/sz/y/dian.png" width="3px" style="margin-left:1px;margin-right:1px;"></span>';
+            }
+        }
+        switch(type)
+        {
+            case 1:
+                $(".point_d").html(html);
+                break;
+            case 2:
+                $(".chushi_d").html(html);
+                break;
+        }
+    }
+
+	$(function(){
+
+
+
+	//$(".tanceng").toggle();
+		$(".tanchu").mouseover(function(e){
+			var jg = $(".tanchu").index(this) + 1;
+			var tip = $(".tanchuceng"+jg);
+			var tipTop = $('#jisuandingbu').offset().top-$(window).scrollTop();
+			//alert(e.clientX);
+			//tip.css("left",e.clientX-50+"px").css("top",e.clientY-tipTop+"px");
+			tip.css("left",e.clientX-100+"px").css("top",e.clientY-tipTop+"px");
+			tip.css("display","block");
+		})
+		$(".tanchu").mouseout(function(){
+			var jg = $(".tanchu").index(this) + 1;
+			var tip = $(".tanchuceng"+jg);
+			tip.css("display","none");
+		});
+	});
+	var sj = $("#year").val();
+	var fjbh = $("#houseCode").val();
+
+	var data = new Array();
+	var url = '{:U("Page/ajax_getHistoryData","",false)}';
+
+	var redata =  new Array(parseInt(sj)-1+".09",parseInt(sj)-1+".10",parseInt(sj)-1+".11",parseInt(sj)-1+".12",sj+".01",sj+".02",sj+".03",sj+".04",sj+".05",sj+".06",sj+".07",sj+".08");
+
+
+function setData(){
+	var myChart = echarts.init(document.getElementById("zls"));
+	var myChart1 = echarts.init(document.getElementById("trq"));
+	var myChart2 = echarts.init(document.getElementById("gongre"));
+	option = {
+		//下面属性才是仪表盘的核心！！
+		series: [{
+			//类型
+			type: 'gauge',
+			max:495,
+			//半径
+			radius: 175,
+			//起始角度。圆心 正右手侧为0度，正上方为90度，正左手侧为180度。
+			startAngle: 180,
+			//结束角度。
+			endAngle: 0,
+			center: ['48%', '75%'],
+			//仪表盘轴线相关配置。
+			axisLine: {
+				show:true,
+				// 属性lineStyle控制线条样式
+				lineStyle: {
+					width: 0,
+					color:[[0.33,'#4DB849'],[0.66,'#FCD209'],[1, '#E7473E']]
+				}
+			},
+			//分隔线样式。
+			splitLine: {
+				show: true,
+				length : 35,
+
+			},
+			//刻度样式。
+			axisTick: {
+				show: false,
+			},
+			//刻度标签。
+			axisLabel: {
+				show:true,
+			},
+			//仪表盘指针。
+			pointer: {
+				show: true,
+				//指针长度
+				length:'65%',
+				width:5,
+			},
+			itemStyle:{
+				normal:{
+					color:'#c3141b',
+					borderWidth:0
+				}
+			},
+			//仪表盘标题。
+			title: {
+				show: true,
+				offsetCenter: [0, '-40%'], // x, y，单位px
+				textStyle: {
+					color: '#hhh',
+					fontSize: 30
+				}
+			},
+
+			data: [{
+				value: $("#point_b").val()
+			}]
+		}]
+	};
+
+	option1 = {
+		//下面属性才是仪表盘的核心！！
+		series: [{
+			//类型
+			type: 'gauge',
+			max:900,
+			//半径
+			radius: 175,
+			//起始角度。圆心 正右手侧为0度，正上方为90度，正左手侧为180度。
+			startAngle: 180,
+			//结束角度。
+			endAngle: 0,
+			center: ['48%', '75%'],
+			//仪表盘轴线相关配置。
+			axisLine: {
+				show:true,
+				// 属性lineStyle控制线条样式
+				lineStyle: {
+					width:0,
+					color:[[0.33,'#4DB849'],[0.66,'#FCD209'],[1, '#E7473E']]
+				}
+			},
+			//分隔线样式。
+			splitLine: {
+				show: true,
+				length : 35,
+
+			},
+			//刻度样式。
+			axisTick: {
+				show: false,
+			},
+			//刻度标签。
+			axisLabel: {
+				show:false,
+			},
+			//仪表盘指针。
+			pointer: {
+				show: true,
+				//指针长度
+				length:'65%',
+				width: 5,
+			},
+			itemStyle:{
+				normal:{
+					color:'#c3141b',
+					borderWidth:0
+				}
+			},
+			//仪表盘标题。
+			title: {
+				show: true,
+				offsetCenter: [0, '-40%'], // x, y，单位px
+				textStyle: {
+					color: '#hhh',
+					fontSize: 30
+				}
+			},
+
+			data: [{
+				value: $("#point_d").val()
+			}]
+		}]
+	};
+
+	option2 = {
+		//下面属性才是仪表盘的核心！！
+		series: [{
+			//类型
+			type: 'gauge',
+			max:150,
+			//半径
+			radius: 175,
+			//起始角度。圆心 正右手侧为0度，正上方为90度，正左手侧为180度。
+			startAngle: 180,
+			//结束角度。
+			endAngle: 0,
+			center: ['48%', '75%'],
+			//仪表盘轴线相关配置。
+			axisLine: {
+				show:true,
+				// 属性lineStyle控制线条样式
+				lineStyle: {
+					width: 0,
+					color:[[0.33,'#4DB849'],[0.66,'#4DB849'],[1, '#E7473E']]
+				}
+			},
+			//分隔线样式。
+			splitLine: {
+				show: true,
+				length : 35,
+
+			},
+			//刻度样式。
+			axisTick: {
+				show: false,
+			},
+			//刻度标签。
+			axisLabel: {
+				show:false,
+			},
+			//仪表盘指针。
+			pointer: {
+				show: true,
+				//指针长度
+				length:'65%',
+				width: 5,
+			},
+			itemStyle:{
+				normal:{
+					color:'#c3141b',
+					borderWidth:0
+				}
+			},
+			//仪表盘标题。
+			title: {
+				show: true,
+				offsetCenter: [0, '-40%'], // x, y，单位px
+				textStyle: {
+					color: '#hhh',
+					fontSize: 30
+				}
+			},
+
+			data: [{
+				value: 1//$("#bfb").val()
+			}]
+		}]
+	};
+	myChart.setOption(option);
+	myChart1.setOption(option1);
+	myChart2.setOption(option2);
+
+}
+</script>
+<script>
+$(function() {
+    setData(); //载入默认仪表盘
+});
+</script>
+
+</body>
+</html>

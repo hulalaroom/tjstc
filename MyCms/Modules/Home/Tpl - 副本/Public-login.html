@@ -1,0 +1,321 @@
+<!doctype html>
+<html>
+<head>
+    <include file="Public:common-head" />
+</head>
+<body>
+    <include file="Public:common-toppart-login" />
+
+<div class="login_contend">
+    <p class="zhuce_img"></p>
+    <p class="zhuce_font"></p>
+    <div class="login_input ">
+        <div class="login_tab clearfix">
+            <div class="login_tabone login_taboneborder" onclick="getWay(1)">登录</div>
+            <div class="login_tabtwo" onclick="getWay(2)">快捷登录</div>
+        </div>
+	<form action="__URL__/checkLogin" method="post" id="form2" name="form2">
+        <div class="input_box">
+        <div class="input_one">
+		<if condition="$Think.session.username neq null">
+		   <input class="aaa" type="text" name="username" id="username" placeholder="请输入用户名"
+style="color:#8E8E8E" value="{$Think.session.username}"/>
+		<else />
+			<input class="aaa" type="text" name="username" id="username" placeholder="请输入用户名"
+style="color:#8E8E8E"/>
+		</if>
+        
+           
+            <div class="wrong"><img src="__PUBLIC__/last/img/public_img/wrong.png" onclick="getEmpty(1)"></div>
+        </div>
+        <div class="input_one input_two">
+        
+            <input class="aaa" type="password" name="password" id="password" placeholder="请输登入密码"
+style="color:#8E8E8E"/>
+            <div class="wrong"><img src="__PUBLIC__/last/img/public_img/wrong.png" alt="" onclick="getEmpty(2)"></div>
+        </div>
+        <div class="input_three">
+            
+            <input name="verify" id="verify" class="aaa" type="text" placeholder="请输验证码"
+style="color:#8E8E8E"/>
+            <div class="yzm"><img id="getcode" src="{:U('Public/verify')}"></div>
+        </div>
+  <div class="checks">
+	
+        <label>
+            <input type="checkbox" class="checkedTrue" name="record">
+            <span><i></i></span>
+            <strong>记住登录账号</strong>
+        </label>
+        <a href="{:U('Public/getpass')}">忘记密码?</a>
+        </div>
+
+        <button class="login_button">登录</button>
+
+        <p class="login_zc">没有账号？<a href="{:U('Home/Public/reg')}">立即注册</a></p>
+   </div>
+  
+	   <div class="input_box_01">
+		
+			   <div class="input_one input_phone">
+
+			   <input class="aaa" type="text" placeholder="请输入手机号码"
+	style="color:#8E8E8E" name="phone" id="phone"/>
+				<div class="wrong"></div>
+			</div>
+				<div class="input_four">
+					 
+				<input class="aaa" type="text" placeholder="请输入验证码"
+	style="color:#8E8E8E" id="phoneActive" name="phoneActiveCode"/>
+			<div class="huoqu_button"><input type='button'  id="getVerifyCodeBtn"  value='获取验证码'/></div>
+			
+			</div>
+
+			<button class="login_button login_button_01">登录 </button>
+
+	   </div>
+	   <input type="hidden" id='way' name='way' value="1"/>
+   </form>
+  
+    </div>
+</div>
+<include file="Public:common-footer" />
+<include file="Public:common-script" />
+<script type="text/javascript" src="__PUBLIC__/last/js/jquery.form.min.js"></script>
+<script type="text/javascript" src="__PUBLIC__/last/js/formValidator-4.1.3.min.js"></script>
+<script type="text/javascript" src="__PUBLIC__/last/js/formvalidatorregex.js"></script>
+<script type="text/javascript" src="__PUBLIC__/last/js/header.js"></script>
+<script type="text/javascript">
+$(function() {
+	$('label').click(function(){
+		var checkedTrue = $('.checkedTrue').is(':checked');
+		if(checkedTrue ==true){
+			$('.checks').addClass('checked')
+		}else{
+			$('.checks').removeClass('checked')
+		}
+		
+	})
+	
+		 $('.login_tabone').click(function () {
+         $('.input_box').show();
+         $('.input_box_01').hide();
+			$('.login_tabone').addClass('login_tabborder');
+		 $('.login_tabtwo').removeClass('login_tabborder');
+		 
+		      });	
+		
+	 $('.login_tabtwo').click(function () {
+         $('.input_box_01').show();
+         $('.input_box').hide();
+			$('.login_tabtwo').addClass('login_tabborder');
+		 $('.login_tabone').removeClass('login_tabborder');
+		 $('.login_tabone').removeClass('login_taboneborder');
+     });
+
+
+	
+    var options = {
+        beforeSubmit: showRequest,
+        //提交前处理 
+        success: showResponse,
+        //处理完成 
+        resetForm: false,
+        dataType: 'json'
+    };
+
+    $('#form2').submit(function() {
+        $(this).ajaxSubmit(options);
+         return false; 
+    });
+    //verify
+    $("#getcode").click(function() {
+        $imgstr = "__URL__/verify/randcode=" + Math.random();
+        $(this).attr("src", $imgstr);
+    });
+
+
+function showRequest(formData, jqForm, options) {
+	var way =  $('#way').val();
+	
+	if(way == 1){
+		var username = $("#username").val();
+		if (username == "") {
+			art.dialog({
+				lock:true,
+				content: '用户名不能为空',
+				time: 5
+			});
+			return false;
+		}
+
+		var password = $("#password").val();
+		if (password == "") {
+			art.dialog({
+				lock:true,
+				content: '用户密码不能为空',
+				time: 5
+			});
+			return false;
+		}
+		var verify = $("#verify").val();
+		if (verify == "") {
+			art.dialog({
+				lock:true,
+				content: '验证码不能为空',
+				time: 5
+			});
+			return false;
+		}    
+	}
+   
+	if(way == 2){
+		 if ('' == $("#phone").val()) {
+			 art.dialog({
+				lock:true,
+				content: '手机号码不能为空',
+				time: 5
+			});
+			
+			return false;
+		}
+
+		if(!(/^(13|15|18|14|17|16|19)[0-9]{9}$/.test($("#phone").val()))){ 
+		   art.dialog({
+				lock:true,
+				content: '请输入正确的手机号码',
+				time: 5
+			});
+			
+			return false;
+		} 
+
+	}
+
+    return true;
+}
+
+function showResponse(res) {
+  if(res.time!=='0'){
+    art.dialog({
+        title: res.title,
+        content: res.message,
+       time: res.time
+    });
+  }  
+	if(res.status=='0'){
+		 $("#getcode").click();
+	}
+    if (res.url) {
+		window.location.href = res.url;
+    }
+}  
+
+function  getEmpty(key){
+	if(key == 1){
+		$('#username').val("");
+	}
+	if(key == 2){
+		$('#password').val("");
+	}
+}
+
+function  getWay(key){
+	
+	$('#way').val(key);
+}
+
+$('#getVerifyCodeBtn').on('click', function(){
+	if ('' == $("#phone").val()) {
+		 art.dialog({
+			lock:true,
+			content: '手机号码不能为空',
+			time: 5
+		});
+		$("#phone").focus();
+		return;
+	}
+
+	if(!(/^(13|15|18|14|17|16|19)[0-9]{9}$/.test($("#phone").val()))){ 
+       art.dialog({
+			lock:true,
+			content: '请输入正确的手机号码',
+			time: 5
+		});
+		$("#phone").focus();
+		return false;
+    } 
+	$.ajax({
+				type: "POST",
+				url: '{:U("User/ajax_getPhoneStatus","",false)}',
+				async:false,//设置同步/异步的参数[true异步  false同步]
+				data: {phone:$('#phone').val()},
+				success: function(ret) {
+					if(ret == 0){
+						msg = "false";
+					}
+					
+					else{
+						msg = "success";
+					}
+					
+				},
+				dataType: 'json'
+			});
+			if(msg=="success"){
+				
+				art.dialog({
+					lock:true,
+					content: '手机号码不存在，请更换为注册时填写的手机号码！',
+					time: 5
+				});
+				return false;
+				
+			}
+	$("#getVerifyCodeBtn").attr('disabled',true);
+	timerId = setInterval(refreshSecDisp, 1000);
+	$.ajax({
+		type: "POST",
+		url: '{:U("Public/get_phone_verify_code","",false)}',
+		data: {phone:$("#phone").val()},
+		success: function( data ) {
+			var retCode = data.code;
+			if ('success' !== retCode) {
+				$('#active_by_mail').attr('disabled', false);
+				$('#active_by_phone').attr('disabled', false);
+				$('#getVerifyCodeBtn').attr('disabled', false);
+				$('#codeVerifyTip').text('获取手机验证码失败，请稍后再试。');
+				return;
+			}
+		},
+		dataType: 'json'
+	});
+});
+
+var total_sec = 59;
+var timerId;
+function refreshSecDisp() {
+	var btnDisp = '获取验证码';
+	if (0 === total_sec) {
+		removeTimer(timerId, 'getVerifyCodeBtn', btnDisp);
+		timerId = null;
+		total_sec = 59;
+		return false;
+	}
+	
+	btnDisp = btnDisp + '(' + total_sec + ')';
+	$('#getVerifyCodeBtn').val(btnDisp);
+	total_sec = total_sec - 1;
+}
+function removeTimer(id, objId, objText) {
+	if (null != id) {
+		clearInterval(id);
+	}
+	$('#'+objId).val(objText);
+	$('#'+objId).attr('disabled', false);
+}
+});
+</script>
+</body>
+</html>
+

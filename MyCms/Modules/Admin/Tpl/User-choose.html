@@ -1,0 +1,159 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href='__PUBLIC__/css/common.css'>
+<script type="text/javascript" src="__PUBLIC__/js/jquery-1.7.1.min.js"></script>
+<script type="text/javascript" src="__PUBLIC__/js/base.js"></script>
+<script src="__PUBLIC__/js/jquery.textSearch-1.0.js" type="text/javascript"></script>
+<script type="text/javascript" src="__PUBLIC__/js/Calendar.js"></script>
+<title>平台用户查询</title>
+</head>
+<body>
+<div id="append_parent"></div>
+<div class="container" id="cpcontainer">
+  <div id="contentHeader">
+    <h3>平台用户查询</h3>
+  </div>
+  <form method="post" action="" name="form1" id="form1" onsubmit="fun()">
+	  <table border="0" cellpadding="0" cellspacing="0" class="content_list">
+		  <thead>
+			<tr class="tb_header">
+			  <th width="" colspan="2">查询条件</th>
+			</tr>
+		  </thead>
+		  <tr style="display:none;">
+			<td colspan="2"><input type="checkbox" value="1" name="bangding" id="bangding" checked="checked"><b>按平台信息查询</b></td>
+		  </tr>
+		  <tr>
+			<td style="text-align:center;">用户姓名：<input type="text" name="yezhuxingming" value="{$yezhuxingming}"/></td>
+			<td style="text-align:center;">小区地址：
+				<select style="width:105px;" name="village" id="village">
+					<option value="" selected>请选择</option>
+					<volist name="villlist" id="vill">
+						<if condition="$vill.COMMUNITYCODE eq '5010'"> 
+							<option value="5010" <if condition="$village eq '5010'"> selected="selected" </if>>吉宝季景华庭</option>
+						<else /> 
+							<option value="{$vill.COMMUNITYCODE}" <if condition="$vill.COMMUNITYCODE eq $village"> selected="selected" </if>>{$vill.COMMUNITYNAME}</option>
+						</if>
+					</volist>
+				</select>
+				<select style="width:100px; height:26px;" name="building" id="building">
+					<option value="" selected>请选择</option>
+					<volist name="buildlist" id="bud">
+						<option value="{$bud.BUILDINGCODE}" <if condition="$bud.BUILDINGCODE eq $building"> selected="selected" </if>>{$bud.BUILDINGNAME}</option>
+					</volist>
+				</select>
+			</td>
+		  </tr>
+		  <tr>
+			<td style="text-align:center;">身份证号：<input type="text" name="shenfenzhenghao" value="{$shenfenzhenghao}"/></td>
+			<td style="text-align:center;">联系电话：<input type="text" name="lianxidianhua" value="{$lianxidianhua}"/></td>
+		  </tr>
+		  <tr>
+			<td style="text-align:center;">能源卡号：<input type="text" name="nengyuankahao" value="{$nengyuankahao}"/></td>
+			<td style="text-align:center;">
+				用户类型：
+				<select name="yonghuleixing" style="width:205px;">
+					<option value="居民" <eq name='yonghuleixing' value='居民'>selected="selected"</eq>>居民</option>
+					<option value="非居民" <eq name='yonghuleixing' value='非居民'>selected="selected"</eq>>非居民</option>
+			  </select>
+		  	</td>
+		  </tr>
+		  <tr>
+			<td style="text-align:center;">采暖面积：<input type="text" name="qishimianji" value="{$qishimianji}" size="8"/>一<input type="text" name="jieshumianji" value="{$jieshumianji}" size="8"/></td>
+			<td style="text-align:center;">入住时间：<input name="qishishijian" type="text" id="qishishijian" size="8" maxlength="10" onclick="new Calendar().show(this);" value="{$qishishijian}" readonly="readonly" />一<input type="text" name="jieshushijian" onclick="new Calendar().show(this);" value="{$jieshushijian}" size="8" maxlength="10"/></td>
+		  </tr>
+		  <tr>
+			<td style="text-align:right;"><input type="submit" value="查询" class="button confirmSubmit" /></td>
+			<td style=""><input type="reset" value="重置" class="button reset" /></td>
+		  </tr>
+	  </table>
+  </form>
+  <table class="content_list">
+		<thead>
+		  <tr class="tb_header">
+			<td colspan="8"><b>查询结果</b></td>
+			<td><input  type="button" value="导出" name="download" onclick="exportdata()"/></td>
+	      </tr>
+		</thead>
+		  <tr>
+			<td class="tb_title" width="5%">序号</td>
+			<td class="tb_title" width="8%">业主名称</td>
+			<td class="tb_title" width="15%">身份证号</td>
+			<td class="tb_title" width="20%">房间地址</td>
+			<td class="tb_title" width="12%">能源卡号</td>
+			<td class="tb_title" width="12%">联系电话</td>
+			<td class="tb_title" width="8%">用户类型</td>
+			<td class="tb_title" width="8%">采暖面积</td>
+			<td class="tb_title" width="10%">入住时间</td>
+		  </tr>
+		  <empty name="user_list">
+			  <tr>
+				<td colspan="9" style="text-align:center;">没有查询到相关信息，请核实后再进行操作！</td>
+			  </tr>
+		  </empty>
+		  <notempty name="user_list">
+			  <volist name="user_list" id="user">
+				<tr>
+					<td width="5%">{$i}</td>
+					<td width="8%">{$user.ownername}</td>
+					<td width="15%">{$user.papercode}</td>
+					<td width="15%">{$user.dz}</td>
+					<td width="10%">{$user.banknumber}</td>
+					<td width="10%">{$user.mobilephone}</td>
+					<td width="8%">{$user.usetype}</td>
+					<td width="8%">{$user.chargearea}</td>
+					<td width="10%">{$user.enterdate}</td>
+				</tr>
+			  </volist>
+		  </notempty>
+		</table>
+<script type="text/javascript">
+	$(function(){ 
+		$(".confirmSubmit").click(function() {
+			var a=$("input[type='checkbox']:checked");
+			var len=a.length;
+			if(len<1){
+				alert("您未选择查询方式，请选择查询方式后，再进行操作！");
+				return false;
+			}
+			return;	
+		});
+	}); 
+
+	$('#village').on('change', function() {
+            var parameter = this.value;
+            $('#building').html('');
+            $.ajax({
+                url: '{:U("User/getBuilding","",false)}',
+                type : 'POST',
+                async: false,
+                data : {parameter: parameter},
+                dataType: 'json',
+                success: function(ret){
+					var optionStr = [];
+					$.each(ret, function(i, item){  
+						if(i==0){optionStr.push('<option value="">' +"请选择"+ "</option>")}; 
+						optionStr.push('<option value="'+ item.BUILDINGCODE +'"  <eq name="building" value="{$building}"> selected="selected" </eq>>' +item.BUILDINGNAME+ "</option>");   
+					}); 
+					$('#building').html(optionStr.join(''));
+                }
+            });
+        });
+
+	 function exportdata(){  
+	    var url = "__APP__/Admin/User/choose/excel/1";
+	    document.getElementById("form1").action = url;
+	    document.getElementById("form1").submit();
+	 }  
+	 
+	 function fun(){  
+		var url = "__APP__/Admin/User/choose/excel/0";
+	    document.getElementById("form1").action = url;
+	    document.getElementById("form1").submit();   
+   }
+</script>
+</div>
+</body>
+</html>

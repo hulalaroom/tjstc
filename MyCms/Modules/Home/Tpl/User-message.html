@@ -1,0 +1,165 @@
+<include file="Public:header" />
+<div class="main_block">
+    <include file="Public:top" />
+    <div class="content_block">
+
+        <div class="left_side fl">
+            <div class="l_menu">
+				<div class="left_other_menu">
+					<dl <empty name="Think.get.type"> class="hover"</empty>>
+						<dt><img src="/Uploads/image/allicon/icon_fjx.jpg"/></dt>	
+						<dd>
+							<a href="{:U('User/message')}">消息</a>
+							<span>查询系统消息</span>
+						</dd>
+					</dl>	
+					<!--<dl  <notempty name="Think.get.type"> class="hover"</notempty>>
+						<dt><img src="/Uploads/image/allicon/icon_sjx.jpg"/></dt>	
+						<dd>
+							<a href="{:U('User/message','type=fa')}#">发件箱</a>
+							<span>查询发送的信息</span>
+						</dd>
+					</dl>-->
+				</div>
+            </div>	
+            <include file="Public:left" /></div>
+
+
+        <div class="main_con fr">
+            <div class="bread_nav">
+                <div class="l fl"></div>
+                <div class="m fl" style="line-height:30px;">
+                    <span class="list_style"></span>
+                    <span>您当前的位置:</span>
+                    <a href="/">首页</a>
+                    <span>></span>
+					<a href="{:U('User/index')}">我的5890</a>
+                    <span>></span>
+                    <span style="color:#009f3f;"><notempty name="Think.get.type">发件箱<else/>收件箱</notempty></span>
+                </div>
+                <div class="r fl"></div>
+            </div>
+
+
+            <!-- begin -->
+            <div class="xiaoxi">
+                <script>
+                    function checkall(e,inputs){
+                        var aa=document.getElementsByName(inputs);
+                        for(i=0;i<aa.length;i++){
+                            aa[i].checked=e.checked;
+                        }
+                        return aa[i].checked;
+                    }
+                </script>
+                <div class="bar">
+                    <form id="form2" name="form2" method="post" action="{:U('User/delmessage')}" >
+                        <label class="m_bar">
+                            <input type="checkbox" onClick="checkall(this,'checkmess[]')"/> <span style="display:inline-block;">全选</span>
+                        </label>
+                        <input type="hidden" name="type" value="{$Think.get.type}"/>
+                        <input id="delmsg" type="button" class="mem_but1"  value="批量删除"/>
+                   <!-- <input type="button" class="mem_but1"  value="新建消息" onclick="javascript:window.location.href='__URL__/addsms'"/>--></div>
+                <div class="xiaoxi_item">
+                    <ul>
+                        <volist name="message" id="me" key="k">
+                            <li id="me_{$me[id]}">
+                                <label>
+                                    <input class="fl mt8"  type="checkbox"  name="checkmess[]" value="{$me[id]}"/>
+                                    <a  class="fl"  style="margin-left: 15px;"  href="javascript:views('{$me[Message][id]}','{$me.Message.title}');">
+                                        {$me.Message.title}<empty name="Think.get.type"><empty name="me.status">[未阅读]</empty></empty>
+                                    </a>
+                                    <span class="fr">{$me.Message.create_time|date="Y-m-d H:i:s",###}</span>
+                                </label>
+                            </li>
+                        </volist>
+                    </ul>
+                </div>
+                </form>
+                <div class="list_page">{$page}</div>
+            </div>
+            <!-- end -->
+
+
+        </div>
+
+
+    </div>
+</div>
+
+
+
+<include file="Public:footer" />
+<script>
+    function views(id,title){
+        var view_tip ='查看:'+title;
+        var url="<notempty name="Think.get.type">__URL__/sms/type/fa/id/<else/>__URL__/sms/id/</notempty>";
+        window.art.dialog.open(url+id,{
+            title:view_tip,
+            width:566,
+            height:400,
+            fixed:true,lock:true,
+            //		 id:id,
+            padding:'16px',
+            button:[{
+                    name:'关闭',
+                    callback: function () {
+                        location.reload(); 
+                    }
+                }]					   
+        });
+    }
+
+</script>
+</body>
+</html>
+<script>
+    $(function() {
+        var options = {
+            //        beforeSubmit: showRequest,
+            //提交前处理 
+            success: showResponse,
+            //处理完成 
+            resetForm: false,
+            dataType: 'json'
+        };
+		//
+		 $("#delmsg").click(function() {
+           window.art.dialog({
+			 content: '确定删除所选中的信息吗？',
+			 ok:function () {
+				  $('#form2').submit();
+			 },
+			cancelVal: '关闭',
+			cancel: true
+		});
+        });
+		
+		
+		//
+        $('#form2').submit(function() {
+            $(this).ajaxSubmit(options);
+            return false; 
+        });
+        //verify
+        $("#getcode").click(function() {
+            $imgstr = "__URL__/verify/randcode=" + Math.random();
+            $(this).attr("src", $imgstr);
+        });
+    });
+
+
+
+    function showResponse(res) {
+        art.dialog({
+            title: res.title,
+            content: res.message,
+            time: res.time
+        });
+        if (res.status==1) {
+            window.location.href = res.url;
+        }
+    }  
+
+
+</script>

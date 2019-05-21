@@ -1,0 +1,398 @@
+<include file="Public:header" />
+<div class="main_block"> <include file="Public:top" />
+    <div class="content_block">
+        <div class="left_side fl"><include file="Public:left" /></div>
+        <div class="main_con fr">
+            <div class="bread_nav">
+                <div class="l fl"></div>
+
+                <div class="m fl" style="line-height:30px;"> <span class="list_style"></span> <span>您当前的位置:</span><a href="__GROUP__">首页</a><span>&gt;</span><span style="color: #009f3f;">我的5890</span></div>
+
+                <div class="r fl"></div>
+            </div>
+            <div>
+                <!-- begin -->
+                <div class="user">
+                    <form>
+                        <dl>
+                            <dt> <empty name="avator"><image src="__PUBLIC__/images/no_photo.png" title="暂无头像"><else/><img src="{$avator}" title="我的头像"/></empty> <a class="user" href="{:U('User/editavator')}">更换头像</a> </dt>
+                            <dd>
+                                <ul>
+                                    <li>用户名:<i>{$Think.session.unick}</i> </li>
+                                    <li> 上次登录时间:<i><eq name="Think.session.last_login_time" value="0">您是首次登录<else/>{$Think.session.last_login_time|date="Y-m-d H:i:s",###}</eq></i> </li>
+                                    <li class="sw03">
+                                        <h3>账户管理</h3>
+                                        <p> <a href="{:U('User/edit')}">个人设置</a> <a href="{:U('User/bind')}" style="margin:0 10px;">绑定房间</a> <a href="{:U('User/message')}">我的消息
+                                                <notempty name="count">（{$count}）</notempty>
+                                            </a> </p>
+                                    </li>
+                                </ul>
+                            </dd>
+                        </dl>
+                    </form>
+                </div>
+				<div><span style="font-size:14px; font-weight:bold; color:red;">温馨提示:</span><span style="font-size:12px;color:red;"> 本页面费用及用量数据仅供参考使用，详细内容以实际出账单为准。</span></div>
+                <div class="tab_mes">
+                    <table width="100%" id="hover_000" class="b_5890" cellpadding="" cellspacing="1" bgcolor="#e5e5e5">
+                        <tr>
+                            <th width="5%">序号</th>
+                            <th width="30%">房间</th>
+                            <th>地址</th>
+                        </tr>
+                        <volist name="houselist" id="hlist" key="k">
+                            <tr onClick="javascript:click_search(this,'{$hlist.houseCode}')" <eq name="k" value="1"> id="houseCode1" class="hover_000"</eq>>
+                            <td>{$k}</td>
+                            <td>{$hlist.houseNum}</td>
+                            <td>{$hlist.address}</td>
+                            </tr>
+                        </volist>
+                    </table>
+                </div>
+                <div class="cx" style="border: none;">
+                    <h1 style="font-size:14px;">当期账单</h1>
+                </div>
+                <div class="tab_mes qfqk">
+                    <ul id="qianfeiqingkuang">
+                        <li> 当月水费：<b class="g" id="shui">loading...</b>元 ，之前月份：<b class="o" id="shui_qian">loading...</b>元。</li>
+                        <li> 当月燃气费：<b class="g" id="ranqi">loading...</b>元，之前月份：<b class="o" id="ranqi_qian">loading...</b>元。</li>
+                        <li> 当年采暖费：<b class="g" id="cainuan">loading...</b>元，之前年度：<b class="o" id="cainuan_qian">loading...</b>元。</li>
+                    </ul>
+                    <input type="hidden" id="houseCode" name="houseCode" value="">
+                    <input type="hidden" id="itemCode" name="itemCode" value="B">
+
+                    <input type="hidden" id="buss" name="buss" value="0">
+                </div>
+                <div class="cx" style="border: none;">
+                    <h1 style="font-size:14px;">费用明细</h1>
+                </div>
+                <div class="cx">
+                    <div class="tit">
+                        <div class="cx_tab fl">
+                            <div class="zls_tab"> <a  id="itemCodeB" class="hover" href="javascript:change('','B')">·自来水</a><span>|</span> <a id="itemCodeD" href="javascript:change('','D')">·天然气</a><span>|</span> <a id="itemCodeA" href="javascript:change('','A')">·热计量</a> </div>
+                            <h1 class="hover fl tab" id="tab0" onClick="javascript:change('0','')">费用查询</h1>
+                            <h1 class="fl tab" id="tab1"  onclick="javascript:change('1','')">用量查询</h1>
+                        </div>
+                        <div class="zzt">
+                            <form>
+                                <div class="fl ma_R"> <span class="fl">年度:</span>
+                                    <select class="year" name="chargeMonth" id="chargeMonth" onchange="javascript:change('','')">
+                                        <option value="{$now}">{$now}</option>
+                                        <option value="{$now-1}">{$now-1}</option>
+                                        <option value="{$now-2}">{$now-2}</option>
+                                        <option value="{$now-3}">{$now-3}</option>
+                                        <option value="{$now-4}">{$now-4}</option>
+
+                                    </select>
+                                </div>
+                                <a class="tx fl" href="javascript:" id="kinds">曲线</a> 
+                                <!--<a href="#" class="btn">查询</a>-->
+                            </form>
+                        </div>
+                    </div>
+                    <div class="cx_con">
+                        <!--                    	<div class="x_tab">
+                                                                    <a class="cx fl" href="#">自来水</a>
+                                                                    <a class="cx fl" href="#">天然气</a>
+                                                                    <a class="cx fl" href="#">热计量</a>
+                                                            </div>-->
+                        <div class="ck_img">
+                            <div id="quxian"></div>
+
+                        </div>
+                    </div>
+                </div>
+                <div class="tab_mes">
+                    <h1>业务办理记录<a style="height:20px; margin-top:-10px; margin-right:20px;" class="more fr" href="{:U('Business/lists','id=10')}"></a></h1>
+                    <table cellpadding="" width="100%" cellspacing="1" id="hover_000" bgcolor="#e5e5e5">
+                        <tr>
+                            <th width="11%">序号</th>
+                            <th width="29%">标题</th>
+                            <th width="20%">时间</th>
+                            <th width="20%">状态</th>
+
+                        </tr>
+                        {~$list=get_yewu('10|Business|5');}
+                        <empty name="list"><tr><td colspan="4"><p class="nodata">暂无信息</p></td></tr></empty>
+                        <volist name="list" id="vo" key="k">
+                            <tr  onclick="views('{$vo.id}','{$vo.title}','Business');">
+                                <td>{$k}</td>
+                                <td>{$vo.title}</td>
+                                <td>{$vo.create_time|date="Y-m-d H:i:s",###}</td>
+                                <td><eq name="vo.status" value="0"><span class="col_o">未受理</span></eq>
+                                    <eq name="vo.status" value="1"><span class="col_b">受理中</span></eq>
+                                    <eq name="vo.status" value="2"><span class="col_g">已派单</span></eq>
+                                    <eq name="vo.status" value="3"><span >已完结</span></eq></td>
+
+                            </tr>
+                        </volist>
+
+                    </table>
+                </div>
+                <!-- end -->
+            </div>
+        </div>
+    </div>
+</div>
+<include file="Public:footer" />
+<script>
+function views(id, title, type) {
+    var view_tip = '查看:' + title;
+    window.art.dialog.open('__GROUP__/' + type + '/view/id/' + id, {
+        title: view_tip,
+        width: 566,
+        /* height:400,*/
+        fixed: true,
+        //		 id:id,
+        padding: '16px',
+        button: [{
+            name: '关闭'
+        }]
+    });
+}
+</script>
+</body></html>
+<script>
+//图表属性，不包含数据
+var options = {
+    chart: {
+        renderTo: 'quxian',
+        type: 'column'
+    },
+    title: {
+        text: ' ',
+        x: -20 //center
+    },
+    credits: {
+        enabled: false //右下角不显示LOGO 
+    },
+    xAxis: {
+        gridLineWidth: 1,
+        //设置网格宽度为1 
+        lineWidth: 2 //基线宽度 
+    },
+    yAxis: {
+
+        title: {
+            text: '元'
+        },
+        plotLines: [{
+            value: 0,
+            width: 1,
+            color: '#808080'
+        }],
+		min: 0, //不显示负数
+		allowDecimals:false, //不显示小数
+        lineWidth: 2 //基线宽度 
+    },
+    series: [{
+        name: '自来水'
+    }],
+    tooltip: {
+        valueSuffix: '元'
+    },
+    legend: {
+        enabled: false
+    },
+    plotOptions: {
+        line: {
+            dataLabels: {
+                enabled: true
+            },
+            animation: true//动画
+        },
+		 column: {
+            dataLabels: {
+                enabled: true
+            },
+            animation: true//动画
+        }
+    }
+};
+
+var houseCode = '{$houselist[0]["houseCode"]}';
+var itemCode = 0;
+var chargeMonth = '{$now}';
+var buss = 'B';
+
+/*
+     *
+     *
+     *费用和用量查询
+     *
+     */
+function change(a, b) {
+    if (a) {
+        $(".tab").removeClass('hover');
+        $("#tab" + a).addClass('hover');
+        $("#buss").val(a);
+
+    }
+    if (b) {
+
+        $(".zls_tab a").removeClass('hover');
+        $("#itemCode" + b).addClass('hover');
+        $("#itemCode").val(b);
+    }
+    //        if(c){
+    //            t=$("#chargeMonth").val();
+    //            alert(t);
+    //        }
+    houseCode = $("#houseCode").val();
+    itemCode = $("#itemCode").val();
+    chargeMonth = $("#chargeMonth").val();
+    buss = $("#buss").val();
+
+    if (itemCode == 'A') {
+        options.series[0].name = '采暖';
+        options.yAxis.title.text = '采暖单位';
+        options.tooltip.valueSuffix = '采暖单位';
+    }
+    if (itemCode == 'B') {
+        options.series[0].name = '自来水';
+        options.yAxis.title.text = '吨';
+        options.tooltip.valueSuffix = '吨';
+    }
+    if (itemCode == 'D') {
+        options.series[0].name = '燃气';
+        options.yAxis.title.text = '立方米';
+        options.tooltip.valueSuffix = '立方米';
+    }
+    if (buss == '0') {
+        options.yAxis.title.text = '元';
+        options.tooltip.valueSuffix = '元';
+    }
+
+    $("#quxian").html('<img src="__PUBLIC__/images/loading.gif">');
+    //        alert(options.series[0].name);
+    getdata(houseCode, itemCode, chargeMonth, buss);
+
+}
+
+/*
+     *
+     *ajax获取data
+     *
+     */
+var categories = [];
+var datas = [];
+function getdata(houseCode, itemCode, chargeMonth, buss) {
+    $.ajax({
+        url: '{:U("User/ajax_getHisChar","","")}',
+        type: 'POST',
+        data: {
+            houseCode: houseCode,
+            itemCode: itemCode,
+            chargeMonth: chargeMonth,
+            buss: buss
+        },
+        dataType: 'json',
+        success: function(data) {
+            if (data != 0) {
+                if (data.error) {
+                    $("#quxian").html('接口错误');
+                } else {
+                    categories = [];
+                    datas = [];
+                    $.each(data,
+                    function(i, n) {
+                        categories[i] = n[1];
+                        datas[i] = n[2] * 1;
+                    });
+                    if (itemCode == 'A') {
+                        options.colors = ['#ee1d14'];
+                    }
+                    if (itemCode == 'B') {
+                        options.colors = ['#4aaedd'];
+                    }
+                    if (itemCode == 'D') {
+                        options.colors = ['#eea714'];
+                    }
+                    options.xAxis.categories = categories;
+                    options.series[0].data = datas;
+
+
+					if(datas[new Date().getMonth()-1] == 0){
+						datas[new Date().getMonth()-1] = '';
+					}
+
+
+                    chart = new Highcharts.Chart(options);
+                }
+
+            } else {
+                $("#quxian").html('暂无数据');
+            }
+
+        }
+    });
+}
+</script>
+<script>
+function click_search(obj, houseCode) {
+    //
+	 $(obj).addClass('hover_000').siblings().removeClass('hover_000');
+    $("#cainuan").html('loading...');
+    $("#cainuan_qian").html('loading...');
+    $("#shui").html('loading...');
+    $("#shui_qian").html('loading...');
+    $("#ranqi").html('loading...');
+    $("#ranqi_qian").html('loading...');
+
+    $("#houseCode").val(houseCode);
+    $("#quxian").html('<img src="__PUBLIC__/images/loading.gif">');
+    $.ajax({
+        url: '{:U("User/ajax_getOweCharge")}',
+        type: 'POST',
+        data: 'houseCode=' + houseCode,
+        dataType: 'json',
+        success: function(res) {
+            if (res != 0) {
+                if (res.error) {
+                    $("#qianfeiqingkuang").html('接口错误，请联系管理员!');
+					$("#quxian").html('接口错误');
+                } else {
+					
+                    $("#cainuan").html(res[0]);
+                    $("#cainuan_qian").html(res[1]);
+                    $("#shui").html(res[2]);
+                    $("#shui_qian").html(res[3]);
+                    $("#ranqi").html(res[4]);
+                    $("#ranqi_qian").html(res[5]);
+                    itemCode = $("#itemCode").val();
+                    chargeMonth = $("#chargeMonth").val();
+                    buss = $("#buss").val();
+                    getdata(houseCode, itemCode, chargeMonth, buss); //载入曲线
+                }
+            }
+        }
+    });
+
+}   
+</script>
+<script src="__PUBLIC__/js/highcharts/highcharts.js" type="text/javascript"></script>
+<script>
+//切换圆柱or曲线
+var kinds;
+$(function() {
+    click_search('#houseCode1', houseCode); //载入默认欠费
+    //        getdata(houseCode,itemCode,chargeMonth,buss);//载入默认曲线
+    $("#kinds").click(function() {
+        kinds = $("#kinds").text();
+        if (kinds == '柱状') {
+            $("#kinds").text('曲线');
+            options.chart.type = 'column';
+        } else {
+            $("#kinds").text('柱状');
+            options.chart.type = 'line';
+        }
+        houseCode = $("#houseCode").val();
+        itemCode = $("#itemCode").val();
+        chargeMonth = $("#chargeMonth").val();
+        buss = $("#buss").val();
+        getdata(houseCode, itemCode, chargeMonth, buss);
+    });
+
+});
+</script>
+
+

@@ -1,0 +1,865 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link type="text/css" rel="stylesheet" href="/public/css/base.css"/>
+<link type="text/css" rel="stylesheet" href="/public/css/my_5890.css"/>
+<link type="text/css" rel="stylesheet" href="/public/css/article.css"/>
+<link type="text/css" rel="stylesheet" href="/public/css/business.css"/>
+<link type="text/css" rel="stylesheet" href="/public/css/index.css"/>
+<link type="text/css" rel="stylesheet" href="/public/css/page.css"/>
+<link type="text/css" rel="stylesheet" href="/public/css/member.css"/>
+<link type="text/css" rel="stylesheet" href="/public/css/validator.css"/>
+<script type="text/javascript" src="/public/js/jquery-1.8.3.min.js"></script>
+<script type="text/javascript" src="/public/js/jquery.form.min.js"></script>
+<script type="text/javascript" src="/public/js/artDialog4.1.7/artDialog.source.js?skin=green"></script>
+<script type="text/javascript" src="/public/js/artDialog4.1.7/plugins/iframeTools.js"></script>
+<script src="/public/js/jquery.KinSlideshow-1.2.1.min.js" type="text/javascript"></script>
+<script language="text/javascript" src="/index.php?s=/index/pageCount"></script>
+<script type="text/javascript">
+$(document).ready(function(){
+ //focusblur
+     jQuery.focusblur = function(focusid) {
+		var focusblurid = $(focusid);
+		var defval = focusblurid.val();
+        focusblurid.focus(function(){
+			var thisval = $(this).val();
+			if(thisval==defval){
+                 $(this).val("");
+            }
+		});
+        focusblurid.blur(function(){
+			var thisval = $(this).val();
+			if(thisval==""){
+                 $(this).val(defval);
+            }
+        });
+     };
+ /*下面是调用方法*/
+     $.focusblur("#username");
+	 $.focusblur("#verify");
+ });
+function showRequest(formData, jqForm, options) {
+
+    var username = $("#username").val();
+    if (username == "") {
+        art.dialog({
+			lock:true,
+            content: '用户名不能为空',
+            time: 2
+        });
+        return false;
+    }
+
+    var password = $("#password").val();
+    if (password == "") {
+        art.dialog({
+            content: '用户密码不能为空',
+            time: 2
+        });
+        return false;
+    }
+    var verify = $("#verify").val();
+    if (verify == "") {
+        art.dialog({
+            content: '验证码不能为空',
+            time: 2
+        });
+        return false;
+    }    
+    return true;
+}
+
+function showResponse(res) {
+  if(res.time!=='0'){
+    art.dialog({
+        title: res.title,
+        content: res.message,
+       time: res.time
+    });
+  }  
+	if(res.status=='0'){
+		 $("#getcode").click();
+	}
+    if (res.url) {
+        window.location.href = res.url;
+    }
+}
+function load(){
+ $("#tianqi").attr('src','http://tianqi.2345.com/plugin/widget/index.htm?s=3&z=2&t=1&v=0&d=1&k=&f=1&q=1&e=0&a=0&c=54527&w=180&h=26');
+}
+
+$(function(){
+
+ var options = {
+        beforeSubmit: showRequest,
+        //提交前处理 
+        success: showResponse,
+        //处理完成 
+        resetForm: false,
+        dataType: 'json'
+    };
+
+    $('#from3').submit(function() {
+        $(this).ajaxSubmit(options);
+         return false; 
+    });
+    //verify
+    $("#getcode").click(function() {
+        $imgstr = "/index.php?s=/public/verify"+"/randcode=" + Math.random();
+        $(this).attr("src", $imgstr);
+    });
+
+	
+	$("#keys").focus(function(){
+	var ak=$("#keys").val();
+	  if(ak=='输入您想搜索的内容'){$("#keys").val('');}
+	});
+
+	//去除a标签虚线
+    $('a').bind("focus", function(){$(this).blur();});   
+})
+</script>
+<script type="text/javascript">
+function SlyarErrors() {
+return true;
+}
+window.onerror = SlyarErrors;
+</script>
+<!--[if IE 6]>
+	<script type="text/javascript" src="/MyCms/Modules/Admin/Tpl/js/png.js"></script>
+	<script>DD_belatedPNG.fix('*');</script>
+<![endif]-->
+
+<title> 天津生态城公用事业客户服务平台</title>
+<meta name="keywords" content="SEO关键词" />
+<meta name="description" content="SEO描述" />
+</head>
+<body>
+<div class="top_block">
+    <div style=" width:1000px; margin:0 auto;">
+	<div class="top_bar" style="position: relative;width:1000px;">
+    	<div class="fl">
+        	<iframe id="tianqi" allowtransparency="true" frameborder="0" width="180" height="26" scrolling="no" src=""></iframe>	
+        </div>
+        <div class="fr">
+			<div class="loginText">
+				<a><img src="/Public/images/login.gif"/></a>
+				<div class="win" style="position: absolute;right: 40px;top: 25px;">
+					<form action="/index.php?s=/public/checkLogin" method="post" id="from3" name="form3">
+						<div class="win_name">用户名:</div>
+						<div class="text_class"><input type="text" class="win_text" name="username" id="username" autocomplete="off" tabIndex="1" value="请输入用户名" size="25"></div>
+						<div class="win_name">密　码:</div>
+						<div class="text_class"><input type="password" class="win_text" name="password" id="password" autocomplete="off"  tabIndex="2" size="25"></div>
+						<div class="win_verify">
+							<div class="win_name">验证码:</div>
+							<input type="text" class="win_verify_text" name="verify" id="verify" autocomplete="off" tabIndex="3" value="请输入验证码"/>
+							<div class="win_verify_code"><img id="getcode" src="/index.php?s=/public/verify" class="win_verify_img"/></div>
+							</div>
+							<input type="image" src="/Public/images/log.jpg" value="登录" name="submit" class="win_verify_submit"/>
+					</form>
+				</div>
+			</div>
+			<div class="reg_div"><a href="/index.php?s=/public/reg" title="注册"><img src="/Public/images/reg.gif" alt="注册"/></a></div>
+        </div>
+    </div>
+	</div>
+</div>
+
+
+<div id="show">
+		<div id="dropin" style="position:absolute;visibility:hidden;width:1159px;z-index:10005; height:250px; margin-left:50%;left:-580px;">
+			<div align="right" style="color:#FFFFFF;"><a href="javascript:dismissbox()" title="关闭"><img src="/Public/images/exit.png" alt="关闭"/></a></div>
+			<div style="position:relative;">
+				<div><img src="/Uploads/image/20160406/57049881223d5.jpg" alt="关于生态城客服服务热线调整的通知"/></div>
+				<div style="right:45px;top:55px;WIDTH:580px;position:absolute;z-index:10010;HEIGHT: 442px; OVERFLOW-y: scroll;  scrollbar-face-color:#70807d; scrollbar-arrow-color:#ffffff; scrollbar-highlight-color:#ffffff; scrollbar-3dlight-color:#70807d; scrollbar-shadow-color:#ffffff; scrollbar-darkshadow-color:#70807d; scrollbar-track-color:#ffffff; color:#FFFFFF;">
+ </div>		
+			</div>
+		</div>
+	</div><div class="main_block">
+<div class="head_block" style="margin:0 auto; width:1000px;">
+  <div class="logo"> <a class="logo fl" href="/index.html"></a>
+    <div class="search fr">
+      <form name="form1" id="form1" action="/index.php?s=/article/search" method="post">
+        <label>
+        <input class="text" id="keys" type="text"  value="输入您想搜索的内容"  name="keys"/>
+        <input class="but" type="submit" value="" onclick="return check()"/>
+        </label>
+      </form>
+    </div>
+
+  </div>
+  <!-- start update by wanghispeng 2014-05-28 -->
+  <div style=" width:775px; padding-left:225px;">
+    <div style=" height:25; width:90px; float:left;"><img src="/Public/images/service-gg.jpg"/></div>
+	<div style=" width:680px; height:25px; float:left;">
+	<marquee id="notices" style="color:#414141;font-size:12px;line-height:25px;float:left" direction="left" height="25" scrollamount="1" onmouseover="notices.stop()" onmouseout="notices.start()" scrolldelay="30" width="680">
+				<a target="_blank" title="停气通知-建设公寓（2016年4月11日）" href="/index.php?s=/article/view/id/889">停气通知-建设公寓（2016年4月11日）</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a target="_blank" title="停气通知-兰苑（2016年4月6日）" href="/index.php?s=/article/view/id/888">停气通知-兰苑（2016年4月6日）</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a target="_blank" title="停暖期间注意事项" href="/index.php?s=/article/view/id/868">停暖期间注意事项</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a target="_blank" title="生态城至开发区出区便民班线运营报告" href="/index.php?s=/article/view/id/863">生态城至开发区出区便民班线运营报告</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a target="_blank" title="芳菲路公交站至高铁于家堡站947路公交车" href="/index.php?s=/article/view/id/857">芳菲路公交站至高铁于家堡站947路公交车</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a target="_blank" title="关于停止运行生态城出区便民班线的通知" href="/index.php?s=/article/view/id/855">关于停止运行生态城出区便民班线的通知</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a target="_blank" title="生态城公交1-4号线及出区便民班线2016年春节期间运营方案" href="/index.php?s=/article/view/id/847">生态城公交1-4号线及出区便民班线2016年春节期间运营方案</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a target="_blank" title="关于倡导文明投放物回垃圾的通知" href="/index.php?s=/article/view/id/843">关于倡导文明投放物回垃圾的通知</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a target="_blank" title="关于春节调整营业时间的公告" href="/index.php?s=/article/view/id/824">关于春节调整营业时间的公告</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a target="_blank" title="“生态城交通”移动客户端正式上线啦" href="/index.php?s=/article/view/id/820">“生态城交通”移动客户端正式上线啦</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;	</marquee> </div>
+	<div style="clear:both;"></div>
+  </div>
+  <!-- end update by wanghispeng 2014-05-28 -->
+  <script type="text/javascript">
+	function check()
+	{
+		 var key;
+		 key=$("#keys").val().replace(/(^\s*)|(\s*$)/g, "");
+		 if(key==''||key=='输入您想搜索的内容'){
+			art.dialog({content:'关键词不能为空',time:2});
+			return false;
+		 }
+		 else
+		 {
+			  return true;
+		 }
+	}
+  </script>
+
+  <div class="nav">
+    <div id="l_menu" class="fl">
+      <div class="nav_l_zk_none"><strong>成员单位</strong>
+        <div class="l_menu_index dis" >
+          <dl>
+            <dt><a href="/index.php?s=/page/viewss/id/147/status/5" title="能源公司"><img src="./Uploads/image/allicon/left-menu001.png" alt="能源公司"/></a></dt>
+            <dd> <a href="/index.php?s=/page/viewss/id/147/status/5" title="能源公司">能源公司</a> <span>能源公司信息</span></dd>
+          </dl>
+          <dl>
+            <dt><a href="/index.php?s=/page/viewss/id/153/status/6" title="环保公司"><img src="./Uploads/image/allicon/left-menu005.png" alt="环保公司"/></a></dt>
+            <dd> <a href="/index.php?s=/page/viewss/id/153/status/6" title="环保公司">环保公司</a> <span>环保公司信息</span> </dd>
+          </dl>
+          <dl>
+            <dt> <a href="/index.php?s=/page/viewss/id/155/status/7" title="市政景观公司"><img src="./Uploads/image/allicon/left-menu004.png" alt="市政景观公司"/></a></dt>
+            <dd> <a href="/index.php?s=/page/viewss/id/155/status/7" title="市政景观公司">市政景观公司</a> <span>市政景观公司信息</span> </dd>
+          </dl>
+          <dl>
+            <dt><a href="/index.php?s=/page/viewss/id/157/status/8" title="绿色交通公司"><img src="./Uploads/image/allicon/left-menu003.png" alt="绿色公交公司"/></a></dt>
+            <dd> <a href="/index.php?s=/page/viewss/id/157/status/8" title="绿色交通公司">绿色交通公司</a> <span>绿色交通公司信息</span> </dd>
+          </dl>
+          <dl>
+            <dt><a href="/index.php?s=/page/viewss/id/159/status/9" title="水务公司"><img src="./Uploads/image/allicon/left-menu002.png" alt="水务公司"/></a></dt>
+            <dd> <a href="/index.php?s=/page/viewss/id/159/status/9" title="水务公司">水务公司</a> <span>水务公司信息</span> </dd>
+          </dl>
+        </div>
+      </div>
+    </div>
+    <div class="nav_r">
+      <div><a class="hover"        href="http://www.66885890.com">首页</a><span></span> 
+        <a
+                    href="
+                      /index.php?s=/article/cat/id/1.html          ">
+            服务公告          </a><span></span><a
+                    href="
+                      /index.php?s=/article/cat/id/4.html          ">
+            信息公开          </a><span></span><a
+                    href="
+                      /index.php?s=/page/zizhu/id/8.html          ">
+            自助服务          </a><span></span><a
+                    href="
+                      /index.php?s=/page/my5890/id/20.html          ">
+            我的5890          </a><span></span><a
+                    href="
+                      /index.php?s=/vote/index/id/21.html          ">
+            在线调查          </a><span></span>      </div>
+      <a class="fw" href="/index.php?s=/article/fuwu/id/30"></a> </div>
+  </div><div style="clear:both;"></div>
+</div>
+
+<div class="content_block">
+<div class="left_side fl">
+  <div style="height:375px;"></div>
+    <a target="_blank" href="/index.php?s=/page/map" class="map ma_B ma_T2" >
+		<img src="/public/images/img_map.gif"/>
+	</a> 
+	<a target="_blank" href="/index.php?s=/user/addtag" class="mes ma_B1"> <img src="/public/images/img_message.jpg"/> </a>	<!--在线调查-->
+	  <div class="ma_T3">
+		<div class="bread_nav">
+		  <div class="l fl"></div>
+		  <div class="m new_m fl">
+			<h1 class="fl new_w3">在线调查</h1>
+			<a target="_blank" href="/index.php?s=/vote/index/id/21" class="more fr"></a></div>
+		  <div class="r fl"></div>
+		</div>
+		<div class="l_block list gg_con new_h2">
+		  <ul>
+			<div class="nodata">暂无数据</div>					  </ul>
+		</div>
+	  </div>
+  <!--信息订阅-->
+	 </div>
+<div class="middle_con">
+  <div class="top">
+    <!--焦点图start-->
+    <div id="KinSlideshow" style="visibility:hidden;">
+      <a target="_blank"
+                  href="/index.php?s=/article/view1/id/650.html"        style=" display:inline-block;"><img width="500" height="270" src="/Uploads/image/20151023/56299fae0a685.png" alt="生态城公用事业服务热线"/></a><a target="_blank"
+                  href="/index.php?s=/article/lists/id/199.html"        style=" display:inline-block;"><img width="500" height="270" src="/Uploads/image/20150518/55597c4c35fe2.jpg" alt="防汛应急常识"/></a><a target="_blank"
+        href="/index.php?s=/article/view1/id/602"
+                  style=" display:inline-block;"><img width="500" height="270" src="/Uploads/image/20150814/55cd9903bd3e3.jpg" alt="直饮水来到您身边"/></a><a target="_blank"
+        href="/index.php?s=/article/view1/id/686"
+                  style=" display:inline-block;"><img width="500" height="270" src="/Uploads/image/20151026/562d8b7c77ac5.png" alt="能源科普动画"/></a>    </div>
+    <!--焦点图end-->
+    <div class="ad">
+	   <!--焦点图下方 start update by wangshipeng 2014.06.01-->
+      <a target="_blank"
+                  	href="/index.php?s=/article/energy/id/62.html"        ><img width="243" height="180" src="/Uploads/image/20140625/53aa9636bd984.jpg" alt="首页焦点图下左"/>&nbsp;</a><a target="_blank"
+                  	href="/index.php?s=/page/content/id/136.html"        ><img width="243" height="180" src="/Uploads/image/20140714/53c39e0f913ac.jpg" alt="首页焦点图下右"/>&nbsp;</a>   
+     <!--焦点图下方 end update by wangshipeng 2014.06.01-->	
+
+      <!--<a target="_blank" href="http://60.30.28.173:9098/"> <img src="/Uploads/image/20140527/53841e7476af3.jpg"/> </a>
+      <a target="_blank" href="http://60.30.28.173:9098/" class="ma_L"><img src="/Uploads/image/20131212/52a917ab477cc.jpg"/> </a>-->
+    </div>
+  </div>
+  <!--服务公告-->
+  <div class="ma_T">
+    <div class="bread_nav">
+      <div class="l fl"></div>
+      <div class="m new_w1 fl">
+		<div style="float:left"><h1><a target="_blank" onmouseover="javascript:getTab(0)">服务公告</a></h1></div>
+		<div style="float:left; padding-left:30px; width:76%">
+			<span id="tgn"><a target="_blank" onmouseover="javascript:getTab(1)">停供能信息</a></span>
+			<span id="hd"><a target="_blank" onmouseover="javascript:getTab(2)">活动通知</a></span>
+			<div style="float:right"><a target="_blank" href="/index.php?s=/article/cat/id/1" class="more fr"></a></div>
+		</div>
+      </div>
+      <div class="r fl"></div>
+    </div>
+    <div class="l_block zxcx">
+	   <div class="new_w2" id="fwgg">
+       	<div class="bin-stop-serve-box">
+						<ul>
+				<li class="bin_stop_serve_title"><a target="_blank" title="停气通知-建设公寓（2016年4月11日）" href="/index.php?s=/article/view/id/889">停气通知-建设公寓（2016年4月11日…</a></li>
+				<li class="bin_stop_serve_date">2016-04-07</li>
+			  </ul><ul>
+				<li class="bin_stop_serve_title"><a target="_blank" title="停气通知-兰苑（2016年4月6日）" href="/index.php?s=/article/view/id/888">停气通知-兰苑（2016年4月6日）</a></li>
+				<li class="bin_stop_serve_date">2016-04-05</li>
+			  </ul><ul>
+				<li class="bin_stop_serve_title"><a target="_blank" title="停暖期间注意事项" href="/index.php?s=/article/view/id/868">停暖期间注意事项</a></li>
+				<li class="bin_stop_serve_date">2016-03-15</li>
+			  </ul><ul>
+				<li class="bin_stop_serve_title"><a target="_blank" title="生态城至开发区出区便民班线运营报告" href="/index.php?s=/article/view/id/863">生态城至开发区出区便民班线运营报告</a></li>
+				<li class="bin_stop_serve_date">2016-03-04</li>
+			  </ul><ul>
+				<li class="bin_stop_serve_title"><a target="_blank" title="芳菲路公交站至高铁于家堡站947路公交车" href="/index.php?s=/article/view/id/857">芳菲路公交站至高铁于家堡站947路公交车</a></li>
+				<li class="bin_stop_serve_date">2016-02-26</li>
+			  </ul><ul>
+				<li class="bin_stop_serve_title"><a target="_blank" title="关于停止运行生态城出区便民班线的通知" href="/index.php?s=/article/view/id/855">关于停止运行生态城出区便民班线的通知</a></li>
+				<li class="bin_stop_serve_date">2016-02-23</li>
+			  </ul><ul>
+				<li class="bin_stop_serve_title"><a target="_blank" title="生态城公交1-4号线及出区便民班线2016年春节期间运营方案" href="/index.php?s=/article/view/id/847">生态城公交1-4号线及出区便民班线201…</a></li>
+				<li class="bin_stop_serve_date">2016-02-04</li>
+			  </ul><ul>
+				<li class="bin_stop_serve_title"><a target="_blank" title="关于倡导文明投放物回垃圾的通知" href="/index.php?s=/article/view/id/843">关于倡导文明投放物回垃圾的通知</a></li>
+				<li class="bin_stop_serve_date">2016-02-03</li>
+			  </ul><ul>
+				<li class="bin_stop_serve_title"><a target="_blank" title="关于春节调整营业时间的公告" href="/index.php?s=/article/view/id/824">关于春节调整营业时间的公告</a></li>
+				<li class="bin_stop_serve_date">2016-01-26</li>
+			  </ul><ul>
+				<li class="bin_stop_serve_title"><a target="_blank" title="“生态城交通”移动客户端正式上线啦" href="/index.php?s=/article/view/id/820">“生态城交通”移动客户端正式上线啦</a></li>
+				<li class="bin_stop_serve_date">2016-01-25</li>
+			  </ul>			<div class="clear"></div>
+		</div>
+       </div>
+      <div class="new_w2" id="tgnxx">
+       	<div class="bin-stop-serve-box">
+						<ul>
+					<li class="bin_stop_serve_title"><a target="_blank" title="停气通知-建设公寓（2016年4月11日）" href="/index.php?s=/article/view/id/889">停气通知-建设公寓（2016年4月11日…</a></li>
+					<li class="bin_stop_serve_date">2016-04-07</li>
+				  </ul><ul>
+					<li class="bin_stop_serve_title"><a target="_blank" title="停气通知-兰苑（2016年4月6日）" href="/index.php?s=/article/view/id/888">停气通知-兰苑（2016年4月6日）</a></li>
+					<li class="bin_stop_serve_date">2016-04-05</li>
+				  </ul><ul>
+					<li class="bin_stop_serve_title"><a target="_blank" title="停气通知-新新园（2016年3月30日）" href="/index.php?s=/article/view/id/879">停气通知-新新园（2016年3月30日）</a></li>
+					<li class="bin_stop_serve_date">2016-03-29</li>
+				  </ul><ul>
+					<li class="bin_stop_serve_title"><a target="_blank" title="停气通知-红树湾（2016年3月30日）" href="/index.php?s=/article/view/id/878">停气通知-红树湾（2016年3月30日）</a></li>
+					<li class="bin_stop_serve_date">2016-03-29</li>
+				  </ul><ul>
+					<li class="bin_stop_serve_title"><a target="_blank" title="停气通知-尚苑一期（2016年3月18日）" href="/index.php?s=/article/view/id/869">停气通知-尚苑一期（2016年3月18日…</a></li>
+					<li class="bin_stop_serve_date">2016-03-15</li>
+				  </ul><ul>
+					<li class="bin_stop_serve_title"><a target="_blank" title="停气通知-天和园（2016年1月11日）" href="/index.php?s=/article/view/id/805">停气通知-天和园（2016年1月11日）</a></li>
+					<li class="bin_stop_serve_date">2016-01-08</li>
+				  </ul>			<div class="clear"></div>
+		</div>
+       </div>
+	   <div class="new_w2" id="hdgg" style="display:none;">
+       	<div class="bin-stop-serve-box">
+						<ul>
+					<li class="bin_stop_serve_title"><a target="_blank" title="停暖期间注意事项" href="/index.php?s=/article/view/id/868">停暖期间注意事项</a></li>
+					<li class="bin_stop_serve_date">2016-03-15</li>
+				  </ul><ul>
+					<li class="bin_stop_serve_title"><a target="_blank" title="生态城至开发区出区便民班线运营报告" href="/index.php?s=/article/view/id/863">生态城至开发区出区便民班线运营报告</a></li>
+					<li class="bin_stop_serve_date">2016-03-04</li>
+				  </ul><ul>
+					<li class="bin_stop_serve_title"><a target="_blank" title="芳菲路公交站至高铁于家堡站947路公交车" href="/index.php?s=/article/view/id/857">芳菲路公交站至高铁于家堡站947路公交车</a></li>
+					<li class="bin_stop_serve_date">2016-02-26</li>
+				  </ul><ul>
+					<li class="bin_stop_serve_title"><a target="_blank" title="关于停止运行生态城出区便民班线的通知" href="/index.php?s=/article/view/id/855">关于停止运行生态城出区便民班线的通知</a></li>
+					<li class="bin_stop_serve_date">2016-02-23</li>
+				  </ul><ul>
+					<li class="bin_stop_serve_title"><a target="_blank" title="生态城公交1-4号线及出区便民班线2016年春节期间运营方案" href="/index.php?s=/article/view/id/847">生态城公交1-4号线及出区便民班线201…</a></li>
+					<li class="bin_stop_serve_date">2016-02-04</li>
+				  </ul><ul>
+					<li class="bin_stop_serve_title"><a target="_blank" title="关于倡导文明投放物回垃圾的通知" href="/index.php?s=/article/view/id/843">关于倡导文明投放物回垃圾的通知</a></li>
+					<li class="bin_stop_serve_date">2016-02-03</li>
+				  </ul>			<div class="clear"></div>
+		</div>
+       </div>
+	  </div>
+  </div>
+  <!--服务公告-->
+  
+  <!--自助服务-->
+  <div class="ma_T">
+    <div class="bread_nav">
+      <div class="l fl"></div>
+      <div class="m new_w1 fl">
+	  	<div style="float:right; padding-right:20px;"><a target="_blank" href="/index.php?s=/page/zizhu/id/8" class="more fr"></a></div>
+        <h1>自助服务</h1>
+      </div>
+      <div class="r fl"></div>
+    </div>
+    <div class="l_block new_h3 fwzn">
+      <div class=“binbin_ser_box” style="overflow:hidden">
+		  <div class="bin-service-self-box">
+			 <ul>
+						 <li class="bin-service-self-ps" ><a target="_blank" href="/index.php?s=/page/zxcx/id/75.html"><img src="/Uploads/image/20140714/53c37f95d3385.jpg" width="56" height="56" /></a></li>
+						 <li class="bin-service-self-text" ><a target="_blank" href="/index.php?s=/page/zxcx/id/75.html">自来水</a></li>
+					   </ul><ul>
+						 <li class="bin-service-self-ps" ><a target="_blank" href="/index.php?s=/page/zxcx/id/82.html"><img src="/Uploads/image/20140714/53c381898dce2.jpg" width="56" height="56" /></a></li>
+						 <li class="bin-service-self-text" ><a target="_blank" href="/index.php?s=/page/zxcx/id/82.html">天然气</a></li>
+					   </ul><ul>
+						 <li class="bin-service-self-ps" ><a target="_blank" href="/index.php?s=/page/zxcx/id/88.html"><img src="/Uploads/image/20140714/53c393b49eefc.jpg" width="56" height="56" /></a></li>
+						 <li class="bin-service-self-text" ><a target="_blank" href="/index.php?s=/page/zxcx/id/88.html">供热</a></li>
+					   </ul><ul>
+						 <li class="bin-service-self-ps" ><a target="_blank" href="/index.php?s=/page/content/id/128.html"><img src="/Uploads/image/20140714/53c38a4984511.jpg" width="56" height="56" /></a></li>
+						 <li class="bin-service-self-text" ><a target="_blank" href="/index.php?s=/page/content/id/128.html">公交</a></li>
+					   </ul><ul>
+						 <li class="bin-service-self-ps" ><a target="_blank" href="/index.php?s=/page/content/id/94.html"><img src="/Uploads/image/20140714/53c384fa3cd5d.jpg" width="56" height="56" /></a></li>
+						 <li class="bin-service-self-text" ><a target="_blank" href="/index.php?s=/page/content/id/94.html">垃圾清运</a></li>
+					   </ul><ul>
+						 <li class="bin-service-self-ps" ><a target="_blank" href="/index.php?s=/page/content/id/121.html"><img src="/Uploads/image/20140714/53c38a2a3501a.jpg" width="56" height="56" /></a></li>
+						 <li class="bin-service-self-text" ><a target="_blank" href="/index.php?s=/page/content/id/121.html">空气检测</a></li>
+					   </ul><ul>
+						 <li class="bin-service-self-ps" ><a target="_blank" href="/index.php?s=/page/content/id/97.html"><img src="/Uploads/image/20140714/53c3858e9f3d2.jpg" width="56" height="56" /></a></li>
+						 <li class="bin-service-self-text" ><a target="_blank" href="/index.php?s=/page/content/id/97.html">垃圾气力</a></li>
+					   </ul><ul>
+						 <li class="bin-service-self-ps" ><a target="_blank" href="/index.php?s=/page/content/id/111.html"><img src="/Uploads/image/20140714/53c387b78d81d.jpg" width="56" height="56" /></a></li>
+						 <li class="bin-service-self-text" ><a target="_blank" href="/index.php?s=/page/content/id/111.html">景观</a></li>
+					   </ul><ul>
+						 <li class="bin-service-self-ps" ><a target="_blank" href="/index.php?s=/page/content/id/101.html"><img src="/Uploads/image/20140714/53c3863216e21.jpg" width="56" height="56" /></a></li>
+						 <li class="bin-service-self-text" ><a target="_blank" href="/index.php?s=/page/content/id/101.html">排水</a></li>
+					   </ul><ul>
+						 <li class="bin-service-self-ps" ><a target="_blank" href="/index.php?s=/page/content/id/106.html"><img src="/Uploads/image/20140714/53c386dcb910d.jpg" width="56" height="56" /></a></li>
+						 <li class="bin-service-self-text" ><a target="_blank" href="/index.php?s=/page/content/id/106.html">桥梁</a></li>
+					   </ul>		  
+			<div class="clear"></div>
+		</div>
+	  </div>   
+    </div>
+  </div>
+  <!--自助服务-->
+  <!--轮换start-->
+
+  <!--政策法规 tab start-->
+  <div class="tabbox  ma_T" id="statetab">
+    <div class="bread_nav">
+      <div class="l fl"></div>
+      <div class="m new_w1 fl">
+
+        <ul class="tab tabbtn">
+          <li>
+              <h1>防洪防汛</h1>
+            </li><li>
+              <h1>常见问题</h1>
+            </li><li>
+              <h1>服务标准</h1>
+            </li><li>
+              <h1>政策法规</h1>
+            </li>        </ul>
+      </div>
+      <div class="r fl"></div>
+    </div>
+    
+      <div class="l_block tabcon" style="height:142px; padding-top:20px;">
+        <a target="_blank" href="/index.php?s=/article/index/id/199" class="fr"
+           style="position:absolute; right:20px; bottom:173px;-index:999;"><img src="/public/images/more.png"></a>
+                <ul class="zcfg zcfg_newh">
+                              <li><a target="_blank" href="/index.php?s=/article/view/id/528"
+                   title="天津生态城市政景观有限公司防汛抢险说明">天津生态城市政景观有…</a></li><li><a target="_blank" href="/index.php?s=/article/view/id/501"
+                   title=" 防汛预警和应急响应等级如何划分">防汛预警和应急响应等…</a></li><li><a target="_blank" href="/index.php?s=/article/view/id/495"
+                   title="怎样抢救被雷击伤的人？ ">怎样抢救被雷击伤的人…</a></li><li><a target="_blank" href="/index.php?s=/article/view/id/494"
+                   title="如何防御雷电？">如何防御雷电？</a></li><li><a target="_blank" href="/index.php?s=/article/view/id/492"
+                   title="当突遇洪水时，如何避险？">当突遇洪水时，如何避…</a></li><li><a target="_blank" href="/index.php?s=/article/view/id/491"
+                   title="行车遇险自救  ">行车遇险自救</a></li>        </ul>
+      </div>
+      <div class="l_block tabcon" style="height:142px; padding-top:20px;">
+        <a target="_blank" href="/index.php?s=/article/index/id/7" class="fr"
+           style="position:absolute; right:20px; bottom:173px;-index:999;"><img src="/public/images/more.png"></a>
+                <ul class="zcfg zcfg_newh">
+                              <li><a target="_blank" href="/index.php?s=/article/view/id/193"
+                   title="如何变更能源服务卡卡号？">如何变更能源服务卡卡…</a></li><li><a target="_blank" href="/index.php?s=/article/view/id/191"
+                   title="如何办理开通有线电视业务？">如何办理开通有线电视…</a></li><li><a target="_blank" href="/index.php?s=/article/view/id/190"
+                   title="如何办理开通联通网络业务？">如何办理开通联通网络…</a></li><li><a target="_blank" href="/index.php?s=/article/view/id/189"
+                   title="购电流程？">购电流程？</a></li><li><a target="_blank" href="/index.php?s=/article/view/id/186"
+                   title="如何交纳2014-2015年度采暖费？">如何交纳2014-2…</a></li><li><a target="_blank" href="/index.php?s=/article/view/id/166"
+                   title="生活垃圾分类知识介绍">生活垃圾分类知识介绍</a></li>        </ul>
+      </div>
+      <div class="l_block tabcon" style="height:142px; padding-top:20px;">
+        <a target="_blank" href="/index.php?s=/article/index/id/6" class="fr"
+           style="position:absolute; right:20px; bottom:173px;-index:999;"><img src="/public/images/more.png"></a>
+        <dl class="zcfg">
+	            <dt>
+	              <a target="_blank" href="/index.php?s=/Article/view/id/55" title="居民用能收费标准"><img src="/Uploads/image/20140610/5396d596dce44.jpg"/></a>
+	            </dt>
+	            <dd>
+	              <a target="_blank" href="/index.php?s=/Article/view/id/55" title="居民用能收费标准">
+	                <h2>居民用能收费标准</h2>
+	              </a>
+	
+	              <p>	依据用能性质按照天津市政府及中新天津生态城管委会…</p>
+	              <a target="_blank" href="/index.php?s=/Article/view/id/55" title="居民用能收费标准">详细>></a>
+	            </dd>
+	          </dl>        <ul class="zcfg zcfg_newh">
+                              <li><a target="_blank" href="/index.php?s=/article/view/id/171"
+                   title="排水养护服务时限">排水养护服务时限</a></li><li><a target="_blank" href="/index.php?s=/article/view/id/170"
+                   title="市政道路养护服务时限">市政道路养护服务时限</a></li><li><a target="_blank" href="/index.php?s=/article/view/id/59"
+                   title="道路环卫服务承诺">道路环卫服务承诺</a></li><li><a target="_blank" href="/index.php?s=/article/view/id/58"
+                   title="能源运营服务标准">能源运营服务标准</a></li><li><a target="_blank" href="/index.php?s=/article/view/id/57"
+                   title="企事业单位和个人租赁垃圾桶收费标准">企事业单位和个人租赁…</a></li><li><a target="_blank" href="/index.php?s=/article/view/id/56"
+                   title="居民生活垃圾收费标准">居民生活垃圾收费标准</a></li>        </ul>
+      </div>
+      <div class="l_block tabcon" style="height:142px; padding-top:20px;">
+        <a target="_blank" href="/index.php?s=/article/index/id/5" class="fr"
+           style="position:absolute; right:20px; bottom:173px;-index:999;"><img src="/public/images/more.png"></a>
+                <ul class="zcfg zcfg_newh">
+                              <li><a target="_blank" href="/index.php?s=/article/view/id/154"
+                   title="室内环境及空气质量相关标准">室内环境及空气质量相…</a></li><li><a target="_blank" href="/index.php?s=/article/view/id/52"
+                   title="天津市供热行业服务规范（试行）">天津市供热行业服务规…</a></li><li><a target="_blank" href="/index.php?s=/article/view/id/51"
+                   title="天津市集中供热设施管理办法（新）">天津市集中供热设施管…</a></li><li><a target="_blank" href="/index.php?s=/article/view/id/50"
+                   title="天津市供热室内温度测量管理办法（新）">天津市供热室内温度测…</a></li><li><a target="_blank" href="/index.php?s=/article/view/id/49"
+                   title="天津市供热采暖收费管理办法（新） ">天津市供热采暖收费管…</a></li><li><a target="_blank" href="/index.php?s=/article/view/id/48"
+                   title="天津市供热采暖费退还管理规定（新）">天津市供热采暖费退还…</a></li>        </ul>
+      </div>  </div>
+  <script type="text/javascript" src="/public/js/index_tab.js"></script>
+  <!--tab end-->
+  <!--轮换end-->
+</div>
+<div class="right_side">
+  <div class="zxjf"><a target="_blank" href="/index.php?s=/article/down"><img src="/public/images/img_fee.jpg"/></a></div>
+  <!--区域动态-->
+  <div style="margin-top:11px;">
+    <div class="bread_nav">
+      <div class="l fl"></div>
+      <div class="m fl" style="width:225px;">
+        <h1 class="fl">区域动态</h1><a target="_blank" href="/index.php?s=/article/energy/id/161" class="more fr"></a>
+
+      </div>
+
+      <div class="r fl"></div>
+    </div>
+    <div class="l_block list gg_con" style="height:265px; overflow:hidden;">
+      <ul>
+                <li>
+				<!-- start update by wanghispeng 2014-05-28 -->
+				<a target="_blank" title="国家动漫园靠市场机制推进京津冀协同成效显著" href="/index.php?s=/article/view1/id/890">国家动漫园靠市场机制…</a>
+				<span style="width: 65px;float: right;text-align:right;">2016-04-08</span>
+				<!-- end update by wanghispeng 2014-05-28 -->
+			  </li><li>
+				<!-- start update by wanghispeng 2014-05-28 -->
+				<a target="_blank" title="信息园公司积极开展产业招商培训" href="/index.php?s=/article/view1/id/887">信息园公司积极开展产…</a>
+				<span style="width: 65px;float: right;text-align:right;">2016-04-05</span>
+				<!-- end update by wanghispeng 2014-05-28 -->
+			  </li><li>
+				<!-- start update by wanghispeng 2014-05-28 -->
+				<a target="_blank" title="能源公司举办“安全生产法律法规及事故案例分析”培训" href="/index.php?s=/article/view1/id/886">能源公司举办“安全生…</a>
+				<span style="width: 65px;float: right;text-align:right;">2016-04-05</span>
+				<!-- end update by wanghispeng 2014-05-28 -->
+			  </li><li>
+				<!-- start update by wanghispeng 2014-05-28 -->
+				<a target="_blank" title="生态城全力推进景区建设 吸引京津冀游客 打造中国版“奥兰多”" href="/index.php?s=/article/view1/id/884">生态城全力推进景区建…</a>
+				<span style="width: 65px;float: right;text-align:right;">2016-04-01</span>
+				<!-- end update by wanghispeng 2014-05-28 -->
+			  </li><li>
+				<!-- start update by wanghispeng 2014-05-28 -->
+				<a target="_blank" title="宗国英深入中新天津生态城调研 坚持高标准高水平 开创发展新局面" href="/index.php?s=/article/view1/id/883">宗国英深入中新天津生…</a>
+				<span style="width: 65px;float: right;text-align:right;">2016-03-31</span>
+				<!-- end update by wanghispeng 2014-05-28 -->
+			  </li><li>
+				<!-- start update by wanghispeng 2014-05-28 -->
+				<a target="_blank" title="中新生态城将再添一批名校，满足区域学生入学需求" href="/index.php?s=/article/view1/id/882">中新生态城将再添一批…</a>
+				<span style="width: 65px;float: right;text-align:right;">2016-03-31</span>
+				<!-- end update by wanghispeng 2014-05-28 -->
+			  </li><li>
+				<!-- start update by wanghispeng 2014-05-28 -->
+				<a target="_blank" title="生态城绿建院加入国际被动式房屋协会" href="/index.php?s=/article/view1/id/880">生态城绿建院加入国际…</a>
+				<span style="width: 65px;float: right;text-align:right;">2016-03-30</span>
+				<!-- end update by wanghispeng 2014-05-28 -->
+			  </li><li>
+				<!-- start update by wanghispeng 2014-05-28 -->
+				<a target="_blank" title="新区动漫游戏产业叫响全国" href="/index.php?s=/article/view1/id/877">新区动漫游戏产业叫响…</a>
+				<span style="width: 65px;float: right;text-align:right;">2016-03-28</span>
+				<!-- end update by wanghispeng 2014-05-28 -->
+			  </li><li>
+				<!-- start update by wanghispeng 2014-05-28 -->
+				<a target="_blank" title="新加坡商品城4月底开张纳客" href="/index.php?s=/article/view1/id/874">新加坡商品城4月底开…</a>
+				<span style="width: 65px;float: right;text-align:right;">2016-03-24</span>
+				<!-- end update by wanghispeng 2014-05-28 -->
+			  </li>      </ul>
+    </div>
+  </div>
+  <!--区域动态-->
+  <!--合同预约登记-->
+  <div class="im_li ma_T4">
+      <a target="_blank"
+                  href="/index.php?s=/contract/index/id/73.html"        ><img width="243" height="180" src="/Uploads/image/20150831/55e4097918f2d.jpg" alt="合同预约登记"/></a>
+  </div>
+  <!--合同预约登记-->
+  
+  <!--便民信息-->
+  <div style="margin-top:12px;">
+    <div class="bread_nav">
+      <div class="l fl"></div>
+      <div class="m fl" style="width:225px;">
+        <h1>便民信息</h1>
+      </div>
+      <div class="r fl"></div>
+    </div>
+    <div class="l_block new_h3 fwzn">
+      <div class=“binbin_ser_box” style="overflow:hidden">
+		  <div class="bian-min-service-self-box">
+			 <ul>
+				 <li class="bin-service-self-ps" ><a target="_blank" href="/index.php?s=/page/views/id/60.html"><img src="/Uploads/image/20140714/53c39987222f5.jpg" width="56" height="56" /></a></li>
+				 <li class="bin-service-self-text" ><a target="_blank" href="/index.php?s=/page/views/id/60.html">商业</a></li>
+			   </ul><ul>
+				 <li class="bin-service-self-ps" ><a target="_blank" href="/index.php?s=/page/views/id/59.html"><img src="/Uploads/image/20140714/53c399646cc79.jpg" width="56" height="56" /></a></li>
+				 <li class="bin-service-self-text" ><a target="_blank" href="/index.php?s=/page/views/id/59.html">银行</a></li>
+			   </ul><ul>
+				 <li class="bin-service-self-ps" ><a target="_blank" href="/index.php?s=/page/views/id/58.html"><img src="/Uploads/image/20140714/53c398843ee1f.jpg" width="56" height="56" /></a></li>
+				 <li class="bin-service-self-text" ><a target="_blank" href="/index.php?s=/page/views/id/58.html">教育</a></li>
+			   </ul><ul>
+				 <li class="bin-service-self-ps" ><a target="_blank" href="/index.php?s=/page/views/id/57.html"><img src="/Uploads/image/20140714/53c398df2a9be.jpg" width="56" height="56" /></a></li>
+				 <li class="bin-service-self-text" ><a target="_blank" href="/index.php?s=/page/views/id/57.html">医疗</a></li>
+			   </ul><ul>
+				 <li class="bin-service-self-ps" ><a target="_blank" href="/index.php?s=/page/views/id/56.html"><img src="/Uploads/image/20140714/53c398b15368e.jpg" width="56" height="56" /></a></li>
+				 <li class="bin-service-self-text" ><a target="_blank" href="/index.php?s=/page/views/id/56.html">社区</a></li>
+			   </ul><ul>
+				 <li class="bin-service-self-ps" ><a target="_blank" href="/index.php?s=/page/views/id/55.html"><img src="/Uploads/image/20140714/53c3992a0d582.jpg" width="56" height="56" /></a></li>
+				 <li class="bin-service-self-text" ><a target="_blank" href="/index.php?s=/page/views/id/55.html">通信</a></li>
+			   </ul>			<div class="clear"></div>
+		</div>
+	  </div>
+	</div>   
+  </div>
+  <!--便民信息-->
+  
+  <!--大家都在办理-->
+  <div style="margin-top:12px;">
+    <div class="bread_nav">
+      <div class="l fl"></div>
+      <div class="m fl" style="width:225px;">
+        <h1>大家都在办理</h1>
+      </div>
+      <div class="r fl"></div>
+    </div>
+    <div class="l_block list banli" style="height:162px;">
+      <ul>
+        <li><span class="num01"></span><a target="_blank" title="费用查询" href="/index.php?s=/page/lsfy/id/13">费用查询</a></li>
+        <li><span class="num02"></span><a target="_blank" title="用量查询" href="/index.php?s=/page/lsyn/id/14">用量查询</a></li>
+        <li><span class="num03"></span><a target="_blank" title="报修服务" href="/index.php?s=/business/bx/id/17">报修服务</a></li>
+        <li><span class="num04"></span><a target="_blank" title="开通服务" href="/index.php?s=/business/kt/id/15">开通服务</a></li>
+      </ul>
+    </div>
+  </div>
+  <!--大家都在办理-->
+</div>
+</div>
+</div>
+ <!--友情链接-->
+<div style="text-align:center;margin-top:5px;margin-bottom:5px;">
+	
+</div>
+<!--友情链接-->
+<div class="foot_block">
+  <div class="foot_nav">
+    <div style="padding-left:350px;width:1000px;"> 
+		<a href="http://www.eco-city.gov.cn/" title="中国-新加坡天津生态城" target="_blank"><img src="/Public/images/gwh-logo.jpg" alt="中国-新加坡天津生态城"></img></a>
+		<a href="http://www.tjeco-city.com/cn/index.asp" title="天津生态城投资开发有限公司" target="_blank"><img src="/Public/images/stc-logo.jpg" alt="天津生态城投资开发有限公司"></img></a>
+		<a href="http://www.tjeco.org/" title="中新天津生态城网上社区" target="_blank"><img src="/Public/images/sq-logo.jpg" alt="中新天津生态城网上社区"></img></a>
+		<a href="http://www.ecodreamers.com" title="生态梦网" target="_blank"><img src="/Public/images/stmw-logo.jpg" alt="生态梦网"></img></a>
+		<a href="http://www.tianjineco-city.com/" title="合资公司" target="_blank"><img src="/Public/images/tz-logo.jpg" alt="合资公司"></img></a>
+	</div>
+  </div>
+  <div class="foot_mes">  天津生态城公用事业客户服务平台 版权所有Copyright © 2014-2016 TIANJIN ECO-CITY Utilities Customer Service Platform All Reserved<br />
+    津ICP备12000779号-4</div>
+</div>
+
+<script type="text/javascript">
+$(function(){
+	
+	// 页面浮动面板
+	$("#floatPanel > .ctrolPanel > a.arrow").eq(0).click(function(){
+		$("html,body").animate({scrollTop :0}, 800);
+		return false;
+	});
+	$("#floatPanel > .ctrolPanel > a.arrow").eq(1).click(function(){
+		$("html,body").animate({scrollTop : $(document).height()}, 800);
+		return false;
+	});
+
+	var objPopPanel = $("#floatPanel > .popPanel");	
+	var w = objPopPanel.outerWidth();
+	
+	$("#floatPanel > .ctrolPanel > a.qrcode").bind({mouseover:function(){
+		objPopPanel.css("width","0px").show();
+		objPopPanel.animate({"width" : w + "px"},300);
+		return false;
+	},mouseout : function(){
+			objPopPanel.animate({"width" : "0px"},300);
+			return false;
+			objPopPanel.css("width",w + "px");
+		}	
+	});
+	
+});
+</script>
+
+<div id="floatPanel">
+
+	<div class="ctrolPanel">
+		<a class="arrow" href="#"><span>顶部</span></a>
+		<a class="contact" href="/index.php?s=/guestbook/lists/id/11" target="_blank"><span>建议</span></a>
+		<a class="qrcode" href="#"><span>微信二维码</span></a>
+		<!--<a class="qqkf" target="_blank" href="http://sighttp.qq.com/authd?IDKEY=605711998b022ca715cf6d04373d2ce18ec2250142cfac53"><span></span></a>-->
+		<a class="arrow" href="#"><span>底部</span></a>
+	</div>
+	
+	<div class="popPanel">
+		<div class="popPanel-inner">
+			<div class="qrcodePanel"><img src="/public/images/weixin.png" /><span>扫描二维码关注我为好友</span></div>
+			<div class="arrowPanel">
+				<div class="arrow01"></div>
+				<div class="arrow02"></div>
+			</div>
+		</div>
+	</div>
+	
+</div></div>
+</body>
+</html>
+<script>
+  $(function () {
+    $("#KinSlideshow").KinSlideshow({ isHasTitleBar: false, isHasTitleFont: false,
+      btn: {btn_bgColor: "#666666", btn_bgHoverColor: "#FF8A00", btn_fontColor: "#ffffff", btn_fontHoverColor: "#ffffff", btn_fontFamily: "Verdana", btn_borderWidth: 0, btn_bgAlpha: 1
+
+      }
+    });
+  })
+</script>   
+<script>
+  function getTab(num) {
+  	if(num ==0){
+		document.getElementById("tgnxx").style.display = "none";
+		document.getElementById("hdgg").style.display = "none";
+		document.getElementById("fwgg").style.display = "";
+	}
+  	else if(num ==1) {
+		document.getElementById("tgnxx").style.display = "";
+		document.getElementById("hdgg").style.display = "none";
+		document.getElementById("fwgg").style.display = "none";
+		document.getElementById('tgn').style.backgroundImage="url(/Public/images/tab_bg.jpg)";
+		document.getElementById('hd').style.backgroundImage="";
+	}
+	else {
+		document.getElementById("fwgg").style.display = "none";
+		document.getElementById("tgnxx").style.display = "none";
+		document.getElementById("hdgg").style.display = "";
+		document.getElementById('tgn').style.backgroundImage="";
+		document.getElementById('hd').style.backgroundImage="url(/Public/images/tab_bg.jpg)";
+	}
+  }
+</script> 
+<style>
+.mesWindow{border:#666 1px solid;}
+.mesWindowTop{border-bottom:#eee 1px solid;margin-left:4px;padding:3px;font-weight:bold;text-align:left;font-size:12px;}
+.mesWindowContent{margin:4px;font-size:12px;}
+.mesWindow .close{height:15px;width:28px;border:none;cursor:pointer;text-decoration:underline;background:#fff}
+</style>
+
+<script language="JavaScript1.2">
+var ie=document.all
+var dom=document.getElementById
+var ns4=document.layers
+var bouncelimit=32 //(must be divisible by 8)
+var curtop
+var direction="up"
+var boxheight=''
+function initbox(){
+	
+	document.getElementById("show").style.cssText="position: absolute;+margin-left:-10%;z-index:10005; width:100%; height:1450px; background-image:url(/Public/images/letter-an-bg.png);"
+	if (!dom&&!ie&&!ns4)
+		
+		return
+		crossobj=(dom)?document.getElementById("dropin").style : ie? document.all.dropin : document.dropin
+		/*scroll_top=(ie)? document.body.scrollTop : window.pageYOffset
+		crossobj.top=scroll_top-250*/
+		crossobj.visibility=(dom||ie)? "visible" : "show"
+		dropstart=setInterval("dropin()",50)
+}
+
+function dropin(){
+
+scroll_top=(ie)? document.body.scrollTop : window.pageYOffset
+if (parseInt(crossobj.top)<100+scroll_top)
+crossobj.top=parseInt(crossobj.top)+40
+else{
+clearInterval(dropstart)
+bouncestart=setInterval("bouncein()",50)
+}
+}
+
+function bouncein(){
+
+crossobj.top=parseInt(crossobj.top)-bouncelimit
+if (bouncelimit<0)
+bouncelimit+=8
+bouncelimit=bouncelimit*-1
+if (bouncelimit==0){
+clearInterval(bouncestart)
+}
+}
+
+function dismissbox(){
+
+document.getElementById("show").style.cssText=""
+if (window.bouncestart) clearInterval(bouncestart)
+crossobj.visibility="hidden";
+
+}
+
+function get_cookie(Name) {
+var search = Name + "="
+var returnvalue = ""
+
+if (document.cookie.length > 0) {
+offset = document.cookie.indexOf(search)
+if (offset != -1) {
+offset += search.length
+end = document.cookie.indexOf(";", offset)
+if (end == -1)
+end = document.cookie.length;
+returnvalue=unescape(document.cookie.substring(offset, end))
+}
+}
+return returnvalue;
+}
+
+function dropornot(){
+$("#tianqi").attr('src','http://tianqi.2345.com/plugin/widget/index.htm?s=3&z=2&t=1&v=0&d=1&k=&f=1&q=1&e=0&a=0&c=54527&w=180&h=26');
+if (get_cookie("droppedin")==""){
+window.onload=initbox
+document.cookie="droppedin=yes"
+}
+}
+dropornot()
+
+</script>

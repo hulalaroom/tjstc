@@ -1,0 +1,40 @@
+    <div class="hearder_top">
+        <div class="hearder_head">
+            <div class="hearder_font clearfix">
+                <div class="hearder_fontleft">
+                    <span>欢迎来到{$Think.config.site_name}！</span><span><a href=""><img src="__PUBLIC__/last/img/public_img/head_weibo.png"
+                                                                       alt=""></a></span><span><a href=""><img
+                    src="__PUBLIC__/last/img/public_img/head_weixin.png" alt=""></a></span>
+                    <a href="{:U('Article/down')}" style="color:#b7b7b7"><span><img src="__PUBLIC__/last/img/public_img/head_shouji.png" alt=""><span>移动应用</span><span class="top_jiantou"><img
+                        src="__PUBLIC__/last/img/public_img/top_jiantou.png" alt=""></span></span></a></div>
+                <div class="hearder_fontright">
+                    <a onclick="setHomepage(window.location.href);">设为首页</a>|
+                    <a onclick="javascript:addFavorite2()">加入收藏</a>|
+                    <a href="" class="tel_span"><span><img src="__PUBLIC__/last/img/public_img/tel.png" alt=""></span>客服热线：022-66885890</a>
+                </div>
+            </div>
+        </div>
+        <div class="hearder_logo clearfix">
+            <p class="logo"><a href="/"><img src="__PUBLIC__/last/img/public_img/logo.png" alt=""></a></p>
+            <!-- div class="home_weather clearfix">
+                <iframe id="fancybox-frame" name="fancybox-frame1534376700673" frameborder="0" scrolling="no" hspace="0" src="http://i.tianqi.com/index.php?c=code&a=getcode&id=35&h=55&w=200"></iframe>
+            </div -->
+            <div class="home_search">
+                <form name="form1" id="form1" action="{:U('Article/search')}" method="post">
+                    <input id="keys" name="keys" class="aaa" type="text" placeholder="输入您想要输入的内容" />
+                    <button onclick="return check()"> <img src="__PUBLIC__/last/img/public_img/head_search.png" alt="" /></button>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="home_link">
+        <div class="home_link_box">
+            <ul class="clearfix">
+                <li><a href="/" class="hoverbg02">首页</a></li>
+                <li><a href="{:U('User/index')}" class="blod"></a></li>
+                <li><a href="{:U('Article/cat','id=1')}">服务公告</a></li>
+                <li><a href="{:U('Article/cat','id=4')}">信息公开</a></li>
+                <li><a href="{:U('Article/fuwu','id=30')}" class="hoverbg03">服务指南</a></li>
+            </ul>
+        </div>
+    </div>

@@ -1,0 +1,305 @@
+<include file="Public:header" />
+<div class="main_block"> <include file="Public:top" />
+    <div class="content_block">
+        <div class="left_side fl">
+            <div class="l_menu"> 
+				 <!--上级菜单-->
+				{~$cat=get_info($cate,$pid);}
+				 <volist name="cat" id="m" key="l">
+					<a href="javascript:history.go(-1);" title="返回上一页">
+						<div class="bb_l_menu_title">
+							{$m.title} 
+						</div>
+					</a>
+				</volist>
+				<div class="left_other_menu">
+					{~$cat=get_child($cate,$pid);}
+					<volist name="cat" id="c" key="k"> <dl 
+
+							<eq name='c.id' value='$id'> class="hover"</eq>
+							>
+							<dt><a href="<notempty name='c.url'>{$c.url}<else/><empty name="c['tpl']">{:U($c['Model']['name'].'/index','id='.$c['id'])}<else/>{:U($c['Model']['name'].'/'.$c['tpl'],'id='.$c['id'])}</empty></notempty>"><img src="{$c.pic}"/></a>
+							<!--<img src="{$c.cat_pic}"/>-->
+							</dt>
+						   <dd> <a href="<notempty name='c.url'>{$c.url}<else/><empty name="c['tpl']">{:U($c['Model']['name'].'/index','id='.$c['id'])}<else/>{:U($c['Model']['name'].'/'.$c['tpl'],'id='.$c['id'])}</empty></notempty>">{$c.title}</a> <span>{$c.summary}</span> </dd>
+						</dl>
+					</volist></div>
+            </div>
+            <include file="Public:left" /></div>
+        <div class="main_con fr">
+            <div class="bread_nav">
+                <div class="l fl"></div>
+                <div class="m fl" style="line-height:30px;"> <span class="list_style"></span> <span>您当前的位置:</span> {$nav} </div>
+                <div class="r fl"></div>
+            </div>
+            <div class="artical">
+                <!-- begin -->
+                <form action="__URL__/insert" method="post" name="form2" id="form2">
+                    <table class="bdys" width="100%" border="0" cellspacing="0" cellpadding="0" align="center">
+                    <tr>
+                      <td align="right"><span>房间选择:</span></td>
+                        <td align="left" colspan=2>
+                        <select name="housecode" class="gu_select">
+                          <volist name="houselist" id="hc">
+                            <option value="{$hc.houseCode}">{$hc.address}</option>
+                          </volist>
+                        </select>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td align="right"><span>涉及行业:</span></td>
+                      <td align="left" colspan=2>
+					  	<select name="sjhy" onchange="changeselect_zzjs_net(this.value)">
+							<option value="环保" selected>环保</option>
+							<option value="能源">能源</option>
+						</select>
+                        <!--<select id="industry" name="sjhy" class="gu_select" onchange="changeselect_zzjs_net(this.value)">
+                          <volist name="industrylist" id="idty">
+                            <option value="{$idty}">{$idty}</option>
+                          </volist>
+						  <option value="环保" selected="selected">环保</option>
+						  <option value="能源">能源</option>
+                        </select>-->
+                      </td>
+                    </tr>
+                    <tr>
+                      <td align="right"><span>涉及种类:</span></td>
+                      <td align="left" colspan=2>
+					  	<select name="itemCode" id="itemCode">
+							<option value="终端设备维修预约" selected>终端设备维修预约</OPTION>
+						</select>
+                        <!--<select name="itemCode" id="itemCode" class="gu_select">
+                          <volist name="industrytype" id="type">
+                            <option value="{$type.itemCode}">{$type.itemName}</option>
+                          </volist>
+						    <option value="终端设备维修预约" selected="selected">终端设备维修预约</option>
+                         </select>-->
+                        </td>
+                    </tr>
+                    <tr>
+                        <td align="right"><span>联系人:</span></td>
+                        <td align="left" colspan=2><input type="" name="linkman" class="" size="" value="{$nickname}"></td>
+                    </tr>
+                    <tr>
+                        <td width="140" align="right"><span>联系方式:</span></td>
+                        <td align="left" colspan=2><input type="" name="phone" value="{$phone}" class="fl" size="" id="phone">    <div class="my_isright "><div id="phoneTip"></div></div></td>
+                    </tr>
+                    <!--<tr>
+                        <td align="right"><span>图片:</span></td>
+                        <td align="left" colspan=2><input type="" name="imgurl" value="" class="fl" size="" id="imgurl">
+                            <div class="my_isright " style="padding-left:15px;"><input id="file_upload" type="file"  multiple="true" name="file"></div></td>
+                    </tr>       
+
+                    <tr>
+                        <td width="140" align="right"><span>标题:</span></td>
+                        <td align="left" colspan=2><input size="53" type="text" name="title" class=" gu_title fl" size="" id="title"/>
+                            <div class="my_isright "><div id="titleTip"></div></div>
+                        </td>
+                    </tr>-->
+                    <tr>
+                        <td class="pa_5" align="right" valign="middle"><span>内容:</span></td>
+                        <td class="pa_5" align="left" colspan=2><textarea cols="37"rows="4" name="summary" class="gu_content fl" id="summary"></textarea><div class="my_isright "><div id="summaryTip"></div></div>
+                        </td>
+                    </tr>
+					<tr>
+						<td class="pa_5" align="right" valign="middle"><span>温馨提示:</span></td>
+                        <td class="pa_5" align="left" colspan=2><input type="text" size="65" style="border:0px;background-color:#fff;" value="在您提交预约后，会有客服与您联系，请确保您的电话畅通，谢谢!" disabled="disabled"></td>
+                    </tr>
+					<tr>
+						<td class="pa_5" align="right" valign="middle"><span>&nbsp;&nbsp;&nbsp;&nbsp;</span></td>
+						<td class="pa_5" align="left" colspan=2>当<span style="color:red;">"涉及种类"</span>为<span style="color:red;">“终端设备维修预约”</span>时，请您在<span style="color:red;">“内容”</span>里填写终端机的具体位置以及故障问题!</td>
+                        
+                    </tr>
+                    <tr class="btn00">
+                        <td></td>
+                        <td align="left"><input type="hidden" value="{$cat_id}" name="cat_id"/>
+                        <input type="reset" name="" class="btn1 Reset"  value="重 置" />
+                        <input type="submit" name="" class="btn1 Submit"  value="提 交"/></td>
+                    </tr>
+                </table>
+            </form>
+            <!-- end -->
+        </div>
+    </div>
+</div>
+</div>
+<include file="Public:footer" />
+<script type="text/javascript" src="__PUBLIC__/js/date/jquery-ym-datePlugin-0.1.js"></script>
+<link rel="stylesheet" href="__PUBLIC__/js/date/jquery-ui.css" />
+<link rel="stylesheet" id="skin" href="__PUBLIC__/js/date/jquery-ui-1.9.2.custom.min1.css" />
+<style>
+    .ui-datepicker-title span{ display: inline-block;}    
+</style>
+</body></html>
+<script type="text/javascript" src="__PUBLIC__/js/formValidator-4.1.3.min.js"></script>
+<script type="text/javascript" src="__PUBLIC__/js/formvalidatorregex.js"></script>
+<link rel="stylesheet" type="text/css" href="__ROOT__/Public/js/uploadify-v3.1/uploadify.css" media="all">
+<script type="text/javascript" src="__ROOT__/Public/js/uploadify-v3.1/jquery.uploadify-3.1.min.js"></script>
+<script type="text/javascript">
+var checklogin= '{$Think.session.checklogin}';
+    $(document).ready(function(){   
+        //提供回调函数，提供提交返回结果的处理   
+        var options = {
+             //beforeSubmit: check,
+            //提交前处理 
+            success: showResponse,
+            //处理完成 
+            resetForm: false,
+            dataType: 'json'
+        };    
+        $('#form2').submit(function() {
+            if ($.formValidator.pageIsValid('1')==true) 
+            { 
+                $(this).ajaxSubmit(options);
+                return false; 
+            } 
+
+          
+        });
+       
+        //初始化验证插件，如果提交出错，则弹出对话框，如果正确，则通过ajax提交表单请求。
+        $.formValidator.initConfig({autotip:true,formID:"form2",submitOnce:false,
+            onsuccess:function(msg){
+              
+                return false;},
+            onError:function(msg){}
+
+        });
+  
+  
+        //表单验证   
+       // $("#title").formValidator({oncorrect:"输入正确",onShow:"必填"}).inputValidator({min:1,max:50,onError:"1-50个字符,请确认"});
+        $("#summary").formValidator({oncorrect:"输入正确",onShow:"必填"}).inputValidator({min:1,max:400,onError:"1-400个字符,请确认"});
+        // $("#phone").formValidator({onShow:"请输入你的手机或电话",onFocus:"例：0577-88888888或11位手机号码",onCorrect:"输入正确",onEmpty:"不能为空"}).regexValidator({regExp:["tel","mobile"],dataType:"enum",onError:"格式不正确"});
+		$("#phone").formValidator({onShow:"请输入你的手机或电话",onFocus:"请输入你的手机或电话",onCorrect:"输入正确",onEmpty:"不能为空"}).regexValidator({regExp:["intege"],dataType:"enum",onError:"请输入正确联系方式"});
+        //上传
+        //上传
+        $('#file_upload').uploadify({
+            //                                'debug':true,
+            'width': 108,
+            'height': 28,
+            'queueID': 'queueID',
+            //校验数据
+           'formData'  : {'checklogin':checklogin},
+            'swf': '__ROOT__/Public/js/uploadify-v3.1/uploadify.swf',
+            //指定上传控件的主体文件，默认‘uploader.swf’
+            'uploader': '{:U("upimg","","")}',
+            //指定服务器端上传处理文件，默认‘upload.php’
+            'auto': true,
+            //手动上传
+            'buttonImage': '__ROOT__/Public/js/uploadify-v3.1/uploadify-upload.png',
+            //浏览按钮背景图片
+            'multi': false,
+            //单文件上传
+            'fileTypeExts': '*.gif; *.jpg; *.png;',
+            //允许上传的文件后缀
+            'fileSizeLimit': '2MB',
+            //上传文件的大小限制，单位为B, KB, MB, 或 GB
+            'successTimeout': 30,
+            //成功等待时间
+            'onUploadSuccess': function(file, data, response) { //每成功完成一次文件上传时触发一次
+                //                             $('#pics').append('<li><div><img src="'+data+'"></div><input  type="text" value="'+file.name+'" /><div><a href="">删除</a></div></li>');
+                $('#imgurl').val(data);
+            },
+            'onUploadError': function(file, data, response) { //当上传返回错误时触发
+                art.dialog({title: '失败',content: '上传失败了',time: 3});
+            }
+        });//上传end       
+        $('#industry').on('change', function() {
+            var idty = this.value;
+            $('#indy_type').html('');
+            $.ajax({
+                url: '{:U("Business/getIndustryType","",false)}',
+                type : 'POST',
+                async: false,
+                data : {idty: idty},
+                dataType: 'json',
+                success: function(ret){
+					
+                    var optionStr = [];
+                    if ('00' == ret.r_code) {
+                        $.each(ret.r_body, function(index, value) {
+							if(idty == '环保'){
+								optionStr.push('<option value="'+ value.ItemCode +'">' +value.ItemName+ "</option>");
+							}
+							if(idty == '能源' && value.ItemName != '能源经营服务'){
+								optionStr.push('<option value="'+ value.ItemCode +'">' +value.ItemName+ "</option>");
+							}
+                          /*optionStr.push('<option value="'+ value.ItemCode +'">' +value.ItemName+ "</option>");*/
+                        });
+                    }
+                    $('#indy_type').html(optionStr.join(''));
+                }
+            });
+        });
+    }); 
+    
+    //
+
+    function showResponse(res) {
+        //    alert(res.status);
+        art.dialog({
+            title: res.title,
+            content: res.message,
+           time: res.time
+        });
+        if (res.url) {
+            window.location.href = res.url;
+        }
+    } 
+   
+</script>
+<style>
+.uploadify {
+    float: left;
+}
+#mypics {
+    text-align: center;
+}
+#queueID {
+    display: none;
+}
+#mypics li {
+    float: left;
+    margin-top: 10px;
+    margin-left: 10px;
+}
+#mypics img {
+    padding:2px 4px;
+    border-collapse: separate;
+    border: 1px solid #d5e3ef;
+    width: 80px;
+    height: 100px;
+}
+#mypics input {
+    width: 80px;
+}
+.uploadify-button {
+    line-height: 30px!important;
+    text-align: left; 
+}
+</style>
+
+<script language="javascript">
+	var subcat=new Array();
+	var biglist=new Array('环保','能源');
+	subcat[0]=new Array('0','终端设备维修预约','终端设备维修预约')
+	subcat[1]=new Array('1','自来水','自来水')
+	subcat[2]=new Array('1','天然气','天然气')
+	subcat[3]=new Array('1','供热','供热')
+	function changeselect_zzjs_net(locationid)
+	{
+	for(j=0;j<biglist.length;j++)
+	if(biglist[j]==locationid){
+	locationid=j;
+	}
+	document.getElementById("itemCode").length=0;//初始化下拉列表，清空下拉数据
+	for(i=0;i<subcat.length;i++)
+	{
+	if(subcat[i][0]==locationid)
+	{
+	document.getElementById("itemCode").options[document.getElementById("itemCode").length]=new Option(subcat[i][1],subcat[i][2]);}//建立option
+	}
+	}
+	//-->
+</script>

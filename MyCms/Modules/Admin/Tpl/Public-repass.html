@@ -1,0 +1,53 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href='__PUBLIC__/css/common.css'>
+<script type="text/javascript" src="__PUBLIC__/js/jquery-1.7.1.min.js"></script>
+<script type="text/javascript" src="__PUBLIC__/js/base.js"></script>
+<title>无标题文档</title>
+</head>
+<body>
+<div id="append_parent"></div>
+<div class="container" id="cpcontainer">
+
+<div id="contentHeader">
+  <h3>修改密码</h3>
+  
+</div>
+<form action="{:U('Public/repass')}" method="post" name="form1">
+  <table class="content_list">
+    <tbody><tr>
+      <td class="tb_title">原密码：</td>
+    </tr>
+    <tr>
+        <td><input type="password" class="txt" name="pass" value="">
+    </td>
+    </tr>
+    <tr>
+      <td class="tb_title"> 新密码：</td>
+    </tr>
+    <tr>
+        <td><input type="password" class="txt" name="newpass" value="">
+       </td>
+    </tr>
+    
+    <tr>
+      <td class="tb_title">确认密码：</td>
+    </tr>
+
+    <tr>
+      <td><input type="password" class="txt" name="newpassok" value="">
+      </td>
+    </tr>
+   
+
+    <tr class="submit">
+      <td><input type="submit"  value="提交" class="button" tabindex="3"></td>
+    </tr>
+  </tbody></table>
+</form>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,82 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href='__PUBLIC__/css/common.css'>
+<script type="text/javascript" src="__PUBLIC__/js/jquery-1.7.1.min.js"></script>
+<script type="text/javascript" src="__PUBLIC__/js/base.js"></script>
+<title>无标题文档</title>
+</head>
+<body>
+<div id="append_parent"></div>
+<div class="container" id="cpcontainer">
+  <div id="contentHeader">
+    <h3>用户积分规则管理</h3>
+    <div class="searchArea">
+      <ul class="action left" >
+        <li><a href="__URL__/score_rule_index" class="actionBtn"><span>返回</span></a></li>      
+        <li ><a href="__URL__/score_rule_add" class="current"><span>录入</span></a></li>
+      </ul>
+      <div class="search right"> </div>
+    </div>
+  </div>
+  <eq name="type" value="add">
+  <form name="form1"  action="__URL__/score_rule_insert" method="post">
+  <else/>
+  <form name="form1"  action="__URL__/score_rule_update" method="post">
+    <input  name="id"  type="hidden" value="{$id}" />
+    </eq>
+    <table class="form_table">
+      <tr>
+        <td class="tb_title" >用户积分规则名称：</td>
+      </tr>
+      <tr >
+        <td >标题：<input size="30" maxlength="128" name="title"  type="text" value="{$title}" />
+        </td>
+      </tr>
+     <tr>
+        <td class="tb_title" >模块方法：</td>
+      </tr>
+      <tr >
+        <td >模块：<input size="10" maxlength="128" name="module"  type="text" value="{$module}" />
+        </td>
+      </tr>
+    
+      <tr >
+        <td >方法：<input size="10" maxlength="128" name="action"  type="text" value="{$action}" />
+        </td>
+      </tr>
+       <tr>
+        <td class="tb_title" >积分规则：</td>
+      </tr>
+            <tr >
+        <td >规则：<input size="10" maxlength="128" name="score"  type="text" value="{$score}" />
+        </td>
+      </tr>
+      <tr>
+        <td class="tb_title">状态：</td>
+      </tr>
+      <tr >
+        <td >状态：<select name="status">
+            <option value="1" 
+            <eq name="status" value="1"> selected="selected"</eq>
+            >启用
+            </option>
+            <option value="0" 
+            <eq name="status" value="0"> selected="selected"</eq>
+            >停用
+            </option>
+          </select>
+        </td>
+      </tr>
+         <tr>
+        <td>注释：验证规则在用户登录时保存在session中，所以后台修改规则后，要在用户下次登录后才可按规则加减积分</td>
+      </tr>
+      <tr class="submit">
+        <td colspan="2" ><input type="submit" name="editsubmit" value="提交" class="button" tabindex="3" /></td>
+      </tr>
+    </table>
+  </form>
+</div>
+</body>
+</html>

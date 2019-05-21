@@ -1,0 +1,117 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href='__PUBLIC__/css/common.css'>
+<script type="text/javascript" src="__PUBLIC__/js/jquery-1.7.1.min.js"></script>
+<script type="text/javascript" src="__PUBLIC__/js/base.js"></script>
+<title>用户基础信息，费用信息，用量信息</title>
+</head>
+<body>
+<div id="append_parent"></div>
+<div class="container" id="cpcontainer">
+  <div id="contentHeader">
+    <h3>用户基础信息，费用信息，用量信息</h3>
+    <div class="searchArea">
+      <ul class="action left" >
+		<volist name="houselist" id="hlist" key="k">
+			<li class="current"><a href="__URL__/infor/housecode/{$hlist.houseCode}/id/{$id}"  class="actionBtn"title="{$hlist.address}"><span>{$hlist.address|msubstr=0,5}</span></a></li>
+		</volist>
+        <li class="current"><a href="__URL__/index" class="actionBtn"><span>返回</span></a></li>
+      </ul>
+      <div class="search right"> </div>
+    </div>
+  </div>
+	<empty name="houselist">该用户没有绑定房间，所以查询不到相关信息！！！</empty>
+	<notempty name="houselist">
+		<table class="form_table">
+			<tr>
+			  <td colspan="4"><b>基础信息</b></td>
+			</tr>
+			<tr>
+			  <td width="20%">房间地址</td>
+			  <td width="30%" colspan="3">{$list['AADDRESS']}&nbsp;</td>
+			</tr>
+			<tr>
+			  <td width="20%">入住时间</td>
+			  <td width="30%">{$list['ENTERDATE']}&nbsp;</td>
+			  <td width="20%">采暖面积</td>
+			  <td width="30%">{$list['HCHARGEAREA']}（㎡）&nbsp;</td>
+			</tr>
+			<tr>
+			  <td width="20%">自来水表号</td>
+			  <td width="30%">{$list['COMPACT_ID']}&nbsp;</td>
+			  <td width="20%">天然气表号</td>
+			  <td width="30%">{$list['COMPACT_ID']}&nbsp;</td>
+			</tr>
+			<tr>
+			  <td width="20%">业主姓名</td>
+			  <td width="30%">{$list['OWNERNAME']}&nbsp;</td>
+			  <td width="20%">身份证号</td>
+			  <td width="30%">{$list['PAPERCODE']}&nbsp;</td>
+			</tr>
+			<tr>
+			  <td width="20%">代缴银行</td>
+			  <td width="30%">{$list['BANK']}&nbsp;</td>
+			  <td width="20%">能源卡号</td>
+			  <td width="30%">{$list['BANKNUMBER']}&nbsp;</td>
+			</tr>
+			<tr>
+			  <td colspan="4"><b>账单明细</b></td>
+			</tr>
+			<tr>
+			  <td colspan="4">当期水费：{$costlist[0]['DYSF']}元；当期用量：{$costlist[0]['SFYL']}吨；之前欠费：{$costlist[0]['ZQYSFZJ']}元，其中欠费本金{$costlist[0]['ZQYSF']}元，滞纳金{$costlist[0]['ZQYSFZNJ']}元。</td>
+			</tr>
+			<tr>
+			  <td colspan="4">当期燃气费：{$costlist[0]['DYRQF']}元；当期用量：{$costlist[0]['RQYL']}立方米；之前欠费：{$costlist[0]['ZQYRQFZJ']}元，其中欠费本金{$costlist[0]['ZQYRQF']}元，滞纳金{$costlist[0]['ZQYRQFZNJ']}元。</td>
+			</tr>
+			<tr>
+			  <td colspan="4">当期采暖费：{$costlist[0]['DNCNF']}元；采暖面积：{$costlist[0]['CNFYL']}平方米；之前欠费：{$costlist[0]['ZQNDCNFZJ']}元，其中欠费本金{$costlist[0]['ZQNDCNF']}元，滞纳金{$costlist[0]['ZQNDCNFZNJ']}元。</td>
+			</tr>
+		</table>
+		
+
+		<table class="form_table">
+		  <tr>
+			<td colspan="4"><b>历史用量及费用</b></td>
+	      </tr>
+		  <tr>
+			<td class="tb_title" width="20%">房间地址</td>
+			<td class="tb_title" width="15%">收费期</td>
+			<td class="tb_title" width="15%">能源类型</td>
+			<td class="tb_title">用量</td>
+			<td class="tb_title" width="15%">参考费用(元)</td>
+		  </tr>
+		  <volist name="powerlist" id="power" key="k">
+		    <if condition="$power.HOUSECODE eq $housecode">
+				<tr>
+					<td width="15%">{$power.ADDRESS}</td>
+					<td width="20%">{$power.CHARGEMONTH}</td>
+					<td width="15%">{$power.ITEMNAME}</td>
+					<td width="15%">{$power.POINTNUMBER}</td>
+					<td width="15%">{$power.CASH}</td>
+				</tr>
+			</if>
+		  </volist>
+		</table>
+	</notempty>
+    <!--<table class="form_table">
+		  <tr>
+			<td class="tb_title" width="15%">序号</td>
+			<td class="tb_title" width="20%">账号</td>
+			<td class="tb_title">登录时间</td>
+			<td class="tb_title" width="15%">登录入口</td>
+		  </tr>
+		  <empty name="houselist"><tr><td td colspan="4" style="text-align:center">暂时没有数据！！！</td></tr></empty>
+		  <volist name="houselist" id="hlist" key="k">
+			<if condition="$k eq 1">
+				<h1 class="hover fl tab" id="housetab{$k}" onClick="javascript:click_search(this,'{$hlist.houseCode}',{$k})" ><a title="{$hlist.address}">{$hlist.address|msubstr=0,4}</a>
+				&nbsp;&nbsp;&nbsp;{$hlist.houseCode}</h1>
+			<else />
+				<h1 class="fl tab" id="housetab{$k}" onClick="javascript:click_search(this,'{$hlist.houseCode}',{$k})" ><a title="{$hlist.address}">{$hlist.address|msubstr=0,4}</a>&nbsp;&nbsp;&nbsp;{$hlist.houseCode}</h1>
+			</if>	
+		  </volist>
+    </table>-->
+</div>
+</body>
+</html>

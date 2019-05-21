@@ -1,0 +1,248 @@
+<include file="Public:header1"/>
+<div class="lishizhangdan_banner">
+	<div class="content">
+		<p class="jiaofei_banner_01 font_yinying">当期账单</p>
+<p class="jiaofei_banner_03 "></p>
+<p class="jiaofei_banner_02 font_yinying">用量明细，实时掌握</p>
+		
+	</div>
+
+	
+</div>
+    <div class="content_bg">
+	<div class="content history_content">
+	<p class="jiaofei_dqwz history_dqwz">当前位置：<a href="/">首页</a> &nbsp;&nbsp;&gt;&nbsp;&nbsp;<a href="">我的5890</a>&nbsp;&nbsp;&gt;&nbsp;&nbsp;<a href="">在线缴费</a>&nbsp;&nbsp;&gt;&nbsp;&nbsp;<span class="green">当期账单</span></p>	
+	<div class="history_bill">
+		<div class="history_inputbox clearfix">
+		<div class="history_inputboxone"><span>房间编号：</span>
+		
+		<div class="item_one">	<!-- 这里开始 -->		
+					<div class="filter-box" id="aaa">
+				<div class="filter-text">
+					<input class="filter-title" type="text" readonly placeholder="pleace select" />
+					<i class="icon icon-filter-arrow"></i>
+				</div>
+				<select name="filter">
+					<volist name="houselist" id="hc">
+					   <option value="{$hc.houseCode}" <if condition="$hc.houseCode eq $code">selected="selected"</if>>{$hc.address}</option>
+					 </volist>
+					
+				</select>
+			</div>
+			<!-- 这里结束 --></div>
+
+		</div>	
+
+		<button><span>查询</span></button>		
+		<a class="cklszd_btn" href="{:U('Page/lszd','id=200')}"><span>查看历史账单</span></a>	
+		</div>		
+	</div>	
+
+
+
+<div class="zaixianjiaofei_table">
+	<table style="width: 100%;" class="history_table">
+
+<tbody><tr class="zaixianjiaofei_tabletr">
+	<th style="width: 17%; border-radius: 5px 0 0 0;">收费项目</th>
+	<th style="width: 17%;">收费期</th>
+	<th style="width: 17%;">当期用量</th>
+	<th style="width: 17%;">当期费用(人民币/￥)</th>
+	<th style="width: 16%;">欠费状态</th>	
+	<th style="width: 16%; border-radius: 0 5px 0 0;">缴费</th>
+</tr>	
+
+<tr class="zaixianjiaofei_tabletrone dangqizhangdan_trhover">
+<td><span><img src="__PUBLIC__/style/img/water.png" alt=""></span>自来水</td>
+	<td>201807</td>
+	<td>23.5t</td>
+	<td>55.86</td>
+	<td class="orange" >已缴</td>
+	<td><button class="btn03 dqzd_btn"><span>缴费</span></button></td>
+</tr>	
+ 
+ <tr class="zaixianjiaofei_tabletrone dangqizhangdan_trhover">
+<td><span><img src="__PUBLIC__/style/img/tianranqi.png" alt=""></span>天然气</td>
+	<td>201807</td>
+	<td>5N(m³)</td>
+	<td>35.13</td>
+	<td class="orange" >未缴</td>
+	<td><button class="btn03"><span>缴费</span></button></td>
+</tr>
+
+
+<tr class="zaixianjiaofei_tabletrone dangqizhangdan_trhover">
+<td><span><img src="__PUBLIC__/style/img/gongnuan.png" alt=""></span>供热</td>
+	<td>201807</td>
+	<td>78.34m³</td>
+	<td>1926.33</td>
+	<td class="orange" >已缴</td>
+	<td><button class="btn03 dqzd_btn"><span>缴费</span></button></td>
+</tr>
+
+
+<tr class="zaixianjiaofei_tabletrone dangqizhangdan_trhover">
+<td><span><img src="__PUBLIC__/style/img/water_01.png" alt=""></span>在生水</td>
+	<td>2018</td>
+	<td>15t</td>
+	<td>66.65</td>
+	<td class="orange">已缴</td>
+	<td><button class="btn03 dqzd_btn"><span>缴费</span></button></td>
+
+</tr>
+</tbody></table>
+    <div class="tanceng clearfix" style="display:none">
+    <div class="tanceng_content">
+    	<div class="tanceng_border">
+    	<p class="clearfix"><span class="tancengleft">采暖面积</span><span class="tancengright">78.34</span></p>
+    	<p class="clearfix"><span class="tancengleft">面积单价</span><span class="tancengcenter">*</span><span class="tancengright">25.00</span></p>	
+    	</div>
+    	
+    	<div class="tanceng_border" style="display:none">
+    	<p class="clearfix"><span class="tancengleft">面积热费</span><span class="tancengcenter">=</span><span class="tancengright">1958.50</span></p>
+    	<p class="clearfix"><span class="tancengleft">优惠金额</span><span class="tancengcenter">=</span><span class="tancengright">58.50</span></p>
+    	</div>
+        <div class="tanceng_border">
+    	<p class="clearfix"><span class="tancengleft">费用小计</span><span class="tancengcenter">=</span><span class="tancengright">1900.00</span></p>
+    	<p class="clearfix"><span class="tancengleft">减免费用</span><span class="tancengcenter">=</span><span class="tancengright">200.00</span></p>
+        </div>	
+    
+        <div class="tanceng_border">
+    	<p class="clearfix"><span class="tancengleft">费用小计</span><span class="tancengcenter">=</span><span class="tancengright">1700.00</span></p> 
+      	<p class="clearfix"><span class="tancengleft">减免费用</span><span class="tancengcenter">=</span><span class="tancengright">200.00</span></p>
+        </div>    	
+    	<p class="clearfix"><span class="tancengleft">合计</span><span class="tancengcenter">=</span><span class="tancengright">1400.00</span></p>   	
+
+	 
+
+	
+    </div>
+ <div class="tanceng tanceng01 clearfix">
+    <div class="tanceng_content">
+     <div class="tanceng_border">
+     <p class="clearfix"><span class="tancengleft">采暖面积</span><span class="tancengright">78.34</span></p>
+     <p class="clearfix"><span class="tancengleft">面积单价</span><span class="tancengcenter">*</span><span class="tancengright">25.00</span></p> 
+     </div>
+     
+     <div class="tanceng_border">
+     <p class="clearfix"><span class="tancengleft">面积热费</span><span class="tancengcenter">=</span><span class="tancengright">1958.50</span></p>
+     <p class="clearfix"><span class="tancengleft">停费系数</span><span class="tancengcenter">*</span><span class="tancengright">0.20</span></p>
+     </div>
+   
+     <p class="clearfix"><span class="tancengleft">合计</span><span class="tancengcenter">=</span><span class="tancengright">1400.00</span></p>    
+ 
+    </div>
+
+</div>
+
+</div>
+
+<div class="dangqizhangdan_chart clearfix">
+	
+  <div class="water_chart">
+   <div class="water_dial"></div>
+  <div class="pointer"></div>
+  <div class="yijie">
+  	<span>一阶</span>
+  	<span>4.90￥/m³</span>
+  </div>
+  <div class="erjie">
+  	<span>二阶</span>
+  	<span>6.20￥/m³</span>
+  </div>
+    <div class="sanjie">
+  	<span>三阶</span>
+  	<span>8.00￥/m³</span>
+  </div>
+  <div class="kedu01" >180m³</div>	
+  <div class="kedu02" >240m³</div>	
+   <div class="dqyl" >当前用量212m³</div>	
+  <div class="zlsdbs" >2018年自来水表初始读数1000m³</div>	 
+  </div>	
+	
+	
+	
+	
+	
+  <div class="gas_chart">
+  	   <div class="water_dial"></div>
+  <div class="pointer"></div>
+  <div class="yijie">
+  	<span>一阶</span>
+  	<span>2.40￥/Nm³</span>
+  </div>
+  <div class="erjie">
+  	<span>二阶</span>
+  	<span>2.88￥/Nm³</span>
+  </div>
+    <div class="sanjie">
+  	<span>三阶</span>
+  	<span>3.60￥/Nm³</span>
+  </div>
+  <div class="kedu01" >300Nm³</div>	
+  <div class="kedu02" >600Nm³</div>	
+   <div class="dqyl" >当前用量489Nm³</div>	
+  <div class="zlsdbs" >2018年天然气表初始读数1000m³</div>	
+  	
+  </div>
+  
+  <div class="heating_chart">
+  	   <div class="water_dial"></div>
+  <div class="pointer"></div>
+   <div class="erjie">
+  	<span>收费面积</span>
+  	<span>用热量</span>
+    <span>10000KW/h</span>
+  </div>
+  <div class="kedu01" >供热面积收费占比50%</div>	
+  <div class="kedu02" >供热面积收费占比100%</div>	
+   <div class="dqyl" >当前用热量10001KW/h</div>	
+  <div class="zlsdbs" >2018年热表初始读数8000KW/h</div>	
+  	
+  </div>
+  
+</div>
+
+<div class="dianzifapiao_warm">
+<p class="warm">温馨提示：<br>
+<span>计量结算费用计算公式：采暖费=基本热费+计量热费=采暖面积*面积单价*0.3+(热表终止数-热表初始数)*0.13</span><br />
+ <span>交费时间：</span>用户应在每月15日前通过银行窗口、ATM、网银等方式向能源服务卡内存入足够金额用以支付用水、用气费用。若您办理的能源服务卡尚未寄至手中，您可于每月15日前至能源窗口交费。<br />
+<span>能源公司提醒您：</span>请您按规定于每月15日前交清上月用水、用气费用，逾期未缴费的按日加收违约金。持能源服务卡用户，指定银行在结算日（每月15日）自动完成应收费用的扣缴。
+<span>本查询结果仅供参考，如有疑问，请于能源窗口询问或致电022-66885890。</span>
+</p>
+</div>
+
+	</div>	
+	</div>
+<include file="Public:footer1"/>
+<script type="text/javascript" src="__PUBLIC__/style/js/jquery.min.js"></script>
+<script type="text/javascript" src="__PUBLIC__/style/js/selectFilter.js"></script>
+<script type="text/javascript">
+	//本小插件支持移动端哦
+	
+	//这里是初始化
+	$('#aaa').selectFilter({
+		callBack : function (val){
+			//返回选择的值
+			console.log(val+'-是返回的值')
+		}
+	});
+	
+	//这里是初始化
+	$('#bbb').selectFilter({
+		callBack : function (val){
+			//返回选择的值
+			console.log(val+'-是返回的值')
+		}
+	});
+				//这里是初始化
+	$('#ccc').selectFilter({
+		callBack : function (val){
+			//返回选择的值
+			console.log(val+'-是返回的值')
+		}
+	});
+</script> 
+
+</body>
+</html>

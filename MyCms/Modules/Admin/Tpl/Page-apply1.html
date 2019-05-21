@@ -1,0 +1,112 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href='__PUBLIC__/css/common.css'>
+<script type="text/javascript" src="__PUBLIC__/js/jquery-1.7.1.min.js"></script>
+<script type="text/javascript" src="__PUBLIC__/js/base.js"></script>
+<script src="__PUBLIC__/js/jquery.textSearch-1.0.js" type="text/javascript"></script>
+<script type="text/javascript" src="__PUBLIC__/js/Calendar.js"></script>
+<title>2015-2016年度供热优惠申请</title>
+</head>
+<body>
+<div id="append_parent"></div>
+<div class="container" id="cpcontainer">
+  <div id="contentHeader">
+    <h3>2015-2016年度供热优惠申请</h3>
+  </div>
+  <form method="post" action="" name="form1" id="form1">
+	  <table border="0" cellpadding="0" cellspacing="0" class="content_list">
+		  <thead>
+			<tr class="tb_header">
+			  <th width="" colspan="2">查询条件</th>
+			</tr>
+		  </thead>
+		  <tr style="display:none;">
+			<td colspan="2"><input type="checkbox" value="1" name="bangding" id="bangding" checked="checked"><b>按平台信息查询</b></td>
+		  </tr>
+		 
+		 <tr>
+			<td style="text-align:center;">房间编号：<input type="text" name="housecode" value="{$housecode}" style="width:205px;"/></td>
+			<td style="text-align:center;">业主名称：<input type="text" name="username" value="{$username}" style="width:205px;"/></td>
+		  </tr>
+		  <tr>
+			<td style="text-align:center;">联系电话：<input type="text" name="phone" value="{$phone}" style="width:205px;"/></td>
+			<td style="text-align:center;">提交时间：<input name="qishishijian" type="text" id="qishishijian" size="10" maxlength="10" onclick="new Calendar().show(this);" value="{$qishishijian}" readonly="readonly" />一<input type="text" name="jieshushijian" onclick="new Calendar().show(this);" value="{$jieshushijian}" size="10" maxlength="10"/></td>
+		  </tr>
+		  <tr>
+			<td style="text-align:right;"><input type="submit" value="查询" class="button confirmSubmit" /></td>
+			<td style=""><input type="reset" value="重置" class="button reset" /></td>
+		  </tr>
+	  </table>
+  </form>
+  <table class="content_list">
+		<thead>
+		  <tr class="tb_header">
+			<td colspan="7"><b>查询结果</b></td>
+			<td align="left"><input  type="button" value="导出" name="download" onclick="exportdata()"/></td>
+	      </tr>
+		</thead>
+		  <tr>
+			<td class="tb_title" width="8%">序号</td>
+			<td class="tb_title" width="30%" style="text-align:center">房间地址</td>
+			<td class="tb_title" width="10%" style="text-align:center">业主名称</td>
+			<td class="tb_title" width="20%" style="text-align:center">能源卡号</td>
+			<td class="tb_title" width="10%" style="text-align:center">采暖面积</td>
+			<td class="tb_title" width="12%" style="text-align:center">联系电话</td>
+			<td class="tb_title" width="10%" style="text-align:center">操作</td>
+		  </tr>
+		  <empty name="result_list">
+			  <tr>
+				<td colspan="7" style="text-align:center;">请核实查询条件后，点击"查询"按钮进行查询！</td>
+			  </tr>
+		  </empty>
+		  <notempty name="result_list">
+			  <volist name="result_list" id="result">
+					<tr style="text-align:center">
+						<td width="8%">{$i}</td>
+						<td width="30%" style="text-align:center">{$result.housename}</td>
+						<td width="10%" style="text-align:center">{$result.username}</td>
+						<td width="20%" style="text-align:center">{$result.cardnumber}</td>
+						<td width="10%" style="text-align:center">{$result.area}</td>
+						<td width="12%" style="text-align:center">{$result.phone}</td>
+						<td width="10%" style="text-align:center"><a href="__URL__/applyview1/id/{$result.id}" title="详细信息"><img src="__PUBLIC__/images/xx.png" align="absmiddle"></a></td>
+					</tr>
+			  </volist>
+			  <tr>
+				<td colspan="7"><div class="cuspages right">{$page}</div>
+			 </tr>
+		  </notempty>
+		</table>
+<script type="text/javascript">
+	$(function(){ 
+		$(".confirmSubmit").click(function() {
+			var a=$("input[type='checkbox']:checked");
+			var len=a.length;
+			if(len<1){
+				alert("您未选择查询方式，请选择查询方式后，再进行操作！");
+				return false;
+			}
+			return;	
+		});
+	}); 
+</script>
+
+<script language="javascript" type="text/javascript">  
+   function exportdata(){  
+	    /*var weixin = document.getElementById("weixin").value;
+		var url = "/wap/daili_search.php?wx="+weixin;
+		
+		if(weixin ==  null || weixin == ''){
+			alert("请正确填写微信号，否则无法进行授权查询!");
+			return false;
+		}*/
+		var url = "__APP__/Admin/Page/exportapply1";
+	   document.getElementById("form1").action = url;
+	   document.getElementById("form1").submit();
+       //window.location.href="__APP__/Admin/Page/exportapply";   
+   }         
+ </script>  
+</div>
+</body>
+</html>

@@ -1,0 +1,66 @@
+<include file="Public:header" />
+<div class="main_block">
+  <include file="Public:top" />
+    <div class="content_block">
+	
+    	<div class="left_side fl">
+            <include file="Public:left" />  
+        </div>
+		
+		
+        <div class="main_con fr">
+        	<div class="bread_nav">
+            	<div class="l fl"></div>
+                <div class="m fl" style="line-height:30px;"> <span class="list_style"></span> <span>您当前的位置:</span> {$nav} </div>
+                <div class="r fl"></div>
+            </div>
+
+            <!-- begin -->
+            <!-- begin -->
+            <div class="survey">
+            	<div class="bar"><h3>调查结果</h3></div>
+				<div class="survey_content">
+                	<div class="tit"><h2>{$vote.title}</h2></div>
+                	<p>作者：{$vote.Admin.admin_nick} &nbsp;&nbsp; 发布时间：{$vote.start_time|date="Y-m-d H:i:s",###}&nbsp;&nbsp;
+					<if condition="$vote[id] eq 3"> 
+				  		<a href="{:U('Vote/other','id='.$vote[id])}" class="col_g">[返回投票]</a>
+				    <else /> 
+				  		<a href="{:U('Vote/view','id='.$vote[id])}" class="col_g">[返回投票]</a>
+				    </if>
+					
+					</p>
+                    
+                    <volist name="votelist" id="vo" key="k">
+                    <div class="survey_item">
+                    	<h4>{$k}、{$vo.listname}<eq name="vo.is_mc" value="0">（单选）</eq><eq name="vo.is_mc" value="1">（多选）</eq></h4>
+                        <ul>
+							<volist name="option[$vo['listid']]" id="op">
+							<li>
+								<div class="jdt_block">
+									<div class="jdt" style="width:{$op.percent}%;"></div>
+								</div>
+								<div class="text_ps">{$op.percent}%【<i>{$op.poll}</i>票】</div>
+								<span class="text_ps">{$op.option}</span>
+							</li>  
+							</volist>
+                        </ul>
+                    </div>
+                     </volist>                 
+                    
+                </div>
+				
+            </div>
+            <!-- end -->
+            <!-- end -->
+
+        </div>
+		
+		
+    </div>
+</div>
+
+
+
+  <include file="Public:footer" />
+</body>
+</html>

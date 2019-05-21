@@ -1,0 +1,501 @@
+<include file="Public:header" />
+<div class="main_block">
+  <include file="Public:top" />
+  <div class="content_block">
+    <div class="left_side fl">
+      <div class="l_menu">
+		 <!--上级菜单-->
+		{~$cat=get_info($cate,$pid);}
+		 <volist name="cat" id="m" key="l">
+			<a href="javascript:history.go(-1);" title="返回上一页">
+				<div class="bb_l_menu_title">
+					{$m.title} 
+				</div>
+			</a>
+		</volist>
+		<div class="left_other_menu">
+		{~$cat=get_child($cate,$pid);}
+		<volist name="cat" id="c" key="k">
+			<dl <eq name='c.id' value='$cat_id'> class="hover"</eq>>
+				<dt><a href="<notempty name='c.url'>{$c.url}<else/>{:U($c['Model']['name'].'/'.$c['tpl'],'id='.$c['id'])}</notempty>"><img src="{$c.pic}"/></a>
+				</dt>
+				<dd> <a href="<notempty name='c.url'>{$c.url}<else/>{:U($c['Model']['name'].'/'.$c['tpl'],'id='.$c['id'])}</notempty>">{$c.title}</a> <span>{$c.summary}</span> </dd>
+			</dl>
+		</volist></div>
+	</div>	
+   <include file="Public:left" /></div>
+    <div class="middle_con">
+	  <!--tab end-->
+    </div>
+    <div class="right_side">
+    </div>
+	        <div class="main_con fr">
+        	<div class="bread_nav">
+            	<div class="l fl"></div>
+                <div class="m fl" style="line-height:30px;">
+                	<span class="list_style"></span>
+                    <span>您当前的位置:</span>
+					<a href="__GROUP__">首页</a>
+					<span>></span>
+					<span style="color: #009f3f;">{$title}</span>
+                </div>
+                <div class="r fl"></div>
+            </div>
+            <div class="artical">
+			<h1 class="title">天津生态城居民住宅合同预约</h1>
+				<div class="article_content">
+					<form action="__URL__/save2" method="post" id="form2" name="form2" enctype="multipart/form-data">
+					   
+				</div>
+            <!-- begin -->
+			<div class="biaoge">
+				  <ul class=" clearfix">
+				    <li><span>合同类型：</span>
+					  <select name="ht_ytes" id="ht_ytes" onchange="click_type();" >
+						<option value="1" <if condition="$ht.ht_ytes eq 1 "> selected</if>>天津生态城居民住宅供用能合同</option>
+						<option value="2" <if condition="$ht.ht_ytes eq 2 "> selected</if>>天津生态城居民住宅计量供用热合同</option>
+					  </select>
+					</li>
+					<li class="right"> <span>小区名称：</span> <span>
+					  <select  name="communitcode" id="village" class="xiaoqu" >
+						<option value="">请选择</option>
+						<volist name="villagelist" id="vill">
+							<option value="{$vill.COMMUNITYCODE}_{$vill.COMMUNITYNAME}"<if condition="$code eq $vill.COMMUNITYCODE "> selected</if>>{$vill.COMMUNITYNAME}</option>
+						</volist>
+					  </select>
+					  </span> <span style="color:#FF0000">*</span><br/>
+					</li>
+					<li> <span>使用地址：</span> <span>
+					  <select name="buildcode" id="building">
+						<option value="{$ht.buildingcode}" selected>{$ht.buildingcode}</option>
+					  </select>
+					  号
+					  <select name="cellcode" id="uite">
+						<option value="{$ht.cellcode}" selected>{$ht.cellcode}</option>
+					  </select>
+					  门
+					  <select name="doorplatecode" id="floor">
+						<option value="{$ht.doorplatecode}" selected>{$ht.doorplatecode}</option>
+					  </select>
+					  号 </span> <span style="color:#FF0000">*</span> </li>
+					<li class="right"> <span>使用方：</span> <span>&nbsp;
+					  <input name="syf" id="syf" type="text" value="{$ht.syf}"/>
+					  (合同乙方)</span> <span style="color:#FF0000">*</span> </li>
+					<li> <span>房屋类别：</span> <span>
+					  <select class="fwlb" name="fwlx" id="fwlx" >
+						<option value="" >请选择</option>
+						<option value="别墅住户"<if condition="$ht.fwlx eq '别墅住户' "> selected</if>>别墅住户</option>
+						<option value="普通住户"<if condition="$ht.fwlx eq '普通住户' "> selected</if>>普通住户</option>
+					  </select>
+					  </span> <span style="color:#FF0000">*</span> </li>
+					<li class="right"> <span>采暖形式：</span> <span>
+					  <select name="cnxs" id="cnxs" class="xiaoqu" >
+						<option value="">请选择</option>
+						<option value="散热器"<if condition="$ht.cnxs eq '散热器' "> selected</if>>散热器</option>
+						<option value="地辐射采暖"<if condition="$ht.cnxs eq '地辐射采暖' "> selected</if>>地辐射采暖</option>
+					  </select>
+					  </span> <span style="color:#FF0000">*</span> </li>
+					<span id='jl'>
+						<li><span>开户银行：</span> <span>
+						  <select class="fwlb" name="khyh" id="khyh" >
+							<option value="">请选择</option>
+							<option value="中国银行"<if condition="$ht.khyh eq '中国银行' "> selected</if>>中国银行</option>
+							<option value="中国建设银行"<if condition="$ht.khyh eq '中国建设银行' "> selected</if>>中国建设银行</option>
+						  </select>
+						  </span> <span style="color:#FF0000">*</span> </li>
+						<li class="right"><span>开户姓名：</span> <span>
+						  <input name="khm" id="khm" type="text" value="{$ht.khm}"/>
+						  (开户人姓名)</span> <span style="color:#FF0000">*</span></li>
+						<li> <span>使用关系：</span> <span>
+						  <select class="fwlb"  name="syfgx" id="syfgx">
+							<option value="">请选择</option>
+							<option value="本人"<if condition="$ht.syfgx eq '本人' "> selected</if>>本人</option>
+							<option value="夫妻"<if condition="$ht.syfgx eq '夫妻' "> selected</if>>夫妻</option>
+							<option value="父母"<if condition="$ht.syfgx eq '父母' "> selected</if>>父母</option>
+							<option value="子女"<if condition="$ht.syfgx eq '子女' "> selected</if>>子女</option>
+						  </select>
+						  (开户人与使用方关系) </span> <span style="color:#FF0000">*</span></li>
+						<li class="right">  <span>身份证号：</span> <span>
+						  <input name="khrsfz" id="khrsfz" type="text" value="{$ht.khrsfz}"/>
+						  (开户人身份证)</span> <span style="color:#FF0000">*</span><br/>
+				 </li>
+						<li>             
+						<span>能源卡号：</span> <span>
+						  <input name="nykh" id="nykh" type="text"  value="{$ht.nykh}"/>
+						  </span> <span style="color:#FF0000"></span></li>
+						<li class="right"> <span>交费方式：</span> <span>
+						  <select  name="fjm_jffs" id="fjm_jffs"  class="xiaoqu">
+							<option value="">请选择</option>
+							<option value="支票"<if condition="$ht.fjm_jffs eq '支票' "> selected</if>>支票</option>
+							<option value="电汇"<if condition="$ht.fjm_jffs eq '电汇' "> selected</if>>电汇</option>
+							<option value="委托收款"<if condition="$ht.fjm_jffs eq '委托收款' "> selected</if>>委托收款</option>
+						  </select>
+						  (非居民用户填写) </span> <span style="color:#FF0000"></span></li>
+						<li><span>开户银行：</span> <span>
+						  <input name="fjm_khyh" id="fjm_khyh" type="text" value="{$ht.fjm_khyh}"/>
+						  (非居民用户填写)</span> <span style="color:#FF0000"></span></li>
+						<li class="right"> <span>开户账号：</span> <span>
+						  <input  name="fjm_zh" id="fjm_zh" type="text" value="{$ht.fjm_zh}"/>
+						  (非居民用户填写)</span> <span style="color:#FF0000"></span></li>
+					</span>
+					<li style="display:none"> <span>其它事项：</span> <span>
+					  <input name="sfydqtsx" id="sfydqtsx" type="text" value="{$ht.sfydqtsx}"/>
+					  </span> <span style="color:#FF0000"></span></li>
+					
+					<li class="dwdz"><span>乙方签字：</span> <span>
+					<input name="yfqz" id="yfqz" type="text" value="{$ht.yfqz}"/>
+					</span> <span style="color:#FF0000">*</span> </li>
+					<span id="yz">
+					<li class="huzhu"> <span style="color:#FF0000"></span> <span style="color:#FF0000">说明： 以下内容为“用户登记表”将做为合同附件，所以请认真填写，如有疑问，请拨打022-66885890进行咨询。 </span></li>
+
+					<li><span>业主姓名：</span> <span>
+					<input name="yhdj_a_yzxm" id="yhdj_a_yzxm" type="text" value="{$ht.yhdj_a_yzxm}"/>
+					</span> <span style="color:#FF0000">*</span> </li>
+					<li class="right"><span class="xiaoqu">证件类型：</span> <span>
+					<select class="xiaoqu" name="yhdj_a_zjlx" id="yhdj_a_zjlx" >
+					    <option value="">请选择</option>
+						<option value="身份证"<if condition="$ht.yhdj_a_zjlx eq '身份证' "> selected</if>>身份证</option>
+						<option value="护照"<if condition="$ht.yhdj_a_zjlx eq '护照' "> selected</if>>护照</option>
+						<option value="军官证"<if condition="$ht.yhdj_a_zjlx eq '军官证' "> selected</if>>军官证</option>
+						<option value="其它"<if condition="$ht.yhdj_a_zjlx eq '其它' "> selected</if>>其它</option>
+					</select>
+					</span> <span style="color:#FF0000">*</span></li>
+					<li>         <span>证件号码：</span> <span>
+					<input name="yhdj_a_zjhm" id="yhdj_a_zjhm" type="text" value="{$ht.yhdj_a_zjhm}"/>
+					</span> <span style="color:#FF0000">*</span> </li>
+					<li class="right">   <span>移动电话：</span> <span>
+					<input name="yhdj_a_yddh" id="yhdj_a_yddh" type="text" value="{$ht.yhdj_a_yddh}"/>
+					</span> <span style="color:#FF0000">*</span></li>
+					<li> <span>固定电话：</span> <span>
+					<input name="yhdj_a_gddh" id="yhdj_a_gddh" type="text" value="{$ht.yhdj_a_gddh}"/>
+					</span> <span style="color:#FF0000"></span></li>
+					<li class="right"> <span>邮寄地址：</span> <span>
+					<input name="yhdj_a_yjdz" id="yhdj_a_yjdz" type="text" value="{$ht.yhdj_a_yjdz}"/>
+					</span> <span style="color:#FF0000">*</span></li>
+					<li> <span>邮政编号：</span> <span>
+					<input  name="yhdj_a_yb" id="yhdj_a_yb" type="text" value="{$ht.yhdj_a_yb}"/>
+					</span> <span style="color:#FF0000"></span></li>
+					<li class="right"><span>单位名称：</span> <span>
+					<input  name="yhdj_a_dwmc" id="yhdj_a_dwmc" type="text" value="{$ht.yhdj_a_dwmc}"/>
+					(单位名称及电话)</span> <span style="color:#FF0000"></span></li>
+					<li> <span>单位地址：</span> <span>
+					<input name="yhdj_a_dwdzhdh" id="yhdj_a_dwdzhdh" type="text" value="{$ht.yhdj_a_dwdzhdh}"/>
+					</span> <span style="color:#FF0000"></span> </li>
+					<li class="right"><span>成员姓名：</span> <span>
+					<input name="yhdj_a_zyjtcyxm" id="yhdj_a_zyjtcyxm" type="text" value="{$ht.yhdj_a_zyjtcyxm}"/>
+					(家庭成员姓名)</span> <span style="color:#FF0000">*</span></li>
+					<li class="dwdz "><span>联系电话：</span> <span>
+					<input name="yhdj_a_zyjtcydh" id="yhdj_a_zyjtcydh" type="text" value="{$ht.yhdj_a_zyjtcydh}"/>
+					(家庭成员联系电话)</span> <span style="color:#FF0000">*</span> </li>
+								
+					<li class="huzhu"> <span style="color:#FF0000"></span> <span style="color:#FF0000">户主为多业主的,第二业主填写如下信息。 </span></li>
+					<li><span>业主姓名：</span> <span>
+					<input name="yhdj_b_yzxm" id="yhdj_b_yzxm" type="text" value="{$ht.yhdj_b_yzxm}"/>
+					</span> <span style="color:#FF0000">*</span> </li>
+					<li class="right"><span>证件类型：</span> <span>
+					<select class="xiaoqu" name="yhdj_b_zjlx" id="yhdj_b_zjlx" >
+					  <option value="" >请选择</option>
+					  <option value="身份证"<if condition="$ht.yhdj_b_zjlx eq '身份证' "> selected</if>>身份证</option>
+					  <option value="护照"<if condition="$ht.yhdj_b_zjlx eq '护照' "> selected</if>>护照</option>
+					  <option value="军官证"<if condition="$ht.yhdj_b_zjlx eq '军官证' "> selected</if>>军官证</option>
+					  <option value="其它"<if condition="$ht.yhdj_b_zjlx eq '其它' "> selected</if>>其它</option>
+					</select>
+					</span> <span style="color:#FF0000">*</span></li>
+					<li>         <span>证件号码：</span> <span>
+					<input name="yhdj_b_zjhm" id="yhdj_b_zjhm" type="text" value="{$ht.yhdj_b_zjhm}"/>
+					</span> <span style="color:#FF0000">*</span> </li>
+					<li class="right">   <span>移动电话：</span> <span>
+					<input name="yhdj_b_yddh" id="yhdj_b_yddh" type="text" value="{$ht.yhdj_b_yddh}"/>
+					</span> <span style="color:#FF0000">*</span></li>
+					<li> <span>固定电话：</span> <span>
+					<input name="yhdj_b_gddh" id="yhdj_b_gddh" type="text" value="{$ht.yhdj_b_gddh}"/>
+					</span> <span style="color:#FF0000"></span></li>
+					<li class="right"> <span>邮寄地址：</span> <span>
+					<input name="yhdj_b_yjdz" id="yhdj_b_yjdz" type="text" value="{$ht.yhdj_b_yjdz}"/>
+					</span> <span style="color:#FF0000">*</span></li>
+					<li> <span>邮政编号：</span> <span>
+					<input  name="yhdj_b_yb" id="yhdj_b_yb" type="text" value="{$ht.yhdj_b_yb}"/>
+					</span> <span style="color:#FF0000"></span></li>
+					<li class="right"><span>单位名称：</span> <span>
+					<input  name="yhdj_b_dwmc" id="yhdj_b_dwmc" type="text" value="{$ht.yhdj_b_dwmc}"/>
+					(单位名称及电话)</span> <span style="color:#FF0000"></span></li>
+					<li class="dwdz"> <span>单位地址：</span> <span>
+					<input name="yhdj_b_dwdzhdh" id="yhdj_b_dwdzhdh" type="text" value="{$ht.yhdj_b_dwdzhdh}"/>
+					</span> <span style="color:#FF0000"></span> </li>
+					</span>
+
+					<li class="huzhu" style="height:auto;"> <span style="color:#FF0000"></span> <span style="color:#FF0000">说明：身份证以及购房合同或房产证图片上传(身份证上传正反两面；购房合同前六页或房产证；不能超过2M；格式为jpg,gif,png)</span></li>
+					<li>   <span style="float:left;">身份证明图片：</span> <span>
+					<input type="file" name="file_upload" id="file_upload" />
+					</span> <span style="color:#FF0000">&nbsp;</span></li>
+					<li class="right">         <span style="float:left;">购房合同或房产证图片：</span> <span>
+					<input type="file" name="file_upload_1" id="file_upload_1" />
+					</span> <span style="color:#FF0000">&nbsp;</span></li>
+
+					<!--<li class="huzhu"> <span style="color:#FF0000"></span> <span style="color:#FF0000">说明： 以下内容为身份证图片上传(请上传正反两面;每张图片不能超过2M)。 </span></li>
+					<li><span style="float:left">正面图片：</span> <span style="float:left;margin-top:12px;">
+					<input name="sfz0[]" id="sfz0" type="file" style="display:none"/>
+					</span> <span style="color:#FF0000" >&nbsp;<input  type="button" value="原文件" onclick="getPic(0)" style="width:40px;background-color:#EFEFEF">&nbsp;<input  type="button" value="修改" onclick="getBtn(0)" style="width:40px;background-color:#EFEFEF"></span> </li>
+					<li class="right"><span style="float:left">背面图片：</span> <span style="float:left;margin-top:12px;">
+					<input name="sfz1[]" id="sfz1" type="file" style="display:none"/>
+					</span> <span style="color:#FF0000">&nbsp;<input  type="button" value="原文件" onclick="getPic(1)" style="width:40px;background-color:#EFEFEF">&nbsp;<input  type="button" value="修改" onclick="getBtn(1)" style="width:40px;background-color:#EFEFEF"></span> </li>
+
+					<li class="huzhu"> <span style="color:#FF0000"></span> <span style="color:#FF0000">说明： 以下内容为房产证图片上传(请上传房产证前六页;每张图片不能超过2M)。</span></li>
+					<li><span style="float:left">第一页：</span> <span style="float:left;margin-top:12px;">
+					<input name="fcz2[]" id="fcz2" type="file" style="display:none"/>
+					</span> <span style="color:#FF0000">&nbsp;<input  type="button" value="原文件" onclick="getPic(2)" style="width:40px;background-color:#EFEFEF">&nbsp;<input  type="button" value="修改" onclick="getBtn(2)" style="width:40px;background-color:#EFEFEF"></span> </li>
+					<li class="right"><span style="float:left">第二页：</span> <span style="float:left;margin-top:12px;">
+					<input name="fcz3[]" id="fcz3" type="file" style="display:none"/>
+					</span> <span style="color:#FF0000">&nbsp;<input  type="button" value="原文件" onclick="getPic(3)" style="width:40px;background-color:#EFEFEF">&nbsp;<input  type="button" value="修改" onclick="getBtn(3)" style="width:40px;background-color:#EFEFEF"></span> </li>
+					<li><span style="float:left">第三页：</span> <span style="float:left;margin-top:12px;">
+					<input name="fcz4[]" id="fcz4" type="file" style="display:none"/>
+					</span> <span style="color:#FF0000">&nbsp;<input  type="button" value="原文件" onclick="getPic(4)" style="width:40px;background-color:#EFEFEF">&nbsp;<input  type="button" value="修改" onclick="getBtn(4)" style="width:40px;background-color:#EFEFEF"></span> </li>
+					<li class="right"><span style="float:left">第四页：</span> <span style="float:left;margin-top:12px;">
+					<input name="fcz5[]" id="fcz5" type="file" style="display:none"/>
+					</span> <span style="color:#FF0000">&nbsp;<input  type="button" value="原文件" onclick="getPic(5)" style="width:40px;background-color:#EFEFEF">&nbsp;<input  type="button" value="修改" onclick="getBtn(5)" style="width:40px;background-color:#EFEFEF"></span> </li>
+					<li><span style="float:left">第五页：</span> <span style="float:left;margin-top:12px;">
+					<input name="fcz6[]" id="fcz6" type="file" style="display:none"/>
+					</span> <span style="color:#FF0000">&nbsp;<input  type="button" value="原文件" onclick="getPic(6)" style="width:40px;background-color:#EFEFEF">&nbsp;<input  type="button" value="修改" onclick="getBtn(6)" style="width:40px;background-color:#EFEFEF"></span> </li>
+					<li class="right"><span style="float:left">第六页：</span> <span style="float:left;margin-top:12px;">
+					<input name="fcz7[]" id="fcz7" type="file" style="display:none"/>
+					</span> <span style="color:#FF0000">&nbsp;<input  type="button" value="原文件" onclick="getPic(7)" style="width:40px;background-color:#EFEFEF">&nbsp;<input  type="button" value="修改" onclick="getBtn(7)" style="width:40px;background-color:#EFEFEF"></span> </li>-->
+					
+				  </ul>
+				</div>
+			
+				<div class="article_show">
+                	
+                    <div class="article_title">
+                    	
+                    </div>
+                    
+                   	<div class="article_content">
+						<span style="text-align:center;padding-left:240px;">
+							<input id="xieyi" type="checkbox" name="xieyi"/>我已预览并同意遵守合同条款&nbsp;&nbsp;
+
+						<div class="tjan" style="text-align:center">
+							<input type="hidden" name="id" value="{$id}">
+							<input type="hidden" name="types" id="types" value="{$ht.ht_ytes}">
+							<input class="btn1 Reset"  type="button" value="预 览" onclick="view()">
+							<input class="btn1 Submit" type="submit" value="提 交">
+						</div>
+
+						<input name="sfz" id="sfz" type="hidden"/>
+						<input name="fcz" id="fcz" type="hidden"/>
+					
+                    </div>
+                	
+                </div>
+			</form>
+			<!-- end -->
+            </div>
+        </div>
+  </div>
+</div>
+
+  <include file="Public:footer" />
+</body>
+</html>
+<script type="text/javascript" src="__PUBLIC__/js/formValidator-4.1.3.min.js"></script>
+<script type="text/javascript" src="__PUBLIC__/js/formvalidatorregex.js"></script>
+<script>
+	function view(){
+		var htlx = document.getElementById("ht_ytes").value;
+		
+		if(htlx == 1){
+			form2.action = "__URL__/mjyl";
+		}
+		if(htlx == 2){
+			form2.action = "__URL__/jlyl";
+		}
+		
+		form2.setAttribute('target','_blank');
+		form2.submit();
+		form2.action = "__URL__/save2";
+	}
+
+	function getPic(id){
+		form2.action = "__URL__/tpck/key/"+id+".html";
+		form2.setAttribute('target','_blank');
+		form2.submit();
+		form2.action = "__URL__/save2";
+	}
+
+	function getBtn(id){
+		if(id == 0 || id == 1){
+			document.getElementById("sfz"+id).style.display="block";
+			
+		}
+		else{
+			document.getElementById("fcz"+id).style.display="block";
+		}
+	}
+</script>
+<script>
+
+$(document).ready(function(){   
+        //提供回调函数，提供提交返回结果的处理 
+		try{
+			var options = {
+            //beforeSubmit: checkstate,
+            //提交前处理 
+            success: showResponse,
+            //处理完成 
+            resetForm: false,
+            dataType: 'json'
+        };    
+        $('#form2').submit(function() { 
+            $(this).ajaxSubmit(options);
+            return false;
+        });
+		}catch(e){
+			alert(e);	
+		}
+        
+    }); 
+
+ function showResponse(res) {
+        art.dialog({
+            title: res.title,
+            content: res.message,
+            time: res.time
+        });
+        if (res.url) {
+            window.location.href = res.url;
+        }
+    }
+
+	
+	$('#village').on('change', function() {
+            var parameter = this.value;
+            $('#building').html('');
+			$('#uite').html('');
+			$('#floor').html('');
+            $.ajax({
+                url: '{:U("Page/getBuilding","",false)}',
+                type : 'POST',
+                async: false,
+                data : {parameter: parameter},
+                dataType: 'json',
+                success: function(ret){
+					var optionStr = [];
+					$.each(ret, function(i, item){  
+						if(i==0){optionStr.push('<option value="">' +"请选择"+ "</option>")}; 
+						optionStr.push('<option value="'+ item.BUILDINGCODE +'_'+ item.BUILDINGNAME +'">' +item.BUILDINGNAME+ "</option>");   
+					}); 
+					$('#building').html(optionStr.join(''));
+                }
+            });
+        });
+		
+		$('#building').on('change', function() {
+            var parameter = this.value;
+			var parameter_1 = document.getElementById("village").value;
+            $('#uite').html('');
+            $.ajax({
+                url: '{:U("Page/getUite","",false)}',
+                type : 'POST',
+                async: false,
+                data : {parameter: parameter,parameter_1: parameter_1},
+                dataType: 'json',
+                success: function(ret){
+					var optionStr = [];
+					$.each(ret, function(i, item){  
+						if(i==0){optionStr.push('<option value="">' +"请选择"+ "</option>")}; 
+						optionStr.push('<option value="'+ item.CELLCODE +'">' +item.CELLCODE+ "</option>");   
+					        
+					}); 
+					$('#uite').html(optionStr.join(''));
+                }
+            });
+        });
+		
+		$('#uite').on('change', function() {
+            var parameter = this.value;
+			var parameter_1 = document.getElementById("village").value;
+			var parameter_2 = document.getElementById("building").value;
+            $('#floor').html('');
+            $.ajax({
+                url: '{:U("Page/getFloor","",false)}',
+                type : 'POST',
+                async: false,
+                data : {parameter: parameter,parameter_1: parameter_1,parameter_2: parameter_2},
+                dataType: 'json',
+                success: function(ret){
+					var optionStr = [];
+					$.each(ret, function(i, item){  
+						if(i==0){optionStr.push('<option value="">' +"请选择"+ "</option>")};
+						optionStr.push('<option value="'+ item.FLOOR +'">' +item.FLOOR+ "</option>");   
+					        
+					}); 
+					$('#floor').html(optionStr.join(''));
+                }
+            });
+        });
+		
+
+	function click_type() {
+		var htlx = document.getElementById("ht_ytes").value;
+		if(htlx == 1){
+			document.getElementById("jl").style.display="block";
+			document.getElementById("yz").style.display="block";
+		}
+		if(htlx == 2){
+			document.getElementById("jl").style.display="none";
+			document.getElementById("yz").style.display="none";
+		}
+	}
+	
+</script>
+<script>
+	window.onload = click_type(); 
+</script>
+
+<script src="/uploadify/jquery.uploadify.js" data-ke-src="/uploadify/jquery.uploadify.js" type="text/javascript"></script>
+<script src="/uploadify/jquery.uploadify.min.js" data-ke-src="/uploadify/jquery.uploadify.min.js" type="text/javascript"></script>
+<link rel="stylesheet" type="text/css" href="/uploadify/uploadify.css" data-ke-src="/uploadify/uploadify.css">
+<script type="text/javascript">
+var img_upload_1=new Array();//初始化数组，存储已经上传的图片名
+var img_upload_2=new Array();//初始化数组，存储已经上传的图片名
+var i=0;//初始化数组下标
+var j=0;//初始化数组下标
+$(function() {
+ $('#file_upload').uploadify({
+ 'auto' : true,//关闭自动上传
+ 'removeTimeout' : 600,//文件队列上传完成1秒后删除
+ 'swf' : '/uploadify/uploadify.swf',
+ 'uploader' : '{:U("Page/uploadify")}',
+ 'method' : 'post',  //方法，服务端可以用$_POST数组获取数据
+ 'buttonText' : '',//设置按钮文本
+ 'multi' : true,//允许同时上传多张图片
+ 'onUploadSuccess' : function(file, data, response) { //每次成功上传后执行的回调函数，从服务端返回数据到前端
+  img_upload_1[i] = ''+file['name']+'+'+file['size']+'+'+data+'+1';
+  i++;
+  document.getElementById('sfz').value = img_upload_1;
+ }
+ 
+ });
+
+ $('#file_upload_1').uploadify({
+ 'auto' : true,//关闭自动上传
+ 'removeTimeout' : 600,//文件队列上传完成1秒后删除
+ 'swf' : '/uploadify/uploadify.swf',
+ 'uploader' : '{:U("Page/uploadify")}',
+ 'method' : 'post',  //方法，服务端可以用$_POST数组获取数据
+ 'buttonText' : '',//设置按钮文本
+ 'multi' : true,//允许同时上传多张图片
+ 'onUploadSuccess' : function(file, data, response) { //每次成功上传后执行的回调函数，从服务端返回数据到前端
+ //$('#image_1').append('<input name="fcz[]" value="'+file['name']+'_'+file['size']+'_'+data+'" type="text"/>');
+  img_upload_2[j] = ''+file['name']+'+'+file['size']+'+'+data+'+2';
+  j++;
+  document.getElementById('fcz').value = img_upload_2;
+  
+ }
+ });
+ 
+});
+</script>
+
+
+
+

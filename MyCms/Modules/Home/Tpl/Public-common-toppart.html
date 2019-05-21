@@ -1,0 +1,88 @@
+    <div class="hearder_top">
+        <div class="hearder_head">
+            <div class="hearder_font clearfix">
+                <div class="hearder_fontleft">
+                    <span>欢迎来到{$Think.config.site_name}！</span>
+                    <!--<span><a href=""><img src="__PUBLIC__/last/img/public_img/head_weibo.png" alt=""></a></span>
+                    <span><a href=""><img src="__PUBLIC__/last/img/public_img/head_weixin.png" alt=""></a></span>-->
+                    <a href="{:U('App/download')}" style="color:#b7b7b7">
+                        <span><img src="__PUBLIC__/last/img/public_img/head_shouji.png" alt=""><span>移动应用</span>
+                        <span class="top_jiantou"><img src="__PUBLIC__/last/img/public_img/top_jiantou.png" alt=""></span>
+                    </span></a>
+                </div>
+                <div class="hearder_fontright">
+					<notempty name="Think.session.unick">
+						<span>您好,{$Think.session.unick}<a href="{:U('Public/logout')}">[退出]</a></span>
+					</notempty>
+                    <a onclick="SetHome(this,window.location)">设为首页</a>|
+                    <a onclick="shoucang(document.title,window.location)">加入收藏</a>|
+                    <a href="" class="tel_span"><span><img src="__PUBLIC__/last/img/public_img/tel.png" alt=""></span>客服热线：022-66885890</a>
+                </div>
+            </div>
+        </div>
+        <div class="hearder_logo clearfix">
+            <p class="logo"><a href="/"><img src="__PUBLIC__/last/img/public_img/logo.png" alt=""></a></p>
+            <div class="home_weather clearfix">
+                <iframe id="fancybox-frame" name="fancybox-frame1534376700673" frameborder="0" scrolling="no" hspace="0" src="http://i.tianqi.com/index.php?c=code&a=getcode&id=35&h=55&w=200&py=tianjin"></iframe>
+            </div>
+            <div class="home_search">
+                <form name="form1" id="form1" action="{:U('Article/search')}" method="post">
+					<if condition="$keys eq ''">
+                    <input id="keys" name="keys" class="aaa" type="text" placeholder="输入您想要输入的内容" />
+					<else />
+					<input id="keys" name="keys" class="aaa" type="text" value='{$keys}' />
+					</if>
+                    <button onclick="return check()"> <img src="__PUBLIC__/last/img/public_img/head_search.png" alt="" /></button>
+<script type="text/javascript">	
+	function check()
+	{
+		 var key;
+		 key=$("#keys").val().replace(/(^\s*)|(\s*$)/g, "");
+		 if(key==''||key=='输入您想搜索的内容'){
+			//art.dialog({content:'关键词不能为空',time:2});
+			alert('关键词不能为空');
+			return false;
+		 }
+		 else
+		 {
+			  return true;
+		 }
+	}
+</script>
+                </form>
+            </div>
+            <div class="log_btn clearfix">
+                <empty name="Think.session.uname">
+                    <button class="btn_01" onclick="javascript:window.location.href='{:U('Public/login')}'">登录</button>
+                    <button class="btn_02" onclick="javascript:window.location.href='{:U('Public/reg')}'">注册</button>
+                </empty>
+            </div>
+        </div>
+    </div>
+    <div class="home_link">
+        <div class="home_link_box">
+            <ul class="clearfix">
+                <li><a href="/" >首页</a></li>
+                {~$topmenu=get_menu($cate, 0);}
+                <volist name="topmenu" id="vo">
+                    <li class="dropdown">
+                        <if condition="$vo.id eq 20">
+                            <a class="<eq name="vo.id" value="$topid">hoverbg02</eq> blod" href="<empty name='vo.url'><empty name="vo['tpl']">{:U($vo['Model']['name'].'/index','id='.$vo['id'])}<else/>{:U($vo['Model']['name'].'/'.$vo['tpl'],'id='.$vo['id'])}</empty><else/>{$vo.url}</empty>"></a>
+                        <else/>
+                            <if condition="$vo.id eq 4">
+                                <a <eq name="vo.id" value="$topid"> class="hoverbg02"</eq>>{$vo['title']}</a>
+                                <ul>
+                                    <li><a href="{:U('Orgs/index',array('id'=>141,'cid'=>1))}">成员单位</a></li>
+                                    <li><a href="{:U('Srv/index',array('id'=>6,'cid'=>1))}">服务标准</a></li>
+                                    <li><a href="{:U('Rule/index',array('id'=>5,'cid'=>1))}">政策法规</a></li>
+                                    <li><a href="{:U('Question/index',array('id'=>7,'cid'=>1))}">常见问题</a></li>
+                                </ul>
+                            <else/>
+                                <a <eq name="vo.id" value="$topid"> class="hoverbg02"</eq> href="<empty name='vo.url'><empty name="vo['tpl']">{:U($vo['Model']['name'].'/index','id='.$vo['id'])}<else/>{:U($vo['Model']['name'].'/'.$vo['tpl'],'id='.$vo['id'])}</empty><else/>{$vo.url}</empty>">{$vo['title']}</a>
+                            </if>
+                        </if>
+                    </li>
+                </volist>
+            </ul>
+        </div>
+    </div>

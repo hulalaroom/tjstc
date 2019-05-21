@@ -1,0 +1,72 @@
+<!doctype html>
+<html>
+<head>
+    <include file="Public:common-head"/>
+</head>
+
+<body>
+<include file="Public:common-toppart"/>
+<!--<include file="Public:common-slider"/>-->
+
+<div class="content_bg">
+    <div class="content history_content">
+        <p class="dqwz history_dqwz">当前位置：{$nav}</p>
+
+        <div class="list-contianer clearfix">
+            <div class="list-top-border"></div>
+            <div class="list-tab">
+                <ul>
+                    <li class="list-tab-item <eq name="cid" value="1">cur</eq>"><a href="{:U('Vote/index','id=21')}"><span><img src="__PUBLIC__/last/img/liebiao03.png" alt=""/></span>问卷调查</a></li>
+                </ul>
+            </div>
+
+            <div class="list-tab-content-container">
+                <div class="list-tab-content on">
+					
+					
+					<div class="artical">
+					
+                    <if condition="$vote_list eq 0">
+                        <div class="article-section no-data" style="height:300px;font-size: 16px;">当前暂无问卷调查</div>
+                    <else/>
+                       <ul>
+						<volist name="vote_list" id="vote">
+						  <li><span style="float:right">{$vote.start_time|date="Y-m-d",###}</span>
+						  	<a href="<notempty name='vote.tpl'>{:U(Vote.'/'.$vote['tpl'],'id='.$vote['id'])}<else/>{:U('Vote/view','id='.$vote['id'])}</notempty>" target="_blank" title="">{$vote.title}</a>
+						  </li>
+						</volist>
+					
+					  </ul>
+						<div class="xiangqing_fanye" style="padding-bottom: 20px">
+                                <empty name="prevview">
+                                    <a href="">上一篇：没有了</a>
+                                <else/>
+                                    <a href="{:U('Vote/view','id='.$prevview['id'])}">上一篇：{$prevview.title}</a>
+                                </empty>
+                                <empty name="nextview">
+                                    <a href="">下一篇：没有了</a>
+                                <else/>
+                                    <a href="{:U('Vote/view','id='.$nextview['id'])}">下一篇：{$nextview.title}</a>
+                                </empty>
+                            </div>
+						
+					 
+                    </if>
+                </div>
+            </div>
+				
+        </div>
+    </div>
+</div>
+
+<include file="Public:common-footer"/>
+<include file="Public:common-script"/>
+<script type="text/javascript" src="__PUBLIC__/last/js/jquery.easing.min.js"></script>
+<script type="text/javascript" src="__PUBLIC__/last/js/banner.js"></script>
+<script type="text/javascript">
+    $(function () {
+		console.log($("#vote").val());
+    });
+</script>
+</body>
+</html>

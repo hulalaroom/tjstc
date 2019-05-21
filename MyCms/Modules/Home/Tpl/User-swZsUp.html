@@ -1,0 +1,498 @@
+<!doctype html>
+<html>
+<head>
+    <include file="Public:common-head" />
+    <link rel="stylesheet" type="text/css" href="__PUBLIC__/last/css/css1.css?v=3">
+</head>
+
+<body>
+  <div class="gray"></div>
+<div class="center_zfb">
+  <div class="title1"><span class="wrong"></span> </div>
+  <div class="content1">
+  <img src="__PUBLIC__/last/img/sfzfmdt.png">
+  </div>
+</div>
+    <assign name="hoverIndex" value="1" />
+    <include file="Public:common-toppart" />
+
+<div class="shuiwu_banner">
+	<div class="content">
+		<p class="jiaofei_banner_01 font_yinying">水务公司</p>
+		<p class="jiaofei_banner_03 "></p>
+		<p class="jiaofei_banner_02 font_yinying">水务业务，一键办理</p>
+	</div>
+</div>
+<div class="content_bg01 ">
+	<div class="content history_content">
+		<p class="dqwz history_dqwz">
+      当前位置：<a href="http://www.66885890.com">首页</a> &nbsp;&nbsp;&gt;&nbsp;&nbsp;
+    <a href="{:U('User/index',array('id'=>20))}">我的5890</a>&nbsp;&nbsp;&gt;&nbsp;&nbsp;
+    <a href="{:U('User/ywbl')}">业务办理</a>&nbsp;&nbsp;&gt;&nbsp;&nbsp;
+        <a href="{:U('User/sw')}">水务公司</a>&nbsp;&nbsp;&gt;&nbsp;&nbsp;
+    <span class="green">停闭申请</span>
+    </p>
+		<div class="wodeyewu_content clearfix">
+            <form id="form2" name="form2" action="{:U('User/swZsUpOk')}" method="post" enctype="multipart/form-data">
+			<input name='housecode' type="hidden" id="housecode" value="{$housecode}">
+                  <input name='owername' type="hidden" id="owername" value="{$owername}">
+      <div class="wodeyewu_content_box03">
+				<div class="yewu_table clearfix">
+					<ul class="yewuleft">
+						<li>房间编号</li>
+						<li>房间地址</li>
+						<li>申请人</li>
+						<li>申请停闭再生水日期</li>
+            <li>是否有预存再生水费</li>
+            <li class="fou"><span style="color:red;">*</span>&nbsp;开户银行</li>
+        <li class="fou"><span style="color:red;">*</span>&nbsp;持卡人姓名</li>
+        <li class="fou"><span style="color:red;">*</span>&nbsp;银行卡号</li>
+        <li class="fou"><span style="color:red;">*</span>&nbsp;银行行号</li>
+					</ul>
+
+					<ul class="yewuright">
+						<li>{$houseInfo.HOUSECODE}</li>
+						<li>{$houseInfo.AADDRESS}</li>
+						<li>{$houseInfo.OWNERNAME}</li>
+						<li>{$chargeMonth}<input type="hidden" name="chargeMonth" id="chargeMonth" value="{$chargeMonth}"></li>
+            <li class="chk_group">
+                <input type="hidden" name="bank" id="bank" value="是">
+                <div class="checks checked">
+                   <label>
+                    <span><i></i></span>
+                    <strong>是</strong>
+                  </label>
+                </div>
+                <div class="checks">
+                   <label>
+                    <span><i></i></span>
+                    <strong>否</strong>
+                  </label>
+                </div>
+            </li>
+
+            <li class="input01 fou"><input type="text" name="kaihuhang" id="kaihuhang" value=""><span class="yewu_more">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></li>
+            <li class="input01 fou"><input type="text" name="zhanghuming" id="zhanghuming" value=""><span class="yewu_more">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></li>
+            <li class="input01 fou"><input type="text" name="yinhangka" id="yinhangka" value=""><span class="yewu_more"><img src="__PUBLIC__/last/img/wodeyewu_20.png" alt="" />
+            <div class="yewu_morexiala">默认同意将根据结算的再生水水费退还到该银行卡中</div></span>
+            </li>
+            <li class="input01 fou"><input type="text" name="yinhanghang" id="yinhanghang" value=""><span class="yewu_more"><img src="__PUBLIC__/last/img/wodeyewu_20.png" alt="" />
+            <div class="yewu_morexiala">请输入12位银行行号，银行行号的具体信息请致电开户银行客服电话进行查询</div></span>
+            </li>
+					</ul>
+				</div>
+
+                <input name='housecode' type="hidden" id="housecode" value="{$housecode}">
+                <input name='owername' type="hidden" id="owername" value="{$owername}">
+                <input name="chargeyear" id="chargeyear" value="{$chargeyear}" type="hidden">
+                <!-- <input name="sfz_z" id="sfz_z" value="" type="hidden">
+                <input name="sfz_z_name" id="sfz_z_name" value="" type="hidden">
+                <input name="sfz_b" id="sfz_b" value="" type="hidden">
+                <input name="sfz_b_name" id="sfz_b_name" value="" type="hidden"> -->
+				<div class="yezhushenfen yezhushenfen01">
+					<h3>上传业主本人身份证照片</h3>
+					<div class="yewu_tips01 ">注意：请您上传清晰、无污染的业主本人身份证照片或者扫描件，文件后缀名必须为.jpg或.png，文件大小在2M以内！</div>
+					<div class="yewu_shangchuang">
+						<div>
+							<a href="" class="file file01">上传身份证（正面）照片<input type="file" name="sfz[]" id="sfz_img_z"></a>
+							<span class="shili01"><img onmouseover="showImg('sfzzmdt',event);" onmouseout="hideImg()" src="__PUBLIC__/last/img/wodeyewu_08.png" alt="" /></span>
+							<a href="" class="file file01">上传身份证（背面）照片<input type="file" name="sfz[]" id="sfz_img_b"></a>
+							<span class="shili01"><img onmouseover="showImg('sfzfmdt',event);" onmouseout="hideImg()" src="__PUBLIC__/last/img/wodeyewu_07.png" alt="" /></span>
+						</div>
+						<div class="img-preview z_preview"><span><img class="img-preview-small" alt="" id="z_preview" /></span><span id="sfz_img_z_name" class="file-name"></span><a id="sfz_img_z_del">删除</a></div>
+						<div class="img-preview b_preview"><span><img class="img-preview-small" alt="" id="b_preview" /></span><span id="sfz_img_b_name" class="file-name"></span><a id="sfz_img_b_del">删除</a></div>
+					</div>
+				</div>
+
+        <div class="yezhushenfen yezhushenfen01 fou">
+      <h3>上传银行卡照片</h3>
+      <div class="yewu_tips01 ">注意：请您上传清晰、无污染的银行卡正面照片，文件后缀名必须为.jpg或.png，文件大小在2M以内！</div>
+
+      <div class="yewu_shangchuang">
+        <div>
+              <a href="" class="file file01">上传银行卡（正面）照片
+              <input type="file" name="sfz[]" id="yhk">
+              </a>
+            <span class="shili01"><img onmouseover="showImg('nykdt1',event);" onmouseout="hideImg()" src="__PUBLIC__/last/img/wodeyewu_14.png" alt="" /></span>
+
+      </div>
+            <div class="img-preview b_yhk"><span><img class="img-preview-small" alt="" id="b_yhk" /></span><span id="yhk_name" class="file-name"></span><a id="yhk_del">删除</a></div>
+      </div>
+    </div>
+
+        <div class="yewu_yanzheng">
+                        <input name="phone" id="phone" value="{$oldphone}" type="hidden">
+            <div class="yewu_tips03">向您手机号码<span>{$phone}</span>发送验证码<span><a href="{:U('User/swbgsjh')}" class="biangeng">变更手机号</a></span></div>
+            <div class="yewu_input yewu_input01">
+             <input id="phoneActive" name="phoneActiveCode" class="aaa" type="text" placeholder="请输入短信验证码" onblur="if(this.value==''){this.value='请输入短信验证码';$(this).css({color:'#8E8E8E'})}" onfocus="if(this.value=='请输入短信验证码'){this.value='';$(this).css({color:'#666'})}" style="color:#8E8E8E" value="请输入短信验证码">
+            </div>
+            <span>*</span>
+            <a href="javascript:void(0);" id="getVerifyCodeBtn" disable="disable" class="shuiwu_btn">获取验证码</a>
+          </div>
+				<div class="wodeyewu_btn01 wodeyewu_btn03"><a  href="javascript:void(0);" id="tijiao">提交申请</a></div>
+			</div>
+        </form>
+		</div>
+	</div>
+</div>
+
+
+<include file="Public:common-footer" />
+<include file="Public:common-script" />
+<script type="text/javascript" src="__PUBLIC__/last/js/ImageUtils.js"></script>
+<script type="text/javascript" src="__PUBLIC__/last/js/artDialog4.1.7/artDialog.source.js?skin=green"></script>
+<script type="text/javascript">
+  function showImg (name,event){
+            console.log(event);
+            var scrollY = document.documentElement.scrollTop;
+            if(name == 'hkbdt'){
+                $(".center_zfb").css("width","350px");
+            }else if(name == 'fczdt'){
+                $(".center_zfb").css("width","700px");
+            }else{
+                $(".center_zfb").css("width","300px");
+            }
+            $(".content1").html("<img src='__PUBLIC__/last/img/"+name+".png'>");
+            var gao = event.clientY + scrollY - 35;
+            var heng = event.clientX + 10;
+
+            /*if(name == 'sfzfmdt'){
+                heng = heng - 320;
+            }*/
+            $(".center_zfb").css({"position":"absolute","top":gao+"px","left":heng+"px","margin":"0px"});
+
+            //$(".gray").show();
+            $(".center_zfb").show();
+        }
+function hideImg(){
+  //$(".gray").hide();
+  $(".center_zfb").hide();
+}
+    $(function() {
+    $('.chk_group>.checks>label').click(function() {
+      var $self = $(this),$chkGroup = $('.chk_group');
+      $chkGroup.children().removeClass('checked');
+      $chkGroup.find('.checkbox').prop('checked', false);
+      $self.parent().addClass('checked');
+      if($chkGroup.children('.checked').index() == 1){
+        $('#bank').val('是');
+        $('.fou').show();
+      }else{
+        $('#bank').val('否');
+        $('.fou').hide();
+      }
+    });
+
+		var $zPreview =  $('#z_preview'), $bPreview = $('#b_preview');
+		$('#sfz_img_z').on('change', function(e) {
+			var src, url = window.URL || window.webkitURL || window.mozURL, files = e.target.files;
+			var sizez = this.files[0].size / 1024;
+				if(sizez>2048){
+				alert("图片大小不能大于2M！");
+				return false;
+			}
+            for (var i = 0, len = files.length; i < len; ++i) {
+            	var file = files[i];
+                if (url) {
+                    src = url.createObjectURL(file);
+                } else {
+                    src = e.target.result;
+                }
+
+				ImageUtils.compressPicture(file, {width:180,quality:0.5,mimeType:file.type}, function (base64) {
+                    $zPreview.prop('src',base64);
+                    $('#sfz_img_z_name').text(file.name);
+                    $('.z_preview').show();
+                });
+            }
+		});
+
+		$('#sfz_img_b').on('change', function(e) {
+			var src, url = window.URL || window.webkitURL || window.mozURL, files = e.target.files;
+			var sizeb = this.files[0].size / 1024;
+				if(sizeb>2048){
+				alert("图片大小不能大于2M！");
+				return false;
+			}
+            for (var i = 0, len = files.length; i < len; ++i) {
+            	var file = files[i];
+                if (url) {
+                    src = url.createObjectURL(file);
+                } else {
+                    src = e.target.result;
+                }
+
+				ImageUtils.compressPicture(file, {height:180,quality:0.5,mimeType:file.type}, function (base64) {
+                    $bPreview.prop('src',base64);
+                    $('#sfz_img_b_name').text(file.name);
+                    $('.b_preview').show();
+                });
+            }
+		});
+
+		$('#sfz_img_z_del').on('click', function() {
+			$zPreview.prop('src', '');
+            $('#sfz_img_z_name').text('');
+			$('.z_preview').hide();
+      $('#sfz_img_z').val('');
+		});
+
+		$('#sfz_img_b_del').on('click', function() {
+			$bPreview.prop('src', '');
+            $('#sfz_img_b_name').text('');
+			$('.b_preview').hide();
+      $('#sfz_img_b').val('');
+		});
+
+var $b_yhk =  $('#b_yhk');
+    $('#yhk').on('change', function(e) {
+      var src, url = window.URL || window.webkitURL || window.mozURL, files = e.target.files;
+			var sizey = this.files[0].size / 1024;
+				if(sizey>2048){
+				alert("图片大小不能大于2M！");
+				return false;
+			}
+            for (var i = 0, len = files.length; i < len; ++i) {
+              var file = files[i];
+                if (url) {
+                    src = url.createObjectURL(file);
+                } else {
+                    src = e.target.result;
+                }
+
+        ImageUtils.compressPicture(file, {width:180,quality:0.5,mimeType:file.type}, function (base64) {
+                    $b_yhk.prop('src',base64);
+                    $('#yhk_name').text(file.name);
+                    $('.b_yhk').show();
+                });
+            }
+    });
+
+    $('#yhk_del').on('click', function() {
+      $b_yhk.prop('src', '');
+      $('#yhk_name').text('');
+      $('.b_yhk').hide();
+      $('#yhk').val('');
+    });
+
+
+		/*$('#obtainVerifyCode').on('click', function(event) {
+			event.preventDefault();
+			if ($zPreview.prop('src') && $bPreview.prop('src')) {
+
+			} else {
+                art.dialog({
+                    lock: true,
+                    content: '请您选择清晰、无污染的业主本人身份证正反面照片或者扫描件',
+                    time: 3
+                });
+                return false;
+			}
+		});*/
+
+        $('#getVerifyCodeBtn').on('click', function(){
+
+            $("#getVerifyCodeBtn").attr('disabled',true);
+            timerId = setInterval(refreshSecDisp, 1000);
+            $.ajax({
+                type: "POST",
+                url: '{:U("Public/get_phone_verify_code","",false)}',
+                data: {phone:$("#phone").val()},
+                success: function( data ) {
+                    var retCode = data.code;
+                    if ('success' !== retCode) {
+                        $('#active_by_mail').attr('disabled', false);
+                        $('#active_by_phone').attr('disabled', false);
+                        $('#getVerifyCodeBtn').attr('disabled', false);
+                        //$('#codeVerifyTip').text('获取手机验证码失败，请稍后再试。');
+                        art.dialog({
+                    lock:true,
+                    content: '获取手机验证码失败，请稍后再试。',
+                    time: 5
+                  });
+                        return;
+                    }
+                },
+                dataType: 'json'
+            });
+        });
+
+        var total_sec = 59;
+        var timerId;
+        function refreshSecDisp() {
+
+            var btnDisp = '获取验证码';
+            if (0 === total_sec) {
+                removeTimer(timerId, 'getVerifyCodeBtn', btnDisp);
+                timerId = null;
+                total_sec = 59;
+                return false;
+            }
+
+            btnDisp = btnDisp + '('+ total_sec +')';
+            $('#getVerifyCodeBtn').text(btnDisp);
+            total_sec = total_sec - 1;
+        }
+        function removeTimer(id, objId, objText) {
+            if (null != id) {
+                clearInterval(id);
+            }
+            $('#'+objId).text(objText);
+            $('#'+objId).attr('disabled', false);
+        }
+
+        $('#tijiao').on('click', function(){
+              var bank = $("#bank").val();
+              if(bank == '是'){
+                var kaihuhang = $("#kaihuhang").val();
+              if (kaihuhang == "") {
+                        art.dialog({
+                          lock:true,
+                          content: '开户银行不能为空',
+                          time: 5
+                        });
+                        return false;
+                      }
+              var zhanghuming = $("#zhanghuming").val();
+              if (zhanghuming == "") {
+                        art.dialog({
+                          lock:true,
+                          content: '账户名不能为空',
+                          time: 5
+                        });
+                        return false;
+                      }
+              var yinhangka = $("#yinhangka").val();
+              if (yinhangka == "") {
+                        art.dialog({
+                          lock:true,
+                          content: '银行卡号不能为空',
+                          time: 5
+                        });
+                        return false;
+                      }
+              var yinhanghang = $("#yinhanghang").val();
+              if (yinhanghang == "") {
+                        art.dialog({
+                          lock:true,
+                          content: '银行行号不能为空',
+                          time: 5
+                        });
+                        return false;
+                      }
+               var yhk = $("#yhk").val();
+              if (yhk == "") {
+                        art.dialog({
+                          lock:true,
+                          content: '请上传银行卡照片',
+                          time: 5
+                        });
+                        return false;
+                      }
+            }
+            var sfz_img_z = $("#sfz_img_z").val();
+              if (sfz_img_z == "") {
+                        art.dialog({
+                          lock:true,
+                          content: '请上传身份证正面照片',
+                          time: 5
+                        });
+                        return false;
+                      }
+                       var sfz_img_b = $("#sfz_img_b").val();
+              if (sfz_img_b == "") {
+                        art.dialog({
+                          lock:true,
+                          content: '请上传身份证反面照片',
+                          time: 5
+                        });
+                        return false;
+                      }
+
+              var phone = $("#phone").val();
+                      var phoneActive = $("#phoneActive").val();
+                      if (phoneActive == "请输入短信验证码") {
+                        art.dialog({
+                          lock:true,
+                          content: '手机验证码不能为空',
+                          time: 5
+                        });
+                        return false;
+                      }
+                      $.ajax({
+                        type: "POST",
+                        url: '{:U("User/check_phone_verify_code","",false)}',
+                        async:false,//设置同步/异步的参数[true异步  false同步]
+                        data: {phoneActiveCode:phoneActive},
+                        success: function(ret) {
+
+                          if(ret == 1){
+                            msg = "false";
+                            key = 1;
+                          }
+                          else if(ret == 2){
+                            msg = "false";
+                            key = 2;
+                          }
+                          else{
+                            msg = "success";
+                          }
+
+                        },
+                        dataType: 'json'
+                      });
+                      if(msg=="false"){
+                        if(key == 1){
+                          art.dialog({
+                            lock:true,
+                            content: '手机验证码错误，请核对！',
+                            time: 5
+                          });
+                          return false;
+                        }
+                        if(key == 2){
+                          art.dialog({
+                            lock:true,
+                            content: '手机验证码过期！',
+                            time: 5
+                          });
+                          return false;
+                        }
+                      } 
+
+                      $.ajax({
+                        type: "POST",
+                        url: '{:U("User/check_phoneRight","",false)}',
+                        async:false,//设置同步/异步的参数[true异步  false同步]
+                        data: {vHOUSECODE:$('#housecode').val(),vOWNERNAME:$('#owername').val(),vMOBILEPHONE:phone},
+                        success: function(res) {
+                          ret = res['CODE'];
+                          if(ret == 44){
+                            msg = "false";
+                            key = ret;
+                          }
+                          else{
+                            msg = "success";
+                          }
+
+                        },
+                        dataType: 'json'
+                      });
+                      if(msg=="false"){
+                        if(key == 44){
+                          art.dialog({
+                            lock:true,
+                            content: '房间信息的原手机号不正确，请核对！',
+                            time: 5
+                          });
+                          return false;
+                        }
+                      }
+
+
+                  document.getElementById("form2").submit();
+          });
+    });
+</script>
+</body>
+</html>

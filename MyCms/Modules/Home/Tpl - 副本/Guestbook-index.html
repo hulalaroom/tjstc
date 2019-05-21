@@ -1,0 +1,145 @@
+<include file="Public:header" />
+<div class="main_block">
+  <include file="Public:top" />
+    <div class="content_block">
+	
+    	<div class="left_side fl">
+        	<div class="l_menu">
+        		<!--上级菜单-->
+				{~$cat=get_info($cate,$id);}
+				 <volist name="cat" id="m" key="l">
+					<a href="javascript:history.go(-1);" title="返回上一页">
+						<div class="bb_l_menu_title">
+							{$m.title} 
+						</div>
+					</a>
+				</volist>
+				<div class="left_other_menu">
+				  {~$cat=get_child($cate,$pid);}
+				  <volist name="cat" id="c" key="k">
+				  <dl <eq name='c.id' value='$id'> class="hover"</eq>>
+					<dt><a href="<notempty name='c.url'>{$c.url}<else/>{:U($c['Model']['name'].'/index','id='.$c['id'])}</notempty>"><img src="{$c.pic}"/></a>
+					  <!--<img src="{$c.cat_pic}"/>-->
+					</dt>
+				  <dd> <a href="<notempty name='c.url'>{$c.url}<else/>{:U($c['Model']['name'].'/index','id='.$c['id'])}</notempty>">{$c.title}</a> <span>{$c.summary}</span> </dd>
+				</dl>
+				  </volist></div>
+                </div>	
+          <include file="Public:left" /></div>
+		
+		
+        <div class="main_con fr">
+        	<div class="bread_nav">
+            	<div class="l fl"></div>
+                <div class="m fl" style="line-height:30px;"> <span class="list_style"></span> <span>您当前的位置:</span> {$nav} </div>
+                <div class="r fl"></div>
+            </div>
+            <div class="artical">
+            <!-- begin -->
+            
+            
+                    <div class="ny_banner"><img src="__PUBLIC__/images/banenr01.jpg"/></div>
+      <form action="__URL__/insert" method="post" id="form2" name="form2">
+          <table class="bdys" width="100%" border="0" cellspacing="0" cellpadding="0" align="center">
+            <tr>
+              <td width="140" align="right"><span>标&nbsp;&nbsp;&nbsp;&nbsp;题:</span></td>
+              <td align="left" colspan=1><input size="53" type="text" name="title" class="gu_title fl" size="" id="title" /><div class="my_isright"><div id="titleTip"></div></div>
+              </td>
+            </tr>
+            <tr>
+              <td class="pa_5" align="right"valign="middle"><span>内&nbsp;&nbsp;&nbsp;&nbsp;容:</span></td>
+              <td class="pa_5" align="left" colspan=1><textarea cols="37"rows="4" name="summary" class="gu_content fl" id="summary"></textarea><div class="my_isright"><div id="summaryTip"></div></div></td>
+            </tr>
+            <tr>
+              <td align="right"><span>联&nbsp;系&nbsp;人:</span></td>
+              <td align="left" colspan=2><input type="" name="linkman" value="{$nickname}" class="" size=""></td>
+            </tr>
+            <tr>
+              <td align="right"><span>联系方式:</span></td>
+              <td align="left" colspan=2><input type="" name="phone" class="fl" size="" value="{$phone}"  id="phone"><div class="my_isright"><div id="phoneTip"></div></div></td>
+            </tr>
+            <tr class="btn00">
+              <td></td>
+              <td align="left"><input type="hidden" value="{$Think.get.id}" name="cat_id"/>
+                <input type="reset" name="" class="btn1 Reset"  value="重 置" />
+                <input type="submit" name="" class="btn1 Submit"  value="提 交"/></td>
+            </tr>
+          </table>
+        </form>
+
+			<!-- end -->
+            </div>
+        </div>
+		
+		 <script>
+            $(function(){	 
+                $("#getcode").click(function(){
+                    $imgstr="__URL__/verify/randcode="+Math.random();
+                    $(this).attr("src",$imgstr);
+                });
+            });</script>
+			
+    </div>
+</div>
+
+
+
+  <include file="Public:footer" />
+</body>
+</html>
+<script type="text/javascript" src="__PUBLIC__/js/formValidator-4.1.3.min.js"></script>
+<script type="text/javascript" src="__PUBLIC__/js/formvalidatorregex.js"></script>
+<script type="text/javascript">
+ 
+    $(document).ready(function(){   
+        //提供回调函数，提供提交返回结果的处理   
+        var options = {
+            //            beforeSubmit: showRequest,
+            //提交前处理 
+            success: showResponse,
+            //处理完成 
+            resetForm: false,
+            dataType: 'json'
+        };    
+        $('#form2').submit(function() {
+            if ($.formValidator.pageIsValid('1')==true) 
+            { 
+                $(this).ajaxSubmit(options);
+                return false; 
+            } 
+
+          
+        });
+       
+        //初始化验证插件，如果提交出错，则弹出对话框，如果正确，则通过ajax提交表单请求。
+        $.formValidator.initConfig({autotip:true,formID:"form2",submitOnce:false,
+            onsuccess:function(msg){
+              
+                return false;},
+            onError:function(msg){}
+
+        });
+  
+  
+        //表单验证   
+        $("#title").formValidator({oncorrect:"输入正确",onShow:"必填"}).inputValidator({min:1,max:50,onError:"1-50个字符,请确认"});
+        $("#summary").formValidator({oncorrect:"输入正确",onShow:"必填"}).inputValidator({min:1,max:400,onError:"1-400个字符,请确认"});
+        // $("#phone").formValidator({onShow:"请输入你的手机或电话",onFocus:"请输入你的手机或电话",onCorrect:"输入正确",onEmpty:"不能为空"}).regexValidator({regExp:["tel","mobile"],dataType:"enum",onError:"格式不正确"});
+		$("#phone").formValidator({onShow:"请输入你的手机或电话",onFocus:"请输入你的手机或电话",onCorrect:"输入正确",onEmpty:"不能为空"}).regexValidator({regExp:["intege"],dataType:"enum",onError:"格式不正确"});
+                
+    }); 
+    
+    //
+
+    function showResponse(res) {
+    
+        art.dialog({
+            title: res.title,
+            content: res.message,
+            time: res.time
+        });
+        if (res.url) {
+            window.location.href = res.url;
+        }
+    }  
+</script>

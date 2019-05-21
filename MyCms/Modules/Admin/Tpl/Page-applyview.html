@@ -1,0 +1,70 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href='__PUBLIC__/css/common.css'>
+<script type="text/javascript" src="__PUBLIC__/js/jquery-1.7.1.min.js"></script>
+<script type="text/javascript" src="__PUBLIC__/js/base.js"></script>
+<title>2016-2017供热优惠申请</title>
+</head>
+<body>
+<div id="append_parent"></div>
+<div class="container" id="cpcontainer">
+  <div id="contentHeader">
+    <h3>2016-2017供热优惠申请</h3>
+    <div class="searchArea">
+      <ul class="action left" >
+        <li class="current"><a href="__URL__/apply" class="actionBtn"><span>返回</span></a></li>
+      </ul>
+      <div class="search right"> </div>
+    </div>
+  </div>
+		<table class="form_table">
+			<tr>
+			  <td colspan="6"><b>供热优惠申请明细</b></td>
+			</tr>
+			<tr>
+			  <td width="12%">房间地址</td>
+			  <td width="20%">{$list['housename']}</td>
+			  <td width="12%">房间编号</td>
+			  <td width="20%">{$list['housecode']}</td>
+			  <td width="12%">申请时间</td>
+			  <td width="20%">{$list['createtime']|date="Y-m-d H:i:s",###}</td>
+			</tr>
+			<tr>
+			  <td width="12%">业主名称</td>
+			  <td width="20%">{$list['username']}&nbsp;</td>
+			  <td width="12%">能源卡号</td>
+			  <td width="20%">{$list['cardnumber']}&nbsp;</td>
+			  <td width="12%">采暖面积</td>
+			  <td width="20%">{$list['area']}&nbsp;</td>
+			</tr>
+			<tr>
+			  <td width="12%">联系电话</td>
+			  <td width="20%">{$list['phone']}&nbsp;</td>
+			  <td width="12%">身份证号</td>
+			  <td width="20%">{$list['idcard']}&nbsp;</td>
+			  <td width="12%">验证码</td>
+			  <td width="20%">{$list['code']}&nbsp;</td>
+			</tr>
+			<tr>
+			  <td width="12%">本季应交</td>
+			  <td width="20%">{$list['payable']}&nbsp;</td>
+			  <td width="12%">优惠金额</td>
+			  <td width="20%">{$list['discount']}&nbsp;</td>
+			  <td width="12%">结余金额</td>
+			  <td width="20%">{$list['left']}&nbsp;</td>
+			</tr>
+			<tr>
+			  <td width="12%">实际应缴</td>
+			  <td width="20%">{$list['pay']}&nbsp;</td>
+			  <td width="12%">&nbsp;</td>
+			  <td width="20%">&nbsp;&nbsp;</td>
+			  <td width="12%">&nbsp;</td>
+			  <td width="20%">&nbsp;&nbsp;</td>
+			</tr>
+		</table>
+		
+</div>
+</body>
+</html>

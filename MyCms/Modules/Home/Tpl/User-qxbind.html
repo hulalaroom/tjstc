@@ -1,0 +1,487 @@
+<!doctype html>
+<html>
+<head>
+    <include file="Public:common-head" />
+    <link rel="stylesheet" type="text/css" href="__PUBLIC__/last/css/css1.css?v=3">
+		<link rel="stylesheet" type="text/css" href="__PUBLIC__/style/css/selectFilter.css">
+	<link rel="stylesheet" type="text/css" href="__PUBLIC__/style/css/css.css">
+
+</head>
+<include file="Public:common-toppart"/>
+<body>
+<div class="gray"></div>
+<div class="center_zfb">
+  <div class="title1"><span class="wrong"></span> </div>
+  <div class="content1">
+  <img src="__PUBLIC__/last/img/sfzfmdt.png">
+  </div>
+</div>
+
+
+<form id="form2" name="form2" action="{:U('User/qxbindok')}" method="post" enctype="multipart/form-data">
+<div class="house_banner">
+	<div class="content">
+		<p class="jiaofei_banner_01 font_yinying">房间绑定</p>
+<p class="jiaofei_banner_03"></p>
+<p class="jiaofei_banner_02 font_yinying">一户多房，轻松管理</p>
+
+	</div>
+
+
+</div>
+<div class="content_bg01 ">
+	<div class="content history_content">
+	<p class="jiaofei_dqwz dqwz_bg">
+        当前位置：<a href="http://www.66885890.com">首页</a> &nbsp;&nbsp;&gt;&nbsp;&nbsp;
+            <a href="{:U('User/index',array('id'=>20))}">我的5890</a>&nbsp;&nbsp;&gt;&nbsp;&nbsp;
+            <span class="green">强制房间解绑申请</span>
+    </p>
+		<div class="house_bdcgcontent clearfix">
+        <p class="bangding_xian"></p>
+        <p class="bangding_tips">
+                      备注：带*号的为必填项，不带*号的为选填项，解绑申请后由工作人员审核，审核成功后会取消该房间绑定
+        </p>
+
+        <div class="bangding_inputcontent">
+        <div class="bangding_inputcontentone clearfix">
+        <div class="history_inputboxone "><span>选择小区：</span>
+
+		<div class="item_one item_two">	<!-- 这里开始 -->
+
+				<select name="filter" id="village" class="item_two_select">
+					<option value="" selected>请选择</option>
+					<volist name="villagelist" id="item">
+						<option value="{$item.COMMUNITYCODE}">{$item.COMMUNITYNAME}</option>
+					</volist>
+
+				</select><span style="position: absolute;left: 180px;top: 10px;color: #fd8320;">*</span>
+
+			<!-- 这里结束 --></div>
+
+		</div>
+
+		<div class="history_inputboxone history_inputboxthree"><span>选择楼号：</span>
+			<div class="item_one item_two">	<!-- 这里开始 -->
+
+				<select name="filter" id="building" class="item_two_select">
+					<option value="" selected>请选择</option>
+				</select><span style="position: absolute;left: 180px;top: 10px;color: #fd8320;">*</span>
+
+			</div>
+		</div>
+
+		<div class="history_inputboxone history_inputboxthree"><span>选择单元：</span>
+
+			<div class="item_one item_two">	<!-- 这里开始 -->
+
+				<select name="filter" id="uite" class="item_two_select">
+					<option value="" selected>请选择</option>
+				</select><span style="position: absolute;left: 180px;top: 10px;color: #fd8320;">*</span>
+
+			<!-- 这里结束 --></div>
+
+		</div>
+
+	<div class="history_inputboxone history_inputboxthree"><span>选择门牌号：</span>
+
+		<div class="item_one item_two">	<!-- 这里开始 -->
+
+				<select name="filter" id="floor" class="item_two_select">
+					<option value="" selected>请选择</option>
+				</select><span style="position: absolute;left: 180px;top: 10px;color: #fd8320;">*</span>
+
+			<!-- 这里结束 --></div>
+
+		</div>
+
+        </div>
+		
+        <div class="bangding_inputcontenttwo clearfix">
+        	<div class="bangding_left">
+        	<div style="padding-left: 0px;"><span class="name01" style="text-align: left;">业主姓名：</span><input type="text" id="owername" name="owername"/><span class="xing">*</span></div>
+			</div>
+			<div class="bangding_rihgt">
+        	<div style="padding-left: 0px;"><span class="name01" style="text-align: left;">身份证号：</span><input type="text" id="papercode" name="papercode"/><span class="xing" style="color: #fd8320;">*</span></div>
+			</div>
+		</div>
+                <!-- <input name="sfz_z" id="sfz_z" value="" type="hidden">
+                <input name="sfz_z_name" id="sfz_z_name" value="" type="hidden">
+                <input name="sfz_b" id="sfz_b" value="" type="hidden">
+                <input name="sfz_b_name" id="sfz_b_name" value="" type="hidden"> -->
+				<div class="yezhushenfen">
+					<h3>上传能源合同</h3>
+					<div class="yewu_tips01" style="text-align: left;">注意：文件后缀名必须为.jpg，文件大小在2M以内！</div>
+					<div class="yewu_tips02" style="text-align: left;">请您上传清晰、无污染的能源合同扫描件</div>
+					<div class="yewu_shangchuang">
+						<div>
+							<a href="" class="file">上传第一页<input type="file" name="sfz[]" id="sfz_img_z"></a>
+							<span class="shili01"><img onmouseover="showImg('sfzzmdt',event);" onmouseout="hideImg()" src="__PUBLIC__/last/img/wodeyewu_08.png" alt="" /></span>
+							<a href="" class="file">上传最后一页<input type="file" name="sfz[]" id="sfz_img_b"></a>
+							<span class="shili01"><img onmouseover="showImg('sfzfmdt',event);" onmouseout="hideImg()" src="__PUBLIC__/last/img/wodeyewu_07.png" alt="" /></span>
+						</div>
+						<div class="img-preview z_preview"><span><img class="sfzfmdt-preview-small" alt="" id="z_preview" /></span><span id="sfz_img_z_name" class="file-name"></span><a id="sfz_img_z_del">删除</a></div>
+						<div class="img-preview b_preview"><span><img class="img-preview-small" alt="" id="b_preview" /></span><span id="sfz_img_b_name" class="file-name"></span><a id="sfz_img_b_del">删除</a></div>
+					</div>
+		</div>
+		<div class="yezhushenfen">
+					<h3>上传再生水合同</h3>
+					<div class="yewu_tips01" style="text-align: left;">注意：文件后缀名必须为.jpg，文件大小在2M以内！</div>
+					<div class="yewu_tips02" style="text-align: left;">请您上传清晰、无污染的再生水合同扫描件</div>
+					<div class="yewu_shangchuang">
+						<div>
+							<a href="" class="file">上传第一页<input type="file" name="sfz[]" id="sfz_img_s"></a>
+							<span class="shili01"><img onmouseover="showImg('sfzzmdt',event);" onmouseout="hideImg()" src="__PUBLIC__/last/img/wodeyewu_08.png" alt="" /></span>
+							<a href="" class="file">上传最后一页<input type="file" name="sfz[]" id="sfz_img_d"></a>
+							<span class="shili01"><img onmouseover="showImg('sfzfmdt',event);" onmouseout="hideImg()" src="__PUBLIC__/last/img/wodeyewu_07.png" alt="" /></span>
+						</div>
+						<div class="img-preview s_preview"><span><img class="sfzfmdt-preview-small" alt="" id="s_preview" /></span><span id="sfz_img_s_name" class="file-name"></span><a id="sfz_img_s_del">删除</a></div>
+						<div class="img-preview d_preview"><span><img class="img-preview-small" alt="" id="d_preview" /></span><span id="sfz_img_d_name" class="file-name"></span><a id="sfz_img_d_del">删除</a></div>
+					</div>
+		</div>
+				<div class="jiebang">
+			<a class="jiebang_btn01" onclick="checkFrom()" style="background: url(/Public/last/img/house_button-01.png) -8px -6px no-repeat;"><span>提交申请</span></a>
+			<a class="jiebang_btn02" href="javascript:freset(document.form2)"><span>重置</span></a>
+		</div>
+		<input type="hidden" name="housecode" id="housecode">
+        <input type="hidden" name="housename" id="housename">
+			</div>
+        </form>
+		</div>
+	</div>
+</div>
+
+</form>
+<include file="Public:common-footer" />
+<include file="Public:common-script" />
+<script src="__PUBLIC__/style/laydate/laydate.js"></script>
+<script type="text/javascript" src="__PUBLIC__/style/js/jquery.min.js"></script>
+<script type="text/javascript" src="__PUBLIC__/style/js/selectFilter.js"></script>
+<script type="text/javascript" src="__PUBLIC__/js/artDialog4.1.7/artDialog.source.js?skin=green"></script>
+<script type="text/javascript" src="__PUBLIC__/js/artDialog4.1.7/plugins/iframeTools.js"></script>
+<script type="text/javascript" src="__PUBLIC__/last/js/ImageUtils.js"></script>
+<script type="text/javascript" src="__PUBLIC__/last/js/artDialog4.1.7/artDialog.source.js?skin=green"></script>
+<script type="text/javascript">
+	lay('#version').html('-v'+ laydate.v);
+
+	//执行一个laydate实例
+
+	//年月选择器
+	laydate.render({
+	  elem: '#cardenddata'
+	  ,type: 'month'
+	});
+</script>
+<script type="text/javascript">
+
+	$('#ggg').selectFilter({
+		callBack : function (val){
+			//返回选择的值
+			console.log(val+'-是返回的值')
+		}
+	});
+
+	function freset(obj){
+		obj.reset();
+	}
+
+	//这里是初始化
+	$('#village').on('change', function() {
+            var val = this.value;
+			$('#building').html('');
+			$.ajax({
+                url: '{:U("User/getBuilding","",false)}',
+                type : 'POST',
+                async: false,
+                data : {parameter: val},
+                dataType: 'json',
+                success: function(ret){
+
+					var optionStr = [];
+					$.each(ret, function(i, item){
+						if(i==0){optionStr.push('<option value="">' +"请选择"+ "</option>")};
+						optionStr.push('<option value="'+ item.BUILDINGCODE +'">' +item.BUILDINGNAME+ "</option>");
+						//optionStr.push('<li data-value="'+ item.BUILDINGCODE +'"><a title="'+ item.BUILDINGCODE +'">' +item.BUILDINGNAME+ "</a></li>");
+					});
+					$("#building").append(optionStr.join(''));
+					//$('#building_1').html(optionStr_1.join(''));
+                }
+            });
+	});
+
+	$('#building').on('change', function() {
+            var parameter = this.value;
+            $('#uite').html('');
+            $.ajax({
+                url: '{:U("User/getUite","",false)}',
+                type : 'POST',
+                async: false,
+                data : {parameter: parameter},
+                dataType: 'json',
+                success: function(ret){
+					var optionStr = [];
+					$.each(ret, function(i, item){
+						if(i==0){optionStr.push('<option value="">' +"请选择"+ "</option>")};
+						optionStr.push('<option value="'+ item.CELLCODE +'">' +item.CELLCODE+ "</option>");
+
+					});
+					$('#uite').html(optionStr.join(''));
+                }
+            });
+        });
+
+	$('#uite').on('change', function() {
+            var parameter = this.value;
+			var parameter1 = $('#building').val();
+            $('#floor').html('');
+            $.ajax({
+                url: '{:U("User/getFloor","",false)}',
+                type : 'POST',
+                async: false,
+                data : {parameter: parameter,parameter1: parameter1},
+                dataType: 'json',
+                success: function(ret){
+					var optionStr = [];
+					$.each(ret, function(i, item){
+						if(i==0){optionStr.push('<option value="">' +"请选择"+ "</option>")};
+						optionStr.push('<option value="'+ item.FLOORDOORPLATECODE +'">' +item.FLOORDOORPLATECODENUM+ "</option>");
+
+					});
+					$('#floor').html(optionStr.join(''));
+                }
+            });
+        });
+
+</script>
+<script type="text/javascript">
+  function showImg (name,event){
+            console.log(event);
+            var scrollY = document.documentElement.scrollTop;
+            if(name == 'hkbdt'){
+                $(".center_zfb").css("width","350px");
+            }else if(name == 'fczdt'){
+                $(".center_zfb").css("width","700px");
+            }else{
+                $(".center_zfb").css("width","300px");
+            }
+            $(".content1").html("<img src='__PUBLIC__/last/img/"+name+".png'>");
+            var gao = event.clientY + scrollY - 35;
+            var heng = event.clientX + 10;
+            /*if(name == 'sfzfmdt'){
+                heng = heng - 320;
+            }*/
+            $(".center_zfb").css({"position":"absolute","top":gao+"px","left":heng+"px","margin":"0px"});
+
+            //$(".gray").show();
+            $(".center_zfb").show();
+        }
+function hideImg(){
+  //$(".gray").hide();
+  $(".center_zfb").hide();
+}
+    $(function() {
+
+		var $zPreview =  $('#z_preview'), $bPreview = $('#b_preview');
+		$('#sfz_img_z').on('change', function(e) {
+			var src, url = window.URL || window.webkitURL || window.mozURL, files = e.target.files;
+            for (var i = 0, len = files.length; i < len; ++i) {
+            	var file = files[i];
+                if (url) {
+                    src = url.createObjectURL(file);
+                } else {
+                    src = e.target.result;
+                }
+
+				ImageUtils.compressPicture(file, {width:180,quality:0.5,mimeType:file.type}, function (base64) {
+                    $zPreview.prop('src',base64);
+                    $('#sfz_img_z_name').text(file.name);
+                    $('.z_preview').show();
+                });
+            }
+		});
+
+		$('#sfz_img_b').on('change', function(e) {
+			var src, url = window.URL || window.webkitURL || window.mozURL, files = e.target.files;
+            for (var i = 0, len = files.length; i < len; ++i) {
+            	var file = files[i];
+                if (url) {
+                    src = url.createObjectURL(file);
+                } else {
+                    src = e.target.result;
+                }
+
+				ImageUtils.compressPicture(file, {height:180,quality:0.5,mimeType:file.type}, function (base64) {
+                    $bPreview.prop('src',base64);
+                    $('#sfz_img_b_name').text(file.name);
+                    $('.b_preview').show();
+                });
+            }
+		});
+
+		$('#sfz_img_z_del').on('click', function() {
+			var file=document.getElementById('sfz_img_z');
+			$zPreview.prop('src', '');
+            $('#sfz_img_z_name').text('');
+			file.value="";
+			$('.z_preview').hide();
+		});
+	
+		$('#sfz_img_b_del').on('click', function() {
+			var filrB=document.getElementById("sfz_img_b");
+			$bPreview.prop('src', '');
+            $('#sfz_img_b_name').text('');
+			filrB.value="";
+			$('.b_preview').hide();
+		});
+var $sPreview =  $('#s_preview'), $dPreview = $('#d_preview');
+		$('#sfz_img_s').on('change', function(e) {
+			var src, url = window.URL || window.webkitURL || window.mozURL, files = e.target.files;
+            for (var i = 0, len = files.length; i < len; ++i) {
+            	var file = files[i];
+                if (url) {
+                    src = url.createObjectURL(file);
+                } else {
+                    src = e.target.result;
+                }
+
+				ImageUtils.compressPicture(file, {width:180,quality:0.5,mimeType:file.type}, function (base64) {
+                    $sPreview.prop('src',base64);
+                    $('#sfz_img_s_name').text(file.name);
+                    $('.s_preview').show();
+                });
+            }
+		});
+
+		$('#sfz_img_d').on('change', function(e) {
+			var src, url = window.URL || window.webkitURL || window.mozURL, files = e.target.files;
+            for (var i = 0, len = files.length; i < len; ++i) {
+            	var file = files[i];
+                if (url) {
+                    src = url.createObjectURL(file);
+                } else {
+                    src = e.target.result;
+                }
+
+				ImageUtils.compressPicture(file, {height:180,quality:0.5,mimeType:file.type}, function (base64) {
+                    $dPreview.prop('src',base64);
+                    $('#sfz_img_d_name').text(file.name);
+                    $('.d_preview').show();
+                });
+            }
+		});
+
+		$('#sfz_img_s_del').on('click', function() {
+			var file=document.getElementById('sfz_img_s');
+			$sPreview.prop('src', '');
+            $('#sfz_img_s_name').text('');
+			file.value="";
+			$('.s_preview').hide();
+		});
+	
+		$('#sfz_img_d_del').on('click', function() {
+			var filrB=document.getElementById("sfz_img_d");
+			$dPreview.prop('src', '');
+            $('#sfz_img_d_name').text('');
+			filrB.value="";
+			$('.d_preview').hide();
+		});
+
+		/*$('#obtainVerifyCode').on('click', function(event) {
+			event.preventDefault();
+			if ($zPreview.prop('src') && $bPreview.prop('src')) {
+
+			} else {
+                art.dialog({
+                    lock: true,
+                    content: '请您选择清晰、无污染的业主本人身份证正反面照片或者扫描件',
+                    time: 3
+                });
+                return false;
+			}
+		});*/
+
+
+
+ 
+    });
+</script>
+<script>
+function checkFrom() {
+		if ($("#village").val() == "" || $("#buliding").val() == "" || $("#uite").val() == "" || $("#floor").val() == "") {
+			art.dialog({
+				lock:true,
+				content: '请选择完整的房间信息',
+				time: 5
+			});
+			return false;
+		}
+		var ownername = $("#ownername").val();
+		if (ownername == "") {
+			art.dialog({
+				lock:true,
+				content: '业主姓名不能为空',
+				time: 5
+			});
+			return false;
+		}
+
+		var papercode = $("#papercode").val();
+		if (papercode == "") {
+			art.dialog({
+				lock:true,
+				content: '身份证号不能为空',
+				time: 5
+			});
+			return false;
+		}
+		
+
+
+		$("#housecode").attr("value",$('#building').val()+'-'+$('#uite').val()+'-'+$('#floor').val());
+		$("#housename").attr("value",$('#village').find("option:selected").text()+$('#building').find("option:selected").text()+$('#uite').find("option:selected").text()+'单元'+$('#floor').find("option:selected").text());
+
+				$.ajax({
+			type: "POST",
+			url: '{:U("User/check_houseinfo","",false)}',
+			async:false,//设置同步/异步的参数[true异步  false同步]
+			scriptCharset: 'GBK',
+			data: {vHOUSECODE:$('#housecode').val(),vOWNERNAME:ownername,vPAPERCODE:papercode},
+			success: function(res) {
+				ret = res['CODE'];
+				if(ret == 40 || ret == 41){
+					msg = "false";
+					key = ret;
+				}
+				else{
+					msg = "success";
+				}
+
+			},
+			dataType: 'json'
+		});
+		if(msg=="false"){
+			if(key == 40){
+				art.dialog({
+					lock:true,
+					content: '业主姓名不正确，请核对！',
+					time: 5
+				});
+				return false;
+			}
+			if(key == 41){
+				art.dialog({
+					lock:true,
+					content: '身份证号不正确，请核对！',
+					time: 5
+				});
+				return false;
+			}
+			
+		}
+
+		
+
+    document.getElementById("form2").submit();
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,322 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>预览天津生态城居民住宅计量供用热合同</title>
+<meta name="Description" content="" />
+<meta name="Keywords" content="" />
+<link rel="stylesheet" type="text/css" href="/htmodel/css/redefine.css" media="screen, all" />
+<link rel="stylesheet" type="text/css" href="/htmodel/css/index.css" media="screen, all" />
+</head>
+<body>
+<volist name="mjlist" id="mj" key="k">
+<div class="wrap">
+  <div class="page1">
+    <h1>天津生态城居民住宅供热计量收费
+      供用热合同</h1>
+    <h4>（2015版）</h4>
+    <div class="name">
+      <ul>
+        <li>合同编号：
+          <input name="" type="text" readonly/>
+        </li>
+        <li>用户编号：
+          <input name="" type="text" value="{$mj.housecode}"  readonly/>
+        </li>
+        <li>小区名称：
+         <input name="" type="text" value="中新天津生态城{$mj.communitcode}" style="color:red" readonly/>
+        </li>
+        <li>合同签订地点：
+          <input name="" type="text" class="add" value="中新天津生态城" style="color:red"   readonly/>
+        </li>
+        <li>签订时间:
+          <input name="" type="text" readonly/>
+        </li>
+      </ul>
+    </div>
+    <p class="yema">1</p>
+  </div>
+  <div class="page2">
+    <div class="name2">
+      <ul>
+        <li> 供热单位：
+          <input name="" type="text" class="grdw"  value="天津生态城能源投资建设有限公司" style="color:red" readonly/>
+          （以下简称甲方） </li>
+        <li>用热户：
+          <input name="" type="text" class="" value="{$mj.syf}" style="color:red" readonly/>
+          （以下简称乙方）</li>
+      </ul>
+    </div>
+    <p class="text">为节约能源、保护环境，提高热用户的舒适度，明确甲、乙双方在供热和用热中的权利、义务和责任，维护各自的合法权益，根据《中华人民共和国合同法》、《天津市供热用热条例》、《天津市供热计量管理办法》、《天津市供热计量收费管理办法（试行）》等有关法律、法规和规章的规定，经双方协商一致，订立本合同。</p>
+    <div class="page2_content">
+      <h5 class="page2_title">第一条  基本情况</h5>
+      <p class="">1.1 供用热地址(房号)：
+        <input name="" type="text"  value="{$mj.buildcode}" style="color:red" readonly/>
+        号楼
+        <input name="" type="text"  value="{$mj.cellcode}" style="color:red" readonly/>
+        门
+         <input name="" type="text"  value="{$mj.doorplatecode}" style="color:red" readonly/>
+        号</p>
+      <div class="fxk clearfix">
+        <div class="lb">类别：</div>
+        <div class="bieshu">
+          <div class="checkboxFive">
+            <input type="checkbox" value="别墅住户" id="checkboxFiveInput3" name="" <if condition="($mj.fwlx eq '别墅住户') "> checked="checked" </if>  disabled="disabled"/>
+            <label for="checkboxFiveInput"></label>
+          </div>
+         <span> 别墅住户</span><!--bieshu--></div>
+        <div class="ptzh">
+          <div class="checkboxFive1">
+           <input type="checkbox" value="普通住户" id="checkboxFiveInput4" name="" <if condition="($mj.fwlx eq '普通住户') "> checked="checked" </if>  disabled="disabled"/>
+            <label for="checkboxFiveInput1"></label>
+          </div>
+          <span>普通住户</span><!--ptzh--></div>
+      </div>
+<div class="fxk clearfix">
+        <div class="lb cnxs">1.2 采暖形式：</div>
+        <div class="bieshu">
+          <div class="checkboxFive">
+             <input type="checkbox" value="1" id="checkboxFiveInput12" name="" <if condition="($mj.cnxs eq '散热器') "> checked="checked" </if>  disabled="disabled"/>
+            <label for="checkboxFiveInput3"></label>
+          </div>
+         <span> 散热器</span><!--bieshu--></div>
+        <div class="ptzh">
+          <div class="checkboxFive1">
+            <input type="checkbox" value="1" id="checkboxFiveInput11" name="" <if condition="($mj.cnxs eq '地辐射采暖') "> checked="checked" </if>  disabled="disabled"/>
+            <label for="checkboxFiveInput4"></label>
+          </div>
+          <span>地辐射采暖</span><!--ptzh--></div>
+      </div>
+      <h5 class="page2_title">第二条  供热采暖费计算</h5>
+      <p> 2.1 计费方法：<br />
+        供热采暖费＝容量热费（固定热费）＋计量热费<br />
+        容量热费（固定热费）＝容量热价（固定热价）×计费<br />
+        面积
+        计量热费＝计量热价×当年度供热期实际耗热量<br />
+        2.2 供热价格：<br />
+        供热价格按照当地政府物价部门下发的相关文件执行。<br />
+        2.3 计费面积：
+        <input name="" type="text" value="{$mj.jfmj}" style="color:red;"  readonly/>
+        平方米。<br />
+        2.4 遇供热价格、计费面积调整时，应重新计算供热采暖费。已交纳供热采<br />
+        暖费的，差额部分实行多退少补，实行优惠的按原方式继续执行。<br />
+        2.5 乙方房屋产权性质如有变化，按我市有关规定重新计算供热采暖费。 </p>
+      <h5 class="page2_title">第三条  供热采暖费支付及结算</h5>
+    </div>
+    <p class="yema">2</p>
+  </div>
+  <div class="page3">
+    <div class="page3_content">
+      <p class="text"> 3.1 乙方应在当年12月31 日前按面积热费标准向甲方交纳供热采暖费（面积热费=面积热价×计费面积），甲方应向乙方开具相关采暖收费票据。</p>
+      <p class="text">3.2 供热结束后的45个工作日内，甲方应告知乙方本供热期所用热量。乙方如有异议，应于收到通知之日起10日内提出复核申请，甲方应对乙方的热量表读数进行复核。</p>
+      <p class="text">3.3 甲方自6月1日起，按本合同第二条第2.1款的方法计算供热采暖费并与乙方进行结算。结算金额低于乙方预付金额的，差额部分自动冲抵乙方下一采暖季热费，甲方不再另行退费；结算金额高于乙方预付金额的，乙方应补交差额。其它情况按相关主管部门规定执行。</p>
+      <p class="text">3.4 交费方式</p>
+      <p class="text">参见甲乙双方签订的《天津生态城居民住宅供用能合同（燃气、自来水、供热）》第五章第一条相关条款。</p>
+      <p class="text">3.5 由于热量表质量等问题导致无法正常计量或计量不准确时，乙方计量热费按乙方所在建筑物的平均耗热量指标进行结算。</p>
+      <p class="text">3.6 若由于乙方责任造成热量表损坏时，乙方供热采暖费按面积热费的120%收取，并应承担甲方因此造成的全部损失。</p>
+      <h5 class="page2_title">第四条  供热期限及标准</h5>
+      <p class="text">4.1 供热期为每年11月15日至次年3月15日。如遇气温特殊变化需提前或延长供热期限时，则按相关主管部门规定执行。</p>
+      <p class="text">4.2 在供热期内，乙方安装供热设施的卧室、起居室(厅)温度，执行《天津市供热用热条例》相关标准。</p>
+      <h5 class="page2_title">第五条  供热设施维修与管理</h5>
+      <p class="text"> 5.1 双方管理界线划分：</p>
+      <p class="text">5.1.1 普通住户：甲乙双方的管理分界点为楼梯间竖井内共用供热管道出口首道阀门，管理分界点及以下（指管理分界点的用户一侧）的供热设施由乙方管</p>
+    </div>
+    <p class="yema">3</p>
+  </div>
+  <div class="page4">
+    <div class="page3_content">
+      <p class="">理，管理分界点以上的供热设施由甲方负责日常维修管理。</p>
+      <p class="text">5.1.2 别墅住户：甲乙双方的管理分界点为热力接口点(入户首道阀门)，管理分界点及以下（指管理分界点的用户一侧）的供热设施由乙方管理，管理分界点以上的供热设施由甲方负责日常维修管理。</p>
+      <p class="text">5.2 管理分界点以上的供热设施，由甲方负责日常维修。楼梯间竖井以上（指楼梯间竖井的非用户一侧）的供热设施维修费用由小区内业主公摊，楼梯间竖井及楼梯间竖井以下的供热设施的维修费用由乙方承担。热计量表或其部件因人为原因破损、故障或丢失的，维修及更换费用由乙方承担。</p>
+      <p class="text">5.3 管理分界点及以下的供热设施，在正常供热期间，其维修、维护和管理按照如下方式进行：</p>
+      <p class="text">5.3.1 采暖形式为散热器的，在房屋供热的前两个供热期内，属于房屋开发建设单位保修范围，甲方不负责维修、维护或管理。在此期间，管理分界点及以下的供热设施出现故障，甲方只负责在接到乙方通知后采取相应的关断措施但不负责维修。</p>
+      <p class="text">两个供热期结束后，甲乙双方会同房屋开发建设单位对供热设施共同进行验收。验收不合格的，由房屋开发建设单位进行整改直至验收合格。验收合格的，由甲方予以书面确认。自验收合格后的供热期起，甲方负责协助乙方对其地面以上明装供热设施（以下简称“明装供热设施”）进行维修，但所需材料和设备的维修费用由乙方承担，甲方的维修为有偿维修。在此期间，管理分界点及以下的明装供热设施出现故障，甲方在接到乙方通知后采取相应的关断措施并协助维修。用户也可自行维修。因甲方关断措施不当所造成的损失，甲方应当予以赔偿，赔偿数额不超过当年供热采暖费的两倍；非因甲方关断措施不当所造成的损失，甲方不承担赔偿责任。</p>
+      <p class="text">5.3.2 采暖形式为地采暖的，甲方不负责维修、维护或管理。管理分界点及以下的供热设施出现故障，甲方负责在接到乙方通知后采取相应的关断措施但不负责维修。因甲方关断措施不当所造成的损失，甲方应当予以赔偿；赔偿数额不超过当年供热采暖费的两倍，非因甲方关断措施不当所造成的损失，甲方不承担</p>
+    </div>
+    <p class="yema">4</p>
+  </div>
+  <div class="page5">
+    <div class="page3_content">
+      <p>赔偿责任。</p>
+      <p class="text">5.4 开发建设单位对新建房屋供热设施的保修期为两个供热期。在保修期内，供热设施的维修、系统运行调试由开发建设单位负责。</p>
+      <p class="text">两个供热期满后，开发建设单位应与甲方按照有关规定进行供热设施移交验收。验收合格的，管理分界点以上的供热设施由甲方管理，管理分界点及以下的供热设施由乙方管理；验收不合格的，开发建设单位应进行整改，并继续承担保修等责任。</p>
+      <p class="text">5.5 开发建设单位应乙方的要求对供热设施进行维修时，应对维修的项目和部位等做出详细记录，并对维修的项目和部位承担两个供热期的保修责任。</p>
+      <h5 class="page2_title">第六条  热计量表</h5>
+      <p class="text">6.1 楼内管井内安装的热计量表系供热设备，乙方不得擅自拆、改、移、损坏热表及附件。</p>
+      <p class="text">6.2 当甲方或乙方对热量表的准确性发生争议时，可到技术监督检测部门检定，检定费由提出方垫付。经检定不合格，确属热量表产品质量问题或自然损坏等情况，检验、维修、更新热量表的费用由甲方承担；如热量表属人为原因损坏或丢失的，维修、更换热量表的相应费用由乙方承担；经检定合格热量表无质量问题，相应费用由提出方承担。</p>
+      <p class="text">6.3 甲方依据规定定期对热量表进行校核，以维护双方合法权益，乙方应予配合。</p>
+      <p class="text">6.4 停热用户的热量表由甲方负责保管。</p>
+      <h5 class="page2_title">第七条  暂停和恢复供热</h5>
+      <p class="text">7.1 办理暂停和恢复供热时限：</p>
+      <p class="text">7.1.1 乙方需暂停或恢复用热，应在当年9月30日前向甲方提出申请，供热运行期间，甲方不予办理恢复和暂停用热等相关手续。<b>当年办理停热的用户甲方不予以办理恢复供热手续。</b></p>
+      <p class="text">7.1.2 暂停和恢复用热期限最短为一个供热期，实施范围应为本合同约定的</p>
+      <p class="yema">5</p>
+    </div>
+  </div>
+  <div class="page6">
+    <div class="page3_content">
+      <p>全部区域。</p>
+      <p class="text">7.1.3 在开发建设单位对供热设施保修期内，不得办理暂停供热。</p>
+      <p class="text">7.2 对于暂停用热不影响第三方正常采暖和共用供热设施安全运行的，甲方应当为乙方办理相关手续。由双方签订《天津生态城居民住宅暂停供用热合同》，明确约定停热时间、停热处理方式、协议期满延期等内容，并由乙方缴纳停热期间的热能损耗补偿费。暂停用热期间，每个供热期热能损耗补偿费收取标准为面积热费的20%，如遇政策调整按照新政策执行。</p>
+      <p class="text">7.3 乙方根据上述规定办理了停热手续后，停热期间管理分界点及以下的供热设施由乙方自行维修、维护和管理。因管理分界点及以下的供热设施损坏或故障给乙方或其他第三方造成的损失，责任由乙方承担。</p>
+      <h5 class="page2_title">第八条  甲方的权利和义务</h5>
+      <p class="text"8.1 按合同约定向乙方供热。></p>
+      <p class="text">8.2 按合同约定向乙方收取供热采暖费。</p>
+      <p class="text">8.3 对乙方的供热设施进行检查，对共用供热设施进行检查维修。</p>
+      <p class="text">8.4 对长期不用热的用户，甲方有权入户对相关供热设施进行检查，以维护双方权益，乙方有提供相应配合的义务。</p>
+      <p class="text">8.5 在供热期内，提供24小时值班服务，及时处理乙方反映的供热问题。</p>
+      <p class="text">8.6 因设备发生故障等原因需暂停供热时，应及时告知乙方，并立即组织抢修。</p>
+      <p class="text">8.7 乙方管理范围内的供热设施发生漏水等故障，对公共安全和第三方的利益造成严重影响时，应立即采取应急措施并通知乙方；需要入户抢修而乙方不能及时赶到现场的，应通知公安机关、街道办事处和物业服务企业配合入户抢修。</p>
+      <p class="text">8.8 按照合同第五条的规定对供热设施进行管理工作。</p>
+      <p class="text">8.9 提前3日公示打压试水时间。</p>
+      <h5 class="page2_title">第九条  乙方的权利和义务</h5>
+    </div>
+    <p class="yema">6</p>
+  </div>
+  <div class="page7">
+    <div class="page3_content">
+      <p class="text"> 9.1 按合同约定交纳供热采暖费。如甲方不能开具采暖收费相关票据，乙方可拒交采暖费。</p>
+      <p class="text">9.2 甲方提供的服务达不到标准时，可向生态城供热管理部门进行投诉。</p>
+      <p class="text">9.3 对乙方管理的供热设施进行维修、维护与更换，保证供热设施安全运行和户内正常采暖。</p>
+      <p class="text">9.4 不得拆卸、改装、遮挡、毁坏热量表设施或干扰热量表装置正常计量，不得加锁影响甲方检查热计量设施和抄表。</p>
+      <p class="text">9.5 不得排放和取用供热系统内热水。</p>
+      <p class="text">9.6 配合甲方供热系统打压试水。</p>
+      <p class="text">9.7 配合甲方检查维修供热设施，配合甲方进行计量表的数据确认。</p>
+      <p class="text">9.8 乙方应向甲方提供用热地点的所有权证及身份证明复印件。产权人变动时，乙方应先与甲方结清采暖费，并将其管理的供热设施使用状况和缴费情况告知新产权人，并和新产权人共同向甲方申请办理供热合同变更手续。乙方未结清采暖费的，甲方有权拒绝为乙方办理变更手续。</p>
+      <p class="text">9.9 按照合同第五条的规定对供热设施进行管理工作。</p>
+      <h5 class="page2_title">第十条  甲方的违约责任</h5>
+      <p class="text">10.1 在开发建设单位对供热设施保修期后、并且甲方对供热设施验收合格后的供热期内，经测量乙方室内温度低于本合同约定温度，超过24小时仍未解决的，应退还乙方相应部位、相应天数、相应比例的面积热费，不足24小时部分不计算天数。具体比例为：低于标准2℃（含2℃）以内的，退还比例为10%；低于标准在2℃（不含2℃）— 6℃（含6℃）之间的，退还比例为50%；低于标准超过6℃的，退还比例为100%。</p>
+      <p class="text">当室外温度低于我市室外采暖设计计算温度时，甲方可免于承担违约责任。室外温度以市专业气象部门发布的数据为准，由甲方提供相应证明，测温时间与气象部门发布的温度时点相差不应超过30分钟。</p>
+    </div>
+    <p class="yema">7</p>
+  </div>
+  <div class="page8">
+    <div class="page3_content">
+      <p class="text">乙方有下列行为之一造成室内温度达不到标准的，由其自行承担责任，造成其他用热户温度也达不到标准的，应承担相应的民事责任：1、改变房屋结构或者室内供热设施的；2、遮挡散热器影响供热效果的；3、排放和取用供热系统内热水的；4、擅自安装其他设施影响供热效果的。</p>
+      <p class="text">新建房屋供热设施的保修期内，由开发建设单位按照上述标准退还乙方供热采暖费。</p>
+      <p class="text">10.2 因甲方原因，未按照我市供热期规定供热的，按未供热天数双倍退还容量热费。不足24小时的，按1天计算。</p>
+      <p class="text">10.3  因供热设施故障或停水、停电等外部原因造成停热的，按停热天数退还容量热费。不足24小时的，不计算天数。</p>
+      <p class="text">10.4 违反本合同第八条第8.8项，给乙方或第三方造成损失的，应承担相应的赔偿责任。</p>
+      <h5 class="page2_title">第十一条  乙方的违约责任</h5>
+      <p class="text">11.1 未办停热且未按照本合同约定交纳供热采暖费，从逾期之日起每天加收本合同第三条第3.1项所述应交金额2‰的违约金。<b>供热期结束当年9月30日乙方仍未交纳欠费的，甲方在乙方欠费供热期的下一供热期对乙方暂停供热</b>。停热期间，违约金不再累计，供热采暖费按热能损耗补偿费的标准计算。<b>如乙方在停热当年的12月31日前仍未交纳热能损耗补偿费的，乙方能源卡开户银行将于12月31日从乙方生态城能源卡中进行代扣代缴。</b></p>
+      <p class="text">乙方交齐欠费后，甲方予以办理恢复供热。</p>
+      <p class="text">11.2 乙方损坏热计量表的，应照价赔偿，同时甲方根据情节，对乙方进行相应的处罚。 </p>
+      <p class="text">11.3 乙方违反合同第九条第9.3、9.4、9.5项，甲方有权暂停供热，乙方应赔偿给甲方造成的经济损失。甲方因此暂停供热的，乙方仍应按本合同第八条第8.2项约定承担容量热费。</p>
+      <p class="text"><b>擅自改、扩装采暖设备的，每出现一次：支付1000元违约金。</b></p>
+    </div>
+    <p class="yema">8</p>
+  </div>
+  <div class="page9">
+    <div class="page3_content">
+      <p class="text"><b>违规安装放水装置的，每出现一次：支付1000元赔偿金。</b></p>
+      <p class="text"> 11.4 乙方违反合同第九条第9.6、9.7项，造成的损失由乙方承担，影响第三方正常采暖的承担相应的民事责任。</p>
+      <p class="text">11.5乙方未获得甲方书面同意，擅自变更供热地点和改、扩装采暖设备，造成甲方或第三方损失的，由乙方承担一切责任，并赔偿由此给甲方或第三方造成的损失。</p>
+      <p class="text">11.6 房屋产权人变动的，若乙方未办理用能合同变更手续，乙方继续承担本合同约定的责任义务。</p>
+      <p class="text">11.7 乙方应保证房屋为非经营性使用，若房屋改变使用性质用于经营性活动，采暖费用均按照非居民收费标准收费，同时甲方有权追缴已缴费部分的差价并由乙方承担相应的违约责任。</p>
+      <h5 class="page2_title">第十二条  通知</h5>
+      <p class="text">甲方为履行本合同而向乙方发出的通知，可采取以下其中一种方式发送，在以下条件下视为已经送达：</p>
+      <p class="text">12.1 甲方以手机短信的方式向乙方合同登记的手机号码发送通知，自公告发送当日起即视为已有效送达。</p>
+      <p class="text">12.2 甲方以中新天津生态城主要地方媒介公告的方式向乙方发出通知，自公告当日起即视为已有效送达。</p>
+      <p class="text">12.3 甲方在乙方房屋所属小区入口处宣传栏、楼栋入口或物业办公地点等显著位置张贴通知的，自张贴之日起即视为已有效送达。</p>
+      <p class="text">12.4 甲方以挂号信或特快专递的方式向乙方发出通知，应按乙方提供的邮寄地址邮递，自通知发出之日起7日后视为已有效送达。如因乙方拒绝签收邮件等非甲方原因造成邮件退回，责任由乙方自负。</p>
+      <p class="text">甲方提请乙方注意通知内容并履行合同中的相关义务。</p>
+      <p class="text">甲方为乙方提供用能账单短信通知服务，如通讯、网络等原因导致乙方未收</p>
+    </div>
+    <p class="yema">9</p>
+  </div>
+  <div class="page10">
+    <div class="page3_content">
+      <p>到短信通知时，乙方可向甲方进行查询且不影响乙方履行本合同约定的缴费义务。</p>
+      <h5 class="page2_title">第十三条  其他</h5>
+      <p class="text">13.1 双方约定事项</p>
+      <p class="text">13.1.1 甲方的免责条款</p>
+      <p class="text">有下列情形之一，造成供热质量达不到规定标准的，甲方免责：</p>
+      <p class="text">13.1.1.1乙方擅自拆改、迁移、损坏室内供热设施和计量装置的；</p>
+      <p class="text">13.1.1.2 乙方擅自改变房屋结构或者因装修或保温措施不当影响供热效果的；</p>
+      <p class="text">13.1.1.3乙方负责管理的供热设施自身出现质量问题和设施老化，影响供热效果的；</p>
+      <p class="text">13.1.1.4 停水、停电造成供热中断的；</p>
+      <p class="text">13.1.1.5 乙方擅自将居室、厅、厨房、卫生间与未安装供热设施的阳台打通的；</p>
+      <p class="text">13.1.1.6 乙方擅自排放和取用供热系统内热水或擅自安装其它设施影响供热效果的；</p>
+      <p class="text">13.1.1.7 在天津市规定时限内进行热力设施检修、抢修的；</p>
+      <p class="text">13.1.1.8由于不可抗力原因或者政府行为造成中断或者停止供热的，甲方不承担赔偿责任，但应退还未供热期间的容量热费。</p>
+      <p class="text">13.1.2 实行供热计量收费的居民小区，乙方须与甲方签订《天津生态城居民住宅供热计量收费供用热合同》，本合同生效后，原《天津生态城居民住宅供用能合同（燃气、自来水、供热）》中第四章相关内容废止。</p>
+      <p class="text">13.1.3 本合同中所指欠费包括但不限于各类能源费用本金、用户因拖欠能源费用产生的违约金、用户停热期间产生的热能损耗补偿费、应由用户承担的用能设施维修改造或赔偿费用等其他费用。当用户缴纳任何一笔费用时，扣除顺序</p>
+    </div>
+    <p class="yema">10</p>
+  </div>
+  <div class="page11">
+    <div class="page3_content">
+      <p>为：违约金、用户停热期间产生的热能损耗补偿费、应由用户承担的用能设施维修改造或赔偿费用等费用、能源费用。</p>
+      <p class="text">13.1.4 甲方应为乙方提供自来水、天然气、供热一站式能源供应服务，同时乙方应为水、气、热等能源的使用承担总体责任，如乙方某一能源使用过程中严重违约，甲方有权暂停对乙方进行能源供应（包括合同中约定的其他能源供应），情节严重的甲方有权终止该合同。</p>
+      <p class="text">13.2 争议的解决</p>
+      <p class="text">本合同在履行过程中如发生争议，双方可协商解决；协议不成，依法向甲方所在地人民法院起诉。</p>
+      <p class="text">13.3 本合同自双方签字之日起生效。合同期限为
+        <input name="" type="text" readonly>
+        年，从
+        <input name="" type="text" readonly>
+        年
+        <input name="" type="text" readonly>
+        月
+        日起至
+        <input name="" type="text" readonly>
+        年
+        <input name="" type="text" readonly>
+        月
+        <input name="" type="text" readonly>
+        日止。到期甲乙双方均未提出书面异议的，视为同意继续履约，合同继续有效。</p>
+      <p class="text"><b>合同期限内，若乙方按照本合同规定与甲方实际办理了停止供热手续，则本合同终止执行；乙方办理停止供热手续后，如乙方按照本合同规定与甲方办理了恢复供热手续，则本合同自动恢复执行。</b></p>
+      若本合同期满后甲、乙双方未签订新的供热合同且甲方未终止对乙方的供热，则在甲、乙双方存在实际供用热关系期间双方仍按本合同约定内容执行。
+      </p>
+      <p class="text">13.4 在本合同履行期间，如遇供热政策调整，本合同内容与政策不一致的，双方按照新的规定执行。</p>
+      <p class="text">13.5 本合同未尽事宜，按有关供热方面的相关法律、法规、规章和中新天津生态城的规定执行。</p>
+      <p class="text">13.6 本合同一式两份，双方各执一份，具有同等的法律效力。</p>
+      <p class="text">13.7 其它约定：<br/><input name="" type="text" value="{$mj.sfydqtsx}" style="color:red;border:0;border-bottom:#000 solid 1px;width:580px;" readonly></p>
+      <p class="text"><b>乙方已认真阅读并同意《中新天津生态城居民住宅供热计量收费供用热合同》的所有条款。</b></p>
+    </div>
+    <p class="yema">11</p>
+  </div>
+  <div class="page12 clearfix">
+    <div class="page3_content">
+      <ul >
+        <li> 甲方（盖章）：
+          <input name="" type="text"  readonly/>
+        </li>
+        <li> 委托代理人：
+          <input name="" type="text" readonly />
+        </li>
+        <li> 电话：
+          <input name="" type="text"  readonly/>
+        </li>
+        <li>
+          <input name="" type="text"   class="date" readonly/>
+          年
+          <input name="" type="text"   class="date" readonly/>
+          月
+          <input name="" type="text"  class="date"  readonly/>
+          日 </li>
+      </ul>
+      <ul class="ulright">
+        <li>乙方（签字）：
+          <input name="" type="text"  value="{$mj.yfqz}" style="color:red" readonly/>
+        </li>
+        <li> 委托代理人：
+          <input name="" type="text"  readonly/>
+        </li>
+        <li>电话（手机）：
+          <input name="" type="text"  value="{$mj.yhdj_a_yddh}" style="color:red" readonly/>
+        </li>
+        <li>
+          <input name="" type="text"   class="date" readonly/>
+          年
+          <input name="" type="text"  class="date"  readonly/>
+          月
+          <input name="" type="text"   class="date" readonly/>
+          日</li>
+      </ul>
+    </div>
+    <p class="yema">12</p>
+  </div>
+</div>
+</volist>
+</body>
+</html>

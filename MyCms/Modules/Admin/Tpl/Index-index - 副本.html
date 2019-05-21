@@ -1,0 +1,186 @@
+<!doctype html>
+<html>
+<head>
+<title>后台管理</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<link rel="stylesheet" type="text/css" href="__PUBLIC__/css/manage.css">
+<script type="text/javascript" src="__PUBLIC__/js/jquery-1.7.1.min.js"></script>
+<script type="text/javascript" src="__PUBLIC__/js/base.js"></script>
+</head>
+
+<body scroll="no">
+<div class="header">
+  <div class="logo">后台管理</div>
+  <div class="nav">
+    <if condition="($diff eq 1)"> 
+		<ul>
+		  <volist name="menulist[0]" id="topmenu">
+		  <li index="{$key}">
+			<div><a href="{:U($topmenu['module'].'/'.$topmenu['action'])}" target="win">{$topmenu.title}</a></div>
+		  </li>
+		  </volist>
+		</ul>
+	 </if>
+  </div>
+  <div class="logininfo"><span class="welcome"><img src="__PUBLIC__/images/user_edit.png" align="absmiddle"> 欢迎, <em>{$Think.session.admin_nick}</em> </span>&nbsp;&nbsp;<a href="{:U('Public/repass')}" target="win">修改密码</a>&nbsp;&nbsp;<a href="{:U('Public/logout')}" target="_top">退出登录</a>&nbsp;&nbsp;<a href="{:U('Home/Index/index')}" target="_blank">前台首页</a></div>
+</div>
+<div class="topline">
+  <div class="toplineimg left" id="imgLine"></div>
+</div>
+<div class="main" id="main">
+  <if condition="($common_id neq 4)"> 
+	  <div style="overflow-y:auto; " class="mainA">
+		<div  id="leftmenu" class="menu">
+		 <volist name="menulist[0]" id="vo">
+		  <ul index="{$key}" class="left_menu">
+		  	<if condition="($diff eq 1)"> 
+					<volist name="menulist[$vo['id']]" id="menu">
+						<li index="{$key}"><a href="{:U($menu['module'].'/'.$menu['action'])}" target="win">{$menu.title}</a></li>
+					</volist>
+			<elseif condition="$common_id eq 11"/>
+				<volist name="menulist[8]" id="menu">
+					<if condition="($menu.title eq '服务公告') OR ($menu.title eq '投诉建议') OR ($menu.title eq '开通停供维修') OR ($menu.title eq '大件预约') OR ($menu.title eq '终端预约') OR ($menu.title eq '页面生成')"> 
+						<li index="{$key}"><a href="{:U($menu['module'].'/'.$menu['action'])}" target="win">{$menu.title}</a></li>
+					</if>
+				</volist>
+			<elseif condition="$common_id eq 8"/>
+				<volist name="menulist[8]" id="menu">
+					<if condition="($menu.title eq '服务公告')">  
+						<li index="{$key}"><a href="{:U($menu['module'].'/'.$menu['action'])}" target="win">{$menu.title}</a></li>
+					</if>
+				</volist>
+			<elseif condition="$common_id eq 5"/>
+				<volist name="menulist[8]" id="menu">
+					<if condition="($menu.title eq '服务公告') OR ($menu.title eq '信息公开')">  
+						<li index="{$key}"><a href="{:U($menu['module'].'/'.$menu['action'])}" target="win" >{$menu.title}</a></li>
+					</if>
+				</volist>
+			<elseif condition="$common_id eq 12"/>
+				<volist name="menulist[8]" id="menu">
+					<if condition="($menu.title eq '服务公告') OR ($menu.title eq '单页管理') OR ($menu.title eq '能源满意度调查') OR ($menu.title eq '供热优惠申请')">  
+						<li index="{$key}"><a href="{:U($menu['module'].'/'.$menu['action'])}" target="win">{$menu.title}</a></li>
+					</if>
+				</volist>
+			
+			<else />
+				<volist name="menulist[8]" id="menu">
+					<if condition="($menu.title eq '服务公告') OR ($menu.title eq '信息公开')"> 
+						<li index="{$key}"><a href="{:U($menu['module'].'/'.$menu['action'])}" target="win">{$menu.title}</a></li>
+					</if>
+				</volist>
+		    </if>
+		  </ul>
+		 </volist>
+		</div>
+	  </div>
+  </if>
+  <div class="mainB" id="mainB">
+	<if condition="($diff eq 1)"> 
+		<iframe src="{:U('Index/main')}" name="win" id="win" width="100%" height="100%" frameborder="0"></iframe>
+	<else /> 
+		<if condition="($common_id eq 4)"> 
+			<span style="margin-left:100px;"><iframe src="{:U('Ht/index')}" name="win" id="win" width="100%" height="100%" frameborder="0"></iframe></span>
+		<else />
+			<iframe src="{:U('Article/index')}" name="win" id="win" width="100%" height="100%" frameborder="0"></iframe>
+		</if>
+	</if>
+	
+  </div>
+
+</div>
+<script type="text/javascript">
+window.onload =window.onresize= function(){winresize();}
+function winresize()
+{
+function $(s){return document.getElementById(s);}
+var D=document.documentElement||document.body,h=D.clientHeight-90,w=D.clientWidth-165;
+ $("main").style.height=h+"px";
+ $("mainB").style.width=w+"px";
+}
+$(document).ready(function(){
+
+	//鼠标悬停2018年生态城公用事业满意度调查问卷事件
+	$.fn.extend({
+	 "titleOver": function (e) {
+	  this[0].myTitle = this[0].title;
+	  this[0].title = "";
+	  //创建div元素
+	  var tooltip = "<p id='tooltip' style='border:0px solid #000000;width:auto;position:absolute;font-size: 14px;color:#6B6868'>2018年生态城公用事业满意度调查问卷</p>" + this[0].myTitle + "</div>"
+	  $("body").append(tooltip);
+	  $("#tooltip").css({ "top": (e.pageY + y) + "px", "left": (e.pageX + x) + "px" }).show('fast');
+	 }, "titleOut": function () {
+	  this[0].title = this[0].myTitle;
+	  $("#tooltip").remove();
+	 }, "titleMove": function (e) {
+	  $("#tooltip").css({ "top": (e.pageY + y) + "px", "left": (e.pageX + x) + "px" });
+	 }
+	 });
+	 //默认鼠标坐标
+	 var x = 20;
+	 var y = 5;
+	//获取当前鼠标选悬停位置的文本，判断是否是2018年生态城公（是并显示全称）
+	$("#leftmenu li").mousemove(function(e){
+		var text=$(this).text();
+		if(text=="2018年生态城公"){
+			$(this).titleOver(e);
+		  }
+     }).mouseout(function () {
+		var text=$(this).text();
+		if(text=="2018年生态城公"){
+  		$(this).titleOut();
+		}
+	 }).mousemove(function (e) {
+		var text=$(this).text();
+		if(text=="2018年生态城公"){
+  		$(this).titleMove(e);
+		}
+  	 });
+
+		//信息发布下的--服务公告、信息公开点击事件
+		$("#leftmenu li a").mousemove(function(e){
+			//获取文本
+			var text=$(this).text();
+			if(text=="服务公告"){
+				//修改当前选中的A标签的属性并触发click事件
+				$(this).attr('href','index.php?s=/admin/article/Index&name1=0');
+				$(this).click();
+			}else if(text=="信息公开"){
+				$(this).attr('href','index.php?s=/admin/article/Index&name1=1');
+				$(this).click();
+			}else if(text=="文章管理"){
+				$(this).attr('href','index.php?s=/admin/article/Index&name1=0');
+				$(this).click();
+			}
+		 });
+
+	
+	//鼠标悬停2018年生态城公用事业满意度调查问卷事件END
+
+    var s=document.location.hash;
+    if(s==undefined||s==""){s="#0_0";}
+    s=s.slice(1);
+    var navIndex=s.split("_");
+    $(".nav").find("li:eq("+navIndex[0]+")").addClass("active");
+    var targetLink=$(".menu").find("ul").hide().end()
+                             .find(".left_menu:eq("+navIndex[0]+")").show()
+                             .find("li:eq("+navIndex[1]+")").addClass("active")
+                             .find("a").attr("href");
+    $("#win").attr("src",targetLink);
+    $(".nav").find("li").click(function(){
+        $(this).parent().find("li").removeClass("active").end().end()
+               .addClass("active");
+        var index=$(this).attr("index");
+        $(".menu").find(".left_menu").hide();
+        $(".menu").find(".left_menu:eq("+index+")").show()
+                  .find("li").removeClass("active").first().addClass("active");
+        document.location.hash=index+"_0";
+    });
+    $(".left_menu").find("li").click(function(){
+            $(this).parent().find("li").removeClass("active").end().end()
+                            .addClass("active");
+        document.location.hash=$(this).parent().attr("index")+"_"+$(this).attr("index");
+    });
+});
+</script>
+</body>
+</html>

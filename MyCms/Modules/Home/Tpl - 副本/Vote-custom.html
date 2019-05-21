@@ -1,0 +1,575 @@
+<include file="Public:header" />
+<div class="main_block">
+    <include file="Public:top" />
+    <div class="content_block">
+
+        <div class="left_side fl">
+            <include file="Public:left" />  
+        </div>
+
+
+        <div class="main_con fr">
+            <div class="bread_nav">
+                <div class="l fl"></div>
+                <div class="m fl" style="line-height:30px;"> <span class="list_style"></span> <span>您当前的位置:</span> {$nav} </div>
+                <div class="r fl"></div>
+            </div>
+
+            <form id="form2" name="form2" action="__URL__/save6" method="post">
+                <input type="hidden" name="id" value="{$vote.id}"/>
+				<input type="hidden" name="flag" value="{$flag}"/>
+				<input type="hidden" id="first" name="first"/>
+                <!-- begin -->
+                <div class="survey">
+                    <div class="survey_content">
+						<div class="tit"><h2>{$vote.title}</h2></div>
+							<p>发布时间：{$vote.start_time|date="Y-m-d H:i:s",###}&nbsp;&nbsp;<a href="{:U('Vote/result','voteid='.$vote[id])}" class="col_g" style="display:none;">[查看结果]</a></p>
+							<div class="ts_text">
+						您好，欢迎您参加我们的客户满意程度调查。我们希望从您这里收集到更多的反馈信息，以便持续不断地提高我们的服务质量，更好地为您提供服务。 </div>
+
+						<div class="dc_info_table">
+
+							<span>客户姓名：</span>
+							<span>
+								<input style="width:140px; height:20px;" name="username" id="username" type="text" />
+							</span>
+							
+							<span>联系电话：</span>
+							<span><input style="width:140px; height:20px;" name="telephone" id="telephone" type="text" /></span>
+							
+							<span>居住小区：</span>
+							<span>
+								<select style="width:140px; height:20px;" name="village" id="village">
+									<option value="" selected>请选择</option>
+									<option value="季景园">季景园</option>
+									<option value="天和园">天和园</option>
+									<option value="新新园">新新园</option>
+									<option value="锦庐园">锦庐园</option>
+									<option value="美韵园">美韵园</option>
+									<option value="公屋">公屋</option>
+									<option value="雅境园">雅境园</option>
+									<option value="首玺园">首玺园</option>
+									<option value="南苑">南苑</option>
+									<option value="香堤苑">香堤苑</option>
+									<option value="悦馨苑">悦馨苑</option>
+									<option value="家和园">家和园</option>
+									<option value="依水园">依水园</option>
+									<option value="景杉园">景杉园</option>
+									<option value="兰苑">兰苑</option>
+									<option value="和畅园1B">和畅园1B</option>
+									<option value="季景兰庭">季景兰庭</option>
+									<option value="芦花庄园">芦花庄园</option>
+									<option value="澜水苑">澜水苑</option>
+									<option value="美逸园">美逸园</option>
+									<option value="宜禾美林">宜禾美林</option>
+									<option value="荣馨园">荣馨园</option>
+									<option value="鲲玉园">鲲玉园</option>
+									<option value="鲲贝园">鲲贝园</option>
+									<option value="鲲玺园">鲲玺园</option>
+									<option value="尚苑">尚苑</option>
+									<option value="璟苑">璟苑</option>
+									<option value="仕景苑">仕景苑</option>
+									<option value="红树湾花园">红树湾花园</option>
+									<option value="新颐园">新颐园</option>
+									<option value="宝龙城">宝龙城</option>
+									<option value="瑞龙南苑">瑞龙南苑</option>
+									<option value="雍海苑">雍海苑</option>
+									<option value="碧桂园">碧桂园</option>
+									<option value="青溪花苑">青溪花苑</option>
+									<option value="慧水苑">慧水苑</option>
+									<option value="美锦园">美锦园</option>
+									<option value="亿利">亿利</option>
+									<option value="其他">其他</option>
+								</select>
+							</span>
+							<span class="ts_text">*</span>
+						</div>
+						<div class="ts_text">
+							温馨提示：红色*的选项为必填项！！！ 
+						</div>
+							
+                       
+                        <volist name="votelist" id="vo" key="k">
+                            <div class="question" id="bt{$k-1}">
+                                <div class="title_dc " id="sc{$k-1}">
+									<if condition ="($k eq 1) ">
+										{$k}、
+									</if>
+									<if condition ="($k eq 3)">
+										{$k-1}、
+									</if>
+								    <if condition =" ($k eq 5) OR ($k eq 6) OR ($k eq 7) OR ($k eq 8) OR ($k eq 9)">
+										{$k-2}、
+									</if>
+									 <if condition =" ($k eq 11)">
+										{$k-3}、
+									</if>
+
+                                    {$vo.listname}
+									<input class="yanzheng" type="hidden" id="list_{$vo.listid}">
+                                    <span class="tip"><if condition =" $vo['is_mc'] eq 1">(可多选)<else/>(单选)</if></span>	</div>
+                                <div class="content_da line">
+                                    <table class="que" width="100%" border="0" cellpadding="0" cellspacing="0">
+                                        <tbody>
+										<if condition =" $vo['listid'] eq 53">
+                                            <volist name="option[$vo['listid']]" id="op">								
+                                                <tr class="fo">
+                                                    <td width="430">
+															<label><input id="optionid_{$op.id}" type="radio" class="Radio" name="optionid[{$vo.listid}][]" value="{$op.id}" onclick="check(this,'{$vo.listid}')"  disabled="disabled">
+                                                            <span class="option">{$op.option}
+																<if condition =" $k eq 2 and $op.id eq 228">
+																	<input type="text" name="summary2" id="summary2" style="width:200px; height:16px;" maxlength="100" disabled="true">(最多输入50个汉字)
+																</if>
+																
+															</span>
+                                                        </label>
+                                                    </td>
+                                                </tr>
+												
+                                            </volist>
+
+											
+											
+                                            <else/>
+                                            <volist name="option[$vo['listid']]" id="op">
+                                                <tr>
+                                                    <td width="430">
+														
+															
+															<label><input id="optionid_{$op.id}" type="radio" class="Radio" name="optionid[{$vo.listid}][]" value="{$op.id}" onclick="check(this,'{$vo.listid}')" <if condition =" ($vo['listid'] eq 55)  OR ($vo['listid'] eq 87)"> disabled="disabled"</if>>
+														
+                                                        
+                                                            <span class="option">{$op.option}
+																<if condition ="$op.id eq 235">
+																	<input type="text" name="summary3" id="summary3" style="width:200px; height:16px;" maxlength="100" disabled="true">(最多输入50个汉字)
+																</if>
+															</span>
+                                                        </label>
+                                                    </td>
+                                                </tr>
+												<if condition =" (($k eq 1) AND ($op.id eq 224)) OR (($k eq 3) AND ($op.id eq 230))">
+													<tr class="fo">
+														<td width="430" style="color:red;font-size:12px;">
+															注：选择“否”的用户请按顺序继续填写下一条，选择其他项的用户请跳过下一条填写其他问题。
+														</td>
+													</tr>
+												</if>
+												<if condition ="($k eq 9) AND ($op.id eq 251)">
+													<tr class="fo">
+														<td width="430" style="color:red;font-size:12px;">
+															注：选择“是”的用户请按顺序继续填写下一条，选择其他项的用户请跳过下一条填写其他问题。
+														</td>
+													</tr>
+												</if>
+                                            </volist>
+                                        </if>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </volist>
+						
+						
+						<div class="question">
+							<div class="title_dc_1">
+								9、您对我们今后的工作有何建议或意见？
+							</div>
+						</div>
+						<div class="dc_messages_text"> 
+						  <div class="dc_messages_text" >
+							  <label for="textarea"></label>
+								<textarea name="content" id="content" cols="70" rows="7" onkeyup="len(this)"></textarea>(最多输入500个汉字)
+						</div>
+						<div class="ts_text">
+							感谢您给了我们这样的机会。您的意见将有助于我们将来向您提供更优质的服务。
+						</div>
+                        <div class="tjan">
+                            <input class="btn1 Submit" type="submit" value="提 交">
+                        </div>
+						
+                  
+                    </div>
+				  </div>
+                </div>
+                <!-- end -->
+            </form>  
+        </div>
+
+
+    </div>
+</div>
+
+
+
+<include file="Public:footer" />
+</body>
+</html>
+<script type="text/javascript"> 
+    $(document).ready(function(){   
+        //提供回调函数，提供提交返回结果的处理   
+        var options = {
+            beforeSubmit: checkstate,
+            //提交前处理 
+            success: showResponse,
+            //处理完成 
+            resetForm: false,
+            dataType: 'json'
+        };    
+        $('#form2').submit(function() {          
+            $(this).ajaxSubmit(options);
+            return false;
+        });
+    }); 
+    
+    //
+
+    function showResponse(res) {
+        art.dialog({
+            title: res.title,
+            content: res.message,
+            time: res.time
+        });
+        if (res.url) {
+            window.location.href = res.url;
+        }
+    }
+    
+    function showExpire() {
+		
+        art.dialog({
+            title: '提示',
+            content: '此次调查已经结束，感谢您的关注！',
+            time: 10
+        });
+    }
+    
+	var t;var v;
+    function check(obj,id){
+		var optionid_228= document.getElementById("optionid_228").checked;
+		var optionid_223= document.getElementById("optionid_223").checked;
+		var optionid_224= document.getElementById("optionid_224").checked;
+		var optionid_229= document.getElementById("optionid_229").checked;
+		var optionid_230= document.getElementById("optionid_230").checked;
+		var optionid_250= document.getElementById("optionid_250").checked;
+		var optionid_251= document.getElementById("optionid_251").checked;
+		
+		
+		var optionid_225= document.getElementById("optionid_225");
+		var optionid_226= document.getElementById("optionid_226");
+		var optionid_227= document.getElementById("optionid_227");
+		var optionid_228= document.getElementById("optionid_228");
+
+		var optionid_231= document.getElementById("optionid_231");
+		var optionid_232= document.getElementById("optionid_232");
+		var optionid_233= document.getElementById("optionid_233");
+		var optionid_234= document.getElementById("optionid_234");
+		var optionid_235= document.getElementById("optionid_235");
+
+		var optionid_359= document.getElementById("optionid_359");
+		var optionid_360= document.getElementById("optionid_360");
+		var optionid_364= document.getElementById("optionid_364");
+		
+		if(optionid_225.checked == true || optionid_226.checked == true || optionid_227.checked == true || optionid_228.checked == true){
+			document.getElementById("optionid_224").checked = true;
+		}
+		if(optionid_231.checked == true || optionid_232.checked == true || optionid_233.checked == true || optionid_234.checked == true || optionid_235.checked == true){
+			document.getElementById("optionid_230").checked = true;
+		}
+		if(optionid_359.checked == true || optionid_360.checked == true || optionid_364.checked == true){
+			document.getElementById("optionid_250").checked = true;
+		}
+
+		if(optionid_228.checked == true){
+			document.getElementById("summary2").disabled = false;
+		}
+		else{
+			document.getElementById("summary2").disabled = true;
+		}
+
+		if(optionid_235.checked == true){
+			document.getElementById("summary3").disabled = false;
+		}
+		else{
+			document.getElementById("summary3").disabled = true;
+		}
+		
+
+		if(optionid_223 == true && optionid_224 == false){
+			optionid_223 = true;
+			optionid_225.disabled = true;
+		    optionid_226.disabled = true;
+			optionid_227.disabled = true;
+			optionid_228.disabled = true;
+			optionid_225.checked = false;
+		    optionid_226.checked = false;
+			optionid_227.checked = false;
+			optionid_228.checked = false;
+			optionid_224.checked = false;
+			
+		}
+		if(optionid_223 == false && optionid_224 == true){
+			optionid_225.disabled = false;
+		    optionid_226.disabled = false;
+			optionid_227.disabled = false;
+			optionid_228.disabled = false;
+			
+		}
+
+		if(optionid_229 == true && optionid_230 == false){
+			optionid_229 = true;
+			optionid_231.disabled = true;
+		    optionid_232.disabled = true;
+			optionid_233.disabled = true;
+			optionid_234.disabled = true;
+			optionid_235.disabled = true;
+			optionid_231.checked = false;
+		    optionid_232.checked = false;
+			optionid_233.checked = false;
+			optionid_234.checked = false;
+			optionid_235.checked = false;
+			optionid_230.checked = false;
+			
+		}
+		if(optionid_229 == false && optionid_230 == true){
+			
+			optionid_231.disabled = false;
+		    optionid_232.disabled = false;
+			optionid_233.disabled = false;
+			optionid_234.disabled = false;
+			optionid_235.disabled = false;
+			
+		}
+
+		if(optionid_250 == true && optionid_251 == false){
+			optionid_359.disabled = false;
+		    optionid_360.disabled = false;
+			optionid_364.disabled = false;
+			
+		}
+		if(optionid_250 == false && optionid_251 == true){
+			optionid_250 = true;
+			optionid_359.disabled = true;
+		    optionid_360.disabled = true;
+			optionid_364.disabled = true;
+			
+			optionid_359.checked = false;
+		    optionid_360.checked = false;
+			optionid_364.checked = false;
+			
+			optionid_251.checked = false;
+			
+		}
+
+		t= $("#list_"+id).val();
+        if ($(obj).attr("checked") == true || $(obj).attr("checked") == "checked"){
+            v=t*1+id*1;
+            $("#list_"+id).val(v);
+        }else{
+            $("#list_"+id).val(t-id);
+        }
+   
+    }
+	
+	function len(obj){
+		var val=$(obj).val().length;
+		if(val>1000){
+			alert("至多输入500个汉字！");
+			$(obj).val($(obj).val().substring(0,1000))
+		}
+	}
+	function checkstate() 
+    {
+		var t = -1;
+		var n = -1;
+		var m = -1;
+		var village = document.getElementById("village").value;
+		
+		var username = document.getElementById("username").value;
+		var telephone = document.getElementById("telephone").value;
+		var optionid_223 = document.getElementById("optionid_223").checked;
+		var optionid_224 = document.getElementById("optionid_224").checked;
+		var optionid_229 = document.getElementById("optionid_229").checked;
+		var optionid_230 = document.getElementById("optionid_230").checked;
+		var optionid_250 = document.getElementById("optionid_250").checked;
+		var optionid_251 = document.getElementById("optionid_251").checked;
+		if(optionid_223 == true && optionid_224 == false){
+			t = 1;
+		}
+		if(optionid_229 == true && optionid_230 == false){
+			n = 3;
+		}
+		if(optionid_250 == false && optionid_251 == true){
+			m = 9;
+		}
+		
+		/*if(username == '' || username == null)
+		{
+			window.art.dialog({title: '提交失败',content: '客户姓名不能为空',time: 3,fixed:true});
+			return false;
+		};
+		if(telephone == '' || telephone == null)
+		{
+			window.art.dialog({title: '提交失败',content: '联系电话不能为空',time: 3,fixed:true});
+			return false;
+		};*/
+		if(village == '' || village == null)
+		{
+			window.art.dialog({title: '提交失败',content: '居住小区不能为空',time: 3,fixed:true});
+			 $("#username").ScrollTo();
+			return false;
+		};
+		
+		for(var i=0;i<$(".yanzheng").length;i++)
+		{
+			
+			if(i!=t && i!=n && i!=m){
+				if($(".yanzheng").eq(i).val() == ''||$(".yanzheng").eq(i).val() == '0'||$(".yanzheng").eq(i).val() == null){
+					
+				  $(".tip").eq(i).css("font-weight","bolder");
+				  $("#sc" + i).ScrollTo();
+				  window.art.dialog({title: '提交失败',content: '还有选项没填写',time: 3,fixed:true});
+				  return false;	
+				};
+			}
+			
+		}
+		
+		
+		
+		
+		$r = checktimes(228);
+		$r1 = checktimes(235);
+		if($r == false || $r1 == false){
+			return false;
+		}
+		
+        return true;
+    }
+
+
+
+	//第2题‘其它’选项如被选择，判断文本框是否填写
+   function checktimes(id)
+   {
+		if(id == 228){
+			var grade = document.getElementById('optionid_228').checked;
+			var summary = document.getElementById('summary2').value;
+		}
+		if(id == 235){
+			var grade = document.getElementById('optionid_235').checked;
+			var summary = document.getElementById('summary3').value;
+		}
+		if(id == 228){
+			if(grade == true && (summary == '' || summary == null)){
+				
+				$("#sc1").ScrollTo();
+				window.art.dialog({title: '提交失败',content: '请填写"其它"选项中的内容',time: 3,fixed:true});
+				return false;
+			}
+		}
+		if(id == 235){
+			if(grade == true && (summary == '' || summary == null)){
+					
+				$("#sc3").ScrollTo();
+				window.art.dialog({title: '提交失败',content: '请填写"其它"选项中的内容',time: 3,fixed:true});
+				return false;
+			}
+		}
+
+   }
+
+jQuery.getPos = function (e)
+{
+    var l = 0;
+    var t  = 0;
+    var w = jQuery.intval(jQuery.css(e,'width'));
+    var h = jQuery.intval(jQuery.css(e,'height'));
+    var wb = e.offsetWidth;
+    var hb = e.offsetHeight;
+    while (e.offsetParent){
+        l += e.offsetLeft + (e.currentStyle?jQuery.intval(e.currentStyle.borderLeftWidth):0);
+        t += e.offsetTop  + (e.currentStyle?jQuery.intval(e.currentStyle.borderTopWidth):0);
+        e = e.offsetParent;
+    }
+    l += e.offsetLeft + (e.currentStyle?jQuery.intval(e.currentStyle.borderLeftWidth):0);
+    t  += e.offsetTop  + (e.currentStyle?jQuery.intval(e.currentStyle.borderTopWidth):0);
+    return {x:l, y:t, w:w, h:h, wb:wb, hb:hb};
+};
+jQuery.getClient = function(e)
+{
+    if (e) {
+        w = e.clientWidth;
+        h = e.clientHeight;
+    } else {
+        w = (window.innerWidth) ? window.innerWidth : (document.documentElement && document.documentElement.clientWidth) ? document.documentElement.clientWidth : document.body.offsetWidth;
+        h = (window.innerHeight) ? window.innerHeight : (document.documentElement && document.documentElement.clientHeight) ? document.documentElement.clientHeight : document.body.offsetHeight;
+    }
+    return {w:w,h:h};
+};
+jQuery.getScroll = function (e) 
+{
+    if (e) {
+        t = e.scrollTop;
+        l = e.scrollLeft;
+        w = e.scrollWidth;
+        h = e.scrollHeight;
+    } else  {
+        if (document.documentElement && document.documentElement.scrollTop) {
+            t = document.documentElement.scrollTop;
+            l = document.documentElement.scrollLeft;
+            w = document.documentElement.scrollWidth;
+            h = document.documentElement.scrollHeight;
+        } else if (document.body) {
+            t = document.body.scrollTop;
+            l = document.body.scrollLeft;
+            w = document.body.scrollWidth;
+            h = document.body.scrollHeight;
+        }
+    }
+    return { t: t, l: l, w: w, h: h };
+};
+
+jQuery.intval = function (v)
+{
+    v = parseInt(v);
+    return isNaN(v) ? 0 : v;
+};
+
+jQuery.fn.ScrollTo = function(s) {
+    o = jQuery.speed(s);
+    return this.each(function(){
+        new jQuery.fx.ScrollTo(this, o);
+    });
+};
+
+jQuery.fx.ScrollTo = function (e, o)
+{
+    var z = this;
+    z.o = o;
+    z.e = e;
+    z.p = jQuery.getPos(e);
+    z.s = jQuery.getScroll();
+    z.clear = function(){clearInterval(z.timer);z.timer=null};
+    z.t=(new Date).getTime();
+    z.step = function(){
+        var t = (new Date).getTime();
+        var p = (t - z.t) / z.o.duration;
+        if (t >= z.o.duration+z.t) {
+            z.clear();
+            setTimeout(function(){z.scroll(z.p.y, z.p.x)},13);
+        } else {
+            st = ((-Math.cos(p*Math.PI)/2) + 0.5) * (z.p.y-z.s.t) + z.s.t;
+            sl = ((-Math.cos(p*Math.PI)/2) + 0.5) * (z.p.x-z.s.l) + z.s.l;
+            z.scroll(st, sl);
+        }
+    };
+    z.scroll = function (t, l){window.scrollTo(l, t)};
+    z.timer=setInterval(function(){z.step();},13);
+};
+   
+	   	
+<notempty name="expire">
+	showExpire();
+</notempty>
+</script>
+

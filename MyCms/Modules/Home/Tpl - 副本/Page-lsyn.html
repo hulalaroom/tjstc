@@ -1,0 +1,148 @@
+<include file="Public:header" />
+<div class="main_block"> <include file="Public:top" />
+  <div class="content_block">
+    <div class="left_side fl">
+      <div class="l_menu">
+      		 <!--上级菜单-->
+			{~$cat=get_info($cate,$pid);}
+			 <volist name="cat" id="m" key="l">
+				<a href="javascript:history.go(-1);" title="返回上一页">
+					<div class="bb_l_menu_title">
+						{$m.title} 
+					</div>
+				</a>
+			</volist>
+			<div class="left_other_menu">
+           {~$cat=get_child($cate,$pid);}
+          <volist name="cat" id="c" key="k">
+          <dl <eq name='c.id' value='$id'> class="hover"</eq>>
+            <dt><a href="<notempty name='c.url'>{$c.url}<else/>{:U($c['Model']['name'].'/'.$c['tpl'],'id='.$c['id'])}</notempty>"><img src="{$c.pic}"/></a>
+              <!--<img src="{$c.cat_pic}"/>-->
+            </dt>
+          <dd> <a href="<notempty name='c.url'>{$c.url}<else/>{:U($c['Model']['name'].'/'.$c['tpl'],'id='.$c['id'])}</notempty>">{$c.title}</a> <span>{$c.summary}</span> </dd>
+        </dl>
+          </volist></div>
+      </div>
+     <include file="Public:left" />
+    </div>
+        <div class="main_con fr">
+      <div class="bread_nav">
+        <div class="l fl"></div>
+        <div class="m fl" style="line-height:30px;"> <span class="list_style"></span> <span>您当前的位置:</span> {$nav} </div>
+        <div class="r fl"></div>
+      </div>
+      <div class="artical">
+        <!-- begin -->
+		 <div style="line-height:25px;"><span style="font-size:14px; font-weight:bold; color:red;">温馨提示:</span><span style="font-size:12px;color:red;"> 本页面费用及用量数据仅供参考使用，详细内容以实际出账单为准。<!--目前“供热”收费依据为“采暖面积”，无用量显示，如为“采暖计量”用户，可进行“供热”用量查询。--></span></div> 
+        <div class="bus_title fl" style="margin-bottom:5px;">
+          <h2>历史用量:</h2>
+        </div>
+        <div class="mar">
+           <table width="701" border="0">
+              <form id="form2" name="form2" method="post" action="">
+            <tr>
+				<td width="50" align="right">地址：</td>
+                <td width="220">
+                  <select name="houseCode" id="houseCode" class="gu_select" style="width:220px;">
+                    <volist name="houselist" id="hc">
+                      <option value="{$hc.houseCode}" <if condition="$hc.houseCode eq $code">selected="selected"</if>>{$hc.address}</option>
+                    </volist>
+                  </select>
+                </td>
+                <td width="150" align="right">
+                  <select name="itemCode" style="width:100px">
+					  <!--<option value="">收费项目</option>-->
+					  <option value="A" <eq name="itemCode" value="A"> selected="selected"</eq>>采暖面积</option>
+					  <option value="B" <eq name="itemCode" value="B"> selected="selected"</eq>>自来水</option>
+					  <option value="D" <eq name="itemCode" value="D"> selected="selected"</eq>>天然气</option>
+					  <option value="E" <eq name="itemCode" value="E"> selected="selected"</eq>>采暖计量</option>
+					  <!--<volist name="powertype" id="type">
+						  <option value="{$type[0]}" <eq name="itemCode" value="$type[0]"> selected="selected"</eq>>{$type[1]}</option>-->
+					  <!--</volist>-->
+                </select>
+                </td>
+                <td width="60" align="right">日期：</td>
+                <td width="60">
+                  <select class="year" name="year" id="year">
+                    <!--<option value="{$year}" <if condition="$year eq $age"> selected="selected"</if>>{$year}</option>-->
+                    <option value="{$year-1}" <if condition="$year-1 eq $age"> selected="selected"</if>>{$year-1}</option>
+                    <option value="{$year-2}" <if condition="$year-2 eq $age"> selected="selected"</if>>{$year-2}</option>
+                    <option value="{$year-3}" <if condition="$year-3 eq $age"> selected="selected"</if>>{$year-3}</option>
+                    <option value="{$year-4}" <if condition="$year-4 eq $age"> selected="selected"</if>>{$year-4}</option>
+                  </select>
+                </td>
+              
+                <td align="center">
+                  <input type="hidden" value="{$id}" name="id">
+                  <input type="submit" id="searchBtn" class="sea_but" value="查询"/>
+                </td>
+              </tr>
+              </form>
+          </table>
+        </div>
+        <div class="bus_table fl">
+          <div class="bus_tablet tc">
+            <ul>
+              <li class="ww1 fl"> <span>序号</span> </li>
+              <li class="ww2 fl"> <span>房间地址</span> </li>
+              <li class="ww6 fl"> <span>收费期</span> </li>
+              <li class="ww7 fl"> <span>收费项目</span> </li>
+              <li class="ww8 fl"> <span>面积(m²)</span> </li>
+			  <li class="ww8 fl"> <span>账单费用(元)</span> </li>
+            </ul>
+          </div>
+          <div class="bus_tableb tc">
+            <ul>
+			
+                 <notempty name="powerlist.error"><p class="nodata">接口错误，请联系管理员!</p>
+                 <else/>
+                 <eq name="ispost" value="true">
+					<empty name="powerlist">
+					<p class="nodata">暂无信息</p>
+					</empty>
+				</eq>
+              <volist name="powerlist" id="power" key="k">
+              <li>
+                <ul>
+                  <li class="ww1 fl">
+                    <p>{$k}</p>
+                  </li>
+                  <li class="ww2 fl" style="overflow:hidden"> <span>{$power['ADDRESS']}</span> </li>
+                  <li class="ww6 fl"> <span>{$power['CHARGEMONTH']}</span> </li>
+                  <li class="ww7 fl"> <span>{$power['ITEMCODE']}</span> </li>
+                  <li class="ww8 fl"><span>{$power['YL']}</span> </li>
+				  <li class="ww8 fl"><span>{$power['NOWCASH']}</span> </li>
+                </ul>
+              </li>
+              </volist>
+              <notempty name="power_count"><div class="bus_tableb tc" style="text-align:right; border-top:1px #CCCCCC solid;padding:5px 0px;">总计:{$power_count}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div></notempty>	
+            	</notempty>
+            </ul>
+          </div>
+        </div>
+		<span class="list_page">{$page}</span>
+        <!-- end -->
+      </div>
+    </div>
+  </div>
+</div>
+
+<script type="text/javascript" src="__PUBLIC__/js/DatePicker.js"></script>
+<script type="text/javascript" src="__PUBLIC__/js/date/jquery-ym-datePlugin-0.1.js"></script>
+<link rel="stylesheet" href="__PUBLIC__/js/date/jquery-ui.css" />
+<link rel="stylesheet" id="skin" href="__PUBLIC__/js/date/jquery-ui-1.9.2.custom.min1.css" />
+<style>
+.ui-datepicker-title span{ display: inline-block;}    
+</style>
+<script type="text/javascript">
+$(document).ready(function(){
+	//默认功能
+    $(".nianyue").ymdateplugin({changeMonth: true,
+		changeYear: true,dateFormat:'yymm'});
+
+	
+});
+</script>
+  <include file="Public:footer" />
+</body>
+</html>

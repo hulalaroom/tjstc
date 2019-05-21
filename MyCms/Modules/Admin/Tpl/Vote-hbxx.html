@@ -1,0 +1,65 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href='__PUBLIC__/css/common.css'>
+<script type="text/javascript" src="__PUBLIC__/js/jquery-1.7.1.min.js"></script>
+<script type="text/javascript" src="__PUBLIC__/js/base.js"></script>
+<title>关于生态城生活垃圾处理收费的调查问卷</title>
+</head>
+<body>
+<div id="append_parent"></div>
+<div class="container" id="cpcontainer">
+  <div id="contentHeader">
+    <h3>关于生态城生活垃圾处理收费的调查问卷</h3>
+    <div class="searchArea">
+      <ul class="action left" >
+        <li class="current"><a href="__URL__/hb" class="actionBtn"><span>返回</span></a></li>
+      </ul>
+      <div class="search right"> </div>
+    </div>
+  </div>
+		<table class="form_table">
+			<tr>
+			  <td colspan="6"><b>投票明细</b></td>
+			</tr>
+			<tr>
+			  <td width="13%">小区名称</td>
+			  <td width="20%">{$list['address']}</td>
+			  <td width="13%">姓名</td>
+			  <td width="20%">{$list['username']}</td>
+			  <td width="13%">年龄</td>
+			  <td width="20%">{$list['age']}</td>
+			</tr>
+			<tr>
+			  <td width="13%">联系电话</td>
+			  <td width="20%">{$list['phone']}</td>
+			  <td width="13%">投票时间</td>
+			  <td colspan="3">{$list['createtime']|date="Y-m-d H:i:s",###}</td>
+			</tr>
+			<tr>
+			  <td width="13%">垃圾气力输送系统</td>
+			  <td width="20%">{$list['firchoose']}&nbsp;</td>
+			  <td width="13%">生活垃圾处理情况</td>
+			  <td width="20%">{$list['secchoose']}&nbsp;</td>
+			  <td width="13%">需缴纳生活垃圾处理费</td>
+			  <td width="20%">{$list['thichoose']}&nbsp;</td>
+			</tr>
+			<tr>
+			  <td width="13%">生活垃圾分类处理并收费</td>
+			  <td width="20%">{$list['fourchoose']}&nbsp;</td>
+			  <td width="13%">生活垃圾处理费为0.3元</td>
+			  <td width="20%">{$list['fifchoose']}&nbsp;</td>
+			  <td width="13%">能源服务卡代扣垃圾处理费</td>
+			  <td width="20%">{$list['sixchoose']}&nbsp;</td>
+			</tr>
+			<tr>
+			  <td colspan="2">对生态城即将启动生活垃圾处理收费有哪些看法和建议</td>
+			  <td colspan="4">{$list['content']}</td>
+			</tr>
+			
+		</table>
+		
+</div>
+</body>
+</html>

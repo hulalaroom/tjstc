@@ -1,0 +1,312 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href='__PUBLIC__/css/common.css'>
+<script type="text/javascript" src="__PUBLIC__/js/jquery-1.7.1.min.js"></script>
+<script type="text/javascript" src="__PUBLIC__/js/base.js"></script>
+<script type="text/javascript" src="__PUBLIC__/js/jscolor/jscolor.js"></script>
+<script type="text/javascript" src="__PUBLIC__/js/kindeditor/kindeditor-min.js"></script>
+<link rel="stylesheet" href="__PUBLIC__/js/kindeditor/themes/default/default.css" />
+<script charset="utf-8" src="__PUBLIC__/js/kindeditor/lang/zh_CN.js"></script>
+<script type="text/javascript" src="__PUBLIC__/js/artDialog/jquery.artDialog.source.js?skin=blue"></script>
+<script src="__PUBLIC__/js/artDialog/plugins/iframeTools.source.js"></script>
+<script type="text/javascript" src="__PUBLIC__/js/date/jquery-ym-datePlugin-0.1.js"></script>
+<link rel="stylesheet" href="__PUBLIC__/js/date/jquery-ui.css" />
+<link rel="stylesheet" id="skin" href="__PUBLIC__/js/date/jquery-ui-1.9.2.custom.min1.css" />
+<script>
+    var WEB_SESSION_ID = '{$Think.session.myid}';
+    
+    var IMG_DEL = '{:U("Attach/del")}';
+    			// 图片预览
+			function showpic(event,imgsrc){
+				/*var left = event.clientX+document.body.scrollLeft+20;
+				var top = event.clientY+document.body.scrollTop+20;*/
+				var left = event.pageX + 20;
+				var top = event.pageY + 20;
+				$("#preview").css({left:left,top:top,display:""});
+				$("#pic_a1").attr("src",imgsrc);
+			}
+			// 取消预览
+			function hiddenpic(){
+				$("#preview").css({display:"none"});
+			}
+    
+    
+    
+    
+    
+    function remove(obj,file){
+        if(confirm('确定删除?')){
+					$.ajax({
+						url: '{:U("Attach/del")}',
+						type : 'POST',
+						data : 'file='+file,
+						
+						success: function(res){
+							$('#'+obj).remove();
+						}
+					});
+				}
+		
+}
+            //编辑器
+            KindEditor.ready(function(K) {
+                var editor1 = K.create('textarea[name="content"]', {
+                    allowFileManager : true,
+                      uploadJson : '{:U("Attach/upload")}',
+                    fileManagerJson :  '{:U("Attach/filelist")}',
+                      width : '675px',
+                        height : '300px',
+                    afterCreate : function() {
+                        var self = this;
+                        K.ctrl(document, 13, function() {
+                            self.sync();
+                            K('form[name=example]')[0].submit();
+                        });
+                        K.ctrl(self.edit.doc, 13, function() {
+                            self.sync();
+                            K('form[name=example]')[0].submit();
+                        });
+                    }
+                });
+      
+        
+                //自定义
+                var editor = K.editor({ 
+                    allowFileManager : true,        
+                    uploadJson : '{:U("Attach/upload")}',
+                    fileManagerJson :  '{:U("Attach/filelist")}',
+                });
+                //取消缩略图 1                        
+                K('#clear').click(function() {
+                    K('#image img').remove();
+                    K('#image').append('<img  src="__PUBLIC__/images/thumb.png">');
+                    K('#pic').val('');
+                });                         
+                                
+                //缩略图 1                        
+                K('#image').click(function() {
+                    editor.loadPlugin('image', function() {
+                        editor.plugin.imageDialog({
+                            //imageUrl : K('#image1 img'),
+                                                       
+                            clickFn : function(url, title, width, height, border, align) {
+                                //K('#image1 img').append('<img src="' + data.url + '">');
+                                K('#image img').remove();
+                                K('#image').append('<img src="'+url+'">');
+                                editor.hideDialog();
+                                K('#pic').val(url);
+                            }
+                        });
+                    });
+                });
+                  //取消缩略图 2                        
+                K('#clear2').click(function() {
+                    K('#image2 img').remove();
+                    K('#image2').append('<img  src="__PUBLIC__/images/thumb.png">');
+                    K('#pic2').val('');
+                });                         
+                                
+                //缩略图  2                       
+                K('#image2').click(function() {
+                    editor.loadPlugin('image', function() {
+                        editor.plugin.imageDialog({
+                            //imageUrl : K('#image1 img'),
+                                                       
+                            clickFn : function(url, title, width, height, border, align) {
+                                //K('#image1 img').append('<img src="' + data.url + '">');
+                                K('#image2 img').remove();
+                                K('#image2').append('<img src="'+url+'">');
+                                editor.hideDialog();
+                                K('#pic2').val(url);
+                            }
+                        });
+                    });
+                });
+ //取消缩略图    3                     
+                K('#clear3').click(function() {
+                    K('#image3 img').remove();
+                    K('#image3').append('<img  src="__PUBLIC__/images/thumb.png">');
+                    K('#pic3').val('');
+                });                         
+                                
+                //缩略图 3                        
+                K('#image3').click(function() {
+                    editor.loadPlugin('image', function() {
+                        editor.plugin.imageDialog({
+                            //imageUrl : K('#image1 img'),
+                                                       
+                            clickFn : function(url, title, width, height, border, align) {
+                                //K('#image1 img').append('<img src="' + data.url + '">');
+                                K('#image3 img').remove();
+                                K('#image3').append('<img src="'+url+'">');
+                                editor.hideDialog();
+                                K('#pic3').val(url);
+                            }
+                        });
+                    });
+                });				
+		
+				
+             
+                //                 
+            });
+        
+        </script>
+<script type="text/javascript">
+$(document).ready(function(){
+	//默认功能
+    $(".riqi").ymdateplugin();
+	
+	//显示时间的选择
+	$(".shijian").ymdateplugin({
+		showTimePanel: true,
+                changeMonth: true,
+		changeYear: true
+	});
+	
+});
+</script>
+<style>
+#im {
+	z-index: 991;
+	background-color: white;
+	border: #f7f7f7 solid 2px;
+	
+	width:220px;
+	height:160px;
+	
+	text-align: center;
+	margin:10px 0 10px 35px;
+	padding-top: 2px;
+}
+#image,#image2,#image3 {
+	display: block;
+	height: 150px;
+	line-height: 150px;
+	width: 220px;
+	cursor: pointer;
+	text-align: center;
+        display: table-cell;
+     vertical-align:middle;
+}
+#image img,#image2 img,#image3 img {
+	vertical-align: middle; margin: auto; max-width: 220px; max-height: 150px; float:left
+}
+#imuoload:hover{ text-decoration: underline; cursor:  pointer; }
+#clear,#clear2,#clear3{
+	background: #51B148;
+	color: #FFF;
+	font: bold 14px arial, sans-serif;
+	padding: 0.15em 1em;
+	text-transform: uppercase;
+	margin: 0 auto;
+	overflow: visible;
+	width: auto;
+	cursor: pointer;
+	padding: 7px 20px;
+	display: block;
+}
+#insertfile {
+	background: #51B148;
+	color: #FFF;
+	font: bold 14px arial, sans-serif;
+	padding: 0.15em 1em;
+	text-transform: uppercase;
+	margin: 0 auto;
+	overflow: visible;
+	width: auto;
+	cursor: pointer;
+	padding: 4px 20px;
+	
+}
+#pics_images{float: left; width: 100%; }
+#pics_images li{ float: left; width: 87px; height: 120px;  margin: 15px 0;margin-right: 15px;}
+#pics_images li img{ float: left; width: 87px;height: 75px;}
+#pics_images li input{ float: left; width: 81px; height: 20px; line-height: 20px;}
+#pics_images li a{ float: left; width: 87px; height: 25px; line-height: 25px; text-align: center;}
+#pics_images li a:hover{ background-color:  #99ccff; color: white;}
+
+.mr-10{padding-left:30px;}
+</style>
+<title>无标题文档</title>
+</head>
+<body>
+<div id="append_parent"></div>
+<div class="container" id="cpcontainer">
+   <div id="contentHeader">
+    <h3>附件配置</h3>
+    <div class="searchArea">
+      <ul class="action left" >
+        <li><a href="__URL__/index" class="actionBtn"><span>基本配置</span></a></li>
+        <li><a  href="__URL__/attach" ><span>附件配置</span></a></li>
+        <li><a href="__URL__/email" class="actionBtn"><span>邮箱配置</span></a></li>
+		 <li><a class="current" href="__URL__/content" class="actionBtn" class="actionBtn"><span>页面配置</span></a></li>
+                  <li><a  href="__URL__/weixin" ><span>微信配置</span></a></li>
+		
+      </ul>
+    </div>
+  </div>
+<form action="{:U('Config/content_update')}" method="post" name="form1">
+
+      
+    <table class="form_table">
+      <tr>
+        <td class="tb_title mr-10"  width="">首页焦点图下左一：</td>
+        <td class="tb_title mr-10" width="">首页焦点图下右一：</td>
+        <td class="tb_title mr-10" width="">首页最新公告下：</td>
+      </tr>
+	  <tr>
+		
+          <td>
+			<div id="im">
+				<a id="image"><img  title="点击更换" src="{$Think.config.index_pic}"></a>
+				<input name="index_pic" type="hidden"  id="pic" value="{$Think.config.index_pic}" />
+			</div>
+         </td>
+		 <td>
+			<div id="im">
+				<a id="image2"><img  title="点击更换" src="{$Think.config.index_pic2}"></a>
+				<input type="hidden" name="index_pic2" id="pic2" value="{$Think.config.index_pic2}" />
+			</div>
+         </td>
+		 <td>
+			<div id="im">
+				<a id="image3"><img  title="点击更换" src="{$Think.config.index_pic3}"></a>
+				<input type="hidden" name="index_pic3" id="pic3" value="{$Think.config.index_pic3}" />
+			</div>	
+         </td>
+      </tr>
+	  <tr>
+		<td>链接：<input size="30" maxlength="128" name="index_url" type="text" value="{$Think.config.index_url}"/></td>
+		<td>链接：<input size="30" maxlength="128" name="index_url2" type="text" value="{$Think.config.index_url2}" /></td>
+		<td>链接：<input size="30" maxlength="128" name="index_url3" type="text" value="{$Think.config.index_url3}" /></td>
+	  </tr>
+      <tr>
+        <td class="tb_title">用户注册-用户协议:</td>
+        <td class="tb_title">用户注册-注册说明:</td>
+        <td class="tb_title">绑定房间-业务说明:</td>
+        
+      </tr>
+	  <tr>
+        <td ><textarea rows="8" cols="50" name="user_public_reg1_1">{$Think.config.user_public_reg1_1}</textarea></td>
+        <td ><textarea rows="8" cols="50" name="user_public_reg1_2">{$Think.config.user_public_reg1_2}</textarea></td>
+        <td ><textarea rows="8" cols="50" name="user_user_bind">{$Think.config.user_user_bind}</textarea></td>
+      </tr>
+      <tr class="submit">
+		
+        <td colspan="2" >
+          <input type="submit"  value="提交" class="button"/>
+        </td>
+		<td></td>
+		<td></td>
+      </tr>
+    </table>
+  </form>
+  <script type="text/javascript">
+
+</script>
+</div>
+</body>
+</html>

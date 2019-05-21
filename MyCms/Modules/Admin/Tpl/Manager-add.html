@@ -1,0 +1,92 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+  <link rel="stylesheet" type="text/css" href='__PUBLIC__/css/common.css'>
+  <script type="text/javascript" src="__PUBLIC__/js/jquery-1.7.1.min.js"></script>
+  <script type="text/javascript" src="__PUBLIC__/js/base.js"></script>
+  <title></title>
+</head>
+<body>
+<div id="append_parent"></div>
+<div class="container" id="cpcontainer">
+  <div id="contentHeader">
+    <h3>管理员管理</h3>
+
+    <div class="searchArea">
+      <ul class="action left">
+        <li class="current"><a href="__URL__/index" class="actionBtn"><span>返回</span></a></li>
+        <!--<li ><a href="__URL__/add" class="actionBtn"><span>录入</span></a></li>-->
+      </ul>
+      <div class="search right"></div>
+    </div>
+  </div>
+  <eq name="type" value="add">
+    <form name="form1" action="__URL__/insert" method="post">
+      <else/>
+      <form name="form1" action="__URL__/update" method="post">
+        <input name="id" type="hidden" value="{$id}"/>
+  </eq>
+  <table class="form_table">
+    <tr>
+      <td class="tb_title">管理员基本信息：</td>
+    </tr>
+    <tr>
+      <td>管理员类型：<select name="role_id">
+        <volist name="glist" id="role">
+          <option value="{$role.id}"
+          <eq name="role.id" value="$role_id"> selected="selected"</eq>
+          >{$role.name}
+          </option>
+        </volist>
+      </select>
+      </td>
+    </tr>
+    <tr>
+      <td class="tb_title">管理员账号：</td>
+    </tr>
+    <tr>
+      <td>
+        <eq name="type" value="add">
+          <input size="10" maxlength="64" name="adminname" type="text" /><span style="color: red;padding-left: 2px;">(必填)</span>
+        <else/>{$adminname}</eq>
+      </td>
+    </tr>
+    <eq name="type" value="add">
+      <tr>
+        <td class="tb_title">密码：</td>
+      </tr>
+      <tr>
+        <td>
+            <input size="10" maxlength="32" name="password" type="password" /><span style="color: red;padding-left: 2px;">(必填)</span>
+        </td>
+      </tr>
+    </eq>
+    <tr>
+      <td class="tb_title">真实姓名：</td>
+    </tr>
+    <tr>
+      <td><input size="10" maxlength="50" name="admin_nick" type="text" value="{$admin_nick}" /><span style="color: red;padding-left: 2px;">(必填)</span></td>
+    </tr>
+    <tr>
+      <td>状态：<select name="status">
+        <option value="1"
+        <eq name="status" value="1"> selected="selected"</eq>
+        >启用
+        </option>
+        <option value="0"
+        <eq name="status" value="0"> selected="selected"</eq>
+        >停用
+        </option>
+      </select>
+      </td>
+    </tr>
+    <tr class="submit">
+      <td colspan="2"><input type="submit" name="editsubmit" value="提交" class="button" tabindex="3"/></td>
+    </tr>
+  </table>
+  </form>
+</div>
+</body>
+</html>

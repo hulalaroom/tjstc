@@ -1,0 +1,198 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href='__PUBLIC__/css/common.css'>
+<script type="text/javascript" src="__PUBLIC__/js/jquery-1.7.1.min.js"></script>
+<script type="text/javascript" src="__PUBLIC__/js/base.js"></script>
+<script src="__PUBLIC__/js/jquery.textSearch-1.0.js" type="text/javascript"></script>
+<script type="text/javascript" src="__PUBLIC__/js/Calendar.js"></script>
+<title>数据统计</title>
+</head>
+<body>
+<div id="append_parent"></div>
+<div class="container" id="cpcontainer">
+  <div id="contentHeader">
+    <h3>数据统计</h3>
+  </div>
+  <form method="post" action="" name="form1" id="form1" onsubmit="fun()">
+	  <table border="0" cellpadding="0" cellspacing="0" class="content_list">
+		  <thead>
+			<tr class="tb_header">
+			  <th width="" colspan="2">查询条件</th>
+			</tr>
+		  </thead>
+		  <tr style="display:none;">
+			<td colspan="2"><input type="checkbox" value="1" name="bangding" id="bangding" checked="checked"><b>按平台信息查询</b></td>
+		  </tr>
+		 
+		  <tr>
+			<td style="text-align:center;" colspan = '2'>查询时间：<input name="qishishijian" type="text" id="qishishijian" size="10" maxlength="10" onclick="new Calendar().show(this);" value="{$qishishijian}" readonly="readonly" />一<input type="text" name="jieshushijian" onclick="new Calendar().show(this);" value="{$jieshushijian}" size="10" maxlength="10"/></td>
+		  </tr>
+		  <tr>
+			<td style="text-align:right;"><input type="submit" value="查询" class="button confirmSubmit" /></td>
+			<td style=""><input type="reset" value="重置" class="button reset" /></td>
+		  </tr>
+	  </table>
+  </form>
+  <table class="content_list">
+	<thead>
+	  <tr class="tb_header">
+		<td colspan="10"><b>运行统计查询结果</b></td>
+		<!--<td style="text-align:right;"><input  type="button" value="导出" name="download" onclick="exportdata(0)"/>&nbsp;&nbsp;&nbsp;</td>-->
+	  </tr>
+	</thead>
+	  <tr>
+		<td class="tb_title" width="8%">标题</td>
+		<td class="tb_title" width="8%">总访问量</td>
+		<td class="tb_title" width="10%" style="text-align:center">移动端访问量</td>
+		<td class="tb_title" width="10%" style="text-align:center">总登录用户数量</td>
+		<td class="tb_title" width="10%" style="text-align:center">网站登录用户数量</td>
+		<td class="tb_title" width="10%" style="text-align:center">APP登录用户数量</td>
+		<td class="tb_title" width="10%" style="text-align:center">总绑定房间数量</td>
+		<td class="tb_title" width="10%" style="text-align:center">网站绑定房间数量</td>
+		<td class="tb_title" width="10%" style="text-align:center">微信绑定数量</td>
+		<td class="tb_title" width="10%" style="text-align:center">&nbsp;</td>
+	  </tr>
+	  <notempty name="result">
+			<tr style="text-align:center">
+				<td width="8%">日期统计</td>
+				<td width="8%">{$result.visitCount}</td>
+				<td width="10%" style="text-align:center">{$result.visitPhoneCount}</td>
+				<td width="10%" style="text-align:center">{$result.loginCount}</td>
+				<td width="10%" style="text-align:center">{$result.loginPcCount}</td>
+				<td width="10%" style="text-align:center">{$result.loginAppCount}</td>
+				<td width="10%" style="text-align:center">{$result.bindCount}</td>
+				<td width="10%" style="text-align:center">{$result.bindPcCount}</td>
+				<td width="10%" style="text-align:center">{$result.bindWxCount}</td>
+				<td width="10%" style="text-align:center">&nbsp;</td>
+			</tr>
+	  </notempty>
+	  <empty name="all">
+		  <tr>
+			<td colspan="10" style="text-align:center;">请核实查询条件后，点击"查询"按钮进行查询！</td>
+		  </tr>
+	  </empty>
+	  <notempty name="all">
+			<tr style="text-align:center">
+				<td width="8%">总数</td>
+				<td width="8%">{$all.visitCountAll}</td>
+				<td width="10%" style="text-align:center">{$all.visitPhoneCountAll}</td>
+				<td width="10%" style="text-align:center">{$all.loginCountAll}</td>
+				<td width="10%" style="text-align:center">{$all.loginPcCountAll}</td>
+				<td width="10%" style="text-align:center">{$all.loginAppCountAll}</td>
+				<td width="10%" style="text-align:center">{$all.bindCountAll}</td>
+				<td width="10%" style="text-align:center">{$all.bindPcCountAll}</td>
+				<td width="10%" style="text-align:center">{$all.bindWxCountAll}</td>
+				<td width="10%" style="text-align:center">&nbsp;</td>
+			</tr>
+	  </notempty>
+	  <tr>
+		<td class="tb_title" width="8%">标题</td>
+		<td class="tb_title" width="8%">注册用户总量</td>
+		<td class="tb_title" width="10%" style="text-align:center">移动端注册量</td>
+		<td class="tb_title" width="10%" style="text-align:center">网站注册量</td>
+		<td class="tb_title" width="10%" style="text-align:center">正常用户总量</td>
+		<td class="tb_title" width="10%" style="text-align:center">移动端正常用户数量</td>
+		<td class="tb_title" width="10%" style="text-align:center">网站正常用户数量</td>
+		<td class="tb_title" width="10%" style="text-align:center">暂停用户总量</td>
+		<td class="tb_title" width="10%" style="text-align:center">网站暂停用户数量</td>
+		<td class="tb_title" width="10%" style="text-align:center">移动端暂停用户数量</td>
+	  </tr>
+	  <notempty name="result">
+			<tr style="text-align:center">
+				<td width="8%">日期统计</td>
+				<td width="8%">{$result.registerCount}</td>
+				<td width="10%" style="text-align:center">{$result.registerAppCount}</td>
+				<td width="10%" style="text-align:center">{$result.registerPcCount}</td>
+				<td width="10%" style="text-align:center">{$result.registerUsedCount}</td>
+				<td width="10%" style="text-align:center">{$result.registerUsedAppCount}</td>
+				<td width="10%" style="text-align:center">{$result.registerUsedPcCount}</td>
+				<td width="10%" style="text-align:center">{$result.registerStopCount}</td>
+				<td width="10%" style="text-align:center">{$result.registerStopPcCount}</td>
+				<td width="10%" style="text-align:center">{$result.registerStopAppCount}</td>
+			</tr>
+	  </notempty>
+	 
+	  <notempty name="all">
+			<tr style="text-align:center">
+				<td width="8%">总数</td>
+				<td width="8%">{$all.registerCounttAll}</td>
+				<td width="10%" style="text-align:center">{$all.registerAppCounttAll}</td>
+				<td width="10%" style="text-align:center">{$all.registerPcCounttAll}</td>
+				<td width="10%" style="text-align:center">{$all.registerUsedCounttAll}</td>
+				<td width="10%" style="text-align:center">{$all.registerUsedAppCounttAll}</td>
+				<td width="10%" style="text-align:center">{$all.registerUsedPcCounttAll}</td>
+				<td width="10%" style="text-align:center">{$all.registerStopCounttAll}</td>
+				<td width="10%" style="text-align:center">{$all.registerStopPcCounttAll}</td>
+				<td width="10%" style="text-align:center">{$all.registerStopAppCounttAll}</td>
+			</tr>
+	  </notempty>
+	</table>
+	<table class="content_list">
+	<thead>
+	  <tr class="tb_header">
+		<td colspan="5"><b>绑定房间信息统计</b></td>
+		<td style="text-align:right;"><input  type="button" value="导出" name="download" onclick="exportdata()"/>&nbsp;&nbsp;&nbsp;</td>
+	  </tr>
+	</thead>
+	  <tr>
+		<td class="tb_title" width="8%">序号</td>
+		<td class="tb_title" width="8%">用户真实姓名</td>
+		<td class="tb_title" width="15%" style="text-align:center">用户名</td>
+		<td class="tb_title" width="20%" style="text-align:center">联系电话</td>
+		<td class="tb_title" width="20%" style="text-align:center">房间编号</td>
+		<td class="tb_title" width="20%" style="text-align:center">房间地址</td>
+	  </tr>
+	  <empty name="list">
+		  <tr>
+			<td colspan="6" style="text-align:center;">请核实查询条件后，点击"查询"按钮进行查询！</td>
+		  </tr>
+	  </empty>
+	  <notempty name="list">
+		 <volist name="list" id="result">
+			<tr style="text-align:center">
+				<td width="8%">{$i}</td>
+				<td width="8%">{$result.nickname}</td>
+				<td width="15%" style="text-align:center">{$result.username}</td>
+				<td width="20%" style="text-align:center">{$result.phone}</td>
+				<td width="20%" style="text-align:center">{$result.houseCode}</td>
+				<td width="20%" style="text-align:center">{$result.houseName}</td>
+				
+			</tr>
+		  </volist>
+	  </notempty>
+	  <tr>
+		<td colspan="6"><div class="cuspages right">{$page}</div>
+	  </tr>
+	</table>
+<script type="text/javascript">
+	$(function(){ 
+		$(".confirmSubmit").click(function() {
+			var a=$("input[type='checkbox']:checked");
+			var len=a.length;
+			if(len<1){
+				alert("您未选择查询方式，请选择查询方式后，再进行操作！");
+				return false;
+			}
+			return;	
+		});
+	}); 
+</script>
+
+<script language="javascript" type="text/javascript">  
+   function exportdata(){  
+		var url = "__APP__/Admin/User/account/excel/1";
+	    document.getElementById("form1").action = url;
+	    document.getElementById("form1").submit();   
+   } 
+   
+   function fun(){  
+		var url = "__APP__/Admin/User/account/excel/0";
+	    document.getElementById("form1").action = url;
+	    document.getElementById("form1").submit();   
+   }
+ </script>  
+</div>
+</body>
+</html>

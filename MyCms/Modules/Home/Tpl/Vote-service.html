@@ -1,0 +1,717 @@
+<!doctype html>
+<html>
+<head>
+	<include file="Public:common-head"/>
+	<link rel="stylesheet" type="text/css" href="__PUBLIC__/last/css/wjdc.css">
+	    <link rel="stylesheet" type="text/css" href="__PUBLIC__/last/css/selectFilter.css">
+</head>
+<style type="text/css">
+	.demo-input{
+		padding-left: 10px;
+		height: 32px;
+		min-width: 230px;
+		line-height: 32px;
+		border: 1px solid #e6e6e6;  background-color: #fff;
+		border-radius: 2px;
+		outline: none;}
+
+
+</style>
+<script type="text/javascript">
+    lay('#version').html('-v'+ laydate.v);
+
+    //执行一个laydate实例
+    //常规用法
+    laydate.render({
+        elem: '#test1' //指定元素
+    });
+    laydate.render({
+        elem: '#test12' //指定元素
+    });
+    //国际版
+    laydate.render({
+        elem: '#test1-1'
+        ,lang: 'en'
+    });
+    //年选择器
+    laydate.render({
+        elem: '#test2'
+        ,type: 'year'
+    });
+    //年月选择器
+    laydate.render({
+        elem: '#test3'
+        ,type: 'month'
+    });
+    //时间选择器
+    laydate.render({
+        elem: '#test4'
+        ,type: 'time'
+    });
+    //时间选择器
+    laydate.render({
+        elem: '#test5'
+        ,type: 'datetime'
+    });
+    //日期范围
+    laydate.render({
+        elem: '#test6'
+        ,range: true
+    });
+    //年范围
+    laydate.render({
+        elem: '#test7'
+        ,type: 'year'
+        ,range: true
+    });
+    //年月范围
+    laydate.render({
+        elem: '#test8'
+        ,type: 'month'
+        ,range: true
+    });
+    //时间范围
+    laydate.render({
+        elem: '#test9'
+        ,type: 'time'
+        ,range: true
+    });
+    //日期时间范围
+    laydate.render({
+        elem: '#test10'
+        ,type: 'datetime'
+        ,range: true
+    });
+    //墨绿主题
+    laydate.render({
+        elem: '#test29'
+        ,theme: 'molv'
+    });
+    //自定义颜色
+    laydate.render({
+        elem: '#test30'
+        ,theme: '#393D49'
+    });
+    //格子主题
+    laydate.render({
+        elem: '#test31'
+        ,theme: 'grid'
+    });
+
+</script>
+<body>
+<include file="Public:common-toppart"/>
+<div class="content_bg">
+	<div class="content history_content">
+		<p class="dqwz history_dqwz">当前位置：{$nav}</p>
+	</div>
+</div>
+
+
+<!--问卷调查-->
+<div class="questionnaire_box">
+	<div class="questionnaire" style="    height: 3100px;">
+	
+		<div style="width: 100%; height:80px;"></div>
+		<div class="questionnaire_kb">
+			<div class="questionnaire_l">
+				<div class="questionnaire_text">住宅小区物业满意度调查问卷</div>
+				<div class="questionnaire_text1">发布时间：{$vote.start_time|date="Y-m-d H:i:s",###}</div>
+				<div class="questionnaire_text2">尊敬的生态城业主！您好！</div>
+				<div class="questionnaire_text2">　　按照《中新天津生态城住宅物业考核办法（暂行）》，现对生态城内入住小区2018年度物业服务情况进行满意度调查，旨在督促物业企业提升服务水平，接受居民监督，形成共建共管的良好格局！本次网上采用委托第三方（生态城公用事业客服中心）进行调查，请大家按照您的真实情况填写，我们将会严格保密您的信息！感谢您抽出几分钟的时间填写这份问卷！</div>
+				<div class="questionnaire_xian"></div>
+				<div class="questionnaire_left">
+					<div class="history_inputboxone" style="height: 40px;"><span>房间编号：</span>
+					<form name="form2" id="form2" action="{:U('vote/service','id=13')}" method="post">
+						<div class="demo" id="aaa" style="top: -32px;left: 80px;">
+								<div class="filter-text">
+                					<input class="filter-title" type="text" readonly placeholder="请选择" />
+                					<i class="icon icon-filter-arrow"></i>
+                				</div>
+                				<select name="houseCode" id="houseCode">
+                					<volist name="houselist" id="hlist">
+										<option value="{$hlist.houseCode}" <if condition="$hlist.houseCode eq $code">selected</if>>{$hlist.houseCode}</option>
+                					</volist>
+                				</select>
+						</div>
+					</form>
+
+
+
+					</div>
+				</div>
+				
+
+				<div class="history_inputboxone"><span>居住小区：　{$jzxq}</span>
+
+	
+
+
+
+				</div>
+				<!--	///////////-->
+				<div class="blank10"></div>
+				<div class="questionnaire_left">
+					<div class="history_inputboxone"><span style=" line-height:45px;">联系电话：　{$yzphone}</span>
+
+
+					</div>
+				</div>
+				<div class="questionnaire_left">
+					<div class="history_inputboxone"><span style=" line-height:45px;">业主姓名：　{$yzname}</span>
+
+					</div>
+				</div>
+				<div class="blank10"></div>
+				<form name="form3" id="form3" action="{:U('vote/servicecg')}" method="post">
+				<input type='hidden' name='housecode' value="{$code}" >
+				<input type='hidden' name='village' value="{$jzxq}"  >
+				<input type='hidden' name='phone' value="{$yzphone}"  >
+				<input type='hidden' name='username' value="{$yzname}"  >
+				<div class="questionnaire_xian" style="margin-top:0px"></div>
+				<!--	///////////-->
+				<div class="investigation">
+					<div class="investigation_box">
+						<div class="investigation_box_text">以下为必选题（单选）：</div>
+						<div class="blank20"></div>
+
+						<div class="investigation_box_text1">一、综合服务</div>
+						<div class="investigation_box_text2">1、您对物业工作人员的行为规范、服务热情是否满意？</div>
+
+						<div class="investigation_box_text3">
+							<div class="input_style radio_bg"><input id="item1" type="radio"  name="firchoose" value="非常满意" >
+								<label for="item1"></label>
+								<span>非常满意</span>
+							</div>
+						</div>
+						<div class="investigation_box_text3">
+							<div class="input_style radio_bg"><input id="item2" type="radio"  name="firchoose" value="较满意" >
+								<label for="item2"></label>
+								<span>较满意</span>
+							</div>
+						</div>
+						<div class="investigation_box_text3">
+							<div class="input_style radio_bg"><input id="item3" type="radio"  name="firchoose" value="不满意" >
+								<label for="item3"></label>
+								<span>不满意</span>
+							</div>
+						</div>
+						<div class="investigation_box_text3">
+							<div class="input_style radio_bg"><input id="item4" type="radio"  name="firchoose" value="非常不满意" >
+								<label for="item4"></label>
+								<span>非常不满意</span>
+							</div>
+						</div>
+
+						<div class="clear"></div>
+						<div class="investigation_box_text2">2、您对本小区物业报事处置响应是否满意？</div>
+
+						<div class="investigation_box_text3">
+							<div class="input_style radio_bg"><input id="item5" type="radio"  name="secchoose" value="非常满意" >
+								<label for="item5"></label>
+								<span>非常满意</span>
+							</div>
+						</div>
+						<div class="investigation_box_text3">
+							<div class="input_style radio_bg"><input id="item6" type="radio"  name="secchoose" value="较满意" >
+								<label for="item6"></label>
+								<span>较满意</span>
+							</div>
+						</div>
+						<div class="investigation_box_text3">
+							<div class="input_style radio_bg"><input id="item7" type="radio"  name="secchoose" value="不满意" >
+								<label for="item7"></label>
+								<span>不满意</span>
+							</div>
+						</div>
+						<div class="investigation_box_text3">
+							<div class="input_style radio_bg"><input id="item8" type="radio"  name="secchoose" value="非常不满意" >
+								<label for="item8"></label>
+								<span>非常不满意</span>
+							</div>
+						</div>
+
+						<div class="blank30"></div>
+						<!--radio-->
+					</div>
+					<div class="blank20"></div>
+					<div class="investigation_box_text1">二、秩序维护服务</div>
+					<div class="investigation_box_text2">3、保安巡逻值勤情况是否满意？</div>
+					<div class="investigation_box_text3">
+						<div class="input_style radio_bg"><input id="item9" type="radio"  name="thichoose" value="非常满意" >
+							<label for="item9"></label>
+							<span>非常满意</span>
+						</div>
+					</div>
+					<div class="investigation_box_text3">
+						<div class="input_style radio_bg"><input id="item10" type="radio"  name="thichoose" value="较满意" >
+							<label for="item10"></label>
+							<span>较满意</span>
+						</div>
+					</div>
+					<div class="investigation_box_text3">
+						<div class="input_style radio_bg"><input id="item11"type="radio"  name="thichoose" value="不满意" >
+							<label for="item11"></label>
+							<span>不满意</span>
+						</div>
+					</div>
+					<div class="investigation_box_text3">
+						<div class="input_style radio_bg"><input id="item12"type="radio"  name="thichoose" value="非常不满意" >
+							<label for="item12"></label>
+							<span>非常不满意</span>
+						</div>
+					</div>
+					<div class="clear"></div>
+					<div class="investigation_box_text2">4、您对小区机动车辆、非机动车管理是否满意？</div>
+					<div class="investigation_box_text3">
+						<div class="input_style radio_bg"><input id="item13"type="radio"  name="fourchoose" value="非常满意" >
+							<label for="item13"></label>
+							<span>非常满意</span>
+						</div>
+					</div>
+					<div class="investigation_box_text3">
+						<div class="input_style radio_bg"><input id="item14"type="radio"  name="fourchoose" value="较满意" >
+							<label for="item14"></label>
+							<span>较满意</span>
+						</div>
+					</div>
+					<div class="investigation_box_text3">
+						<div class="input_style radio_bg"><input id="item15"type="radio"  name="fourchoose" value="不满意" >
+							<label for="item15"></label>
+							<span>不满意</span>
+						</div>
+					</div>
+					<div class="investigation_box_text3">
+						<div class="input_style radio_bg"><input id="item16" type="radio"  name="fourchoose" value="非常不满意" >
+							<label for="item16"></label>
+							<span>非常不满意</span>
+						</div>
+					</div>
+					<div class="blank30"></div>
+					<div class="questionnaire_xian"></div>
+					<!--radio-->
+
+					<div class="blank20"></div>
+					<div class="investigation_box_text1">三、保洁绿化服务</div>
+					<div class="investigation_box_text2">5、您对小区景观、绿化养护服务是否满意？</div>
+					<div class="investigation_box_text3">
+						<div class="input_style radio_bg"><input id="item17" type="radio"  name="fifchoose" value="非常满意" >
+							<label for="item17"></label>
+							<span>非常满意</span>
+						</div>
+					</div>
+					<div class="investigation_box_text3">
+						<div class="input_style radio_bg"><input id="item18"type="radio"  name="fifchoose" value="较满意" >
+							<label for="item18"></label>
+							<span>较满意</span>
+						</div>
+					</div>
+					<div class="investigation_box_text3">
+						<div class="input_style radio_bg"><input id="item19" type="radio"  name="fifchoose" value="不满意" >
+							<label for="item19"></label>
+							<span>不满意</span>
+						</div>
+					</div>
+					<div class="investigation_box_text3">
+						<div class="input_style radio_bg"><input id="item20" type="radio"  name="fifchoose" value="非常不满意" >
+							<label for="item20"></label>
+							<span>非常不满意</span>
+						</div>
+					</div>
+					<div class="clear"></div>
+					<div class="investigation_box_text2">6、您对小区楼内走楼、电梯等公共部位清洁度是否满意？</div>
+					<div class="investigation_box_text3">
+						<div class="input_style radio_bg"><input id="item21" type="radio"  name="sixchoose" value="非常满意" >
+							<label for="item21"></label>
+							<span>非常满意</span>
+						</div>
+					</div>
+					<div class="investigation_box_text3">
+						<div class="input_style radio_bg"><input id="item22" type="radio"  name="sixchoose" value="较满意" >
+							<label for="item22"></label>
+							<span>较满意</span>
+						</div>
+					</div>
+					<div class="investigation_box_text3">
+						<div class="input_style radio_bg"><input id="item23" type="radio"  name="sixchoose" value="不满意" >
+							<label for="item23"></label>
+							<span>不满意</span>
+						</div>
+					</div>
+					<div class="investigation_box_text3">
+						<div class="input_style radio_bg"><input id="item24" type="radio"  name="sixchoose" value="非常不满意" >
+							<label for="item24"></label>
+							<span>非常不满意</span>
+						</div>
+					</div>
+					<div class="clear"></div>
+					<div class="blank30"></div>
+					<div class="questionnaire_xian"></div>
+					<!--radio-->
+
+					<!--radio-->
+
+					<div class="blank20"></div>
+					<div class="investigation_box_text1">四、公共设施维护</div>
+					<div class="investigation_box_text2">7、公共照明维护管理是否满意？</div>
+					<div class="investigation_box_text3">
+						<div class="input_style radio_bg"><input id="item29" type="radio"  name="sevchoose" value="非常满意" >
+							<label for="item29"></label>
+							<span>非常满意</span>
+						</div>
+					</div>
+					<div class="investigation_box_text3">
+						<div class="input_style radio_bg"><input id="item30" type="radio"  name="sevchoose" value="较满意" >
+							<label for="item30"></label>
+							<span>较满意</span>
+						</div>
+					</div>
+					<div class="investigation_box_text3">
+						<div class="input_style radio_bg"><input id="item31"type="radio"  name="sevchoose" value="不满意" >
+							<label for="item31"></label>
+							<span>不满意</span>
+						</div>
+					</div>
+					<div class="investigation_box_text3">
+						<div class="input_style radio_bg"><input id="item32"type="radio"  name="sevchoose" value="非常不满意" >
+							<label for="item32"></label>
+							<span>非常不满意</span>
+						</div>
+					</div>
+					<div class="clear"></div>
+					<div class="investigation_box_text2">8、电梯运行情况是否满意？</div>
+					<div class="investigation_box_text3">
+						<div class="input_style radio_bg"><input id="item33" type="radio"  name="eightchoose" value="非常满意" >
+							<label for="item33"></label>
+							<span>非常满意</span>
+						</div>
+					</div>
+					<div class="investigation_box_text3">
+						<div class="input_style radio_bg"><input id="item34" type="radio"  name="eightchoose" value="较满意" >
+							<label for="item34"></label>
+							<span>较满意</span>
+						</div>
+					</div>
+					<div class="investigation_box_text3">
+						<div class="input_style radio_bg"><input id="item35"type="radio"  name="eightchoose" value="不满意" >
+							<label for="item35"></label>
+							<span>不满意</span>
+						</div>
+					</div>
+					<div class="investigation_box_text3">
+						<div class="input_style radio_bg"><input id="item36"type="radio"  name="eightchoose" value="非常不满意" >
+							<label for="item36"></label>
+							<span>非常不满意</span>
+						</div>
+					</div>
+
+					<div class="clear"></div>
+					<div class="investigation_box_text2">9、您对本小区门禁、消防设施等公共设施设备维护程度是否满意？</div>
+					<div class="investigation_box_text3">
+						<div class="input_style radio_bg"><input id="item37" type="radio"  name="ninchoose" value="非常满意" >
+							<label for="item37"></label>
+							<span>非常满意</span>
+						</div>
+					</div>
+					<div class="investigation_box_text3">
+						<div class="input_style radio_bg"><input id="item38" type="radio"  name="ninchoose" value="较满意" >
+							<label for="item38"></label>
+							<span>较满意</span>
+						</div>
+					</div>
+					<div class="investigation_box_text3">
+						<div class="input_style radio_bg"><input id="item39"type="radio"  name="ninchoose" value="不满意" >
+							<label for="item39"></label>
+							<span>不满意</span>
+						</div>
+					</div>
+					<div class="investigation_box_text3">
+						<div class="input_style radio_bg"><input id="item40"type="radio"  name="ninchoose" value="非常不满意" >
+							<label for="item40"></label>
+							<span>非常不满意</span>
+						</div>
+					</div>
+					<div class="blank30"></div>
+					<div class="questionnaire_xian"></div>
+					<!--radio-->
+
+					<div class="investigation_box_text">以下均为自选题：</div>
+					<div class="investigation_box_text2">1、您认为本小区主要问题有哪些？（多选）</div>
+					<div class="investigation_box_text4">
+						<div class="input_style radio_bg"><input  id="item50" type="checkbox" name="zxfirchoose[]" value="物业人员服务意识差，办事能力弱"></i>
+							<label for="item50"></label>
+							<span>物业人员服务意识差，办事能力弱</span>
+						</div>
+					</div>
+					<div class="investigation_box_text4">
+						<div class="input_style radio_bg"><input  id="item51" type="checkbox" name="zxfirchoose[]" value="居民自治能力差，不履行职责"></i>
+							<label for="item51"></label>
+							<span>居民自治能力差，不履行职责</span>
+						</div>
+					</div>
+					<div class="investigation_box_text4">
+						<div class="input_style radio_bg"><input  id="item52" type="checkbox" name="zxfirchoose[]" value="物业团队能力差，主动作为不足"></i>
+							<label for="item52"></label>
+							<span>物业团队能力差，主动作为不足</span>
+						</div>
+					</div>
+					<div class="investigation_box_text4">
+						<div class="input_style radio_bg"><input  id="item54" type="checkbox" name="zxfirchoose[]" value="物业上级公司支持少，投入不足"></i>
+							<label for="item54"></label>
+							<span>物业上级公司支持少，投入不足</span>
+						</div>
+					</div>
+					<div class="investigation_box_text4">
+						<div class="input_style radio_bg"><input  id="item55" type="checkbox" name="zxfirchoose[]" value="开发单位遗留问题多，影响物业服务"></i>
+							<label for="item55"></label>
+							<span>开发单位遗留问题多，影响物业服务</span>
+						</div>
+					</div>
+					<div class="investigation_box_text4">
+						<div class="input_style radio_bg"><input  id="item56" type="checkbox" name="zxfirchoose[]" value="服务内容、公共收益不公开透明"></i>
+							<label for="item56"></label>
+							<span>服务内容、公共收益不公开透明</span>
+						</div>
+					</div>
+					<div class="investigation_box_text4">
+						<div class="input_style radio_bg"><input  id="item57" type="checkbox" name="zxfirchoose[]" value="与业主沟通少，没有社区活动"></i>
+							<label for="item57"></label>
+							<span>与业主沟通少，没有社区活动</span>
+						</div>
+					</div>
+					<div class="clear"></div>
+					<div class="investigation_box_text2">2、您认为小区物业服务应重点改进的地方？（多选）</div>
+					<div class="investigation_box_text4">
+						<div class="input_style radio_bg"><input  id="item60" type="checkbox" name="zxsecchoose[]" value="团队综合服务水平"></i>
+							<label for="item60"></label>
+							<span>团队综合服务水平</span>
+						</div>
+					</div>
+					<div class="investigation_box_text4">
+						<div class="input_style radio_bg"><input  id="item61" type="checkbox" name="zxsecchoose[]" value="园区环境卫生清洁"></i>
+							<label for="item61"></label>
+							<span>园区环境卫生清洁</span>
+						</div>
+					</div>
+					<div class="investigation_box_text4">
+						<div class="input_style radio_bg"><input  id="item62" type="checkbox" name="zxsecchoose[]" value="出入秩序车辆停放"></i>
+							<label for="item62"></label>
+							<span>出入秩序车辆停放</span>
+						</div>
+					</div>
+					<div class="investigation_box_text4">
+						<div class="input_style radio_bg"><input  id="item63" type="checkbox" name="zxsecchoose[]" value="绿化养护景观维护"></i>
+							<label for="item63"></label>
+							<span>绿化养护景观维护</span>
+						</div>
+					</div>
+					<div class="investigation_box_text4">
+						<div class="input_style radio_bg"><input  id="item64" type="checkbox" name="zxsecchoose[]" value="公共设施管理维护"></i>
+							<label for="item64"></label>
+							<span>公共设施管理维护</span>
+						</div>
+					</div>
+					<div class="investigation_box_text4">
+						<div class="input_style radio_bg"><input  id="item65" type="checkbox" name="zxsecchoose[]" value="加强小区邻里活动"></i>
+							<label for="item65"></label>
+							<span>加强小区邻里活动</span>
+						</div>
+					</div>
+
+					<div class="clear"></div>
+					<div class="investigation_box_text2">3、您认为生态城内物业服务整体水平如何？（单选）</div>
+					<div class="investigation_box_text3">
+						<div class="input_style radio_bg"><input id="item41"type="radio"  name="zxthichoose" value="天津市内优秀" >
+							<label for="item41"></label>
+							<span>天津市内优秀</span>
+						</div>
+					</div>
+					<div class="investigation_box_text3">
+						<div class="input_style radio_bg"><input id="item42"type="radio"  name="zxthichoose" value="较周边区域好" >
+							<label for="item42"></label>
+							<span>较周边区域好</span>
+						</div>
+					</div>
+					<div class="investigation_box_text3">
+						<div class="input_style radio_bg"><input id="item43"type="radio"  name="zxthichoose" value="很一般" >
+							<label for="item43"></label>
+							<span>很一般</span>
+						</div>
+					</div>
+					<div class="clear"></div>
+					<div class="investigation_box_text2">4、您对目前小区物业工作有何其他方面的建议和意见？</div>
+					<textarea class="form-control" rows="3" style="width:500px; height:90px; padding: 10px; line-height: 30px;" name="zxfourchoose" maxlength="500"></textarea>
+					<div class="investigation_box_text5">最多输入500个汉字</div>
+					
+					<div class="investigation_box_text2" style=" color: #ff0000; font-size: 13px;">感谢您给了我们这样的机会，您的意见将有助于我们将来向您提供更优质的服务。</div>
+
+					<div class="yewu_yanzheng">
+						<a href="javascript:void(0);" id="tijiao" class="yewu_tijiao">提交</a>
+					</div>
+
+					<!--radio-->
+
+				</div>
+			</div>
+			<!--	///////////-->
+		</div>
+	</div>
+	</form>
+</div>
+</div>
+
+<!--问卷调查-->
+
+
+
+
+<include file="Public:common-footer"/>
+<include file="Public:common-script"/>
+<script type="text/javascript" src="__PUBLIC__/last/js/selectFilter.js"></script>
+<script type="text/javascript" src="__PUBLIC__/last/js/jquery.easing.min.js"></script>
+<script type="text/javascript" src="__PUBLIC__/last/js/banner.js"></script>
+<script type="text/javascript">
+    $(function () {
+        console.log($("#vote").val());
+    });
+</script>
+</body>
+</html>
+ 	<script type="text/javascript">
+$(function(){
+	/*============================
+	@author:flc
+	@time:2014-02-11 18:16:09
+	@qq:3407725
+	============================*/
+	$(".select01").each(function(){
+		var s=$(this);
+		var z=parseInt(s.css("z-index"));
+		var dt=$(this).children("dt");
+		var dd=$(this).children("dd");
+		var _show=function(){dd.slideDown(200);dt.addClass("cur01");s.css("z-index",z+1);};   //展开效果
+		var _hide=function(){dd.slideUp(200);dt.removeClass("cur01");s.css("z-index",z);};    //关闭效果
+		dt.click(function(){dd.is(":hidden")?_show():_hide();});
+		dd.find("a").click(function(){dt.html($(this).html());_hide();});     //选择效果（如需要传值，可自定义参数，在此处返回对应的“value”值 ）
+		$("body").click(function(i){ !$(i.target).parents(".select01").first().is(s) ? _hide():"";});
+	})
+})
+</script>
+ <script type="text/javascript">
+
+$('#aaa').selectFilter({
+		callBack : function (val){
+			//返回选择的值
+			
+			console.log(val+'-是返回的值');
+            $('#form2').submit();
+		}
+	});
+</script>
+ <script type="text/javascript">
+$('#tijiao').on('click', function(){
+        var firchoose = document.getElementsByName("firchoose");
+        var secchoose = document.getElementsByName("secchoose");
+		var thichoose = document.getElementsByName("thichoose");
+		var fourchoose = document.getElementsByName("fourchoose");
+		var fifchoose = document.getElementsByName("fifchoose");
+		var sixchoose = document.getElementsByName("sixchoose");
+		var sevchoose = document.getElementsByName("sevchoose");
+		var eightchoose = document.getElementsByName("eightchoose");
+		var ninchoose = document.getElementsByName("ninchoose");
+		var a1=0;
+		var a2=0;
+		var a3=0;
+		var a4=0;
+		var a5=0;
+		var a6=0;
+		var a7=0;
+		var a8=0;
+		var a9=0;
+		
+		for (var i = 0; i < firchoose.length; i++){
+        if(firchoose[i].checked){
+			a1=1;
+			console.log(a1);
+        }}
+		if(a1==0){
+			alert('请选择第一道必选题');
+            return false;
+		}
+		
+		for (var i = 0; i < secchoose.length; i++){
+        if(secchoose[i].checked){
+           	a2=1;
+        }}
+		if(a2==0){
+			alert('请选择第二道必选题');
+            return false;
+		}
+		
+		for (var i = 0; i < thichoose.length; i++){
+        if(thichoose[i].checked){
+           	a3=1;
+        }}
+		if(a3==0){
+			alert('请选择第三道必选题');
+            return false;
+		}
+		
+		for (var i = 0; i < fourchoose.length; i++){
+        if(fourchoose[i].checked){
+              a4=1;
+        }}
+		if(a4==0){
+			alert('请选择第四道必选题');
+            return false;
+		}
+		
+		for (var i = 0; i < fifchoose.length; i++){
+        if(fifchoose[i].checked){
+           	a5=1;
+        }}
+		if(a5==0){
+			alert('请选择第五道必选题');
+            return false;
+		}
+		
+		for (var i = 0; i < sixchoose.length; i++){
+        if(sixchoose[i].checked){
+          	a6=1;
+        }}
+		if(a6==0){
+			alert('请选择第六道必选题');
+            return false;
+		}
+		
+		for (var i = 0; i < sevchoose.length; i++){
+        if(sevchoose[i].checked){
+        a7=1;
+        }}
+		if(a7==0){
+			alert('请选择第七道必选题');
+            return false;
+		}
+		
+		for (var i = 0; i < eightchoose.length; i++){
+        if(eightchoose[i].checked){
+         a8=1;
+        }}
+		if(a8==0){
+			alert('请选择第八道必选题');
+            return false;
+		}
+		
+		for (var i = 0; i < ninchoose.length; i++){
+        if(ninchoose[i].checked){
+         a9=1;
+        }}
+		if(a9==0){
+			alert('请选择第九道必选题');
+            return false;
+		}
+
+        $('#form3').submit();
+          });
+
+</script>

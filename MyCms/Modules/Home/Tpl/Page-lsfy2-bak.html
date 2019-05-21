@@ -1,0 +1,918 @@
+<include file="Public:header"/>
+<div class="main_block">
+  <include file="Public:top"/>
+  <div class="content_block">
+    <div class="left_side fl">
+      <div class="l_menu">
+      	 <!--上级菜单-->
+		{~$cat=get_info($cate,$pid);}
+		 <volist name="cat" id="m" key="l">
+			<a href="javascript:history.go(-1);" title="返回上一页">
+				<div class="bb_l_menu_title">
+					{$m.title} 
+				</div>
+			</a>
+		</volist>
+		<div class="left_other_menu">
+        {~$cat=get_child($cate,$pid);}
+        <volist name="cat" id="c" key="k">
+          <dl
+          <eq name='c.id' value='$id'> class="hover" </eq>
+          >
+          <dt><a href="<notempty name='c.url'>{$c.url}<else/>{:U($c['Model']['name'].'/'.$c['tpl'],'id='.$c['id'])}</notempty>"><img src="{$c.pic}"/></a>
+          </dt>
+          <dd><a href="<notempty name='c.url'>{$c.url}<else/>{:U($c['Model']['name'].'/'.$c['tpl'],'id='.$c['id'])}</notempty>">{$c.title}</a>
+            <span>{$c.summary}</span></dd>
+          </dl>
+        </volist></div>
+      </div>
+      <include file="Public:left"/>
+    </div>
+    <div class="main_con fr">
+      <div class="bread_nav">
+        <div class="l fl"></div>
+        <div class="m fl" style="line-height:30px;"> <span class="list_style"></span> <span>您当前的位置:</span> {$nav} </div>
+        <div class="r fl"></div>
+      </div>
+      <div class="artical">
+        <!-- begin -->
+		<div class="bus_title fl" style="width:60px;float:left;">
+          <h2>当期账单</h2>
+        </div>
+		<div style="font-size:14px;float:left;width:640px;font-weight:bold;color:#FF0000">{$notice}</div>
+        <div class="bus_table_1 fl">
+		  <volist name="feelist" id="fee" key="k" mod="2">
+			<div class="b_box">
+				<div class="b_box_title">&nbsp;&nbsp;&nbsp;{$fee.HOUSENAME}</div>
+				  
+				  <table width="701" border="0" cellspacing="0" cellpadding="0">
+					  <thead>
+						  <tr>
+							<td class="right_line" rowspan="2" align="center" style="width:75px;">收费项目</td>
+							<td class="right_line" rowspan="2" align="center" style="width:48px;">阶梯单价(元)</td>
+							<td class="right_line" rowspan="2" align="center" style="width:54px;">用量</td>
+							<td class="right_line bottom_line" colspan="3" align="center">{$current}期账单(元)</td>
+							<td class="right_line bottom_line" colspan="3" align="center">之前欠费(元)</td>
+							<td rowspan="2" align="center">应交金额(元)</td>
+						  </tr>
+						  <tr>
+							<td  class="right_line" align="center" style="width:50px;">应交本金</td>
+							<td  class="right_line" align="center" style="width:40px;">违约金</td>
+							<td  class="right_line" align="center" style="width:30px;">已交</td>
+							
+
+							<td  class="right_line" align="center" style="width:60px;">欠费本金</td>
+							<td  class="right_line" align="center" style="width:50px;">违约金</td>
+							<td  class="right_line" align="center" style="width:30px;">已交</td>
+						  </tr>
+					  </thead>
+					  <tbody>
+					  <if condition="$fee.CNFYL eq null">
+						  <tr>
+							<td colspan="10" align="center">暂无数据</td>
+						  </tr>
+					  <else />
+						   <tr>
+							<td style="color:#5f5f5f;" align="center">一阶水费</td>
+							<td align="center">{$fee.ZLSDJ}</td>
+							<td align="center">{$fee.SFYL}</td>
+							<td align="center">{$fee.DYSF}</td>
+							<td align="center">0</td>
+							<td align="center">{$fee.DYSFYIS}</td>
+							<td align="center">{$fee.ZQYSF}</td>
+							<td align="center">{$fee.ZQYSFZNJ}</td>
+							<td align="center">{$fee.ZQYSFYIS}</td>
+							<td align="center">{$fee.ZQYSFZJ}</td>
+						  </tr>
+						  <if condition="$fee.DYSF2 neq 0">
+							  <tr>
+								<td style="color:#5f5f5f;" align="center">二阶水费</td>
+								<td align="center">{$fee.ZLSDJ2}</td>
+								<td align="center">{$fee.SFYL2}</td>
+								<td align="center">{$fee.DYSF2}</td>
+								<td align="center">0</td>
+								<td align="center">{$fee.DYSFYIS2}</td>
+								<td align="center">{$fee.ZQYSF}</td>
+								<td align="center">{$fee.ZQYSFZNJ}</td>
+								<td align="center">{$fee.ZQYSFYIS}</td>
+								<td align="center">{$fee.ZQYSFZJ2}</td>
+							  </tr>
+						  </if>
+						  <if condition="$fee.DYSF3 neq 0">
+							   <tr>
+								<td style="color:#5f5f5f;" align="center">三阶水费</td>
+								<td align="center">{$fee.ZLSDJ3}</td>
+								<td align="center">{$fee.SFYL3}</td>
+								<td align="center">{$fee.DYSF3}</td>
+								<td align="center">0</td>
+								<td align="center">{$fee.DYSFYIS3}</td>
+								<td align="center">{$fee.ZQYSF}</td>
+								<td align="center">{$fee.ZQYSFZNJ}</td>
+								<td align="center">{$fee.ZQYSFYIS}</td>
+								<td align="center">{$fee.ZQYSFZJ3}</td>
+							  </tr>
+						  </if>
+						   <tr>
+							<td style="color:#5f5f5f;" align="center">小计</td>
+							<td align="center">&nbsp;</td>
+							<td align="center">{$fee.SFYLXJ}</td>
+							<td align="center">{$fee.SFBJXJ}</td>
+							<td align="center">0</td>
+							<td align="center">{$fee.SFYJXJ}</td>
+							<td align="center">{$fee.SFQFBJXJ}</td>
+							<td align="center">{$fee.SFZQWYJXJ}</td>
+							<td align="center">{$fee.SFZQYJXJ}</td>
+							<td align="center">{$fee.SFYJJEXJ}</td>
+						  </tr>
+						  <tr style="background-color:#f7f7f7;">
+							<td style="color:#5f5f5f;" align="center">一阶气费</td>
+							<td align="center">{$fee.TRQDJ}</td>
+							<td align="center">{$fee.RQYL}</td>
+							<td align="center">{$fee.DYRQF}</td>
+							<td align="center">0</td>
+							<td align="center">{$fee.DYRQFYIS}</td>
+							
+							<td align="center">{$fee.ZQYRQF}</td>
+							<td align="center">{$fee.ZQYRQFZNJ}</td>
+							<td align="center">{$fee.ZQYRQFYIS}</td>
+							<td align="center">{$fee.ZQYRQFZJ}</td>
+						  </tr>
+						  <if condition="$fee.DYRQF2 neq 0">
+						  
+							<tr style="background-color:#f7f7f7;">
+								<td style="color:#5f5f5f;" align="center">二阶气费</td>
+								<td align="center">{$fee.TRQDJ2}</td>
+								<td align="center">{$fee.RQYL2}</td>
+								<td align="center">{$fee.DYRQF2}</td>
+								<td align="center">0</td>
+								<td align="center">{$fee.DYRQFYIS2}</td>
+								
+								<td align="center">{$fee.ZQYRQF}</td>
+								<td align="center">{$fee.ZQYRQFZNJ}</td>
+								<td align="center">{$fee.ZQYRQFYIS}</td>
+								<td align="center">{$fee.ZQYRQFZJ2}</td>
+							  </tr>
+
+						  </if>
+
+						   <if condition="$fee.DYRQF3 neq 0">
+						  
+							<tr style="background-color:#f7f7f7;">
+								<td style="color:#5f5f5f;" align="center">三阶气费</td>
+								<td align="center">{$fee.TRQDJ3}</td>
+								<td align="center">{$fee.RQYL3}</td>
+								<td align="center">{$fee.DYRQF3}</td>
+								<td align="center">0</td>
+								<td align="center">{$fee.DYRQFYIS3}</td>
+								
+								<td align="center">{$fee.ZQYRQF}</td>
+								<td align="center">{$fee.ZQYRQFZNJ}</td>
+								<td align="center">{$fee.ZQYRQFYIS}</td>
+								<td align="center">{$fee.ZQYRQFZJ3}</td>
+							  </tr>
+
+						  </if>
+						  <tr style="background-color:#f7f7f7;">
+							<td style="color:#5f5f5f;" align="center">小计</td>
+							<td align="center">&nbsp;</td>
+							<td align="center">{$fee.RQYLXJ}</td>
+							<td align="center">{$fee.RQBJXJ}</td>
+							<td align="center">0</td>
+							<td align="center">{$fee.RQYJXJ}</td>
+							<td align="center">{$fee.RQQFBJXJ}</td>
+							<td align="center">{$fee.RQZQWYJXJ}</td>
+							<td align="center">{$fee.RQZQYJXJ}</td>
+							<td align="center">{$fee.RQYJJEXJ}</td>
+						  </tr>
+						  
+						  <tr style="background-color:#f7f7f7;">
+							<td style="color:#5f5f5f;" align="center">合计</td>
+							<td align="center">&nbsp;</td>
+							<td align="center">&nbsp;</td>
+							<td align="center">{$fee.DQSUM}</td>
+							<td align="center">0</td>
+							<td align="center">{$fee.YISSUM}</td>
+							<td align="center">{$fee.QFBJSUM}</td>
+							<td align="center">{$fee.ZNJSUM}</td>
+							<td align="center">{$fee.ZQYISSUM}</td>
+							<td align="center">{$fee.YJJESUM}</td>
+						  </tr>
+					  </if>
+					  </tbody>
+					</table>
+					
+				</div>
+				
+					<div class="b_box">
+						<div class="b_box_title">&nbsp;&nbsp;&nbsp;{$fee.HOUSENAME}</div>
+
+				   <if condition="$fee.QF eq 1">
+					  <table width="701" border="0" cellspacing="0" cellpadding="0">
+						  <thead>
+							  <tr>
+								<td class="right_line" rowspan="2" align="center" style="width:74px;">收费项目</td>
+								<td class="right_line" rowspan="2" align="center" style="width:54px;">面积/用量</td>
+								<td class="right_line" rowspan="2" align="center" style="width:40px;">单价</td>
+								<td class="right_line bottom_line"  style="width:90px;">2015-2016采暖期</td>
+								<td class="right_line bottom_line" colspan="6" align="center" style="width:450px;">2016-2017采暖期</td>
+								
+								
+							  </tr>
+							  <tr>
+								<td  class="right_line" align="center" style="width:90px;">结余</td>
+								<td  class="right_line" align="left" >优惠/减免</td>
+								<td  class="right_line" align="left" >应交费用</td>
+								<td  class="right_line" align="left" >已交费用</td>
+								<td  class="right_line" align="left" >基本热费</td>
+								<td  class="right_line" align="left" >计量热费</td>
+								<td  class="right_line" align="left">结余</td>
+								
+							  </tr>
+						  </thead>
+						  <tbody>
+						  <if condition="$fee.CHARGEAREA eq null">
+							  <tr>
+								<td colspan="10" align="center">暂无数据</td>
+							  </tr>
+						  <else />
+							   <tr>
+								 <td style="color:#5f5f5f;" align="center">{$fee.ITEMNAME}</td>
+								 <td align="center">{$fee.CHARGEAREA}</td>
+								 <td align="center">{$fee.PRICE}</td>
+
+								 <td align="center">{$fee.QN_JY}</td>
+								 
+								 <td align="center">{$fee.DN_YHJM}</td>
+								 <td align="center">{$fee.DN_YJBJ}</td>
+								 <td align="center">{$fee.DN_YJ}</td>
+								 <td align="center">{$fee.JBRF}</td>
+								 <td align="center">-</td>
+								 <td align="center">-</td>
+								 
+								 
+								
+								 
+							  </tr>
+						  </if>
+						  </tbody>
+						</table>
+
+
+						<else />
+
+						 <table width="701" border="0" cellspacing="0" cellpadding="0">
+						  <thead>
+							  <tr>
+								<td class="right_line" rowspan="2" align="center" style="width:54px;">收费项目</td>
+								<td class="right_line" rowspan="2" align="center" style="width:30px;">面积</td>
+								<td class="right_line" rowspan="2" align="center" style="width:30px;">用量</td>
+								<td class="right_line bottom_line"  colspan="2" style="width:90px;text-align:center">{$fee.ZQCNSJ}<br/>采暖期</td>
+								<td class="right_line bottom_line" colspan="7" align="center" style="width:450px;">{$fee.DQCNSJ}</td>
+								
+								
+							  </tr>
+							  <tr>
+								<td  class="right_line" align="left">结余</td>
+								<td  class="right_line" align="left">补缴</td>
+
+								<td  class="right_line" align="left" >优惠/减免</td>
+								
+								<td  class="right_line" align="left" >基本热费</td>
+								<td  class="right_line" align="left" >计量热费</td>
+
+								<td  class="right_line" align="left" >应交费用</td>
+								<td  class="right_line" align="left" >已交费用</td>
+								<td  class="right_line" align="left">结余</td>
+								<td  class="right_line" align="left">补缴</td>
+								
+							  </tr>
+						  </thead>
+						  <tbody>
+						  <if condition="$fee.CHARGEAREA eq null">
+							  <tr>
+								<td colspan="10" align="center">暂无数据</td>
+							  </tr>
+						  <else />
+							   <tr>
+								 <td style="color:#5f5f5f;" align="center">{$fee.ITEMNAME}</td>
+								 <td align="center">{$fee.CNMJ}</td>
+								 <td align="center">{$fee.CHARGEAREA}</td>
+
+								 <td align="center">{$fee.QN_JY}</td>
+								 <td align="center">0</td>
+
+								 <td align="center">{$fee.DN_YHJM}</td>
+								
+								 <td align="center">{$fee.JBRF}</td>
+								 <td align="center">-</td>
+								 <td align="center">{$fee.DN_YJBJ}</td>
+								 <td align="center">{$fee.DN_YJ}</td>
+								 <td align="center">-</td>
+								 <td align="center">0</td>
+								 
+							  </tr>
+						  </if>
+						  </tbody>
+						</table>
+					 </if>	
+						
+					  </div>
+					  <if condition="$fee.QF neq 1">
+						  <div class="table_bot" >
+							计量结算费用计算公式：采暖费=基本热费+计量热费=采暖面积*7.5+用量*0.13
+						  </div>
+					  </if>
+
+			</volist>
+          
+          <div style="clear: both;">
+		 
+		 <notempty name="fjrjl">
+			 <div class="table_title" style="display:none">计量热费对比</div>
+				<volist name="fjrjl" id="fj" key="k" >
+					
+						<div class="b_box" style="border: 1px solid #ccc;display:none" >
+							<div class="b_box_title">&nbsp;&nbsp;&nbsp;{$fj.HOUSENAME}</div>
+
+							<table width="701" border="0" cellspacing="0" cellpadding="0" class="table_3" >
+								<tbody>
+									<tr  class="table_list_01">
+										<th colspan="5" scope="row">按照供热计量计费方式情况</th>
+										<td style="border-bottom: 1px solid #eae9e9;color: #35ad0d; font-weight: bold; width: 140px;">对比情况<br>
+											（供热计量较供热面积）</td>
+									</tr>
+							
+									<tr  class="table_list_02">
+										<th rowspan="2" scope="row" >基础热费</th>
+										<td>供热期 </td>
+										<td >基础热价<br>（元/平米）</td>
+										<td >采暖面积<br>（平米）</td>
+										<td >基础热费<br>（元）</td>
+										<td rowspan="2" style="border-bottom: 1px solid #eae9e9;"> 相同</td>
+									</tr>
+									<tr class="table_list_03">
+										<td>{$fj.CNYEAR}</td>
+										<td >{$fj.JCRJ}</td>
+										<td>{$fj.CNMJ}</td>
+										<td>{$fj.JCRF}</td>
+									</tr>
+								<notempty name="rjl">
+									<tr class="table_list_04">
+										<th rowspan="{$fj.NUMBER}" scope="row" style="">计量热费</th>
+										<td style="width: 145px;">计量日期</td>
+										<td style="width: 100px;">计量热价<br>（元/千瓦时）</td>
+										<td>计量用量<br />（千瓦时）</td>
+										<td>计量热费<br />(元)</td>
+										<td><p>&nbsp;<br></p><p>&nbsp;</p><p></p></td>
+									</tr>
+										<foreach name="rjl" item="vo">
+											<foreach name="vo" item="v">
+												<eq name="fj.NUM" value="$v['NUM']">
+													<tr class="table_list_06" >
+														<td>{$v['DATA']}</td>
+														<td>{$v['PRICE']}</td>
+														<td>{$v['POINTNUMBER']}</td>
+														<td>{$v['REALACCOUNT']}</td>
+														<td>{$v['DAYREALACCOUN']}</td>
+													</tr>
+												</eq>
+											</foreach>
+										</foreach>
+										
+									<tr class="table_list_06">
+										<td>小计</td>
+										<td><!--{$fj.JLDJCount}-->&nbsp;</td>
+										<td>{$fj.JLYLCount}</td>
+										<td>{$fj.JCRFCount}</td>
+										<td>&nbsp;</td>
+									</tr>
+									<tr class="table_list_07">
+										<th scope="row" >{$fj.CNYEAR}<br></th>
+										<td colspan="4" >{$fj.CNJDCount}</td>
+										<td style="border-top: 1px solid #eae9e9">
+											<p>
+												<if condition="($fj.DBCount lt 0) ">
+													节约<!--{$fj.DBSum}元-->
+												<else/>
+													超出<!--{$fj.DBSum}元-->
+												</if>
+											</p>
+										</td>
+									</tr>
+									
+								</notempty>
+								</tbody>
+							</table>
+						</div>
+
+				
+			<div class="table_bot" style="display:none">
+			温馨提示：<br/>
+			1、该表数据仅作为供热计量用户用能指导和参考，最终热计量用量和费用以采暖季结束后能源公司的结算数据为准；<br/>
+            2、基础蓝色圆代表面积热费，蓝色环代表已使用，红色环代表超出部分。
+			</div>
+			<div class="circle_list" style="display:none">
+				<div class="circle_list_left">
+					<div class="circle_list_left_title2">当期热计量热费<span>{$fj.dqrjlCount}</span>元&nbsp;&nbsp; 
+						<if condition="($fj.dqrjlDbz lt 0) AND ($fj.dqjlDbPercents neq 0)">
+							比面积热费节约<span>{$fj.dqjlDbPercents}%</span>
+						<elseif condition="$fj.dqjlDbPercents eq 0"/>
+							与面积热费相同
+						<else/>
+							比面积热费超出<span>{$fj.dqjlDbPercents}%</span>
+						</if>
+					</div>
+					<div class="circle_list_left_title">当期热计量费用对比图</div>
+					<!--<div class="circle_list_left_img"  id="dqjldb{$fj.NUM}"></div>-->
+					<div class="circle_list_left_img"><img src="__PUBLIC__/images/zdmx/dq_{$fj.dqjlDbPercent}.png"></div>
+				</div>
+				<div class="circle_list_left">
+					<div class="circle_list_left_title2">截止当期累计热费<span>{$fj.LJJLCount}</span>元&nbsp;&nbsp; 
+						<if condition="($fj.LJDBCount lt 0) AND ($fj.zqjlDbPercent neq 0)">
+							比面积热费超出<span>{$fj.zqjlDbPercent}%</span>
+							<!--与面积热费相比超出-->
+						<elseif condition="$fj.zqjlDbPercent eq 0"/>
+							与面积热费相同
+						<else/>
+							比面积热费节约<span>{$fj.zqjlDbPercent}%</span>
+							<!--与面积热费相比结余-->
+						</if>
+					</div>
+					<div class="circle_list_left_title">之前累计计量费用对比图</div>
+					<!--<div class="circle_list_left_img" id="ljjldb{$fj.NUM}"></div>-->
+					<div class="circle_list_left_img"><img src="__PUBLIC__/images/zdmx/dq_{$fj.zqjlDbPercentPic}.png"></div>
+				</div>
+				
+			</div>
+			<input type="hidden" value="{$fjKey}" id="jlKey">
+			<input type="hidden" value="{$current}" id="dqsj">
+			<input type="hidden" value="{$fj.dqrjlCount}" id="dqrjlSum{$fj.NUM}">
+			<input type="hidden" value="{$fj.dqrjlDb}" id="dqrjlDb{$fj.NUM}">
+			<input type="hidden" value="{$fj.LJJLCount}" id="ljrjlSum{$fj.NUM}">
+			<input type="hidden" value="{$fj.LJDBSum}" id="ljrjlDb{$fj.NUM}">
+			</volist>
+		</notempty>
+		 <div class="bus_title fl" style="display:none">
+			  <h2>&nbsp;</h2>
+		  </div>
+		  <div class="mar" style="display:none">
+            <table width="650" border="0" style="margin-left:85px;">
+              <tr>
+				<td width="50" align="right">地址：</td>
+                <td width="220">
+                  <select name="houseCode" id="houseCode" class="gu_select" style="width:220px;">
+                    <volist name="houselist" id="hc">
+                      <option value="{$hc.houseCode}" <if condition="$hc.houseCode eq $code">selected="selected"</if>>{$hc.address}</option>
+                    </volist>
+                  </select>
+                </td>
+                <td width="100" align="left">
+                  <select name="itemCode" id='itemCode' style="width:100px">
+					  <option value="B" <eq name="itemCode" value="B"> selected="selected"</eq>>自来水</option>
+					  <option value="D" <eq name="itemCode" value="D"> selected="selected"</eq>>天然气</option>
+                </select>
+                </td>
+				 <td width="100" align="left">
+                  <select name="category" id='category' style="width:100px">
+					  <option value="F">费用</option>
+					  <option value="Y">用量</option>
+                </select>
+                </td>
+                <td align="left">
+                  <input type="hidden" value="{$id}" name="id">
+                  <input type="button" id="searchBtn" class="sea_but" value="查询"/>
+                </td>
+              </tr>
+            </table>
+        </div>
+		<input type="hidden" id="accountDate" value="{$current}">
+		
+		
+		<div style="display:none">
+              <div>
+                <div id="tabs" style="margin-top:10px;float:left;">
+                 <div class="bus_table_1 fl">
+				 
+				 <div class="b_box_1" id="container">
+					
+				</div>
+			</div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+        <!-- end -->
+	        <div style="line-height:25px;">
+				<span style="line-height:25px;">
+				<br/>
+					<span style="font-weight:bold;color:#FF0000">温馨提示：</span><br/>
+					<!-- span style="font-weight:bold;color:#FF0000">账单发送时间：</span>能源公司在每月5～6日期间以短信通知方式向用户发送上月用水、用气费用账单。<br/-->
+					<span style="font-weight:bold;color:#FF0000">交费时间：</span>用户应在每月15日前通过银行窗口、ATM、网银等方式向能源服务卡内存入足够金额用以支付用水、用气费用。若您办理的能源服务卡尚未寄至手中，您可于每月15日前至能源窗口交费。<br/>
+					<span style="font-weight:bold;color:#FF0000">能源公司提醒您：</span>请您按规定于每月15日前交清上月用水、用气费用，逾期未缴费的按日加收违约金。持能源服务卡用户，指定银行在结算日（每月15日）自动完成应收费用的扣缴。
+					<span style="font-weight:bold;color:#FF0000">本查询结果仅供参考，如有疑问，请于能源窗口询问或致电022-66885890。</span>
+				</span>
+			</div>
+		</div> 
+      </div>
+    </div>
+  </div>
+</div>
+
+<script type="text/javascript" src="__PUBLIC__/js/date/jquery-ym-datePlugin-0.1.js"></script>
+<link rel="stylesheet" href="__PUBLIC__/js/date/jquery-ui.css"/>
+<link rel="stylesheet" id="skin" href="__PUBLIC__/js/date/jquery-ui-1.9.2.custom.min1.css"/>
+<script src="__PUBLIC__/js/highcharts/highcharts.js" type="text/javascript"></script>
+<script>
+
+var hisChart = null;
+
+$(function () {
+	$(document).ready(function() {
+		//底部柱状图
+		selectDatas();
+		//获取当期时间
+		//var dqsj = $("#dqsj").val();
+		
+		//获取编号
+		//var jlKey = $("#jlKey").val();
+		//定义一数组 
+		//var strs= new Array(); 
+		//字符分割
+		/*strs=jlKey.split(","); 
+		for (var i=0;i<strs.length ;i++ ){ 
+			if(strs[i] !=''){
+				//当期热计量费用
+				var dqrjlSumKey = "#dqrjlSum"+strs[i];
+				
+				var dqrjlDbKey = "#dqrjlDb"+strs[i];
+				var dqrjlSum = Number($(dqrjlSumKey).val());
+				var dqrjlDb = Number($(dqrjlDbKey).val());
+				//之前累计热计量费用
+				var dqrjlSumKey = "#dqrjlSum"+strs[i];
+				var dqrjlDbKey = "#dqrjlDb"+strs[i];
+				var ljrjlSum = Number($(dqrjlSumKey).val());
+				var ljrjlDb = Number($(dqrjlDbKey).val());
+
+				var dqjl = "#dqjldb"+strs[i];
+				var ljjl = "#ljjldb"+strs[i];
+				//当期计量柱状图
+					$(dqjl).highcharts({
+					chart: {
+						type: 'column'
+					},
+					title: {
+						text: '当期热计量费用对比图'
+					},
+					
+					xAxis: {
+						categories: [
+							dqsj
+						]
+					},
+					yAxis: {
+						min: 0,
+						title: {
+							text: ''
+						}
+					},
+					tooltip: {
+						headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
+						pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
+							'<td style="padding:0"><b>{point.y:.2f}</b></td></tr>',
+						footerFormat: '</table>',
+						shared: true,
+						useHTML: true
+					},
+					plotOptions: {
+						column: {
+							pointPadding: 0.2,
+							borderWidth: 0
+						}
+					},
+					series: [{
+						name: '热计量热费',
+						data: [dqrjlSum]
+
+					},  {
+						name: '费用对比',
+						data: [dqrjlDb]
+
+					}]
+				});
+
+
+				//之前累计热计量费用柱状图
+				$(ljjl).highcharts({
+					chart: {
+						type: 'column'
+					},
+					title: {
+						text: '之前累计热计量费用对比图'
+					},
+					
+					xAxis: {
+						categories: [
+							dqsj
+						]
+					},
+					yAxis: {
+						min: 0,
+						title: {
+							text: ''
+						}
+					},
+					tooltip: {
+						headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
+						pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
+							'<td style="padding:0"><b>{point.y:.2f}</b></td></tr>',
+						footerFormat: '</table>',
+						shared: true,
+						useHTML: true
+					},
+					plotOptions: {
+						column: {
+							pointPadding: 0.2,
+							borderWidth: 0
+						}
+					},
+					series: [{
+						name: '热计量热费',
+						data: [ljrjlSum]
+
+					},  {
+						name: '费用对比',
+						data: [ljrjlDb]
+
+					}]
+				});
+
+
+
+
+			}
+			 
+		}*/ 
+		
+		
+		
+	
+		});
+ }); 
+
+
+ var hisOption = {
+      chart: {
+                renderTo: 'container',
+                type: 'column'
+            },
+			title: {
+				text: '账单费用比对图'
+			},
+			subtitle: {
+				text: '项目:自来水'
+			},
+			xAxis: {
+				categories: []
+			},
+			yAxis: {
+				min: 0,
+				title: {
+					text: '单位 （元）'
+				}
+			},
+			tooltip: {
+				headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
+				pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name}: </td>' +
+					'<td style="padding:0"><b>{point.y:.2f}</b></td></tr>',
+				footerFormat: '</table>',
+				shared: true,
+				useHTML: true
+			},
+			plotOptions: {
+				column: {
+					pointPadding: 0.2,
+					borderWidth: 0
+				}
+			},
+			series: [{
+				name: '当前费用',
+				data: []
+
+			},  {
+				name: '去年同期费用',
+				data: []
+
+			}]
+    };
+
+
+//触发查询按钮
+$("#searchBtn").on("click", function(event) {
+	selectDatas();
+});
+//调用赋值方法
+function selectDatas(){
+
+   hisChart = new Highcharts.Chart(hisOption);
+   var datas = getDatas();
+   refreshHisChart(datas);
+}
+//柱状图数据填充
+function refreshHisChart(datas) {
+	 var category = $("#category").val();
+	 var riqi = [];
+	 var dq   = [];
+	 var qntq = [];
+	 var title = "账单费用对比图";
+	 var yTitle = "单位（元）";
+	 var dqTitle = "当期费用";
+	 var qntqTitle = "去年同期费用";
+	 var itemCode = $("#itemCode").val();
+	 if(itemCode == 'B'){
+		var subTitle = '项目：自来水';
+		if(category == 'Y'){
+			var yTitle = "单位（吨）";
+		}
+	 }
+	 if(itemCode == 'D'){
+		var subTitle = '项目：天然气';
+		if(category == 'Y'){
+			var yTitle = "单位（立方米）";
+		}
+	 }
+	 
+	 $.each(datas, function(i, item){
+		riqi[i] = item.NOWCHARGEMONTH; 
+		if(category == 'F'){
+			 dq[i] = Number(item.NOWREALACCOUNT); 
+			 qntq[i] = Number(item.OLDREALACCOUNT); 
+		}
+		if(category == 'Y'){
+			title = "账单用量对比图";
+			dqTitle = "当期用量";
+			qntqTitle = "去年同期用量";
+			dq[i] = Number(item.NEWPOINTNUMBER); 
+			qntq[i] = Number(item.OLDPOINTNUMBER); 
+		}
+	 });
+	
+	 //设置Y轴标题
+	 hisChart.yAxis[0].setTitle({
+		text:yTitle
+	 },true);
+	 //设置标题
+	 hisChart.setTitle({text:title});
+	 //设置副标题
+	 hisChart.setTitle(null,{text:subTitle});
+	 //设置X轴值
+	 hisChart.xAxis[0].setCategories(riqi);
+	//设置Y轴值
+	 hisChart.series[0].update({
+		name:dqTitle,
+		data: dq
+	  });
+	  hisChart.series[1].update({
+		name:qntqTitle,
+		data: qntq
+	  });
+}
+	 
+//获取柱状图数据
+function getDatas() {
+      var retData = null;
+	  var accountDate = $("#accountDate").val();
+	  var houseCode = $("#houseCode").val();
+	  var itemCode = $("#itemCode").val();
+	  var category = $("#category").val();
+      $.ajax({
+          url: '{:U("Page/getZdmxData","",false)}',
+          type : 'POST',
+          async: false,
+          data : {houseCode:houseCode, itemCode:itemCode,accountDate:accountDate,category:category},
+          dataType: 'json',
+          success: function(ret){
+			 retData = ret;
+			 
+          }
+      });
+	  
+      if (null == retData) {
+          retData = [];
+      }
+	  
+      return retData;
+    }
+</script>
+<style>
+  .ui-datepicker-title span {
+    display: inline-block;
+  }
+
+  .pm_show_lbl_1 {
+    padding-left: 6px;
+    font-size: 32px;
+    color: #908f8f;
+    font-family: "微软雅黑";
+    font-weight: bold;
+  }
+  .pm_show_lbl_2 {
+    color: #ff9e00;
+    font-family: arial;
+    font-size: 70px;
+  }
+  .pm_show_lbl_3 {
+    font-size: 18px;
+    color: #908F8F;
+    font-weight: bold;
+    font-family: arial;
+  }
+  .pm_show_lbl_4 {
+    font-size: 30px;
+    font-family: arial;
+    font-weight: bold;
+    color: red;
+    padding: 0 2px 0 2px;
+  }
+
+  div#chartCanves {
+    border: 1px solid rgb(204, 204, 204);
+  }
+  div#pieChart, .chargelist {
+    margin: 0;
+    padding: 0;
+    height: 350px;
+    width: 350px;
+    border-bottom: 1px solid rgb(204, 204, 204);
+    float: left;
+  }
+  .chargelist {
+    border-left: 1px solid rgb(204, 204, 204);
+  }
+  .chargelist_title {
+    text-align: center;
+    vertical-align: middle;
+    font-size: 1.2em;
+    font-style: normal;
+    height: 2em;
+    line-height: 2em;
+    border-bottom: 1px solid rgb(204, 204, 204);
+  }
+  .bus_tablet_li {
+    text-align: center;
+    vertical-align: middle;
+    float:left;
+  }
+
+  .size_two_words {
+    width: 78px;
+    line-height: 32px;
+  }
+   .size_two_words_all {
+    width: 236px;
+	line-height: 20px;
+  }
+  .left_side_li {
+    border-left: 1px solid rgb(204, 204, 204);
+  }
+  .right_side_li {
+    width: 78px;
+    text-align: right;
+    border-left: 1px solid rgb(204, 204, 204);
+  }
+  .item, .item_end {
+    height: 22px;
+    border: none;
+    border-bottom: 1px solid rgb(204, 204, 204);
+    color: rgb(254,103,4);
+  }
+  .item_end {
+    border-bottom: 2px solid rgb(204, 204, 204);
+  }
+  .item .size_two_words, .item_end .size_two_words {
+    line-height: 22px;
+  }
+  .pm_show {
+    width: 100%;
+    height: 126px;
+    background-position: 215px -10px;
+    border-bottom: 2px dashed rgb(204, 204, 204);
+  }
+  .b_box{ width:701px; height:auto; border:1px solid #c7c7c7; margin-top:10px;}
+  .b_box thead td{ padding:8px; font-size:12px; color:#158402; background-color:#f0fdf4;}
+  .b_box tbody td{ padding:8px; font-size:12px; color:#2b2b2b;}
+  .right_line{ border-right:1px solid #dee4e0;}
+  .bottom_line{ border-bottom:1px solid #dee4e0;}
+  .b_box_title{ width:701px;height:32px; background-color:#35ad0d; line-height:32px; font-size:12px; color:#fff; font-weight:bolder;}
+  .b_box_1{ width:701px; height:auto; border:1px solid #c7c7c7;}
+  .b_box_1 thead td{font-size:12px; color:#fff; font-weight:bolder; background-color:#35ad0c; text-align:center;}
+  #imp_text01{ text-align:left; overflow:hidden}
+  #imp_text02{ text-align:center; font-weight:bolder;}
+  .b_box_1 tbody td{ padding:7px; font-size:12px; color:#2b2b2b; text-align:center; border-right:1px solid #ccc; }
+  #right_line_none{ border:none;}
+  #right_line_none_1{ border-right:none; border-top:1px #ccc solid}
+</style>
+<include file="Public:footer"/>
+</body>
+</html>

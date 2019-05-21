@@ -1,0 +1,466 @@
+<include file="Public:header" />
+<div class="main_block">
+    <include file="Public:top" />
+    <div class="content_block">
+
+        <div class="left_side fl">
+            <include file="Public:left" />  
+        </div>
+
+
+        <div class="main_con fr">
+            <div class="bread_nav">
+                <div class="l fl"></div>
+                <div class="m fl" style="line-height:30px;"> <span class="list_style"></span> <span>您当前的位置:</span> {$nav} </div>
+                <div class="r fl"></div>
+            </div>
+
+            <form id="form2" name="form2" action="__URL__/save3" method="post">
+                <input type="hidden" name="id" value="{$vote.id}"/>
+				<input type="hidden" name="flag" value="{$flag}"/>
+				<input type="hidden" id="first" name="first"/>
+                <!-- begin -->
+                <div class="survey">
+                    <div class="survey_content">
+						<div class="tit"><h2>{$vote.title}</h2></div>
+							<p>发布时间：{$vote.start_time|date="Y-m-d H:i:s",###}&nbsp;&nbsp;<a href="{:U('Vote/result','voteid='.$vote[id])}" class="col_g" style="display:none;">[查看结果]</a></p>
+							<div class="dc_info_table">
+								<span>房间地址：</span>
+								<span>
+									<select style="width:100px; height:26px;" name="village" id="village">
+										<option value="" selected>请选择</option>
+										<volist name="villagelist" id="vill">
+											<if condition="$vill.COMMUNITYCODE eq '5010'"> 
+												<option value="5010">吉宝季景华庭</option>
+											<else /> 
+												<option value="{$vill.COMMUNITYCODE}">{$vill.COMMUNITYNAME}</option>
+											</if>
+										</volist>
+									</select>小区
+									<select style="width:100px; height:26px;" name="building" id="building">
+										<option value="" selected>请选择</option>
+									</select>&nbsp;&nbsp;
+									<select style="width:100px; height:26px;" name="uite" id="uite">
+										<option value="" selected>请选择</option>
+									</select>单元
+									<select style="width:100px; height:26px;" name="floor" id="floor">
+										<option value="" selected>请选择</option>
+									</select>层
+									<select style="width:100px; height:26px;" name="number" id="number">
+										<option value="" selected>请选择</option>
+									</select>号
+								</span>
+								<div style="display:none" id="ver_code">
+									<span>验证码：</span>
+									<span><input style="width:71px; height:20px;" id="ide_code" name="ide_code" type="text" /></span>&nbsp;<span class="ts_text">*<br/>（验证码获取：调查活动启动时系统已将6位“验证码”发送到您的手机中，请您如实填写即可。如您未收到或已更改联系方式，<br/>
+								可在每天9：00-17：00随时拨打022-66885890进行申请。）</span><br/>
+								</div>
+							</div>
+                       
+                        <volist name="votelist" id="vo" key="k">
+                            <div class="question" id="">
+                                <div class="title_dc " id="sc{$k-1}">
+                                    {$k}、{$vo.listname}
+                                    <input class="yanzheng" type="hidden" id="list_{$vo.listid}">
+                                    <span class="tip"><if condition =" $vo['is_mc'] eq 1">(可多选)<else/>(单选)</if></span>	</div>
+                                <div class="content_da line">
+                                    <table class="que" width="100%" border="0" cellpadding="0" cellspacing="0">
+                                        <tbody>
+                                        <if condition =" $vo['is_mc'] eq 1">
+                                            <volist name="option[$vo['listid']]" id="op">								
+                                                <tr class="fo">
+                                                    <td width="430">
+                                                        <label><input id="optionid_{$op.id}" type="checkbox" class="Radio" name="optionid[{$vo.listid}][{$op.id}]" value="{$op.id}" onclick="check(this,'{$vo.listid}')">
+                                                            <span class="option">{$op.option}
+																<if condition =" $k eq 3 and $op.id eq 120">
+																	<input type="text" name="summary" id="summary" style="width:200px; height:16px;">
+																</if>
+															</span>
+                                                        </label>
+                                                    </td>
+                                                </tr>
+                                            </volist>
+                                            <else/>
+                                            <volist name="option[$vo['listid']]" id="op">
+                                                <tr>
+                                                    <td width="430">
+                                                        <label><input  id="optionid_{$op.id}" type="radio" class="Radio" name="optionid[{$vo.listid}][]" value="{$op.id}" onclick="check(this,'{$vo.listid}')">
+                                                            <span class="option">{$op.option}</span>
+                                                        </label>
+                                                    </td>
+                                                </tr>
+                                            </volist>
+                                        </if>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </volist>
+						
+						
+						<div class="question">
+							<div class="title_dc_1">
+								14、您认为能源公司还应该在哪些方面进行改进，以提高服务水平。
+							</div>
+						</div>
+						<div class="dc_messages_text"> 
+						  <div class="dc_messages_text" >
+							  <label for="textarea"></label>
+								<textarea name="content" id="content" cols="70" rows="7"></textarea>
+						</div>
+						<div class="dc_messages_text1">说明：<br/>
+						1、本次调查活动自公布之日起，为期6天，截止日期至<span style="color:#f00;">2015年4月13日。</span><br/>
+						2、在填报过程中，如有问题可随时拨打24h公用事业服务热线：022-66885890咨询。
+						</div>
+                        <div class="tjan">
+                            <input class="btn1 Submit" type="submit" value="提 交">
+                        </div>
+                    </div>
+				  </div>
+                </div>
+                <!-- end -->
+            </form>  
+        </div>
+
+
+    </div>
+</div>
+
+
+
+<include file="Public:footer" />
+</body>
+</html>
+<script type="text/javascript"> 
+    $(document).ready(function(){   
+        //提供回调函数，提供提交返回结果的处理   
+        var options = {
+            beforeSubmit: checkstate,
+            //提交前处理 
+            success: showResponse,
+            //处理完成 
+            resetForm: false,
+            dataType: 'json'
+        };    
+        $('#form2').submit(function() {          
+            $(this).ajaxSubmit(options);
+            return false;
+        });
+    }); 
+    
+    //
+
+    function showResponse(res) {
+        art.dialog({
+            title: res.title,
+            content: res.message,
+            time: res.time
+        });
+        if (res.url) {
+            window.location.href = res.url;
+        }
+    }
+    
+    function showExpire() {
+        art.dialog({
+            title: '提示',
+            content: '此次调查已经结束，感谢您的关注！',
+            time: 10
+        });
+    }
+    
+    var t;var v;
+    function check(obj,id){
+		var grade_107 = document.getElementById('optionid_107').checked;
+		var grade_108 = document.getElementById('optionid_108').checked;
+		if(grade_107 == false && grade_108 == true){
+			document.getElementById('optionid_154').checked = false;
+			document.getElementById('optionid_155').checked = false;
+			document.getElementById('optionid_156').checked = false;
+			document.getElementById('first').value = "false";
+		}
+		else{
+			document.getElementById('first').value = "true";
+		}
+        t= $("#list_"+id).val();
+         if ($(obj).attr("checked") == true || $(obj).attr("checked") == "checked"){
+            v=t*1+id*1;
+            $("#list_"+id).val(v);
+        }else{
+            $("#list_"+id).val(t-id);
+        }
+   
+    }
+	
+    function checkstate() 
+    {
+		$c = checkaddress();
+		if($c == false){
+			return false;
+		}
+		var grade_107 = document.getElementById('optionid_107').checked;
+		var grade_108 = document.getElementById('optionid_108').checked;
+        for(var i=0;i<$(".yanzheng").length;i++)
+        {
+			if($(".yanzheng").eq(i).val() == ''||$(".yanzheng").eq(i).val() == '0'||$(".yanzheng").eq(i).val() == null){
+			  if(grade_107 == false && i == $(".yanzheng").length-2 && grade_108 == true){
+			  	  break;
+			  }
+			  else{	
+				  $(".tip").eq(i).css("font-weight","bolder");
+				  $("#sc" + i).ScrollTo();
+				  window.art.dialog({title: '提交失败',content: '还有选项没填写',time: 3,fixed:true});
+				  return false;
+			  }		
+			};
+        }
+		$r = checktimes(120);
+		if($r == false){
+			return false;
+		}
+		
+        return true;
+    }
+
+
+	//第三题‘其它’选项如被选择，判断文本框是否填写
+   function checktimes(id)
+   {
+		if(id == 120){
+			var grade = document.getElementById('optionid_120').checked;
+			var summary = document.getElementById('summary').value;
+		}
+		if(grade == true && (summary == '' || summary == null)){
+			$("#sc2").ScrollTo();
+			window.art.dialog({title: '提交失败',content: '请填写第三题"其他"选项中的内容',time: 3,fixed:true});
+			return false;
+		}
+
+   }
+   
+   //判断房间地址是否填写
+   function checkaddress()
+   {
+		var village = document.getElementById('village').value;
+		var building = document.getElementById('building').value;
+		var uite = document.getElementById('uite').value;
+		var floor1 = document.getElementById('floor').value;
+		var number = document.getElementById('number').value;
+		if(village == '' || building == '' || uite == '' || floor1 == '' || number == ''){
+			$("#village").ScrollTo();
+			window.art.dialog({title: '提交失败',content: '请填写完整的房间地址',time: 3,fixed:true});
+			return false;
+		}
+
+   }
+	   	
+	$('#village').on('change', function() {
+            var parameter = this.value;
+            $('#building').html('');
+			$('#uite').html('');
+			$('#floor').html('');
+			$('#number').html('');
+            $.ajax({
+                url: '{:U("Vote/getBuilding","",false)}',
+                type : 'POST',
+                async: false,
+                data : {parameter: parameter},
+                dataType: 'json',
+                success: function(ret){
+					var optionStr = [];
+					$.each(ret, function(i, item){  
+						if(i==0){optionStr.push('<option value="">' +"请选择"+ "</option>")}; 
+						optionStr.push('<option value="'+ item.BUILDINGCODE +'">' +item.BUILDINGNAME+ "</option>");   
+					}); 
+					$('#building').html(optionStr.join(''));
+                }
+            });
+        });
+		
+		$('#building').on('change', function() {
+            var parameter = this.value;
+			var parameter_1 = document.getElementById("village").value;
+            $('#uite').html('');
+            $.ajax({
+                url: '{:U("Vote/getUite","",false)}',
+                type : 'POST',
+                async: false,
+                data : {parameter: parameter,parameter_1: parameter_1},
+                dataType: 'json',
+                success: function(ret){
+					var optionStr = [];
+					$.each(ret, function(i, item){  
+						if(i==0){optionStr.push('<option value="">' +"请选择"+ "</option>")}; 
+						optionStr.push('<option value="'+ item.CELLCODE +'">' +item.CELLCODE+ "</option>");   
+					        
+					}); 
+					$('#uite').html(optionStr.join(''));
+                }
+            });
+        });
+		
+		$('#uite').on('change', function() {
+            var parameter = this.value;
+			var parameter_1 = document.getElementById("village").value;
+			var parameter_2 = document.getElementById("building").value;
+            $('#floor').html('');
+            $.ajax({
+                url: '{:U("Vote/getFloor","",false)}',
+                type : 'POST',
+                async: false,
+                data : {parameter: parameter,parameter_1: parameter_1,parameter_2: parameter_2},
+                dataType: 'json',
+                success: function(ret){
+					var optionStr = [];
+					$.each(ret, function(i, item){  
+						if(i==0){optionStr.push('<option value="">' +"请选择"+ "</option>")}; 
+						optionStr.push('<option value="'+ item.FLOOR +'">' +item.FLOOR+ "</option>");   
+					        
+					}); 
+					$('#floor').html(optionStr.join(''));
+                }
+            });
+        });
+		
+		$('#floor').on('change', function() {
+            var parameter = this.value;
+			var parameter_1 = document.getElementById("village").value;
+			var parameter_2 = document.getElementById("building").value;
+			var parameter_3 = document.getElementById("uite").value;
+            $('#number').html('');
+            $.ajax({
+                url: '{:U("Vote/getNumber","",false)}',
+                type : 'POST',
+                async: false,
+                data : {parameter: parameter,parameter_1: parameter_1,parameter_2: parameter_2,parameter_3: parameter_3},
+                dataType: 'json',
+                success: function(ret){
+					var optionStr = [];
+					$.each(ret, function(i, item){  
+						if(i==0){optionStr.push('<option value="">' +"请选择"+ "</option>")}; 
+						optionStr.push('<option value="'+ item.DOORPLATECODE +'">' +item.DOORPLATECODE+ "</option>");   
+					        
+					}); 
+					$('#number').html(optionStr.join(''));
+                }
+            });
+        });
+		
+		$('#number').on('change', function() {
+            var parameter = this.value;
+			var parameter_1 = document.getElementById("floor").value;
+			var parameter_2 = document.getElementById("building").value;
+			var parameter_3 = document.getElementById("uite").value;
+			var address = parameter_2 + '-' + parameter_3 + '-' + parameter_1 + '-' + parameter;
+			 $.ajax({
+                url: '{:U("Vote/vercode","",false)}',
+                type : 'POST',
+                async: false,
+                data : {code: address},
+                dataType: 'json',
+                success: function(ret){
+					if(ret == 1){
+						document.getElementById('ver_code').style.display = '';
+					}
+					else{
+						document.getElementById('ver_code').style.display = 'none';
+					}
+                }
+            });
+        });
+    
+    
+    jQuery.getPos = function (e)
+{
+    var l = 0;
+    var t  = 0;
+    var w = jQuery.intval(jQuery.css(e,'width'));
+    var h = jQuery.intval(jQuery.css(e,'height'));
+    var wb = e.offsetWidth;
+    var hb = e.offsetHeight;
+    while (e.offsetParent){
+        l += e.offsetLeft + (e.currentStyle?jQuery.intval(e.currentStyle.borderLeftWidth):0);
+        t += e.offsetTop  + (e.currentStyle?jQuery.intval(e.currentStyle.borderTopWidth):0);
+        e = e.offsetParent;
+    }
+    l += e.offsetLeft + (e.currentStyle?jQuery.intval(e.currentStyle.borderLeftWidth):0);
+    t  += e.offsetTop  + (e.currentStyle?jQuery.intval(e.currentStyle.borderTopWidth):0);
+    return {x:l, y:t, w:w, h:h, wb:wb, hb:hb};
+};
+jQuery.getClient = function(e)
+{
+    if (e) {
+        w = e.clientWidth;
+        h = e.clientHeight;
+    } else {
+        w = (window.innerWidth) ? window.innerWidth : (document.documentElement && document.documentElement.clientWidth) ? document.documentElement.clientWidth : document.body.offsetWidth;
+        h = (window.innerHeight) ? window.innerHeight : (document.documentElement && document.documentElement.clientHeight) ? document.documentElement.clientHeight : document.body.offsetHeight;
+    }
+    return {w:w,h:h};
+};
+jQuery.getScroll = function (e) 
+{
+    if (e) {
+        t = e.scrollTop;
+        l = e.scrollLeft;
+        w = e.scrollWidth;
+        h = e.scrollHeight;
+    } else  {
+        if (document.documentElement && document.documentElement.scrollTop) {
+            t = document.documentElement.scrollTop;
+            l = document.documentElement.scrollLeft;
+            w = document.documentElement.scrollWidth;
+            h = document.documentElement.scrollHeight;
+        } else if (document.body) {
+            t = document.body.scrollTop;
+            l = document.body.scrollLeft;
+            w = document.body.scrollWidth;
+            h = document.body.scrollHeight;
+        }
+    }
+    return { t: t, l: l, w: w, h: h };
+};
+
+jQuery.intval = function (v)
+{
+    v = parseInt(v);
+    return isNaN(v) ? 0 : v;
+};
+
+jQuery.fn.ScrollTo = function(s) {
+    o = jQuery.speed(s);
+    return this.each(function(){
+        new jQuery.fx.ScrollTo(this, o);
+    });
+};
+
+jQuery.fx.ScrollTo = function (e, o)
+{
+    var z = this;
+    z.o = o;
+    z.e = e;
+    z.p = jQuery.getPos(e);
+    z.s = jQuery.getScroll();
+    z.clear = function(){clearInterval(z.timer);z.timer=null};
+    z.t=(new Date).getTime();
+    z.step = function(){
+        var t = (new Date).getTime();
+        var p = (t - z.t) / z.o.duration;
+        if (t >= z.o.duration+z.t) {
+            z.clear();
+            setTimeout(function(){z.scroll(z.p.y, z.p.x)},13);
+        } else {
+            st = ((-Math.cos(p*Math.PI)/2) + 0.5) * (z.p.y-z.s.t) + z.s.t;
+            sl = ((-Math.cos(p*Math.PI)/2) + 0.5) * (z.p.x-z.s.l) + z.s.l;
+            z.scroll(st, sl);
+        }
+    };
+    z.scroll = function (t, l){window.scrollTo(l, t)};
+    z.timer=setInterval(function(){z.step();},13);
+};
+
+<notempty name="expire">
+showExpire();
+</notempty>
+</script>
+

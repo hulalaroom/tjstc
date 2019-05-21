@@ -1,0 +1,74 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href='__PUBLIC__/css/common.css'>
+<script type="text/javascript" src="__PUBLIC__/js/jquery-1.7.1.min.js"></script>
+<script type="text/javascript" src="__PUBLIC__/js/base.js"></script>
+<title>能源公司用户满意度调查问卷</title>
+</head>
+<body>
+<div id="append_parent"></div>
+<div class="container" id="cpcontainer">
+  <div id="contentHeader">
+    <h3>能源公司用户满意度调查问卷</h3>
+    <div class="searchArea">
+      <ul class="action left" >
+        <li class="current"><a href="__URL__/energy" class="actionBtn"><span>返回</span></a></li>
+      </ul>
+      <div class="search right"> </div>
+    </div>
+  </div>
+		<table class="form_table">
+			<tr>
+			  <td colspan="6"><b>投票明细</b></td>
+			</tr>
+			<tr>
+			  <td width="12%">房间地址</td>
+			  <td colspan="5">{$list['address']}</td>
+			</tr>
+			<tr>
+			  <td width="12%">供热收费方式</td>
+			  <td width="20%">{$list['firchoose']}&nbsp;</td>
+			  <td width="12%">服务工作总体评价</td>
+			  <td width="20%">{$list['secchoose']}&nbsp;</td>
+			  <td width="12%">主要问题</td>
+			  <td width="20%">{$list['thichoose']}&nbsp;</td>
+			</tr>
+			<tr>
+			  <td width="12%">维修效率满意度</td>
+			  <td width="20%">{$list['fourthchoose']}&nbsp;</td>
+			  <td width="12%">窗口服务态度满意度</td>
+			  <td width="20%">{$list['fifchoose']}&nbsp;</td>
+			  <td width="12%">热线服务态度满意度</td>
+			  <td width="20%">{$list['sixchoose']}&nbsp;</td>
+			</tr>
+			<tr>
+			  <td width="12%">维修服务态度满意度</td>
+			  <td width="20%">{$list['sevchoose']}&nbsp;</td>
+			  <td width="12%">缴费方式满意度</td>
+			  <td width="20%">{$list['eightchoose']}&nbsp;</td>
+			  <td width="12%">室内平均温度</td>
+			  <td width="20%">{$list['ninchoose']}&nbsp;</td>
+			</tr>
+			<tr>
+			  <td width="12%">供热计量政策了解程度</td>
+			  <td width="20%">{$list['tenchoose']}&nbsp;</td>
+			  <td width="12%">倾向哪种供热收费方式</td>
+			  <td width="20%">{$list['elechoose']}&nbsp;</td>
+			  <td width="12%">计量收费预期</td>
+			  <td width="20%">{$list['twchoose']}</td>
+			</tr>
+			<tr>
+			  <td width="12%">能源公司供暖的相关信息</td>
+			  <td width="20%">{$list['thrchoose']}&nbsp;</td>
+			  <td width="12%">投票时间</td>
+			  <td width="20%">{$list['createtime']|date="Y-m-d H:i:s",###}&nbsp;</td>
+			  <td width="12%">留言</td>
+			  <td width="20%">{$list['content']}&nbsp;</td>
+			</tr>
+		</table>
+		
+</div>
+</body>
+</html>

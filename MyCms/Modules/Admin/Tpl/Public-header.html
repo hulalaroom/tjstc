@@ -1,0 +1,171 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link type="text/css" rel="stylesheet" href="/public/css/base.css"/>
+<link type="text/css" rel="stylesheet" href="/public/css/my_5890.css"/>
+<link type="text/css" rel="stylesheet" href="/public/css/article.css"/>
+<link type="text/css" rel="stylesheet" href="/public/css/business.css"/>
+<link type="text/css" rel="stylesheet" href="/public/css/index.css"/>
+<link type="text/css" rel="stylesheet" href="/public/css/page.css"/>
+<link type="text/css" rel="stylesheet" href="/public/css/member.css"/>
+<link type="text/css" rel="stylesheet" href="/public/css/validator.css"/>
+<script type="text/javascript" src="/public/js/jquery-1.8.3.min.js"></script>
+<script type="text/javascript" src="/public/js/jquery.form.min.js"></script>
+<script type="text/javascript" src="/public/js/artDialog4.1.7/artDialog.source.js?skin=green"></script>
+<script type="text/javascript" src="/public/js/artDialog4.1.7/plugins/iframeTools.js"></script>
+<script src="/public/js/jquery.KinSlideshow-1.2.1.min.js" type="text/javascript"></script>
+<script language="text/javascript" src="/index.php?s=/index/pageCount"></script>
+<neq name='submenu' value='show'>
+<script type="text/javascript" src="/public/js/hover_menu.js"></script></neq>
+<script type="text/javascript">
+$(document).ready(function(){
+ //focusblur
+     jQuery.focusblur = function(focusid) {
+		var focusblurid = $(focusid);
+		var defval = focusblurid.val();
+        focusblurid.focus(function(){
+			var thisval = $(this).val();
+			if(thisval==defval){
+                 $(this).val("");
+            }
+		});
+        focusblurid.blur(function(){
+			var thisval = $(this).val();
+			if(thisval==""){
+                 $(this).val(defval);
+            }
+        });
+     };
+ /*下面是调用方法*/
+     $.focusblur("#username");
+	 $.focusblur("#verify");
+ });
+function showRequest(formData, jqForm, options) {
+
+    var username = $("#username").val();
+    if (username == "") {
+        art.dialog({
+			lock:true,
+            content: '用户名不能为空',
+            time: 2
+        });
+        return false;
+    }
+
+    var password = $("#password").val();
+    if (password == "") {
+        art.dialog({
+            content: '用户密码不能为空',
+            time: 2
+        });
+        return false;
+    }
+    var verify = $("#verify").val();
+    if (verify == "") {
+        art.dialog({
+            content: '验证码不能为空',
+            time: 2
+        });
+        return false;
+    }    
+    return true;
+}
+
+function showResponse(res) {
+  if(res.time!=='0'){
+    art.dialog({
+        title: res.title,
+        content: res.message,
+       time: res.time
+    });
+  }  
+	if(res.status=='0'){
+		 $("#getcode").click();
+	}
+    if (res.url) {
+        window.location.href = res.url;
+    }
+}
+function load(){
+ $("#tianqi").attr('src','http://tianqi.2345.com/plugin/widget/index.htm?s=3&z=2&t=1&v=0&d=1&k=&f=1&q=1&e=0&a=0&c=54527&w=180&h=26');
+}
+
+$(function(){
+
+ var options = {
+        beforeSubmit: showRequest,
+        //提交前处理 
+        success: showResponse,
+        //处理完成 
+        resetForm: false,
+        dataType: 'json'
+    };
+
+    $('#from3').submit(function() {
+        $(this).ajaxSubmit(options);
+         return false; 
+    });
+    //verify
+    $("#getcode").click(function() {
+        $imgstr = "/index.php?s=/public/verify"+"/randcode=" + Math.random();
+        $(this).attr("src", $imgstr);
+    });
+
+	<neq name='keys' value=''> var queryStr='{$keys}';
+        $('.title').highlight(queryStr);</neq>
+
+	$("#keys").focus(function(){
+	var ak=$("#keys").val();
+	  if(ak=='输入您想搜索的内容'){$("#keys").val('');}
+	});
+
+	//去除a标签虚线
+    $('a').bind("focus", function(){$(this).blur();});   
+})
+</script>
+<script type="text/javascript">
+function SlyarErrors() {
+return true;
+}
+window.onerror = SlyarErrors;
+</script>
+<!--[if IE 6]>
+	<script type="text/javascript" src="__PUBLIC__/js/png.js"></script>
+	<script>DD_belatedPNG.fix('*');</script>
+<![endif]-->
+
+<title><notempty name="title">{$title} - </notempty> {$Think.config.site_name}</title>
+<meta name="keywords" content="<notempty name="keywords">{$keywords}<else/>{$Think.config.site_key}</notempty>" />
+<meta name="description" content="<notempty name="description">{$description}<else/>{$Think.config.site_desc}</notempty>" />
+</head>
+<body>
+<div class="top_block">
+    <div style=" width:1000px; margin:0 auto;">
+	<div class="top_bar" style="position: relative;width:1000px;">
+    	<div class="fl">
+        	<iframe id="tianqi" allowtransparency="true" frameborder="0" width="180" height="26" scrolling="no" src=""></iframe>	
+        </div>
+        <div class="fr">
+			<div class="loginText">
+				<a><img src="/Public/images/login.gif"/></a>
+				<div class="win" style="position: absolute;right: 40px;top: 25px;">
+					<form action="{:U('/public/checkLogin')}" method="post" id="from3" name="form3">
+						<div class="win_name">用户名:</div>
+						<div class="text_class"><input type="text" class="win_text" name="username" id="username" autocomplete="off" tabIndex="1" value="请输入用户名" size="25"></div>
+						<div class="win_name">密　码:</div>
+						<div class="text_class"><input type="password" class="win_text" name="password" id="password" autocomplete="off"  tabIndex="2" size="25"></div>
+						<div class="win_verify">
+							<div class="win_name">验证码:</div>
+							<input type="text" class="win_verify_text" name="verify" id="verify" autocomplete="off" tabIndex="3" value="请输入验证码"/>
+							<div class="win_verify_code"><img id="getcode" src="{:U('/public/verify')}" class="win_verify_img"/></div>
+							</div>
+							<input type="image" src="/Public/images/log.jpg" value="登录" name="submit" class="win_verify_submit"/>
+					</form>
+				</div>
+			</div>
+			<div class="reg_div"><a href="{:U('/public/reg')}" title="注册"><img src="/Public/images/reg.gif" alt="注册"/></a></div>
+        </div>
+    </div>
+	</div>
+</div>

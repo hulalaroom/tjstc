@@ -1,0 +1,70 @@
+<?php
+
+class HomeAction extends CommonAction {
+
+    function _initialize() {
+        $this->cate = D('Cate')->where('status=1')->order('sort Asc')->select();
+        //新消息
+        $map['status'] = 0;
+        $map['toid'] = $_SESSION['uid'];
+        $count = D('UserMessage')->where($map)->count();
+        $this->assign('count', $count);
+        $this->about = get_child($this->cate, '22');
+		 $r=MODULE_NAME.'-'.ACTION_NAME;
+        $k=array_search ( $r,$_SESSION['rule']);
+		 
+       if($k!==false){
+            $ok=D('User')->where('id='.$_SESSION['uid'])->setInc('point',$_SESSION['score'][$k]);
+        }
+    }
+
+    public function check() {
+        if (!isset($_SESSION['checklogin'])) {
+            $this->redirect("Public/login");
+        }
+    }
+	
+	   /*
+ * 
+ * 面包屑
+ * 
+ */
+
+function nav($cate, $cid, $id, $model = 'Article') {
+    $nav = '<a  href="__GROUP__">首页</a>';
+    $p = get_parents($cate, $cid);
+    $t = count($p) - 1;
+    foreach ($p as $key => $v) {
+
+        /*
+		if (empty($v['tpl'])) {
+            $url = U($v['Model']['name'] . '/index', 'id=' . $v['id']);
+        } else {
+            $url = U($v['Model']['name'] . '/' . $v['tpl'], 'id=' . $v['id']);
+        }
+		*/
+
+        if (empty($id)) {
+            if ($t !== $key) {
+                $nav.= '<span>&gt;</span><a href="' . $url . '">' . $v['title'] . '</a>';
+            } else {
+                $nav.= '<span>&gt;</span><span style="color: #009f3f;">' . $v['title'] . '</span>';
+            }
+        } else {
+            $nav.= '<span>&gt;</span><a href="' . $url . '">' . $v['title'] . '</a>';
+        }
+    }
+    if (!empty($id)) {
+        $title = D($model)->where('id=' . $id)->getField('title');
+        $nav.= '<span>&gt;</span><span style="color: #009f3f;">' . cutstr_html($title,'20') . '</span>';
+        $this->assign('title',$title);
+    }else{
+        $title = D('Cate')->where('id='.$cid)->getField('title');
+        $this->assign('title',$title);
+    }
+    return $nav;
+}
+
+}
+
+?>

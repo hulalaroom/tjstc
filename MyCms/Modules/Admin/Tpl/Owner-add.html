@@ -1,0 +1,156 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href='__PUBLIC__/css/common.css'>
+<script type="text/javascript" src="__PUBLIC__/js/jquery-1.7.1.min.js"></script>
+<script type="text/javascript" src="__PUBLIC__/js/base.js"></script>
+<script type="text/javascript" src="__PUBLIC__/js/jscolor/jscolor.js"></script>
+<script type="text/javascript" src="__PUBLIC__/js/kindeditor/kindeditor-min.js"></script>
+<link rel="stylesheet" href="__PUBLIC__/js/kindeditor/themes/default/default.css" />
+<script charset="utf-8" src="__PUBLIC__/js/kindeditor/lang/zh_CN.js"></script>
+<script>
+        var editor;
+        KindEditor.ready(function(K) {
+             
+                editor = K.create('textarea[name="content"]', {
+                        allowFileManager : true,
+						uploadJson : '__APP__/Upload/upload/session_id/{$Think.session.myid}',
+						fileManagerJson :  '__APP__/Upload/filelist/session_id/{$Think.session.myid}',
+                        width : '675px',
+                        height : '300px'
+                });
+                //缩略图                         
+                K('#image').click(function() {
+                    editor.loadPlugin('image', function() {
+                        editor.plugin.imageDialog({
+                            //imageUrl : K('#image1 img'),
+                                                       
+                            clickFn : function(url, title, width, height, border, align) {
+                                //K('#image1 img').append('<img src="' + data.url + '">');
+                                K('#image img').remove();
+                                K('#image').append('<img src="'+url+'">');
+                                editor.hideDialog();
+                                K('#pic').val(url);
+                            }
+                        });
+                    });
+                });
+                  //取消缩略图                         
+                K('#clear').click(function() {
+                    K('#image img').remove();
+                    K('#image').append('<img  src="__PUBLIC__/images/imageList.png">');
+                    K('#pic').val('');
+                });  
+                //
+
+        });
+</script>
+<style>
+#im {
+	z-index: 991;
+	background-color: white;
+	border: #99ccff solid 2px;
+	position: absolute;
+	width:220px;
+	height:195px;
+	left: 460px;
+	text-align: center;
+	top: 160px;
+	padding-top: 2px;
+}
+#image {
+	display: block;
+	height: 150px;
+	line-height: 150px;
+	width: 220px;
+	cursor: pointer;
+	text-align: center;
+        display: table-cell;
+     vertical-align:middle;
+}
+#image img {
+	vertical-align: middle; margin: auto; max-width: 220px; max-height: 150px;
+}
+#clear {
+	background: #51B148;
+	color: #FFF;
+	font: bold 14px arial, sans-serif;
+	padding: 0.15em 1em;
+	text-transform: uppercase;
+	margin: 0 auto;
+	overflow: visible;
+	width: auto;
+	cursor: pointer;
+	padding: 7px 20px;
+	display: block;
+}
+.summary{ width:450px; height:auto; float:left; padding-left:10px}
+</style>
+<title>个人信息</title>
+</head>
+<body>
+<div id="append_parent"></div>
+<div class="container" id="cpcontainer">
+  <div id="contentHeader">
+    <h3>个人信息</h3>
+    <div class="searchArea">
+      <ul class="action left" >
+        <li><a href="__URL__/index" class="actionBtn"><span>返回</span></a></li>
+      </ul>
+    </div>
+  </div>
+      <eq name="type" value="add">
+<form name="form1" action="__URL__/insert" method="post">
+  <else/>
+  <form name="form1"  action="__URL__/update" method="post">
+    <input  name="id"  type="hidden" value="{$id}" />
+    </eq>
+  <form name="form1" id="form1" action="__URL__/insert" method="post">
+    <table class="form_table">
+      <tr>
+        <td >业主名称(旧数据)：{$oldlinkman}</td>
+		<td >业主名称(新数据)：{$linkman}</td>
+      </tr>
+	  <tr>
+        <td>联系电话(旧数据)：{$oldlinktel}</td>
+		<td>联系电话(新数据)：{$linktel}</td>
+      </tr>
+	 <tr>
+        <td>工作单位(旧数据)：{$oldworkunit}</td>
+		<td>工作单位(新数据)：{$workunit}</td>
+      </tr>
+	  <tr>
+        <td>邮寄地址(旧数据)：{$oldmailingaddress}</td>
+		<td>邮寄地址(新数据)：{$mailingaddress}</td>
+      </tr>
+	  <tr>
+        <td colspan="2">状态：</td>
+      </tr>
+	  <tr>
+		<td colspan="2">
+			<select name="status">
+				<option value="0"<eq name="status" value="0"> selected="selected"</eq>>审核中</option>
+				<option value="1"<eq name="status" value="1"> selected="selected"</eq>>通过审核</option>
+				<option value="2"<eq name="status" value="2"> selected="selected"</eq>>未通过审核</option>
+				<!--<option value="2"<eq name="status" value="2"> selected="selected"</eq>>驳回</option>-->
+			</select>
+		</td>
+	  </tr>
+	  <!--<tr>
+        <td class="tb_title">驳回原因(若是正常数据，无需填写)：</td>
+      </tr>
+      <tr >
+        <td ><textarea name="content">{$content}</textarea>
+        </td>
+      </tr>-->
+      <tr class="submit">
+        <td colspan="2" ><input type="hidden" name="pic" id="pic" value="{$pic}" />
+          <input type="submit" name="editsubmit" value="提交" class="button"/>
+        </td>
+      </tr>
+    </table>
+  </form>
+</div>
+</body>
+</html>

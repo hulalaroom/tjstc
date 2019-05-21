@@ -1,0 +1,95 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href='__PUBLIC__/css/common.css'>
+<script type="text/javascript" src="__PUBLIC__/js/jquery-1.7.1.min.js"></script>
+<script type="text/javascript" src="__PUBLIC__/js/base.js"></script>
+<title>无标题文档</title>
+</head>
+<body>
+<div id="append_parent"></div>
+<div class="container" id="cpcontainer">
+  <div id="contentHeader">
+    <h3>栏目管理</h3>
+    <div class="searchArea">
+      <ul class="action left">
+        <li><a href="__URL__/add" class="actionBtn"><span>录入</span></a></li>
+      </ul>
+<!--      <div class="search right"> 标题
+        <input id="title" type="text" name="title" value="" class="txt" size="15"/>
+        <input name="searchsubmit" type="submit"  value="查询" class="button "/>
+      </div>-->
+    </div>
+  </div>
+  <table border="0" cellpadding="0" cellspacing="0" class="content_list">
+    <form method="post" action="__URL__/bat" name="form1">
+      <thead>
+        <tr class="tb_header">
+          <th width="10%">ID</th>
+          <th width="12%">排序</th>
+          <th >标题</th>
+          <th width="10%">模型</th>
+          <th width="10%">模板</th>
+          <th width="10%">状态</th>
+          <th width="10%">是否导航</th>
+          
+          <th>操作</th>
+        </tr>
+      </thead>
+      <volist name="list" id="cat">
+        <tr class="tb_list">
+          <td ><input type="checkbox" name="id[]" value="{$cat.id}">
+            {$cat.id}</td>
+              <td><input type="text" name="sort[{$cat.id}]" value="{$cat.sort}" class="" size="5" onkeyup="value=value.replace(/[a-zA-z]+$/,'')" style="float:none;" /></td>
+            <td >{$cat.html}{$cat.title}<notempty name="cat.url"><font color="blue">&nbsp;[链]</font></notempty></td>
+          <td>{$cat.Model.title}</td>
+          <td><notempty name="cat.tpl">{$cat.tpl}<else/>默认</notempty></td>
+          <td><span>
+            <eq name="cat.status" value="1"><font color="green">启用</font>
+              <else/>
+              <font color="red">停用</font></eq>
+            </span></td>
+           <td><span>
+            <eq name="cat.ismenu" value="1"><img src="__PUBLIC__/images/icon_right.gif" align="absmiddle">
+              <else/><img src="__PUBLIC__/images/deletesmall.gif" align="absmiddle"></eq>
+            </span></td>
+         
+          <td><a href="__URL__/add/pid/{$cat.id}"><img src="__PUBLIC__/images/create.gif" align="absmiddle"></a>&nbsp;&nbsp;<a href="__URL__/edit/id/{$cat.id}"><img src="__PUBLIC__/images/update.png" align="absmiddle"></a>&nbsp;&nbsp;<a href="{:U('Cate/bat','command=delete&id='.$cat['id'])}" class="confirmSubmit"><img src="__PUBLIC__/images/delete.png" align="absmiddle"></a></td>
+        </tr>
+      </volist>
+      <tr class="operate">
+        <td colspan="7"><div class="cuspages right"> </div>
+          <div class="fixsel">
+            <input type="checkbox" name="chkall" id="chkall" onClick="checkAll(this.form, 'id')" />
+            <label for="chkall">全选</label>
+			&nbsp;&nbsp;选择操作：
+            <select name="command">
+             <option value="sort">排序</option>
+              <option value="delete">删除</option>
+              <option value="status">启用</option>
+              <option value="unstatus">停用</option>
+            </select>
+            <input id="submit_maskall" class="button confirmSubmit" type="submit" value="提交" name="maskall" />
+          </div></td>
+      </tr>
+    </form>
+  </table>
+  <script type="text/javascript">
+$(function(){ 
+    $(".confirmSubmit").click(function() {
+		var a=$("input[type='checkbox']:checked");
+		var len=a.length;
+		if(len<1){
+			alert("您未选择任何选项！");
+			return false;
+		}else{
+        return confirm('本操作不可恢复，确定继续？\n***删除会包括子栏目，包括文章等。其它操作不受影响***\n');
+		}
+			
+    });
+}); 
+</script>
+</div>
+</body>
+</html>

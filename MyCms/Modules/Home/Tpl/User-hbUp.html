@@ -1,0 +1,494 @@
+<!doctype html>
+<html>
+<head>
+    <include file="Public:common-head" />
+	<link rel="stylesheet" type="text/css" href="__PUBLIC__/last/css/selectFilter.css">
+</head>
+
+<body>
+    <assign name="hoverIndex" value="1" />
+    <include file="Public:common-toppart" />
+<div class="huanbao_banner">
+	<div class="content">
+		<p class="jiaofei_banner_01 font_yinying">环保公司</p>
+		<p class="jiaofei_banner_03 "></p>
+		<p class="jiaofei_banner_02 font_yinying">环保业务，一键办理</p>
+	</div>
+</div>
+<form name="form2" id="form2" action="{:U('User/hbcg')}" method="post" enctype="multipart/form-data">
+
+<div class="content_bg01">
+	<div class="content history_content">
+        <p class="dqwz history_dqwz">
+          当前位置：<a href="http://www.66885890.com">首页</a> &nbsp;&nbsp;&gt;&nbsp;&nbsp;
+    <a href="{:U('User/index',array('id'=>20))}">我的5890</a>&nbsp;&nbsp;&gt;&nbsp;&nbsp;
+    <a href="{:U('User/ywbl')}">业务办理</a>&nbsp;&nbsp;&gt;&nbsp;&nbsp;
+    <a href="{:U('User/hb')}">环保公司</a>&nbsp;&nbsp;&gt;&nbsp;&nbsp;
+    <span class="green">大件垃圾回收预约</span>
+        </p>
+		<div class="wodeyewu_content clearfix">
+  <div class="wodeyewu_content_box02">
+    <div class="yewu_table clearfix">
+      <ul class="yewuleft">
+        <li>一级分类</li>
+        <li>二级分类</li>
+        <li>上门时间</li>
+        <li>联系电话</li>
+        <li>积分卡号</li>
+      </ul>
+  <input name="token" id="token" type="hidden" value="{$token}">
+   <input name="yijifenlei" id="yijifenlei" type="hidden" value="0">
+    <input name="erjifenlei" id="erjifenlei" type="hidden" value="0">
+    
+    <input name="cardnum" id="cardnum" type="hidden" value="{$cardnum}">
+
+    <input name="bzcheck0" id="bzcheck0" type="hidden" value="0">
+    <input name="bzcheck1" id="bzcheck1" type="hidden" value="0">
+    <input name="bzcheck2" id="bzcheck2" type="hidden" value="0">
+    <input name="bzcheck3" id="bzcheck3" type="hidden" value="0">
+      <ul class="yewuright">
+<li>
+  <div class="demo">
+    <dl class="select01" id="select01">
+      <dt class="yewu_dt">请选择一级分类</dt>
+      <dd class="yewu_dd">
+        <ul>
+          
+            <li><a href="javascript:void(0)" data="246">家具类</a></li>
+			<li><a href="javascript:void(0)" data="244">家用电器</a></li>
+        </ul>
+      </dd>
+    </dl>
+  </div>
+
+</li>
+        <li>
+  <div class="demo">
+    <dl class="select01" id="select02">
+      <dt class="yewu_dt" id="pusherji0">请选择二级分类</dt>
+      <dd class="yewu_dd">
+        <ul id="pusherji">
+
+        </ul>
+      </dd>
+    </dl>
+  </div>
+        </li>
+        <li>
+                <div class="demo1">
+<!--<input class="laydate-icon" id="demo" value="2014-6-25更新">
+<input name="shijian" id="shijian" style="width: 340px;" placeholder="请输入日期" class="laydate-icon" onclick="laydate({istime: true, format: 'YYYY-MM-DD'})"> -->
+									<select class="form-control" name="time" id="time" style="padding: 0 6px;height: 32px;line-height: 32px;color: #999; font-size: 18px; width:350px;border-radius: 3px;border:1px solid #d4d4d4;background: #f2f2f2 url(/Public/last/img/input_jiantou.png) no-repeat 326px center; appearance:none;-moz-appearance:none;-webkit-appearance:none;">
+										<option>请选择预约时间</option>
+										
+										<volist name="timeinfo" id="time">
+										<if condition="$time.Left gt 0 ">
+											<option id="{$time.Left}" value="{$time.Time}">{$time.Time}</option>
+										</if>
+										</volist>
+										
+									</select><span id="cishu" style="position: absolute;    font-size: 18px;
+    margin: 3px 0 0 15px;"></span>
+				</div>
+
+
+                </li>
+        <li><input name="phone" id="phone" style="width: 338px;" placeholder="请填写办理环保积分卡时预留的手机号码"></li>
+        <li>{$cardnum}</li>
+
+      </ul>
+
+    </div>
+	<div class="yezhushenfen">
+					<h3 style="color: #71e197;">上传大件图片</h3>
+					<div class="yewu_tips01" style="text-align: left;color: #71e197;">注意：请上传大件图片1至2张，文件大小在2M以内！</div>
+					
+					<div class="yewu_shangchuang">
+						<div>
+							<a href="" class="file" style="background: url(/Public/last/img/wodeyewu_btn021.png) 0 0 no-repeat;">上传第一张<input type="file" name="sfz[]" id="sfz_img_z"></a>
+							　　
+							<a href="" class="file" style="background: url(/Public/last/img/wodeyewu_btn021.png) 0 0 no-repeat;">上传第二张<input type="file" name="sfz[]" id="sfz_img_b"></a>
+							
+						</div>
+						<div class="img-preview z_preview"><span><img class="sfzfmdt-preview-small" alt="" id="z_preview" /></span><span id="sfz_img_z_name" class="file-name"></span><a id="sfz_img_z_del">删除</a></div>
+						<div class="img-preview b_preview"><span><img class="img-preview-small" alt="" id="b_preview" /></span><span id="sfz_img_b_name" class="file-name"></span><a id="sfz_img_b_del">删除</a></div>
+					</div>
+					
+		</div>
+    <div class="yezhushenfen yezhushenfen02">
+      <h3 style="color:#12cc61 ;">备注</h3>
+      <div class="box">
+      <ul>
+        <li>物品较重，请多名回收人员携带工具上门</li>
+        <li>大型家具已拆解</li>
+        <li>散装物品已分类打包 / 打回</li>
+        <li>其它</li>
+      </ul>
+            </div>
+            <div class="shurukuang">
+              <textarea name="beizhu" rows="3" cols="20" id="beizhu" placeholder="请输入备注内容"></textarea>
+            </div>
+    </div>
+
+    <div class="wodeyewu_btn15">
+  <a href="javascript:void(0)" id="tijiao">提交预约</a>
+
+</div>
+<input type="hidden" name="housecode" value="{$housecode}">
+<input type="hidden" name="ownername" value="{$ownername}">
+  </div>
+</form>
+
+</div>
+</div>
+
+<include file="Public:common-footer" />
+<include file="Public:common-script" />
+<script type="text/javascript" src="__PUBLIC__/last/js/selectFilter.js"></script>
+<script type="text/javascript" src="__PUBLIC__/last/js/ImageUtils.js"></script>
+<script type="text/javascript" src="__PUBLIC__/last/js/artDialog4.1.7/artDialog.source.js?skin=green"></script>
+<script src="__PUBLIC__/last/js/laydate/laydate.js"></script>
+<script type="text/javascript">
+  $('label').click(function(){
+    var checkedTrue = $('.checkedTrue').is(':checked');
+    if(checkedTrue ==true){
+      $('.checks').addClass('checked')
+    }else{
+      $('.checks').removeClass('checked')
+    }
+
+  })
+
+
+$(function(){
+  var yiji = '0';
+  var erji = '0';
+  /*============================
+  @author:flc
+  @time:2014-02-11 18:16:09
+  @qq:3407725
+  ============================*/
+  $("#select01").each(function(){
+    var s=$(this);
+    var z=parseInt(s.css("z-index"));
+    var dt=$(this).children("dt");
+    var dd=$(this).children("dd");
+    var _show=function(){dd.slideDown(200);dt.addClass("cur01");s.css("z-index",z+1);};   //展开效果
+    var _hide=function(){dd.slideUp(200);dt.removeClass("cur01");s.css("z-index",z);};    //关闭效果
+    dt.click(function(){dd.is(":hidden")?_show():_hide();});
+    dd.find("a").click(function(){
+      dt.html($(this).html());_hide();
+      yiji=$(this).attr('data');
+      $('#yijifenlei').val(yiji);
+      //获取二级分类
+      $.ajax({
+        url: '{:U("/User/ajax_getErji")}',
+        type: 'POST',
+        data: {yiji:yiji,token:$('#token').val()},
+        success: function(res) {
+          erji = '';
+          $('#erjifenlei').val(0);
+          if(res != ''){
+            var html = '';
+            for(var i=0;i<res.length;i++){
+              html += '<li><a href="javascript:void(0)" data="'+res[i]['CateId']+'">'+res[i]['CateName']+'</a></li>';
+            }
+            $('#pusherji').html(html);
+            erjishuaxin();
+          }
+        }
+      });
+    });     //选择效果（如需要传值，可自定义参数，在此处返回对应的“value”值 ）
+    $("body").click(function(i){ !$(i.target).parents("#select01").first().is(s) ? _hide():"";});
+  });
+
+  function erjishuaxin(){
+    $("#select02").each(function(){
+      var s=$(this);
+      var z=parseInt(s.css("z-index"));
+      var dt=$(this).children("dt");
+      var dd=$(this).children("dd");
+      var _show=function(){dd.slideDown(200);dt.addClass("cur01");s.css("z-index",z+1);};   //展开效果
+      var _hide=function(){dd.slideUp(200);dt.removeClass("cur01");s.css("z-index",z);};    //关闭效果
+      dt.click(function(){dd.is(":hidden")?_show():_show();});
+      dd.find("a").click(function(){
+        dt.html($(this).html());_hide();
+        erji=$(this).attr('data');
+        $('#erjifenlei').val(erji);
+      });     //选择效果（如需要传值，可自定义参数，在此处返回对应的“value”值 ）
+      $("body").click(function(i){ !$(i.target).parents("#select02").first().is(s) ? _hide():"";});
+    });
+  }
+})
+
+</script>
+<script type="text/javascript">
+  function showImg (name,event){
+            console.log(event);
+            var scrollY = document.documentElement.scrollTop;
+            if(name == 'hkbdt'){
+                $(".center_zfb").css("width","350px");
+            }else if(name == 'fczdt'){
+                $(".center_zfb").css("width","700px");
+            }else{
+                $(".center_zfb").css("width","300px");
+            }
+            $(".content1").html("<img src='__PUBLIC__/last/img/"+name+".png'>");
+            var gao = event.clientY + scrollY - 35;
+            var heng = event.clientX + 10;
+            /*if(name == 'sfzfmdt'){
+                heng = heng - 320;
+            }*/
+            $(".center_zfb").css({"position":"absolute","top":gao+"px","left":heng+"px","margin":"0px"});
+
+            //$(".gray").show();
+            $(".center_zfb").show();
+        }
+function hideImg(){
+  //$(".gray").hide();
+  $(".center_zfb").hide();
+}
+    $(function() {
+
+		var $zPreview =  $('#z_preview'), $bPreview = $('#b_preview');
+		$('#sfz_img_z').on('change', function(e) {
+			var src, url = window.URL || window.webkitURL || window.mozURL, files = e.target.files;
+            for (var i = 0, len = files.length; i < len; ++i) {
+            	var file = files[i];
+                if (url) {
+                    src = url.createObjectURL(file);
+                } else {
+                    src = e.target.result;
+                }
+
+				ImageUtils.compressPicture(file, {width:180,quality:0.5,mimeType:file.type}, function (base64) {
+                    $zPreview.prop('src',base64);
+                    $('#sfz_img_z_name').text(file.name);
+                    $('.z_preview').show();
+                });
+            }
+		});
+
+		$('#sfz_img_b').on('change', function(e) {
+			var src, url = window.URL || window.webkitURL || window.mozURL, files = e.target.files;
+            for (var i = 0, len = files.length; i < len; ++i) {
+            	var file = files[i];
+                if (url) {
+                    src = url.createObjectURL(file);
+                } else {
+                    src = e.target.result;
+                }
+
+				ImageUtils.compressPicture(file, {height:180,quality:0.5,mimeType:file.type}, function (base64) {
+                    $bPreview.prop('src',base64);
+                    $('#sfz_img_b_name').text(file.name);
+                    $('.b_preview').show();
+                });
+            }
+		});
+
+		$('#sfz_img_z_del').on('click', function() {
+			var file=document.getElementById('sfz_img_z');
+			$zPreview.prop('src', '');
+            $('#sfz_img_z_name').text('');
+			file.value="";
+			$('.z_preview').hide();
+		});
+	
+		$('#sfz_img_b_del').on('click', function() {
+			var filrB=document.getElementById("sfz_img_b");
+			$bPreview.prop('src', '');
+            $('#sfz_img_b_name').text('');
+			filrB.value="";
+			$('.b_preview').hide();
+		});
+var $sPreview =  $('#s_preview'), $dPreview = $('#d_preview');
+		$('#sfz_img_s').on('change', function(e) {
+			var src, url = window.URL || window.webkitURL || window.mozURL, files = e.target.files;
+            for (var i = 0, len = files.length; i < len; ++i) {
+            	var file = files[i];
+                if (url) {
+                    src = url.createObjectURL(file);
+                } else {
+                    src = e.target.result;
+                }
+
+				ImageUtils.compressPicture(file, {width:180,quality:0.5,mimeType:file.type}, function (base64) {
+                    $sPreview.prop('src',base64);
+                    $('#sfz_img_s_name').text(file.name);
+                    $('.s_preview').show();
+                });
+            }
+		});
+
+		$('#sfz_img_d').on('change', function(e) {
+			var src, url = window.URL || window.webkitURL || window.mozURL, files = e.target.files;
+            for (var i = 0, len = files.length; i < len; ++i) {
+            	var file = files[i];
+                if (url) {
+                    src = url.createObjectURL(file);
+                } else {
+                    src = e.target.result;
+                }
+
+				ImageUtils.compressPicture(file, {height:180,quality:0.5,mimeType:file.type}, function (base64) {
+                    $dPreview.prop('src',base64);
+                    $('#sfz_img_d_name').text(file.name);
+                    $('.d_preview').show();
+                });
+            }
+		});
+
+		$('#sfz_img_s_del').on('click', function() {
+			var file=document.getElementById('sfz_img_s');
+			$sPreview.prop('src', '');
+            $('#sfz_img_s_name').text('');
+			file.value="";
+			$('.s_preview').hide();
+		});
+	
+		$('#sfz_img_d_del').on('click', function() {
+			var filrB=document.getElementById("sfz_img_d");
+			$dPreview.prop('src', '');
+            $('#sfz_img_d_name').text('');
+			filrB.value="";
+			$('.d_preview').hide();
+		});
+
+		/*$('#obtainVerifyCode').on('click', function(event) {
+			event.preventDefault();
+			if ($zPreview.prop('src') && $bPreview.prop('src')) {
+
+			} else {
+                art.dialog({
+                    lock: true,
+                    content: '请您选择清晰、无污染的业主本人身份证正反面照片或者扫描件',
+                    time: 3
+                });
+                return false;
+			}
+		});*/
+
+
+
+ 
+    });
+</script>
+<script>
+var aLi = document.querySelectorAll('.box ul li');
+for (var i=0;i<aLi.length;i++ )
+{
+    aLi[i].ifCheck = false;
+    aLi[i].nowClass = aLi[i].className;
+    aLi[i].onclick = function(){
+        var zhege = $(this).index();
+        if(this.ifCheck){
+          this.className = this.nowClass;
+          $('#bzcheck'+zhege).val(0);
+        }else{
+          this.className += ' on';
+          $('#bzcheck'+zhege).val(1);
+        }
+        this.ifCheck = !this.ifCheck;
+    };
+};
+$('#tijiao').on('click', function(){
+  var yijifenlei = $("#yijifenlei").val();
+  if (yijifenlei == "0") {
+    art.dialog({
+      lock:true,
+      content: '请选择一级分类',
+      time: 5
+    });
+    return false;
+  }
+  var erjifenlei = $("#erjifenlei").val();
+  if (erjifenlei == "0") {
+    art.dialog({
+      lock:true,
+      content: '请选择二级分类',
+      time: 5
+    });
+    return false;
+  }
+  var shijian = $("#shijian").val();
+  if (shijian == "") {
+    art.dialog({
+      lock:true,
+      content: '请选择上门时间',
+      time: 5
+    });
+    return false;
+  }
+  var sfz_img_z=$("sfz_img_z").val();
+  if (sfz_img_z == "") {
+    art.dialog({
+      lock:true,
+      content: '请上传大件图片',
+      time: 5
+    });
+    return false;
+  }
+  document.getElementById("form2").submit();
+
+});
+</script>
+<script>
+!function(){
+laydate.skin('molv');//切换皮肤，请查看skins下面皮肤库
+laydate({elem: '#demo'});//绑定元素
+}();
+//日期范围限制
+var start = {
+    elem: '#start',
+    format: 'YYYY-MM-DD',
+    min: laydate.now(), //设定最小日期为当前日期
+    max: '2099-06-16', //最大日期
+    istime: true,
+    istoday: false,
+    choose: function(datas){
+         end.min = datas; //开始日选好后，重置结束日的最小日期
+         end.start = datas //将结束日的初始值设定为开始日
+    }
+};
+var end = {
+    elem: '#end',
+    format: 'YYYY-MM-DD',
+    min: laydate.now(),
+    max: '2099-06-16',
+    istime: true,
+    istoday: false,
+    choose: function(datas){
+        start.max = datas; //结束日选好后，充值开始日的最大日期
+    }
+};
+laydate(start);
+laydate(end);
+//自定义日期格式
+laydate({
+    elem: '#test1',
+    format: 'YYYY年MM月DD日',
+    festival: true, //显示节日
+    choose: function(datas){ //选择日期完毕的回调
+        alert('得到：'+datas);
+    }
+});
+//日期范围限定在昨天到明天
+laydate({
+    elem: '#hello3',
+    min: laydate.now(-1), //-1代表昨天，-2代表前天，以此类推
+    max: laydate.now(+1) //+1代表明天，+2代表后天，以此类推
+});
+
+</script>
+<script>
+	$('#time').on('change', function() {
+		$('#cishu').html('');
+		var time = $(this).find("option:checked").attr("id");
+		
+		
+		$("#cishu").append('<p>' +"剩余预约次数："+ time + "</p>");						
+	});
+</script>
+</body>
+</html>

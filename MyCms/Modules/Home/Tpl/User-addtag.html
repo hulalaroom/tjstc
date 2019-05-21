@@ -1,0 +1,170 @@
+<include file="Public:header" />
+<div class="main_block">
+    <include file="Public:top" />
+    <div class="content_block">
+
+        <div class="left_side fl">
+            <div class="l_menu">
+				<div class="left_other_menu">
+					{~$cat=get_child($cate,4);}
+					<volist name="cat" id="c" key="k">
+						<dl <eq name='c.id' value='$cat_id'> class="hover"</eq>>
+							<dt><img src="__PUBLIC__/images/ico0{$k}.jpg"/>
+							<!--<img src="{$c.cat_pic}"/>-->
+							</dt>
+							<dd> <a href="<notempty name='c.url'>{$c.url}<else/>{:U($c['Model']['name'].'/lists','id='.$c['id'])}</notempty>">{$c.title}</a> <span>{$c.summary}</span> </dd>
+						</dl>
+					</volist>
+				</div>
+            </div>	
+            <include file="Public:left" />  
+        </div>
+
+
+        <div class="main_con fr">
+            <div class="bread_nav">
+                <div class="l fl"></div>
+                <div class="m fl" style="line-height:30px;">
+                    <span class="list_style"></span>
+                    <span>您当前的位置:</span>
+                    <a href="__APP__">首页</a>
+                    <span>></span>
+                    <a href="{:U('User/index')}">我的5890</a>
+                    <span>></span>
+
+                    <span style="color:#009f3f;">我的订阅</span>
+                </div>
+                <div class="r fl"></div>
+            </div>
+            <div class="artical">
+                <!-- begin -->
+
+                <div class="booking">
+                    <h3>标签</h3>
+					<br/>
+					<p>热门词汇推荐：
+						<a href="javascript:get_value('供热')">供热</a>&nbsp;&nbsp;
+						<a href="javascript:get_value('采暖')">采暖</a>&nbsp;&nbsp;
+						<a href="javascript:get_value('生态城')">生态城</a>&nbsp;&nbsp;
+						<a href="javascript:get_value('停水')">停水</a>&nbsp;&nbsp;
+						<a href="javascript:get_value('业务')">业务</a>&nbsp;&nbsp;
+						<a href="javascript:get_value('流程')">流程</a>&nbsp;&nbsp;
+						<a href="javascript:get_value('条例')">条例</a>&nbsp;&nbsp;
+						<a href="javascript:get_value('收费')">收费</a>&nbsp;&nbsp;
+						<a href="javascript:get_value('办理')">办理</a>&nbsp;&nbsp;
+						<a href="javascript:get_value('服务')">服务</a>&nbsp;&nbsp;
+					</p>
+                    <form name="form2" id="form2" method="post" action="__SELF__">
+                        <input type="text" id="tag" name="tag" class="booking_name" maxlength="20" />
+                        <input type="submit" name="sub_booking" class="sub_booking" value="添加" />
+                    </form>
+
+                    <div class="booking_list">
+                        <ul>
+                            <volist name=":array_filter($tag)" id="t">
+                                <li><a href="javascript:deltag('{$key}')" class="dis" >{$t}</a><a href="javascript:deltag('{$key}')" class="dis" title="取消订阅"><img src="__PUBLIC__/images/article/colose.jpg" class="close"></a></li>
+                            </volist>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="article_cat">
+                    <volist name=":array_filter($tag)" id="t">
+                        <div class="cat_item" <if condition=" $key%2 neq 0">style="float:right"</if>>
+                            <div class="tit"><h2><a href="{:U('Article/tag','tag='.$t)}">{$t}</a></h2></div>
+                            <ul>
+                                {~$tag = get_by_tag('Article|'.$t.'|5');}
+                                <volist name="tag" id="vo">
+                                    <li>
+                                        <a href="{:U('Article/view','id='.$vo['id'])}" target="_blank" title="{$vo.title}">{$vo.title|cutstr_html=###,23}</a>
+                                    </li>
+                                </volist>
+                            </ul>
+                            <if condition="count($tag) gt 4"><div class="arc_more"><a href="{:U('Article/tag','tag='.$t)}" target="_blank" title="查看更多">[查看更多]</a></div></if>
+                        </div>
+                    </volist>
+
+                </div>
+
+                <!-- end -->
+            </div>
+        </div>
+
+
+    </div>
+</div>
+<include file="Public:footer" />
+</body>
+</html>
+<script type="text/javascript"> 
+    $(document).ready(function(){   
+        //提供回调函数，提供提交返回结果的处理   
+        var options = {
+            beforeSubmit: showRequest,
+            //提交前处理 
+            success: showResponse,
+            //处理完成 
+            resetForm: false,
+            dataType: 'json'
+        };    
+        $('#form2').submit(function() {          
+            $(this).ajaxSubmit(options);
+             return false;
+        });
+    }); 
+    
+    //
+
+    function showResponse(res) {
+        //    alert(res.status);
+        art.dialog({
+            title: res.title,
+            content: res.message,
+            time: res.time
+        });
+        if (res.url) {
+            window.location.href = res.url;
+        }
+    }
+    
+    function showRequest(formData, jqForm, options) {
+
+        var tag = $("#tag").val();
+        if (tag == "") {
+            art.dialog({
+                content: '标签不能为空',
+                time: 2
+            });
+            return false;
+        }
+  
+        art.dialog({
+            content: '添加中...',
+            time: 2
+        });
+
+        return true;
+    } 
+    
+    
+    function deltag(key){
+        $.ajax({
+            url: '{:U("User/deltag")}',
+            type : 'GET',
+            data : {k:key},
+            dataType: 'json', 
+            success: function(res){
+                art.dialog({title: res.title,content: res.message,time:res.time});  
+                if (res.url) {
+                    window.location.href = res.url;
+                }
+            }
+        });
+    }    
+    
+</script>
+<script type="text/javascript">
+	function get_value(parameter){
+		document.getElementById("tag").value=parameter;
+	}
+</script>

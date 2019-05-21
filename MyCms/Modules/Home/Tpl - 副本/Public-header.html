@@ -1,0 +1,71 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE8"/>
+<link type="text/css" rel="stylesheet" href="__PUBLIC__/css/base.css"/>
+<link type="text/css" rel="stylesheet" href="__PUBLIC__/css/my_5890.css"/>
+<link type="text/css" rel="stylesheet" href="__PUBLIC__/css/article.css"/>
+<link type="text/css" rel="stylesheet" href="__PUBLIC__/css/business.css"/>
+<link type="text/css" rel="stylesheet" href="__PUBLIC__/css/index.css"/>
+<link type="text/css" rel="stylesheet" href="__PUBLIC__/css/page.css"/>
+<link type="text/css" rel="stylesheet" href="__PUBLIC__/css/member.css"/>
+<link type="text/css" rel="stylesheet" href="__PUBLIC__/css/validator.css"/>
+<script type="text/javascript" src="__PUBLIC__/js/jquery-1.8.3.min.js"></script>
+<script type="text/javascript" src="__PUBLIC__/js/jquery.form.min.js"></script>
+<script type="text/javascript" src="__PUBLIC__/js/artDialog4.1.7/artDialog.source.js?skin=green"></script>
+<script type="text/javascript" src="__PUBLIC__/js/artDialog4.1.7/plugins/iframeTools.js"></script>
+<script src="__PUBLIC__/js/jquery.KinSlideshow-1.2.1.min.js" type="text/javascript"></script>
+
+<!--[if IE 6]>
+	<script type="text/javascript" src="__PUBLIC__/js/png.js"></script>
+	<script>DD_belatedPNG.fix('*');</script>
+<![endif]-->
+
+<title><notempty name="title">{$title} - </notempty> {$Think.config.site_name}</title>
+<meta name="keywords" content="<notempty name="keywords">{$keywords}<else/>{$Think.config.site_key}</notempty>" />
+<meta name="description" content="<notempty name="description">{$description}<else/>{$Think.config.site_desc}</notempty>" />
+</head>
+<body onload="load()">
+<div class="top_block">
+    <div style=" width:1000px; margin:0 auto; ">
+	<div class="top_bar">
+    	<div class="fl">
+        	<iframe id="tianqi" allowtransparency="true" frameborder="0" width="180" height="26" scrolling="no" src=""></iframe>	
+        </div>
+        <div class="fr">
+			<notempty name="Think.session.uname">
+				<a class="wel fl" href="{:U('User/index')}">欢迎&nbsp;&nbsp;<i>{$Think.session.unick}</i></a> 
+				<a href="{:U('Public/logout')}" class="Quit fl">退出</a>
+			<else/>
+				<div class="loginText">
+					<a href="{:U('Public/login')}" title="登录"><img src="/Public/images/login.gif"/></a>
+					<!--<div class="win">
+					<script type="text/javascript">
+						var thisURL = window.location.href; 
+						$(document).ready(function(){
+							$("#barckUrl").val(thisURL);
+						});
+					</script>
+					
+						<form action="{:U('Public/checkLogin')}" method="post" id="from3" name="form3">
+							<div class="win_name">用户名:</div>
+							<div class="text_class"><input type="text" class="win_text" name="username" id="username" autocomplete="off" tabIndex="1" value="请输入用户名" size="25"></div>
+							<div class="win_name">密　码:</div>
+							<div class="text_class"><input type="password" class="win_text" name="password" id="password" autocomplete="off"  tabIndex="2" size="25"></div>
+							<div class="win_verify">
+								<div class="win_name">验证码:</div>
+								<input type="text" class="win_verify_text" name="verify" id="verify" autocomplete="off" tabIndex="3" value="请输入验证码"/>
+								<div class="win_verify_code"><img id="getcode" src="{:U('Public/verify')}" class="win_verify_img"/></div>
+								</div>
+								<input type="hidden" id="barckUrl" name="barckUrl" />
+								<input type="image" src="/Public/images/log.jpg" value="登录" name="submit" class="win_verify_submit"/>
+						</form>
+					</div>-->
+				</div>
+				<div class="reg_div"><a href="{:U('Public/reg')}" title="注册"><img src="/Public/images/reg.gif" alt="注册"/></a></div>
+            </notempty>
+        </div>
+    </div>
+	</div>
+</div>

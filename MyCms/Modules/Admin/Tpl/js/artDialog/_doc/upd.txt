@@ -1,0 +1,48 @@
+-----------------------------------------------------------------------
+
+��artDialog4.1.0��4.1.1��
+1.	�������Щ�������滻���²�������Ϊδ���汾�ϲ��������ã�
+	yesFn	> ok
+	noFn	> cancel
+	closeFn	> close
+	initFn	> init
+	yesText	> okVal
+	noText	> cancelVal
+
+
+
+��artDialog4.0.5��4.1.0��
+1.	tmpl����ȡ��
+
+
+
+��artDialog4.0.0���԰���4.0.0��ʽ�桿
+
+1.	iframe��չ�����������������Ҫ������artDialog.iframeTools.js ���߰���ϲ���artDialog.js����,
+	alert / confirm / prompt / open / load / tips / �ȷ�����Ҫ����artDialog.iframeTools.js
+
+2.	iframeTools ����art.dialog.through����������Լ�����ĵ�д�˴˷�����ͬѧ��ɾ�����ᱨ��
+
+3.	ѹ�����ļ���û�С�min������׺����ע����
+
+
+
+��artDialog3��4.0.0���԰桿
+
+1.	art.dialog.get(id) ���Ϊ art.dialog.list[id]
+
+2.	����֧�ֶ�Ƥ������,css�ļ�Ĭ�ϲ��Զ����أ�
+	��Ҫ�����õĽŲ��ļ�дurl����artDialog.js?skin=default
+
+3.	����֧��ҳ�����뼴ʱ�����Ի���, ������
+	jQuery(function () {/* [code..] */})�л���window.onload�е��ã�����ҳ��ᱨ��
+
+4.	����֧��iframe���Ӵ����Զ�ע��artDialog�ļ��������Ҫ�Ŀ��ҳ������artDialog����ļ�
+
+5.	jQuery('#test').dialog({content: 'hello world'})��ʽ�����Զ���click�¼�
+
+
+6.	follow������ID�����Ҫ��#�ţ��� follow: '#myID' �����Ԫ�ض������õ��Ĵ���
+
+7.	left��top������֧��"left", "right", "center", "top", "bottom"��Щ�ؼ���
+	����"0%", "100%", "50%"��

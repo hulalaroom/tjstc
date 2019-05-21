@@ -1,0 +1,164 @@
+<include file="Public:header" />
+<div class="main_block"> <include file="Public:top" />
+  <div class="content_block">
+    <div class="left_side fl">
+      <div class="l_menu">
+         <!--上级菜单-->
+		{~$cat=get_info($cate,$id);}
+		 <volist name="cat" id="m" key="l">
+			<a href="javascript:history.go(-1);" title="返回上一页">
+				<div class="bb_l_menu_title">
+					{$m.title} 
+				</div>
+			</a>
+		</volist>
+		<div class="left_other_menu">
+       {~$cat=get_child($cate,$id);}
+          <volist name="cat" id="c" key="k">
+          <dl>
+            <dt><a href="<notempty name='c.url'>{$c.url}<else/>
+                  <empty name="c['tpl']">{:U($c['Model']['name'].'/index','id='.$c['id'])}<else/>{:U($c['Model']['name'].'/'.$c['tpl'],'id='.$c['id'])}</empty>
+                  
+                  </notempty>"><img src="{$c.pic}"/></a>
+              <!--<img src="{$c.cat_pic}"/>-->
+            </dt>
+          <dd> <a href="<notempty name='c.url'>{$c.url}<else/>
+                  <empty name="c['tpl']">{:U($c['Model']['name'].'/index','id='.$c['id'])}<else/>{:U($c['Model']['name'].'/'.$c['tpl'],'id='.$c['id'])}</empty>
+                  
+                  </notempty>">{$c.title}</a> <span>{$c.summary}</span> </dd>
+        </dl>
+          </volist></div>
+      </div>
+      <include file="Public:left" />
+    </div>
+        <div class="main_con fr">
+      <div class="bread_nav">
+        <div class="l fl"></div>
+        <div class="m fl" style="line-height:30px;"> <span class="list_style"></span> <span>您当前的位置:</span> {$nav} </div>
+        <div class="r fl"></div>
+      </div>
+      <div class="artical">
+    <!-- begin -->
+          <div class="tab_mes">
+         	 <div class="bus_title fl">
+				<h2>历史账单</h2>
+			</div>
+			<div class="mar">
+			  <form id="form2" name="form2" method="post" action="">
+				<table width="650" border="0" style="margin-left:75px;">
+				  <tr>
+					<td width="50" align="right">地址：</td>
+					<td width="220">
+					  <select name="houseCode" id="houseCode" class="gu_select" style="width:220px;">
+						<volist name="houselist" id="hc">
+						  <option value="{$hc.houseCode}" <if condition="$hc.houseCode eq $code">selected="selected"</if>>{$hc.address}</option>
+						</volist>
+					  </select>
+					</td>
+
+					
+					<if condition="$id neq 88">
+						<td width="20" align="right"></td>
+						<td width="40" align="right">日期：</td>
+						<td width="50">
+						  <select class="year" name="year" id="year">
+							<option value="{$year}" <if condition="$year eq $age"> selected="selected"</if>>{$year}</option>
+							<option value="{$year-1}" <if condition="$year-1 eq $age"> selected="selected"</if>>{$year-1}</option>
+							<option value="{$year-2}" <if condition="$year-2 eq $age"> selected="selected"</if>>{$year-2}</option>
+							<option value="{$year-3}" <if condition="$year-3 eq $age"> selected="selected"</if>>{$year-3}</option>
+							<option value="{$year-4}" <if condition="$year-4 eq $age"> selected="selected"</if>>{$year-4}</option>
+						  </select>
+						</td>
+					</if>
+					 <td align="left">
+					  <input type="hidden" value="{$id}" name="id">
+					  <input type="submit" id="searchBtn" class="sea_but" value="查询"/>
+					</td>
+				  </tr>
+				</table>
+			  </form>
+		  </div>
+		  <div class="bus_table fl">
+          <div class="bus_tablet tc">
+            <ul>
+              <li class="ww1 fl"> <span>序号</span> </li>
+              <li class="ww2 fl"> <span>房间地址</span> </li>
+              <li class="ww3 fl"> <span>收费期</span> </li>
+              <li class="ww4 fl"> <span>收费项目</span> </li>
+              <li class="ww5 fl"> <span>账单费用(元)</span> </li>
+            </ul>
+          </div>
+          <div class="bus_tableb tc">
+            <ul>
+			 <notempty name="charlist.error"><p class="nodata">接口错误，请联系管理员!</p>
+			 <else/>
+			 <eq name="ispost" value="true">
+				<empty name="charlist">
+				<p class="nodata">暂无信息</p>
+				</empty>
+			  </eq>
+              <volist name="charlist" id="char" key="k">
+              <li>
+                <ul>
+                  <li class="ww1 fl">
+                    <p>{$k}</p>
+                  </li>
+                 <li class="ww2 fl" style="overflow:hidden"> <span>{$char['address']}</span> </li>
+                  <li class="ww3 fl"> <span>{$char['chargeMonth']}</span> </li>
+                  <li class="ww4 fl"> <span>{$char['itemName']}</span> </li>
+                  <li class="ww5 fl"><span>{$char['cash']}</span> </li>
+                </ul>
+              </li>
+              </volist>
+              <notempty name="fee_count"><div class="bus_tableb tc" style="text-align:right; border-top:1px #CCCCCC solid;padding:5px 0px;">总计:{$fee_count}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</div></notempty>	
+              </notempty>
+            </ul>
+          </div>
+        </div>
+		  
+          </div>
+         
+          <div class="tab_mes" style="display:none;">
+         	 <div class="bus_title fl">
+							<h2><?php //echo date('Y',time());?>历史用量</h2>
+					 </div>
+             <table class="b_5890 new_ta5890" cellpadding="" cellspacing="1" bgcolor="#e5e5e5" id="">
+                    	<tbody>
+                        <tr>
+                        	<th width="10%">序号</th>
+							<th width="30%">房间地址</th>
+							<th width="20%">收费期</th>
+							<th width="20%">能源类型</th>
+							<th width="">用量</th>
+                        </tr>
+                        <notempty name="powerlist.error"><tr><td colspan="5"><p class="nodata">接口错误，请联系管理员!</p></td></tr>
+                        <else/>
+						<empty name="powerlist"><tr><td colspan="5"><p class="nodata">暂无信息</p></td></tr></empty>
+						<volist name="powerlist" id="power" key="k">
+                        <tr onclick="javascript:click_search(this,'*')">
+                        	<td>{$k}</td>
+                            <td>{$power[7]}</td> 
+							<td>{$power[1]}</td>
+							<td>{$power[4]}</td>
+							<td>{$power[5]}</td>							
+                        </tr>
+						</volist>
+						<!--<tr>
+                 <td colspan="5" style="text-align:right;padding-right:50px;">总计：{$power_count}</td>
+            </tr>-->
+                        </notempty>
+						</tbody></table>                   
+          </div>
+        <!-- end -->
+      </div>
+    </div>
+  </div>
+</div>
+  <include file="Public:footer" />
+</body>
+</html>
+<script type="text/javascript">
+	function click_search() {
+		void(0);
+	}
+</script>
