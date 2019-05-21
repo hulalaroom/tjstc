@@ -1,5 +1,4 @@
 <?php
-
 class PublicAction extends Action {
 
     function login() {
@@ -31,14 +30,18 @@ class PublicAction extends Action {
         if (session('verify') != md5($_POST['verify'])) {
             $this->error('验证码错误！');
         }
+         */
         import('ORG.Util.RBAC');
-        */
+
         //$authInfo = RBAC::authenticate($map);
 
         $authInfo = D('Admin')->field('ad_admin.*,b.id as role_id,b.name as role_name')
             ->join(' ad_role_admin a ON a.user_id = ad_admin.id')
             ->join(' ad_role b ON b.id=a.role_id')
             ->where($map)->find();
+//        echo D('Admin')->getLastSql();
+//        var_dump($authInfo);
+//        die;
 
 //        dump($authInfo);
         //使用用户名、密码和状态的方式进行认证
