@@ -199,7 +199,7 @@ class PublicAction extends HomeAction {
 
     // 登录检测
     public function checkLogin() {
-		
+
         $way = $_POST ['way'];
 		if($way ==1){
 			 if (session('verify') != md5($_POST ['verify'])) {
