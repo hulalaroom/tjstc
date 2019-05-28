@@ -16,21 +16,17 @@ class PublicAction extends Action {
         } elseif (empty($_POST['password'])) {
             $this->error('请输入密码！');
         }
-        /*zhrz
         elseif (empty($_POST['verify'])) {
             $this->error('验证码不可为空！');
         }
-        end*/
         //生成认证条件
         $map = array();
         // 支持使用绑定帐号登录
         $map['adminname'] = $_POST['adminname'];
         $map["ad_admin.status"] = array('gt', 0);
-        /*zhrz
         if (session('verify') != md5($_POST['verify'])) {
             $this->error('验证码错误！');
         }
-         */
         import('ORG.Util.RBAC');
 
         //$authInfo = RBAC::authenticate($map);
