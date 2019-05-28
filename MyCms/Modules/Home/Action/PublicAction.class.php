@@ -202,9 +202,9 @@ class PublicAction extends HomeAction {
 
         $way = $_POST ['way'];
 		if($way ==1){
-			 if (session('verify') != md5($_POST ['verify'])) {
+            if (session('verify') != md5($_POST ['verify'])) {
 				echo_json('0', '登录失败', '验证码错误', '', '10');
-			}
+            }
 
 			$username = trim($_POST['username']);
 			$map['username'] = $username;
@@ -213,7 +213,6 @@ class PublicAction extends HomeAction {
 			$map2['_complex'] = $map;
 			$encrypt = "46faa8ab560de8e86ee20ce678eeb8"; //加密码
 			$map2["password"] = md5(md5($encrypt) . md5(trim($_POST['password'])));
-
 			$authInfo = D('User')->where($map2)->find();
 
 			// 使用用户名、密码和状态的方式进行认证
