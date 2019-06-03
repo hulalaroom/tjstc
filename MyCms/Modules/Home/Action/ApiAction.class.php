@@ -701,6 +701,19 @@ WHERE HOUSECODE='$houseCode' AND CHARGEMONTH<='$sj' AND ITEMCODE IN ('B','D')) W
 		$list = json_decode($this->curl_post($url,$post_data));
 		return $list;
     }
+	function GetHouseInfoServlet($housecode)
+    {
+        $url = 'http://10.105.15.2/TjstcWebImpl/GetHouseInfoServlet';
+		$post_data= "vHOUSECODE=$housecode";
+		$ch = curl_init();
+		curl_setopt($ch, CURLOPT_URL, $url);
+		curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+		curl_setopt($ch, CURLOPT_POST, 1);
+		curl_setopt($ch, CURLOPT_POSTFIELDS, $post_data);
+		$output = curl_exec($ch);
+		$date=json_decode($output,true);
+		return $date;
+    }
 	function GetHistoryBill_AServlet($housecode, $year, $years)
     {
         $url = 'http://10.105.15.2/TjstcWebImpl/GetHistoryBill_AServlet';
@@ -1887,6 +1900,13 @@ group by cpl.housecode,cpl.chargemonth,cpl.clocknumber ) where gn_qf>0 order by 
 		$list = json_decode($this->curl_post($url,$post_data));
 		return $list;
     }
+	function stopstatusrq($housecodes)
+    {
+        $url = C('CALL_URL') . '/CheckGasRepeatServlet';
+		$post_data['vHOUSECODE'] = $housecodes;
+		$list = json_decode($this->curl_post($url,$post_data));
+		return $list;
+    }
 	function stopstatushz($housecodes)
     {
         $url = C('CALL_URL') . '/GetHouseItemStateServlet';
@@ -1928,32 +1948,18 @@ group by cpl.housecode,cpl.chargemonth,cpl.clocknumber ) where gn_qf>0 order by 
         $list = json_decode($this->curl_post($url,$post_data));
         return $list;
     }
-
-	function SubmitGasOpeningApplyServlet($vBUSINESSTYPE,$vHOUSECODE,$vOWNERNAME,$vAPPLYTIME,$vPHONE,$vBUSINESSSOURCE)
-    {
-        $url = C('CALL_URL') . '/SubmitGasOpeningApplyServlet';
-        $post_data['vBUSINESSTYPE'] = $vBUSINESSTYPE;
-        $post_data['vHOUSECODE'] = $vHOUSECODE;
-        $post_data['vOWNERNAME'] = $vOWNERNAME;
-        $post_data['vAPPLYTIME'] = $vAPPLYTIME;
-        $post_data['vPHONE'] = $vPHONE;
-        $post_data['vBUSINESSSOURCE'] = $vBUSINESSSOURCE;
-        $list = json_decode($this->curl_post($url,$post_data));
-        return $list;
-    }
-
-	function ApplyBindHouseServlet($housecodes,$owername,$papercode,$laiyuan,$fileBase64)
+	function ApplyBindHouseServlet($housecodes,$owername,$papercode,$laiyuan,$uid,$fileBase64)
     {
         $url = C('CALL_URL') . '/ApplyBindHouseServlet';
         $post_data['vHOUSECODE'] = $housecodes;
         $post_data['vOWNERNAME'] = $owername;
         $post_data['vPAPERCODE'] = $papercode;
         $post_data['vBUSINESSSOURCE'] = $laiyuan;
+		$post_data['vUID'] = $uid;
         $post_data['fileBase64'] = $fileBase64;
         $list = json_decode($this->curl_post($url,$post_data));
         return $list;
     }
-
     function SubmitBankProcessServlet($vBUSINESSTYPE,$vHOUSECODE,$vOWNERNAME,$vBANK,$vBANKNUMBER,$vCARDENDDATE,$vBUSINESSSOURCE,$fileBase64,$fileName)
     {
         $url = C('CALL_URL') . '/SubmitBankProcessServlet';
@@ -2077,6 +2083,19 @@ group by cpl.housecode,cpl.chargemonth,cpl.clocknumber ) where gn_qf>0 order by 
 		return $list;
 
 	}
+	function SubmitGasOpeningApplyServlet($vBUSINESSTYPE,$vHOUSECODE,$vOWNERNAME,$vAPPLYTIME,$vPHONE,$vBUSINESSSOURCE)
+    {
+        $url = C('CALL_URL') . '/SubmitGasOpeningApplyServlet';
+        $post_data['vBUSINESSTYPE'] = $vBUSINESSTYPE;
+        $post_data['vHOUSECODE'] = $vHOUSECODE;
+        $post_data['vOWNERNAME'] = $vOWNERNAME;
+        $post_data['vAPPLYTIME'] = $vAPPLYTIME;
+        $post_data['vPHONE'] = $vPHONE;
+        $post_data['vBUSINESSSOURCE'] = $vBUSINESSSOURCE;
+        $list = json_decode($this->curl_post($url,$post_data));
+        return $list;
+    }
+
 }
 
 

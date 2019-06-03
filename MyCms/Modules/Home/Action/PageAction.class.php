@@ -927,9 +927,12 @@ else{$houseCode = $houselist[0]['houseCode'];}
 			 $grdata[$n]['cssyear']=$rybdata ->{'r_body'}[$n]->{"cssyear"};//年度，热表初始读数行的年度
 			 $grdata[$n]['riqi']=$rybdata ->{'r_body'}[$n]->{"riqi"};//日期，根据当前日期判断取得显示的日期
 			 $grdata[$n]['metettime']=$rybdata ->{'r_body'}[$n]->{"metettime"};//日期
+			 $percent=$rybdata ->{'r_body'}[$n]->{"percent"};
+			 if($percent=='---'){
+				$percent=0;
+			 }
 			
-			
-             $this->percent=$rybdata ->{'r_body'}[$n]->{"percent"};//百分比
+             $this->percent=$percent;//百分比
 			
 			 $this->meteraccount=$rybdata ->{'r_body'}[$n]->{"meteraccount"};//当年累计用量
 			 $grdata[$n]['nownum']=$rybdata ->{'r_body'}[$n]->{"nownum"};//当月热表读数
@@ -1197,16 +1200,18 @@ $jljljllist=R('Api/GetHeatMeteringMonthlyDosageServlet',array($houseCode,$age,1)
 		{ 
 				
 $relistto[0]['JIEYUhuo'] = $pdjie;
+$relistto[0]['JIEBU'] = 2;
 			  }
 			  else if($pdbu>0)
 		{
 			 
 $relistto[0]['JIEYUhuo'] = $pdbu;
+$relistto[0]['JIEBU'] = 1;
 			  }
 			  else if($pdjie==0&&$pdbu==0)
 		{
 				
-				  $relistto[0]['JIEYUhuo'] =0;
+				  $relistto[0]['JIEBU'] = 0;
 			  }
 		
 			      
@@ -3076,9 +3081,10 @@ $relistto[0]['JIEYUhuo'] = $pdbu;
 			$typeName = '水费';
 		}else if($type=='A'){
 			$typeName = '采暖';
+			$chargemonth = substr($chargemonth,0,4);
 		}
 
-		$url = 'http://10.105.15.2/tjsck_impl/QuertQiangfeiYlServlet';
+		$url = 'http://10.105.15.2/TjstcWebImpl/QuertQiangfeiYlServlet';
 
 
         $post_data['vhousecode'] = $housecode;

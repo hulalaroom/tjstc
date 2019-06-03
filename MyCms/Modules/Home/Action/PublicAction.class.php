@@ -208,11 +208,13 @@ class PublicAction extends HomeAction {
 
 			$username = trim($_POST['username']);
 			$map['username'] = $username;
-
+			$map['phone'] = $username;
+			$map['_logic'] = 'or';
+			$map2['_complex'] = $map;
 			$encrypt = "46faa8ab560de8e86ee20ce678eeb8"; //加密码
-			$map["password"] = md5(md5($encrypt) . md5(trim($_POST['password'])));
+			$map2["password"] = md5(md5($encrypt) . md5(trim($_POST['password'])));
 
-			$authInfo = D('User')->where($map)->find();
+			$authInfo = D('User')->where($map2)->find();
 
 			// 使用用户名、密码和状态的方式进行认证
 			if (false == $authInfo) {

@@ -277,7 +277,12 @@ span.jrbtn01{
 				</dl>
 			</a>
 			<else />
+				<if condition="$rqcf eq 1">
+				<a href="javascript:void(0)" class="nygs01" id="rqcf">
+				<input type="hidden" id="housecode" value="{$housecode}">
+				<else />
 				<a href="{:U('User/rqktInfo')}" class="nygs01">
+				</if>
 				<dl class="nygsdl01">
 					<dt><img src="__PUBLIC__/last/img/nygs_05.png" alt="" /></dt>
 					<dd class="jiaofei_title nengyuan_title">燃气开通申请</dd>
@@ -346,4 +351,19 @@ span.jrbtn01{
 
 <include file="Public:common-footer" />
 </body>
+<include file="Public:common-script" />
+<script type="text/javascript" src="__PUBLIC__/last/js/selectFilter.js"></script>
+<script type="text/javascript" src="__PUBLIC__/last/js/ImageUtils.js"></script>
+<script type="text/javascript" src="__PUBLIC__/last/js/artDialog4.1.7/artDialog.source.js?skin=green"></script>
+<script>
+	    $("#rqcf").click(function(){
+		var housecode=$("#housecode").val();
+		var info="房间编号为"+housecode+"已提交燃气预约开通申请，无法再次提交。</br>如有疑问，请您拨打电话022-66885890。";
+					art.dialog({
+		                    lock:true,
+		                    content: info,
+		                    time: 5
+		                  });
+    });
+</script>
 </html>

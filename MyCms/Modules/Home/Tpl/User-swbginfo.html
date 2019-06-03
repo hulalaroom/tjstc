@@ -67,8 +67,58 @@
 							<input type="text" name="yinhang4" id="yinhang4" value="" maxlength="4">
 						</li>
 						<li>
-							<input type="text" name="yue" id="yue" value="" maxlength="2"><span class="hengxian">&nbsp;</span>月
-							<input type="text" name="nian" id="nian" value="" maxlength="2"><span class="hengxian">&nbsp;</span>年
+							<select name="yue" id="yue" style="    height: 32px;
+    line-height: 40px;
+    margin:10px;
+    width: 90px;
+    border: 0;
+    background-color: transparent;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    padding: 0;
+    cursor: pointer;
+    color: #666;
+    font-size: 15px;
+    background: #eff0f4;text-align:center;text-align-last:center;">
+					<option value="" style="display: none"></option>
+                    <option value="01">01</option>
+                    <option value="02">02</option>
+                    <option value="03">03</option>
+                    <option value="04">04</option>
+                    <option value="05">05</option>
+                    <option value="06">06</option>
+					<option value="07">07</option>
+                    <option value="08">08</option>
+                    <option value="09">09</option>
+                    <option value="10">10</option>
+                    <option value="11">11</option>
+					<option value="12">12</option>
+                </select>月　
+				 <select id="nian" name="nian" style="    height: 32px;
+    line-height: 40px;
+    margin:10px;
+    width:90px;
+    border: 0;
+    background-color: transparent;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    padding: 0;
+    cursor: pointer;
+    color: #666;
+    font-size: 15px;
+    background: #eff0f4;text-align:center;text-align-last:center;">
+					<option value="" style="display: none"></option>
+                    <option value="2019">2019</option>
+                    <option value="2020">2020</option>
+                    <option value="2021">2021</option>
+					<option value="2022">2022</option>
+                    <option value="2023">2023</option>
+                    <option value="2024">2024</option>
+					<option value="2025">2025</option>
+                    <option value="2026">2026</option>
+				</select>年
 						</li>
 					</ul>
 				</div>
@@ -287,19 +337,19 @@ $('#getVerifyCodeBtn').on('click', function(){
               }
 
         	var yue = $("#yue").val();
-        	if (yue == "" || yue.length !=2) {
+        	if (yue == "") {
 	                art.dialog({
 	                  lock:true,
-	                  content: '请填入正确月份,为2位，例：8月为08',
+	                  content: '请选择月份',
 	                  time: 5
 	                });
 	                return false;
 	              }
         	var nian = $("#nian").val();
-        	if (nian == "" || nian.length !=2) {
+        	if (nian == "") {
 	                art.dialog({
 	                  lock:true,
-	                  content: '请填入正确年份,为2位，例：2018年为18',
+	                  content: '请选择年份',
 	                  time: 5
 	                });
 	                return false;

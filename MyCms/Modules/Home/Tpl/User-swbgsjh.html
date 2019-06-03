@@ -87,7 +87,7 @@
 
                       $.ajax({
                         type: "POST",
-                        url: '{:U("User/check_phoneRight","",false)}',
+                        url: '{:U("User/check_phoneRightsw","",false)}',
                         async:false,//设置同步/异步的参数[true异步  false同步]
                         data: {vHOUSECODE:$('#housecode').val(),vOWNERNAME:$('#owername').val(),vMOBILEPHONE:oldphone},
                         success: function(res) {

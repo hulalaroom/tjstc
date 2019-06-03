@@ -60,7 +60,7 @@
                                     {$nyywList[0].EXAMINESTATUS}
                                 </li>
                             </ul>
-						<elseif condition="$Businesstype eq '阶梯递增'"/>
+						<elseif condition="$businesstype eq '阶梯递增'"/>
 							<ul class="yewuleft">
                                 <li>新增人口类别</li>
                                 <li>新增人数</li>
@@ -84,25 +84,6 @@
                                 <li>{$nyywList[0].EXAMINEOPINION}</li>
                                 <li> 
                                     {$nyywList[0].EXAMINEDATE}
-                                </li>
-                            </ul>
-						<elseif condition="$Businesstype eq '燃气开通'"/>
-							<ul class="yewuleft">
-                                <li>申请时间</li>
-                                <li>联系电话</li>
-                                <li>办理时间</li>
-                                <li>审核状态</li>
-                                <li>审核内容</li>
-                            </ul>
-                            <ul class="yewuright">
-                                <li>{$nyywList[0].APPLYTIME}</li>
-                                <li>{$nyywList[0].PHONE}</li>
-                                <li>
-                                    {$nyywList[0].EXAMINEDATE}
-                                </li>
-                                <li>{$nyywList[0].EXAMINESTATUS}</li>
-                                <li> 
-                                    {$nyywList[0].EXAMINEOPINION}
                                 </li>
                             </ul>
                         <else />
@@ -148,7 +129,7 @@
                         <if condition="$nyywList[0]['BANK'] eq ''">
                             <a href="{:U('User/reheatInfo')}">再次申请</a>
                         <else />
-                            <a href="{:U('User/ny')}">再次申请</a>
+                            <a href="{:U('User/nykInfo')}">再次申请</a>
                         </if>
                         <a href="javascript:window.history.go(-1)">返回</a>
                     </div>

@@ -264,8 +264,8 @@ height: 42px;background:#10c75d; font-size: 14px; color: #666; text-align: cente
 <tr class="history_tabletr_shui" >
 	<th style="width: 15%; border-radius: 5px 0 0 0;">序号</th>
 	<th style="width: 25%;">收费期</th>
-	<th style="width: 25%;">用量（立方米/m³）</th>
-	<th style="width: 35%; border-radius: 0 5px 0 0;">缴纳费用 （人民币/￥）</th>
+	<th style="width: 25%;">用量（m³）</th>
+	<th style="width: 35%; border-radius: 0 5px 0 0;">缴纳费用 （￥）</th>
 </tr>
 <volist name="zlslist" id="his" key="h">
 	<if condition="$his.CHARGEMONTH !=''">
@@ -311,8 +311,8 @@ height: 42px;background:#10c75d; font-size: 14px; color: #666; text-align: cente
 <tbody><tr class="history_tabletr_qi">
 	<th style="width: 15%; border-radius: 5px 0 0 0;">序号</th>
 	<th style="width: 25%;">收费期</th>
-	<th style="width: 25%;">用量（标立方/Nm³）</th>
-	<th style="width: 35%; border-radius: 0 5px 0 0;">缴纳费用 （人民币/￥）</th>
+	<th style="width: 25%;">用量（Nm³）</th>
+	<th style="width: 35%; border-radius: 0 5px 0 0;">缴纳费用 （￥）</th>
 </tr>
 <volist name="trqlist" id="his" key="h">
 	<if condition="$his.CHARGEMONTH !=''">
@@ -358,8 +358,8 @@ height: 42px;background:#10c75d; font-size: 14px; color: #666; text-align: cente
 
 <tbody><tr class="history_tabletr_re">
 	<th style="width: 15%; border-radius: 5px 0 0 0;">序号</th>
-	<th style="width: 30%;">面积热费</th>
-	<th style="width: 25%;">热计量费用</th>
+	<th style="width: 30%;">面积热费（￥）</th>
+	<th style="width: 25%;">热计量费用（￥）</th>
 	<th style="width: 25%; border-radius: 0 5px 0 0;">结余/补缴</th>
 	
 </tr>
@@ -370,10 +370,12 @@ height: 42px;background:#10c75d; font-size: 14px; color: #666; text-align: cente
 			<td><p class="num">{$h}</p></td>
 			<td>{$his.MJRF_OLD}</td>
 			<td>{$his.RJLFY|number_format=###, 2, '.', ''}</td>
-			<if condition="$his.JIEYUhuo neq 0">
-			<td>{$his.JIEYUhuo|number_format=###, 2, '.', ''}</td>
+			<if condition="$his.JIEBU eq 2">
+			<td style='color:green'>{$his.JIEYUhuo|number_format=###, 2, '.', ''}</td>
+			<elseif condition="$his.JIEBU eq 1"/>
+			<td style='color:red'>{$his.JIEYUhuo|number_format=###, 2, '.', ''}</td>
 			<else/>
-			<td>结算中</td>
+			<td style='color:red'>结算中</td>
 			</if>
 
 		</tr>
@@ -449,8 +451,8 @@ height: 42px;background:#10c75d; font-size: 14px; color: #666; text-align: cente
 <tbody><tr class="history_tabletr">
 	<th style="width: 15%; border-radius: 5px 0 0 0;">序号</th>
 	<th style="width: 25%;">收费期</th>
-	<th style="width: 25%;">用量（立方米/m³）</th>
-	<th style="width: 35%; border-radius: 0 5px 0 0;">缴纳费用 （人民币/￥）</th>
+	<th style="width: 25%;">用量（m³）</th>
+	<th style="width: 35%; border-radius: 0 5px 0 0;">缴纳费用 （￥）</th>
 </tr>
 
 <volist name="zsslist" id="his" key="h">
@@ -538,7 +540,7 @@ height: 42px;background:#10c75d; font-size: 14px; color: #666; text-align: cente
 
    <div id="loading"  >  
       <img src="./Public/img/loading.gif" class="img-responsive">  
-    </div><pre name="code" class="css">  
+    </div><pre name="code" class="css"></pre>
 
 
 <include file="Public:common-footer"/>
