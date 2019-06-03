@@ -4,7 +4,211 @@
     <include file="Public:common-head" />
 	<link rel="stylesheet" type="text/css" href="__PUBLIC__/last/css/selectFilter.css">
 </head>
+<style>
+.jiaofei_box dl{
+	float: left;
+	text-align: center;
+	width:210px;
+	height: 290px;
+	border: solid 1px #ebebeb ;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    border-radius: 10px;
+/*    behavior: url(PIE.htc);*/
+    cursor: pointer;
+}
+ 
+.jiaofei_box dl dt{
+	margin-top: 36px;
+}
+.jiaofei_box dl dd a{
+	display:block;	
+	font-size: 16px;
+	color: #fff;
+	padding:16px 40px ;
+	background: #00FD69;
+	text-align: center
+}
+.jiaofei_title{
+	font-size:24px;
+	margin-top: 26px;
+}
+.jiaofei_title01{
+	font-size:16px;
+	margin-top: 22px;
+}
+.jiaofei_box01{
+	padding-left: 240px;
+}
 
+
+.jiaofei_nr{
+	font-size:16px;
+	color: #999;
+	margin-top: 8px;
+}
+.jiaofei_nr01{
+		font-size:12px;
+	color: #999;
+	margin-top: 8px;
+	
+}
+	
+ a.nygs01,a.nygs02{
+ 	display: inline-block;
+ 	cursor: pointer;
+ 	color: #333;
+ }
+ .jiaofei_boxfirst, .jiaofei_boxtwo, .jiaofei_boxthree,.jiaofei_boxfour,.jiaofei_boxfive,.jiaofei_boxsix,.jiaofei_boxseven {
+ 	float: left;
+ }
+ 
+.jiaofei_boxtwo,.jiaofei_boxthree,.jiaofei_boxfour{
+	margin-left:30px;
+ 
+  
+ }
+ 
+ 
+.jiaofei_boxfirst dl{
+ 
+	margin: 0;
+}
+  .jiaofei_boxtwo{
+ 	float: left;
+ }
+   .jiaofei_boxtwo dl{
+ 	float: none;
+ }
+ 
+  .jiaofei_boxthree{
+ 	float: left;
+ }
+ .jiaofei_boxfive{
+ 	margin-left: 240px;
+ }
+  .jiaofei_boxsix{
+ 
+ }
+ .jiaofei_boxseven {
+   	margin-left: 234px;
+ 
+ }
+ .nygsdl02{
+	display: none;
+}
+.nygsdl02{
+	display: none;
+}
+a.nygs01:hover .nygsdl02 {
+
+	display: block;
+	background:#fff;
+	-webkit-box-shadow: 4px 6px 10px #dbdbdd;
+    -moz-box-shadow: 4px 6px 10px #dbdbdd;
+    box-shadow: 4px 6px 10px #dbdbdd;
+    border: solid 1px #ebebeb;
+}
+a.nygs01:hover .nygsdl01 {
+	display: none
+}
+span.jrbtn01{
+	display: inline-block;
+	width: 156px;
+	height: 56px;
+	line-height: 50px;
+	font-size: 18px;
+	margin-top: 26px;
+	color: #fff;
+	background: url("__PUBLIC__/last/img/pb_btn.png") no-repeat -1px -175px;	
+		
+}
+
+
+.jiaofei_box dl dt.nygsdt_01{
+ 	margin-top: 24px;
+ }
+	
+	
+	
+	
+.house_bdcg{
+
+	border: solid 1px #c8c9cb;
+	background: #f2f3f7;
+	text-align: center;
+	padding:64px 0 90px 0 ;
+	margin-bottom:40px ;
+}
+.house_jfcg{
+	background: #fff;
+	border: dashed 1px #e5e5e5;
+}
+.house_bdcg .zfcg{
+	font-size:38px ;
+	margin-left: 20px;
+	vertical-align: middle;
+}
+
+
+.house_bdcg p{
+		text-align: center;
+ 
+}
+.house_bdcg01{
+	color: #666;
+	font-size: 18px;
+	margin-top: 10px;
+}
+
+.house_bdcg02{
+	color: #333;
+	font-size: 30px;
+	font-weight: bold;
+	margin: 20px auto 50px ;
+}
+
+.house_bdcg03{}
+.house_bdcg03 button{
+	border: none;
+	width: 104px;
+	height: 40px;
+
+}
+.house_bdcg03 button a{
+	height: 36px;
+	display: inline-block;
+	line-height: 32px;
+	color: #fff;
+}
+ 
+
+
+
+.house_bdcg04{
+	font-size: 16px;
+	color: #fd8222;
+	margin-top: 30px;
+}
+.house_bdcg04 a{
+	color: #40b96c;
+}
+.zfcg_tz{
+	color: #333;
+	font-size: 15px;
+}
+.zfcg_font{
+	font-size: 16px;
+	color: #333;
+	margin-top: 50px;
+}
+.jfcg_xian{
+	margin: 0 20px;
+	color: #e5e5e5;
+}
+
+
+</style>
 <body>
     <assign name="hoverIndex" value="1" />
     <include file="Public:common-toppart" />
@@ -56,7 +260,38 @@
 			</a>
 			</if>
 		</div>
+		<div class="jiaofei_boxfour">
+			
+			<if condition="$rqtg eq 1">
 
+				<a href="javascript:void(0)" class="nygs01">
+				<dl class="nygsdl01">
+					<dt><img src="__PUBLIC__/last/img/nygs_05_new.png" alt="" /></dt>
+					<dd class="jiaofei_title nengyuan_title">燃气开通申请</dd>
+					<dd class="jiaofei_nr">燃气开通申请详细信息</dd>
+				</dl>
+                <dl class="nygsdl02">
+					<dt><img src="__PUBLIC__/last/img/nygs_05_new.png" alt="" /></dt>
+					<dd class="jiaofei_title nengyuan_title ">燃气开通申请</dd>
+					<dd class="jiaofei_nr">燃气开通申请详细信息</dd>
+				</dl>
+			</a>
+			<else />
+				<a href="{:U('User/rqktInfo')}" class="nygs01">
+				<dl class="nygsdl01">
+					<dt><img src="__PUBLIC__/last/img/nygs_05.png" alt="" /></dt>
+					<dd class="jiaofei_title nengyuan_title">燃气开通申请</dd>
+					<dd class="jiaofei_nr">燃气开通申请详细信息</dd>
+				</dl>
+                <dl class="nygsdl02">
+					<dt class="nygsdt_01"><img src="__PUBLIC__/last/img/nygs_055.png" alt="" /></dt>
+					<dd class="jiaofei_title jiaofei_title01 ">燃气开通申请</dd>
+					<dd class="jiaofei_nr jiaofei_nr01">燃气开通申请详细信息</dd>
+					<dd> <span class="jrbtn01 jrbtn02">点击进入</span> </dd>
+				</dl>
+			</a>
+			</if>
+		</div>
 		<div class="jiaofei_boxtwo">
 			<a href="{:U('User/nykInfo')}" class="nygs01">
 				<dl class="nygsdl01">
@@ -105,6 +340,7 @@
 				</dl>
 			</a>
 		</div>
+		
 	</div>
 </div>
 

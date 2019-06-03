@@ -141,8 +141,8 @@ function sendNotice($phone, $code) {
             //手机号码
             'telNums' => $phone,
             //认证密码
-            'content' => '',
-            'active' => 'websecond'
+            'content' => $con,
+            'active' => 'webnet'
     );
 
     $data = http_build_query($data);

@@ -60,8 +60,7 @@ class GuestbookAction extends AdminAction {
 		 for($k = 0; $k < count($timepd); $k++){
 			 $timeid=$timepd[$k]['id'];
 			 $timest=$timepd[$k]['operatedate'];
-			 $state=$timepd[$k]['state'];
-			 if($timest<$timeaa&&$state=='未受理'){
+			 if($timest<$timeaa){
 				 $time['id']=$timeid;
 				 $timedata['sfcs']='是';
 				 $sql="UPDATE ad_acceptancerecord SET sfcs='是' WHERE type = '报修' AND id = $timeid";
@@ -135,7 +134,7 @@ class GuestbookAction extends AdminAction {
         $count =  D('acceptancerecord')->where($map)->count();
 
         $page = new Page($count, $limit);
-        $guestlist = D('onlinerepairtype as c')->join('ad_onlinerepair as b on b.id = c.oid')->join('ad_acceptancerecord as a on a.tid = c.id ')->where($map)->limit($page->firstRow . ',' . $page->listRows)->order('a.operatedate DESC')->select();
+        $guestlist = D('onlinerepairtype as c')->join('ad_onlinerepair as b on b.id = c.oid')->join('ad_acceptancerecord as a on a.tid = c.id ')->where($map)->limit($page->firstRow . ',' . $page->listRows)->order('a.id DESC')->select();
 		//var_dump($guestlist);exit;
 		//echo M("a")->getlastsql();exit;
         $this->assign('guestlist', $guestlist);

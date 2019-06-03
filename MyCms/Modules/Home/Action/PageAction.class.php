@@ -1197,18 +1197,16 @@ $jljljllist=R('Api/GetHeatMeteringMonthlyDosageServlet',array($houseCode,$age,1)
 		{ 
 				
 $relistto[0]['JIEYUhuo'] = $pdjie;
-$relistto[0]['JIEBU'] = 2;
 			  }
 			  else if($pdbu>0)
 		{
 			 
 $relistto[0]['JIEYUhuo'] = $pdbu;
-$relistto[0]['JIEBU'] = 1;
 			  }
 			  else if($pdjie==0&&$pdbu==0)
 		{
 				
-				  $relistto[0]['JIEBU'] = 0;
+				  $relistto[0]['JIEYUhuo'] =0;
 			  }
 		
 			      

@@ -109,7 +109,18 @@ class UserAction extends HomeAction {
 		}else{
 			$tingong=0;
 		}
+		$stopstatushz = R('Api/stopstatushz', array($_SESSION['selected_houseCode']));
+		$res2 = $stopstatushz->{'r_body'}[0];
+		//header('content-type:text/html;charset=utf-8');
+		//var_dump($res2);exit;
+		if($res2->{'GASSTATUS'} == '正常'){
+			$rqtg=1;
+		}else{
+			$rqtg=0;
+		}
+		$this->lige=$res2->{'GASSTATUS'};
 		$this->tingong = $tingong;
+		$this->rqtg = $rqtg;
         //print_r($_SESSION['selected_houseCode_name']);
         $this->display();
     }
@@ -399,6 +410,99 @@ class UserAction extends HomeAction {
         $this->type=1;
         $this->display();
     }
+    /**
+     * 能源公司->燃气开通
+     */
+    public function rqktInfo() {
+
+        $this->check();
+
+        if (!isset($_SESSION['selected_houseCode'])) {
+            $houselist = R('User/fjbd', array($_SESSION['uid']));//用户绑定房间
+            if (empty($houselist)) {
+                $this->redirect('User/bind');
+            } else {
+                $_SESSION['selected_houseCode'] = $houselist[0]['houseCode'];
+            }
+        }
+
+        $this->display();
+    }
+	    public function rqkt() {
+
+        $this->check();
+
+        if (IS_GET) {
+            $this->error('非法的请求!');
+        }
+
+        if (!isset($_POST['accept']) || $_POST['accept'] != 1) {
+            $this->error('请确认您已认真阅读并同意绑定/变更能源卡提示!');
+        }
+
+        if (!isset($_SESSION['selected_houseCode'])) {
+            $houselist = R('User/fjbd', array($_SESSION['uid']));//用户绑定房间
+            if (empty($houselist)) {
+                $this->redirect('User/bind');
+            } else {
+                $_SESSION['selected_houseCode'] = $houselist[0]['houseCode'];
+            }
+        }
+
+        $info = D('user')->where('id=' . $_SESSION['uid'])->find();
+        if(empty($info)){
+            $this->redirect("Public/404");
+        }
+
+
+        $houseInfo = R('Api/getHouse', array($_SESSION['selected_houseCode']));
+
+        $phone = $houseInfo['MOBILEPHONE'];
+        $this->oldphone= $phone;
+        $phone = R('Api/maskPhoneNumber', array($phone));
+        $this->housecode=$_SESSION['selected_houseCode'];
+        $this->owername=$_SESSION['selected_houseCode_name'];
+		$time=date("Y-m-d");
+
+		$this->assign('time', $time);
+        $this->assign('phone', $phone);
+        $this->assign('houseInfo', $houseInfo);
+        $this->assign('userName', $info['nickname']);
+
+        $this->display();
+    }
+    public function rqktcg() {
+        $this->check();
+        $housecode=$_POST['housecode'];
+        $owername=$_POST['owername'];
+        $nphone=$_POST['nphone'];
+		$time=$_POST['time'];
+		$houseInfo = R('Api/SubmitGasOpeningApplyServlet', array('燃气开通',$housecode,$owername,$time,$nphone,'网站'));
+		//header('content-type:text/html;charset=utf-8');
+		//var_dump($houseInfo);exit;
+		if($houseInfo->{'r_code'} == '0000'){
+								$this->type='2';
+                                $this->housecode=$_POST['housecode'];
+                                $this->date=date('Y').'年'.date('m').'月'.date('d').'日';
+                                $this->display('bgsjhOk');
+                            }elseif($houseInfo->{'r_code'} == '8008'){
+								$this->type='2';
+                                $this->housecode=$_POST['housecode'];
+                                $this->date='';
+                                $this->msg='您有未审核完成的申请，待审核完成后可以再次提交。';
+                                $this->display('bgsjhOk');
+                            }else{
+								$this->type='2';
+                                $this->housecode=$_POST['housecode'];
+                                $this->date='';
+                                $this->msg='申请失败,请稍后尝试!';
+                                $this->display('bgsjhOk');
+                            }
+    }
+
+    /**
+     * 能源公司->燃气开通结束
+     */
 
     public function nykcg() {
         $this->check();
@@ -408,7 +512,7 @@ class UserAction extends HomeAction {
         $bank=$_POST['bank'];
         $bankNo=$_POST['yinhang1'].$_POST['yinhang2'].$_POST['yinhang3'].$_POST['yinhang4'];
         $youxiaoqi=$_POST['yue'].'/'.$_POST['nian'];
-
+		
 
         if($_FILES['sfz']){
             import('@.ORG.UploadFile');
@@ -510,94 +614,7 @@ class UserAction extends HomeAction {
 
         $this->display();
     }
-    /**
-     * 能源公司->燃气开通
-     */
-    public function rqktInfo() {
 
-        $this->check();
-
-        if (!isset($_SESSION['selected_houseCode'])) {
-            $houselist = R('User/fjbd', array($_SESSION['uid']));//用户绑定房间
-            if (empty($houselist)) {
-                $this->redirect('User/bind');
-            } else {
-                $_SESSION['selected_houseCode'] = $houselist[0]['houseCode'];
-            }
-        }
-
-        $this->display();
-    }
-	    public function rqkt() {
-
-        $this->check();
-
-        if (IS_GET) {
-            $this->error('非法的请求!');
-        }
-
-        if (!isset($_POST['accept']) || $_POST['accept'] != 1) {
-            $this->error('请确认您已认真阅读并同意绑定/变更能源卡提示!');
-        }
-
-        if (!isset($_SESSION['selected_houseCode'])) {
-            $houselist = R('User/fjbd', array($_SESSION['uid']));//用户绑定房间
-            if (empty($houselist)) {
-                $this->redirect('User/bind');
-            } else {
-                $_SESSION['selected_houseCode'] = $houselist[0]['houseCode'];
-            }
-        }
-
-        $info = D('user')->where('id=' . $_SESSION['uid'])->find();
-        if(empty($info)){
-            $this->redirect("Public/404");
-        }
-
-
-        $houseInfo = R('Api/getHouse', array($_SESSION['selected_houseCode']));
-
-        $phone = $houseInfo['MOBILEPHONE'];
-        $this->oldphone= $phone;
-        $phone = R('Api/maskPhoneNumber', array($phone));
-        $this->housecode=$_SESSION['selected_houseCode'];
-        $this->owername=$_SESSION['selected_houseCode_name'];
-		$time=date("Y-m-d");
-
-		$this->assign('time', $time);
-        $this->assign('phone', $phone);
-        $this->assign('houseInfo', $houseInfo);
-        $this->assign('userName', $info['nickname']);
-
-        $this->display();
-    }
-    public function rqktcg() {
-        $this->check();
-
-        $housecode=$_POST['housecode'];
-        $owername=$_POST['owername'];
-        $nphone=$_POST['nphone'];
-		$time=$_POST['time'];
-		$houseInfo = R('Api/SubmitGasOpeningApplyServlet', array('燃气开通',$housecode,$owername,$time,$nphone,'网站'));
-		if($houseInfo->{'r_code'} == '0000'){
-                                $this->housecode=$_POST['housecode'];
-                                $this->date=date('Y').'年'.date('m').'月'.date('d').'日';
-                                $this->display('bgsjhOk');
-                            }elseif($houseInfo->{'r_code'} == '8008'){
-                                $this->housecode=$_POST['housecode'];
-                                $this->date='';
-                                $this->msg='您有未审核完成的申请，待审核完成后可以再次提交。';
-                                $this->display('bgsjhOk');
-                            }else{
-                                $this->housecode=$_POST['housecode'];
-                                $this->date='';
-                                $this->msg='申请失败,请稍后尝试!';
-                                $this->display('bgsjhOk');
-                            }
-    }
-    /**
-     * 能源公司->燃气开通结束
-     */
     public function jtjhzcg() {
         $this->check();
 		//var_dump($_POST);exit;
@@ -2806,8 +2823,9 @@ public function swbgcg() {
         $post_data['vHOUSECODE'] = $_POST['vHOUSECODE'];
         $post_data['vOWNERNAME'] = $_POST['vOWNERNAME'];
         $post_data['vPAPERCODE'] = $_POST['vPAPERCODE'];
+		$post_data['vCARDENDDATE'] = $_POST['vCARDENDDATE'];
         //$post_data['vCARDENDDATE'] = substr($_POST['vCARDENDDATE'],2,2).'/'.substr($_POST['vCARDENDDATE'],6,2);
-        //$post_data['vBANKNUMBER'] = $_POST['vBANKNUMBER'];
+        $post_data['vBANKNUMBER'] = $_POST['vBANKNUMBER'];
         $res = json_decode($this->curl_post($url,$post_data));
         $data['CODE'] = $res->{'r_code'};
         echo $this->ajaxReturn($data,'JSON');
@@ -2897,7 +2915,6 @@ public function swbgcg() {
         $housecode=$_POST['housecode'];
         $owername=$_POST['owername'];
 		$papercode=$_POST['papercode'];
-		$uid=$_SESSION['uid'];
 		//var_dump($_FILES);exit;
 		header("Content-type:text/html;charset=utf-8");
         if($_FILES['sfz']['name'][0] && $_FILES['sfz']['name'][1]){
@@ -2941,7 +2958,7 @@ public function swbgcg() {
 						$imgarr = "[{'fileName': '".$img1name."','fileBase64':'". $base64img1."','fileType':'能源合同'},{'fileName':'".$img2name."','fileBase64':'".$base64img2."','fileType':'能源合同'}]";}
 						//echo $imgarr;exit;
                             //如果都成功，调用接口存储数据
-                            $houseInfo = R('Api/ApplyBindHouseServlet', array($housecode,$owername,$papercode,'网站',$uid,$imgarr));
+                            $houseInfo = R('Api/ApplyBindHouseServlet', array($housecode,$owername,$papercode,'网站',$imgarr));
                             if($houseInfo->{'r_code'} == '0000'){
                                 echo "<script>alert('提交成功，请等待工作人员处理');</script>";
 								echo "<script language='javascript'>";
@@ -2950,7 +2967,7 @@ public function swbgcg() {
                             }elseif($houseInfo->{'r_code'} == '8009'){
                                 echo "<script>alert('您有未审核完成的申请，待审核完成后可以再次提交。');</script>";
 								echo "<script language='javascript'>";
-								echo 'window.top.location="http://www.66885890.com/index.php?s=/user/index"';
+								echo 'window.top.location="http://www.66885890.com/index.php?s=/user/qxbind"';
 								echo "</script>";	
                             }else{
                                 echo "<script>alert('图片上传失败，请稍后重试');</script>";

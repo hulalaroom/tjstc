@@ -9,11 +9,7 @@
 <title>房间解绑</title>
 <script>
      var thisurl = window.location.href;
-	function numlimit(num,limit){
-		thisurl = delQueStr(thisurl,'p');;
-		thisurl = setUrlParam(limit,num,thisurl);  //设置URL
-		window.location.href=thisurl;
-	}
+
 </script>
 <script>
 //设置URL
@@ -143,7 +139,7 @@ function delQueStr(url, ref) {
 						<td>{$gu.source}</td>
 						<td>{$gu.state}</td>
 						<td>{$gu.examinetime}</td>
-						<td><a href="__URL__/jiebangxiangxi/id/{$gu.id}"><img src="__PUBLIC__/images/update.png" title="详细" align="absmiddle"></a></td>			<td><a href="__URL__/jiebangcaozuo/rid/{$gu.housecode}/id/{$gu.id}/uid/{$gu.uid}" class="confirmSubmit" title="通过审核"><img src="__PUBLIC__/images/jb.png" align="absmiddle"></a></td>		  
+						<td><a href="__URL__/jiebangxiangxi/id/{$gu.id}"><img src="__PUBLIC__/images/update.png" title="详细" align="absmiddle"></a></td>			<td><a href="__URL__/jiebangcaozuo/rid/{$gu.housecode}/id/{$gu.id}" class="confirmSubmit" title="通过审核"><img src="__PUBLIC__/images/jb.png" align="absmiddle"></a></td>		  
 					</tr>
 				</volist>
 				<tr class="operate">

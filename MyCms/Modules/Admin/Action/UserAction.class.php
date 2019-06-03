@@ -1277,17 +1277,9 @@ class UserAction extends AdminAction {
 		    public function jiebangcaozuo() {
         $ids = $_GET['rid'];
 		$id=$_GET['id'];
-		$uid=$_GET['uid'];
 		$time=time();
-		$map3['id']=$uid;
-		$re3=D('User')->where($map3)->field('phone')->select();
-		//$aa=D('User')->getLastSql();
-		//echo $aa;exit;
-		//var_dump($re3);exit;
 		//echo $time;exit;
-		$phone=$re3[0]["phone"];
-		//var_dump($re3);exit;
-		//echo $phone;exit;
+
 		$map2['id']=$id;
 		$data2['state']='已审核';
 		$data2['examinetime']=$time;
@@ -1296,36 +1288,11 @@ class UserAction extends AdminAction {
         $map['houseCode'] =$ids;
 		$data['ifBind']=0;
         $re = D('UserRoom')->where($map)->save($data);
-		
-		
+
 		//$aa=D('UserRoom')->getLastSql();
 		//echo $aa;exit;
-
         if ($re !== false) {
             $this->success('成功');
-			$sjcode='尊敬的客户,您办理的房间解绑申请业务已经审核成功,请及时绑定您的房间,谢谢！';
-			$url2 = "http://10.105.15.2:8088/smsshare/smsServlet";
-			$data = array(
-				//手机号码
-				'telNums' => $phone,
-				'content' => '',
-				'active' => 'webnetNew'
-			);
-			//echo $sjcode;exit;
-			$data = http_build_query($data);
-			$ch2 = curl_init();
-			$this_header = array(
-				"content-type: application/x-www-form-urlencoded; 
-				charset=UTF-8"
-				);
-			curl_setopt($ch2,CURLOPT_HTTPHEADER,$this_header);
-			curl_setopt($ch2, CURLOPT_URL, $url2);
-			curl_setopt($ch2, CURLOPT_RETURNTRANSFER, 1);
-			curl_setopt($ch2, CURLOPT_POST, 1);
-			curl_setopt($ch2, CURLOPT_POSTFIELDS, $data);
-			$output2 = curl_exec($ch2);
-			$date2=json_decode($output2,true);
-			curl_close($ch2);
         } else {
             $this->error('失败！');
         }

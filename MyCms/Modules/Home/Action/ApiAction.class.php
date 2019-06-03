@@ -1887,6 +1887,13 @@ group by cpl.housecode,cpl.chargemonth,cpl.clocknumber ) where gn_qf>0 order by 
 		$list = json_decode($this->curl_post($url,$post_data));
 		return $list;
     }
+	function stopstatushz($housecodes)
+    {
+        $url = C('CALL_URL') . '/GetHouseItemStateServlet';
+		$post_data['vHOUSECODE'] = $housecodes;
+		$list = json_decode($this->curl_post($url,$post_data));
+		return $list;
+    }
 
     function chargePhone($housecodes,$phone,$owername,$laoyuan)
     {
@@ -1921,18 +1928,32 @@ group by cpl.housecode,cpl.chargemonth,cpl.clocknumber ) where gn_qf>0 order by 
         $list = json_decode($this->curl_post($url,$post_data));
         return $list;
     }
-	function ApplyBindHouseServlet($housecodes,$owername,$papercode,$laiyuan,$uid,$fileBase64)
+
+	function SubmitGasOpeningApplyServlet($vBUSINESSTYPE,$vHOUSECODE,$vOWNERNAME,$vAPPLYTIME,$vPHONE,$vBUSINESSSOURCE)
+    {
+        $url = C('CALL_URL') . '/SubmitGasOpeningApplyServlet';
+        $post_data['vBUSINESSTYPE'] = $vBUSINESSTYPE;
+        $post_data['vHOUSECODE'] = $vHOUSECODE;
+        $post_data['vOWNERNAME'] = $vOWNERNAME;
+        $post_data['vAPPLYTIME'] = $vAPPLYTIME;
+        $post_data['vPHONE'] = $vPHONE;
+        $post_data['vBUSINESSSOURCE'] = $vBUSINESSSOURCE;
+        $list = json_decode($this->curl_post($url,$post_data));
+        return $list;
+    }
+
+	function ApplyBindHouseServlet($housecodes,$owername,$papercode,$laiyuan,$fileBase64)
     {
         $url = C('CALL_URL') . '/ApplyBindHouseServlet';
         $post_data['vHOUSECODE'] = $housecodes;
         $post_data['vOWNERNAME'] = $owername;
         $post_data['vPAPERCODE'] = $papercode;
         $post_data['vBUSINESSSOURCE'] = $laiyuan;
-		$post_data['vUID'] = $uid;
         $post_data['fileBase64'] = $fileBase64;
         $list = json_decode($this->curl_post($url,$post_data));
         return $list;
     }
+
     function SubmitBankProcessServlet($vBUSINESSTYPE,$vHOUSECODE,$vOWNERNAME,$vBANK,$vBANKNUMBER,$vCARDENDDATE,$vBUSINESSSOURCE,$fileBase64,$fileName)
     {
         $url = C('CALL_URL') . '/SubmitBankProcessServlet';
@@ -2056,19 +2077,6 @@ group by cpl.housecode,cpl.chargemonth,cpl.clocknumber ) where gn_qf>0 order by 
 		return $list;
 
 	}
-	function SubmitGasOpeningApplyServlet($vBUSINESSTYPE,$vHOUSECODE,$vOWNERNAME,$vAPPLYTIME,$vPHONE,$vBUSINESSSOURCE)
-    {
-        $url = C('CALL_URL') . '/SubmitGasOpeningApplyServlet';
-        $post_data['vBUSINESSTYPE'] = $vBUSINESSTYPE;
-        $post_data['vHOUSECODE'] = $vHOUSECODE;
-        $post_data['vOWNERNAME'] = $vOWNERNAME;
-        $post_data['vAPPLYTIME'] = $vAPPLYTIME;
-        $post_data['vPHONE'] = $vPHONE;
-        $post_data['vBUSINESSSOURCE'] = $vBUSINESSSOURCE;
-        $list = json_decode($this->curl_post($url,$post_data));
-        return $list;
-    }
-
 }
 
 

@@ -115,9 +115,9 @@ function delQueStr(url, ref) {
 }
 
 $(function(){
-	//设置超过20个字符用...替代剩下的字符
+	//设置超过12个字符用...替代剩下的字符
 	$(".housename").each(function(){
-	var maxwidth=20;
+	var maxwidth=12;
 		if($(this).text().length>maxwidth){
 		 $(this).text($(this).text().substring(0,maxwidth)); 
 		 $(this).html($(this).html()+'…');
@@ -147,6 +147,7 @@ $(function(){
 	});
 });
 
+
 </script>
 <style>
 
@@ -170,7 +171,9 @@ display: none;
    white-space:nowrap;
    text-overflow:ellipsis;
 }
-   
+  .txt{
+	height:19px;
+} 
 </style>
 </head>
 <body>
@@ -179,39 +182,45 @@ display: none;
   <div id="contentHeader">
     <h3>在线报修</h3>
     <div class="searchArea">
-	
+	<div class="search left">
+	 显示：<select name="limit"  onChange="numlimit(this.value,'limit');" name="limit">
+            <option value="{$p}" <eq name='limit' value='{$p}'>selected="selected"</eq>>{$p}</option>
+            <option value="30" <eq name='limit' value='30'>selected="selected"</eq>>30</option>
+          </select>　
+		  <a href="{:U('Guestbook/zxindex')}">[清空条件]</a>
+     </div>
 		   　
       <div class="search left">
           <form action="{:U('Guestbook/zxindex')}" method="post" style="margin: 0 0 15px 0;">
 
-		  涉及行业：<select id="sjhy" name="sjhy" style='width:70px'>
+		  　涉及行业：<select id="sjhy" name="sjhy" >
 		  <option value="">全部</option>
            <volist name="involveindustry" id="hy">
 				<option >{$hy.involveindustry}</option>
 			</volist>
           </select>
-		  　涉及种类：<select id="sjzl" name="sjzl" style='width:70px'>
+		  　涉及种类：<select id="sjzl" name="sjzl">
 		  <option value="">全部</option>
           </select>
-		  　办理类别：<select id="bllb" name="bllb" style='width:70px'>
+		  　办理类别：<select id="bllb" name="bllb">
 		  <option value="">全部</option>
-          </select>
-		  　编号：<input name="id" class="txt" type="text" value="{$id}" style='width:70px'>
+          </select>　</br>
+		  <p style="height:5px"><p>
+		  　编　　号：<input name="id" class="txt" type="text" value="{$id}">
 
-		  　联系电话：<input name="contactnumber" class="txt" type="text" value="{$contactnumber}" style='width:70px'>
-		  　办理状态：<select name="state" style='width:70px'>
+		  　联系电话：<input name="contactnumber" class="txt" type="text" value="{$contactnumber}">　
+		  　办理状态：<select name="state">
 		  <option value="">全部</option>
             <option value="未受理" <eq name='state' value="未受理">selected="selected"</eq>>未受理</option>
 			<option value="已受理" <eq name='state' value="已受理">selected="selected"</eq>>已受理</option>
 			<option value="已办结" <eq name='state' value="已办结">selected="selected"</eq>>已办结</option>
           </select>
-		  　是否超时：<select name="sfcs" style='width:70px'>
+		  　是否超时：<select name="sfcs">
 		  <option value="">全部</option>
             <option value="是" <eq name='sfcs' value="是">selected="selected"</eq>>是</option>
 			<option value="否" <eq name='sfcs' value="否">selected="selected"</eq>>否</option>
           </select>
 			　<input type="submit"  value="查询" class="button "/>
-				　<a href="{:U('Guestbook/zxindex')}">[清空条件]</a>
           </form>
       </div>
     </div>
@@ -220,33 +229,33 @@ display: none;
     <form method="post" action="__URL__/bat" name="form1">
       <thead>
         <tr class="tb_header">
-          <th width="11%" style='text-align: center;'>编号</th>
-			<th width="5%" style='text-align: center;'>来源</th>
-           <th width="6%" style='text-align: center;'>联系人</th>
-		   <th width="9%" style='text-align: center;'>联系电话</th>
-		   <th width="13%" style='text-align: center;'>房间地址</th>
-		    <th width="7%" style='text-align: center;'>涉及行业</th>
-			 <th width="5%" style='text-align: center;'>涉及种类</th>
-			  <th width="7%" style='text-align: center;'>办理类别</th>
-           <th width="6%" style='text-align: center;'>办理状态</th>
-          <th width="12%" style='text-align: center;'>报修时间</th>
-		   <th width="8%" style='text-align: center;'>受理时限</th>
-		   <th width="6%" style='text-align: center;'>是否超时</th>
-		  <th  style='text-align: center;'>详细</th>
+          <th width="8%">编号</th>
+			<th width="4%">来源</th>
+           <th width="8%">联系人</th>
+		   <th width="10%">联系电话</th>
+		   <th width="8%">房间地址</th>
+		    <th width="8%">涉及行业</th>
+			 <th width="8%">涉及种类</th>
+			  <th width="8%">办理类别</th>
+           <th width="8%">办理状态</th>
+          <th width="8%">报修时间</th>
+		   <th width="8%">受理时限</th>
+		   <th width="6%">是否超时</th>
+		  <th >详细</th>
           <!--<th>操作</th>-->
         </tr>
       </thead>
       <volist name="guestlist" id="gu">
         <tr class="tb_list">
-          <td class="housename" id="{$gu.id}"  style='text-align: center;'>{$gu.id}</td>
-			 <td id="{$gu.source}"  style='text-align: center;'>{$gu.source}</td>
-            <td id="{$gu.proposer}" style='text-align: center;'>{$gu.proposer}</td>
-			<td id="{$gu.contactnumber}" style='text-align: center;'>{$gu.contactnumber}</td>
-			<td class="housename" id="{$gu.housename}" style='text-align: center;'>{$gu.housename}</td>
-			<td id="{$gu.involveindustry}" style='text-align: center;'>{$gu.involveindustry}</td>
-			<td id="{$gu.involvetype}" style='text-align: center;'>{$gu.involvetype}</td>
-			<td id="{$gu.handletype}" style='text-align: center;'>{$gu.handletype}</td>
-           <td  id="{$gu.state}" align="center" style='text-align: center;'>
+          <td class="housename" id="{$gu.id}">{$gu.id}</td>
+			 <td id="{$gu.source}">{$gu.source}</td>
+            <td id="{$gu.proposer}">{$gu.proposer}</td>
+			<td id="{$gu.contactnumber}">{$gu.contactnumber}</td>
+			<td class="housename" id="{$gu.housename}">{$gu.housename}</td>
+			<td id="{$gu.involveindustry}">{$gu.involveindustry}</td>
+			<td id="{$gu.involvetype}">{$gu.involvetype}</td>
+			<td id="{$gu.handletype}">{$gu.handletype}</td>
+           <td  id="{$gu.state}" align="center">
 	           	<eq name="gu.state" value="未受理"><span style="color:red">未受理</span></eq>
 							<eq name="gu.state" value="已办结"><span style="color:green">已办结</span></eq>
 							<eq name="gu.state" value="已受理"><span style="color:blue">已受理</span></eq>
@@ -254,22 +263,18 @@ display: none;
 							<!--<eq name="gu.status" value="4"><span style="color:blue">驳回</span></eq>-->
             </td>
 		  
-          <td id="{$gu.operatedate|date="Y-m-d H:i:s",###}" style='text-align: center;'>{$gu.operatedate|date="Y-m-d H:i:s",###}</td>
-		  <td id="48小时" style='text-align: center;'>48小时</td>
-		  <td id="{$gu.sfcs}" style='text-align: center;'>
+          <td id="{$gu.operatedate|date="Y-m-d H:i:s",###}">{$gu.operatedate|date="Y-m-d H:i:s",###}</td>
+		  <td id="48小时">48小时</td>
+		  <td id="{$gu.sfcs}">
 		  <eq name="gu.sfcs" value="是"><span style="color:red">是</span></eq>
 		  <eq name="gu.sfcs" value="否"><span style="color:green">否</span></eq>
 		  </td>
-           <td class="title" id="详细" style='text-align: center;'><a href="__URL__/edit/id/{$gu.id}"><img src="__PUBLIC__/images/update.png" title="详细" align="absmiddle"></a></td>
+           <td class="title" id="详细"><a href="__URL__/edit/id/{$gu.id}"><img src="__PUBLIC__/images/update.png" title="详细" align="absmiddle"></a></td>
           <!--<td><a href="__URL__/edit/id/{$gu.id}"><img src="__PUBLIC__/images/update.png" title="回复" align="absmiddle"></a>&nbsp;&nbsp;<a href="{:U('Guestbook/bat','command=delete&id='.$gu['id'])}" class="confirmSubmit"><img src="__PUBLIC__/images/delete.png" align="absmiddle" title="删除"></a></td>-->
         </tr>
       </volist>
       <tr class="operate">
-        <td colspan="15">显示：<select name="limit"  onChange="numlimit(this.value,'limit');" name="limit">
-            <option value="{$p}" <eq name='limit' value='{$p}'>selected="selected"</eq>>{$p}</option>
-            <option value="30" <eq name='limit' value='30'>selected="selected"</eq>>30</option>
-          </select>
-		  <div class="cuspages right">{$page}</div>
+        <td colspan="15"><div class="cuspages right">{$page}</div>
           </td>
       </tr>
     </form>

@@ -121,7 +121,8 @@ class BusinessAction extends HomeAction
         }else{
             $list->{'r_body'}[0]->{'CHARGEMONTH_TO'} = $list->{'r_body'}[0]->{'CHARGEMONTH'}+1;
         }
-        //print_r($list);
+		//header('content-type:text/html;charset=utf-8');
+        //print_r($list);exit;
         $list = json_decode(json_encode($list),true);
         $this->assign('Businesstype', $Businesstype);
         $this->assign('nyywList', $list['r_body']);

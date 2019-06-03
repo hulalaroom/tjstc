@@ -132,10 +132,16 @@ function roomnum(vl){
 	<div id="contentHeader">
 		<h3>用户管理</h3>
 		<div class="searchArea">
-			
+			<div class="search left">
+				显示：<select name="limit"  onChange="numlimit(this.value,'limit');" name="limit" id="limit">
+						<option value="{$p}" <eq name='limit' value='{$p}'>selected="selected"</eq>>{$p}</option>
+						<option value="30" <eq name='limit' value='30'>selected="selected"</eq>>30</option>
+					</select>
+				　<a href="{:U('User/index')}">[清空条件]</a>
+			</div>
 			<div class="search left">
 				<form name="sou"  action="{:U('User/index')}" method="post">
-				　	注册用户名　<input id="username" name="username" class="txt" type="text" value="{$username}">
+				　	　注册用户名　<input id="username" name="username" class="txt" type="text" value="{$username}">
 				　	注册手机号　<input id="phone" name="phone" class="txt" type="text" value="{$phone}">
 					　绑定房间　<select id="roomnum1" name="roomnum1" onChange="roomnum(this)">
 									<option >全部</option>
@@ -148,8 +154,8 @@ function roomnum(vl){
 									<option value="2" <eq name='roomnumcou' value="2">selected="selected"</eq>>2</option>
 									<option value="3" <eq name='roomnumcou' value="3">selected="selected"</eq>>3</option>
 									<option value="4" <eq name='roomnumcou' value="4">selected="selected"</eq>>4</option>
-								</select>
-								　<input name="limit" type="hidden" value="{$limit}">
+								</select>　
+								<input name="limit" type="hidden" value="{$limit}">
 					<!--关键词：
 					<select name="types" style="width:110px">
 						<option value="a.username" <eq name='types' value='a.username'>selected="selected"</eq>>注册用户名</option>
@@ -165,7 +171,6 @@ function roomnum(vl){
 				<!--<input id="title" type="text" name="keyword" value="{$keyword}" class="txt" size="15"/>-->
 				<input name="searchsubmit" type="submit"  value="查询" class="button "/>　
 					<input  class="button" type="button" value="导出" name="download" onclick="exportdata()"/>
-					　<a href="{:U('User/index')}">[清空条件]</a>
 				</form>
 			</div>
 		</div>
@@ -174,38 +179,38 @@ function roomnum(vl){
 		<form method="post" action="__URL__/bat" name="form1">
 			<thead>
 				<tr class="tb_header">
-					<th width="5%" style='text-align: center;'>序号</th>
-					<th width="15%" style='text-align: center;'>注册用户名</th>
-					<th width="15%" style='text-align: center;'>注册手机号</th>
-					<th width="15%" style='text-align: center;'>创建时间</th>
-					<th width="10%" style='text-align: center;'>来源</th>
-					<th width="15%" style='text-align: center;'>绑定房间</th>
-					<th width="15%" style='text-align: center;'>绑定房间数量</th>
+					<th width="5%">序号</th>
+					<th width="15%">注册用户名</th>
+					<th width="15%">注册手机号</th>
+					<th width="15%">创建时间</th>
+					<th width="10%">来源</th>
+					<th width="15%">绑定房间</th>
+					<th width="15%">绑定房间数量</th>
 					<th style='text-align:center'>操作</th>
 				</tr>
 			</thead>
 			<volist name="user_list" id="user">
 				<tr class="tb_list">
-					<td  style='text-align: center;'><!--<input type="checkbox" name="id[]" value="{$user.uid}">--> {$i}</td>
-					<td style='text-align: center;'>{$user.username}</td>
-					<td style='text-align: center;'>{$user.phone}</td>
-					<td style='text-align: center;'>{$user.create_time}</td>
-					<td style='text-align: center;'>
+					<td ><!--<input type="checkbox" name="id[]" value="{$user.uid}">--> {$i}</td>
+					<td>{$user.username}</td>
+					<td>{$user.phone}</td>
+					<td>{$user.create_time}</td>
+					<td>
 						<if condition="$user.fromobj eq 1">网站
 							<elseif condition="$user.fromobj eq 2" />APP
 							<else/>
 							微信
 						</if>
 					</td>
-					<td style='text-align: center;'>
+					<td>
 						<if condition="$user.roomnum eq 1">已绑定
 							<elseif condition="$user.roomnum eq 0" />未绑定
 							<else/>
 							已绑定
 						</if>
 					</td>  
-					<td style='text-align: center;'>{$user.roomnum}</td>
-					<td style='text-align: center;'>
+					<td>{$user.roomnum}</td>
+					<td>
 						<!--<a href="__URL__/infor/id/{$user.uid}" title="基础信息，费用信息，用量信息"><img src="__PUBLIC__/images/xx.png" align="absmiddle"></a>-->
 						<a href="__URL__/view/id/{$user.id}" title="登录信息"><img src="__PUBLIC__/images/ck.png" align="absmiddle"></a>&nbsp;&nbsp;
 						<a href="__URL__/xx/id/{$user.id}" title="详细信息"><img src="__PUBLIC__/images/update.png" align="absmiddle"></a>&nbsp;&nbsp;
@@ -215,12 +220,7 @@ function roomnum(vl){
 				</tr>
 			</volist>
 			<tr class="operate" >
-			
-				<td colspan="11">
-				显示：<select name="limit"  onChange="numlimit(this.value,'limit');" name="limit" id="limit">
-						<option value="{$p}" <eq name='limit' value='{$p}'>selected="selected"</eq>>{$p}</option>
-						<option value="30" <eq name='limit' value='30'>selected="selected"</eq>>30</option>
-					</select><div class="cuspages right" id="page">{$page}</div>
+				<td colspan="11"><div class="cuspages right" id="page">{$page}</div>
 					<div class="fixsel"></div>
 				</td>
 			</tr>
